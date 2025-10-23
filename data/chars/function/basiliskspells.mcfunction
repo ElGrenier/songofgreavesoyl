@@ -7,7 +7,7 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:stone_shovel"}}]
 
 
 execute at @a[scores={char=39,s2_timer=0}] as @e[distance=..5,tag=valid_spell_target,advancements={chars:basilisk_passive=true}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @s basilisk_venom 120
-advancement revoke @a[advancements={chars:basilisk_passive=true}] only chars:warden_passive
+advancement revoke @a[advancements={chars:basilisk_passive=true}] only chars:basilisk_passive
 
 #execute at @a[scores={char=39,universal_hit=1..,s2_timer=0},team=purple] run scoreboard players set @p[distance=..5,team=yellow] basilisk_venom 120
 
