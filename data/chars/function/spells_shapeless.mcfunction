@@ -139,7 +139,7 @@ clear @a[tag=!in_the_void,scores={char=37}] minecraft:carrot_on_a_stick[custom_d
 execute as @a[tag=in_the_void,scores={char=37}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:3b}]}] run clear @a[scores={char=37}] minecraft:carrot_on_a_stick[custom_data={s3:1}]
 item replace entity @a[tag=in_the_void,scores={char=37}] hotbar.3 with minecraft:carrot_on_a_stick[custom_data={s3:1},minecraft:item_model="minecraft:obsidian",minecraft:custom_name={text:"From the Void",color:"dark_aqua",bold:1b}] 1
 execute at @a[scores={char=37,s3_timer=1}] run kill @e[tag=void_blade_return]
-execute at @a[scores={char=37,s3_timer=1}] run summon minecraft:armor_stand ~ ~ ~ {Invisible:1b,Tags:["void_blade_return"],NoGravity:0b}
+execute at @a[scores={char=37,s3_timer=1}] run summon minecraft:armor_stand ~ ~ ~ {Invisible:1b,Tags:["void_blade_return","entities_shapeless"],NoGravity:0b}
 tp @e[tag=void_blade_return,limit=1] @a[scores={char=37,s3_timer=1},limit=1]
 scoreboard players set @a[scores={s3_timer=1..,char=37}] s3_timer 0
 
