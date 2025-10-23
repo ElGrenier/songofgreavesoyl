@@ -1,0 +1,14 @@
+Altars are core to domination mode, objects you conquer to generate points.
+Blah, blah, blah
+No need to explain what happens inside. 
+
+All you need to know is: every altars is armor_stand with tags "immune" and "Altars".
+You can just spawn entity with those tags, but thats not all.
+You have to give it CustomName, this will be displayed in messages about conquering during the game.
+After that, you need to use 'function altars:setup'
+Finally, fully-functional altar will appear.
+
+There is example of command to summon altar. Try it yourself.
+If I remember well, there is a gimmick with coords.
+If you stand on the surface and you want altar to appear beneath you, use Y-2 or something like that,
+summon armor_stand X Y Z {CustomName:"{\"text\":\"Yellow Side\"}",Invisible:1b,Invulnerable:1b,PersistenceRequired:1b,NoGravity:1b,Tags:["immune","Altars"]}

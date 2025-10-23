@@ -1,0 +1,3 @@
+# Wywołanie w analogicznym pliku w altars:
+# execute as @s at @s run function ...
+execute at @s if entity @a[distance=..3] run tellraw @a [{text:"",type:"text"},{selector:"@s",color:"green",bold:1b,type:"selector"},{text:" has been neutralized by ",color:"gray",type:"text"},{selector:"@a[distance=..3]",bold:1b,type:"selector"}]

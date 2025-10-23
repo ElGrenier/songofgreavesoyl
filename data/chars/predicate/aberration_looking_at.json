@@ -1,0 +1,19 @@
+{
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "type_specific": {
+            "type": "minecraft:player",
+            "looking_at": {
+                "nbt": "{Tags:[\"aber_stack\"]}",
+                "distance": {
+                    "absolute": {
+                        "min": 0,
+                        "max": 6
+                    }
+                }
+            }
+        },
+        "nbt": "{Tags:[\"aberration\"]}"
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type_specific": {
+      "type": "minecraft:player",
+      "stats": [],
+      "looking_at": {
+        "type_specific": {
+          "type": "minecraft:player",
+          "stats": []
+        },
+        "nbt": "{Tags:[\"guide_valid_victim\"]}",
+        "distance": {
+          "absolute": {
+            "min": 0,
+            "max": 5
+          }
+        }
+      }
+    }
+  }
+}

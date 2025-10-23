@@ -1,0 +1,10 @@
+Setup of the game is divided in two phases:
+- Lobby phase - all settings are saved in entity with tag GameStart
+- InGame phase - all settings are stored in entity with tag... Settings
+
+Process of game setup include:
+- (Lobby Phase) Setting Score var in GameStart vessel - it is maximum amount of points you need to gather
+- (Lobby Phase) Setting Map var in GameStart ves. - number of map to be played
+- (Lobby Phase, end of) Initiation of Stats for all player and teleport to 198.60 35.00 -130.52
+- (Ingame phase) Initiate_game and game_start. Those function manage with most systems' setups, and copy values from GameStart vessel to Settings vessel.
+-

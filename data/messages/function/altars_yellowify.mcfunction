@@ -1,0 +1,3 @@
+# Wywołanie w analogicznym pliku w altars:
+# execute as @s at @s run function ...
+tellraw @a [{text:"",type:"text"},{selector:"@s",bold:1b,type:"selector"},{text:" has been conquered by ",color:"aqua",type:"text"},{selector:"@a[distance=..3,team=yellow]",bold:1b,type:"selector"}]

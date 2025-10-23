@@ -1,0 +1,2 @@
+$execute unless score @s ABS matches 1.. run scoreboard players display numberformat @s HP fixed [{"text":"$(temp1)","color":"white"}]
+$execute if score @s ABS matches 1.. run scoreboard players display numberformat @s HP fixed [{"text":"$(temp1)","color":"white"},{"text":"(+$(temp2))","color":"yellow"}]

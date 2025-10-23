@@ -1,0 +1,19 @@
+Why hello there, in first "tutorial" for this map.
+Wonder how many ppl will read this, anyway, its mainly for my own usage.
+
+So, about files system: main datapack is pierogi. Inside:
+- altars - namespace for functions dealing with altars EXCEPT the ones that manage score points
+- battlegrounds - setup maps/arenas that you play on. Note that names inside dont really match in-game ones
+- buffs - not used, but almost finished buffs system
+- chars - namespace dealing with characters. Mainly item setup and functions helping with skills
+- lobby - namespace for game setup: choosing arena, score, picking characters
+- main - that one is quite screwed up, cuz there are functions:
+     game_start, game_end, stats
+     lossing teams
+     (re)spawn on the map
+     initiating stats (scoreboards)
+     and some more, so yeah, it is MAIN
+- others - for now, only deathmessages management
+- profile - functions managing with profile, like achievement management or global stats
+- score - counting and displaying score points
+- weapuns - (very) simple system giving ppl their weapon back, if they accidently throw it away. Might be replaced one day
