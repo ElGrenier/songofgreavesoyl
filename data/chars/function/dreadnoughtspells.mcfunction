@@ -1,5 +1,5 @@
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:spruce_sapling"}}]
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:netherite_chestplate"}}]
+#kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:spruce_sapling"}}]
+#kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:netherite_chestplate"}}]
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:netherite_sword"}}]
 
 
@@ -42,40 +42,40 @@ scoreboard players set @a[scores={dreadnough_empowered_attack=1..}] dreadnough_e
 
 #bludgeon
 
-scoreboard players set @a[scores={char=46,spell_drea_1_1=1,CC_silence=1..}] spellCD1 20
-scoreboard players set @a[scores={char=46,spell_drea_1_1=1,CC_silence=1..}] spell_drea_1_1 160
+scoreboard players set @a[scores={char=46,s1_timer=1,CC_silence=1..}] spellCD1 20
+scoreboard players set @a[scores={char=46,s1_timer=1,CC_silence=1..}] s1_timer 160
 
-scoreboard players set @a[scores={char=46,spell_drea_1_1=1..30,CC_silence=1..}] spellCD1 150
-scoreboard players set @a[scores={char=46,spell_drea_1_1=1..30,CC_silence=1..}] spell_drea_1_1 31
+scoreboard players set @a[scores={char=46,s1_timer=1..30,CC_silence=1..}] spellCD1 150
+scoreboard players set @a[scores={char=46,s1_timer=1..30,CC_silence=1..}] s1_timer 31
 
-execute at @a[scores={char=46,spell_drea_1_1=1..30,CC_silence=0}] run particle minecraft:crit ~ ~ ~ 0.5 0.3 0.5 0.7 10
-execute at @a[scores={char=46,spell_drea_1_1=1..30,CC_silence=0}] run particle minecraft:block{block_state:{Name:"minecraft:sand"}} ~ ~ ~ 0.5 0.3 0.5 0.7 10
-execute at @a[scores={char=46,spell_drea_1_1=10,CC_silence=0}] run playsound minecraft:entity.player.attack.sweep master @a[distance=..12] ~ ~ ~ 0.5 0.8 1
-execute at @a[scores={char=46,spell_drea_1_1=1..30,CC_silence=0}] run playsound minecraft:block.sand.place master @a[distance=..12] ~ ~ ~ 0.1 0.5 1
-execute at @a[scores={char=46,spell_drea_1_1=30,CC_silence=0}] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invulnerable:1b,Invisible:1b,Tags:["bludgeon_visual"]}
-execute at @a[scores={char=46,spell_drea_1_1=30,CC_silence=0}] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invulnerable:1b,Invisible:1b,Tags:["bludgeon_actual"]}
-tp @e[tag=bludgeon_visual,limit=1] @a[scores={char=46,spell_drea_1_1=31},limit=1]
-tp @e[tag=bludgeon_actual,limit=1] @a[scores={char=46,spell_drea_1_1=31},limit=1]
-execute at @a[scores={char=46,spell_drea_1_1=31,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run tp @s ~ ~ ~ ~ -80
+execute at @a[scores={char=46,s1_timer=1..30,CC_silence=0}] run particle minecraft:crit ~ ~ ~ 0.5 0.3 0.5 0.7 10
+execute at @a[scores={char=46,s1_timer=1..30,CC_silence=0}] run particle minecraft:block{block_state:{Name:"minecraft:sand"}} ~ ~ ~ 0.5 0.3 0.5 0.7 10
+execute at @a[scores={char=46,s1_timer=10,CC_silence=0}] run playsound minecraft:entity.player.attack.sweep master @a[distance=..12] ~ ~ ~ 0.5 0.8 1
+execute at @a[scores={char=46,s1_timer=1..30,CC_silence=0}] run playsound minecraft:block.sand.place master @a[distance=..12] ~ ~ ~ 0.1 0.5 1
+execute at @a[scores={char=46,s1_timer=30,CC_silence=0}] run summon minecraft:marker ~ ~ ~ {Invulnerable:1b,Tags:["bludgeon_visual","entities_dreadnought"]}
+execute at @a[scores={char=46,s1_timer=30,CC_silence=0}] run summon minecraft:marker ~ ~ ~ {Invulnerable:1b,Tags:["bludgeon_actual","entities_dreadnought"]}
+tp @e[tag=bludgeon_visual,limit=1] @a[scores={char=46,s1_timer=31},limit=1]
+tp @e[tag=bludgeon_actual,limit=1] @a[scores={char=46,s1_timer=31},limit=1]
+execute at @a[scores={char=46,s1_timer=31,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run tp @s ~ ~ ~ ~ -80
 execute store result entity @e[tag=bludgeon_actual,limit=1] Rotation[1] float 1 run clear
-execute at @a[scores={char=46,spell_drea_1_1=31..50,CC_silence=0}] as @e[tag=bludgeon_actual] at @s run tp @s ^ ^ ^0.2
+execute at @a[scores={char=46,s1_timer=31..50,CC_silence=0}] as @e[tag=bludgeon_actual] at @s run tp @s ^ ^ ^0.2
 
 execute store result entity @e[tag=bludgeon_actual,limit=1] Rotation[1] float 1 run clear
 
-execute if entity @e[scores={char=46},team=purple] at @e[tag=bludgeon_actual] run scoreboard players set @a[distance=..2.5,scores={bludgeon=0},team=yellow] bludgeon 1
-execute if entity @e[scores={char=46},team=yellow] at @e[tag=bludgeon_actual] run scoreboard players set @a[distance=..2.5,scores={bludgeon=0},team=purple] bludgeon 1
-execute at @a[scores={char=46,spell_drea_1_1=50..}] run kill @e[tag=bludgeon_actual]
+execute at @e[tag=bludgeon_actual] as @a[distance=1..2.5,scores={bludgeon=0}] unless score @s Team = @p[scores={char=46}] Team run scoreboard players set @s bludgeon 1
+#execute if entity @e[scores={char=46},team=yellow] at @e[tag=bludgeon_actual] run scoreboard players set @a[distance=..2.5,scores={bludgeon=0},team=purple] bludgeon 1
+execute at @a[scores={char=46,s1_timer=50..}] run kill @e[tag=bludgeon_actual]
 
 execute at @e[tag=bludgeon_actual] run particle minecraft:crit ~ ~ ~ 0.6 0.1 0.6 0.1 50
 
-execute at @a[scores={char=46,spell_drea_1_1=31..80,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run tp @s ~ ~ ~ ~ ~15
-#execute at @a[scores={char=46,spell_drea_1_1=31..80,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run particle block{block_state: 'minecraft:sand'} ^ ^1.8 ^1.8 0.1 0.1 0.1 0.1 5
-execute at @a[scores={char=46,spell_drea_1_1=31..40,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run particle minecraft:crit ^ ^1.7 ^1.7 0.2 0.2 0.2 0.1 20
-execute at @a[scores={char=46,spell_drea_1_1=50..50,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run particle minecraft:crit ^ ^1.6 ^1.6 0.2 0.2 0.2 0.1 30
-execute at @a[scores={char=46,spell_drea_1_1=50..60,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run particle minecraft:crit ^ ^1.5 ^1.5 0.3 0.3 0.3 0.1 40
-execute at @a[scores={char=46,spell_drea_1_1=60..70,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run particle minecraft:crit ^ ^1.5 ^1.5 0.3 0.3 0.3 0.1 40
-execute at @a[scores={char=46,spell_drea_1_1=35,CC_silence=0}] run playsound minecraft:entity.player.attack.crit master @a[distance=..12] ~ ~ ~ 1 0.9 1
-execute at @a[scores={char=46,spell_drea_1_1=70..}] run kill @e[tag=bludgeon_visual]
+execute at @a[scores={char=46,s1_timer=31..80,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run tp @s ~ ~ ~ ~ ~15
+#execute at @a[scores={char=46,s1_timer=31..80,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run particle block{block_state: 'minecraft:sand'} ^ ^1.8 ^1.8 0.1 0.1 0.1 0.1 5
+execute at @a[scores={char=46,s1_timer=31..40,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run particle minecraft:crit ^ ^1.7 ^1.7 0.2 0.2 0.2 0.1 20
+execute at @a[scores={char=46,s1_timer=50..50,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run particle minecraft:crit ^ ^1.6 ^1.6 0.2 0.2 0.2 0.1 30
+execute at @a[scores={char=46,s1_timer=50..60,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run particle minecraft:crit ^ ^1.5 ^1.5 0.3 0.3 0.3 0.1 40
+execute at @a[scores={char=46,s1_timer=60..70,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run particle minecraft:crit ^ ^1.5 ^1.5 0.3 0.3 0.3 0.1 40
+execute at @a[scores={char=46,s1_timer=35,CC_silence=0}] run playsound minecraft:entity.player.attack.crit master @a[distance=..12] ~ ~ ~ 1 0.9 1
+execute at @a[scores={char=46,s1_timer=70..}] run kill @e[tag=bludgeon_visual]
 
 execute at @a[scores={bludgeon=3}] run particle minecraft:crit ~ ~1.5 ~ 0.2 0.2 0.2 0.5 10
 execute at @a[scores={bludgeon=3}] run playsound minecraft:entity.player.attack.knockback master @a[distance=..6] ~ ~ ~ 1 0.3 1
@@ -88,51 +88,49 @@ scoreboard players set @a[scores={bludgeon=50..}] bludgeon 0
 
 #shrug it off
 
-scoreboard players set @a[scores={char=46,spell_drea_2_1=1,CC_silence=1..}] spellCD2 20
-scoreboard players set @a[scores={char=46,spell_drea_2_1=1,CC_silence=1..}] spell_drea_2_1 260
+scoreboard players set @a[scores={char=46,s2_timer=1,CC_silence=1..}] spellCD2 20
+scoreboard players set @a[scores={char=46,s2_timer=1,CC_silence=1..}] s2_timer 260
 
-scoreboard players set @a[scores={char=46,spell_drea_2_1=1..40,CC_silence=1..}] spellCD2 240
-scoreboard players set @a[scores={char=46,spell_drea_2_1=1..40,CC_silence=1..}] spell_drea_2_1 41
+scoreboard players set @a[scores={char=46,s2_timer=1..40,CC_silence=1..}] spellCD2 240
+scoreboard players set @a[scores={char=46,s2_timer=1..40,CC_silence=1..}] s2_timer 41
 
-execute at @a[scores={char=46,spell_drea_2_1=1..40,CC_silence=0}] run particle minecraft:block{block_state:{Name:"minecraft:netherite_block"}} ~ ~ ~ 0.2 0.3 0.2 1 5
-execute at @a[scores={char=46,spell_drea_2_1=1..40,CC_silence=0}] run particle minecraft:crit ~ ~ ~ 0.2 0.3 0.2 1 5
-execute at @a[scores={char=46,spell_drea_2_1=10,CC_silence=0}] run playsound minecraft:block.mud_bricks.place master @a[distance=..12] ~ ~ ~ 1 1.8 1
-execute at @a[scores={char=46,spell_drea_2_1=20,CC_silence=0}] run playsound minecraft:block.mud_bricks.place master @a[distance=..12] ~ ~ ~ 1 1.8 1
-execute at @a[scores={char=46,spell_drea_2_1=30,CC_silence=0}] run playsound minecraft:block.mud_bricks.place master @a[distance=..12] ~ ~ ~ 1 1.8 1
-execute at @a[scores={char=46,spell_drea_2_1=40,CC_silence=0}] run playsound minecraft:item.armor.equip_gold master @a[distance=..12] ~ ~ ~ 1 0.6 1
-execute at @a[scores={char=46,spell_drea_2_1=40,CC_silence=0}] run particle minecraft:block{block_state:{Name:"minecraft:netherite_block"}} ~ ~1.1 ~ 0.3 0.5 0.3 1 100
+execute at @a[scores={char=46,s2_timer=1..40,CC_silence=0}] run particle minecraft:block{block_state:{Name:"minecraft:netherite_block"}} ~ ~ ~ 0.2 0.3 0.2 1 5
+execute at @a[scores={char=46,s2_timer=1..40,CC_silence=0}] run particle minecraft:crit ~ ~ ~ 0.2 0.3 0.2 1 5
+execute at @a[scores={char=46,s2_timer=10,CC_silence=0}] run playsound minecraft:block.mud_bricks.place master @a[distance=..12] ~ ~ ~ 1 1.8 1
+execute at @a[scores={char=46,s2_timer=20,CC_silence=0}] run playsound minecraft:block.mud_bricks.place master @a[distance=..12] ~ ~ ~ 1 1.8 1
+execute at @a[scores={char=46,s2_timer=30,CC_silence=0}] run playsound minecraft:block.mud_bricks.place master @a[distance=..12] ~ ~ ~ 1 1.8 1
+execute at @a[scores={char=46,s2_timer=40,CC_silence=0}] run playsound minecraft:item.armor.equip_gold master @a[distance=..12] ~ ~ ~ 1 0.6 1
+execute at @a[scores={char=46,s2_timer=40,CC_silence=0}] run particle minecraft:block{block_state:{Name:"minecraft:netherite_block"}} ~ ~1.1 ~ 0.3 0.5 0.3 1 100
 
-tag @a[scores={char=46,spell_drea_2_1=40,CC_silence=0}] add invisible
-item replace entity @a[scores={char=46,spell_drea_2_1=40,CC_silence=0}] armor.chest with minecraft:netherite_chestplate[minecraft:custom_name="Armor",minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:armor",amount:3.0d,operation:"add_value",slot:"chest"}]] 1
-effect give @a[scores={char=46,spell_drea_2_1=40,CC_silence=0,HPercentage=71..}] minecraft:absorption 5 1
-effect give @a[scores={char=46,spell_drea_2_1=40,CC_silence=0,HPercentage=41..70}] minecraft:absorption 5 2
-effect give @a[scores={char=46,spell_drea_2_1=40,CC_silence=0,HPercentage=11..41}] minecraft:absorption 5 3
-effect give @a[scores={char=46,spell_drea_2_1=40,CC_silence=0,HPercentage=..10}] minecraft:absorption 5 4
+tag @a[scores={char=46,s2_timer=40,CC_silence=0}] add invisible
+item replace entity @a[scores={char=46,s2_timer=40,CC_silence=0}] armor.chest with minecraft:netherite_chestplate[minecraft:custom_name="Armor",minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:armor",amount:3.0d,operation:"add_value",slot:"chest"}]] 1
+effect give @a[scores={char=46,s2_timer=40,CC_silence=0,HPercentage=71..}] minecraft:absorption 5 1
+effect give @a[scores={char=46,s2_timer=40,CC_silence=0,HPercentage=41..70}] minecraft:absorption 5 2
+effect give @a[scores={char=46,s2_timer=40,CC_silence=0,HPercentage=11..41}] minecraft:absorption 5 3
+effect give @a[scores={char=46,s2_timer=40,CC_silence=0,HPercentage=..10}] minecraft:absorption 5 4
 
-tag @a[scores={char=46,spell_drea_2_1=140}] remove invisible
-execute at @a[scores={char=46,spell_drea_2_1=140}] run particle minecraft:block{block_state:{Name:"minecraft:netherite_block"}} ~ ~1 ~ 0.2 0.5 0.2 1 100
+tag @a[scores={char=46,s2_timer=140}] remove invisible
+execute at @a[scores={char=46,s2_timer=140}] run particle minecraft:block{block_state:{Name:"minecraft:netherite_block"}} ~ ~1 ~ 0.2 0.5 0.2 1 100
 
 
 # dreadnought
 
-scoreboard players add @a[scores={spell_drea_1=1..}] spell_drea_1_1 1
-item replace entity @a[scores={char=46,spell_drea_1_1=180..}] hotbar.1 with minecraft:spruce_sapling[minecraft:custom_name={text:"Bludgeon",color:"dark_aqua",bold:1b}] 1
-scoreboard players set @a[scores={spell_drea_1_1=181..}] spell_drea_1 0
-scoreboard players set @a[scores={spell_drea_1_1=181..}] spell_drea_1_1 0
-scoreboard players set @a[scores={spell_drea_1_1=1}] spellCD1 180
+scoreboard players set @a[scores={char=46,s1_timer=1}] spellCD1 180
+scoreboard players add @a[scores={char=46,s1_timer=1..}] s1_timer 1
+scoreboard players set @a[scores={char=46,s1_timer=181..}] s1_timer 0
 
-scoreboard players add @a[scores={spell_drea_2=1..}] spell_drea_2_1 1
-item replace entity @a[scores={char=46,spell_drea_2_1=280..}] hotbar.2 with minecraft:netherite_chestplate[minecraft:custom_name={text:"Shrug It Off",color:"dark_aqua",bold:1b}] 1
-scoreboard players set @a[scores={spell_drea_2_1=281..}] spell_drea_2 0
-scoreboard players set @a[scores={spell_drea_2_1=281..}] spell_drea_2_1 0
-scoreboard players set @a[scores={spell_drea_2_1=1}] spellCD2 280
+scoreboard players set @a[scores={char=46,s2_timer=1}] spellCD2 280
+scoreboard players add @a[scores={char=46,s2_timer=1..}] s2_timer 1
+scoreboard players set @a[scores={char=46,s2_timer=281..}] s2_timer 0
+
 
 execute as @a[scores={char=46}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b}]}] run clear @a[scores={char=46}] minecraft:netherite_sword
 item replace entity @a[scores={char=46,dreadnought_empower=..2}] hotbar.0 with minecraft:netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Ka`Hra Raff"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 item replace entity @a[scores={char=46,dreadnought_empower=3..}] hotbar.0 with minecraft:netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Ka`Hra Raff"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:5.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 
-execute as @a[scores={char=46,spell_drea_1=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:spruce_sapling",Slot:1b}]}] run clear @a[scores={char=46}] minecraft:spruce_sapling
-item replace entity @a[scores={char=46,spell_drea_1=0}] hotbar.1 with minecraft:spruce_sapling[minecraft:custom_name={text:"Bludgeon",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=46,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=46}] minecraft:carrot_on_a_stick
+item replace entity @a[scores={char=46,s1_timer=0}] hotbar.1 with minecraft:carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:spruce_sapling",minecraft:custom_name={text:"Bludgeon",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[scores={char=46,spell_drea_2=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_chestplate",Slot:2b}]}] run clear @a[scores={char=46}] minecraft:netherite_chestplate
-item replace entity @a[scores={char=46,spell_drea_2=0}] hotbar.2 with minecraft:netherite_chestplate[minecraft:custom_name={text:"Shrug It Off",color:"dark_aqua",bold:1b}] 1
+
+execute as @a[scores={char=46,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=46}] minecraft:warped_fungus_on_a_stick
+item replace entity @a[scores={char=46,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:netherite_chestplate",minecraft:custom_name={text:"Shrug It Off",color:"dark_aqua",bold:1b}] 1
