@@ -153,17 +153,14 @@ scoreboard players set @a[scores={prey=0}] stray_terror_radius 0
 
 # stray
 
-scoreboard players add @a[scores={s1_timer=1..}] s1_timer 1
-item replace entity @a[scores={char=33,s1_timer=280..}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:black_candle",minecraft:custom_name={text:"True Darkness",color:"dark_aqua",bold:1b}] 1
-scoreboard players set @a[scores={s1_timer=281..}] s1_timer 0
-scoreboard players set @a[scores={s1_timer=281..}] s1_timer 0
-scoreboard players set @a[scores={s1_timer=1}] spellCD1 280
+scoreboard players set @a[scores={char=33,s1_timer=1}] spellCD1 280
+scoreboard players add @a[scores={char=33,s1_timer=1..}] s1_timer 1
+scoreboard players set @a[scores={char=33,s1_timer=281..}] s1_timer 0
 
-scoreboard players add @a[scores={s2_timer=1..}] s2_timer 1
-item replace entity @a[scores={char=33,s2_timer=200..}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:conduit",minecraft:custom_name={text:"Rusted Wounds",color:"dark_aqua",bold:1b}] 1
-scoreboard players set @a[scores={s2_timer=201..}] s2_timer 0
-scoreboard players set @a[scores={s2_timer=201..}] s2_timer 0
-scoreboard players set @a[scores={s2_timer=1}] spellCD2 200
+scoreboard players set @a[scores={char=33,s2_timer=1}] spellCD2 200
+scoreboard players add @a[scores={char=33,s2_timer=1..}] s2_timer 1
+scoreboard players set @a[scores={char=33,s2_timer=201..}] s2_timer 0
+
 
 execute as @a[scores={char=33}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_sword",Slot:0b}]}] run clear @a[scores={char=33}] minecraft:stone_sword
 item replace entity @a[scores={char=33}] hotbar.0 with minecraft:stone_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Pocket Knife"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
