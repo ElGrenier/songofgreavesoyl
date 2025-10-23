@@ -211,18 +211,15 @@ scoreboard players set @a[scores={shapeless_hit=2..}] shapeless_hit 0
 
 #shapeless
 
-scoreboard players set @a[scores={s1_timer=1}] spellCD1 280
-scoreboard players add @a[scores={s1_timer=1..}] s1_timer 1
-item replace entity @a[scores={char=37,s1_timer=280..}] hotbar.1 with minecraft:carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:crying_obsidian",minecraft:custom_name={text:"Into the Void",color:"dark_aqua",bold:1b}] 1
-scoreboard players set @a[scores={s1_timer=281..}] s1_timer 0
-scoreboard players set @a[scores={s1_timer=281..}] s1_timer 0
+scoreboard players set @a[scores={char=37,s1_timer=1}] spellCD1 280
+scoreboard players add @a[scores={char=37,s1_timer=1..}] s1_timer 1
+scoreboard players set @a[scores={char=37,s1_timer=281..}] s1_timer 0
 
 
-scoreboard players set @a[scores={s2_timer=1}] spellCD2 260
-scoreboard players add @a[scores={s2_timer=1..}] s2_timer 1
-item replace entity @a[scores={char=37,s2_timer=260..}] hotbar.2 with minecraft:warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:netherite_ingot",minecraft:custom_name={text:"Remember Me",color:"dark_aqua",bold:1b}] 1
-scoreboard players set @a[scores={s2_timer=261..}] s2_timer 0
-scoreboard players set @a[scores={s2_timer=261..}] s2_timer 0
+scoreboard players set @a[scores={char=37,s2_timer=1}] spellCD2 260
+scoreboard players add @a[scores={char=37,s2_timer=1..}] s2_timer 1
+scoreboard players set @a[scores={char=37,s2_timer=261..}] s2_timer 0
+
 
 execute as @a[scores={char=37}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_hoe",Slot:0b}]}] run scoreboard players set @a[scores={char=37}] shapeless_hit 0
 execute as @a[scores={char=37}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_hoe",Slot:0b}]}] run clear @a[scores={char=37}] minecraft:stone_hoe
