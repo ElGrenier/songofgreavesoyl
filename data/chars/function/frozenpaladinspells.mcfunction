@@ -15,8 +15,8 @@ execute at @a[scores={char=3,icyaura=1..}] as @e[distance=..5,tag=valid_spell_ta
 scoreboard players remove @a[scores={icyaura=1..}] icyaura 1
 
 execute at @a[scores={icyaura=1..}] unless entity @e[tag=icy_aura_thingy] run summon marker ~ ~ ~ {Tags:["icy_aura_thingy","entities_frozenpaladin"]}
-execute at @a[scores={icyaura=1..}] run particle block{block_state:{Name:ice}} ~ ~0.1 ~ 2.5 0.1 2.5 0 5
-execute at @a[scores={icyaura=1..}] run particle cloud ~ ~0.1 ~ 1.5 0.1 1.5 0.1 1
+execute at @a[scores={icyaura=1..}] run particle block{block_state:{Name:ice}} ~ ~0.1 ~ 2.5 0.1 2.5 0 10
+execute at @a[scores={icyaura=1..}] run particle cloud ~ ~0.1 ~ 1.5 0.1 1.5 0.01 2
 execute at @a[scores={icyaura=1..}] run playsound entity.snow_golem.hurt master @a[distance=..6] ~ ~ ~ 0.03 0.1 1
 execute at @a[scores={icyaura=1..}] run tp @e[tag=icy_aura_thingy] ~ ~ ~
 execute unless entity @a[scores={icyaura=1..}] run kill @e[tag=icy_aura_thingy]
@@ -50,7 +50,9 @@ execute store result entity @e[tag=chillrend,limit=1] Rotation[1] float 1 run cl
 
 execute as @e[tag=chillrend] at @s unless block ^ ^1 ^1 #minecraft:dash run summon marker ~ ~ ~ {Tags:["chillrend_nova","entities_frozenpaladin"]}
 execute as @e[tag=chillrend] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
-
+execute as @e[tag=chillrend] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~0.8 ~
+execute as @e[tag=chillrend] at @s if block ~ ~-1 ~ #minecraft:dash run tp @s ~ ~-0.5 ~
+execute as @e[tag=chillrend] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
 execute at @e[tag=chillrend] run particle minecraft:block{block_state:{Name:"minecraft:snow"}} ~ ~ ~ 0.2 1 0.2 0.0001 5 normal
 execute at @e[tag=chillrend] run particle minecraft:falling_dust{block_state:{Name:"minecraft:snow"}} ~ ~ ~ 0.3 1 0.3 0.0001 20 normal
 execute as @e[tag=chillrend] at @s run tp @s ^ ^ ^0.5
@@ -106,38 +108,51 @@ scoreboard players remove @a[scores={chillrend_root_vis=1..}] chillrend_root_vis
 scoreboard players set @a[scores={char=3,s2_timer=1,CC_silence=1..}] spellCD2 20
 scoreboard players set @a[scores={char=3,s2_timer=1,CC_silence=1..}] s2_timer 240
 
-execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=45..135] align xyz positioned ~0.5 ~ ~0.5 run fill ~-3 ~ ~-2 ~-3 ~2 ~2 ice replace #minecraft:dash
-execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=45..135] positioned ~-3 ~ ~ align xyz positioned ~0.5 ~ ~0.5 run summon armor_stand ~ ~ ~ {Invisible:1b,Tags:["wallremove","entities_frozenpaladin"],NoGravity:1b}
-
-execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=-135..-45] align xyz positioned ~0.5 ~ ~0.5 run fill ~3 ~ ~2 ~3 ~2 ~-2 ice replace #minecraft:dash
-execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=-135..-45] positioned ~3 ~ ~ align xyz positioned ~0.5 ~ ~0.5 run summon armor_stand ~ ~ ~ {Invisible:1b,Tags:["wallremove","entities_frozenpaladin"],NoGravity:1b}
-
-execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=-45..45] align xyz positioned ~0.5 ~ ~0.5 run fill ~-2 ~ ~3 ~2 ~2 ~3 ice replace #minecraft:dash
-execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=-45..45] positioned ~ ~ ~3 align xyz positioned ~0.5 ~ ~0.5 run summon armor_stand ~ ~ ~ {Invisible:1b,Tags:["wallremove","entities_frozenpaladin"],NoGravity:1b}
-
-execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=135..-135] align xyz positioned ~0.5 ~ ~0.5 run fill ~2 ~ ~-3 ~-2 ~2 ~-3 ice replace #minecraft:dash
-execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=135..-135] positioned ~ ~ ~-3 align xyz positioned ~0.5 ~ ~0.5 run summon armor_stand ~ ~ ~ {Invisible:1b,Tags:["wallremove","entities_frozenpaladin"],NoGravity:1b}
-
-execute at @a[scores={char=3,s2_timer=1,CC_silence=0}] run particle cloud ^ ^1 ^3 0.5 1 0.5 0.1 50 force
 execute at @a[scores={char=3,s2_timer=1,CC_silence=0}] run playsound entity.player.hurt_freeze master @a[distance=..15] ~ ~ ~ 1.0 0.1 1.0
-execute at @a[scores={char=3,s2_timer=1,CC_silence=0}] run playsound entity.wither.shoot master @a[distance=..15] ~ ~ ~ 0.1 0.4 1.0
+execute at @a[scores={char=3,s2_timer=1,CC_silence=0}] run playsound entity.wither.shoot master @a[distance=..15] ~ ~ ~ 0.3 0.5 1.0
+
+execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=45..135] positioned ~-3 ~ ~ align xyz positioned ~0.5 ~ ~0.5 run summon marker ~ ~ ~ {Tags:["icewall_NS","icewall","entities_frozenpaladin"]}
+execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=-135..-45] positioned ~3 ~ ~ align xyz positioned ~0.5 ~ ~0.5 run summon marker ~ ~ ~ {Tags:["icewall_NS","icewall","entities_frozenpaladin"]}
+execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=-45..45] positioned ~ ~ ~3 align xyz positioned ~0.5 ~ ~0.5 run summon marker ~ ~ ~ {Tags:["icewall_EW","icewall","entities_frozenpaladin"]}
+execute at @a[scores={char=3,s2_timer=1,CC_silence=0},y_rotation=135..-135] positioned ~ ~ ~-3 align xyz positioned ~0.5 ~ ~0.5 run summon marker ~ ~ ~ {Tags:["icewall_EW","icewall","entities_frozenpaladin"]}
+
+execute at @e[tag=icewall_EW] positioned ~-3 ~-0.75 ~-0.75 as @e[dx=5,dy=3,dz=0.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=3}] Team run effect give @s slowness 1 2
+execute at @e[tag=icewall_NS] positioned ~-0.75 ~-0.75 ~-3 as @e[dx=0.5,dy=3,dz=5,tag=valid_spell_target] unless score @s Team = @p[scores={char=3}] Team run effect give @s slowness 1 2
+
+scoreboard players add @e[tag=icewall] icyaura 1
+execute at @e[tag=icewall_EW,scores={icyaura=1..2}] align xyz positioned ~0.5 ~ ~0.5 run fill ~2 ~ ~ ~-2 ~ ~ ice replace #minecraft:dash
+execute at @e[tag=icewall_EW,scores={icyaura=4..5}] align xyz positioned ~0.5 ~ ~0.5 run fill ~2 ~ ~ ~-2 ~1 ~ ice replace #minecraft:dash
+execute at @e[tag=icewall_EW,scores={icyaura=6..7}] align xyz positioned ~0.5 ~ ~0.5 run fill ~2 ~ ~ ~-2 ~2 ~ ice replace #minecraft:dash
+execute at @e[tag=icewall_EW,scores={icyaura=8..9}] align xyz positioned ~0.5 ~ ~0.5 run fill ~1 ~ ~ ~-1 ~3 ~ ice replace #minecraft:dash
+execute at @e[tag=icewall_NS,scores={icyaura=1..2}] align xyz positioned ~0.5 ~ ~0.5 run fill ~ ~ ~2 ~ ~ ~-2 ice replace #minecraft:dash
+execute at @e[tag=icewall_NS,scores={icyaura=4..5}] align xyz positioned ~0.5 ~ ~0.5 run fill ~ ~ ~2 ~ ~1 ~-2 ice replace #minecraft:dash
+execute at @e[tag=icewall_NS,scores={icyaura=6..7}] align xyz positioned ~0.5 ~ ~0.5 run fill ~ ~ ~2 ~ ~2 ~-2 ice replace #minecraft:dash
+execute at @e[tag=icewall_NS,scores={icyaura=8..9}] align xyz positioned ~0.5 ~ ~0.5 run fill ~ ~ ~1 ~ ~3 ~-1 ice replace #minecraft:dash
+
+execute at @e[tag=icewall] if block ~1 ~ ~ minecraft:ice run particle cloud ~ ~1.5 ~ 1.5 1 0.5 0.001 1
+execute at @e[tag=icewall] if block ~2 ~ ~ minecraft:ice run particle cloud ~ ~1.5 ~ 1.5 1 0.5 0.001 1
+execute at @e[tag=icewall] if block ~ ~ ~1 minecraft:ice run particle cloud ~ ~1.5 ~ 0.5 1 1.5 0.001 1
+execute at @e[tag=icewall] if block ~ ~ ~2 minecraft:ice run particle cloud ~ ~1.5 ~ 0.5 1 1.5 0.001 1
+execute at @e[tag=icewall] if block ~-1 ~ ~ minecraft:ice run particle cloud ~ ~1.5 ~ 1.5 1 0.5 0.001 1
+execute at @e[tag=icewall] if block ~-2 ~ ~ minecraft:ice run particle cloud ~ ~1.5 ~ 1.5 1 0.5 0.001 1
+execute at @e[tag=icewall] if block ~ ~ ~-1 minecraft:ice run particle cloud ~ ~1.5 ~ 0.5 1 1.5 0.001 1
+execute at @e[tag=icewall] if block ~ ~ ~-2 minecraft:ice run particle cloud ~ ~1.5 ~ 0.5 1 1.5 0.001 1
+execute at @e[tag=icewall] if block ~1 ~ ~ minecraft:ice run particle block{block_state:{Name:ice}} ~ ~2 ~ 1 1 0.3 0.001 3
+execute at @e[tag=icewall] if block ~2 ~ ~ minecraft:ice run particle block{block_state:{Name:ice}} ~ ~2 ~ 1 1 0.3 0.001 3
+execute at @e[tag=icewall] if block ~ ~ ~1 minecraft:ice run particle block{block_state:{Name:ice}} ~ ~2 ~ 0.3 1 1 0.001 3
+execute at @e[tag=icewall] if block ~ ~ ~2 minecraft:ice run particle block{block_state:{Name:ice}} ~ ~2 ~ 0.3 1 1 0.001 3
+execute at @e[tag=icewall] if block ~-1 ~ ~ minecraft:ice run particle block{block_state:{Name:ice}} ~ ~2 ~ 1 1 0.3 0.001 3
+execute at @e[tag=icewall] if block ~-2 ~ ~ minecraft:ice run particle block{block_state:{Name:ice}} ~ ~2 ~ 1 1 0.3 0.001 3
+execute at @e[tag=icewall] if block ~ ~ ~-1 minecraft:ice run particle block{block_state:{Name:ice}} ~ ~2 ~ 0.3 1 1 0.001 3
+execute at @e[tag=icewall] if block ~ ~ ~-2 minecraft:ice run particle block{block_state:{Name:ice}} ~ ~2 ~ 0.3 0 1 0.001 3
 
 
-execute at @e[tag=wallremove] if block ~1 ~ ~ minecraft:ice run particle cloud ~ ~1 ~ 1.5 1 0.5 0.001 2
-execute at @e[tag=wallremove] if block ~2 ~ ~ minecraft:ice run particle cloud ~ ~1 ~ 1.5 1 0.5 0.001 2
-execute at @e[tag=wallremove] if block ~ ~ ~1 minecraft:ice run particle cloud ~ ~1 ~ 0.5 1 1.5 0.001 2
-execute at @e[tag=wallremove] if block ~ ~ ~2 minecraft:ice run particle cloud ~ ~1 ~ 0.5 1 1.5 0.001 2
-execute at @e[tag=wallremove] if block ~-1 ~ ~ minecraft:ice run particle cloud ~ ~1 ~ 1.5 1 0.5 0.001 2
-execute at @e[tag=wallremove] if block ~-2 ~ ~ minecraft:ice run particle cloud ~ ~1 ~ 1.5 1 0.5 0.001 2
-execute at @e[tag=wallremove] if block ~ ~ ~-1 minecraft:ice run particle cloud ~ ~1 ~ 0.5 1 1.5 0.001 2
-execute at @e[tag=wallremove] if block ~ ~ ~-2 minecraft:ice run particle cloud ~ ~1 ~ 0.5 1 1.5 0.001 2
-
-execute at @a[scores={char=3,s2_timer=100}] at @e[tag=wallremove] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=3}] Team run effect give @s slowness 3 1
-execute at @a[scores={char=3,s2_timer=100}] at @e[tag=wallremove] run particle cloud ~ ~1 ~ 5 0.5 5 0.001 50
-execute at @a[scores={char=3,s2_timer=100}] at @e[tag=wallremove] run playsound glass.break master @a[distance=..10] ~ ~ ~ 1 0.15 1
-execute at @a[scores={char=3,s2_timer=100}] at @e[tag=wallremove] run playsound entity.snow_golem.hurt master @a[distance=..10] ~ ~ ~ 1 0.5 1
-execute at @a[scores={char=3,s2_timer=100}] at @e[tag=wallremove] run fill ~20 ~10 ~20 ~-20 ~-3 ~-20 minecraft:air replace minecraft:ice
-execute at @a[scores={char=3,s2_timer=110..}] run kill @e[tag=wallremove]
+execute at @a[scores={char=3,s2_timer=100}] at @e[tag=icewall_EW] run particle block{block_state:{Name:ice}} ~ ~1 ~ 1.5 2 0.5 0.001 300
+execute at @a[scores={char=3,s2_timer=100}] at @e[tag=icewall_NS] run particle block{block_state:{Name:ice}} ~ ~1 ~ 0.5 2 1.5 0.001 300
+execute at @a[scores={char=3,s2_timer=100}] at @e[tag=icewall] run playsound glass.break master @a[distance=..10] ~ ~ ~ 1 0.15 1
+execute at @a[scores={char=3,s2_timer=100}] at @e[tag=icewall] run playsound entity.player.hurt_freeze master @a[distance=..15] ~ ~ ~ 1.0 0.8 1.0
+execute at @a[scores={char=3,s2_timer=100}] at @e[tag=icewall] run fill ~20 ~10 ~20 ~-20 ~-3 ~-20 minecraft:air replace minecraft:ice
+execute at @a[scores={char=3,s2_timer=110..}] run kill @e[tag=icewall]
 execute at @a[scores={char=3,s2_timer=109..111}] run function battlegrounds:lightrestore
 
 # frozen paladin

@@ -1,0 +1,10 @@
+item replace entity @a[scores={char=41}] hotbar.0 with minecraft:bow[minecraft:custom_name={text:"Mandibles",color:"gray",bold:1b},minecraft:unbreakable={}] 1
+item replace entity @a[scores={char=41}] hotbar.1 with minecraft:fermented_spider_eye[minecraft:custom_name={text:"Cave Scout",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=41}] hotbar.2 with minecraft:turtle_egg[minecraft:custom_name={text:"Birth Cycle",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=41}] hotbar.3 with minecraft:deepslate_gold_ore[minecraft:custom_name={text:"The Swarm",color:"dark_aqua",bold:1b}] 1
+item replace entity @s[scores={char=41}] armor.head with minecraft:player_head[minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:profile={id:[I;-476816242,1617118236,-1330636963,-911245954],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWFiNWZkZTJmNzU4MDVhYjBmN2YwYjM2MDVlYzVkMzdhMzljNTY4MWZkZmVlNmVkN2FhNDJiOGJhOTRkNTQifX19"}]}] 1
+item replace entity @s[scores={char=41}] armor.chest with minecraft:leather_chestplate[minecraft:trim={pattern:"silence",material:"netherite"},minecraft:custom_name="Armor",minecraft:dyed_color=3158057,minecraft:unbreakable={}] 1
+item replace entity @s[scores={char=41}] armor.legs with minecraft:leather_leggings[minecraft:custom_name="Armor",minecraft:dyed_color=3158057,minecraft:unbreakable={}] 1
+item replace entity @s[scores={char=41}] armor.feet with minecraft:leather_boots[minecraft:trim={pattern:"silence",material:"netherite"},minecraft:custom_name="Armor",minecraft:dyed_color=3158057,minecraft:unbreakable={}] 1
+item replace entity @a[scores={char=41}] hotbar.8 with minecraft:tipped_arrow[minecraft:potion_contents={custom_color:4806976,custom_effects:[{id:"minecraft:slowness",amplifier:0b,duration:40,show_particles:1b},{id:"minecraft:bad_omen",amplifier:1b,duration:60,show_particles:0b}]},minecraft:custom_name="Crawler venom"] 1
+scoreboard players set @a[scores={char=41}] MaxHP 20

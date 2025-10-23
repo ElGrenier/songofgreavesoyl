@@ -49,8 +49,8 @@ execute as @a[scores={char=6,s2_timer=1,CC_silence=0}] at @s positioned ~ ~0.2 ~
 execute as @a[scores={char=6,s2_timer=1,CC_silence=0}] at @s positioned ~ ~0.2 ~ rotated ~-35 0 run function chars:guide_harvest_raycast
 
 
-execute if entity @a[tag=guide_harvested] run effect give @p[scores={char=6}] instant_health 1 0
-execute if entity @a[tag=guide_harvested,scores={HPercentage=..50}] run effect give @p[scores={char=6}] instant_health 1 0
+execute if entity @a[tag=guide_harvested,scores={HPercentage=51..}] run effect give @p[scores={char=6}] instant_health 1 0
+execute if entity @a[tag=guide_harvested,scores={HPercentage=..50}] run effect give @p[scores={char=6}] instant_health 1 1
 scoreboard players set @e[tag=guide_harvested,scores={HPercentage=..50}] CC_root 40
 damage @e[tag=guide_harvested,limit=1] 3 generic by @p[scores={char=6}] from @p[scores={char=6}]
 tag @e remove guide_harvested

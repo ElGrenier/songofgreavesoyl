@@ -36,7 +36,7 @@ execute unless entity @a[scores={char=14}] run tag @a remove nest
 
 execute unless entity @a[scores={char=15}] run kill @e[tag=entities_shard]
 execute unless entity @a[scores={char=15}] run scoreboard players set @a[scores={shard_petrify=1..}] shard_petrify 0
-execute unless entity @a[scores={char=15}] at @e[tag=containment_cube] run fill ~1 ~2 ~1 ~-1 ~-1 ~-1 minecraft:air replace minecraft:magenta_stained_glass
+execute unless entity @a[scores={char=15}] at @e[tag=containment_cube] run fill ~1 ~2 ~1 ~-1 ~-1 ~-1 air replace magenta_stained_glass
 
 execute unless entity @a[scores={char=17}] run kill @e[tag=entities_technomancer]
 execute unless entity @a[scores={char=17}] run tag @a remove techno_melee
@@ -46,11 +46,11 @@ execute unless entity @a[scores={char=18}] run kill @e[tag=entities_golem]
 
 execute unless entity @a[scores={char=666}] run kill @e[tag=entities_demon]
 
-execute unless entity @a[scores={char=20}] at @e[tag=snare_webs] run fill ~20 ~10 ~20 ~-20 ~-3 ~-20 minecraft:air replace minecraft:cobweb
+execute unless entity @a[scores={char=20}] at @e[tag=snare_webs] run fill ~20 ~10 ~20 ~-20 ~-3 ~-20 air replace cobweb
 execute unless entity @a[scores={char=20}] run kill @e[tag=entities_weaver]
 
-execute unless entity @a[scores={char=21}] at @e[tag=tomb] run fill ~4 ~4 ~4 ~-4 ~-2 ~-4 minecraft:air replace minecraft:blue_ice
-execute unless entity @a[scores={char=21}] at @e[tag=sanctuary] run fill ~4 ~4 ~4 ~-4 ~-2 ~-4 minecraft:air replace minecraft:blue_ice
+execute unless entity @a[scores={char=21}] at @e[tag=tomb] run fill ~4 ~4 ~4 ~-4 ~-2 ~-4 air replace blue_ice
+execute unless entity @a[scores={char=21}] at @e[tag=sanctuary] run fill ~4 ~4 ~4 ~-4 ~-2 ~-4 air replace blue_ice
 execute unless entity @a[scores={char=21}] run kill @e[tag=entities_necrolord]
 execute unless entity @a[scores={char=21}] run scoreboard players set @a[scores={chilledroot_visual=1..}] chilledroot_visual 0
 execute unless entity @a[scores={char=21}] run scoreboard players set @a[scores={curse=1..}] curse 0
@@ -59,21 +59,13 @@ execute unless entity @a[scores={char=22}] run kill @e[tag=entities_devourer]
 
 execute unless entity @a[scores={char=23}] run tag @a remove prowlermark
 execute unless entity @a[scores={char=23}] run tag @a remove sand_barrier
-execute unless entity @a[scores={char=23}] run kill @e[tag=dash]
-execute unless entity @a[scores={char=23}] run kill @e[tag=display_khaakraff]
-execute unless entity @a[scores={char=23}] run kill @e[tag=display_eviscerate]
-execute unless entity @a[scores={char=23}] run kill @e[tag=tail_things]
+execute unless entity @a[scores={char=23}] run kill @e[tag=entities_prowler]
 
-execute unless entity @a[scores={char=24}] run kill @e[tag=sand]
-execute unless entity @a[scores={char=24}] run kill @e[tag=sandexplosion]
-execute unless entity @a[scores={char=24}] run kill @e[tag=sand_visuals]
-
+execute unless entity @a[scores={char=24}] run kill @e[tag=entities_sandwitch]
 
 execute unless entity @a[scores={char=25}] at @e[tag=firestream] run fill ~15 ~15 ~15 ~-15 ~-7 ~-15 minecraft:air replace minecraft:fire
 execute unless entity @a[scores={char=25}] at @e[tag=firenomore] run fill ~15 ~15 ~15 ~-15 ~-7 ~-15 minecraft:air replace minecraft:fire
-execute unless entity @a[scores={char=25}] run kill @e[tag=firestream]
-execute unless entity @a[scores={char=25}] run kill @e[tag=firenomore]
-execute unless entity @a[scores={char=25}] run kill @e[tag=scourge_magma]
+execute unless entity @a[scores={char=25}] run kill @e[tag=entities_scourge]
 
 execute unless entity @a[scores={char=26}] run kill @e[tag=walldash]
 execute unless entity @a[scores={char=26}] run kill @e[tag=toxicity]
@@ -99,17 +91,12 @@ execute unless entity @a[scores={char=30}] run kill @e[tag=turretshoot]
 execute unless entity @a[scores={char=30}] run kill @e[tag=canister]
 execute unless entity @a[scores={char=30}] run kill @e[tag=toxicdisorder]
 
-execute unless entity @a[scores={char=31}] run kill @e[tag=keelhaul_hook]
 execute unless entity @a[scores={char=31}] run scoreboard players set @a[scores={keelhauling=1..}] keelhauling 0
-execute unless entity @a[scores={char=31}] run kill @e[tag=lifeline_return]
-execute unless entity @a[scores={char=31}] run kill @e[tag=lifeline_point]
-execute unless entity @a[scores={char=31}] run kill @e[tag=lifeline_point_visual]
+execute unless entity @a[scores={char=31}] run kill @e[tag=entities_drownedcaptain]
 
-execute unless entity @a[scores={char=32}] run kill @e[tag=nautilus]
-execute unless entity @a[scores={char=32}] run kill @e[tag=deepexplosion]
-execute unless entity @a[scores={char=32}] run kill @e[tag=pincers]
+execute unless entity @a[scores={char=32}] run kill @e[tag=entities_emperor]
 
-execute unless entity @a[scores={char=33}] run kill @e[tag=straydash]
+execute unless entity @a[scores={char=33}] run kill @e[tag=entities_stray]
 execute unless entity @a[scores={char=33}] run scoreboard players set @a[scores={stray_terrorradius=1..}] stray_terrorradius 0
 
 execute unless entity @a[scores={char=34}] run kill @e[tag=puddle]

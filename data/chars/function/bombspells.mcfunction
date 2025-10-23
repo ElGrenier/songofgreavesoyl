@@ -5,11 +5,6 @@ effect give @a[scores={char=11},nbt={SelectedItem:{id:"minecraft:bow"}}] minecra
 
 #passive and stuff
 
-effect give @a[tag=pyrophilia,scores={char=11}] speed 3 0
-effect give @a[tag=pyrophilia,scores={char=11}] regeneration 3 2
-
-tag @a[tag=pyrophilia] remove pyrophilia
-
 execute at @a[scores={char=11,arrowcd_1=..10}] run tag @e[type=minecraft:arrow,distance=..2] add bombmastershot_ar
 execute at @e[tag=bombmastershot_ar] run particle falling_dust{block_state:{Name:"minecraft:diamond_block"}} ~ ~ ~ 0.1 0.1 0.1 0.1 2
 execute at @e[tag=bombmastershot_ar] run particle enchanted_hit ~ ~ ~ 0.1 0.1 0.1 0.1 2
@@ -49,10 +44,10 @@ execute at @e[tag=bomb,scores={BombArmed=120..}] run playsound entity.zombie_vil
 execute at @e[tag=bomb,scores={BombArmed=120..}] run playsound entity.dragon_fireball.explode master @a[distance=..16] ~ ~ ~ 0.5 1.5 1
 execute at @e[tag=bomb,scores={BombArmed=120..}] run summon marker ~ ~ ~ {Tags:["BombExplosion"]}
 
-execute at @e[tag=BombExplosion] as @e[distance=..1.5,scores={HP=..12},tag=valid_spell_target] unless score @s Team = @p[scores={char=11}] Team run tag @s add pyrophilia
+execute at @e[tag=BombExplosion] as @e[distance=..1.5,scores={HP=..12},tag=valid_spell_target] unless score @s Team = @p[scores={char=11}] Team run tag @p[scores={char=11}] add pyrophilia
 execute at @e[tag=BombExplosion] as @e[distance=..1.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=11}] Team run damage @s 12 generic by @p[scores={char=11}] from @p[scores={char=11}]
 
-execute at @e[tag=BombExplosion] as @e[distance=1.6..4,scores={HP=..8},tag=valid_spell_target] unless score @s Team = @p[scores={char=11}] Team run tag @s add pyrophilia
+execute at @e[tag=BombExplosion] as @e[distance=1.6..4,scores={HP=..8},tag=valid_spell_target] unless score @s Team = @p[scores={char=11}] Team run tag @p[scores={char=11}] add pyrophilia
 execute at @e[tag=BombExplosion] as @e[distance=1.6..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=11}] Team run damage @s 8 generic by @p[scores={char=11}] from @p[scores={char=11}]
 
 kill @e[tag=BombExplosion]
@@ -97,10 +92,18 @@ execute at @e[tag=grenade] run playsound entity.zombie_villager.cure master @a[d
 
 execute as @e[tag=bm_grenade] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
 
-execute at @e[tag=grenade] as @e[distance=..5,scores={HP=..8},tag=valid_spell_target] unless score @s Team = @p[scores={char=11}] Team run tag @s add pyrophilia
+execute at @e[tag=grenade] as @e[distance=..5,scores={HP=..8},tag=valid_spell_target] unless score @s Team = @p[scores={char=11}] Team run tag @p[scores={char=11}] add pyrophilia
 execute at @e[tag=grenade] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=11}] Team run damage @s 8 generic by @p[scores={char=11}] from @p[scores={char=11}]
 
 kill @e[tag=grenade]
+
+
+
+effect give @a[tag=pyrophilia,scores={char=11}] speed 3 0
+effect give @a[tag=pyrophilia,scores={char=11}] regeneration 3 2
+
+tag @a[tag=pyrophilia] remove pyrophilia
+
 
 # bomb master
 

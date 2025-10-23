@@ -6,8 +6,8 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:stone_shovel"}}]
 # feast on agony
 
 
-execute at @a[scores={char=39,s2_timer=0}] as @e[distance=..5,tag=valid_spell_target,advancements={chars:basilik_passive=true}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @s basilisk_venom 120
-
+execute at @a[scores={char=39,s2_timer=0}] as @e[distance=..5,tag=valid_spell_target,advancements={chars:basilisk_passive=true}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @s basilisk_venom 120
+advancement revoke @a[advancements={chars:basilisk_passive=true}] only chars:warden_passive
 
 #execute at @a[scores={char=39,universal_hit=1..,s2_timer=0},team=purple] run scoreboard players set @p[distance=..5,team=yellow] basilisk_venom 120
 
@@ -187,20 +187,16 @@ execute as @e[tag=petrify_visuals] at @s unless entity @a[distance=..1.7,scores=
 
 # basilisk
 
-# scoreboard players add @a[scores={s1_timer=1..}] s1_timer 1
-# item replace entity @a[scores={char=39,s1_timer=280..}] hotbar.1 with minecraft:iron_horse_armor[minecraft:custom_name={text:"Burrowstrike",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:protection":1}] 1
-# scoreboard players set @a[scores={s1_timer=281..}] s1_timer 0
-# scoreboard players set @a[scores={s1_timer=281..}] s1_timer 0
-# scoreboard players set @a[scores={s1_timer=1}] spellCD1 280
+scoreboard players set @a[scores={s1_timer=1,char=39}] spellCD1 280
+scoreboard players add @a[scores={s1_timer=1..,char=39}] s1_timer 1
+scoreboard players set @a[scores={s1_timer=281..,char=39}] s1_timer 0
 
-# scoreboard players add @a[scores={s2_timer=1..}] s2_timer 1
-# item replace entity @a[scores={char=39,s2_timer=360..}] hotbar.2 with minecraft:cobblestone[minecraft:custom_name={text:"Petrifying Venom",color:"dark_aqua",bold:1b}] 1
-# scoreboard players set @a[scores={s2_timer=361..}] s2_timer 0
-# scoreboard players set @a[scores={s2_timer=361..}] s2_timer 0
-# scoreboard players set @a[scores={s2_timer=1}] spellCD2 360
+scoreboard players set @a[scores={s2_timer=1,char=39}] spellCD2 360
+scoreboard players add @a[scores={s2_timer=1..,char=39}] s2_timer 1
+scoreboard players set @a[scores={s2_timer=361..,char=39}] s2_timer 0
 
 execute as @a[scores={char=39}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_shovel",Slot:0b}]}] run clear @a[scores={char=39}] minecraft:stone_shovel
-item replace entity @a[scores={char=39}] hotbar.0 with minecraft:stone_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=39}] hotbar.0 with minecraft:stone_shovel[custom_data={basilisk:1},minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 
 
 

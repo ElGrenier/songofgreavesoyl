@@ -33,7 +33,7 @@ scoreboard players set @a[scores={char=4,s1_timer=1,CC_silence=1..}] s1_timer 18
 
 clear @a[scores={char=4,s1_timer=1..20}] ender_pearl
 execute at @a[scores={char=4,s1_timer=1,CC_silence=0}] run kill @e[tag=WarperMarker]
-execute at @a[scores={char=4,s1_timer=2,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["WarperMarker","entities_warper"]}
+execute at @a[scores={char=4,s1_timer=2,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["WarperMarker"]}
 execute at @a[scores={char=4,s1_timer=3}] run tp @e[tag=WarperMarker] @p[scores={char=4}]
 
 execute at @e[tag=WarperMarker] run particle portal ~ ~1 ~ 0.2 0.3 0.2 0.1 3 normal

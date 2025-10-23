@@ -1,19 +1,16 @@
-#kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:turtle_egg"}}]
-#kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:fermented_spider_eye"}}]
-#kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:deepslate_gold_ore"}}]
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:bow"}}]
 
-effect give @a[scores={char=41},nbt={SelectedItem:{id:"minecraft:bow"}}] minecraft:weakness 1 100 true
+effect give @a[scores={char=41},nbt={SelectedItem:{id:"minecraft:bow"}}] weakness 1 100 true
 
 execute at @a[scores={char=41,arrowcd_1=..10}] run tag @e[type=minecraft:arrow,distance=..2] add broodmothershot_ar
-execute at @e[tag=broodmothershot_ar] run particle minecraft:block{block_state:{Name:"minecraft:green_wool"}} ~ ~ ~ 0.1 0.1 0.1 0.1 2
+execute at @e[tag=broodmothershot_ar] run particle block{block_state:{Name:"minecraft:green_wool"}} ~ ~ ~ 0.1 0.1 0.1 0.1 2
 
 execute at @a[scores={char=41,CC_disarm=1..}] run kill @e[tag=broodmothershot_ar]
 
 #passive frenzy
 
-execute at @a[nbt={active_effects:[{id:"minecraft:bad_omen"}]}] run effect give @e[distance=..5,tag=swarmerboi] minecraft:strength 1 0
-execute at @a[nbt={active_effects:[{id:"minecraft:bad_omen"}]}] run effect give @e[distance=..5,tag=swarmerboi] minecraft:speed 1 0
+execute at @a[nbt={active_effects:[{id:"minecraft:bad_omen"}]}] run effect give @e[distance=..5,tag=swarmerboi] strength 1 0
+execute at @a[nbt={active_effects:[{id:"minecraft:bad_omen"}]}] run effect give @e[distance=..5,tag=swarmerboi] speed 1 0
 
 execute at @a[scores={char=41,CC_silence=0,universal_kill=1..}] run summon minecraft:armor_stand ~ ~ ~ {Tags:["swarmer_egg","entities_broodmother"],Marker:1b,Invisible:1b,Small:1b,equipment:{head:{id:"minecraft:player_head",components:{"minecraft:profile":{id:[I;-873057486,-1593291491,-1351530060,-1707542533],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTE4NTY1N2MzOGFjZGQ4Zjk1ZTFkMmNkMTExNWJiMGYxMTEzOWFkMmIzY2U0NDIyNjdlNjk3MDZkOTE2ZSJ9fX0="}]}},count:1}}}
 execute at @a[scores={char=41,CC_silence=0,universal_kill=1..}] run playsound minecraft:entity.spider.step master @a[distance=..10] ~ ~ ~ 1 0.5 1
@@ -23,13 +20,13 @@ execute at @a[scores={char=41,CC_silence=0,universal_kill=1..}] run playsound mi
 scoreboard players set @a[scores={char=41,s1_timer=1,CC_silence=1..}] spellCD1 20
 scoreboard players set @a[scores={char=41,s1_timer=1,CC_silence=1..}] s1_timer 340
 
-execute at @a[scores={char=41,s1_timer=1,CC_silence=0},y_rotation=-45..45] run summon minecraft:cave_spider ~ ~ ~ {NoAI:1b,Invulnerable:1b,Tags:["scoutcrawler","entities_broodmother"],Rotation:[0.0f,0.0f]}
-execute at @a[scores={char=41,s1_timer=1,CC_silence=0},y_rotation=45..135] run summon minecraft:cave_spider ~ ~ ~ {NoAI:1b,Invulnerable:1b,Tags:["scoutcrawler","entities_broodmother"],Rotation:[90.0f,0.0f]}
-execute at @a[scores={char=41,s1_timer=1,CC_silence=0},y_rotation=135..-135] run summon minecraft:cave_spider ~ ~ ~ {NoAI:1b,Invulnerable:1b,Tags:["scoutcrawler","entities_broodmother"],Rotation:[180.0f,0.0f]}
-execute at @a[scores={char=41,s1_timer=1,CC_silence=0},y_rotation=-135..-45] run summon minecraft:cave_spider ~ ~ ~ {NoAI:1b,Invulnerable:1b,Tags:["scoutcrawler","entities_broodmother"],Rotation:[-90.0f,0.0f]}
+execute at @a[scores={char=41,s1_timer=1,CC_silence=0},y_rotation=-45..45] run summon cave_spider ~ ~ ~ {NoAI:1b,Invulnerable:1b,Tags:["scoutcrawler","entities_broodmother"],Rotation:[0.0f,0.0f]}
+execute at @a[scores={char=41,s1_timer=1,CC_silence=0},y_rotation=45..135] run summon cave_spider ~ ~ ~ {NoAI:1b,Invulnerable:1b,Tags:["scoutcrawler","entities_broodmother"],Rotation:[90.0f,0.0f]}
+execute at @a[scores={char=41,s1_timer=1,CC_silence=0},y_rotation=135..-135] run summon cave_spider ~ ~ ~ {NoAI:1b,Invulnerable:1b,Tags:["scoutcrawler","entities_broodmother"],Rotation:[180.0f,0.0f]}
+execute at @a[scores={char=41,s1_timer=1,CC_silence=0},y_rotation=-135..-45] run summon cave_spider ~ ~ ~ {NoAI:1b,Invulnerable:1b,Tags:["scoutcrawler","entities_broodmother"],Rotation:[-90.0f,0.0f]}
 tp @e[tag=scoutcrawler,limit=1] @a[scores={char=41,s1_timer=1},limit=1]
 
-execute as @e[tag=scoutcrawler] at @s unless block ^ ^1 ^1 #minecraft:dash run particle minecraft:falling_dust{block_state:{Name:"minecraft:gray_concrete"}} ~ ~ ~ 0.7 1 0.7 0.1 100
+execute as @e[tag=scoutcrawler] at @s unless block ^ ^1 ^1 #minecraft:dash run particle falling_dust{block_state:{Name:"minecraft:gray_concrete"}} ~ ~ ~ 0.7 1 0.7 0.1 100
 execute as @e[tag=scoutcrawler] at @s unless block ^ ^1 ^1 #minecraft:dash run tp @e[tag=scoutcrawler] ~ ~-200 ~
 execute store result entity @e[tag=scoutcrawler,limit=1] Rotation[1] float 1 run clear
 
@@ -40,9 +37,10 @@ execute as @e[tag=scoutcrawler] at @s unless block ~ ~ ~ #minecraft:dash run tp 
 
 execute at @a[scores={char=41,s1_timer=100..}] at @e[tag=scoutcrawler] run particle minecraft:falling_dust{block_state:{Name:"minecraft:gray_concrete"}} ~ ~ ~ 0.5 0.2 0.5 0.1 40
 execute at @a[scores={char=41,s1_timer=100..}] run tp @e[tag=scoutcrawler] ~ ~-200 ~
+execute at @a[scores={char=41,s1_timer=100..}] run kill @e[tag=scoutcrawler]
 
 
-execute at @e[tag=scoutcrawler] as @e[distance=..2] unless score @s Team = @p[scores={char=41}] Team run tag @e[tag=scoutcrawler] add grabber
+execute at @e[tag=scoutcrawler] as @a[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=41}] Team run tag @e[tag=scoutcrawler] add grabber
 
 #execute at @e[tag=scoutcrawler] if entity @a[scores={char=41},team=purple] if entity @p[distance=..2,team=yellow] run tag @e[tag=scoutcrawler] add grabber
 

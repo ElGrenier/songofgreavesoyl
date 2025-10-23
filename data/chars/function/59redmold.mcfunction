@@ -1,0 +1,10 @@
+item replace entity @a[scores={char=59}] hotbar.0 with minecraft:warped_fungus_on_a_stick[minecraft:custom_name={bold:1b,color:"gray",text:"Command and Control"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:0.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.1d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=59}] hotbar.1 with minecraft:crimson_fungus[minecraft:custom_name={text:"Warped Growth",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=59}] hotbar.2 with minecraft:nether_wart[minecraft:custom_name={text:"Army of Horrors",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=59}] armor.head with minecraft:player_head[minecraft:custom_name="Mold",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:profile={id:[I;355335389,-1870774045,-1527444966,1861544407],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg5MTJiYzFhZDNkZGJlMzlhMTliNzM0YTQyZDg1NDg5NjRiYjBhOWNlNThhNTJmMWE2YWUzNzEyMTUyNCJ9fX0="}]}] 1
+item replace entity @a[scores={char=59}] armor.chest with minecraft:leather_chestplate[minecraft:trim={pattern:"rib",material:"redstone"},minecraft:custom_name="Armor",minecraft:dyed_color=7340051,minecraft:unbreakable={}] 1
+item replace entity @a[scores={char=59}] armor.legs with minecraft:leather_leggings[minecraft:trim={pattern:"rib",material:"redstone"},minecraft:custom_name="Armor",minecraft:dyed_color=7340051,minecraft:unbreakable={}] 1
+item replace entity @a[scores={char=59}] armor.feet with minecraft:leather_boots[minecraft:trim={pattern:"rib",material:"redstone"},minecraft:custom_name="Armor",minecraft:dyed_color=7340051,minecraft:unbreakable={}] 1
+scoreboard players set @a[scores={char=59}] MaxHP 10
+scoreboard players set @a[scores={char=59}] spores 7
+scoreboard players set @a[scores={char=59}] spores_timer 1

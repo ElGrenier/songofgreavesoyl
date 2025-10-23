@@ -1,6 +1,4 @@
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:charcoal"}}]
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:spectral_arrow"}}]
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:wooden_shovel"}}]
+kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:copper_hoe"}}]
 
 #apex predator
 
@@ -142,7 +140,7 @@ execute if entity @e[tag=below_knockup] at @a[scores={char=9,s1_timer=5}] run pl
 execute if entity @e[tag=below_knockup] at @a[scores={char=9,s1_timer=8}] run playsound block.grass.break master @a[distance=..10] ~ ~ ~ 1 1 1
 execute if entity @e[tag=below_knockup] at @a[scores={char=9,s1_timer=3}] run playsound entity.cat.hiss master @a[distance=..10] ~ ~ ~ 1 0.4 1
 
-execute at @e[tag=below_knockup] as @e[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=9}] Team run scoreboard players set @s CC_knockup 20
+execute if entity @e[tag=below_knockup] at @a[scores={char=9,s1_timer=5..10}] as @e[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=9}] Team run scoreboard players set @s CC_knockup 20
 
 execute at @a[scores={char=9,s1_timer=1,burrowed=1}] run scoreboard players set @a[scores={char=9}] burrowed 0
 execute at @a[scores={char=9,s1_timer=2,burrowed=0}] run scoreboard players set @a[scores={char=9}] passive_craw -10

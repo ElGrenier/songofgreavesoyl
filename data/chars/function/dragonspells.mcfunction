@@ -66,25 +66,27 @@ scoreboard players set @a[scores={char=7,s2_timer=1..60,CC_stun=1..}] s2_timer 6
 scoreboard players set @a[scores={char=7,s2_timer=1..60,CC_silence=1..}] spellCD2 320
 scoreboard players set @a[scores={char=7,s2_timer=1..60,CC_silence=1..}] s2_timer 61
 
-effect give @a[scores={char=7,s2_timer=1,CC_silence=0}] minecraft:levitation 1 15 true
-effect give @a[scores={char=7,s2_timer=1..30,CC_silence=0}] minecraft:slow_falling 1 20 true
-effect clear @a[scores={char=7,s2_timer=14..15,CC_silence=0}] minecraft:levitation
-execute at @a[scores={char=7,s2_timer=1,CC_silence=0}] run playsound minecraft:entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 0.8 1
+effect give @a[scores={char=7,s2_timer=1,CC_silence=0}] levitation 1 15 true
+effect give @a[scores={char=7,s2_timer=1..30,CC_silence=0}] slow_falling 1 20 true
+effect clear @a[scores={char=7,s2_timer=14..15,CC_silence=0}] levitation
+execute at @a[scores={char=7,s2_timer=1,CC_silence=0}] run playsound entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 0.8 1
 
-execute at @a[scores={char=7,s2_timer=15,CC_silence=0}] run playsound minecraft:entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
-execute at @a[scores={char=7,s2_timer=25,CC_silence=0}] run playsound minecraft:entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
+execute at @a[scores={char=7,s2_timer=15,CC_silence=0}] run playsound entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
+execute at @a[scores={char=7,s2_timer=25,CC_silence=0}] run playsound entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
 execute at @a[scores={char=7,s2_timer=15,CC_silence=0}] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["dragondash"],NoGravity:1b}
 tp @e[tag=dragondash,limit=1] @a[scores={char=7,s2_timer=15},limit=1]
 execute at @a[scores={char=7,s2_timer=15},limit=1] run tp @e[tag=dragondash,limit=1] ~ ~0.5 ~
-effect give @a[scores={char=7,s2_timer=25,CC_silence=0}] minecraft:levitation 1 0 true
+effect give @a[scores={char=7,s2_timer=25,CC_silence=0}] levitation 1 0 true
 
-execute at @a[scores={char=7,s2_timer=41,CC_silence=0}] run playsound minecraft:entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
-execute at @a[scores={char=7,s2_timer=51,CC_silence=0}] run playsound minecraft:entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
-execute at @a[scores={char=7,s2_timer=41,CC_silence=0}] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["dragondash"],NoGravity:1b}
+execute at @a[scores={char=7,s2_timer=41,CC_silence=0}] run playsound entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
+execute at @a[scores={char=7,s2_timer=51,CC_silence=0}] run playsound entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
+execute at @a[scores={char=7,s2_timer=41,CC_silence=0}] run summon armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["dragondash"],NoGravity:1b}
 tp @e[tag=dragondash,limit=1] @a[scores={char=7,s2_timer=41},limit=1]
 execute at @a[scores={char=7,s2_timer=41},limit=1] run tp @e[tag=dragondash,limit=1] ~ ~0.5 ~
 
 execute as @e[tag=dragondash] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
+execute as @e[tag=dragondash] at @s unless block ^ ^1 ^0.5 #minecraft:dash run kill @s
+execute as @e[tag=dragondash] at @s unless block ^ ^ ^0.5 #minecraft:dash run kill @s
 execute as @e[tag=dragondash] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
 execute as @e[tag=dragondash] at @s unless block ^ ^1 ^0.5 #minecraft:dash run kill @s
 execute as @e[tag=dragondash] at @s unless block ^ ^1.5 ^1.5 #minecraft:dash run kill @s

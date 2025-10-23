@@ -78,8 +78,8 @@ execute at @a[scores={char=8,s2_timer=1,CC_silence=0}] unless entity @e[tag=tric
 execute at @a[scores={char=8,s2_timer=1,CC_silence=0}] run playsound block.beacon.power_select master @a[distance=..15] ~ ~ ~ 0.5 1.5 1
 execute at @a[scores={char=8,s2_timer=1,CC_silence=0}] run playsound entity.witch.celebrate master @a[distance=..15] ~ ~ ~ 1 1.8 1
 execute at @a[scores={char=8,s2_timer=2}] run summon marker ~ ~ ~ {Tags:["SwapMarker","entities_trickstress"]}
-execute at @a[scores={char=8,s2_timer=2,CC_silence=0}] as @p[distance=..12,tag=valid_spell_target,scores={CC_intangible=0}] unless score @s Team = @p[scores={char=8}] Team at @s run tp @p[scores={char=8}] ~ ~ ~
-execute at @a[scores={char=8,s2_timer=2,CC_silence=0}] as @p[distance=..2,tag=valid_spell_target,scores={CC_intangible=0}] unless score @s Team = @p[scores={char=8}] Team run tp @s @e[tag=SwapMarker,limit=1]
+execute at @a[scores={char=8,s2_timer=2,CC_silence=0}] as @p[distance=..12,tag=valid_spell_target,tag=trickstress_swap_valid_target,scores={CC_intangible=0}] unless score @s Team = @p[scores={char=8}] Team at @s run tp @p[scores={char=8}] ~ ~ ~
+execute at @a[scores={char=8,s2_timer=2,CC_silence=0}] as @p[distance=..2,tag=valid_spell_target,tag=trickstress_swap_valid_target,scores={CC_intangible=0}] unless score @s Team = @p[scores={char=8}] Team run tp @s @e[tag=SwapMarker,limit=1]
 kill @e[tag=SwapMarker]
 
 

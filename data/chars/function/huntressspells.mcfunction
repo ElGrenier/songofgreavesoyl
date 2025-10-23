@@ -60,7 +60,7 @@ execute at @a[scores={char=2,CC_grounded=1..}] run kill @e[tag=backflip]
 execute at @a[scores={char=2,CC_root=1..}] run kill @e[tag=backflip]
 execute at @a[scores={char=2,CC_stun=1..}] run kill @e[tag=backflip]
 
-item replace entity @a[scores={char=2,s2_timer=1,CC_silence=0}] hotbar.0 with bow[minecraft:damage=385,minecraft:custom_name={text:"Bow",color:"gray",bold:1b},minecraft:enchantments={"minecraft:punch":2}] 1
+item replace entity @a[scores={char=2,s2_timer=1,CC_silence=0}] hotbar.0 with bow[minecraft:max_damage=1,minecraft:custom_name={text:"Bow",color:"gray",bold:1b},minecraft:enchantments={"minecraft:punch":2}] 1
 execute at @a[scores={char=2,s2_timer=1,CC_silence=0}] run particle falling_dust{block_state:{Name:"minecraft:gravel"}} ~ ~0.1 ~ 0.6 0.3 0.6 0.01 30 normal
 execute at @a[scores={char=2,s2_timer=1,CC_silence=0}] run playsound entity.zombie.infect master @a[distance=..10] ~ ~ ~ 1 2 1
 effect give @a[scores={char=2,s2_timer=2,CC_silence=0}] resistance 1 100 true
@@ -125,7 +125,7 @@ execute as @a[scores={char=2,CC_disarm=0}] at @s unless entity @s[nbt={Inventory
 
 
 execute as @a[scores={char=2,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=2}] carrot_on_a_stick
-item replace entity @a[scores={char=2,s1_timer=0}] hotbar.1 with minecraft:carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:tipped_arrow",potion_contents={potion:"minecraft:wind_charged"},minecraft:custom_name={text:"Aim Sure",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=2,s1_timer=0}] hotbar.1 with minecraft:carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:tipped_arrow",potion_contents={potion:"minecraft:wind_charged"},minecraft:custom_name={text:"Aim True",color:"dark_aqua",bold:1b}] 1
 
 execute as @a[scores={char=2,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=2}] warped_fungus_on_a_stick
 item replace entity @a[scores={char=2,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:chainmail_boots",minecraft:custom_name={text:"Backflip",color:"dark_aqua",bold:1b}] 1

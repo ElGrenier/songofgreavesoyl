@@ -1,2 +1,32 @@
-# old call: execute as @a run function profile:add_win
-$scoreboard players add @s char\_wins_$(char) 1
+
+# call: execute as @a run function profile:add_win
+execute if entity @s[scores={char=1}] run scoreboard players add @s char_wins_01 1
+execute if entity @s[scores={char=2}] run scoreboard players add @s char_wins_02 1
+execute if entity @s[scores={char=3}] run scoreboard players add @s char_wins_03 1
+execute if entity @s[scores={char=4}] run scoreboard players add @s char_wins_04 1
+execute if entity @s[scores={char=5}] run scoreboard players add @s char_wins_05 1
+execute if entity @s[scores={char=6}] run scoreboard players add @s char_wins_06 1
+execute if entity @s[scores={char=7}] run scoreboard players add @s char_wins_07 1
+execute if entity @s[scores={char=8}] run scoreboard players add @s char_wins_08 1
+execute if entity @s[scores={char=9}] run scoreboard players add @s char_wins_09 1
+execute if entity @s[scores={char=10}] run scoreboard players add @s char_wins_10 1
+execute if entity @s[scores={char=11}] run scoreboard players add @s char_wins_11 1
+execute if entity @s[scores={char=12}] run scoreboard players add @s char_wins_12 1
+execute if entity @s[scores={char=13}] run scoreboard players add @s char_wins_13 1
+execute if entity @s[scores={char=14}] run scoreboard players add @s char_wins_14 1
+execute if entity @s[scores={char=15}] run scoreboard players add @s char_wins_15 1
+execute if entity @s[scores={char=16}] run scoreboard players add @s char_wins_16 1
+execute if entity @s[scores={char=17}] run scoreboard players add @s char_wins_17 1
+execute if entity @s[scores={char=18}] run scoreboard players add @s char_wins_18 1
+execute if entity @s[scores={char=19}] run scoreboard players add @s char_wins_19 1
+execute if entity @s[scores={char=20}] run scoreboard players add @s char_wins_20 1
+execute if entity @s[scores={char=21}] run scoreboard players add @s char_wins_21 1
+execute if entity @s[scores={char=22}] run scoreboard players add @s char_wins_22 1
+execute if entity @s[scores={char=23}] run scoreboard players add @s char_wins_23 1
+execute if entity @s[scores={char=24}] run scoreboard players add @s char_wins_24 1
+execute if entity @s[scores={char=25}] run scoreboard players add @s char_wins_25 1
+execute if entity @s[scores={char=26}] run scoreboard players add @s char_wins_26 1
+execute if entity @s[scores={char=27}] run scoreboard players add @s char_wins_27 1
+execute if entity @s[scores={char=28}] run scoreboard players add @s char_wins_28 1
+execute if entity @s[scores={char=29}] run scoreboard players add @s char_wins_29 1
+execute if entity @s[scores={char=30}] run scoreboard players add @s char_wins_30 1

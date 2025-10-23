@@ -8,9 +8,9 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:netherite_sword"}}]
 scoreboard players set @a[scores={char=1,HP=11..}] slayer_p_vis 0
 scoreboard players add @a[scores={char=1,HP=..10}] slayer_p_vis 1
 
-execute at @a[scores={char=1,slayer_p_vis=4}] run particle minecraft:damage_indicator ~ ~1 ~ 0.5 0.6 0.5 0.1 1
-execute at @a[scores={char=1,slayer_p_vis=8}] run particle minecraft:damage_indicator ~ ~1 ~ 0.5 0.6 0.5 0.1 1
-execute at @a[scores={char=1,slayer_p_vis=10}] run particle minecraft:angry_villager ~ ~1 ~ 0.5 0.6 0.5 0.1 1
+execute at @a[scores={char=1,slayer_p_vis=4}] run particle damage_indicator ~ ~1 ~ 0.5 0.6 0.5 0.1 1
+execute at @a[scores={char=1,slayer_p_vis=8}] run particle damage_indicator ~ ~1 ~ 0.5 0.6 0.5 0.1 1
+execute at @a[scores={char=1,slayer_p_vis=10}] run particle angry_villager ~ ~1 ~ 0.5 0.6 0.5 0.1 1
 
 scoreboard players set @a[scores={char=1,slayer_p_vis=11..}] slayer_p_vis 0
 
@@ -22,7 +22,7 @@ execute at @a[scores={char=1,s1_timer=1,CC_silence=0}] run playsound entity.play
 execute at @a[scores={char=1,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["slayer_slash","projectile","entities_slayer"]}
 scoreboard players operation @e[tag=projectile,tag=slayer_slash] Team = @p[scores={char=1}] Team
 tp @e[tag=slayer_slash,limit=1] @a[scores={char=1,s1_timer=1},limit=1]
-execute at @a[scores={char=1,s1_timer=1,CC_silence=0}] as @e[tag=slayer_slash,limit=1] at @s run tp @s ~ ~1.2 ~
+execute at @a[scores={char=1,s1_timer=1,CC_silence=0}] as @e[tag=slayer_slash,limit=1] at @s run tp @s ~ ~1.2 ~ 
 execute at @e[tag=slayer_slash] run particle sweep_attack ~ ~ ~ 0.5 0.2 0.5 0.001 10 normal
 execute as @e[tag=slayer_slash] at @s run tp @s ^ ^ ^1.1
 execute at @a[scores={char=1,s1_timer=5}] run kill @e[tag=slayer_slash]
@@ -88,7 +88,7 @@ item replace entity @a[scores={char=1,HP=11..,CC_disarm=0}] hotbar.0 with nether
 item replace entity @a[scores={char=1,HP=..10,CC_disarm=0}] hotbar.0 with netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Sword"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 
 execute as @a[scores={char=1,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=1}] minecraft:carrot_on_a_stick
-item replace entity @a[scores={char=1,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:wooden_sword",minecraft:custom_name={bold:1b,color:"dark_aqua",text:"Breaking Blow"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1}] 1
+item replace entity @a[scores={char=1,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:glow_item_frame",minecraft:custom_name={bold:1b,color:"dark_aqua",text:"Breaking Blow"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1}] 1
 
 execute as @a[scores={char=1,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=1}] minecraft:warped_fungus_on_a_stick
 item replace entity @a[scores={char=1,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:golden_chestplate",minecraft:custom_name={text:"Slicing Lunge",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:protection":1}] 1

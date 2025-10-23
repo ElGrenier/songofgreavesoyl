@@ -45,22 +45,22 @@ execute as @e[tag=the_knockup] at @s unless entity @a[distance=..1,scores={CC_kn
 #staggered effect ====================================================================================================================================================================================================================================
 
 
-scoreboard players add @e[scores={CC_stagger=1..,CC_stun=1..}] CC_stun 20
-scoreboard players add @e[scores={CC_stagger=1..,CC_root=1..}] CC_root 20
-scoreboard players add @e[scores={CC_stagger=1..,CC_knockup=1..}] CC_knockup 20
-scoreboard players add @e[scores={CC_stagger=1..,CC_grounded=1..}] CC_grounded 20
+scoreboard players add @a[scores={CC_stagger=1..,CC_stun=1..}] CC_stun 20
+scoreboard players add @a[scores={CC_stagger=1..,CC_root=1..}] CC_root 20
+scoreboard players add @a[scores={CC_stagger=1..,CC_knockup=1..}] CC_knockup 20
+scoreboard players add @a[scores={CC_stagger=1..,CC_grounded=1..}] CC_grounded 20
 
-scoreboard players set @e[scores={CC_stun=1..}] CC_stagger 0
-scoreboard players set @e[scores={CC_root=1..}] CC_stagger 0
-scoreboard players set @e[scores={CC_knockup=1..}] CC_stagger 0
-scoreboard players set @e[scores={CC_grounded=1..}] CC_stagger 0
+scoreboard players set @a[scores={CC_stun=1..}] CC_stagger 0
+scoreboard players set @a[scores={CC_root=1..}] CC_stagger 0
+scoreboard players set @a[scores={CC_knockup=1..}] CC_stagger 0
+scoreboard players set @a[scores={CC_grounded=1..}] CC_stagger 0
 
-# crippled + shieldbreak
+# crippled + shieldbreal
 
-effect clear @e[scores={CC_shieldbreak=1..}] absorption
+effect clear @a[scores={CC_shieldbreak=1..}] absorption
 
-scoreboard players set @e[scores={CC_crippled=3..}] CC_defiled 2
-scoreboard players set @e[scores={CC_crippled=3..}] CC_shieldbreak 2
+scoreboard players set @a[scores={CC_crippled=3..}] CC_defiled 2
+scoreboard players set @a[scores={CC_crippled=3..}] CC_shieldbreak 2
 
 # cc working effects ====================================================================================================================================================================================================================================
 

@@ -1,4 +1,4 @@
-	kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:leather"}}]
+kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:leather"}}]
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:book"}}]
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:glowstone_dust"}}]
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:player_head"}}]
@@ -47,9 +47,9 @@ execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] run playsound entity.pla
 execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] run particle heart ~ ~1 ~ 2 1 2 0.1 30 normal
 
 
-execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target] if score @s Team = @p[scores={char=19}] Team run effect give @s speed 2 2
-execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target] if score @s Team = @p[scores={char=19}] Team run effect give @s instant_health 1
-execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target] at @s if score @s Team = @p[scores={char=19}] Team run particle heart ~ ~1 ~ 2 1 2 0.1 30 normal
+execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target,tag=lunatic_valid_words_target] if score @s Team = @p[scores={char=19}] Team run effect give @s speed 2 2
+execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target,tag=lunatic_valid_words_target] if score @s Team = @p[scores={char=19}] Team run effect give @s instant_health 1
+execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target,tag=lunatic_valid_words_target] at @s if score @s Team = @p[scores={char=19}] Team run particle heart ~ ~1 ~ 2 1 2 0.1 30 normal
 
 #despair
 execute as @a[scores={char=19,despair=400}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:3b}]}] run clear @a[scores={char=19}] carrot_on_a_stick[custom_data={s3:1}]

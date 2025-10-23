@@ -37,7 +37,6 @@ execute if entity @a[scores={char=666}] run function chars:lunaticspells
 execute if entity @a[scores={char=20}] run function chars:weaverspells
 execute if entity @a[scores={char=21}] run function chars:necrospells
 execute if entity @a[scores={char=22}] run function chars:devourerspells
-execute if entity @a[scores={char=23}] run function chars:prowlerspells
 execute if entity @a[scores={char=24}] run function chars:sandwitchspells
 execute if entity @a[scores={char=25}] run function chars:scourgespells
 execute if entity @a[scores={char=26}] run function chars:sharpshooterspells
@@ -85,6 +84,8 @@ execute if entity @a[scores={char=67}] run function chars:revenantspells
 execute if entity @a[scores={char=68}] run function chars:enforcerspells
 execute if entity @a[scores={char=69}] run function chars:painterspells
 #execute if entity @a[scores={char=70}] run function chars:djinnspells
+
+execute if entity @a[scores={char=23}] run function chars:prowlerspells
 
 function chars:projetcile_removal
 
