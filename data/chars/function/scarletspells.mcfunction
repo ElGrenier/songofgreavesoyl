@@ -1,11 +1,11 @@
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:prismarine_shard"}}]
-kill @e[type=minecraft:item,tag=!mosquito_blood,nbt={Item:{id:"minecraft:redstone"}}]
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:beetroot"}}]
+#kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:prismarine_shard"}}]
+#kill @e[type=minecraft:item,tag=!mosquito_blood,nbt={Item:{id:"minecraft:redstone"}}]
+#kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:beetroot"}}]
 
 scoreboard players set @a[scores={universal_death=1..}] laceration 0
 scoreboard players set @a[scores={universal_death=1..}] kneel 0
 
-effect give @a[scores={char=64},nbt={SelectedItem:{id:"minecraft:prismarine_shard"}}] minecraft:weakness 1 100 true
+effect give @a[scores={char=64},nbt={SelectedItem:{id:"minecraft:carrot_on_a_stick"}}] minecraft:weakness 1 100 true
 effect give @a[scores={char=64},nbt={SelectedItem:{id:"minecraft:barrier"}}] minecraft:weakness 1 100 true
 
 # laceration
@@ -22,43 +22,43 @@ scoreboard players set @a[scores={char=64,knifes_cd=60..}] knifes_cd 0
 scoreboard players set @a[scores={char=64,scarlet_knifes=7..}] knifes_cd 0
 
 
-scoreboard players set @a[scores={char=64,spell_scar_3_1=1,CC_silence=1..}] spellCD0 20
-scoreboard players set @a[scores={char=64,spell_scar_3_1=1,CC_silence=1..}] spell_scar_3 0
-scoreboard players set @a[scores={char=64,spell_scar_3_1=1,CC_silence=1..}] spell_scar_3_1 0
+scoreboard players set @a[scores={char=64,s3_timer=1,CC_silence=1..}] spellCD0 20
+scoreboard players set @a[scores={char=64,s3_timer=1,CC_silence=1..}] s3_timer 0
+scoreboard players set @a[scores={char=64,s3_timer=1,CC_silence=1..}] s3_timer 0
 
-execute at @a[scores={char=64,spell_scar_3_1=1,scarlet_knifes=1..,CC_silence=0}] run playsound minecraft:entity.player.attack.sweep master @a[distance=..10] ~ ~ ~ 0.3 2 1
-execute at @a[scores={char=64,spell_scar_3_1=1,scarlet_knifes=1..,CC_silence=0}] run playsound minecraft:entity.snowball.throw master @a[distance=..10] ~ ~ ~ 0.5 1.5 1
-execute at @a[scores={char=64,spell_scar_3_1=1,scarlet_knifes=1..,CC_silence=0},y_rotation=45..135] run summon minecraft:armor_stand ~ ~ ~ {Rotation:[90.0f,0.0f],Pose:{Head:[91.0f,0.0f,0.0f]},Marker:1b,Invisible:1b,Tags:["laceration_knife"],NoGravity:1b,Small:1b,equipment:{head:{id:"minecraft:prismarine_shard",count:1}}}
-execute at @a[scores={char=64,spell_scar_3_1=1,scarlet_knifes=1..,CC_silence=0},y_rotation=-135..-45] run summon minecraft:armor_stand ~ ~ ~ {Rotation:[-90.0f,0.0f],Pose:{Head:[91.0f,0.0f,0.0f]},Marker:1b,Invisible:1b,Tags:["laceration_knife"],NoGravity:1b,Small:1b,equipment:{head:{id:"minecraft:prismarine_shard",count:1}}}
-execute at @a[scores={char=64,spell_scar_3_1=1,scarlet_knifes=1..,CC_silence=0},y_rotation=-45..45] run summon minecraft:armor_stand ~ ~ ~ {Rotation:[0.0f,0.0f],Pose:{Head:[91.0f,0.0f,0.0f]},Marker:1b,Invisible:1b,Tags:["laceration_knife"],NoGravity:1b,Small:1b,equipment:{head:{id:"minecraft:prismarine_shard",count:1}}}
-execute at @a[scores={char=64,spell_scar_3_1=1,scarlet_knifes=1..,CC_silence=0},y_rotation=135..-135] run summon minecraft:armor_stand ~ ~ ~ {Rotation:[180.0f,0.0f],Pose:{Head:[91.0f,0.0f,0.0f]},Marker:1b,Invisible:1b,Tags:["laceration_knife"],NoGravity:1b,Small:1b,equipment:{head:{id:"minecraft:prismarine_shard",count:1}}}
-scoreboard players remove @a[scores={char=64,spell_scar_3_1=1,scarlet_knifes=1..,CC_silence=0}] scarlet_knifes 1
-tp @e[tag=laceration_knife,limit=1] @a[scores={char=64,spell_scar_3_1=1},limit=1]
+execute at @a[scores={char=64,s3_timer=1,scarlet_knifes=1..,CC_silence=0}] run playsound minecraft:entity.player.attack.sweep master @a[distance=..10] ~ ~ ~ 0.3 2 1
+execute at @a[scores={char=64,s3_timer=1,scarlet_knifes=1..,CC_silence=0}] run playsound minecraft:entity.snowball.throw master @a[distance=..10] ~ ~ ~ 0.5 1.5 1
+execute at @a[scores={char=64,s3_timer=1,scarlet_knifes=1..,CC_silence=0},y_rotation=45..135] run summon minecraft:armor_stand ~ ~ ~ {Rotation:[90.0f,0.0f],Pose:{Head:[91.0f,0.0f,0.0f]},Marker:1b,Invisible:1b,Tags:["laceration_knife","entities_scarletlady"],NoGravity:1b,Small:1b,equipment:{head:{id:"minecraft:prismarine_shard",count:1}}}
+execute at @a[scores={char=64,s3_timer=1,scarlet_knifes=1..,CC_silence=0},y_rotation=-135..-45] run summon minecraft:armor_stand ~ ~ ~ {Rotation:[-90.0f,0.0f],Pose:{Head:[91.0f,0.0f,0.0f]},Marker:1b,Invisible:1b,Tags:["laceration_knife","entities_scarletlady"],NoGravity:1b,Small:1b,equipment:{head:{id:"minecraft:prismarine_shard",count:1}}}
+execute at @a[scores={char=64,s3_timer=1,scarlet_knifes=1..,CC_silence=0},y_rotation=-45..45] run summon minecraft:armor_stand ~ ~ ~ {Rotation:[0.0f,0.0f],Pose:{Head:[91.0f,0.0f,0.0f]},Marker:1b,Invisible:1b,Tags:["laceration_knife","entities_scarletlady"],NoGravity:1b,Small:1b,equipment:{head:{id:"minecraft:prismarine_shard",count:1}}}
+execute at @a[scores={char=64,s3_timer=1,scarlet_knifes=1..,CC_silence=0},y_rotation=135..-135] run summon minecraft:armor_stand ~ ~ ~ {Rotation:[180.0f,0.0f],Pose:{Head:[91.0f,0.0f,0.0f]},Marker:1b,Invisible:1b,Tags:["laceration_knife","entities_scarletlady"],NoGravity:1b,Small:1b,equipment:{head:{id:"minecraft:prismarine_shard",count:1}}}
+scoreboard players remove @a[scores={char=64,s3_timer=1,scarlet_knifes=1..,CC_silence=0}] scarlet_knifes 1
+tp @e[tag=laceration_knife,limit=1] @a[scores={char=64,s3_timer=1},limit=1]
 
 
-execute at @a[scores={char=64,spell_scar_3_1=1..20}] as @e[tag=laceration_knife] at @s run tp @s ^ ^ ^0.9
-execute at @a[scores={char=64,spell_scar_3_1=11..20}] as @e[tag=laceration_knife] at @s run tp @s ~ ~-0.2 ~
+execute at @a[scores={char=64,s3_timer=1..20}] as @e[tag=laceration_knife] at @s run tp @s ^ ^ ^0.9
+execute at @a[scores={char=64,s3_timer=11..20}] as @e[tag=laceration_knife] at @s run tp @s ~ ~-0.2 ~
 
 execute as @e[tag=laceration_knife] at @s positioned ~ ~1.5 ~ unless block ^ ^0.4 ^0.4 #minecraft:dash run kill @s
 execute as @e[tag=laceration_knife] at @s positioned ~ ~1.5 ~ unless block ~ ~ ~ #minecraft:dash run kill @s
 
-execute at @a[scores={char=64,spell_scar_3_1=20..}] run kill @e[tag=laceration_knife]
+execute at @a[scores={char=64,s3_timer=20..}] run kill @e[tag=laceration_knife]
 
 execute at @e[tag=laceration_knife] run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.01 1
 
-execute if entity @a[scores={char=64},team=yellow] at @e[tag=laceration_knife] run damage @p[distance=..1.5,team=purple] 4 generic by @p[scores={char=64}] from @p[scores={char=64}]
-execute if entity @a[scores={char=64},team=yellow] at @e[tag=laceration_knife] if entity @a[distance=..1.5,team=purple] run playsound minecraft:entity.experience_orb.pickup master @a[scores={char=64}] ~ ~ ~ 1 0.1 1
-execute if entity @a[scores={char=64},team=yellow] at @e[tag=laceration_knife] run scoreboard players add @p[distance=..1.5,team=purple] laceration_counter 1
-execute if entity @a[scores={char=64},team=yellow] at @e[tag=laceration_knife] run scoreboard players set @p[distance=..1.5,team=purple] laceration_timer_initial 1
-execute if entity @a[scores={char=64},team=yellow] at @e[tag=laceration_knife] run scoreboard players set @p[distance=..1.5,team=purple] laceration_timer 0
-execute if entity @a[scores={char=64},team=yellow] at @e[tag=laceration_knife] if entity @a[distance=..1.5,team=purple] run kill @e[tag=laceration_knife]
+execute at @e[tag=laceration_knife] as @a[distance=..1.5] unless score @s Team = @p[scores={char=64}] Team run damage @s 4 generic by @p[scores={char=64}] from @p[scores={char=64}]
+execute at @e[tag=laceration_knife] as @a[distance=..1.5] unless score @s Team = @p[scores={char=64}] Team run playsound minecraft:entity.experience_orb.pickup master @a[scores={char=64}] ~ ~ ~ 1 0.1 1
+execute at @e[tag=laceration_knife] as @a[distance=..1.5] unless score @s Team = @p[scores={char=64}] Team run scoreboard players add @s laceration_counter 1
+execute at @e[tag=laceration_knife] as @a[distance=..1.5] unless score @s Team = @p[scores={char=64}] Team run scoreboard players set @s laceration_timer_initial 1
+execute at @e[tag=laceration_knife] as @a[distance=..1.5] unless score @s Team = @p[scores={char=64}] Team run scoreboard players set @s laceration_timer 0
+execute at @e[tag=laceration_knife] as @a[distance=..1.5] unless score @s Team = @p[scores={char=64}] Team run kill @e[tag=laceration_knife]
 
-execute if entity @a[scores={char=64},team=purple] at @e[tag=laceration_knife] run damage @p[distance=..1.5,team=yellow] 4 generic by @p[scores={char=64}] from @p[scores={char=64}]
-execute if entity @a[scores={char=64},team=purple] at @e[tag=laceration_knife] if entity @a[distance=..1.5,team=yellow] run playsound minecraft:entity.experience_orb.pickup master @a[scores={char=64}] ~ ~ ~ 1 0.1 1
-execute if entity @a[scores={char=64},team=purple] at @e[tag=laceration_knife] run scoreboard players add @p[distance=..1.5,team=yellow] laceration_counter 1
-execute if entity @a[scores={char=64},team=purple] at @e[tag=laceration_knife] run scoreboard players set @p[distance=..1.5,team=yellow] laceration_timer_initial 1
-execute if entity @a[scores={char=64},team=purple] at @e[tag=laceration_knife] run scoreboard players set @p[distance=..1.5,team=yellow] laceration_timer 0
-execute if entity @a[scores={char=64},team=purple] at @e[tag=laceration_knife] if entity @a[distance=..1.5,team=yellow] run kill @e[tag=laceration_knife]
+# execute at @e[tag=laceration_knife] run damage @p[distance=..1.5,team=yellow] 4 generic by @p[scores={char=64}] from @p[scores={char=64}]
+# execute at @e[tag=laceration_knife] if entity @a[distance=..1.5,team=yellow] run playsound minecraft:entity.experience_orb.pickup master @a[scores={char=64}] ~ ~ ~ 1 0.1 1
+# execute at @e[tag=laceration_knife] run scoreboard players add @p[distance=..1.5,team=yellow] laceration_counter 1
+# execute at @e[tag=laceration_knife] run scoreboard players set @p[distance=..1.5,team=yellow] laceration_timer_initial 1
+# execute at @e[tag=laceration_knife] run scoreboard players set @p[distance=..1.5,team=yellow] laceration_timer 0
+# execute at @e[tag=laceration_knife] if entity @a[distance=..1.5,team=yellow] run kill @e[tag=laceration_knife]
 
 
 
@@ -140,17 +140,17 @@ execute as @e[tag=display_laceration_4] at @s positioned ~ ~-2.2 ~ unless entity
 
 
 
-execute if entity @a[scores={char=64},team=purple] at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=necrominion,limit=1,team=yellow] MinionDamageKnife 1
-execute if entity @a[scores={char=64},team=purple] at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=turret,limit=1,team=yellow] MinionDamageKnife 1
-execute if entity @a[scores={char=64},team=purple] at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=swarmerboi,limit=1,team=yellow] MinionDamageKnife 1
-execute if entity @a[scores={char=64},team=purple] at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=MoldHost,limit=1,team=yellow] MinionDamageKnife 1
-execute if entity @a[scores={char=64},team=purple] at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=MoldStructure,limit=1,team=yellow] MinionDamageKnife 1
+execute at @e[tag=laceration_knife] as @e[distance=..1,tag=necrominion] unless score @s Team = @p[scores={char=64}] Team run scoreboard players set @s MinionDamageKnife 1
+execute at @e[tag=laceration_knife] as @e[distance=..1,tag=turret] unless score @s Team = @p[scores={char=64}] Team run scoreboard players set @s MinionDamageKnife 1
+execute at @e[tag=laceration_knife] as @e[distance=..1,tag=swarmerboi] unless score @s Team = @p[scores={char=64}] Team run scoreboard players set @s MinionDamageKnife 1
+execute at @e[tag=laceration_knife] as @e[distance=..1,tag=MoldHost] unless score @s Team = @p[scores={char=64}] Team run scoreboard players set @s MinionDamageKnife 1
+execute at @e[tag=laceration_knife] as @e[distance=..1,tag=MoldStructure] unless score @s Team = @p[scores={char=64}] Team run scoreboard players set @s MinionDamageKnife 1
 
-execute if entity @a[scores={char=64},team=yellow] at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=necrominion,limit=1,team=purple] MinionDamageKnife 1
-execute if entity @a[scores={char=64},team=yellow] at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=turret,limit=1,team=purple] MinionDamageKnife 1
-execute if entity @a[scores={char=64},team=yellow] at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=swarmerboi,limit=1,team=purple] MinionDamageKnife 1
-execute if entity @a[scores={char=64},team=yellow] at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=MoldHost,limit=1,team=purple] MinionDamageKnife 1
-execute if entity @a[scores={char=64},team=yellow] at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=MoldStructure,limit=1,team=purple] MinionDamageKnife 1
+# execute at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=necrominion,limit=1,team=purple] MinionDamageKnife 1
+# execute at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=turret,limit=1,team=purple] MinionDamageKnife 1
+# execute at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=swarmerboi,limit=1,team=purple] MinionDamageKnife 1
+# execute at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=MoldHost,limit=1,team=purple] MinionDamageKnife 1
+# execute at @e[tag=laceration_knife] run scoreboard players set @e[distance=..1,tag=MoldStructure,limit=1,team=purple] MinionDamageKnife 1
 
 scoreboard players add @e[scores={MinionDamageKnife=1..}] MinionDamageKnife 1
 
@@ -164,20 +164,20 @@ scoreboard players set @e[scores={MinionDamageKnife=30..}] MinionDamageKnife 0
 
 # mosquito kiss
 
-scoreboard players set @a[scores={char=64,spell_scar_1_1=1,CC_silence=1..}] spellCD1 20
-scoreboard players set @a[scores={char=64,spell_scar_1_1=1,CC_silence=1..}] spell_scar_1_1 140
+scoreboard players set @a[scores={char=64,s1_timer=1,CC_silence=1..}] spellCD1 20
+scoreboard players set @a[scores={char=64,s1_timer=1,CC_silence=1..}] s1_timer 140
 
-execute at @a[scores={char=64,spell_scar_1_1=2,CC_silence=0}] run playsound minecraft:entity.bee.hurt master @a[distance=..15] ~ ~ ~ 0.6 1.3 1
-execute as @a[scores={char=64,spell_scar_1_1=2,CC_silence=0}] at @s run function chars:mosquito_kiss_raycast
+execute at @a[scores={char=64,s1_timer=2,CC_silence=0}] run playsound minecraft:entity.bee.hurt master @a[distance=..15] ~ ~ ~ 0.6 1.3 1
+execute as @a[scores={char=64,s1_timer=2,CC_silence=0}] at @s run function chars:mosquito_kiss_raycast
 
-#execute at @a[scores={char=64,spell_scar_1_1=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^1 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
-#execute at @a[scores={char=64,spell_scar_1_1=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^1.5 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
-#execute at @a[scores={char=64,spell_scar_1_1=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^2 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
-#execute at @a[scores={char=64,spell_scar_1_1=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^2.5 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
-#execute at @a[scores={char=64,spell_scar_1_1=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^3 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
-#execute at @a[scores={char=64,spell_scar_1_1=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^3.5 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
-#execute at @a[scores={char=64,spell_scar_1_1=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^4 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
-#execute at @a[scores={char=64,spell_scar_1_1=2,CC_silence=0}] run effect give @p[distance=..4,tag=mosquito_bite] minecraft:slowness 2 5
+#execute at @a[scores={char=64,s1_timer=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^1 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
+#execute at @a[scores={char=64,s1_timer=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^1.5 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
+#execute at @a[scores={char=64,s1_timer=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^2 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
+#execute at @a[scores={char=64,s1_timer=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^2.5 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
+#execute at @a[scores={char=64,s1_timer=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^3 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
+#execute at @a[scores={char=64,s1_timer=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^3.5 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
+#execute at @a[scores={char=64,s1_timer=2,CC_silence=0}] if entity @p[distance=..4,tag=mosquito_bite] as @e[scores={char=64}] at @s positioned ^ ^ ^4 run particle minecraft:crit ~ ~1 ~ 0.1 0.1 0.1 0.3 5
+#execute at @a[scores={char=64,s1_timer=2,CC_silence=0}] run effect give @p[distance=..4,tag=mosquito_bite] minecraft:slowness 2 5
 
 execute at @a[tag=mosquito_bite] run particle minecraft:dust{color:[1.0,0.0,0.0],scale:1.0f} ~ ~1 ~ 0.4 0.5 0.4 0.01 30 normal
 execute at @a[tag=mosquito_bite] run particle minecraft:block{block_state:{Name:"minecraft:redstone_block"}} ~ ~1 ~ 0.4 0.2 0.4 0.01 40 normal
@@ -231,13 +231,13 @@ tag @a remove mosquito_bite
 
 # kneel
 
-scoreboard players set @a[scores={char=64,spell_scar_2_1=1,CC_silence=1..}] spellCD2 20
-scoreboard players set @a[scores={char=64,spell_scar_2_1=1,CC_silence=1..}] spell_scar_2_1 280
+scoreboard players set @a[scores={char=64,s2_timer=1,CC_silence=1..}] spellCD2 20
+scoreboard players set @a[scores={char=64,s2_timer=1,CC_silence=1..}] s2_timer 280
 
-execute at @a[scores={char=64,spell_scar_2_1=1,CC_silence=0}] run playsound minecraft:entity.witch.hurt master @a[distance=..15] ~ ~ ~ 0.5 0.8 1
-execute at @a[scores={char=64,spell_scar_2_1=2,CC_silence=0}] run playsound minecraft:entity.bee.hurt master @a[distance=..15] ~ ~ ~ 0.3 2 1
-execute at @a[scores={char=64,spell_scar_2_1=3,CC_silence=0}] run playsound minecraft:item.honey_bottle.drink master @a[distance=..15] ~ ~ ~ 1 0.5 1
-execute as @a[scores={char=64,spell_scar_2_1=2,CC_silence=0}] at @s run function chars:kneel_raycast
+execute at @a[scores={char=64,s2_timer=1,CC_silence=0}] run playsound minecraft:entity.witch.hurt master @a[distance=..15] ~ ~ ~ 0.5 0.8 1
+execute at @a[scores={char=64,s2_timer=2,CC_silence=0}] run playsound minecraft:entity.bee.hurt master @a[distance=..15] ~ ~ ~ 0.3 2 1
+execute at @a[scores={char=64,s2_timer=3,CC_silence=0}] run playsound minecraft:item.honey_bottle.drink master @a[distance=..15] ~ ~ ~ 1 0.5 1
+execute as @a[scores={char=64,s2_timer=2,CC_silence=0}] at @s run function chars:kneel_raycast
 
 execute at @a[tag=mosquito_kneel] run playsound minecraft:entity.player.hurt_drown master @a[distance=..10] ~ ~ ~ 1 0.2 1
 effect give @a[tag=mosquito_kneel] slowness 1 3 true
@@ -252,29 +252,27 @@ scoreboard players remove @a[scores={kneel=1..}] kneel 1
 
 # scarlet lady
 
-scoreboard players add @a[scores={spell_scar_3=1..}] spell_scar_3_1 1
-item replace entity @a[scores={char=64,spell_scar_3_1=20..}] hotbar.0 with minecraft:prismarine_shard[minecraft:custom_name={text:"Throwing Knife",color:"gray",bold:1b}] 1
-scoreboard players set @a[scores={spell_scar_3_1=21..}] spell_scar_3 0
-scoreboard players set @a[scores={spell_scar_3_1=21..}] spell_scar_3_1 0
-scoreboard players set @a[scores={spell_scar_3_1=1}] spellCD0 20
+scoreboard players set @a[scores={char=64,s3_timer=1}] spellCD0 20
+scoreboard players add @a[scores={char=64,s3_timer=1..}] s3_timer 1
+scoreboard players set @a[scores={char=64,s3_timer=21..}] s3_timer 0
 
-scoreboard players add @a[scores={spell_scar_1=1..}] spell_scar_1_1 1
-item replace entity @a[scores={char=64,spell_scar_1_1=160..}] hotbar.1 with minecraft:redstone[minecraft:custom_name={text:"Mosquito's Kiss",color:"gray",bold:1b}] 1
-scoreboard players set @a[scores={spell_scar_1_1=161..}] spell_scar_1 0
-scoreboard players set @a[scores={spell_scar_1_1=161..}] spell_scar_1_1 0
-scoreboard players set @a[scores={spell_scar_1_1=1}] spellCD1 160
 
-scoreboard players add @a[scores={spell_scar_2=1..}] spell_scar_2_1 1
-item replace entity @a[scores={char=64,spell_scar_2_1=300..}] hotbar.2 with minecraft:beetroot[minecraft:custom_name={text:"Kneel!",color:"gray",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
-scoreboard players set @a[scores={spell_scar_2_1=301..}] spell_scar_2 0
-scoreboard players set @a[scores={spell_scar_2_1=301..}] spell_scar_2_1 0
-scoreboard players set @a[scores={spell_scar_2_1=1}] spellCD2 300
+scoreboard players set @a[scores={char=64,s1_timer=1}] spellCD1 160
+scoreboard players add @a[scores={char=64,s1_timer=1..}] s1_timer 1
+scoreboard players set @a[scores={char=64,s1_timer=161..}] s1_timer 0
 
-execute as @a[scores={char=64,spell_scar_3=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:prismarine_shard",Slot:0b}]}] run clear @a[scores={char=64}] minecraft:prismarine_shard
-item replace entity @a[scores={char=64,spell_scar_3=0}] hotbar.0 with minecraft:prismarine_shard[minecraft:custom_name={text:"Throwing Knife",color:"gray",bold:1b}] 1
+scoreboard players set @a[scores={char=64,s2_timer=1}] spellCD2 300
+scoreboard players add @a[scores={char=64,s2_timer=1..}] s2_timer 1
+scoreboard players set @a[scores={char=64,s2_timer=301..}] s2_timer 0
 
-execute as @a[scores={char=64,spell_scar_1=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:redstone",Slot:1b}]}] run clear @a[scores={char=64}] minecraft:redstone
-item replace entity @a[scores={char=64,spell_scar_1=0}] hotbar.1 with minecraft:redstone[minecraft:custom_name={text:"Mosquito's Kiss",color:"gray",bold:1b}] 1
 
-execute as @a[scores={char=64,spell_scar_2=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:beetroot",Slot:2b}]}] run clear @a[scores={char=64}] minecraft:beetroot
-item replace entity @a[scores={char=64,spell_scar_2=0}] hotbar.2 with minecraft:beetroot[minecraft:custom_name={text:"Kneel!",color:"gray",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
+execute as @a[scores={char=64,s3_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:0b}]}] run clear @a[scores={char=64}] minecraft:carrot_on_a_stick
+item replace entity @a[scores={char=64,s3_timer=0}] hotbar.0 with carrot_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:prismarine_shard",minecraft:custom_name={text:"Throwing Knife",color:"dark_aqua",bold:1b}] 1
+
+execute as @a[scores={char=64,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=64}] minecraft:carrot_on_a_stick
+item replace entity @a[scores={char=64,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:redstone",minecraft:custom_name={text:"Mosquito's Kiss",color:"dark_aqua",bold:1b}] 1
+
+execute as @a[scores={char=64,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=64}] minecraft:warped_fungus_on_a_stick
+item replace entity @a[scores={char=64,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:beetroot",minecraft:custom_name={text:"Kneel!",color:"dark_aqua",bold:1b}] 1
+
+
