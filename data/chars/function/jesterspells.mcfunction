@@ -161,7 +161,7 @@ execute as @e[tag=dazzle_ball_bounce] at @s as @a[scores={CC_confusion=0}] unles
 
 
 
-execute  as @e[tag=dazzle_ball_bounce] at @s as @a[scores={CC_confusion=0}] unless score @s Team = @p[scores={char=51}] Team run tp @e[tag=dazzle_ball_bounce] ~ ~ ~ facing entity @s
+execute as @e[tag=dazzle_ball_bounce] at @s as @a[scores={CC_confusion=0}] unless score @s Team = @p[scores={char=51}] Team run tp @e[tag=dazzle_ball_bounce] ~ ~ ~ facing entity @s
 #execute if entity @a[scores={char=51},team=yellow] as @e[tag=dazzle_ball_bounce] at @s run tp @s ~ ~ ~ facing entity @p[scores={CC_confusion=0},team=purple]
 execute as @e[tag=dazzle_ball_bounce] at @s run tp @s ^ ^ ^0.4
 execute as @e[tag=dazzle_ball] at @s run tp @s ^ ^ ^0.6
