@@ -1,36 +1,35 @@
 # Wywołanie wewnątrz lobby:map
 # function messages:siege
-tellraw @s {text:"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",type:"text"}
-
+function core:main/clear_chat
 #tellraw @s {"text":"List of Battlegrounds:\n","color":"yellow"}
 
 
 
-execute if entity @e[tag=GameStart,scores={Map=1}] run trigger LobbyTrigger set 201
-execute if entity @e[tag=GameStart,scores={Map=2}] run trigger LobbyTrigger set 201
-execute if entity @e[tag=GameStart,scores={Map=6}] run trigger LobbyTrigger set 201
-execute if entity @e[tag=GameStart,scores={Map=7}] run trigger LobbyTrigger set 201
-execute if entity @e[tag=GameStart,scores={Map=10}] run trigger LobbyTrigger set 201
-execute if entity @e[tag=GameStart,scores={Map=12}] run trigger LobbyTrigger set 201
-execute if entity @e[tag=GameStart,scores={Map=17}] run trigger LobbyTrigger set 201
-execute if entity @e[tag=GameStart,scores={Map=19}] run trigger LobbyTrigger set 201
-execute if entity @e[tag=GameStart,scores={Map=22}] run trigger LobbyTrigger set 201
+execute if score map lobby matches 1 run trigger LobbyTrigger set 201
+execute if score map lobby matches 2 run trigger LobbyTrigger set 201
+execute if score map lobby matches 6 run trigger LobbyTrigger set 201
+execute if score map lobby matches 7 run trigger LobbyTrigger set 201
+execute if score map lobby matches 10 run trigger LobbyTrigger set 201
+execute if score map lobby matches 12 run trigger LobbyTrigger set 201
+execute if score map lobby matches 17 run trigger LobbyTrigger set 201
+execute if score map lobby matches 19 run trigger LobbyTrigger set 201
+execute if score map lobby matches 22 run trigger LobbyTrigger set 201
 
-execute if entity @e[tag=GameStart,scores={Map=4}] run trigger LobbyTrigger set 202
-execute if entity @e[tag=GameStart,scores={Map=3}] run trigger LobbyTrigger set 202
-execute if entity @e[tag=GameStart,scores={Map=11}] run trigger LobbyTrigger set 202
-execute if entity @e[tag=GameStart,scores={Map=16}] run trigger LobbyTrigger set 202
-execute if entity @e[tag=GameStart,scores={Map=20}] run trigger LobbyTrigger set 202
+execute if score map lobby matches 4 run trigger LobbyTrigger set 202
+execute if score map lobby matches 3 run trigger LobbyTrigger set 202
+execute if score map lobby matches 11 run trigger LobbyTrigger set 202
+execute if score map lobby matches 16 run trigger LobbyTrigger set 202
+execute if score map lobby matches 20 run trigger LobbyTrigger set 202
 
-execute if entity @e[tag=GameStart,scores={Map=5}] run trigger LobbyTrigger set 203
-execute if entity @e[tag=GameStart,scores={Map=9}] run trigger LobbyTrigger set 203
-execute if entity @e[tag=GameStart,scores={Map=15}] run trigger LobbyTrigger set 203
-execute if entity @e[tag=GameStart,scores={Map=21}] run trigger LobbyTrigger set 203
+execute if score map lobby matches 5 run trigger LobbyTrigger set 203
+execute if score map lobby matches 9 run trigger LobbyTrigger set 203
+execute if score map lobby matches 15 run trigger LobbyTrigger set 203
+execute if score map lobby matches 21 run trigger LobbyTrigger set 203
 
-execute if entity @e[tag=GameStart,scores={Map=8}] run trigger LobbyTrigger set 204
-execute if entity @e[tag=GameStart,scores={Map=13}] run trigger LobbyTrigger set 204
+execute if score map lobby matches 8 run trigger LobbyTrigger set 204
+execute if score map lobby matches 13 run trigger LobbyTrigger set 204
 
-execute if entity @e[tag=GameStart,scores={Map=14}] run trigger LobbyTrigger set 205
-execute if entity @e[tag=GameStart,scores={Map=18}] run trigger LobbyTrigger set 205
+execute if score map lobby matches 14 run trigger LobbyTrigger set 205
+execute if score map lobby matches 18 run trigger LobbyTrigger set 205
 
 function messages:lobby_map_info_main

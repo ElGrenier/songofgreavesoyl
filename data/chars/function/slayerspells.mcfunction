@@ -22,7 +22,7 @@ execute at @a[scores={char=1,s1_timer=1,CC_silence=0}] run playsound entity.play
 execute at @a[scores={char=1,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["slayer_slash","projectile","entities_slayer"]}
 scoreboard players operation @e[tag=projectile,tag=slayer_slash] Team = @p[scores={char=1}] Team
 tp @e[tag=slayer_slash,limit=1] @a[scores={char=1,s1_timer=1},limit=1]
-execute at @a[scores={char=1,s1_timer=1,CC_silence=0}] as @e[tag=slayer_slash,limit=1] at @s run tp @s ~ ~1.2 ~ 
+execute at @a[scores={char=1,s1_timer=1,CC_silence=0}] as @e[tag=slayer_slash,limit=1] at @s run tp @s ~ ~1.2 ~
 execute at @e[tag=slayer_slash] run particle sweep_attack ~ ~ ~ 0.5 0.2 0.5 0.001 10 normal
 execute as @e[tag=slayer_slash] at @s run tp @s ^ ^ ^1.1
 execute at @a[scores={char=1,s1_timer=5}] run kill @e[tag=slayer_slash]

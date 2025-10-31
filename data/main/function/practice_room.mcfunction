@@ -61,11 +61,12 @@ execute positioned 115 15 48 run team join yellow @a[distance=..2]
 
 #holograms
 
-execute positioned 112 15 37 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_1] run summon minecraft:armor_stand 100 14 38 {Marker:1b,NoGravity:1b,Invisible:1b,CustomNameVisible:1b,Tags:["practice_holograms","practice_hologram_1"],CustomName:"Return to lobby"}
-execute positioned 112 15 37 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_2] run summon minecraft:armor_stand 101 15 31 {Marker:1b,NoGravity:1b,Invisible:1b,CustomNameVisible:1b,Tags:["practice_holograms","practice_hologram_2"],CustomName:"Change character"}
-execute positioned 112 15 37 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_3] run summon minecraft:armor_stand 111 15 48 {Marker:1b,NoGravity:1b,Invisible:1b,CustomNameVisible:1b,Tags:["practice_holograms","practice_hologram_3"],CustomName:"Switch team"}
+execute positioned 112 15 37 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_1] run summon minecraft:text_display 102.75 15.06 38.5 {Tags:["practice_holograms","practice_hologram_1"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Return to lobby", text_opacity: 1b, transformation: {left_rotation: [0.0f, 0.7071068f, 0.0f, 0.7071068f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999999f, 0.99999994f, 0.9999999f], translation: [0.0f, 0.0f, 0.0f]}}
+execute positioned 112 15 37 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_2] run summon minecraft:text_display 101.81 15.68 31.62 {Tags:["practice_holograms","practice_hologram_2"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Change character", text_opacity: 1b, transformation: {left_rotation: [0.0f, 0.7071068f, 0.0f, 0.7071068f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999999f, 0.99999994f, 0.9999999f], translation: [0.0f, 0.0f, 0.0f]}}
+execute positioned 112 15 37 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_3] run summon minecraft:text_display 111.52 14.87 48.56 {Tags:["practice_holograms","practice_hologram_3"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Switch team", text_opacity: 1b, transformation: {left_rotation: [0.0f, 0.99984777f, 0.0f, 0.017452212f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999998f, 1.0f, 0.9999998f], translation: [0.0f, 0.0f, 0.0f]}}
+
+
 
 execute positioned 112 15 37 unless entity @a[distance=..15] run kill @e[tag=practice_holograms]
-
 execute if block 141 14 32 minecraft:polished_blackstone_button[powered=true] run tp @e[tag=practice_dummy] ~ ~-200 ~
 execute if block 141 14 32 minecraft:polished_blackstone_button[powered=true] run summon minecraft:iron_golem 145 13 32 {Tags:["practice_dummy"],NoAI:1b,Health:30.0f,attributes:[{id:"minecraft:max_health",base:30.0d}]}

@@ -2,6 +2,8 @@
 # KillSpree (dummy)
 # KillSpreeTick (dummy)
 
+#What is KillRestriction2 ?
+
 execute as @a[tag=blacksouls,scores={KillRestriction2=1..}] run scoreboard players add @s KillRestriction2 1
 execute as @a[tag=blacksouls,scores={KillRestriction2=10..}] run scoreboard players set @s KillSpreeCounter 0
 execute as @a[tag=blacksouls,scores={KillRestriction2=10..}] run scoreboard players set @s KillRestriction2 0

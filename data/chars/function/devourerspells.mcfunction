@@ -20,7 +20,7 @@ execute at @a[scores={char=22,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ 
 execute at @a[scores={char=22,s1_timer=1,CC_silence=0}] run playsound entity.squid.death master @a[distance=..20] ~ ~ ~ 1.0 0.5 1.0
 scoreboard players operation @e[tag=projectile,tag=tentacle] Team = @p[scores={char=22}] Team
 tp @e[tag=tentacle,limit=1] @a[scores={char=22,s1_timer=1},limit=1]
-execute at @a[scores={char=22,s1_timer=1,CC_silence=0}] as @e[tag=tentacle,limit=1] at @s run tp @s ~ ~1.2 ~ 
+execute at @a[scores={char=22,s1_timer=1,CC_silence=0}] as @e[tag=tentacle,limit=1] at @s run tp @s ~ ~1.2 ~
 execute as @e[tag=tentacle] at @s run tp @s ^ ^ ^0.9
 execute at @e[tag=d_tentacle_visuals] run particle dust{color:[0.0,0.0,0.0],scale:1.0f} ~ ~ ~ 0.3 0.3 0.3 0.0001 10 normal
 #execute at @e[tag=tentacle] run particle dust{color:[0.0,0.0,0.0],scale:1.0f} ^ ^ ^-1 0.1 0.1 0.1 0.0001 10 normal
@@ -101,7 +101,7 @@ execute if entity @a[scores={devoured=1..79}] at @a[scores={char=22}] run partic
 execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["devour_maw","entities_devourer"]}
 execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run playsound entity.evoker_fangs.attack master @a[distance=..10] ~ ~ ~ 1.0 1.0 1.0
 tp @e[tag=devour_maw,limit=1] @a[scores={char=22,s2_timer=1},limit=1]
-execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] as @e[tag=devour_maw,limit=1] at @s run tp @s ~ ~1.5 ~ 
+execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] as @e[tag=devour_maw,limit=1] at @s run tp @s ~ ~1.5 ~
 execute as @e[tag=devour_maw] at @s run tp @s ^ ^ ^0.3
 
 execute at @e[tag=devour_maw] run particle dust{color:[0.0,0.0,0.0],scale:1.0f} ~ ~ ~ 0.2 0.2 0.2 0.0001 10 normal

@@ -44,7 +44,7 @@ execute at @a[scores={char=20,s1_timer=1,CC_silence=0}] run playsound entity.spi
 execute at @a[scores={char=20,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["web","projectile","entities_weaver"]}
 scoreboard players operation @e[tag=projectile,tag=web] Team = @p[scores={char=20}] Team
 tp @e[tag=web,limit=1] @a[scores={char=20,s1_timer=1},limit=1]
-execute at @a[scores={char=20,s1_timer=1,CC_silence=0}] as @e[tag=web,limit=1] at @s run tp @s ~ ~1.1 ~ 
+execute at @a[scores={char=20,s1_timer=1,CC_silence=0}] as @e[tag=web,limit=1] at @s run tp @s ~ ~1.1 ~
 
 execute as @e[tag=web] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
 execute as @e[tag=web] at @s run tp @s ^ ^ ^1
@@ -78,7 +78,7 @@ execute at @a[scores={char=20,s2_timer=1,CC_silence=0}] run playsound entity.spi
 execute at @a[scores={char=20,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["venomsplit","projectile","entities_weaver"],NoGravity:1b}
 scoreboard players operation @e[tag=projectile,tag=venomsplit] Team = @p[scores={char=20}] Team
 tp @e[tag=venomsplit,limit=1] @a[scores={char=20,s2_timer=1},limit=1]
-execute at @a[scores={char=20,s2_timer=1,CC_silence=0}] as @e[tag=venomsplit,limit=1] at @s run tp @s ~ ~1.4 ~ 
+execute at @a[scores={char=20,s2_timer=1,CC_silence=0}] as @e[tag=venomsplit,limit=1] at @s run tp @s ~ ~1.4 ~
 execute as @e[tag=venomsplit] at @s run tp @s ^ ^ ^0.35
 execute at @a[scores={char=20,s2_timer=15}] run kill @e[tag=venomsplit]
 

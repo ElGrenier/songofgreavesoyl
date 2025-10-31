@@ -1,7 +1,7 @@
 
 # @s - player who was teleported to chamber
 
-function main:clear_chat
+function core:main/clear_chat
 title @s times 1 100 20
 title @s subtitle {text:"Other players are choosing their characters",color:"green",type:"text"}
 title @s title {text:"Please wait",color:"dark_green",type:"text"}

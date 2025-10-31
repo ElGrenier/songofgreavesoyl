@@ -159,8 +159,8 @@ execute at @a[scores={char=69,spell_painter_yellow=240,CC_silence=0}] run playso
 execute at @a[scores={char=69,spell_painter_yellow=240,CC_silence=0}] run playsound minecraft:block.bell.use master @a[distance=..12] ~ ~ ~ 1 1.5 1
 execute at @a[scores={char=69,spell_painter_yellow=240,CC_silence=0}] run summon minecraft:marker ~ ~ ~ {Tags:["yellow_area_thing","painter_stuff"]}
 
-execute at @e[tag=yellow_area_thing] if entity @p[scores={char=69},team=yellow] run effect give @a[team=yellow,distance=..4] resistance 1 
-execute at @e[tag=yellow_area_thing] if entity @p[scores={char=69},team=purple] run effect give @a[team=purple,distance=..4] resistance 1 
+execute at @e[tag=yellow_area_thing] if entity @p[scores={char=69},team=yellow] run effect give @a[team=yellow,distance=..4] resistance 1
+execute at @e[tag=yellow_area_thing] if entity @p[scores={char=69},team=purple] run effect give @a[team=purple,distance=..4] resistance 1
 
 execute at @e[tag=yellow_area_thing] if entity @p[scores={char=69},team=yellow] as @a[team=yellow,distance=4.1..] if data entity @s {attributes:[{id:"minecraft:knockback_resistance",base:0.025d}]} run attribute @s knockback_resistance base set 0
 execute at @e[tag=yellow_area_thing] if entity @p[scores={char=69},team=purple] as @a[team=purple,distance=4.1..] if data entity @s {attributes:[{id:"minecraft:knockback_resistance",base:0.025d}]} run attribute @s knockback_resistance base set 0
@@ -195,7 +195,7 @@ tag @a[scores={char=69,red=1..,blue=1..}] add color_reset
 
 execute at @a[scores={char=69,spell_painter_purple=320,CC_silence=0}] run playsound block.trial_spawner.ambient_ominous master @a[distance=..12] ~ ~ ~ 0.8 1.2 1
 execute at @a[scores={char=69,spell_painter_purple=320,CC_silence=0}] run playsound entity.ghast.warn master @a[distance=..12] ~ ~ ~ 0.2 0.8 1
-execute at @a[scores={char=69,spell_painter_purple=320,CC_silence=0}] run summon armor_stand ~ ~ ~ {Marker:1,Invisible:1,Tags:["purple_phantom_spook","painter_stuff"]}
+execute at @a[scores={char=69,spell_painter_purple=320,CC_silence=0}] run summon armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["purple_phantom_spook","painter_stuff"]}
 tp @e[tag=purple_phantom_spook,limit=1] @a[scores={char=69,spell_painter_purple=319..320},limit=1]
 
 execute as @e[tag=purple_phantom_spook] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s

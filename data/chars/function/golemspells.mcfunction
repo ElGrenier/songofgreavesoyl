@@ -39,8 +39,8 @@ scoreboard players operation @e[tag=projectile,tag=golem_projectile] Team = @p[s
 scoreboard players operation @e[tag=projectile,tag=golem_flamethrower] Team = @p[scores={char=18}] Team
 tp @e[tag=golem_projectile,limit=1] @a[scores={char=18,s0_timer=1},limit=1]
 tp @e[tag=golem_flamethrower,limit=1] @a[scores={char=18,s0_timer=1},limit=1]
-execute at @a[scores={char=18,s0_timer=1,CC_silence=0}] as @e[tag=golem_projectile,limit=1] at @s run tp @s ~ ~1.4 ~ 
-execute at @a[scores={char=18,s0_timer=1,CC_silence=0}] as @e[tag=golem_flamethrower,limit=1] at @s run tp @s ~ ~1.3 ~ 
+execute at @a[scores={char=18,s0_timer=1,CC_silence=0}] as @e[tag=golem_projectile,limit=1] at @s run tp @s ~ ~1.4 ~
+execute at @a[scores={char=18,s0_timer=1,CC_silence=0}] as @e[tag=golem_flamethrower,limit=1] at @s run tp @s ~ ~1.3 ~
 
 scoreboard players add @e[tag=golem_projectile] s0_timer 1
 scoreboard players add @e[tag=golem_flamethrower] s0_timer 1
