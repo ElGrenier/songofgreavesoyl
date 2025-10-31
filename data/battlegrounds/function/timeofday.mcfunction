@@ -1,20 +1,20 @@
-execute if entity @e[tag=Settings,scores={Map=1}] run time set day
+execute if score map settings matches 1 run time set day
 #2
-execute if entity @e[tag=Settings,scores={Map=3}] run time set 0
-execute if entity @e[tag=Settings,scores={Map=4}] run time set noon
-execute if entity @e[tag=Settings,scores={Map=5}] run time set 3000
+execute if score map settings matches 3 run time set 0
+execute if score map settings matches 4 run time set noon
+execute if score map settings matches 5 run time set 3000
 #6
-execute if entity @e[tag=Settings,scores={Map=7}] run time set 23500
+execute if score map settings matches 7 run time set 23500
 #8
 #9
-execute if entity @e[tag=Settings,scores={Map=10}] run time set 12800
-execute if entity @e[tag=Settings,scores={Map=11}] run time set night
+execute if score map settings matches 10 run time set 12800
+execute if score map settings matches 11 run time set night
 #12
-execute if entity @e[tag=Settings,scores={Map=13}] run time set 18000
-execute if entity @e[tag=Settings,scores={Map=15}] run time set 16000
+execute if score map settings matches 13 run time set 18000
+execute if score map settings matches 15 run time set 16000
 #16
-execute if entity @e[tag=Settings,scores={Map=17}] run time set 12700
-execute if entity @e[tag=Settings,scores={Map=18}] run time set 13500
+execute if score map settings matches 17 run time set 12700
+execute if score map settings matches 18 run time set 13500
 #19
 #20
-execute if entity @e[tag=Settings,scores={Map=21}] run time set 14000
+execute if score map settings matches 21 run time set 14000

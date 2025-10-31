@@ -3,6 +3,6 @@ function altars:setup
 
 
 # Tworzenie spawnow
-summon minecraft:armor_stand 341 15 56 {Rotation:[-90.0f,0.0f],CustomName:"Purple",Invisible:1b,Invulnerable:1b,PersistenceRequired:1b,NoGravity:1b,Tags:["immune","SpawnPurple"]}
-summon minecraft:armor_stand 397 15 56 {Rotation:[90.0f,0.0f],CustomName:"Yellow",Invisible:1b,Invulnerable:1b,PersistenceRequired:1b,NoGravity:1b,Tags:["immune","SpawnYellow"]}
+summon minecraft:marker 341 15 56 {Rotation:[-90.0f,0.0f],CustomName:"Purple",Invulnerable:1b,NoGravity:1b,Tags:["immune","SpawnPurple"]}
+summon minecraft:marker 397 15 56 {Rotation:[90.0f,0.0f],CustomName:"Yellow",Invulnerable:1b,NoGravity:1b,Tags:["immune","SpawnYellow"]}
 

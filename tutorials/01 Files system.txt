@@ -22,7 +22,7 @@ So, about files system: main datapack is pierogi. Inside:
 
 Hi ! Grenier here, i edited quite a lot the current way things are managed so here the "new" file system : 
 - altars - namespace for functions dealing with altars AND (need to add it) the ones that manage (add) score points
-- battlegrounds - setup maps/arenas that you play on. (Note that names inside dont really match in-game ones) (i'll edit them to match the names)
+- battlegrounds - setup maps/arenas that you play on.
 - buffs - not used, but almost finished buffs system (did not edited it, could try, but not for now)
 - chars - namespace dealing with characters. Chars spells function and everything relating core chars function
 - core - So its a new one, that fuse theses old namespace :
