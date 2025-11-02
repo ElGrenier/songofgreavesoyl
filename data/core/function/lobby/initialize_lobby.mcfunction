@@ -10,14 +10,10 @@ scoreboard players set lobby_mode_sign lobby 1
 scoreboard players set fallen_flag_max_countdown lobby 200
 # Team select mode
 scoreboard players set team_select lobby 0
-scoreboard players set lobby_team_yellow lobby 0
-scoreboard players set lobby_Team_purple lobby 0
-scoreboard players set lobby_team_none lobby 1
-scoreboard players set temp lobby 0
 scoreboard players set wav_mode lobby 0
 scoreboard players set ctf_score lobby 5
 scoreboard players set dm_score lobby 10
-
+scoreboard players set all_random lobby 0
 
 # /scoreboard objectives add ScoreTemp dummy {"text":"ScoreToWin","color":""}
 # Memory & confirmation

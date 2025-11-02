@@ -6,7 +6,7 @@ scoreboard objectives add char dummy
 scoreboard objectives add LobbyTrigger trigger
 scoreboard objectives add memory dummy
 scoreboard objectives add score dummy
-
+scoreboard objectives add temp_score dummy
 
 team add yellow
 team add purple
