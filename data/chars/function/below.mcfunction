@@ -1,5 +1,7 @@
-execute if entity @e[tag=Settings,scores={Map=1}] run tp @a[scores={char=9}] ~ 13 ~
-execute if entity @e[tag=Settings,scores={Map=2}] run tp @a[scores={char=9}] ~ 15 ~
+execute if score map settings matches 1 run tp @a[scores={char=9}] ~ 13 ~
+
+#map 2 don't exist anymore
+#execute if score map settings matches 2 run tp @a[scores={char=9}] ~ 15 ~
 scoreboard players set @a[scores={char=9}] burrowed 0
 scoreboard players set @a[scores={char=9}] passive_craw 0
 scoreboard players set @a[scores={char=9}] burrow_dur 0

@@ -89,10 +89,11 @@ execute if entity @a[scores={char=23}] run function chars:prowlerspells
 
 function chars:projetcile_removal
 
-execute if entity @e[tag=Settings,scores={Map=5}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
-execute if entity @e[tag=Settings,scores={Map=9}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
-execute if entity @e[tag=Settings,scores={Map=15}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
-execute if entity @e[tag=Settings,scores={Map=21}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
+#Why not set it to a map_type 4 for 1v1 map ? #TO DO
+execute if score map settings matches 5 run effect give @a[scores={universal_kill=1..}] regeneration 6 4
+execute if score map settings matches 9 run effect give @a[scores={universal_kill=1..}] regeneration 6 4
+execute if score map settings matches 15 run effect give @a[scores={universal_kill=1..}] regeneration 6 4
+execute if score map settings matches 21 run effect give @a[scores={universal_kill=1..}] regeneration 6 4
 
 scoreboard players set @a[scores={universal_damagetaken=1..}] outofcombat 0
 

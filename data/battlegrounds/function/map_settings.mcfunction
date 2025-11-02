@@ -1,13 +1,15 @@
-# Function to get map_type depending on map. It's stored in Settings(ingame) or lobby
+# Function to get map_type depending on map. It's stored in settings(ingame) or lobby
 #map type range :
-# 0 : None (Shouldn't exist, but just in case there a problem)
+# 0 : None (is set when there are no map)
 # 1 : Altar
-# 2 : Deathmatch (shouldn't this be also an option?)
+# 2 : Deathmatch
 # 3 : CTF
+# 4 : 1v1 (like deathmatch, but with automatic health regain after a kill)
 
 #The all random type is removed, to be an option in game settings instead
 
 # In-game
+execute if score map settings matches 0 run scoreboard players set map_type settings 0
 
 execute if score map settings matches 1 run scoreboard players set map_type settings 1
 

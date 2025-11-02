@@ -1,5 +1,5 @@
 
-function main:clear_chat
+function core:main/clear_chat
 scoreboard players set @s HUNDRED 100
 scoreboard players operation @s WinRate = @s GlobalWins
 scoreboard players operation @s WinRate *= @s HUNDRED

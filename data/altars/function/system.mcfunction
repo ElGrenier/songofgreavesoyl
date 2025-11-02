@@ -6,13 +6,16 @@
 
 # WHY DIDN'T I JUST DO execute as @e[tag=Altars] run ...????
 
-# opis zmiennych:
-# Loading - [-100, 0, 100], określa stan przejmowania. 0 neutralny, -100 żółty, 100 fioletowy
-# Assault - czy altar jest aktualnie przejmowany (1) tak (0) nie
-# Assault2 - czy altar jest aktualnie przejmowany (1) tak (0) nie, OPÓŹNIONE względem Assault dzięki czemu można wygenerować pojedyńczy "sygnał" (powiadomienie o przejmowaniu altara)
-# Typo - aktualny typ ołtarza, (-1) żółty, (0) neutralny, (1) fioletowy
-# Team - zmienna określająca drużyne gracza, bo jestem upośledzony i nie wiedziałem jak używać team=purple
-# SoundProof - zmienna używana do sound_feedback
+# Variable descriptions:
+
+# Loading - [-100, 0, 100]: Defines the altar capture state.
+# 0 = neutral, -100 = yellow team, 100 = purple team.
+# Assault - Indicates whether the altar is currently being captured (1 = yes, 0 = no).
+# Assault2 - Also indicates whether the altar is being captured (1 = yes, 0 = no),
+# but with a slight delay compared to Assault. This delay allows generating a single signal (for example, a notification when the altar starts being captured).
+# Typo - Current altar type: (-1) = yellow, (0) = neutral, (1) = purple.
+# Team - Variable defining the player’s team.
+# SoundProof - Variable used for sound feedback control.
 
 # Przemijanie SoundProof
 execute as @a[scores={SoundProof=1..}] run scoreboard players add @s SoundProof 1
@@ -59,3 +62,10 @@ execute as @e[tag=Altars] at @s if entity @s[scores={Typo=1,Loading=-3..3}] run 
 
 # Zerowanie Assaulta2 - damn namieszalem
 execute as @e[tag=Altars,scores={Assault=0}] at @s run scoreboard players set @s Assault2 0
+
+
+
+
+execute as @e[tag=Altars] at @s if entity @s[scores={Team=1}] run function altars:add_purple_score
+
+execute as @e[tag=Altars] at @s if entity @s[scores={Team=-1}] run function altars:add_yellow_score

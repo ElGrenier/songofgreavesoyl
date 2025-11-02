@@ -1,2 +1,0 @@
-
-kill @e[tag=Memory]

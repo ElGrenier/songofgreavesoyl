@@ -1,24 +1,32 @@
-#summon minecraft:armor_stand 209.43 4.00 -125.52 {Invisible:1b,Invulnerable:1b,PersistenceRequired:1b,NoGravity:1b,Tags:["GameStart"]}
+scoreboard objectives add lobby dummy
 # generic
-scoreboard players set maxLoading lobby 98
-scoreboard players set Score lobby 1000
-scoreboard players set Ticket lobby 0
-scoreboard players set Map lobby 1
-scoreboard players set Bans lobby 0
+scoreboard players set max_loading lobby 98
+scoreboard players set score lobby 1000
+#scoreboard players set Ticket lobby 0
+scoreboard players set map lobby 1
+scoreboard players set bans lobby 0
 scoreboard players set unless_draft lobby 1
-scoreboard players set LobbyModeSign lobby 1
+scoreboard players set lobby_mode_sign lobby 1
 scoreboard players set fallen_flag_max_countdown lobby 200
 # Team select mode
-scoreboard players set TeamSelect lobby 0
-scoreboard players set LobbyTeamYellow lobby 0
-scoreboard players set LobbyTeamPurple lobby 0
-scoreboard players set LobbyTeamNone lobby 1
-scoreboard players set Temp lobby 0
+scoreboard players set team_select lobby 0
+scoreboard players set lobby_team_yellow lobby 0
+scoreboard players set lobby_Team_purple lobby 0
+scoreboard players set lobby_team_none lobby 1
+scoreboard players set temp lobby 0
+scoreboard players set wav_mode lobby 0
+scoreboard players set ctf_score lobby 5
+scoreboard players set dm_score lobby 10
+
+
 # /scoreboard objectives add ScoreTemp dummy {"text":"ScoreToWin","color":""}
 # Memory & confirmation
-scoreboard players set Memorize lobby 0
-scoreboard players set RequireConfirmation lobby 1
-scoreboard players set ConfirmationCounter lobby 0
+scoreboard players set memorize lobby 0
+scoreboard players set require_confirmation lobby 1
+scoreboard players set confirmation_counter lobby 0
+
+
+function core:lobby/map/map_synchronize
 
 # Memory
-function memory:on_spawn_gamestart
+function core:main/memory/on_initialize_lobby

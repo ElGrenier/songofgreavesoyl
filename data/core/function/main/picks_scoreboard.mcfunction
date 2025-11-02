@@ -6,40 +6,39 @@
 
 scoreboard objectives modify Picks numberformat blank
 
-scoreboard players set bans Picks -2
-scoreboard players display name map Picks {text:"-=Bans=-",color:"red",bold:1b}
+#scoreboard players set bans Picks -2
+#scoreboard players display name map Picks {text:"-=Bans=-",color:"red",bold:1b}
 
 
-scoreboard players set map Picks -4
-scoreboard players display name map Picks {text:"-=Map=-",color:"aqua",bold:1b}
+#scoreboard players set map Picks -4
+#scoreboard players display name map Picks {text:"-=Map=-",color:"aqua",bold:1b}
 
 
 # maps
 #
-execute if score map game_start matches 1 run scoreboard players set map_name Picks -5
+execute if score map lobby matches 1 run scoreboard players set map_name Picks -5
 
-execute if score map game_start matches 1 run scoreboard players display name map_name Picks "Old Woods"
-
-execute if score map game_start matches 3 run scoreboard players display name map_name Picks "Court of the Kraken King"
-execute if score map game_start matches 4 run scoreboard players display name map_name Picks "Temple of Warper"
-execute if score map game_start matches 5 run scoreboard players display name map_name Picks "The Laboratory"
-execute if score map game_start matches 6 run scoreboard players display name map_name Picks "Snowguard's Fortress"
-execute if score map game_start matches 7 run scoreboard players display name map_name Picks "Ruins of Poshh'uh"
-execute if score map game_start matches 8 run scoreboard players display name map_name Picks "Black Bridge"
-execute if score map game_start matches 9 run scoreboard players display name map_name Picks "Realm of Death"
-execute if score map game_start matches 10 run scoreboard players display name map_name Picks "Valley of Bones"
-execute if score map game_start matches 11 run scoreboard players display name map_name Picks "Almub Mansion"
-execute if score map game_start matches 12 run scoreboard players display name map_name Picks "Aranite Mines"
-execute if score map game_start matches 13 run scoreboard players display name map_name Picks "Frozen Burrow"
-execute if score map game_start matches 14 run scoreboard players display name map_name Picks "Damned Vault"
-execute if score map game_start matches 15 run scoreboard players display name map_name Picks "Throne of Azathoth"
-execute if score map game_start matches 16 run scoreboard players display name map_name Picks "The Arbiter's Mausoleum"
-execute if score map game_start matches 17 run scoreboard players display name map_name Picks "The Island"
-execute if score map game_start matches 18 run scoreboard players display name map_name Picks "Shady Alleys"
-execute if score map game_start matches 19 run scoreboard players display name map_name Picks "Parasite Chambers"
-execute if score map game_start matches 20 run scoreboard players display name map_name Picks "Lost Halls"
-execute if score map game_start matches 21 run scoreboard players display name map_name Picks "Heart of the Swamp"
-execute if score map game_start matches 22 run scoreboard players display name map_name Picks "Fossiled Tomb"
+execute if score map lobby matches 1 run scoreboard players display name map_name Picks "Old Woods"
+execute if score map lobby matches 3 run scoreboard players display name map_name Picks "Court of the Kraken King"
+execute if score map lobby matches 4 run scoreboard players display name map_name Picks "Temple of Warper"
+execute if score map lobby matches 5 run scoreboard players display name map_name Picks "The Laboratory"
+execute if score map lobby matches 6 run scoreboard players display name map_name Picks "Snowguard's Fortress"
+execute if score map lobby matches 7 run scoreboard players display name map_name Picks "Ruins of Poshh'uh"
+execute if score map lobby matches 8 run scoreboard players display name map_name Picks "Black Bridge"
+execute if score map lobby matches 9 run scoreboard players display name map_name Picks "Realm of Death"
+execute if score map lobby matches 10 run scoreboard players display name map_name Picks "Valley of Bones"
+execute if score map lobby matches 11 run scoreboard players display name map_name Picks "Almub Mansion"
+execute if score map lobby matches 12 run scoreboard players display name map_name Picks "Aranite Mines"
+execute if score map lobby matches 13 run scoreboard players display name map_name Picks "Frozen Burrow"
+execute if score map lobby matches 14 run scoreboard players display name map_name Picks "Damned Vault"
+execute if score map lobby matches 15 run scoreboard players display name map_name Picks "Throne of Azathoth"
+execute if score map lobby matches 16 run scoreboard players display name map_name Picks "The Arbiter's Mausoleum"
+execute if score map lobby matches 17 run scoreboard players display name map_name Picks "The Island"
+execute if score map lobby matches 18 run scoreboard players display name map_name Picks "Shady Alleys"
+execute if score map lobby matches 19 run scoreboard players display name map_name Picks "Parasite Chambers"
+execute if score map lobby matches 20 run scoreboard players display name map_name Picks "Lost Halls"
+execute if score map lobby matches 21 run scoreboard players display name map_name Picks "Heart of the Swamp"
+execute if score map lobby matches 22 run scoreboard players display name map_name Picks "Fossiled Tomb"
 
 
 

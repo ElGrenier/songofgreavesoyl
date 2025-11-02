@@ -1,5 +1,5 @@
 # @s - respawning player, status stored in Loading
-# @e[limit=1, tag=Settings] - entity with game settings, stores number of ticks for respawn in maxLoading variable
+
 # Loading goes from maximum (for example 100) to 1 (at 1 respawn happens)
 
 scoreboard players operation @s tmp_respawn_time_left = @s Loading

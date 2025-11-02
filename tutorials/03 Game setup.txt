@@ -1,10 +1,38 @@
 Setup of the game is divided in two phases:
-- Lobby phase - all settings are saved in scoreboard named game_start
+- Lobby phase - all settings are saved in scoreboard named lobby
 - InGame phase - all settings are stored in scoreboard named settings
 
 Process of game setup include:
 - (Lobby Phase) Setting Score var in GameStart vessel - it is maximum amount of points you need to gather
 - (Lobby Phase) Setting Map var in GameStart ves. - number of map to be played???
 - (Lobby Phase, end of) Initiation of Stats for all player and teleport to 198.60 35.00 -130.52
-- (Ingame phase) Initiate_game and game_start. Those function manage with most systems' setups, and copy values from GameStart to Settings.
+- (Ingame phase) Initiate_game and game_start. Those function manage with most systems' setups, and copy values from lobby to settings.
 -
+
+
+variable name and effect :
+- max_loading - number of ticks it takes for a player to respawn
+- tmp_respawn_time_left - number of seconds (calculated from max_loading) for a player to respawn
+- game_state - (added by me) : Show the "current state" of the game :
+    - 1 : Player has been teleported in the selection room the settings has not been initialized
+    - 2 : settings has been initialized, we initiliaze the battleground the bossbar, and the player is being tp-ed in the selection room
+    - 3 : We check if the team_select mode is on/off, if True, we tp the player to the team select zone (and wait for everyone to have choosen), if False, we skip to 4
+    - 4 : We tp the player to the char selection zone
+    - 5 : The player can choose their chars, we only switch to game_state 5 if there is NO player not having "in_a_team" tag and having "in_game"
+    - 6 : The player spawn after a 3s wait
+    - 7 : The game has been fully initialized, now we "wait" for a winner
+    - 8 : We got a winner, we reset
+Important coordinates : 
+
+288.5 29.00 -107.5 --- Team select waiting room (or some sort?) 
+
+287 15.00 -126 --- waiting room coordinates
+
+Important !
+I edited how "leaver" are considered : 
+Now, when someones quit during game start, they are able to rejoin ONLY if the game has not be started, if it is, they are now considered as an "outsider"
+
+Here is how i understand how is showed score : 
+There is two scoreboard : ScoreDisplay and Score
+Score is set to max value from the start of the game, and decrease to zero (i guess if its equal to 0 its win ?)
+ScoreDisplay on other hand is on reverse

@@ -21,7 +21,7 @@ So, about files system: main datapack is pierogi. Inside:
 
 
 Hi ! Grenier here, i edited quite a lot the current way things are managed so here the "new" file system : 
-- altars - namespace for functions dealing with altars AND (need to add it) the ones that manage (add) score points
+- altars - namespace for functions dealing with altars AND the ones that (add) score points
 - battlegrounds - setup maps/arenas that you play on.
 - buffs - not used, but almost finished buffs system (did not edited it, could try, but not for now)
 - chars - namespace dealing with characters. Chars spells function and everything relating core chars function
@@ -36,8 +36,3 @@ Hi ! Grenier here, i edited quite a lot the current way things are managed so he
           - main - The main function of the map, it is still sorted out in different subfolder (i.e "random" which contain all randomization related function)
           - lobby - All the lobby part map
           - score - All the score system, WITH scoredisplay_api fused in it
-
-
-What i plan to change in term of code sort : 
-
-Move the summon command of important point (like summonning respawn point, flag point) in its own folder (so its findable easily)

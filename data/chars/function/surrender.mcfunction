@@ -36,6 +36,6 @@ execute if entity @a[scores={surrender=4},team=purple] unless entity @a[scores={
 
 tellraw @a[scores={surrender=12}] [{text:"=============================\n\n",color:"dark_blue",type:"text"},{text:"No enemy players detected. The game will be cancelled now.",color:"aqua",type:"text"},{text:"\n\n=============================",color:"dark_blue",type:"text"}]
 
-execute if entity @a[scores={surrender=65}] run function main:reset
+execute if entity @a[scores={surrender=65}] run function reset:reset
 scoreboard players add @a[scores={surrender=10..70}] surrender 1
 scoreboard players set @a[scores={surrender=90..}] surrender 0

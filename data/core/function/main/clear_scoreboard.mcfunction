@@ -1,5 +1,5 @@
-#scoreboard objectives remove inp_Min
-#scoreboard objectives remove inp_Max
+scoreboard objectives remove inp_Min
+scoreboard objectives remove inp_Max
 
 scoreboard objectives remove spell_aber_1
 scoreboard objectives remove spell_aber_1_1
@@ -372,6 +372,95 @@ scoreboard objectives remove char_wins_27
 scoreboard objectives remove char_wins_28
 scoreboard objectives remove char_wins_29
 scoreboard objectives remove char_wins_30
+
+
+team remove picks_almubmansion
+team remove picks_aranitemines
+team remove picks_bomb
+team remove picks_chaos
+team remove picks_courtofthekrakenking
+team remove picks_crawler
+team remove picks_damnedvault
+team remove picks_dragon
+team remove picks_drowned
+team remove picks_fossiledtomb
+team remove picks_frozenburrow
+team remove picks_heartofswamp
+team remove picks_iceworm
+team remove picks_losthalls
+team remove picks_lunatic
+team remove picks_mazemaster
+team remove picks_molten
+team remove picks_oldwoods
+team remove picks_paladin
+team remove picks_parasite
+team remove picks_parasitechambers
+team remove picks_raider
+team remove picks_redmold
+team remove picks_realmofdeath
+team remove picks_ruinsofposhhuh
+team remove picks_sandwitch
+team remove picks_scarletlady
+team remove picks_shadyalleys
+team remove picks_showguardsfortress
+team remove picks_skeleton
+team remove picks_skyqueen
+team remove picks_slime
+team remove picks_smokebride
+team remove picks_starfather
+team remove picks_stitchedsiren
+team remove picks_templeofwarper
+team remove picks_thearbitersmausoleum
+team remove picks_theisland
+team remove picks_thelaboratory
+team remove picks_thornfiend
+team remove picks_throneofazathoth
+team remove picks_treespirit
+team remove picks_valleyofbones
+
+
+scoreboard objectives remove Deathmatch
+scoreboard objectives remove CTF
+scoreboard objectives remove Map
+scoreboard objectives remove TeamSelect
+scoreboard objectives remove TeamSelect
+scoreboard objectives remove LobbyModeSign
+scoreboard objectives remove RequireConfirmation
+scoreboard objectives remove ConfirmationCounter
+scoreboard objectives remove AllRandom
+scoreboard objectives remove maxLoading
+scoreboard objectives remove fallen_flag_max_countdown
+scoreboard objectives remove Memorize
+scoreboard objectives remove Score
+scoreboard objectives remove Ticket
+scoreboard objectives remove Bans
+scoreboard objectives remove unless_draft
+scoreboard objectives remove TeamSelect
+scoreboard objectives remove LobbyTeamYellow
+scoreboard objectives remove LobbyTeamPurple
+scoreboard objectives remove LobbyTeamNone
+scoreboard objectives remove Temp
+scoreboard objectives remove memDmScore
+scoreboard objectives remove memFallenFlagCountdown
+scoreboard objectives remove memMap
+scoreboard objectives remove memMaxLoading
+scoreboard objectives remove memRequireConfirmation
+scoreboard objectives remove memTeamSelect
+scoreboard objectives remove memUnlessDraft
+scoreboard objectives remove numWavMarker
+scoreboard objectives remove ctfScoreDisplay
+scoreboard objectives remove score_purple
+scoreboard objectives remove score_yellow
+scoreboard objectives remove score_display
+scoreboard objectives remove ScoreDisplay
+scoreboard objectives remove dmScoreDisplay
+scoreboard objectives remove dmTemp
+scoreboard objectives remove CharSelectPhase
+scoreboard objectives remove Deathmatch_Kills
+scoreboard objectives remove Time
+scoreboard objectives remove Outsider
+scoreboard objectives remove Temp2
+
 
 
 tellraw @a "Cleared All unused/useless scoreboard objectives"
