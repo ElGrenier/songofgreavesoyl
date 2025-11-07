@@ -5,7 +5,6 @@
 scoreboard players operation score memory = score lobby
 scoreboard players operation map memory = map lobby
 scoreboard players operation dm_score memory = dm_score lobby
-scoreboard players operation unless_draft memory = unless_draft lobby
 scoreboard players operation team_select memory = team_select lobby
 scoreboard players operation max_loading memory = max_loading lobby
 scoreboard players operation fallen_flag_max_countdown memory = fallen_flag_max_countdown lobby

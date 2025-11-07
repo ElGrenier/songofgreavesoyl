@@ -6,7 +6,6 @@ scoreboard players set map settings 0
 
 scoreboard players operation map settings = map lobby
 scoreboard players operation map_type settings = map_type lobby
-scoreboard players operation unless_draft settings = unless_draft lobby
 scoreboard players operation team_select settings = team_select lobby
 scoreboard players operation max_loading settings = max_loading lobby
 scoreboard players operation fallen_flag_max_countdown settings = fallen_flag_max_countdown lobby

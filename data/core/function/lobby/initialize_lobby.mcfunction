@@ -5,7 +5,6 @@ scoreboard players set score lobby 1000
 #scoreboard players set Ticket lobby 0
 scoreboard players set map lobby 1
 scoreboard players set bans lobby 0
-scoreboard players set unless_draft lobby 1
 scoreboard players set lobby_mode_sign lobby 1
 scoreboard players set fallen_flag_max_countdown lobby 200
 # Team select mode
