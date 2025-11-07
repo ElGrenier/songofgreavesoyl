@@ -27,8 +27,8 @@ execute if score game_state settings matches 1 run function core:main/game/initi
 execute if score game_state settings matches 2 run function battlegrounds:map_settings
 execute if score game_state settings matches 2 run scoreboard players set @a[tag=in_game] Loading -1
 
-# execute if score game_state settings matches 2 run execute store result bossbar minecraft:purple max run scoreboard players get score_max settings
-# execute if score game_state settings matches 2 run execute store result bossbar minecraft:yellow max run scoreboard players get score_max settings
+execute if score game_state settings matches 2 run execute store result bossbar minecraft:purple max run scoreboard players get score_max settings
+execute if score game_state settings matches 2 run execute store result bossbar minecraft:yellow max run scoreboard players get score_max settings
 #execute unless entity @e[tag=PracticeCharPick] unless entity @e[tag=PracticeRoom] run kill @e[tag=lobby]
 
 execute if score game_state settings matches 2 run team join yellow Yellow
@@ -39,61 +39,60 @@ execute if score game_state settings matches 2 run scoreboard players set game_s
 
 
 # if its "team_select 0" (automatic/casual mode) we skip and the player are selected randomly on state 4 
-execute if score game_state settings matches 3 if score team_select lobby matches 0 run scoreboard players set game_state settings 4
+execute if score game_state settings matches 3 if score team_select lobby matches 0 run scoreboard players set game_state settings 5
 
 # If its "team_select 1" (tournament mode) we tp the player to the "selection room" 
 execute if score game_state settings matches 3 if score team_select lobby matches 1 run tp @a[tag=in_game] 288.5 15.00 -107.5
-execute if score game_state settings matches 3 if score team_select lobby matches 1 unless entity @a[tag=!in_a_team,tag=in_game] run scoreboard players set game_state settings 4
+execute if score game_state settings matches 3 if score team_select lobby matches 1 run scoreboard players set game_state settings 4
+
+execute if score game_state settings matches 4 positioned 294 15 -107 as @a[distance=..2] run function core:lobby/choose_yellow
+execute if score game_state settings matches 4 positioned 282 15 -107 as @a[distance=..2] run function core:lobby/choose_purple
+
+execute if score game_state settings matches 4 if score team_select lobby matches 1 unless entity @a[tag=!in_a_team,tag=in_game] run scoreboard players set game_state settings 5
 
 
 
-execute if score game_state settings matches 4 run tp @a[tag=in_game] 198.60 35.00 -130.52
-execute if score game_state settings matches 2..4 if score all_random lobby matches 0 as @a[scores={char=0},tag=in_game] run scoreboard players set @s ClassPickTrigger 8
+execute if score game_state settings matches 5 run tp @a[tag=in_game] 198.60 35.00 -130.52
+execute if score game_state settings matches 5 if score all_random lobby matches 0 as @a[scores={char=0},tag=in_game] run scoreboard players set @s ClassPickTrigger 8
+execute if score game_state settings matches 5 run scoreboard players set game_state settings 6
 
-execute if score game_state settings matches 4 run scoreboard players set game_state settings 5
+execute if score game_state settings matches 6 as @r[tag=!in_a_team,tag=in_game] run function core:main/game/join_purple
+execute if score game_state settings matches 6 as @r[tag=!in_a_team,tag=in_game] run function core:main/game/join_yellow
 
+execute if score game_state settings matches 6 if score all_random lobby matches 0 as @a[scores={char=0},tag=in_game] run function chars:char_select
 
-execute if score game_state settings matches 5 run team join yellow @r[tag=!in_a_team,tag=in_game]
-execute if score game_state settings matches 5 run team join purple @r[tag=!in_a_team,tag=in_game]
+execute if score game_state settings matches 6 if score all_random lobby matches 1 as @a[scores={char=0},sort=random,tag=in_game] at @s run function core:main/random/random_generate_char
 
-
-execute if score game_state settings matches 5 run tag @a[team=yellow] add in_a_team
-execute if score game_state settings matches 5 run tag @a[team=purple] add in_a_team
-
-
-execute if score game_state settings matches 5 if score all_random lobby matches 0 as @a[scores={char=0},tag=in_game] run function chars:char_select
-
-execute if score game_state settings matches 5 if score all_random lobby matches 1 as @a[scores={char=0},sort=random,tag=in_game] at @s run function core:main/random/random_generate_char
-
-execute if score game_state settings matches 5 run tp @a[scores={char=1..},tag=!waiting_room,tag=in_game] 287.50 15.00 -126.5
-execute if score game_state settings matches 5 unless entity @a[tag=!in_a_team,tag=in_game] unless entity @a[scores={char=0},tag=in_game] run scoreboard players set game_state settings 6
+execute if score game_state settings matches 6 run tp @a[scores={char=1..},tag=!waiting_room,tag=in_game] 287.50 15.00 -126.5
+execute if score game_state settings matches 6 unless entity @a[tag=!in_a_team,tag=in_game] unless entity @a[scores={char=0},tag=in_game] run scoreboard players set game_state settings 7
 
 
 #Set respawn to the respawn 
-execute if score game_state settings matches 6 run spawnpoint @a[tag=in_game] 207 34 -131
+execute if score game_state settings matches 7 run spawnpoint @a[tag=in_game] 207 34 -131
 
-execute if score game_state settings matches 6 run function core:main/game/start_game_spawn
-execute if score game_state settings matches 6 run scoreboard players set purple score 0
-execute if score game_state settings matches 6 run scoreboard players set yellow score 0
+execute if score game_state settings matches 7 run function battlegrounds:setup
+execute if score game_state settings matches 7 run function core:main/game/start_game_spawn
+execute if score game_state settings matches 7 run scoreboard players set purple score 0
+execute if score game_state settings matches 7 run scoreboard players set yellow score 0
 
-execute if score game_state settings matches 7 run function chars:all
-execute if score game_state settings matches 7 run scoreboard players set game_state settings 8
+execute if score game_state settings matches 8 run function chars:all
+execute if score game_state settings matches 8 run scoreboard players set game_state settings 9
 
-execute if score game_state settings matches 8 run function core:score/manage_score
+execute if score game_state settings matches 9 run function core:score/manage_score
 
 
 #Game Win management
-execute if score game_state settings matches 9 run scoreboard players add loading settings 1
-execute if score game_state settings matches 9 if score loading settings matches 160.. run function reset:reset
+execute if score game_state settings matches 10 run scoreboard players add loading settings 1
+execute if score game_state settings matches 10 if score loading settings matches 160.. run function reset:reset
 
-execute if score game_state settings matches 9 if score purple score >= score_max settings run scoreboard players operation purple score = score_max settings
-execute if score game_state settings matches 9 if score yellow score >= score_max settings run scoreboard players operation yellow score = score_max settings
+execute if score game_state settings matches 10 if score purple score >= score_max settings run scoreboard players operation purple score = score_max settings
+execute if score game_state settings matches 10 if score yellow score >= score_max settings run scoreboard players operation yellow score = score_max settings
 
 #Anti "leaving" prevention
-execute if score game_state settings matches 5 as @a if entity @s[scores={JustLeft=1},tag=in_game] run trigger ClassPickTrigger set 8
-execute if score game_state settings matches 6.. as @a if entity @s[scores={JustLeft=1,char=0},tag=in_game] run tag @s remove in_a_team
-execute if score game_state settings matches 6.. as @a if entity @s[scores={JustLeft=1,char=0},tag=in_game] run team leave @s
-execute if score game_state settings matches 6.. as @a if entity @s[scores={JustLeft=1,char=0},tag=in_game] run tag @s remove in_game
+execute if score game_state settings matches 6 as @a if entity @s[scores={JustLeft=1},tag=in_game] run trigger ClassPickTrigger set 8
+execute if score game_state settings matches 7.. as @a if entity @s[scores={JustLeft=1,char=0},tag=in_game] run tag @s remove in_a_team
+execute if score game_state settings matches 7.. as @a if entity @s[scores={JustLeft=1,char=0},tag=in_game] run team leave @s
+execute if score game_state settings matches 7.. as @a if entity @s[scores={JustLeft=1,char=0},tag=in_game] run tag @s remove in_game
 
 execute as @a if score @s JustLeft matches 1 run scoreboard players set @s JustLeft 0
 
