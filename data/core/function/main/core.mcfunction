@@ -22,6 +22,8 @@ function chars:team_wool
 
 function chars:surrender
 
+
+
 execute as @a run function core:main/hp_display
 
 execute as @a[tag=!welcomemessage] run function core:lobby/welcome_message
@@ -58,6 +60,8 @@ function core:score/visibility
 #Why was there a ticket things ?
 
 execute if entity @a[tag=in_game] as @a[tag=!in_game] run function core:main/game/spawn_outsider
+
+execute positioned 220 34 -130 run function core:main/spawn_new_player
 
 #lobby rzeczy
 
