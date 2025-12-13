@@ -14,10 +14,10 @@ kill @e[tag=char_displays]
 #function chars:char_display_stands
 
 scoreboard objectives setdisplay sidebar Picks
-team join yellow -=Yellow=-
-team join purple -=Purple=-
-scoreboard players set -=Purple=- Picks 2
-scoreboard players set -=Yellow=- Picks 0
+team join yellow =Yellow=
+team join purple =Purple=
+scoreboard players set =Purple= Picks 2
+scoreboard players set =Yellow= Picks 0
 scoreboard players set confirmation_counter lobby 0
 
 # scoreboard players enable @a ClassPickTrigger

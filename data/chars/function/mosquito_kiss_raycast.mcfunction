@@ -1,7 +1,6 @@
-particle minecraft:dust{color:[1.0,0.0,0.0],scale:1.0f} ~ ~1 ~ 0.2 0.2 0.2 0.01 3 normal
+particle dust{color:[1.0,0.0,0.0],scale:1.0f} ~ ~ ~ 0.2 0.2 0.2 0.01 1 force
+particle entity_effect{color:[1.0,0.0,0.0,1.0]} ~ ~ ~ 0.1 0.1 0.1 0.01 1 force
 
-execute if entity @a[scores={char=64},team=yellow] run tag @a[distance=..1.5,team=purple] add mosquito_bite
-execute if entity @a[scores={char=64},team=purple] run tag @a[distance=..1.5,team=yellow] add mosquito_bite
+execute positioned ~-.5 ~-.5 ~-.5 as @p[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=64}] Team run tag @s add mosquito_bite
 
-
-execute unless entity @a[tag=mosquito_bite] positioned ^ ^ ^1 if entity @s[distance=..20] run function chars:mosquito_kiss_raycast
+execute unless entity @a[tag=mosquito_bite] positioned ^ ^ ^0.5 if entity @s[distance=..20] run function chars:mosquito_kiss_raycast

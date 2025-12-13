@@ -1,188 +1,226 @@
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:end_rod"}}]
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:heart_of_the_sea"}}]
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:prismarine_crystals"}}]
 
-#electrocute
+scoreboard players set @e[tag=!operator_brainrot_initiated] CC_mindrot 0
+tag @e add operator_brainrot_initiated
 
-scoreboard players set @a[scores={char=28,spell_oper_1_1=1,CC_silence=1..}] spellCD0 20
-scoreboard players set @a[scores={char=28,spell_oper_1_1=1,CC_silence=1..}] spell_oper_1_1 40
+scoreboard players set @a[scores={char=28}] CC_disarm 0
 
-scoreboard players set @a[scores={char=28,spell_oper_1_1=1..20,CC_silence=1..}] spellCD0 40
-scoreboard players set @a[scores={char=28,spell_oper_1_1=1..20,CC_silence=1..}] spell_oper_1_1 21
+#overload
 
-effect give @a[scores={char=28,spell_oper_1_1=1..2,CC_silence=0}] minecraft:slowness 1 2 true
-attribute @p[scores={char=28,spell_oper_1_1=1..2,CC_silence=0}] minecraft:jump_strength base set 0
-execute at @a[scores={char=28,spell_oper_1_1=1..20,CC_silence=0}] run particle minecraft:enchanted_hit ~ ~0.5 ~ 0.4 1 0.4 1 20 normal
-execute at @a[scores={char=28,spell_oper_1_1=1,CC_silence=0}] run playsound minecraft:block.beacon.activate master @a[distance=..10] ~ ~ ~ 1 2 1
-execute at @a[scores={char=28,spell_oper_1_1=20,CC_silence=0}] run playsound minecraft:entity.zombie_villager.cure master @a[distance=..15] ~ ~ ~ 1 2 1
-execute at @a[scores={char=28,spell_oper_1_1=20,CC_silence=0}] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["electrocute"],NoGravity:0b}
-tp @e[tag=electrocute,limit=1] @a[scores={char=28,spell_oper_1_1=20},limit=1]
-attribute @p[scores={char=28,spell_oper_1_1=20}] minecraft:jump_strength base set 0.41
+scoreboard players set @a[scores={char=28,s0_timer=1,CC_silence=1..}] spellCD0 20
+scoreboard players set @a[scores={char=28,s0_timer=1,CC_silence=1..}] s0_timer 40
 
+scoreboard players set @a[scores={char=28,s0_timer=1..20,CC_silence=1..}] spellCD0 21
+scoreboard players set @a[scores={char=28,s0_timer=1..20,CC_silence=1..}] s0_timer 21
 
-execute at @e[tag=electrocute] run particle minecraft:enchanted_hit ~ ~1.4 ~ 0.1 0.1 0.1 0.0001 20 normal
-execute at @e[tag=electrocute] run particle minecraft:enchanted_hit ^ ^1.4 ^-1 0.1 0.1 0.1 0.001 20 normal
-execute at @e[tag=electrocute] run particle minecraft:enchanted_hit ^ ^1.4 ^-2 0.1 0.1 0.1 0.001 20 normal
-execute as @e[tag=electrocute] at @s run tp @s ^ ^ ^1
-execute at @a[scores={char=28,spell_oper_1_1=50..}] run kill @e[tag=electrocute]
+effect give @a[scores={char=28,s0_timer=1..2,CC_silence=0}] slowness 1 2 true
+attribute @p[scores={char=28,s0_timer=1..2,CC_silence=0}] jump_strength base set 0
+#execute at @a[scores={char=28,s0_timer=1..20,CC_silence=0}] run particle enchanted_hit ~ ~0.5 ~ 0.4 1 0.4 1 20 normal
+execute at @a[scores={char=28,s0_timer=1,CC_silence=0}] run playsound block.beacon.activate master @a[distance=..10] ~ ~ ~ 1 2 1
 
+execute at @a[scores={char=28,s0_timer=20,CC_silence=0}] run playsound block.beacon.power_select master @a[distance=..15] ~ ~ ~ 1 2 1
+execute at @a[scores={char=28,s0_timer=20,CC_silence=0}] run playsound entity.zombie_villager.cure master @a[distance=..15] ~ ~ ~ 0.5 2 1
+execute as @a[scores={char=28,s0_timer=20,CC_silence=0}] at @s positioned ~ ~1.7 ~ run function chars:operator_overload
+execute as @a[scores={char=28,s0_timer=20,CC_silence=0}] at @s positioned ~ ~1.7 ~ run function chars:operator_overload_circles
+execute at @a[scores={char=28,s0_timer=21,CC_silence=0}] run kill @e[tag=overload_vis_core]
+attribute @p[scores={char=28,s0_timer=20..22}] jump_strength base set 0.41
 
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=electrocute] run scoreboard players set @e[distance=..1.5,tag=necrominion,team=purple] MinionDamage 1
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=electrocute] run scoreboard players set @e[distance=..1.5,tag=turret,team=purple] MinionDamage 1
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=electrocute] run scoreboard players set @e[distance=..1.5,tag=swarmerboi,team=purple] MinionDamage 1
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=electrocute] run scoreboard players set @e[distance=..1.5,tag=MoldHost,team=purple] MinionDamage 1
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=electrocute] run scoreboard players set @e[distance=..1.5,tag=MoldStructure,team=purple] MinionDamage 1
+scoreboard players set @a[tag=overloaded,scores={CC_mindrot=1..}] CC_mindrot 100
+execute as @e[tag=overloaded,scores={CC_mindrot=0}] as @s run damage @s 4 generic by @p[scores={char=28}]
+execute as @e[tag=overloaded,scores={CC_mindrot=1..}] as @s run damage @s 6 generic by @p[scores={char=28}]
+tag @e remove overloaded
 
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=electrocute] run damage @p[distance=..1.5,team=purple] 6 generic by @p[scores={char=28}] from @p[scores={char=28}]
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=electrocute] run effect give @p[distance=..1.5,scores={CC_mindrot=1..},team=purple] minecraft:poison 2 4 true
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=electrocute] run scoreboard players set @p[distance=..1.5,scores={CC_mindrot=1..}] CC_mindrot 0
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=electrocute] if entity @a[distance=..1.5,team=purple] run kill @e[tag=electrocute]
+execute at @a[scores={char=28,s0_timer=1..20,CC_silence=0}] unless entity @e[tag=overload_vis_core] run summon marker ~ ~ ~ {Tags:["overload_vis_core","entities_operator"]}
+execute at @a[scores={char=28,s0_timer=1..20,CC_silence=0}] run tp @e[tag=overload_vis_core] ~ ~1 ~
+execute as @e[tag=overload_vis_core] at @s run tp @s ~ ~ ~ ~11 ~
 
-execute if entity @a[scores={char=28},team=purple] at @e[tag=electrocute] run scoreboard players set @e[distance=..1.5,tag=necrominion,team=yellow] MinionDamage 1
-execute if entity @a[scores={char=28},team=purple] at @e[tag=electrocute] run scoreboard players set @e[distance=..1.5,tag=turret,team=yellow] MinionDamage 1
-execute if entity @a[scores={char=28},team=purple] at @e[tag=electrocute] run scoreboard players set @e[distance=..1.5,tag=swarmerboi,team=yellow] MinionDamage 1
-execute if entity @a[scores={char=28},team=purple] at @e[tag=electrocute] run scoreboard players set @e[distance=..1.5,tag=MoldHost,team=yellow] MinionDamage 1
-execute if entity @a[scores={char=28},team=purple] at @e[tag=electrocute] run scoreboard players set @e[distance=..1.5,tag=MoldStructure,team=yellow] MinionDamage 1
-
-execute if entity @a[scores={char=28},team=purple] at @e[tag=electrocute] run damage @p[distance=..1.5,team=yellow] 6 generic by @p[scores={char=28}] from @p[scores={char=28}]
-execute if entity @a[scores={char=28},team=purple] at @e[tag=electrocute] run effect give @p[distance=..1.5,scores={CC_mindrot=1..},team=yellow] minecraft:poison 2 4 true
-execute if entity @a[scores={char=28},team=purple] at @e[tag=electrocute] run scoreboard players set @p[distance=..1.5,scores={CC_mindrot=1..}] CC_mindrot 0
-execute if entity @a[scores={char=28},team=purple] at @e[tag=electrocute] if entity @a[distance=..1.5,team=yellow] run kill @e[tag=electrocute]
-
-
-
-scoreboard players add @e[scores={MinionDamage=1..}] MinionDamage 1
-
-effect give @e[type=minecraft:wither_skeleton,scores={MinionDamage=3}] minecraft:instant_health 1 1 true
-effect give @e[type=minecraft:husk,scores={MinionDamage=3}] minecraft:instant_health 1 1 true
-effect give @e[type=minecraft:zombie,scores={MinionDamage=3}] minecraft:instant_health 1 1 true
-effect give @e[type=minecraft:skeleton,scores={MinionDamage=3}] minecraft:instant_health 1 0 true
-effect give @e[type=minecraft:spider,scores={MinionDamage=3}] minecraft:instant_damage 1 0 true
-
-scoreboard players set @e[scores={MinionDamage=30..}] MinionDamage 0
-
-#form of knowledge
-
-scoreboard players set @a[scores={char=28,spell_oper_2_1=1,CC_silence=1..}] spellCD1 20
-scoreboard players set @a[scores={char=28,spell_oper_2_1=1,CC_silence=1..}] spell_oper_2_1 280
-
-execute at @a[scores={char=28,spell_oper_2_1=1,CC_silence=0}] run playsound minecraft:block.beacon.power_select master @a[distance=..15] ~ ~ ~ 1 2 1
-execute at @a[scores={char=28,spell_oper_2_1=1,CC_silence=0}] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Pose:{Head:[180.0f,0.0f,0.0f]},Invisible:1b,Tags:["knowledge"],NoGravity:0b,equipment:{head:{id:"minecraft:light_blue_stained_glass",count:1}}}
-tp @e[tag=knowledge,limit=1] @a[scores={char=28,spell_oper_2_1=1},limit=1]
-
-execute as @e[tag=knowledge] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
-
-execute at @e[tag=knowledge] run particle minecraft:enchanted_hit ~ ~1.3 ~ 0.8 0.8 0.8 0.01 10 normal
-execute at @e[tag=knowledge] run particle minecraft:block{block_state:{Name:"minecraft:diamond_block"}} ~ ~1.1 ~ 0.2 0.2 0.2 0.01 15 normal
-execute at @a[scores={char=28,spell_oper_2_1=1..20}] as @e[tag=knowledge] at @s run tp @s ^ ^ ^0.2
-execute at @a[scores={char=28,spell_oper_2_1=20..100}] as @e[tag=knowledge] at @s run tp @s ^ ^ ^0.1
-#execute as @e[tag=knowledge] at @s run tp @s ^ ^ ^0.2
-execute if entity @a[scores={char=28,spell_oper_2_1=30}] at @e[tag=knowledge] run playsound minecraft:block.beacon.deactivate master @a[distance=..20] ~ ~ ~ 1 2 1
-execute if entity @a[scores={char=28,spell_oper_2_1=30}] at @e[tag=knowledge] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["knowledgeshoot"],NoGravity:0b}
-execute if entity @a[scores={char=28,spell_oper_2_1=50}] at @e[tag=knowledge] run playsound minecraft:block.beacon.deactivate master @a[distance=..20] ~ ~ ~ 1 2 1
-execute if entity @a[scores={char=28,spell_oper_2_1=50}] at @e[tag=knowledge] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["knowledgeshoot"],NoGravity:0b}
-execute if entity @a[scores={char=28,spell_oper_2_1=70}] at @e[tag=knowledge] run playsound minecraft:block.beacon.deactivate master @a[distance=..20] ~ ~ ~ 1 2 1
-execute if entity @a[scores={char=28,spell_oper_2_1=70}] at @e[tag=knowledge] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["knowledgeshoot"],NoGravity:0b}
+execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^1.2 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^1 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^0.8 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^0.6 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^0.2 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-1.2 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-1 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-0.8 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-0.6 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-0.4 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-1.1 ^ ^ 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-1 ^ ^ 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-0.8 ^ ^ 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-0.6 ^ ^ 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-0.4 ^ ^ 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^1.2 ^ ^ 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^1 ^ ^ 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^0.8 ^ ^ 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^0.6 ^ ^ 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^0.4 ^ ^ 0 0 0 0 5 force 
 
 
-execute at @a[scores={char=28,spell_oper_2_1=120..}] run kill @e[tag=knowledge]
 
-execute at @e[tag=knowledgeshoot] run particle minecraft:block{block_state:{Name:"minecraft:diamond_block"}} ~ ~1.3 ~ 0.2 0.2 0.2 0.01 40 normal
+#anguish given form
 
-execute if entity @a[scores={char=28},team=yellow] as @e[tag=knowledgeshoot,scores={knowledgelife=1..2}] at @s run tp @s ~ ~ ~ facing entity @p[team=purple]
-execute if entity @a[scores={char=28},team=purple] as @e[tag=knowledgeshoot,scores={knowledgelife=1..2}] at @s run tp @s ~ ~ ~ facing entity @p[team=yellow]
-execute as @e[tag=knowledgeshoot] at @s run tp @s ^ ^ ^0.7
-scoreboard players add @e[tag=knowledgeshoot] knowledgelife 1
-kill @e[tag=knowledgeshoot,scores={knowledgelife=15..}]
+execute at @a[scores={char=28}] as @e[tag=valid_spell_target] unless score @s Team = @p[scores={char=28}] Team run tag @s add operator_valid_anguish_target
+execute at @a[scores={char=28}] as @e[tag=valid_spell_target] if score @s Team = @p[scores={char=28}] Team run tag @s remove operator_valid_anguish_target
 
-
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=knowledgeshoot] run damage @p[distance=..2,team=purple] 6 generic by @p[scores={char=28}] from @p[scores={char=28}]
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=knowledgeshoot] run effect give @p[distance=..2,scores={CC_mindrot=1..},team=purple] minecraft:poison 2 4 true
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=knowledgeshoot] run scoreboard players set @p[distance=..2,scores={CC_mindrot=1..}] CC_mindrot 0
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=knowledgeshoot] if entity @a[distance=..2,team=purple] run kill @e[tag=knowledgeshoot]
+scoreboard players set @a[scores={char=28,s1_timer=1,CC_silence=1..}] spellCD1 20
+scoreboard players set @a[scores={char=28,s1_timer=1,CC_silence=1..}] s1_timer 280
 
 
-execute if entity @a[scores={char=28},team=purple] at @e[tag=knowledgeshoot] run damage @p[distance=..2,team=yellow] 6 generic by @p[scores={char=28}] from @p[scores={char=28}]
-execute if entity @a[scores={char=28},team=purple] at @e[tag=knowledgeshoot] run effect give @p[distance=..2,scores={CC_mindrot=1..},team=yellow] minecraft:poison 2 4 true
-execute if entity @a[scores={char=28},team=purple] at @e[tag=knowledgeshoot] run scoreboard players set @p[distance=..2,scores={CC_mindrot=1..}] CC_mindrot 0
-execute if entity @a[scores={char=28},team=purple] at @e[tag=knowledgeshoot] if entity @a[distance=..2,team=yellow] run kill @e[tag=knowledgeshoot]
+execute at @a[scores={char=28,s1_timer=1,CC_silence=0}] run playsound block.beacon.power_select master @a[distance=..15] ~ ~ ~ 1 2 1
+execute at @a[scores={char=28,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["anguish_sphere_main","anguish_sphere_things","projectile","entities_operator"]}
+scoreboard players operation @e[tag=projectile,tag=anguish_sphere_main] Team = @p[scores={char=28}] Team
+tp @e[tag=anguish_sphere_main,limit=1] @a[scores={char=28,s1_timer=1},limit=1]
+execute at @a[scores={char=28,s1_timer=1,CC_silence=0}] as @e[tag=anguish_sphere_main,limit=1] at @s run tp @s ~ ~1.2 ~ 
+
+execute as @e[tag=anguish_sphere_main] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
+
+execute at @e[tag=anguish_sphere_main] unless entity @e[tag=anguish_sphere_glass] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,-0.4f,-0.4f],scale:[0.8f,0.8f,0.8f]},block_state:{Name:"minecraft:blue_stained_glass"},Tags:["anguish_sphere_glass","anguish_sphere_things","entities_operator"]}
+execute at @e[tag=anguish_sphere_main] unless entity @e[tag=anguish_sphere_soulsand] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,-0.3f,-0.3f],scale:[0.6f,0.6f,0.6f]},block_state:{Name:"minecraft:soul_sand"},Tags:["anguish_sphere_soulsand","anguish_sphere_things","entities_operator"]}
+execute at @e[tag=anguish_sphere_main] run playsound entity.ghast.ambient master @a[distance=..10] ~ ~ ~ 0.1 1 1
+execute at @e[tag=anguish_sphere_main] run tp @e[tag=anguish_sphere_glass] ~ ~ ~
+execute at @e[tag=anguish_sphere_main] run tp @e[tag=anguish_sphere_soulsand] ~ ~ ~
+execute as @e[tag=anguish_sphere_glass] at @s run tp @s ~ ~ ~ ~11 ~
+execute as @e[tag=anguish_sphere_soulsand] at @s run tp @s ~ ~ ~ ~-11 ~
+execute at @e[tag=anguish_sphere_main] run particle enchanted_hit ~ ~ ~ 0.8 0.8 0.8 0.01 10 normal
+execute at @e[tag=anguish_sphere_main] run particle soul ~ ~ ~ 0.8 0 0.8 0 1 normal
+execute unless entity @e[tag=anguish_sphere_main] run kill @e[tag=anguish_sphere_things]
+
+
+execute at @a[scores={char=28,s1_timer=1..20}] as @e[tag=anguish_sphere_main] at @s run tp @s ^ ^ ^0.2
+execute at @a[scores={char=28,s1_timer=20..100}] as @e[tag=anguish_sphere_main] at @s run tp @s ^ ^ ^0.1
+#execute as @e[tag=anguish_sphere_main] at @s run tp @s ^ ^ ^0.2
+
+execute if entity @a[scores={char=28,s1_timer=30}] at @e[tag=anguish_sphere_main] run summon marker ~ ~ ~ {Tags:["anguish_shoot","projectile","entities_operator"]}
+execute if entity @a[scores={char=28,s1_timer=40}] at @e[tag=anguish_sphere_main] run summon marker ~ ~ ~ {Tags:["anguish_shoot","projectile","entities_operator"]}
+execute if entity @a[scores={char=28,s1_timer=50}] at @e[tag=anguish_sphere_main] run summon marker ~ ~ ~ {Tags:["anguish_shoot","projectile","entities_operator"]}
+execute if entity @a[scores={char=28,s1_timer=60}] at @e[tag=anguish_sphere_main] run summon marker ~ ~ ~ {Tags:["anguish_shoot","projectile","entities_operator"]}
+execute if entity @a[scores={char=28,s1_timer=70}] at @e[tag=anguish_sphere_main] run summon marker ~ ~ ~ {Tags:["anguish_shoot","projectile","entities_operator"]}
+
+execute at @a[scores={char=28,s1_timer=100..}] run kill @e[tag=anguish_sphere_things]
+
+execute at @e[tag=anguish_shoot] run particle enchanted_hit ~ ~ ~ 0.1 0.1 0.1 0 20 normal
+execute at @e[tag=anguish_shoot] run particle enchanted_hit ^ ^ ^0.3 0.1 0.1 0.1 0 20 normal
+execute at @e[tag=anguish_shoot] run particle enchanted_hit ^ ^ ^-0.3 0.1 0.1 0.1 0 20 normal
+execute at @e[tag=anguish_shoot] run particle enchanted_hit ^ ^ ^-0.6 0.1 0.1 0.1 0 20 normal
+execute at @e[tag=anguish_shoot] run particle soul ~ ~ ~ 0.2 0.2 0.2 0.01 2 normal
+execute at @e[tag=anguish_shoot] run particle minecraft:block{block_state:{Name:"minecraft:diamond_block"}} ~ ~ ~ 0.2 0.2 0.2 0.01 2 normal
+execute at @e[tag=anguish_shoot,scores={knowledgelife=1}] run playsound entity.ghast.shoot master @a[distance=..15] ~ ~ ~ 1 0.5 1
+
+execute as @e[tag=anguish_shoot,scores={knowledgelife=1..4}] at @s run tp @s ~ ~ ~ facing entity @e[tag=operator_valid_anguish_target,sort=nearest,limit=1] eyes
+execute as @e[tag=anguish_shoot,scores={knowledgelife=1..4}] at @s run tp @s ^ ^ ^0.3
+execute as @e[tag=anguish_shoot,scores={knowledgelife=5..}] at @s run tp @s ^ ^ ^0.6
+scoreboard players add @e[tag=anguish_shoot] knowledgelife 1
+kill @e[tag=anguish_shoot,scores={knowledgelife=15..}]
+
+execute at @e[tag=anguish_shoot] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=28}] Team run tag @s add anguished
+execute at @e[tag=anguish_shoot] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=28}] Team run kill @e[dx=0,dy=0,dz=0,tag=anguish_shoot]
+
+execute at @e[tag=anguished] run kill @e[tag=anguish_shoot,distance=..1,limit=1,sort=nearest]
+scoreboard players set @a[tag=anguished,scores={CC_mindrot=1..}] CC_mindrot 100
+damage @e[tag=anguished,limit=1,scores={CC_mindrot=0}] 2 generic by @p[scores={char=28}] from @p[scores={char=28}]
+damage @e[tag=anguished,limit=1,scores={CC_mindrot=1..}] 4 generic by @p[scores={char=28}] from @p[scores={char=28}]
+tag @e remove anguished
+
+
+execute at @e[tag=anguish_sphere_main,tag=anguish_spere_boom] run summon marker ~ ~ ~ {Tags:["sphere_goes_boom","entities_operator"]}
+
+execute if entity @e[tag=sphere_goes_boom] run kill @e[tag=anguish_sphere_things]
+execute at @e[tag=sphere_goes_boom] run playsound entity.dragon_fireball.explode master @a[distance=..20] ~ ~ ~ 1 0.3 1
+execute at @e[tag=sphere_goes_boom] run playsound block.end_portal.spawn master @a[distance=..20] ~ ~ ~ 0.4 2 1
+execute at @e[tag=sphere_goes_boom] run particle explosion ~ ~ ~ 3 2 3 0.01 100 force
+execute at @e[tag=sphere_goes_boom] run particle enchanted_hit ~ ~ ~ 3 2 3 0.01 500 force
+execute at @e[tag=sphere_goes_boom] run particle soul ~ ~ ~ 2 2 2 0.1 50 force
+execute at @e[tag=sphere_goes_boom] run particle enchant ~ ~ ~ 2 2 2 0.1 250 force
+
+execute at @e[tag=sphere_goes_boom] as @e[distance=..6,tag=valid_spell_target,scores={CC_mindrot=0}] unless score @s Team = @p[scores={char=28}] Team run damage @s 6 generic by @p[scores={char=28}] from @p[scores={char=28}]
+execute at @e[tag=sphere_goes_boom] as @e[distance=..6,tag=valid_spell_target,scores={CC_mindrot=1..}] unless score @s Team = @p[scores={char=28}] Team run damage @s 8 generic by @p[scores={char=28}] from @p[scores={char=28}]
+execute at @e[tag=sphere_goes_boom] as @e[distance=..6,tag=valid_spell_target] unless score @s Team = @p[scores={char=28}] Team run scoreboard players set @s CC_silence 20
+
+kill @e[tag=sphere_goes_boom]
+
 
 
 #brain damage
 
-scoreboard players set @a[scores={char=28,spell_oper_3_1=1,CC_silence=1..}] spellCD2 20
-scoreboard players set @a[scores={char=28,spell_oper_3_1=1,CC_silence=1..}] spell_oper_3_1 120
+scoreboard players set @a[scores={char=28,s2_timer=1,CC_silence=1..}] spellCD2 20
+scoreboard players set @a[scores={char=28,s2_timer=1,CC_silence=1..}] s2_timer 120
 
-execute at @a[scores={char=28,spell_oper_3_1=1,CC_silence=0}] run playsound minecraft:block.beacon.deactivate master @a[distance=..10] ~ ~ ~ 1 0.1 1
-execute at @a[scores={char=28,spell_oper_3_1=1,CC_silence=0}] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["braindamage"],NoGravity:1b}
-tp @e[tag=braindamage,limit=1] @a[scores={char=28,spell_oper_3_1=1},limit=1]
-execute as @e[tag=braindamage] at @s run tp @s ^ ^ ^0.7
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] run playsound entity.enderman.ambient master @a[distance=..10] ~ ~ ~ 1 0.8 1
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] run playsound block.beacon.deactivate master @a[distance=..10] ~ ~ ~ 1 0.5 1
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["brainrot_1","braindamage","projectile","entities_operator"]}
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["brainrot_2","braindamage","projectile","entities_operator"]}
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["brainrot_3","braindamage","projectile","entities_operator"]}
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["brainrot_4","braindamage","projectile","entities_operator"]}
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["brainrot_5","braindamage","projectile","entities_operator"]}
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["brainrot_6","braindamage","projectile","entities_operator"]}
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["brainrot_7","braindamage","projectile","entities_operator"]}
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["brainrot_8","braindamage","projectile","entities_operator"]}
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["brainrot_9","braindamage","projectile","entities_operator"]}
 
-execute at @e[tag=braindamage] run particle minecraft:enchant ~ ~1 ~ 0.1 0.1 0.1 0.001 8 normal
-execute at @e[tag=braindamage] run particle minecraft:block{block_state:{Name:"minecraft:light_blue_stained_glass"}} ~ ~1 ~ 0.3 0.3 0.3 0.1 7 normal
-execute at @e[tag=braindamage] run particle minecraft:block{block_state:{Name:"minecraft:diamond_block"}} ~ ~1 ~ 0.8 0.8 0.8 0.1 3 normal
-
-execute at @a[scores={char=28,spell_oper_3_1=30}] run kill @e[tag=braindamage]
-
-
-execute at @e[tag=knowledge] if entity @e[distance=..1,tag=braindamage] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["homingdamage"],NoGravity:1b}
-execute at @e[tag=knowledge] if entity @e[distance=..1,tag=braindamage] run playsound minecraft:block.enchantment_table.use master @a[distance=..20] ~ ~ ~ 1 2 1
-execute at @e[tag=knowledge] if entity @e[distance=..1,tag=braindamage] run particle minecraft:enchant ~ ~1 ~ 0.7 0.7 0.7 0.1 300 force
-execute at @e[tag=knowledge] if entity @e[distance=..1,tag=braindamage] run kill @e[tag=braindamage]
-
-execute if entity @a[scores={char=28},team=yellow] as @e[tag=homingdamage,scores={knowledgelife=1..2}] at @s run tp @s ~ ~ ~ facing entity @p[team=purple]
-execute if entity @a[scores={char=28},team=purple] as @e[tag=homingdamage,scores={knowledgelife=1..2}] at @s run tp @s ~ ~ ~ facing entity @p[team=yellow]
-execute as @e[tag=homingdamage] at @s run tp @s ^ ^ ^1.5
-execute at @e[tag=homingdamage] run particle minecraft:enchant ~ ~1 ~ 0.1 0.1 0.1 0.001 20 normal
-execute at @e[tag=homingdamage] run particle minecraft:block{block_state:{Name:"minecraft:light_blue_stained_glass"}} ~ ~1 ~ 0.3 0.3 0.3 0.1 7 normal
-
-scoreboard players add @e[tag=homingdamage] knowledgelife 1
-kill @e[tag=homingdamage,scores={knowledgelife=20..}]
+execute as @e[tag=braindamage] at @s unless entity @e[tag=braindamage_visual,distance=..0.6] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.2f,-0.2f,-0.2f],scale:[0.4f,0.4f,0.4f]},block_state:{Name:"minecraft:light_blue_stained_glass"},Tags:["braindamage_visual","entities_operator"]}
+execute at @e[tag=braindamage] run tp @e[tag=braindamage_visual,distance=..0.6] ~ ~ ~
+execute as @e[tag=braindamage_visual] at @s run tp @s ~ ~ ~ ~-16 ~
+execute as @e[tag=braindamage_visual] at @s unless entity @e[tag=braindamage,distance=..0.6] run kill @s
 
 
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=braindamage] run scoreboard players set @p[distance=..2,team=purple] CC_mindrot 100
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=braindamage] run effect give @p[distance=..2,team=purple] minecraft:glowing 5 1 true
-execute if entity @a[scores={char=28},team=purple] at @e[tag=braindamage] run scoreboard players set @p[distance=..2,team=yellow] CC_mindrot 100
-execute if entity @a[scores={char=28},team=purple] at @e[tag=braindamage] run effect give @p[distance=..2,team=yellow] minecraft:glowing 5 1 true
+scoreboard players operation @e[tag=projectile,tag=braindamage] Team = @p[scores={char=28}] Team
+tp @e[tag=braindamage] @a[scores={char=28,s2_timer=1},limit=1]
 
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=homingdamage] run scoreboard players set @p[distance=..2,team=purple] CC_mindrot 100
-execute if entity @a[scores={char=28},team=yellow] at @e[tag=homingdamage] run effect give @p[distance=..2,team=purple] minecraft:glowing 5 1 true
-execute if entity @a[scores={char=28},team=purple] at @e[tag=homingdamage] run scoreboard players set @p[distance=..2,team=yellow] CC_mindrot 100
-execute if entity @a[scores={char=28},team=purple] at @e[tag=homingdamage] run effect give @p[distance=..2,team=yellow] minecraft:glowing 5 1 true
+execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brainrot_1] ^-2.4 ^ ^-1.2
+execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brainrot_2] ^-1.8 ^ ^-0.5
+execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brainrot_3] ^-1.2 ^ ^0.2
 
-execute at @a[scores={CC_mindrot=1..}] run particle minecraft:block{block_state:{Name:"minecraft:diamond_block"}} ~ ~1.6 ~ 0.3 0.1 0.3 0.1 4 force
+execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brainrot_4] ^-0.6 ^ ^0.5
+execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brainrot_5] ^ ^ ^0.7
+execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brainrot_6] ^0.6 ^ ^0.5
+
+execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brainrot_7] ^1.2 ^ ^0.2
+execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brainrot_8] ^1.8 ^ ^-0.5
+execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brainrot_9] ^2.4 ^ ^-1.2
+
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] as @e[tag=braindamage] at @s run tp @s ~ ~1 ~ 
+
+execute as @e[tag=braindamage] at @s run tp @s ^ ^ ^0.5
 
 
-effect give @a[distance=..3,scores={CC_mindrot=1..}] minecraft:poison 3 2 true
-scoreboard players set @a[distance=..3,scores={CC_mindrot=1..}] CC_mindrot 0
+execute at @e[tag=braindamage] run particle enchant ~ ~ ~ 0.3 0 0.3 0 4 normal
+execute at @e[tag=braindamage] run particle enchanted_hit ~ ~ ~ 0.3 0 0.3 0 1 normal
+
+execute at @a[scores={char=28,s2_timer=35}] run kill @e[tag=braindamage]
+execute at @a[scores={char=28,s2_timer=35}] run kill @e[tag=braindamage_visual]
+
+execute at @e[tag=braindamage] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=28}] Team run scoreboard players set @s CC_mindrot 100
+execute at @e[tag=braindamage] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=28}] Team run effect give @s glowing 5 1 true
+execute at @e[tag=braindamage] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=28}] Team run kill @e[dx=0,dy=0,dz=0,tag=braindamage]
+
+execute at @a[scores={CC_mindrot=1..}] run particle minecraft:block{block_state:{Name:"minecraft:diamond_block"}} ~ ~1.6 ~ 0.3 0.1 0.3 0.1 2 force
+
+scoreboard players set @a[scores={universal_death=1..}] CC_mindrot 0
 
 
 # operator
 
-scoreboard players add @a[scores={spell_oper_1=1..}] spell_oper_1_1 1
-item replace entity @a[scores={char=28,spell_oper_1_1=60..}] hotbar.0 with minecraft:end_rod[minecraft:custom_name={text:"Electrocute",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
-scoreboard players set @a[scores={spell_oper_1_1=61..}] spell_oper_1 0
-scoreboard players set @a[scores={spell_oper_1_1=61..}] spell_oper_1_1 0
-scoreboard players set @a[scores={spell_oper_1_1=1}] spellCD0 60
+scoreboard players set @a[scores={char=28}] MaxHP 14
 
-scoreboard players add @a[scores={spell_oper_2=1..}] spell_oper_2_1 1
-item replace entity @a[scores={char=28,spell_oper_2_1=300..}] hotbar.1 with minecraft:heart_of_the_sea[minecraft:custom_name={text:"Form of Knowledge",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
-scoreboard players set @a[scores={spell_oper_2_1=301..}] spell_oper_2 0
-scoreboard players set @a[scores={spell_oper_2_1=301..}] spell_oper_2_1 0
-scoreboard players set @a[scores={spell_oper_2_1=1}] spellCD1 300
+scoreboard players set @a[scores={s0_timer=1,char=28}] spellCD0 60
+scoreboard players add @a[scores={s0_timer=1..,char=28}] s0_timer 1
+scoreboard players set @a[scores={s0_timer=61..,char=28}] s0_timer 0
 
-scoreboard players add @a[scores={spell_oper_3=1..}] spell_oper_3_1 1
-item replace entity @a[scores={char=28,spell_oper_3_1=140..}] hotbar.2 with minecraft:prismarine_crystals[minecraft:custom_name={text:"Brain Damage",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
-scoreboard players set @a[scores={spell_oper_3_1=141..}] spell_oper_3 0
-scoreboard players set @a[scores={spell_oper_3_1=141..}] spell_oper_3_1 0
-scoreboard players set @a[scores={spell_oper_3_1=1}] spellCD2 140
+scoreboard players set @a[scores={s1_timer=1,char=28}] spellCD1 300
+scoreboard players add @a[scores={s1_timer=1..,char=28}] s1_timer 1
+scoreboard players set @a[scores={s1_timer=301..,char=28}] s1_timer 0
+
+scoreboard players set @a[scores={s2_timer=1,char=28}] spellCD2 140
+scoreboard players add @a[scores={s2_timer=1..,char=28}] s2_timer 1
+scoreboard players set @a[scores={s2_timer=141..,char=28}] s2_timer 0
 
 
-execute as @a[scores={char=28,spell_oper_1=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:end_rod",Slot:0b}]}] run clear @a[scores={char=28}] minecraft:end_rod
-item replace entity @a[scores={char=28,spell_oper_1=0}] hotbar.0 with minecraft:end_rod[minecraft:custom_name={text:"Electrocute",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
+execute as @a[scores={char=28,s0_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:0b}]}] run clear @a[scores={char=28}] warped_fungus_on_a_stick[custom_data={s0:1}]
+item replace entity @a[scores={char=28,s0_timer=0,CC_silence=0}] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:flower_banner_pattern",minecraft:custom_name={text:"Overload",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[scores={char=28,spell_oper_2=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:heart_of_the_sea",Slot:1b}]}] run clear @a[scores={char=28}] minecraft:heart_of_the_sea
-item replace entity @a[scores={char=28,spell_oper_2=0}] hotbar.1 with minecraft:heart_of_the_sea[minecraft:custom_name={text:"Form of Knowledge",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
+execute as @a[scores={char=28,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=28}] carrot_on_a_stick
+item replace entity @a[scores={char=28,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:heart_of_the_sea",minecraft:custom_name={text:"Anguish Given Focus",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[scores={char=28,spell_oper_3=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:prismarine_crystals",Slot:2b}]}] run clear @a[scores={char=28}] minecraft:prismarine_crystals
-item replace entity @a[scores={char=28,spell_oper_3=0}] hotbar.2 with minecraft:prismarine_crystals[minecraft:custom_name={text:"Brain Damage",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
+execute as @a[scores={char=28,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=28}] warped_fungus_on_a_stick[custom_data={s2:1}]
+item replace entity @a[scores={char=28,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:glow_squid_spawn_egg",minecraft:custom_name={text:"Brain Damage",color:"dark_aqua",bold:1b}] 1
+
+

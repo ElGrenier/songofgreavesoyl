@@ -31,9 +31,9 @@ execute if score map_type settings matches 2 as @a[scores={Kills=1..},team=yello
 
 
 #Scoreboard display
-execute if score map_type settings matches 1 run scoreboard objectives modify score displayname {text:"-=Score=-",color:"green",bold:1b}
-execute if score map_type settings matches 2 run scoreboard objectives modify score displayname {text:"-=Kills=-",color:"red",bold:1b}
-execute if score map_type settings matches 3 run scoreboard objectives modify score displayname {text:"-=Captures=-",color:"aqua",bold:1b}
+execute if score map_type settings matches 1 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"dark_green",bold:1b,"strikethrough":true},{text:" Score ",color:"green",bold:1b},{text:"=",color:"dark_green",bold:1b,"strikethrough":true}]
+execute if score map_type settings matches 2 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"dark_red",bold:1b,"strikethrough":true},{text:" Kills ",color:"red",bold:1b},{text:"=",color:"dark_red",bold:1b,"strikethrough":true}]
+execute if score map_type settings matches 3 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"blue",bold:1b,"strikethrough":true},{text:" Captures ",color:"aqua",bold:1b},{text:"=",color:"blue",bold:1b,"strikethrough":true}]
 
 
 scoreboard players display name .yellow score {color:yellow,bold:true,text:"Yellow"}

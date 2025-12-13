@@ -75,12 +75,13 @@ effect clear @a[scores={char=35,s1_timer=10..11,CC_silence=0}] minecraft:slow_fa
 
 execute at @a[scores={char=35,s1_timer=1..10,CC_silence=0}] run particle enchanted_hit ~ ~1 ~ 0.4 0.8 0.4 0.01 5
 execute at @a[scores={char=35,s1_timer=1..10,CC_silence=0}] run particle block{block_state:{Name:"minecraft:water"}} ~ ~1 ~ 2 1 2 0.01 1
-execute at @a[scores={char=35,s1_timer=1..10,CC_silence=0}] run particle rain ~ ~1 ~ 2 1 2 0.01 5
+execute at @a[scores={char=35,s1_timer=1..10,CC_silence=0}] run particle rain ~ ~1 ~ 1.5 1 1.5 0.01 25
 
-execute at @a[scores={char=35,s1_timer=1..10,CC_silence=0}] if entity @e[tag=healdash] as @a[distance=..3,scores={priestess_heal=0}] if score @s Team = @p[scores={char=35}] Team run scoreboard players set @s priestess_heal 1
+execute at @a[scores={char=35,s1_timer=1..10,CC_silence=0}] if entity @e[tag=healdash] as @a[tag=valid_spell_target,distance=..3,scores={priestess_heal=0}] if score @s Team = @p[scores={char=35}] Team run scoreboard players set @s priestess_heal 1
 
 effect give @a[scores={priestess_heal=2}] instant_health
 effect give @a[scores={priestess_heal=2}] absorption 4
+execute at @a[scores={priestess_heal=3}] run playsound entity.experience_orb.pickup master @a[distance=..3] ~ ~ ~ 0.3 1.5 1
 execute at @a[scores={priestess_heal=1..}] run particle rain ~ ~0.6 ~ 0.6 0.8 0.6 1 10
 scoreboard players add @a[scores={priestess_heal=1..}] priestess_heal 1
 scoreboard players set @a[scores={priestess_heal=10..}] priestess_heal 0
@@ -116,8 +117,10 @@ execute as @e[tag=silencedash] at @s unless block ^ ^ ^1 #minecraft:dash run kil
 
 execute as @e[tag=silencedash] at @s run tp @s ^ ^ ^1
 
-execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[distance=..2.5] unless score @s Team = @p[scores={char=35}] Team run scoreboard players set @s CC_silence 60
-execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] as @a[distance=..2.5] unless score @s Team = @p[scores={char=35}] Team at @s run particle minecraft:enchant ~ ~0.5 ~ 0.3 1 0.3 0.01 20
+execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5] unless score @s Team = @p[scores={char=35,CC_silence=0}] Team run particle cloud ~ ~1.5 ~ 0.5 0 0.5 0.01 10
+execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5] unless score @s Team = @p[scores={char=35,CC_silence=0}] Team run playsound entity.player.attack.nodamage master @a[distance=..10] ~ ~ ~ 1 0.5 1
+execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5] unless score @s Team = @p[scores={char=35}] Team run scoreboard players set @s CC_silence 60
+execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] as @a[distance=..2.5] unless score @s Team = @p[scores={char=35}] Team at @s run particle enchant ~ ~0.5 ~ 0.3 1 0.3 0.01 20
 
 tp @a[scores={char=35,s2_timer=2..7,death_dash_reset=0}] @e[tag=silencedash,limit=1]
 execute at @a[scores={char=35,s2_timer=7..8}] run kill @e[tag=silencedash]
@@ -126,9 +129,12 @@ effect clear @a[scores={char=35,s2_timer=7..8,CC_silence=0}] slow_falling
 
 execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] run particle enchant ~ ~1 ~ 0.4 0.8 0.4 0.01 7
 execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] run particle rain ~ ~1 ~ 2 1 2 0.01 5
+execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] run particle cloud ~ ~1 ~ 2 1 2 0.01 2
 
 
 # priestess
+
+scoreboard players set @a[scores={char=35}] MaxHP 20
 
 scoreboard players set @a[scores={s1_timer=1,char=35}] spellCD1 200
 scoreboard players add @a[scores={s1_timer=1..,char=35}] s1_timer 1
@@ -141,8 +147,8 @@ scoreboard players set @a[scores={s2_timer=301..,char=35}] s2_timer 0
 execute as @a[scores={char=35}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_shovel",Slot:0b}]}] run clear @a[scores={char=35}] golden_shovel
 item replace entity @a[scores={char=35}] hotbar.0 with minecraft:golden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 
-execute as @a[scores={char=35,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=35}] carrot_on_a_stick
-item replace entity @a[scores={char=35,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:allay_spawn_egg",minecraft:custom_name={text:"Drizzle Dance",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=35,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=35}] carrot_on_a_stick
+item replace entity @a[scores={char=35,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:allay_spawn_egg",minecraft:custom_name={text:"Drizzle Dance",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[scores={char=35,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=35}] warped_fungus_on_a_stick
-item replace entity @a[scores={char=35,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:vex_spawn_egg",minecraft:custom_name={text:"Hush",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=35,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=35}] warped_fungus_on_a_stick
+item replace entity @a[scores={char=35,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:vex_spawn_egg",minecraft:custom_name={text:"Hush",color:"dark_aqua",bold:1b}] 1

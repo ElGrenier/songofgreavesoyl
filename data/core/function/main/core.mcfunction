@@ -19,10 +19,10 @@ function chars:regen
 function battlegrounds:railrestore
 function chars:check_armor
 function chars:team_wool
+function chars:char_display_stands
+function core:lobby/choose_char
 
 function chars:surrender
-
-
 
 execute as @a run function core:main/hp_display
 

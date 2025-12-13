@@ -15,7 +15,9 @@ execute if score map settings matches 14 run function battlegrounds:setup/damned
 execute if score map settings matches 15 run function battlegrounds:setup/throneofazathoth
 execute if score map settings matches 16 run function battlegrounds:setup/thearbitersmausoleum
 execute if score map settings matches 17 run function battlegrounds:setup/theisland
+# THE FUCKING ALLEY
 execute if score map settings matches 18 run function battlegrounds:setup/shadyalleys
+
 execute if score map settings matches 19 run function battlegrounds:setup/parasitechambers
 execute if score map settings matches 20 run function battlegrounds:setup/losthalls
 execute if score map settings matches 21 run function battlegrounds:setup/heartoftheswamp

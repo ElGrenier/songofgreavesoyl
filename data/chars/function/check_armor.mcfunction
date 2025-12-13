@@ -9,7 +9,8 @@ execute as @a[tag=!invisible,scores={char=1..}] at @s unless items entity @s arm
 execute as @a[tag=!invisible,scores={char=1..}] at @s unless items entity @s armor.feet minecraft:leather_boots run function chars:armors
 
 
+# auto armor update
 
-
-
+execute as @a[scores={char=1..}] unless score @s armor_char = @s char run function chars:armors
+execute as @a[scores={char=1..}] run scoreboard players operation @s armor_char = @s char
 

@@ -10,3 +10,5 @@ summon minecraft:marker 3 17 58 {Rotation:[180.0f,0.0f],CustomName:"Yellow",Invu
 # Tworzenie flag
 summon minecraft:marker -113 12.5 58 {Invulnerable:1b,NoGravity:1b,Tags:["immune","purpleflagspawn"]}
 summon minecraft:marker 21 12.5 58 {Invulnerable:1b,NoGravity:1b,Tags:["immune","yellowflagspawn"]}
+
+say "i'v summone Shady Alleys"

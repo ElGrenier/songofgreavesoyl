@@ -1,0 +1,10 @@
+item replace entity @a[scores={char=62}] hotbar.0 with minecraft:wooden_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Thorns"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=62}] hotbar.1 with minecraft:torchflower_seeds[minecraft:custom_name={text:"Rotten Grasp",color:"gray",bold:1b}] 1
+item replace entity @a[scores={char=62}] hotbar.2 with minecraft:jungle_sapling[minecraft:custom_name={text:"Piercing Pain",color:"gray",bold:1b},minecraft:enchantments={"minecraft:thorns":1}] 1
+item replace entity @a[scores={char=62}] armor.head with minecraft:player_head[minecraft:custom_name="Wood",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:6.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;922351862,-2026683839,-1211501750,10060195],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWY1NzE5MmIxOTRjNjU4YWFhODg4MTY4NDhjYmNlN2M3NDk0NjZhNzkyYjhhN2UxZDNmYWZhNDFjNDRmMzQxMiJ9fX0="}]}] 1
+item replace entity @a[scores={char=62}] armor.chest with minecraft:leather_chestplate[minecraft:trim={pattern:"rib",material:"emerald"},minecraft:custom_name="Armor",minecraft:dyed_color=3154456,minecraft:unbreakable={}] 1
+item replace entity @a[scores={char=62}] armor.legs with minecraft:leather_leggings[minecraft:trim={pattern:"rib",material:"emerald"},minecraft:custom_name="Armor",minecraft:dyed_color=2502695,minecraft:unbreakable={}] 1
+item replace entity @a[scores={char=62}] armor.feet with minecraft:leather_boots[minecraft:custom_name="Armor",minecraft:dyed_color=2502695,minecraft:unbreakable={}] 1
+scoreboard players set @a[scores={char=62}] MaxHP 26
+scoreboard players set @a[scores={char=62}] thorns_timer 0
+scoreboard players set @a[scores={char=62}] passive_fien 0

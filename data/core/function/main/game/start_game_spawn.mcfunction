@@ -7,6 +7,6 @@ execute as @a[tag=in_game,scores={Loading=1}] run function core:main/game/respaw
 
 scoreboard players remove @a[tag=in_game,scores={Loading=1..}] Loading 1
 
-scoreboard players set game_state settings 8
+scoreboard players set game_state settings 7
 
 #[{"text":"Respawning in ","color":"white"},{"text":"1","color":"white"}]

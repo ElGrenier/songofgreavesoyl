@@ -124,10 +124,6 @@ execute as @e[tag=magma_visual_1,scores={scourge_damage=1..}] at @s run tp @s ~ 
 kill @e[tag=magma_visual_1,scores={scourge_damage=15..}]
 
 
-
-
-
-
 #trial of terror
 
 scoreboard players remove @a[scores={scourge_damage=1..}] scourge_damage 1
@@ -156,6 +152,8 @@ tag @a remove scourge_fear
 
 # scourge
 
+scoreboard players set @a[scores={char=25}] MaxHP 26
+
 scoreboard players set @a[scores={s1_timer=1,char=25}] spellCD1 280
 scoreboard players add @a[scores={s1_timer=1..,char=25}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=281..,char=25}] s1_timer 0
@@ -168,12 +166,11 @@ scoreboard players set @a[scores={s2_timer=301..,char=25}] s2_timer 0
 execute as @a[scores={char=25}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_pickaxe",Slot:0b}]}] run clear @a[scores={char=25}] minecraft:netherite_pickaxe
 item replace entity @a[scores={char=25}] hotbar.0 with minecraft:netherite_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Tail"},custom_data={scourges_dong:1},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 
+execute as @a[scores={char=25,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=25}] minecraft:carrot_on_a_stick
+item replace entity @a[scores={char=25,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:campfire",minecraft:custom_name={text:"To Ashes",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[scores={char=25,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=25}] minecraft:carrot_on_a_stick
-item replace entity @a[scores={char=25,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:campfire",minecraft:custom_name={text:"To Ashes",color:"dark_aqua",bold:1b}] 1
-
-execute as @a[scores={char=25,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=25}] minecraft:warped_fungus_on_a_stick
-item replace entity @a[scores={char=25,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:netherite_scrap",minecraft:custom_name={text:"Dragon's Descent",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=25,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=25}] minecraft:warped_fungus_on_a_stick
+item replace entity @a[scores={char=25,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:netherite_scrap",minecraft:custom_name={text:"Dragon's Descent",color:"dark_aqua",bold:1b}] 1
 
 
 

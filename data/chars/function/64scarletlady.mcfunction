@@ -1,0 +1,9 @@
+item replace entity @a[scores={char=64}] hotbar.0 with minecraft:prismarine_shard[minecraft:custom_name={text:"Throwing Knife",color:"gray",bold:1b}] 1
+item replace entity @a[scores={char=64}] hotbar.1 with minecraft:redstone[minecraft:custom_name={text:"Mosquito's Kiss",color:"gray",bold:1b}] 1
+item replace entity @a[scores={char=64}] hotbar.2 with minecraft:beetroot[minecraft:custom_name={text:"Kneel!",color:"gray",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
+item replace entity @a[scores={char=64}] armor.head with minecraft:player_head[minecraft:custom_name="Wood",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:-2.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;1600187056,-368752296,-2115848177,1422885777],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjBmN2ZlNWM3ZjkyMGE0Y2ViZWRmNjQ5OTFiZTgyZDMwN2Q1M2I3MWI1MTc2ZjdjZDgyNmJmMmQ1YmRmNzJjMyJ9fX0="}]}] 1
+item replace entity @a[scores={char=64}] armor.chest with minecraft:leather_chestplate[minecraft:trim={pattern:"wayfinder",material:"redstone"},minecraft:custom_name="Armor",minecraft:dyed_color=5046272,minecraft:unbreakable={}] 1
+item replace entity @a[scores={char=64}] armor.legs with minecraft:leather_leggings[minecraft:trim={pattern:"silence",material:"redstone"},minecraft:custom_name="Armor",minecraft:dyed_color=6881280,minecraft:unbreakable={}] 1
+item replace entity @a[scores={char=64}] armor.feet with minecraft:leather_boots[minecraft:trim={pattern:"silence",material:"emerald"},minecraft:custom_name="Armor",minecraft:dyed_color=4934471,minecraft:unbreakable={}] 1
+scoreboard players set @a[scores={char=64}] MaxHP 18
+scoreboard players set @a[scores={char=64}] scarlet_knifes 7

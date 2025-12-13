@@ -1,0 +1,13 @@
+#item replace entity @a[scores={char=49}] hotbar.0 with diamond_pickaxe{display:{Name:'{"text":"Lacerators","color":"gray","bold":true}'},Unbreakable:1b,AttributeModifiers:[{AttributeName:"attack_damage",Name:"attack_damage",Amount:1.5,Operation:0,UUID:[I;0,62796,0,113118],Slot:"mainhand"},{AttributeName:"attack_speed",Name:"attack_speed",Amount:-0.4,Operation:1,UUID:[I;0,173278,0,671203],Slot:"mainhand"}]} 1
+item replace entity @a[scores={char=49}] hotbar.1 with minecraft:diamond_hoe[minecraft:custom_name={bold:1b,color:"dark_aqua",text:"Beyond Matter"},minecraft:damage=1562,minecraft:custom_data={anom_prot:1},minecraft:enchantments={},minecraft:enchantment_glint_override=0b,minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=49}] hotbar.2 with minecraft:sculk_shrieker[minecraft:custom_name={text:"It's Writhing",color:"dark_aqua",bold:1b},minecraft:enchantment_glint_override=1b] 1
+item replace entity @s[scores={char=49}] armor.head with minecraft:player_head[minecraft:custom_name="Head",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:8.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;522082784,-1599322657,-1775970763,-2137578104],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2E0MGNmOTQwNjliNTlhYWY3YzgxM2U0YTJlOGI3MTFhODVkZTdkYzkzMmRhMDMzYmUyZTQ0ZTNkYzY5ODYxMyJ9fX0="}]}] 1
+item replace entity @s[scores={char=49}] armor.chest with minecraft:leather_chestplate[minecraft:trim={pattern:"rib",material:"diamond"},minecraft:custom_name="Armor",minecraft:dyed_color=1912883,minecraft:unbreakable={}] 1
+item replace entity @s[scores={char=49}] armor.legs with minecraft:leather_leggings[minecraft:trim={pattern:"rib",material:"diamond"},minecraft:custom_name="Armor",minecraft:dyed_color=1912883,minecraft:unbreakable={}] 1
+item replace entity @s[scores={char=49}] armor.feet with minecraft:leather_boots[minecraft:trim={pattern:"rib",material:"diamond"},minecraft:custom_name="Armor",minecraft:dyed_color=3953753,minecraft:unbreakable={}] 1
+scoreboard players set @a[scores={char=49}] MaxHP 28
+scoreboard players set @a passive_aber_stack 0
+scoreboard players set @a passive_aber_stack_timer 0
+scoreboard players set @a passive_aber_display 0
+scoreboard players set @a passive_aber_display_timer 0
+scoreboard players set @a spell_aber_1 0

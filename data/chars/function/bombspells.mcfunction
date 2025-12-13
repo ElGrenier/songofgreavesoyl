@@ -63,7 +63,7 @@ execute at @a[scores={char=11,s2_timer=1,CC_silence=0}] run summon block_display
 scoreboard players operation @e[tag=projectile,tag=bm_grenade] Team = @p[scores={char=11}] Team
 execute at @a[scores={char=11,s2_timer=1,CC_silence=0}] run playsound entity.snowball.throw master @a[distance=..10] ~ ~ ~ 1 0.8 1
 tp @e[tag=bm_grenade,limit=1] @a[scores={char=11,s2_timer=1},limit=1]
-execute at @a[scores={char=11,s2_timer=1,CC_silence=0}] as @e[tag=bm_grenade,limit=1] at @s run tp @s ~ ~1.2 ~
+execute at @a[scores={char=11,s2_timer=1,CC_silence=0}] as @e[tag=bm_grenade,limit=1] at @s run tp @s ~ ~1.2 ~ 
 execute at @a[tag=grenade] run kill @e[tag=bm_grenade]
 
 execute at @a[scores={char=11,s2_timer=1..14}] as @e[tag=bm_grenade] at @s run tp @s ^ ^ ^0.6
@@ -98,14 +98,14 @@ execute at @e[tag=grenade] as @e[distance=..5,tag=valid_spell_target] unless sco
 kill @e[tag=grenade]
 
 
-
 effect give @a[tag=pyrophilia,scores={char=11}] speed 3 0
 effect give @a[tag=pyrophilia,scores={char=11}] regeneration 3 2
-
 tag @a[tag=pyrophilia] remove pyrophilia
 
 
 # bomb master
+
+scoreboard players set @a[scores={char=11}] MaxHP 20
 
 scoreboard players set @a[scores={s1_timer=1,char=11}] spellCD1 100
 scoreboard players add @a[scores={s1_timer=1..,char=11}] s1_timer 1
@@ -118,9 +118,9 @@ scoreboard players set @a[scores={s2_timer=301..,char=11}] s2_timer 0
 execute as @a[scores={char=11}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] run clear @a[scores={char=11}] minecraft:bow
 item replace entity @a[scores={char=11}] hotbar.0 with minecraft:bow[minecraft:custom_name={text:"Energy Bolt Weapon",color:"gray",bold:1b},minecraft:unbreakable={}] 1
 
-execute as @a[scores={char=11,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=11}] minecraft:carrot_on_a_stick
-item replace entity @a[scores={char=11,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:tnt",minecraft:custom_name={text:"Explosive Trap",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=11,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=11}] minecraft:carrot_on_a_stick
+item replace entity @a[scores={char=11,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:tnt",minecraft:custom_name={text:"Explosive Trap",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[scores={char=11,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=11}] minecraft:warped_fungus_on_a_stick
-item replace entity @a[scores={char=11,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:waxed_oxidized_copper_bulb",minecraft:custom_name={text:"Grenade Toss",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=11,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=11}] minecraft:warped_fungus_on_a_stick
+item replace entity @a[scores={char=11,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:waxed_oxidized_copper_bulb",minecraft:custom_name={text:"Grenade Toss",color:"dark_aqua",bold:1b}] 1
 

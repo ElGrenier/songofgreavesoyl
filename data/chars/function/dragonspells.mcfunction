@@ -73,7 +73,7 @@ execute at @a[scores={char=7,s2_timer=1,CC_silence=0}] run playsound entity.ende
 
 execute at @a[scores={char=7,s2_timer=15,CC_silence=0}] run playsound entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
 execute at @a[scores={char=7,s2_timer=25,CC_silence=0}] run playsound entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
-execute at @a[scores={char=7,s2_timer=15,CC_silence=0}] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["dragondash","entities_dragon"],NoGravity:1b}
+execute at @a[scores={char=7,s2_timer=15,CC_silence=0}] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["dragondash"],NoGravity:1b}
 tp @e[tag=dragondash,limit=1] @a[scores={char=7,s2_timer=15},limit=1]
 execute at @a[scores={char=7,s2_timer=15},limit=1] run tp @e[tag=dragondash,limit=1] ~ ~0.5 ~
 effect give @a[scores={char=7,s2_timer=25,CC_silence=0}] levitation 1 0 true
@@ -104,6 +104,8 @@ execute as @a[scores={char=7,s2_timer=1..60}] at @s unless block ~ ~ ~ #minecraf
 
 # dragon
 
+scoreboard players set @a[scores={char=7}] MaxHP 16
+
 scoreboard players set @a[scores={s1_timer=1,char=7}] spellCD1 480
 scoreboard players add @a[scores={s1_timer=1..,char=7}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=481..,char=7}] s1_timer 0
@@ -122,11 +124,11 @@ execute as @a[scores={char=7,s1_timer=161..}] at @s unless entity @s[nbt={Invent
 item replace entity @a[scores={char=7,s1_timer=161..}] hotbar.0 with minecraft:bow[minecraft:custom_name={text:"Dragon Fire",color:"gray",bold:1b},minecraft:enchantments={"minecraft:flame":1},minecraft:unbreakable={}] 1
 
 
-execute as @a[scores={char=7,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=7}] minecraft:carrot_on_a_stick
-item replace entity @a[scores={char=7,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:fire_coral_fan",minecraft:custom_name={text:"Flurry of Flames",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=7,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=7}] minecraft:carrot_on_a_stick
+item replace entity @a[scores={char=7,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:fire_coral_fan",minecraft:custom_name={text:"Flurry of Flames",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[scores={char=7,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=7}] minecraft:warped_fungus_on_a_stick
-item replace entity @a[scores={char=7,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:elytra",minecraft:custom_name={text:"Tyrant's Departure",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=7,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=7}] minecraft:warped_fungus_on_a_stick
+item replace entity @a[scores={char=7,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:elytra",minecraft:custom_name={text:"Tyrant's Departure",color:"dark_aqua",bold:1b}] 1
 
 
 

@@ -39,7 +39,7 @@ execute if entity @a[scores={char=21}] run function chars:necrospells
 execute if entity @a[scores={char=22}] run function chars:devourerspells
 execute if entity @a[scores={char=24}] run function chars:sandwitchspells
 execute if entity @a[scores={char=25}] run function chars:scourgespells
-execute if entity @a[scores={char=26}] run function chars:sharpshooterspells
+execute if entity @a[scores={char=26}] run function chars:renegadespells
 execute if entity @a[scores={char=27}] run function chars:championspells
 execute if entity @a[scores={char=28}] run function chars:operatorspells
 execute if entity @a[scores={char=29}] run function chars:parasitespells
@@ -89,11 +89,10 @@ execute if entity @a[scores={char=23}] run function chars:prowlerspells
 
 function chars:projetcile_removal
 
-#Why not set it to a map_type 4 for 1v1 map ? #TO DO
-execute if score map settings matches 5 run effect give @a[scores={universal_kill=1..}] regeneration 6 4
-execute if score map settings matches 9 run effect give @a[scores={universal_kill=1..}] regeneration 6 4
-execute if score map settings matches 15 run effect give @a[scores={universal_kill=1..}] regeneration 6 4
-execute if score map settings matches 21 run effect give @a[scores={universal_kill=1..}] regeneration 6 4
+execute if entity @e[tag=Settings,scores={Map=5}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
+execute if entity @e[tag=Settings,scores={Map=9}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
+execute if entity @e[tag=Settings,scores={Map=15}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
+execute if entity @e[tag=Settings,scores={Map=21}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
 
 scoreboard players set @a[scores={universal_damagetaken=1..}] outofcombat 0
 
@@ -121,6 +120,9 @@ scoreboard players set @a[scores={s3_drop=1..},nbt={SelectedItem:{components: {"
 
 scoreboard players set @a[scores={s4_use=1..},nbt={SelectedItem:{components: {"minecraft:custom_data": {s4: 1}}, count: 1, id: "minecraft:warped_fungus_on_a_stick"}}] s4_timer 1
 scoreboard players set @a[scores={s4_drop=1..},nbt={SelectedItem:{components: {"minecraft:custom_data": {s4: 1}}, count: 1, id: "minecraft:warped_fungus_on_a_stick"}}] s4_timer 1
+
+scoreboard players set @a[scores={s0_use=1..},nbt={SelectedItem:{components: {"minecraft:custom_data": {franklo_failsafe: 1}}, count: 1, id: "minecraft:warped_fungus_on_a_stick"}}] ClassPickTrigger 8
+scoreboard players set @a[scores={s0_drop=1..},nbt={SelectedItem:{components: {"minecraft:custom_data": {franklo_failsafe: 1}}, count: 1, id: "minecraft:warped_fungus_on_a_stick"}}] ClassPickTrigger 8
 
 scoreboard players set @a[scores={s1_use=1..}] s1_use 0
 scoreboard players set @a[scores={s1_drop=1..}] s1_drop 0

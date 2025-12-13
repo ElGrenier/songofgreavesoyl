@@ -27,7 +27,7 @@ execute at @a[scores={char=15,s0_timer=1,CC_silence=0,shard_fragments=1..}] run 
 execute at @a[scores={char=15,s0_timer=1,CC_silence=0,shard_fragments=1..}] run summon item_display ~ ~1 ~ {teleport_duration:1,item:{id:"minecraft:amethyst_cluster",count:1},Tags:["pillar_grenade","projectile","entities_shard"]}
 scoreboard players operation @e[tag=projectile,tag=pillar_grenade] Team = @p[scores={char=15}] Team
 tp @e[tag=pillar_grenade,limit=1,scores={s0_timer=1}] @a[scores={char=15},limit=1]
-execute at @a[scores={char=15,s0_timer=2,CC_silence=0}] as @e[tag=pillar_grenade,limit=1] at @s run tp @s ~ ~1 ~
+execute at @a[scores={char=15,s0_timer=2,CC_silence=0}] as @e[tag=pillar_grenade,limit=1] at @s run tp @s ~ ~1 ~ 
 
 scoreboard players add @e[tag=pillar_grenade] s0_timer 1
 scoreboard players add @a[scores={char=15,s0_timer=1..}] s0_timer 1
@@ -131,7 +131,7 @@ execute at @a[scores={char=15,s2_timer=1,CC_silence=0}] run playsound entity.zom
 execute at @a[scores={char=15,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["shard_acid","projectile","entities_shard"]}
 scoreboard players operation @e[tag=projectile,tag=shard_acid] Team = @p[scores={char=15}] Team
 tp @e[tag=shard_acid,limit=1] @a[scores={char=15,s2_timer=1},limit=1]
-execute at @a[scores={char=15,s2_timer=1,CC_silence=0}] as @e[tag=shard_acid,limit=1] at @s run tp @s ~ ~1.2 ~
+execute at @a[scores={char=15,s2_timer=1,CC_silence=0}] as @e[tag=shard_acid,limit=1] at @s run tp @s ~ ~1.2 ~ 
 
 execute as @e[tag=shard_acid] at @s positioned ~ ~ ~ unless block ^ ^ ^0.5 #dash run kill @s
 execute as @e[tag=shard_acid] at @s positioned ~ ~ ~ unless block ~ ~ ~ #dash run kill @s
@@ -170,6 +170,8 @@ execute at @p[scores={shard_petrify=1}] run function battlegrounds:lightrestore
 
 # shard
 
+scoreboard players set @a[scores={char=15}] MaxHP 16
+
 scoreboard players set @a[scores={s1_timer=1,char=15}] spellCD1 320
 scoreboard players add @a[scores={s1_timer=1..,char=15}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=321..,char=15}] s1_timer 0
@@ -178,12 +180,11 @@ scoreboard players set @a[scores={s2_timer=1,char=15}] spellCD2 360
 scoreboard players add @a[scores={s2_timer=1..,char=15}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=361..,char=15}] s2_timer 0
 
-execute as @a[scores={char=15}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:0b}]}] run clear @a[scores={char=15}] warped_fungus_on_a_stick[minecraft:custom_data={s0:1}]
-item replace entity @a[scores={char=15}] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:stone_hoe",minecraft:custom_name={bold:1b,color:"gray",text:"Crystal Shard"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:unbreaking":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+execute as @a[scores={char=15,CC_disarm=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:0b}]}] run clear @a[scores={char=15}] warped_fungus_on_a_stick[minecraft:custom_data={s0:1}]
+item replace entity @a[scores={char=15,CC_disarm=0}] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:stone_hoe",minecraft:custom_name={bold:1b,color:"gray",text:"Crystal Shard"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:unbreaking":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 
+execute as @a[scores={char=15,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=15}] carrot_on_a_stick
+item replace entity @a[scores={char=15,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:magenta_stained_glass_pane",minecraft:custom_name={text:"Gate of Shivers",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
 
-execute as @a[scores={char=15,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=15}] carrot_on_a_stick
-item replace entity @a[scores={char=15,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:magenta_stained_glass_pane",minecraft:custom_name={text:"Gate of Shivers",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
-
-execute as @a[scores={char=15,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=15}] warped_fungus_on_a_stick
-item replace entity @a[scores={char=15,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:amethyst_cluster",minecraft:custom_name={text:"Crystalize",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
+execute as @a[scores={char=15,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=15}] warped_fungus_on_a_stick
+item replace entity @a[scores={char=15,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:amethyst_cluster",minecraft:custom_name={text:"Crystalize",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1

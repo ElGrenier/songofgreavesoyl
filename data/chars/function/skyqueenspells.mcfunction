@@ -41,7 +41,8 @@ execute as @a[scores={char=14,s1_timer=10}] at @s unless block ~ ~ ~ #minecraft:
 
 execute at @a[scores={char=14,s1_timer=1,CC_silence=0}] run particle cloud ~ ~ ~ 0.2 0.2 0.2 0.01 7
 
-execute at @a[scores={char=14,s1_timer=1..10,CC_silence=0}] as @a[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=14}] Team run effect give @s slowness 2 2
+execute at @a[scores={char=14,s1_timer=1..10,CC_silence=0}] run particle sweep_attack ~ ~ ~ 0.2 0.2 0.2 0.01 2
+execute at @a[scores={char=14,s1_timer=1..10,CC_silence=0}] run particle crit ~ ~ ~ 0.4 0.4 0.4 0.01 4
 execute at @a[scores={char=14,s1_timer=1..10,CC_silence=0}] as @a[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=14}] Team run effect clear @s levitation
 execute at @a[scores={char=14,s1_timer=1..10,CC_silence=0}] as @a[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=14}] Team run scoreboard players set @s CC_grounded 40
 
@@ -76,7 +77,7 @@ tag @a[scores={nestduration=80..}] remove nest
 scoreboard players set @a[scores={nestduration=80..}] nestduration 0
 
 
-execute at @e[tag=nest] run particle cloud ~ ~1 ~ 0.8 0.8 0.8 0.0001 2 normal
+execute at @e[tag=nest] run particle cloud ~ ~1 ~ 0.9 0.6 0.9 0.0001 2 normal
 
 execute unless entity @a[tag=nest] run kill @e[tag=nest_visuals]
 
@@ -88,14 +89,31 @@ execute at @a[tag=nest] unless entity @e[tag=nest_visuals_1] run summon block_di
 execute at @a[tag=nest] unless entity @e[tag=nest_visuals_2] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_2","nest_visuals","nest_visuals_t1","entities_skyqueen"]}
 execute at @a[tag=nest] unless entity @e[tag=nest_visuals_3] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_3","nest_visuals","nest_visuals_t1","entities_skyqueen"]}
 execute at @a[tag=nest] unless entity @e[tag=nest_visuals_4] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_4","nest_visuals","nest_visuals_t1","entities_skyqueen"]}
+
 execute at @a[tag=nest] unless entity @e[tag=nest_visuals_5] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_5","nest_visuals","nest_visuals_t2","entities_skyqueen"]}
 execute at @a[tag=nest] unless entity @e[tag=nest_visuals_6] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_6","nest_visuals","nest_visuals_t2","entities_skyqueen"]}
 execute at @a[tag=nest] unless entity @e[tag=nest_visuals_7] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_7","nest_visuals","nest_visuals_t2","entities_skyqueen"]}
 execute at @a[tag=nest] unless entity @e[tag=nest_visuals_8] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_8","nest_visuals","nest_visuals_t2","entities_skyqueen"]}
+
 execute at @a[tag=nest] unless entity @e[tag=nest_visuals_9] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_9","nest_visuals","nest_visuals_t3","entities_skyqueen"]}
 execute at @a[tag=nest] unless entity @e[tag=nest_visuals_10] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_10","nest_visuals","nest_visuals_t3","entities_skyqueen"]}
 execute at @a[tag=nest] unless entity @e[tag=nest_visuals_11] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_11","nest_visuals","nest_visuals_t3","entities_skyqueen"]}
 execute at @a[tag=nest] unless entity @e[tag=nest_visuals_12] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_12","nest_visuals","nest_visuals_t3","entities_skyqueen"]}
+
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_13] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_13","nest_visuals","nest_visuals_t1","entities_skyqueen"]}
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_14] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_14","nest_visuals","nest_visuals_t1","entities_skyqueen"]}
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_15] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_15","nest_visuals","nest_visuals_t1","entities_skyqueen"]}
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_16] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_16","nest_visuals","nest_visuals_t1","entities_skyqueen"]}
+
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_17] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_17","nest_visuals","nest_visuals_t2","entities_skyqueen"]}
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_18] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_18","nest_visuals","nest_visuals_t2","entities_skyqueen"]}
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_19] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_19","nest_visuals","nest_visuals_t2","entities_skyqueen"]}
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_20] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_20","nest_visuals","nest_visuals_t2","entities_skyqueen"]}
+
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_21] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_21","nest_visuals","nest_visuals_t3","entities_skyqueen"]}
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_22] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_22","nest_visuals","nest_visuals_t3","entities_skyqueen"]}
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_23] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_23","nest_visuals","nest_visuals_t3","entities_skyqueen"]}
+execute at @a[tag=nest] unless entity @e[tag=nest_visuals_24] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:white_stained_glass"},Tags:["nest_visuals_24","nest_visuals","nest_visuals_t3","entities_skyqueen"]}
 
 execute as @a[tag=nest] at @s run tp @e[tag=nest_visuals_core_1] ~ ~1.5 ~
 execute as @a[tag=nest] at @s run tp @e[tag=nest_visuals_core_2] ~ ~0.9 ~
@@ -104,20 +122,34 @@ execute as @e[tag=nest_visuals_core_1] at @s run tp @s ~ ~ ~ ~-11 0
 execute as @e[tag=nest_visuals_core_2] at @s run tp @s ~ ~ ~ ~11 0
 execute as @e[tag=nest_visuals_core_3] at @s run tp @s ~ ~ ~ ~-11 0
 
-execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_1] ^-0.8 ^ ^0.8
-execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_2] ^-0.8 ^ ^-0.8
-execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_3] ^0.8 ^ ^0.8
-execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_4] ^0.8 ^ ^-0.8
+execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_1] ^-1.2 ^ ^1.2
+execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_2] ^-1.2 ^ ^-1.2
+execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_3] ^1.2 ^ ^1.2
+execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_4] ^1.2 ^ ^-1.2
+execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_13] ^1.5 ^ ^
+execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_14] ^-1.5 ^ ^
+execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_15] ^ ^ ^1.5
+execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_16] ^ ^ ^-1.5
 
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_5] ^-0.8 ^ ^0.8
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_6] ^-0.8 ^ ^-0.8
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_7] ^0.8 ^ ^0.8
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_8] ^0.8 ^ ^-0.8
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_5] ^-1.2 ^ ^1.2
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_6] ^-1.2 ^ ^-1.2
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_7] ^1.2 ^ ^1.2
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_8] ^1.2 ^ ^-1.2
 
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_9] ^-0.8 ^ ^0.8
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_10] ^-0.8 ^ ^-0.8
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_11] ^0.8 ^ ^0.8
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_12] ^0.8 ^ ^-0.8
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_17] ^1.5 ^ ^
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_18] ^-1.5 ^ ^
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_19] ^ ^ ^1.5
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_20] ^ ^ ^-1.5
+
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_9] ^-1.2 ^ ^1.2
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_10] ^-1.2 ^ ^-1.2
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_11] ^1.2 ^ ^1.2
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_12] ^1.2 ^ ^-1.2
+
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_21] ^1.5 ^ ^
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_22] ^-1.5 ^ ^
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_23] ^ ^ ^1.5
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_24] ^ ^ ^-1.5
 
 #windshield
 
@@ -315,6 +347,8 @@ execute at @e[tag=nest] if entity @p[scores={char=14},team=purple] if entity @p[
 
 # sky queen
 
+scoreboard players set @a[scores={char=14}] MaxHP 24
+
 scoreboard players set @a[scores={s1_timer=1,char=14}] spellCD1 180
 scoreboard players add @a[scores={s1_timer=1..,char=14}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=181..,char=14}] s1_timer 0
@@ -328,11 +362,11 @@ scoreboard players set @a[scores={s2_timer=321..,char=14}] s2_timer 0
 execute as @a[scores={char=14}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_pickaxe",Slot:0b}]}] run clear @a[scores={char=14}] minecraft:iron_pickaxe
 item replace entity @a[scores={char=14}] hotbar.0 with minecraft:iron_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 
-execute as @a[scores={char=14,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=14}] minecraft:carrot_on_a_stick
-item replace entity @a[scores={char=14,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:quartz",minecraft:custom_name={text:"Pin the Prey",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=14,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=14}] minecraft:carrot_on_a_stick
+item replace entity @a[scores={char=14,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:quartz",minecraft:custom_name={text:"Pin the Prey",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[scores={char=14,s2_timer=10..79,s2_timer_recast=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=14}] warped_fungus_on_a_stick
-item replace entity @a[scores={char=14,s2_timer=10..79,s2_timer_recast=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:2},minecraft:item_model="minecraft:happy_ghast_spawn_egg",minecraft:custom_name={text:"Queen's Protection",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=14,s2_timer=10..79,s2_timer_recast=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=14}] warped_fungus_on_a_stick
+item replace entity @a[scores={char=14,s2_timer=10..79,s2_timer_recast=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:2},minecraft:item_model="minecraft:happy_ghast_spawn_egg",minecraft:custom_name={text:"Queen's Protection",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[scores={char=14,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=14}] warped_fungus_on_a_stick
-item replace entity @a[scores={char=14,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:ghast_spawn_egg",minecraft:custom_name={text:"Nesting Storm",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=14,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=14}] warped_fungus_on_a_stick
+item replace entity @a[scores={char=14,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:ghast_spawn_egg",minecraft:custom_name={text:"Nesting Storm",color:"dark_aqua",bold:1b}] 1

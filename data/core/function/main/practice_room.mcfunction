@@ -30,7 +30,7 @@ tag @a remove EnterPracticeRoom
 tp @a[tag=PracticeCharPick,scores={char=1..}] 100 13 38 -90 0
 title @a[tag=PracticeCharPick] title {text:" ",type:"text"}
 title @a[tag=PracticeCharPick] subtitle {text:" ",type:"text"}
-execute as @a[tag=PracticeCharPick,scores={char=1..}] run function chars:all
+#execute as @a[tag=PracticeCharPick,scores={char=1..}] run function chars:all
 clear @a[tag=PracticeCharPick,scores={char=1..}] minecraft:white_banner
 effect give @a[tag=PracticeCharPick,scores={char=1..}] minecraft:regeneration 3 10 true
 effect clear @a[tag=PracticeCharPick,scores={char=1..}] minecraft:weakness

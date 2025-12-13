@@ -71,9 +71,10 @@ setblock 204 52 -88 minecraft:black_concrete destroy
 setblock 226 52 -74 minecraft:black_concrete destroy
 
 # altary off - fortress
-setblock 324 29 -90 minecraft:black_concrete destroy
-setblock 324 29 -60 minecraft:black_concrete destroy
-setblock 324 43 -21 minecraft:black_concrete destroy
+
+setblock 566 29 -166 minecraft:black_concrete destroy
+setblock 566 29 -196 minecraft:black_concrete destroy
+setblock 566 43 -127 minecraft:black_concrete destroy
 
 # altary off - desert
 setblock 282 28 -162 minecraft:black_concrete destroy

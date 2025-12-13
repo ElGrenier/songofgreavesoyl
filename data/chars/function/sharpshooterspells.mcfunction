@@ -106,11 +106,6 @@ execute at @e[tag=toxicity] run particle minecraft:smoke ~ ~1 ~ 0.1 0.1 0.1 0.01
 
 
 
-execute as @a[scores={char=26},team=purple] as @e[tag=toxicity] at @s if entity @a[distance=..2,team=yellow] run summon minecraft:armor_stand ~ ~1 ~ {Marker:1b,Invisible:1b,Tags:["toxicblindness"],NoGravity:1b}
-execute as @a[scores={char=26},team=yellow] as @e[tag=toxicity] at @s if entity @a[distance=..2,team=purple] run summon minecraft:armor_stand ~ ~1 ~ {Marker:1b,Invisible:1b,Tags:["toxicblindness"],NoGravity:1b}
-execute as @a[scores={char=26}] as @e[tag=toxicity] at @s unless block ^ ^1 ^1 #minecraft:dash run summon minecraft:armor_stand ~ ~1 ~ {Marker:1b,Invisible:1b,Tags:["toxicblindness"],NoGravity:1b}
-execute as @e[tag=toxicity] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
-execute if entity @e[tag=toxicblindness] run kill @e[tag=toxicity]
 
 execute if entity @a[scores={char=26},team=purple] at @e[tag=toxicblindness] run effect give @a[distance=..3,team=yellow] minecraft:blindness 3
 execute if entity @a[scores={char=26},team=purple] at @e[tag=toxicblindness] run effect give @a[distance=..3,team=yellow] minecraft:slowness 3 0

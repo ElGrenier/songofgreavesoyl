@@ -104,11 +104,8 @@ scoreboard players set @s lich_scrap_damage 0
 scoreboard players set @s lich_scrap_damage2 0
 scoreboard players set @s golem_pierce 0
 scoreboard players set @s passive_tree_1 0
-scoreboard players set @s para_heal 0
 scoreboard players set @s passive_pris 0
 scoreboard players set @s surrender 0
-scoreboard players set @s sorrow 0
-scoreboard players set @s spell_shot_3 0
 scoreboard players set @s basilisk_petrify 0
 scoreboard players set @s basilisk_venom 0
 scoreboard players set @s passive_basi 0
@@ -120,7 +117,6 @@ scoreboard players set @s spell_demo_3 0
 scoreboard players set @s beating 0
 scoreboard players set @s passive_weav 0
 scoreboard players set @s panic_bite_cd 0
-scoreboard players set @s spell_shot_3 0
 scoreboard players set @s chilledroot_visual 0
 scoreboard players set @s drownedroot_visual 0
 scoreboard players set @s icyaura 0
@@ -148,6 +144,9 @@ scoreboard players set @s friged_boost 0
 scoreboard players set @s shadowdash_damage 0
 scoreboard players set @s shadowdash_damage_2 0
 scoreboard players set @s shard_petrify 0
+scoreboard players set @s demontrigger 0
+scoreboard players set @s choose_char 0
+scoreboard players set @s siren_abyssflow_damage 0
 
 scoreboard players set @s red 0
 scoreboard players set @s yellow 0
@@ -171,6 +170,7 @@ tag @s remove remember_me
 tag @s remove outlaw
 tag @s remove taunt_source_miner
 tag @s remove taunt_source_jester
+tag @s remove taunt_source_painter
 tag @s remove spin_left
 tag @s remove spin_right
 tag @s remove actual_team_purple

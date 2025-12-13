@@ -26,7 +26,7 @@ scoreboard players set @a[scores={CC_madness=3..}] CC_noflag 2
 
 #knockup effect ====================================================================================================================================================================================================================================
 
-execute at @a[scores={CC_knockup=1..}] unless entity @e[distance=..1,tag=the_knockup] run summon minecraft:marker ~ ~ ~ {Tags:["the_knockup","rotate"]}
+execute at @a[scores={CC_knockup=1..}] unless entity @e[distance=..1,tag=the_knockup] run summon marker ~ ~ ~ {Tags:["the_knockup","rotate"]}
 
 scoreboard players add @e[tag=the_knockup] knockup_duration 1
 
@@ -62,6 +62,10 @@ effect clear @a[scores={CC_shieldbreak=1..}] absorption
 scoreboard players set @a[scores={CC_crippled=3..}] CC_defiled 2
 scoreboard players set @a[scores={CC_crippled=3..}] CC_shieldbreak 2
 
+# broken
+
+effect clear @a[scores={CC_broken=1..}] resistance
+
 # cc working effects ====================================================================================================================================================================================================================================
 
 # nowy root/grounded
@@ -91,8 +95,49 @@ execute as @e[scores={CC_stun=-8..2}] run attribute @s minecraft:attack_damage b
 execute as @e[scores={CC_disarm=3..}] run attribute @s minecraft:attack_damage base set -40
 execute as @e[scores={CC_disarm=1..2}] run attribute @s minecraft:attack_damage base set 1
 
-execute as @a[scores={char=1..,CC_stun=1..},tag=!no_basic_attack] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:0b}]}] run clear @s[scores={char=1..,CC_stun=1..}] bedrock
-execute as @a[scores={char=1..,CC_stun=1..},tag=!no_basic_attack] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:0b}]}] run item replace entity @s hotbar.0 with bedrock[minecraft:item_model="minecraft:barrier",minecraft:custom_name={text:"Disarmed",color:"gray",bold:1b}] 1
-execute as @a[scores={char=1..,CC_disarm=1..},tag=!no_basic_attack] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:0b}]}] run clear @s[scores={char=1..,CC_disarm=1..}] bedrock
+execute as @a[scores={char=1..,CC_stun=1..},tag=!no_basic_attack] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:0b}]}] run clear @s[scores={char=1..,CC_stun=1..}] bedrock[custom_data={disarm:1}]
+execute as @a[scores={char=1..,CC_stun=1..},tag=!no_basic_attack] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:0b}]}] run item replace entity @s hotbar.0 with bedrock[custom_data={disarm:1},minecraft:item_model="minecraft:barrier",minecraft:custom_name={text:"Disarmed",color:"gray",bold:1b}] 1
+execute as @a[scores={char=1..,CC_disarm=1..},tag=!no_basic_attack] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:0b}]}] run clear @s[scores={char=1..,CC_disarm=1..}] bedrock[custom_data={disarm:1}]
 execute as @a[scores={char=1..,CC_disarm=1..},tag=!no_basic_attack] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:0b}]}] run item replace entity @s hotbar.0 with bedrock[minecraft:item_model="minecraft:barrier",minecraft:custom_name={text:"Disarmed",color:"gray",bold:1b}] 1
+
+
+execute as @a[scores={char=28,CC_silence=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:0b}]}] run clear @s[scores={char=28,CC_silence=1..}] bedrock[custom_data={silence:0}]
+execute as @a[scores={char=28,CC_silence=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:0b}]}] run item replace entity @s hotbar.0 with bedrock[custom_data={silence:0},minecraft:item_model="minecraft:barrier",minecraft:custom_name={text:"Silenced",color:"gray",bold:1b}] 1
+
+execute as @a[scores={char=64,CC_silence=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:0b}]}] run clear @s[scores={char=28,CC_silence=1..}] bedrock[custom_data={silence:0}]
+execute as @a[scores={char=64,CC_silence=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:0b}]}] run item replace entity @s hotbar.0 with bedrock[custom_data={silence:0},minecraft:item_model="minecraft:barrier",minecraft:custom_name={text:"Silenced",color:"gray",bold:1b}] 1
+
+execute as @a[scores={char=1..,CC_silence=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:1b}]}] run clear @s[scores={char=1..,CC_silence=1..}] bedrock[custom_data={silence:1}]
+execute as @a[scores={char=1..,CC_silence=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:1b}]}] run item replace entity @s hotbar.1 with bedrock[custom_data={silence:1},minecraft:item_model="minecraft:barrier",minecraft:custom_name={text:"Silenced",color:"gray",bold:1b}] 1
+execute as @a[scores={char=1..,CC_silence=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:2b}]}] run clear @s[scores={char=1..,CC_silence=1..}] bedrock[custom_data={silence:2}]
+execute as @a[scores={char=1..,CC_silence=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:2b}]}] run item replace entity @s hotbar.2 with bedrock[custom_data={silence:2},minecraft:item_model="minecraft:barrier",minecraft:custom_name={text:"Silenced",color:"gray",bold:1b}] 1
+execute as @a[scores={char=1..,CC_silence=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:3b}]}] run clear @s[scores={char=1..,CC_silence=1..}] bedrock[custom_data={silence:3}]
+execute as @a[scores={char=1..,CC_silence=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bedrock",Slot:3b}]}] run item replace entity @s hotbar.3 with bedrock[custom_data={silence:3},minecraft:item_model="minecraft:barrier",minecraft:custom_name={text:"Silenced",color:"gray",bold:1b}] 1
+
+#clear @a[scores={char=1..,CC_disarm=..1}] bedrock[custom_data={disarm:1}]
+
+clear @a[scores={char=1..,CC_silence=..1}] bedrock[custom_data={silence:0}]
+clear @a[scores={char=1..,CC_silence=..1}] bedrock[custom_data={silence:1}]
+clear @a[scores={char=1..,CC_silence=..1}] bedrock[custom_data={silence:2}]
+clear @a[scores={char=1..,CC_silence=..1}] bedrock[custom_data={silence:3}]
+
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:bedrock"}}]
+
+
+# banish
+
+execute at @a[scores={CC_banish=1..,char=4}] run kill @e[tag=WarperMarker]
+execute at @a[scores={CC_banish=1..,char=8}] run kill @e[tag=decoy]
+execute at @a[scores={CC_banish=1..,char=17}] run kill @e[type=trident]
+execute at @a[scores={CC_banish=1..,char=31}] run kill @e[tag=keelhaul_hook]
+execute at @a[scores={CC_banish=1..,char=31}] run kill @e[tag=lifeline_point]
+execute at @a[scores={CC_banish=1..,char=36}] run kill @e[tag=fissure_return]
+execute at @a[scores={CC_banish=1..,char=44}] run kill @e[tag=grapple_point]
+execute at @a[scores={CC_banish=1..,char=44}] run kill @e[tag=raider_hook]
+
+
+scoreboard players set @a[scores={CC_banish=1..}] regen 0
+scoreboard players set @a[scores={CC_banish=1..}] keelhauling 0
+scoreboard players set @a[scores={CC_banish=1..}] rite_of_chains 0
+scoreboard players set @a[scores={CC_banish=1..}] constricted 0
+scoreboard players set @a[scores={CC_banish=1..}] embrace 0

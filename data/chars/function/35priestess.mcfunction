@@ -1,0 +1,9 @@
+item replace entity @a[scores={char=35}] hotbar.0 with minecraft:golden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=35}] hotbar.1 with minecraft:light_blue_dye[minecraft:custom_name={text:"Drizzle Dance",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=35}] hotbar.2 with minecraft:lapis_lazuli[minecraft:custom_name={text:"Hush",color:"dark_aqua",bold:1b}] 1
+item replace entity @s[scores={char=35}] armor.head with minecraft:player_head[minecraft:custom_name="Head",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:profile={id:[I;1016242976,-2070723206,-1354403957,-1534770656],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODU1ZmRjYzMwYTc3MjlhNzA3NzQ1YjYxYmZmNmRjMTZiNTQ4ZjlmNDQ4MjViM2E0NGE4MGQyZDY0YTBkOGNjZiJ9fX0="}]}] 1
+item replace entity @s[scores={char=35}] armor.chest with minecraft:leather_chestplate[minecraft:trim={pattern:"raiser",material:"quartz"},minecraft:custom_name="Armor",minecraft:dyed_color=16776949,minecraft:unbreakable={}] 1
+item replace entity @s[scores={char=35}] armor.legs with minecraft:leather_leggings[minecraft:trim={pattern:"rib",material:"amethyst"},minecraft:custom_name="Armor",minecraft:dyed_color=13732310,minecraft:unbreakable={}] 1
+item replace entity @s[scores={char=35}] armor.feet with minecraft:leather_boots[minecraft:custom_name="Armor",minecraft:dyed_color=6119334,minecraft:unbreakable={}] 1
+scoreboard players set @a[scores={char=35}] MaxHP 20
+scoreboard players set @a priestess_heal 0

@@ -27,17 +27,17 @@ scoreboard players remove @a[scores={friged_boost=1..}] friged_boost 1
 scoreboard players set @a[scores={char=42,s1_timer=1,CC_silence=1..}] spellCD1 20
 scoreboard players set @a[scores={char=42,s1_timer=1,CC_silence=1..}] s1_timer 140
 
-execute at @a[scores={char=42,s1_timer=2,CC_silence=0}] at @e[tag=friged_dash] run playsound minecraft:entity.zombie.infect master @a[distance=..10] ~ ~ ~ 1 2 1
-execute at @a[scores={char=42,s1_timer=5,CC_silence=0}] at @e[tag=friged_dash] run playsound minecraft:entity.ender_dragon.flap master @a[distance=..10] ~ ~ ~ 0.6 1.6 1
-execute at @a[scores={char=42,s1_timer=15,CC_silence=0}] at @e[tag=friged_dash] run playsound minecraft:entity.ender_dragon.flap master @a[distance=..10] ~ ~ ~ 0.6 1.6 1
-execute at @a[scores={char=42,s1_timer=20,CC_silence=0}] at @e[tag=friged_dash] run playsound minecraft:entity.ender_dragon.flap master @a[distance=..10] ~ ~ ~ 0.6 1.6 1
+execute at @a[scores={char=42,s1_timer=2,CC_silence=0}] at @e[tag=friged_dash] run playsound entity.zombie.infect master @a[distance=..10] ~ ~ ~ 1 2 1
+execute at @a[scores={char=42,s1_timer=5,CC_silence=0}] at @e[tag=friged_dash] run playsound entity.ender_dragon.flap master @a[distance=..10] ~ ~ ~ 0.6 1.6 1
+execute at @a[scores={char=42,s1_timer=10,CC_silence=0}] at @e[tag=friged_dash] run playsound entity.ender_dragon.flap master @a[distance=..10] ~ ~ ~ 0.6 1.6 1
+execute at @a[scores={char=42,s1_timer=15,CC_silence=0}] at @e[tag=friged_dash] run playsound entity.ender_dragon.flap master @a[distance=..10] ~ ~ ~ 0.6 1.6 1
 
 scoreboard players set @a[scores={char=42,s1_timer=1,CC_silence=0}] CC_intangible 30
-effect give @a[scores={char=42,s1_timer=1,CC_silence=0}] minecraft:weakness 2 100 true
-effect give @a[scores={char=42,s1_timer=1,CC_silence=0}] minecraft:resistance 2 100 true
-effect give @a[scores={char=42,s1_timer=1,CC_silence=0}] minecraft:slow_falling 2 100 true
+effect give @a[scores={char=42,s1_timer=1,CC_silence=0}] weakness 2 100 true
+effect give @a[scores={char=42,s1_timer=1,CC_silence=0}] resistance 2 100 true
+effect give @a[scores={char=42,s1_timer=1,CC_silence=0}] slow_falling 2 100 true
 
-execute at @a[scores={char=42,s1_timer=1}] run summon minecraft:marker ~ ~ ~ {Invisible:1b,Tags:["friged_dash","entities_friged"],NoGravity:1b}
+execute at @a[scores={char=42,s1_timer=1}] run summon marker ~ ~ ~ {Invisible:1b,Tags:["friged_dash","entities_friged"],NoGravity:1b}
 tp @e[tag=friged_dash,limit=1] @a[scores={char=42,s1_timer=1},limit=1]
 execute at @a[scores={char=42,s1_timer=1},limit=1] run tp @e[tag=friged_dash,limit=1] ~ ~0.5 ~
 execute store result entity @e[tag=friged_dash,limit=1] Rotation[1] float 1 run clear
@@ -56,10 +56,10 @@ execute as @e[tag=friged_dash] at @s unless block ^ ^1 ^1 #minecraft:dash run ki
 execute as @e[tag=friged_dash] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
 
 
-execute at @a[scores={char=42,s1_timer=1..5}] as @e[tag=friged_dash] at @s run tp @s ^ ^0.1 ^0.9
-execute at @a[scores={char=42,s1_timer=6..10}] as @e[tag=friged_dash] at @s run tp @s ^ ^0.05 ^0.9
-execute at @a[scores={char=42,s1_timer=11..15}] as @e[tag=friged_dash] at @s run tp @s ^ ^-0.05 ^0.8
-execute at @a[scores={char=42,s1_timer=16..20}] as @e[tag=friged_dash] at @s run tp @s ^ ^-0.04 ^0.7
+execute at @a[scores={char=42,s1_timer=1..3}] as @e[tag=friged_dash] at @s run tp @s ^ ^0.1 ^1.1
+execute at @a[scores={char=42,s1_timer=4..7}] as @e[tag=friged_dash] at @s run tp @s ^ ^0.05 ^1.1
+execute at @a[scores={char=42,s1_timer=8..11}] as @e[tag=friged_dash] at @s run tp @s ^ ^-0.05 ^0.9
+execute at @a[scores={char=42,s1_timer=12..15}] as @e[tag=friged_dash] at @s run tp @s ^ ^-0.04 ^0.8
 
 
 execute at @e[tag=friged_dash] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=42}] Team run effect give @s slowness 2 2
@@ -106,38 +106,36 @@ execute at @a[scores={char=42,s2_timer=1,CC_silence=0}] unless entity @e[tag=fri
 execute at @a[scores={char=42,s2_timer=1,CC_silence=0}] unless entity @e[tag=friged_valid_stare_target,distance=..12] run scoreboard players set @p[scores={char=42,s2_timer=1,CC_silence=0}] spellCD2 20
 execute at @a[scores={char=42,s2_timer=1,CC_silence=0}] unless entity @e[tag=friged_valid_stare_target,distance=..12] run scoreboard players set @p[scores={char=42,s2_timer=1,CC_silence=0}] s2_timer 220
 
-
 execute at @a[scores={char=42,s2_timer=2,CC_silence=0}] as @p[tag=valid_spell_target,distance=0.1..10] unless score @s Team = @p[scores={char=42}] Team run tag @s add friged_stared
-
 
 rotate @p[scores={char=42}] facing entity @p[tag=friged_stared]
 scoreboard players set @a[tag=friged_stared] CC_root 20
 execute at @a[tag=friged_stared] run particle block{block_state:{Name:"minecraft:ice"}} ~ ~ ~ 1 0.5 1 0.001 50
 execute at @a[tag=friged_stared] run particle block{block_state:{Name:"minecraft:snow"}} ~ ~ ~ 1 1 1 0.001 50
-execute at @a[tag=friged_stared] run playsound minecraft:entity.player.hurt_freeze master @a[distance=..10] ~ ~ ~ 1 0.6 1
+execute at @a[tag=friged_stared] run playsound entity.player.hurt_freeze master @a[distance=..10] ~ ~ ~ 1 0.6 1
 tag @a remove friged_stared
 
 # friged
 
+scoreboard players set @a[scores={char=42}] MaxHP 20
+
 scoreboard players set @a[scores={s1_timer=1,char=42}] spellCD1 160
 scoreboard players add @a[scores={s1_timer=1..,char=42}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=161..,char=42}] s1_timer 0
-
 
 scoreboard players set @a[scores={s2_timer=1,char=42}] spellCD2 240
 scoreboard players add @a[scores={s2_timer=1..,char=42}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=241..,char=42}] s2_timer 0
 
 execute as @a[scores={char=42}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_hoe",Slot:0b}]}] run clear @a[scores={char=42}] minecraft:iron_hoe
-item replace entity @a[scores={char=42,friged_boost=0}] hotbar.0 with minecraft:iron_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Beak"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
-item replace entity @a[scores={char=42,friged_boost=1..}] hotbar.0 with minecraft:iron_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Beak"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:frost_walker":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=42,friged_boost=0}] hotbar.0 with iron_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Beak"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=42,friged_boost=1..}] hotbar.0 with iron_hoe[minecraft:item_model="minecraft:diamond_hoe",minecraft:custom_name={bold:1b,color:"gray",text:"Beak"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:frost_walker":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 
-execute as @a[scores={char=42,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=42}] minecraft:carrot_on_a_stick
-item replace entity @a[scores={char=42,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:rabbit",minecraft:custom_name={text:"Pounce",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:frost_walker":1}] 1
+execute as @a[scores={char=42,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=42}] carrot_on_a_stick
+item replace entity @a[scores={char=42,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:rabbit",minecraft:custom_name={text:"Pounce",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:frost_walker":1}] 1
 
-
-execute as @a[scores={char=42,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=42}] minecraft:warped_fungus_on_a_stick
-item replace entity @a[scores={char=42,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:snow_block",minecraft:custom_name={text:"Frigid Stare",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=42,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=42}] warped_fungus_on_a_stick
+item replace entity @a[scores={char=42,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:music_disc_tears",minecraft:custom_name={text:"Frigid Stare",color:"dark_aqua",bold:1b}] 1
 
 
 

@@ -47,7 +47,7 @@ item replace entity @a[scores={char=34,arrowcd_1=60..}] hotbar.8 with minecraft:
 scoreboard players set @a[scores={char=34,arrowcd_1=60..}] arrowcd 0
 scoreboard players set @a[scores={char=34,arrowcd_1=60..}] arrowcd_1 0
 
-item replace entity @a[scores={char=41,arrowcd_1=30..}] hotbar.8 with minecraft:tipped_arrow[minecraft:potion_contents={custom_color:4806976,custom_effects:[{id:"minecraft:slowness",duration:60},{id:"minecraft:bad_omen",amplifier:1b,duration:60,show_particles:0b}]},minecraft:custom_name="Crawler venom"] 1
+item replace entity @a[scores={char=41,arrowcd_1=30..}] hotbar.8 with minecraft:tipped_arrow[minecraft:potion_contents={custom_color:4806976,custom_effects:[{id:"minecraft:unluck",amplifier:0b,duration:500,show_particles:0b}]},minecraft:custom_name="Crawler venom"] 1
 scoreboard players set @a[scores={char=41,arrowcd_1=30..}] arrowcd 0
 scoreboard players set @a[scores={char=41,arrowcd_1=30..}] arrowcd_1 0
 
@@ -64,7 +64,7 @@ scoreboard players set @a[scores={char=60,arrowcd_1=60..}] arrowcd_1 0
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow",count:1}}]
 
 execute as @a[scores={char=2,arrowcd=0}] at @s unless entity @s[nbt={Inventory:[{Slot:8b,id:"minecraft:arrow"}]}] run clear @a[scores={char=2}] arrow
-item replace entity @a[scores={char=2,arrowcd=0,spell_hunt_1_1=0}] hotbar.8 with arrow
+item replace entity @a[scores={char=2,arrowcd=0}] hotbar.8 with arrow
 
 execute as @a[scores={char=7,arrowcd=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:arrow",Slot:8b}]}] run clear @a[scores={char=7}] minecraft:arrow
 item replace entity @a[scores={char=7,arrowcd=0}] hotbar.8 with minecraft:arrow
@@ -79,7 +79,7 @@ execute as @a[scores={char=34,arrowcd=0}] at @s unless entity @s[nbt={Inventory:
 item replace entity @a[scores={char=34,arrowcd=0}] hotbar.8 with minecraft:arrow
 
 execute as @a[scores={char=41,arrowcd=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:tipped_arrow",Slot:8b}]}] run clear @a[scores={char=41}] minecraft:tipped_arrow
-item replace entity @a[scores={char=41,arrowcd=0}] hotbar.8 with minecraft:tipped_arrow[minecraft:potion_contents={custom_color:4806976,custom_effects:[{id:"minecraft:slowness",duration:60},{id:"minecraft:bad_omen",amplifier:1b,duration:60,show_particles:0b}]},minecraft:custom_name="Crawler venom"] 1
+item replace entity @a[scores={char=41,arrowcd=0}] hotbar.8 with minecraft:tipped_arrow[minecraft:potion_contents={custom_color:4806976,custom_effects:[{id:"minecraft:unluck",amplifier:0b,duration:500,show_particles:0b}]},minecraft:custom_name="Crawler venom"] 1
 
 execute as @a[tag=faceless,scores={char=50,arrowcd=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:arrow",Slot:8b}]}] run clear @a[scores={char=50}] minecraft:arrow
 item replace entity @a[tag=faceless,scores={char=50,arrowcd=0}] hotbar.8 with minecraft:arrow

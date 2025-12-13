@@ -1,4 +1,5 @@
-particle minecraft:crimson_spore ~ ~ ~ 0.01 0.01 0.01 0.1 1
+particle minecraft:crimson_spore ~ ~ ~ 0.01 0.01 0.01 0 1
+particle dust{color:[.533,.031,.031],scale:.8} ~ ~ ~ 0.01 0.01 0.01 0 1
 
 execute at @e[distance=..1.5,tag=MoldHost,tag=!marked_host] run particle minecraft:happy_villager ~ ~0.5 ~ 0.5 1 0.5 1 20
 execute at @e[distance=..1.5,tag=MoldHost,tag=!marked_host] run playsound minecraft:entity.experience_orb.pickup master @a[scores={char=59}] ~ ~ ~ 1 0.8 1

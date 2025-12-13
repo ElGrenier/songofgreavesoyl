@@ -20,7 +20,7 @@ execute at @a[scores={char=22,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ 
 execute at @a[scores={char=22,s1_timer=1,CC_silence=0}] run playsound entity.squid.death master @a[distance=..20] ~ ~ ~ 1.0 0.5 1.0
 scoreboard players operation @e[tag=projectile,tag=tentacle] Team = @p[scores={char=22}] Team
 tp @e[tag=tentacle,limit=1] @a[scores={char=22,s1_timer=1},limit=1]
-execute at @a[scores={char=22,s1_timer=1,CC_silence=0}] as @e[tag=tentacle,limit=1] at @s run tp @s ~ ~1.2 ~
+execute at @a[scores={char=22,s1_timer=1,CC_silence=0}] as @e[tag=tentacle,limit=1] at @s run tp @s ~ ~1.2 ~ 
 execute as @e[tag=tentacle] at @s run tp @s ^ ^ ^0.9
 execute at @e[tag=d_tentacle_visuals] run particle dust{color:[0.0,0.0,0.0],scale:1.0f} ~ ~ ~ 0.3 0.3 0.3 0.0001 10 normal
 #execute at @e[tag=tentacle] run particle dust{color:[0.0,0.0,0.0],scale:1.0f} ^ ^ ^-1 0.1 0.1 0.1 0.0001 10 normal
@@ -101,10 +101,11 @@ execute if entity @a[scores={devoured=1..79}] at @a[scores={char=22}] run partic
 execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["devour_maw","entities_devourer"]}
 execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run playsound entity.evoker_fangs.attack master @a[distance=..10] ~ ~ ~ 1.0 1.0 1.0
 tp @e[tag=devour_maw,limit=1] @a[scores={char=22,s2_timer=1},limit=1]
-execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] as @e[tag=devour_maw,limit=1] at @s run tp @s ~ ~1.5 ~
+execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] as @e[tag=devour_maw,limit=1] at @s run tp @s ~ ~1.5 ~ 
 execute as @e[tag=devour_maw] at @s run tp @s ^ ^ ^0.3
 
 execute at @e[tag=devour_maw] run particle dust{color:[0.0,0.0,0.0],scale:1.0f} ~ ~ ~ 0.2 0.2 0.2 0.0001 10 normal
+execute at @e[tag=devour_maw] positioned ~-1 ~-1 ~-1 as @p[dx=1,dy=1,dz=1,tag=valid_spell_target] unless score @s Team = @p[scores={char=22}] Team run scoreboard players set @s CC_banish 60
 execute at @e[tag=devour_maw] positioned ~-1 ~-1 ~-1 as @p[dx=1,dy=1,dz=1,tag=valid_spell_target] unless score @s Team = @p[scores={char=22}] Team run scoreboard players set @s devoured 1
 
 execute at @a[scores={devoured=1..}] run kill @e[tag=devour_maw]
@@ -124,6 +125,8 @@ execute at @a[scores={devoured=61}] run kill @e[tag=spit_if_dead]
 
 # devourer
 
+scoreboard players set @a[scores={char=22}] MaxHP 32
+
 scoreboard players set @a[scores={s1_timer=1,char=22}] spellCD1 260
 scoreboard players add @a[scores={s1_timer=1..,char=22}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=261..,char=22}] s1_timer 0
@@ -135,11 +138,11 @@ scoreboard players set @a[scores={s2_timer=401..,char=22}] s2_timer 0
 execute as @a[scores={char=22}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_axe",Slot:0b}]}] run clear @a[scores={char=22}] netherite_axe
 item replace entity @a[scores={char=22}] hotbar.0 with netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Matter"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minecraft:enchantments={"minecraft:infinity":1}] 1
 
-execute as @a[scores={char=22,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=22}] carrot_on_a_stick
-item replace entity @a[scores={char=22,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:nether_star",minecraft:custom_name={text:"Star Catcher",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:infinity":1}] 1
+execute as @a[scores={char=22,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=22}] carrot_on_a_stick
+item replace entity @a[scores={char=22,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:nether_star",minecraft:custom_name={text:"Star Catcher",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:infinity":1}] 1
 
-execute as @a[scores={char=22,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=22}] minecraft:warped_fungus_on_a_stick
-item replace entity @a[scores={char=22,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:flint_and_steel",minecraft:custom_name={text:"Consume It All",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:binding_curse":1}] 1
+execute as @a[scores={char=22,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=22}] minecraft:warped_fungus_on_a_stick
+item replace entity @a[scores={char=22,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:flint_and_steel",minecraft:custom_name={text:"Consume It All",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:binding_curse":1}] 1
 
 
 

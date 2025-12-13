@@ -80,6 +80,8 @@ tag @a[scores={fire=..-20}] remove friendly_fire
 
 # cremator
 
+scoreboard players set @a[scores={char=5}] MaxHP 16
+
 scoreboard players set @a[scores={s1_timer=1,char=5}] spellCD1 140
 scoreboard players add @a[scores={s1_timer=1..,char=5}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=141..,char=5}] s1_timer 0
@@ -89,8 +91,8 @@ scoreboard players add @a[scores={s2_timer=1..,char=5}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=241..,char=5}] s2_timer 0
 
 
-execute as @a[scores={char=5,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=5}] minecraft:carrot_on_a_stick
-item replace entity @a[scores={char=5,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:fire_charge",minecraft:custom_name={text:"Infernal Discharge",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=5,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=5}] minecraft:carrot_on_a_stick
+item replace entity @a[scores={char=5,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:fire_charge",minecraft:custom_name={text:"Infernal Discharge",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[scores={char=5,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=5}] minecraft:warped_fungus_on_a_stick
-item replace entity @a[scores={char=5,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:blaze_powder",minecraft:custom_name={text:"Heatblast",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=5,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=5}] minecraft:warped_fungus_on_a_stick
+item replace entity @a[scores={char=5,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:blaze_powder",minecraft:custom_name={text:"Heatblast",color:"dark_aqua",bold:1b}] 1

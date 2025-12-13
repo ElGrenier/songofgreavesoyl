@@ -196,6 +196,8 @@ execute as @e[tag=display_curse] at @s positioned ~ ~-2.5 ~ unless entity @a[dis
 
 # necrolord
 
+scoreboard players set @a[scores={char=21}] MaxHP 20
+
 scoreboard players set @a[scores={s1_timer=1,char=21}] spellCD1 240
 scoreboard players add @a[scores={s1_timer=1..,char=21}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=241..,char=21}] s1_timer 0
@@ -211,11 +213,11 @@ scoreboard players set @a[scores={s3_timer=301..,char=21}] s3_timer 0
 execute as @a[scores={char=21}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bone",Slot:0b}]}] run clear @a[scores={char=21}] bone
 item replace entity @a[scores={char=21}] hotbar.0 with bone[minecraft:custom_name={bold:1b,color:"gray",text:"Bone"},custom_data={necrolord:1},minecraft:enchantments={"minecraft:frost_walker":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}]] 1
 
-execute as @a[scores={char=21,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=21}] carrot_on_a_stick[custom_data={s1:1}]
-item replace entity @a[scores={char=21,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:ghast_tear",minecraft:custom_name={text:"Chilled Path",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:frost_walker":1}] 1
+execute as @a[scores={char=21,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=21}] carrot_on_a_stick[custom_data={s1:1}]
+item replace entity @a[scores={char=21,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:ghast_tear",minecraft:custom_name={text:"Chilled Path",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:frost_walker":1}] 1
 
-execute as @a[scores={char=21,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=21}] warped_fungus_on_a_stick
-item replace entity @a[scores={char=21,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:blue_ice",minecraft:custom_name={text:"Frozen Tomb",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:frost_walker":1}] 1
+execute as @a[scores={char=21,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=21}] warped_fungus_on_a_stick
+item replace entity @a[scores={char=21,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:blue_ice",minecraft:custom_name={text:"Frozen Tomb",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:frost_walker":1}] 1
 
-execute as @a[scores={char=21,s3_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:3b}]}] run clear @a[scores={char=21}] carrot_on_a_stick[custom_data={s3:1}]
-item replace entity @a[scores={char=21,s3_timer=0}] hotbar.3 with carrot_on_a_stick[custom_data={s3:1},minecraft:item_model="minecraft:prismarine_wall",minecraft:custom_name={text:"Children of the Grave",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:frost_walker":1}] 1
+execute as @a[scores={char=21,s3_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:3b}]}] run clear @a[scores={char=21}] carrot_on_a_stick[custom_data={s3:1}]
+item replace entity @a[scores={char=21,s3_timer=0,CC_silence=0}] hotbar.3 with carrot_on_a_stick[custom_data={s3:1},minecraft:item_model="minecraft:prismarine_wall",minecraft:custom_name={text:"Children of the Grave",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:frost_walker":1}] 1

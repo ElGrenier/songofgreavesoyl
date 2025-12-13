@@ -14,7 +14,7 @@ scoreboard players set @a[scores={char=8,s1_timer=1,CC_silence=1..}] spellCD1 20
 scoreboard players set @a[scores={char=8,s1_timer=1,CC_silence=1..}] s1_timer 260
 
 clear @a[scores={char=8,s1_timer=1,CC_silence=0}] *[custom_data={s1:1}]
-execute at @a[scores={char=8,s1_timer=1,CC_silence=0}] run playsound minecraft:block.enchantment_table.use master @a[distance=..15] ~ ~ ~ 1 1.5 1
+execute at @a[scores={char=8,s1_timer=1,CC_silence=0}] run playsound block.enchantment_table.use master @a[distance=..15] ~ ~ ~ 1 1.5 1
 effect give @a[scores={char=8,s1_timer=1,CC_silence=0}] invisibility 5 0 true
 effect give @a[scores={char=8,s1_timer=1,CC_silence=0}] speed 2 2 true
 item replace entity @a[scores={char=8,s1_timer=1..2,CC_silence=0}] armor.head with air
@@ -40,7 +40,8 @@ clear @a[scores={char=8,s1_timer=100}] minecraft:cyan_dye
 
 execute store result entity @e[tag=decoy,limit=1] Rotation[1] float 1 run clear
 execute at @a[scores={char=8,s1_timer=1..30}] as @e[tag=moving_decoy] at @s if block ^ ^1 ^1 #minecraft:dash if block ^ ^ ^1 #minecraft:dash run tp @s ^ ^ ^0.3
-execute as @e[tag=decoy] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.2 ~
+execute as @e[tag=decoy] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
+execute as @e[tag=decoy] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
 
 
 tag @a[scores={char=8,universal_hit=1..}] remove invisible
@@ -86,6 +87,8 @@ kill @e[tag=SwapMarker]
 
 # trickstress
 
+scoreboard players set @a[scores={char=8}] MaxHP 20
+
 scoreboard players set @a[scores={s1_timer=100,char=8}] spellCD1 180
 scoreboard players add @a[scores={s1_timer=1..,char=8}] s1_timer 1
 scoreboard players add @a[scores={s1_timer_recast=1..,char=8}] s1_timer_recast 1
@@ -99,11 +102,11 @@ scoreboard players set @a[scores={s2_timer=401..,char=8}] s2_timer 0
 execute as @a[scores={char=8}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run clear @a[scores={char=8}] iron_sword
 item replace entity @a[scores={char=8}] hotbar.0 with minecraft:iron_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Knife"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 
-execute as @a[scores={char=8,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=8}] carrot_on_a_stick
-item replace entity @a[scores={char=8,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:light_blue_stained_glass",minecraft:custom_name={text:"Soul Shard",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:binding_curse":1}] 1
+execute as @a[scores={char=8,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=8}] carrot_on_a_stick
+item replace entity @a[scores={char=8,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:light_blue_stained_glass",minecraft:custom_name={text:"Soul Shard",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:binding_curse":1}] 1
 
-execute as @a[scores={char=8,s1_timer=10..99,s1_timer_recast=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=8}] carrot_on_a_stick
-item replace entity @a[scores={char=8,s1_timer=10..99,s1_timer_recast=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:2},minecraft:item_model="minecraft:light_blue_concrete_powder",minecraft:custom_name={text:"Soul Swap",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:binding_curse":1}] 1
+execute as @a[scores={char=8,s1_timer=10..99,s1_timer_recast=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=8}] carrot_on_a_stick
+item replace entity @a[scores={char=8,s1_timer=10..99,s1_timer_recast=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:2},minecraft:item_model="minecraft:light_blue_concrete_powder",minecraft:custom_name={text:"Soul Swap",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:binding_curse":1}] 1
 
-execute as @a[scores={char=8,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=8}] warped_fungus_on_a_stick
-item replace entity @a[scores={char=8,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:breeze_rod",minecraft:custom_name={text:"Space Twist",color:"dark_aqua",bold:1b}] 1
+execute as @a[scores={char=8,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=8}] warped_fungus_on_a_stick
+item replace entity @a[scores={char=8,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:breeze_rod",minecraft:custom_name={text:"Space Twist",color:"dark_aqua",bold:1b}] 1

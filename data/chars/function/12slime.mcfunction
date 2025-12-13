@@ -1,0 +1,6 @@
+
+item replace entity @a[scores={char=12}] armor.head with minecraft:player_head[minecraft:custom_name="Slime",minecraft:enchantments={"minecraft:binding_curse":1,"minecraft:projectile_protection":2},minecraft:profile={id:[I;-1660764032,-1386656399,-1158577532,878973234],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmIxZTc5NTdmZWI4NTUxMjQxZmExZTkxODEzNTZiYzBkZjU2YTIzMzIzNjE0YTg4Y2E1ZmVkNGRjYmY2YzJlIn19f"}]}] 1
+item replace entity @s[scores={char=12}] armor.chest with minecraft:leather_chestplate[minecraft:trim={pattern:"raiser",material:"emerald"},minecraft:custom_name="Armor",minecraft:dyed_color=7400251,minecraft:unbreakable={}] 1
+item replace entity @s[scores={char=12}] armor.legs with minecraft:leather_leggings[minecraft:trim={pattern:"raiser",material:"emerald"},minecraft:custom_name="Armor",minecraft:dyed_color=7400251,minecraft:unbreakable={}] 1
+item replace entity @s[scores={char=12}] armor.feet with minecraft:leather_boots[minecraft:trim={pattern:"raiser",material:"emerald"},minecraft:custom_name="Armor",minecraft:dyed_color=7400251,minecraft:unbreakable={}] 1
+scoreboard players set @a[scores={char=12}] MaxHP 20
