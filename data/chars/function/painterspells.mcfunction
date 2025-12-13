@@ -1,40 +1,38 @@
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:iron_sword"}}]
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:red_dye"}}]
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:yellow_dye"}}]
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:blue_dye"}}]
 
 # color mixing
 
+# painter
 
-# red
+# red (color 1)
 
-scoreboard players set @a[scores={char=69,spell_paint_1_1=1,CC_silence=1..}] spellCD1 10
-scoreboard players set @a[scores={char=69,spell_paint_1_1=1,CC_silence=1..}] spell_paint_1_1 1
+scoreboard players set @a[scores={char=69,s1_timer=1,CC_silence=1..}] spellCD1 10
+scoreboard players set @a[scores={char=69,s1_timer=1,CC_silence=1..}] s1_timer 1
 
-execute at @a[scores={char=69,spell_paint_1_1=1,CC_silence=0}] run playsound minecraft:block.fire.extinguish master @a[distance=..8] ~ ~ ~ 0.5 2 1
-execute at @a[scores={char=69,spell_paint_1_1=1,CC_silence=0}] run playsound minecraft:block.lever.click master @a[distance=..8] ~ ~ ~ 1 2 1
-execute at @a[scores={char=69,spell_paint_1_1=1,CC_silence=0}] run particle dust{color:[0.67,0.0,0.0],scale:1} ~ ~1 ~ 0.5 0.6 0.5 0 10
-scoreboard players add @a[scores={char=69,spell_paint_1_1=1,CC_silence=0}] red 1
+execute at @a[scores={char=69,s1_timer=1,CC_silence=0}] run playsound minecraft:block.fire.extinguish master @a[distance=..8] ~ ~ ~ 0.5 2 1
+execute at @a[scores={char=69,s1_timer=1,CC_silence=0}] run playsound minecraft:block.lever.click master @a[distance=..8] ~ ~ ~ 1 2 1
+execute at @a[scores={char=69,s1_timer=1,CC_silence=0}] run particle dust{color:[0.67,0.0,0.0],scale:1} ~ ~1 ~ 0.5 0.6 0.5 0 10
+scoreboard players add @a[scores={char=69,s1_timer=1,CC_silence=0,spellCD1=0}] red 1
 
-# yellow
+# yellow (color 2)
 
-scoreboard players set @a[scores={char=69,spell_paint_2_1=1,CC_silence=1..}] spellCD2 10
-scoreboard players set @a[scores={char=69,spell_paint_2_1=1,CC_silence=1..}] spell_paint_2_1 1
+scoreboard players set @a[scores={char=69,s2_timer=1,CC_silence=1..}] spellCD2 10
+scoreboard players set @a[scores={char=69,s2_timer=1,CC_silence=1..}] s2_timer 1
 
-execute at @a[scores={char=69,spell_paint_2_1=1,CC_silence=0}] run playsound minecraft:block.fire.extinguish master @a[distance=..8] ~ ~ ~ 0.5 2 1
-execute at @a[scores={char=69,spell_paint_2_1=1,CC_silence=0}] run playsound minecraft:block.lever.click master @a[distance=..8] ~ ~ ~ 1 2 1
-execute at @a[scores={char=69,spell_paint_2_1=1,CC_silence=0}] run particle dust{color:[1.0,1.0,0.33],scale:1} ~ ~1 ~ 0.5 0.6 0.5 0 10
-scoreboard players add @a[scores={char=69,spell_paint_2_1=1,CC_silence=0}] yellow 1
+execute at @a[scores={char=69,s2_timer=1,CC_silence=0}] run playsound minecraft:block.fire.extinguish master @a[distance=..8] ~ ~ ~ 0.5 2 1
+execute at @a[scores={char=69,s2_timer=1,CC_silence=0}] run playsound minecraft:block.lever.click master @a[distance=..8] ~ ~ ~ 1 2 1
+execute at @a[scores={char=69,s2_timer=1,CC_silence=0}] run particle dust{color:[1.0,1.0,0.33],scale:1} ~ ~1 ~ 0.5 0.6 0.5 0 10
+scoreboard players add @a[scores={char=69,s2_timer=1,CC_silence=0,spellCD2=0}] yellow 1
 
-# blue
+# blue (color 3)
 
-scoreboard players set @a[scores={char=69,spell_paint_3_1=1,CC_silence=1..}] spellCD3 10
-scoreboard players set @a[scores={char=69,spell_paint_3_1=1,CC_silence=1..}] spell_paint_3_1 1
+scoreboard players set @a[scores={char=69,s3_timer=1,CC_silence=1..}] spellCD3 10
+scoreboard players set @a[scores={char=69,s3_timer=1,CC_silence=1..}] s3_timer 1
 
-execute at @a[scores={char=69,spell_paint_3_1=1,CC_silence=0}] run playsound minecraft:block.fire.extinguish master @a[distance=..8] ~ ~ ~ 0.5 2 1
-execute at @a[scores={char=69,spell_paint_3_1=1,CC_silence=0}] run playsound minecraft:block.lever.click master @a[distance=..8] ~ ~ ~ 1 2 1
-execute at @a[scores={char=69,spell_paint_3_1=1,CC_silence=0}] run particle dust{color:[0.33,0.33,1.0],scale:1} ~ ~1 ~ 0.5 0.6 0.5 0 10
-scoreboard players add @a[scores={char=69,spell_paint_3_1=1,CC_silence=0}] blue 1
+execute at @a[scores={char=69,s3_timer=1,CC_silence=0}] run playsound minecraft:block.fire.extinguish master @a[distance=..8] ~ ~ ~ 0.5 2 1
+execute at @a[scores={char=69,s3_timer=1,CC_silence=0}] run playsound minecraft:block.lever.click master @a[distance=..8] ~ ~ ~ 1 2 1
+execute at @a[scores={char=69,s3_timer=1,CC_silence=0}] run particle dust{color:[0.33,0.33,1.0],scale:1} ~ ~1 ~ 0.5 0.6 0.5 0 10
+scoreboard players add @a[scores={char=69,s3_timer=1,CC_silence=0,spellCD3=0}] blue 1
 
 scoreboard players set @a[scores={char=69}] matematyka 20
 scoreboard players set @a[scores={char=69}] matematyka2 1
@@ -66,7 +64,6 @@ scoreboard players operation @a[scores={char=69,spell_painter_orange=1..}] spell
 
 execute as @a[scores={char=69}] run title @s actionbar [{score:{name:"@s",objective:"spellCD_red"},color:"red",bold:1b,type:"score"},{text:"s",color:"dark_red",bold:1b,type:"text"},{text:" ",bold:1b,color:"white",type:"text"},{score:{name:"@s",objective:"spellCD_yellow"},color:"yellow",bold:1b,type:"score"},{text:"s",color:"#DAC630",bold:1b,type:"text"},{text:" ",bold:1b,color:"white",type:"text"},{score:{name:"@s",objective:"spellCD_blue"},color:"blue",bold:1b,type:"score"},{text:"s",color:"dark_blue",bold:1b,type:"text"},{text:" ",bold:1b,color:"white",type:"text"},{score:{name:"@s",objective:"spellCD_purple"},color:"light_purple",bold:1b,type:"score"},{text:"s",color:"dark_purple",bold:1b,type:"text"},{text:" ",bold:1b,color:"white",type:"text"},{score:{name:"@s",objective:"spellCD_green"},color:"green",bold:1b,type:"score"},{text:"s",color:"dark_green",bold:1b,type:"text"},{text:" ",bold:1b,color:"white",type:"text"},{score:{name:"@s",objective:"spellCD_orange"},color:"gold",bold:1b,type:"score"},{text:"s",color:"#BF6F0E",bold:1b,type:"text"}]
 
-
 # crison cloud (red) ==============================================================================
 
 scoreboard players set @a[scores={char=69,red=2..,spell_painter_red=0}] spell_painter_red 140
@@ -74,9 +71,9 @@ tag @a[scores={char=69,red=2..}] add color_reset
 #title @a[scores={char=69,red=2..}] title [{"text":"crimson cloud","color":red}]
 
 execute at @a[scores={char=69,spell_painter_red=140,CC_silence=0}] run playsound minecraft:block.fire.extinguish master @a[distance=..12] ~ ~ ~ 0.8 1.2 1
-execute at @a[scores={char=69,spell_painter_red=140,CC_silence=0}] run summon minecraft:marker ~ ~ ~ {Tags:["c_cloud_1","crimson_cloud","painter_stuff"]}
-execute at @a[scores={char=69,spell_painter_red=140,CC_silence=0}] run summon minecraft:marker ~ ~ ~ {Tags:["c_cloud_2","crimson_cloud","painter_stuff"]}
-execute at @a[scores={char=69,spell_painter_red=140,CC_silence=0}] run summon minecraft:marker ~ ~ ~ {Tags:["c_cloud_3","crimson_cloud","painter_stuff"]}
+execute at @a[scores={char=69,spell_painter_red=140,CC_silence=0}] run summon minecraft:marker ~ ~ ~ {Tags:["c_cloud_1","crimson_cloud","entities_painter"]}
+execute at @a[scores={char=69,spell_painter_red=140,CC_silence=0}] run summon minecraft:marker ~ ~ ~ {Tags:["c_cloud_2","crimson_cloud","entities_painter"]}
+execute at @a[scores={char=69,spell_painter_red=140,CC_silence=0}] run summon minecraft:marker ~ ~ ~ {Tags:["c_cloud_3","crimson_cloud","entities_painter"]}
 
 tp @e[tag=crimson_cloud,scores={fire_life=1..2}] @a[scores={char=69},limit=1]
 execute as @e[tag=c_cloud_2,scores={fire_life=2}] at @s run tp @s ~ ~ ~ ~30 ~
@@ -108,18 +105,18 @@ tag @a[scores={char=69,blue=2..}] add color_reset
 #title @a[scores={char=69,blue=2..}] title [{"text":"deep blue","color":blue}]
 
 execute at @a[scores={char=69,spell_painter_blue=180,CC_silence=0}] run playsound minecraft:item.bucket.empty master @a[distance=..12] ~ ~ ~ 1 1.2 1
-execute at @a[scores={char=69,spell_painter_blue=180,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["deep_blue_projectile","painter_stuff"]}
+execute at @a[scores={char=69,spell_painter_blue=180,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["deep_blue_projectile","entities_painter"]}
 tp @e[tag=deep_blue_projectile,limit=1] @a[scores={char=69,spell_painter_blue=180},limit=1]
 
 execute store result entity @e[tag=deep_blue_projectile,limit=1] Rotation[1] float 1 run clear
-execute as @e[tag=deep_blue_projectile] at @s unless block ^ ^1 ^1 #minecraft:dash run summon minecraft:marker ~ ~ ~ {Tags:["blue_puddle"]}
+execute as @e[tag=deep_blue_projectile] at @s unless block ^ ^1 ^1 #minecraft:dash run summon minecraft:marker ~ ~ ~ {Tags:["blue_puddle","entities_painter"]}
 execute as @e[tag=deep_blue_projectile] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
 execute as @e[tag=deep_blue_projectile] at @s run particle dust{color:[0.33,0.33,1.0],scale:1} ~ ~ ~ 0.1 1 0.1 0 25
 execute as @e[tag=deep_blue_projectile] at @s run tp @s ^ ^ ^0.6
 execute at @a[scores={char=69,spell_painter_blue=..160}] run kill @e[tag=deep_blue_projectile]
 
-execute if entity @a[scores={char=69},team=yellow] at @e[tag=deep_blue_projectile] if entity @a[distance=..2,team=purple] run summon minecraft:marker ~ ~ ~ {Tags:["blue_puddle"]}
-execute if entity @a[scores={char=69},team=purple] at @e[tag=deep_blue_projectile] if entity @a[distance=..2,team=yellow] run summon minecraft:marker ~ ~ ~ {Tags:["blue_puddle"]}
+execute if entity @a[scores={char=69},team=yellow] at @e[tag=deep_blue_projectile] if entity @a[distance=..2,team=purple] run summon minecraft:marker ~ ~ ~ {Tags:["blue_puddle","entities_painter"]}
+execute if entity @a[scores={char=69},team=purple] at @e[tag=deep_blue_projectile] if entity @a[distance=..2,team=yellow] run summon minecraft:marker ~ ~ ~ {Tags:["blue_puddle","entities_painter"]}
 execute if entity @e[tag=blue_puddle] run kill @e[tag=deep_blue_projectile]
 
 execute if entity @a[scores={char=69},team=purple] at @e[tag=blue_puddle] run effect give @a[team=yellow,distance=..4] slowness 1 1
@@ -157,7 +154,7 @@ tag @a[scores={char=69,yellow=2..}] add color_reset
 
 execute at @a[scores={char=69,spell_painter_yellow=240,CC_silence=0}] run playsound minecraft:item.bucket.empty master @a[distance=..12] ~ ~ ~ 0.8 1.9 1
 execute at @a[scores={char=69,spell_painter_yellow=240,CC_silence=0}] run playsound minecraft:block.bell.use master @a[distance=..12] ~ ~ ~ 1 1.5 1
-execute at @a[scores={char=69,spell_painter_yellow=240,CC_silence=0}] run summon minecraft:marker ~ ~ ~ {Tags:["yellow_area_thing","painter_stuff"]}
+execute at @a[scores={char=69,spell_painter_yellow=240,CC_silence=0}] run summon minecraft:marker ~ ~ ~ {Tags:["yellow_area_thing","entities_painter"]}
 
 execute at @e[tag=yellow_area_thing] if entity @p[scores={char=69},team=yellow] run effect give @a[team=yellow,distance=..4] resistance 1
 execute at @e[tag=yellow_area_thing] if entity @p[scores={char=69},team=purple] run effect give @a[team=purple,distance=..4] resistance 1
@@ -195,7 +192,7 @@ tag @a[scores={char=69,red=1..,blue=1..}] add color_reset
 
 execute at @a[scores={char=69,spell_painter_purple=320,CC_silence=0}] run playsound block.trial_spawner.ambient_ominous master @a[distance=..12] ~ ~ ~ 0.8 1.2 1
 execute at @a[scores={char=69,spell_painter_purple=320,CC_silence=0}] run playsound entity.ghast.warn master @a[distance=..12] ~ ~ ~ 0.2 0.8 1
-execute at @a[scores={char=69,spell_painter_purple=320,CC_silence=0}] run summon armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["purple_phantom_spook","painter_stuff"]}
+execute at @a[scores={char=69,spell_painter_purple=320,CC_silence=0}] run summon armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["purple_phantom_spook","entities_painter"]}
 tp @e[tag=purple_phantom_spook,limit=1] @a[scores={char=69,spell_painter_purple=319..320},limit=1]
 
 execute as @e[tag=purple_phantom_spook] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
@@ -228,7 +225,7 @@ scoreboard players remove @a[scores={char=69,spell_painter_purple=1..}] spell_pa
 scoreboard players set @a[scores={char=69,yellow=1..,blue=1..,spell_painter_green=0}] spell_painter_green 240
 tag @a[scores={char=69,yellow=1..,blue=1..}] add color_reset
 #title @a[scores={char=69,yellow=1..,blue=1..}] title [{"text":"rules of nature","color":green}]
-execute at @a[scores={char=69,spell_painter_green=240,CC_silence=0}] run summon armor_stand ~ ~ ~ {Small:1b,Invisible:1b,Tags:["green_grenade_thing","painter_stuff"],NoGravity:1b,equipment:{head:{id:"minecraft:lime_stained_glass",count:1}}}
+execute at @a[scores={char=69,spell_painter_green=240,CC_silence=0}] run summon armor_stand ~ ~ ~ {Small:1b,Invisible:1b,Tags:["green_grenade_thing","entities_painter"],NoGravity:1b,equipment:{head:{id:"minecraft:lime_stained_glass",count:1}}}
 execute at @a[scores={char=69,spell_painter_green=240,CC_silence=0}] run playsound entity.snowball.throw master @a[distance=..10] ~ ~ ~ 0.5 0.8 1
 tp @e[tag=green_grenade_thing,limit=1] @a[scores={char=69,spell_painter_green=240},limit=1]
 execute at @a[scores={char=69,spell_painter_green=240},limit=1] run tp @e[tag=green_grenade_thing,limit=1] ~ ~0.5 ~
@@ -242,7 +239,7 @@ execute at @a[scores={char=69,spell_painter_green=..200}] as @e[tag=green_grenad
 
 execute at @e[tag=green_grenade_thing] run particle dust{color:[0.0,0.67,0.0],scale:1} ~ ~1 ~ 0.2 0.2 0.2 0 10
 
-execute as @e[tag=green_grenade_thing] at @s unless block ^ ^1 ^1 #minecraft:dash run summon minecraft:marker ~ ~ ~ {Tags:["green_thing_boom","painter_stuff"]}
+execute as @e[tag=green_grenade_thing] at @s unless block ^ ^1 ^1 #minecraft:dash run summon minecraft:marker ~ ~ ~ {Tags:["green_thing_boom","entities_painter"]}
 execute as @e[tag=green_grenade_thing] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
 
 execute if entity @a[scores={char=69},team=purple] at @e[tag=green_thing_boom,scores={fire_life=2}] run scoreboard players set @a[distance=..6,team=yellow] CC_taunt 30
@@ -363,38 +360,40 @@ scoreboard players set @a[scores={char=69},tag=color_reset] blue 0
 #execute at @a[scores={char=69},tag=color_reset] run particle dust{color:[1.0,1.0,1.0],scale:1} ~ ~1 ~ 0.5 0.6 0.5 0 10
 tag @a remove color_reset
 
-# painter
 
-scoreboard players add @a[scores={spell_paint_1=1..}] spell_paint_1_1 1
-item replace entity @a[scores={char=69,spell_paint_1_1=10..}] hotbar.1 with minecraft:red_dye[minecraft:custom_name={text:"Red",color:"dark_aqua",bold:1b}] 1
-scoreboard players set @a[scores={spell_paint_1_1=11..}] spell_paint_1 0
-scoreboard players set @a[scores={spell_paint_1_1=11..}] spell_paint_1_1 0
-scoreboard players set @a[scores={spell_paint_1_1=1}] spellCD1 10
+scoreboard players set @a[scores={s1_timer=1}] spellCD1 15
+scoreboard players set @a[scores={s1_timer=1..}] s1_timer 0
 
-scoreboard players add @a[scores={spell_paint_2=1..}] spell_paint_2_1 1
-item replace entity @a[scores={char=69,spell_paint_2_1=20..}] hotbar.2 with minecraft:yellow_dye[minecraft:custom_name={text:"Yellow",color:"dark_aqua",bold:1b}] 1
-scoreboard players set @a[scores={spell_paint_2_1=11..}] spell_paint_2 0
-scoreboard players set @a[scores={spell_paint_2_1=11..}] spell_paint_2_1 0
-scoreboard players set @a[scores={spell_paint_2_1=1}] spellCD2 10
+scoreboard players set @a[scores={s2_timer=1}] spellCD2 15
+scoreboard players set @a[scores={s2_timer=1..}] s2_timer 0
 
-scoreboard players add @a[scores={spell_paint_3=1..}] spell_paint_3_1 1
-item replace entity @a[scores={char=69,spell_paint_3_1=10..}] hotbar.3 with minecraft:blue_dye[minecraft:custom_name={text:"Blue",color:"dark_aqua",bold:1b}] 1
-scoreboard players set @a[scores={spell_paint_3_1=11..}] spell_paint_3 0
-scoreboard players set @a[scores={spell_paint_3_1=11..}] spell_paint_3_1 0
-scoreboard players set @a[scores={spell_paint_3_1=1}] spellCD3 10
+
+scoreboard players set @a[scores={s3_timer=1}] spellCD3 15
+scoreboard players set @a[scores={s3_timer=1..}] s3_timer 0
+
+
 
 execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run clear @a[scores={char=69}] minecraft:iron_sword
 item replace entity @a[scores={char=69}] hotbar.0 with minecraft:iron_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Dirk"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 
-execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:red_dye",Slot:1b}]}] run clear @a[scores={char=69}] minecraft:red_dye
-item replace entity @a[scores={char=69,red=0}] hotbar.1 with minecraft:red_dye[minecraft:custom_name={text:"Red",color:"dark_aqua",bold:1b}] 1
-item replace entity @a[scores={char=69,red=1..}] hotbar.1 with minecraft:red_dye[minecraft:custom_name={text:"Red",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
 
-execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:yellow_dye",Slot:2b}]}] run clear @a[scores={char=69}] minecraft:yellow_dye
-item replace entity @a[scores={char=69,yellow=0}] hotbar.2 with minecraft:yellow_dye[minecraft:custom_name={text:"Yellow",color:"dark_aqua",bold:1b}] 1
-item replace entity @a[scores={char=69,yellow=1..}] hotbar.2 with minecraft:yellow_dye[minecraft:custom_name={text:"Yellow",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
+item replace entity @a[scores={char=69,red=0,blue=0,red=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:red_dye",minecraft:custom_name={text:"Red",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=69,yellow=0,blue=0,red=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:yellow_dye",minecraft:custom_name={text:"Yellow",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=69,blue=0,yellow=0,red=0}] hotbar.3 with carrot_on_a_stick[custom_data={s3:1},minecraft:item_model="minecraft:blue_dye",minecraft:custom_name={text:"Blue",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:blue_dye",Slot:3b}]}] run clear @a[scores={char=69}] minecraft:blue_dye
-item replace entity @a[scores={char=69,blue=0}] hotbar.3 with minecraft:blue_dye[minecraft:custom_name={text:"Blue",color:"dark_aqua",bold:1b}] 1
-item replace entity @a[scores={char=69,blue=1..}] hotbar.3 with minecraft:blue_dye[minecraft:custom_name={text:"Blue",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1
 
+
+
+item replace entity @a[scores={char=69,red=1..,blue=0,yellow=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:red_dye",minecraft:custom_name={text:"Red",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=69,red=1..,blue=0,yellow=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:orange_dye",minecraft:custom_name={text:"Orange",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=69,red=1..,blue=0,yellow=0}] hotbar.3 with carrot_on_a_stick[custom_data={s3:1},minecraft:item_model="minecraft:purple_dye",minecraft:custom_name={text:"Purple",color:"dark_aqua",bold:1b}] 1
+
+
+item replace entity @a[scores={char=69,yellow=1..,blue=0,red=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:orange_dye",minecraft:custom_name={text:"Orange",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=69,yellow=1..,blue=0,red=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:yellow_dye",minecraft:custom_name={text:"Yellow",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=69,yellow=1..,blue=0,red=0}] hotbar.3 with carrot_on_a_stick[custom_data={s3:1},minecraft:item_model="minecraft:green_dye",minecraft:custom_name={text:"Green",color:"dark_aqua",bold:1b}] 1
+
+
+item replace entity @a[scores={char=69,blue=1..,yellow=0,red=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:purple_dye",minecraft:custom_name={text:"Purple",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=69,blue=1..,yellow=0,red=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:green_dye",minecraft:custom_name={text:"Green",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=69,blue=1..,yellow=0,red=0}] hotbar.3 with carrot_on_a_stick[custom_data={s3:1},minecraft:item_model="minecraft:blue_dye",minecraft:custom_name={text:"Blue",color:"dark_aqua",bold:1b}] 1

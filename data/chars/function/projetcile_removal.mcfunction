@@ -16,7 +16,7 @@ execute unless entity @a[scores={char=5}] run kill @e[tag=entities_cremator]
 
 execute unless entity @a[scores={char=6}] run kill @e[tag=entities_guide]
 
-execute unless entity @a[scores={char=7}] run kill @e[tag=dragondash]
+execute unless entity @a[scores={char=7}] run kill @e[tag=entities_dragon]
 
 execute unless entity @a[scores={char=8}] run kill @e[tag=entities_trickstress]
 
