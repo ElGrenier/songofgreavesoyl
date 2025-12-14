@@ -142,14 +142,14 @@ execute at @e[tag=rotten_grasp] unless entity @e[tag=rotten_grasp_visual_8] run 
 tp @e[tag=rotten_grasp_visuals,tag=!rot_hand_readjust] @e[tag=rotten_grasp,limit=1]
 tag @e[tag=rotten_grasp_visuals] add rot_hand_readjust
 
-execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_1] ^ ^.3 ^ 
+execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_1] ^ ^.3 ^
 execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_2] ^ ^0.3 ^-.5
-execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_3] ^ ^.5 ^1 
-execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_4] ^0.2 ^.4 ^1 
-execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_5] ^-0.2 ^.3 ^1 
-execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_6] ^ ^1.1 ^1.2 
-execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_7] ^-0.6 ^0.8 ^1.2 
-execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_8] ^0.6 ^0.8 ^1.2 
+execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_3] ^ ^.5 ^1
+execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_4] ^0.2 ^.4 ^1
+execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_5] ^-0.2 ^.3 ^1
+execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_6] ^ ^1.1 ^1.2
+execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_7] ^-0.6 ^0.8 ^1.2
+execute as @e[tag=rotten_grasp] at @s run tp @e[tag=rotten_grasp_visual_8] ^0.6 ^0.8 ^1.2
 
 execute unless entity @e[tag=rotten_grasp] run kill @e[tag=rotten_grasp_visuals]
 

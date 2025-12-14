@@ -65,7 +65,7 @@ execute at @a[scores={char=23,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ 
 execute at @a[scores={char=23,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["prowler_tail_visual_core","tail_things"]}
 scoreboard players operation @e[tag=projectile,tag=prowler_tail] Team = @p[scores={char=23}] Team
 tp @e[tag=prowler_tail,limit=1] @a[scores={char=23,s2_timer=1},limit=1]
-execute at @a[scores={char=23,s2_timer=1,CC_silence=0}] as @e[tag=prowler_tail,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=23,s2_timer=1,CC_silence=0}] as @e[tag=prowler_tail,limit=1] at @s run tp @s ~ ~1 ~
 execute at @e[tag=prowler_tail] run particle dust{color:[0.91,0.92,0.58],scale:1} ~ ~ ~ 0.2 0.2 0.2 5 5 force
 
 execute as @e[tag=prowler_tail] at @s run tp @s ^ ^ ^0.5

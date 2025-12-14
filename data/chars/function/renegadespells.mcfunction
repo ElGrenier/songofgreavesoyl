@@ -16,7 +16,7 @@ execute at @a[scores={char=26,s0_timer=1}] run playsound entity.zombie_villager.
 execute at @a[scores={char=26,s0_timer=1}] run summon marker ~ ~1 ~ {Tags:["renegade_ebw_shot","entities_renegade"]}
 scoreboard players operation @e[tag=projectile,tag=renegade_ebw_shot] Team = @p[scores={char=26}] Team
 tp @e[tag=renegade_ebw_shot,limit=1] @a[scores={char=26,s0_timer=1},limit=1]
-execute at @a[scores={char=26,s0_timer=1,CC_silence=0}] as @e[tag=renegade_ebw_shot,limit=1] at @s run tp @s ~ ~1.5 ~ 
+execute at @a[scores={char=26,s0_timer=1,CC_silence=0}] as @e[tag=renegade_ebw_shot,limit=1] at @s run tp @s ~ ~1.5 ~
 
 execute as @e[tag=renegade_ebw_shot] at @s run tp @s ^ ^ ^0.3
 execute at @e[tag=renegade_ebw_shot] run particle enchanted_hit ~ ~ ~ 0.1 0.1 0.1 0.01 1
@@ -144,7 +144,7 @@ execute at @a[scores={char=26,s2_timer=21,CC_silence=0}] run playsound entity.ph
 execute at @a[scores={char=26,s2_timer=21,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["toxic_smoke_blast","projectile","entities_renegade"]}
 scoreboard players operation @e[tag=projectile,tag=toxic_smoke_blast] Team = @p[scores={char=26}] Team
 tp @e[tag=toxic_smoke_blast,limit=1] @a[scores={char=26,s2_timer=21},limit=1]
-execute at @a[scores={char=26,s2_timer=21,CC_silence=0}] as @e[tag=toxic_smoke_blast,limit=1] at @s run tp @s ~ ~1.4 ~ 
+execute at @a[scores={char=26,s2_timer=21,CC_silence=0}] as @e[tag=toxic_smoke_blast,limit=1] at @s run tp @s ~ ~1.4 ~
 
 
 execute as @a[scores={char=26,s2_timer=1..20,CC_silence=0}] at @s positioned ~ ~1.5 ~ positioned ^ ^ ^1 run function chars:renegade_smoke_shield

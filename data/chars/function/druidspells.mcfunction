@@ -44,7 +44,7 @@ execute at @a[scores={char=63,s1_timer=1,CC_silence=0}] run playsound block.flow
 execute at @a[scores={char=63,s1_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,-0.3f,-0.3f],scale:[0.6f,0.6f,0.6f]},block_state:{Name:"minecraft:vine"},Tags:["tanglebarbs_projectile","entities_druid","projectile"]}
 scoreboard players operation @e[tag=projectile,tag=tanglebarbs_projectile] Team = @p[scores={char=63}] Team
 tp @e[tag=tanglebarbs_projectile,limit=1] @a[scores={char=63,s1_timer=1},limit=1]
-execute at @a[scores={char=63,s1_timer=1,CC_silence=0}] as @e[tag=tanglebarbs_projectile,limit=1] at @s run tp @s ~ ~1.3 ~ 
+execute at @a[scores={char=63,s1_timer=1,CC_silence=0}] as @e[tag=tanglebarbs_projectile,limit=1] at @s run tp @s ~ ~1.3 ~
 
 execute at @a[scores={char=63,s1_timer=1..10}] as @e[tag=tanglebarbs_projectile] at @s run tp @s ^ ^ ^0.6
 execute at @a[scores={char=63,s1_timer=11..20}] as @e[tag=tanglebarbs_projectile] at @s run tp @s ^ ^ ^0.4

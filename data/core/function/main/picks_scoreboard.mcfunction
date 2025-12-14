@@ -2,16 +2,20 @@
 # team modify bans_color color dark_red
 # team join bans_color -=Bans=-
 
+team join yellow =Yellow=
+team join purple =Purple=
+scoreboard players set =Purple= Picks 2
+scoreboard players set =Yellow= Picks 0
 
 
 scoreboard objectives modify Picks numberformat blank
 
-#scoreboard players set bans Picks -2
-#scoreboard players display name map Picks {text:"-=Bans=-",color:"red",bold:1b}
+scoreboard players set bans Picks -2
+scoreboard players display name map Picks {text:"-=Bans=-",color:"red",bold:1b}
 
 
-#scoreboard players set map Picks -4
-#scoreboard players display name map Picks {text:"-=Map=-",color:"aqua",bold:1b}
+scoreboard players set map Picks -4
+scoreboard players display name map Picks {text:"-=Map=-",color:"aqua",bold:1b}
 
 
 # maps

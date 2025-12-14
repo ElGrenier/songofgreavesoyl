@@ -325,7 +325,7 @@ execute at @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0}] run summo
 
 scoreboard players operation @e[tag=projectile,tag=blood_splash] Team = @p[scores={char=53}] Team
 execute as @e[tag=blood_splash] run tp @p[scores={char=53,s2_timer=1}]
-execute at @a[scores={char=53,s2_timer=1,CC_silence=0}] as @e[tag=blood_splash] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=53,s2_timer=1,CC_silence=0}] as @e[tag=blood_splash] at @s run tp @s ~ ~1 ~
 
 execute at @a[scores={char=53,s2_timer=1,CC_silence=0}] as @e[tag=bloody_cone_1] run rotate @s ~40 ~
 execute at @a[scores={char=53,s2_timer=1,CC_silence=0}] as @e[tag=bloody_cone_2] run rotate @s ~30 ~

@@ -4,9 +4,9 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:diamond_shovel"}}]
 #passive
 
 
-execute as @a[scores={universal_hit=1..passive_drow=0,char=31}] as @a[advancements={chars:drowned_passive=true}] unless score @s Team = @p[scores={char=31}] Team run scoreboard players set @s CC_root 20
-execute as @a[scores={universal_hit=1..passive_drow=0,char=31}] as @a[advancements={chars:drowned_passive=true}] unless score @s Team = @p[scores={char=31}] Team run scoreboard players set @s drownedroot_visual 5
-execute as @a[scores={universal_hit=1..passive_drow=0,char=31}] as @a[advancements={chars:drowned_passive=true}] unless score @s Team = @p[scores={char=31}] Team run scoreboard players set @a[scores={char=37}] passive_drow 160
+execute as @a[scores={universal_hit=1..,passive_drow=0,char=31}] as @a[advancements={chars:drowned_passive=true}] unless score @s Team = @p[scores={char=31}] Team run scoreboard players set @s CC_root 20
+execute as @a[scores={universal_hit=1..,passive_drow=0,char=31}] as @a[advancements={chars:drowned_passive=true}] unless score @s Team = @p[scores={char=31}] Team run scoreboard players set @s drownedroot_visual 5
+execute as @a[scores={universal_hit=1..,passive_drow=0,char=31}] as @a[advancements={chars:drowned_passive=true}] unless score @s Team = @p[scores={char=31}] Team run scoreboard players set @a[scores={char=37}] passive_drow 160
 advancement revoke @a[advancements={chars:drowned_passive=true}] only chars:drowned_passive
 
 execute at @a[scores={drownedroot_visual=1..}] run particle minecraft:block{block_state:{Name:"minecraft:tuff"}} ~ ~0.5 ~ 0.5 1 0.5 0.1 5
@@ -39,7 +39,7 @@ execute at @a[scores={s1_timer=1,CC_silence=0}] run playsound entity.drowned.amb
 execute at @a[scores={char=31,s1_timer=1,CC_silence=0}] run summon item_display ~ ~ ~ {Tags:["keelhaul_hook","keelhaul_point_location","projectile","entities_drownedcaptain"],item:{count:1,id:"minecraft:iron_pickaxe"},teleport_duration:1,transformation:{left_rotation:[0.64755577f,0.2682264f,-0.2729492f,0.6589575f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[2f,2f,2f],translation:[0f,0f,0f]}}
 scoreboard players operation @e[tag=projectile,tag=keelhaul_hook] Team = @p[scores={char=31}] Team
 tp @e[tag=keelhaul_hook,limit=1] @a[scores={char=31,s1_timer=1},limit=1]
-execute at @a[scores={char=31,s1_timer=1,CC_silence=0}] as @e[tag=keelhaul_hook,limit=1] at @s run tp @s ~ ~1.4 ~ 
+execute at @a[scores={char=31,s1_timer=1,CC_silence=0}] as @e[tag=keelhaul_hook,limit=1] at @s run tp @s ~ ~1.4 ~
 
 
 execute at @e[tag=keelhaul_hook] run particle block{block_state:{Name:"minecraft:water"}} ~ ~ ~ 0.4 0.4 0.4 0.001 2 normal

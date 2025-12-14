@@ -40,7 +40,7 @@ tp @e[tag=pulverize_shockwave,limit=1] @a[scores={char=68,s1_timer=21},limit=1]
 tp @e[tag=pulverize_shockwave_vis,limit=1] @a[scores={char=68,s1_timer=21},limit=1]
 
 execute at @a[scores={char=68,s1_timer=21,CC_silence=0}] as @e[tag=pulverize_shockwave_vis] at @s run tp @s ~ ~ ~ ~ -80
-execute at @a[scores={char=68,s1_timer=21,CC_silence=0}] as @e[tag=pulverize_shockwave_vis,limit=1] at @s run tp @s ~ ~0.6 ~ 
+execute at @a[scores={char=68,s1_timer=21,CC_silence=0}] as @e[tag=pulverize_shockwave_vis,limit=1] at @s run tp @s ~ ~0.6 ~
 
 execute store result entity @e[tag=pulverize_shockwave,limit=1] Rotation[1] float 1 run clear
 

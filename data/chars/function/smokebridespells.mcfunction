@@ -76,7 +76,7 @@ execute at @a[scores={char=56,s1_timer=1,CC_silence=0}] run playsound entity.sno
 execute at @a[scores={char=56,s1_timer=1,CC_silence=0}] run summon item_display ~ ~ ~ {Tags:["smell_projectile","entities_smokebride","projectile"],item: {count: 1, id: "minecraft:gray_candle"}, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [.5625f, .5625f, .5625f], translation: [0.0f, 0f, 0.0f]},teleport_duration:1}
 scoreboard players operation @e[tag=smell_projectile,tag=projectile] Team = @p[scores={char=56}] Team
 tp @e[tag=smell_projectile,limit=1] @a[scores={char=56,s1_timer=1},limit=1]
-execute at @a[scores={char=56,s1_timer=1,CC_silence=0},limit=1] as @e[tag=smell_projectile,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=56,s1_timer=1,CC_silence=0},limit=1] as @e[tag=smell_projectile,limit=1] at @s run tp @s ~ ~1 ~
 
 
 execute at @a[scores={char=56,s1_timer=1..10}] as @e[tag=smell_projectile] at @s run tp @s ^ ^ ^0.6
@@ -93,7 +93,7 @@ execute as @e[tag=ember] at @s if block ~ ~-0.2 ~ #minecraft:dash run tp @s ~ ~-
 
 execute as @e[tag=ember] at @s run tp @s ~ ~ ~ ~8 ~
 
-execute at @e[tag=ember] run particle small_flame ~ ~0.2 ~ 0.1 0.1 0.1 0 1 
+execute at @e[tag=ember] run particle small_flame ~ ~0.2 ~ 0.1 0.1 0.1 0 1
 execute as @e[tag=ember] at @s run particle dust{color:[0.33,0.33,0.33],scale:1} ^ ^ ^4 0.1 0.1 0.1 0 10
 execute as @e[tag=ember] at @s run particle dust{color:[0.33,0.33,0.33],scale:1} ^ ^ ^-4 0.1 0.1 0.1 0 10
 execute as @e[tag=ember] at @s run particle dust{color:[0.33,0.33,0.33],scale:1} ^4 ^ ^ 0.1 0.1 0.1 0 10

@@ -64,7 +64,7 @@ execute at @a[scores={char=32,s2_timer=1,CC_silence=0}] run playsound entity.evo
 execute at @a[scores={char=32,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["pincers","projectile","entities_emperor"]}
 scoreboard players operation @e[tag=projectile,tag=pincers] Team = @p[scores={char=32}] Team
 tp @e[tag=pincers,limit=1] @a[scores={char=32,s2_timer=1},limit=1]
-execute at @a[scores={char=32,s2_timer=1,CC_silence=0}] as @e[tag=pincers,limit=1] at @s run tp @s ~ ~1.5 ~ 
+execute at @a[scores={char=32,s2_timer=1,CC_silence=0}] as @e[tag=pincers,limit=1] at @s run tp @s ~ ~1.5 ~
 execute as @e[tag=pincers] at @s run tp @s ^ ^ ^0.7
 execute at @a[scores={char=32,s2_timer=12}] run kill @e[tag=pincers]
 

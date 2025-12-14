@@ -31,7 +31,7 @@ execute at @a[scores={char=64,s0_timer=1,scarlet_knifes=1..,CC_silence=0}] run s
 scoreboard players remove @a[scores={char=64,s0_timer=1,scarlet_knifes=1..,CC_silence=0}] scarlet_knifes 1
 scoreboard players operation @e[tag=projectile,tag=laceration_knife] Team = @p[scores={char=64}] Team
 tp @e[tag=laceration_knife,limit=1] @a[scores={char=64,s0_timer=1},limit=1]
-execute at @a[scores={char=64,s0_timer=1,CC_silence=0}] as @e[tag=laceration_knife,limit=1] at @s run tp @s ~ ~1.3 ~ 
+execute at @a[scores={char=64,s0_timer=1,CC_silence=0}] as @e[tag=laceration_knife,limit=1] at @s run tp @s ~ ~1.3 ~
 
 
 

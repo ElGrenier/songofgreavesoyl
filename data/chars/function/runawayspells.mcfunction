@@ -58,7 +58,7 @@ execute at @a[scores={char=57,s1_timer=1,CC_silence=0}] run playsound entity.pla
 execute at @a[scores={char=57,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["grab_chain","entities_runaway","projectile"]}
 execute at @a[scores={char=57,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["grab_chain_visual_core","entities_runaway"]}
 tp @e[tag=grab_chain,limit=1] @a[scores={char=57,s1_timer=1},limit=1]
-execute at @a[scores={char=57,s1_timer=1,CC_silence=0}] as @e[tag=grab_chain,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=57,s1_timer=1,CC_silence=0}] as @e[tag=grab_chain,limit=1] at @s run tp @s ~ ~1 ~
 
 execute as @e[tag=grab_chain] at @s run tp @s ^ ^ ^0.5
 

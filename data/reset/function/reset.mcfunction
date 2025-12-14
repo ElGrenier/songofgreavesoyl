@@ -8,14 +8,13 @@ effect clear @a
 scoreboard players set @a char 0
 clear @a
 execute as @a at @s run function core:main/game/initiate_stats
-spawnpoint @a 174 12 -81
+spawnpoint @a 124 12 -172
 kill @a
 scoreboard players remove @a StatDeaths 1
-tp @a 174 12 -81
+execute as @a run function core:lobby/tp_lobby
 gamemode adventure @a
 execute as @a run function core:main/clear_chat
 scoreboard objectives setdisplay sidebar
-scoreboard players set map lobby 1
 scoreboard players set map settings 0
 scoreboard players set game_state settings 0
 scoreboard players set @a Loading -1
@@ -27,8 +26,6 @@ tag @a remove in_game
 function battlegrounds:map_settings
 time set day
 
-
-
 kill @e[tag=bomb]
 kill @e[type=minecraft:creeper]
 kill @e[type=minecraft:zombie]
@@ -37,16 +34,15 @@ kill @e[type=minecraft:fireball]
 
 kill @e[tag=projectile]
 
-clone 206 4 -110 218 11 -103 168 11 -94
-
-clone 143 4 -148 165 7 -144 174 4 -150
-
 setblock 176 12 -85 minecraft:air replace
 setblock 176 12 -85 minecraft:oak_wall_sign[facing=south]{front_text:{messages:[{text:"===================",bold:1b,color:"dark_purple",type:"text"},{text:"CASUAL",color:"light_purple",bold:1b,type:"text"},{text:"GAME",color:"light_purple",bold:1b,type:"text",click_event:{action:"run_command",command:"/function lobby:unless_draft_sign"}},{text:"===================",bold:1b,color:"dark_purple",type:"text"}]},is_waxed:1b} replace
 
 kill @e[tag=ban_stand]
 
 kill @e[tag=credits_stands]
+
+
+function core:lobby/initialize_lobby
 
 #credits stands
 

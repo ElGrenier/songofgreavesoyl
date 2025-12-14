@@ -33,26 +33,26 @@ execute at @a[scores={char=28,s0_timer=1..20,CC_silence=0}] unless entity @e[tag
 execute at @a[scores={char=28,s0_timer=1..20,CC_silence=0}] run tp @e[tag=overload_vis_core] ~ ~1 ~
 execute as @e[tag=overload_vis_core] at @s run tp @s ~ ~ ~ ~11 ~
 
-execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^1.2 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^1 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^0.8 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^0.6 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^0.2 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-1.2 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-1 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-0.8 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-0.6 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-0.4 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-1.1 ^ ^ 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-1 ^ ^ 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-0.8 ^ ^ 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-0.6 ^ ^ 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-0.4 ^ ^ 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^1.2 ^ ^ 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^1 ^ ^ 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^0.8 ^ ^ 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^0.6 ^ ^ 0 0 0 0 5 force 
-execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^0.4 ^ ^ 0 0 0 0 5 force 
+execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^1.2 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^1 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^0.8 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^0.6 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^0.2 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-1.2 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-1 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-0.8 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-0.6 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^ ^ ^-0.4 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-1.1 ^ ^ 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-1 ^ ^ 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-0.8 ^ ^ 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-0.6 ^ ^ 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^-0.4 ^ ^ 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=1..4,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^1.2 ^ ^ 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=5..8,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^1 ^ ^ 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=9..12,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^0.8 ^ ^ 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=13..16,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^0.6 ^ ^ 0 0 0 0 5 force
+execute at @a[scores={char=28,s0_timer=17..20,CC_silence=0}] as @e[tag=overload_vis_core] at @s run particle enchanted_hit ^0.4 ^ ^ 0 0 0 0 5 force
 
 
 
@@ -69,7 +69,7 @@ execute at @a[scores={char=28,s1_timer=1,CC_silence=0}] run playsound block.beac
 execute at @a[scores={char=28,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["anguish_sphere_main","anguish_sphere_things","projectile","entities_operator"]}
 scoreboard players operation @e[tag=projectile,tag=anguish_sphere_main] Team = @p[scores={char=28}] Team
 tp @e[tag=anguish_sphere_main,limit=1] @a[scores={char=28,s1_timer=1},limit=1]
-execute at @a[scores={char=28,s1_timer=1,CC_silence=0}] as @e[tag=anguish_sphere_main,limit=1] at @s run tp @s ~ ~1.2 ~ 
+execute at @a[scores={char=28,s1_timer=1,CC_silence=0}] as @e[tag=anguish_sphere_main,limit=1] at @s run tp @s ~ ~1.2 ~
 
 execute as @e[tag=anguish_sphere_main] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
 
@@ -177,7 +177,7 @@ execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brai
 execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brainrot_8] ^1.8 ^ ^-0.5
 execute as @a[scores={char=28,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=brainrot_9] ^2.4 ^ ^-1.2
 
-execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] as @e[tag=braindamage] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=28,s2_timer=1,CC_silence=0}] as @e[tag=braindamage] at @s run tp @s ~ ~1 ~
 
 execute as @e[tag=braindamage] at @s run tp @s ^ ^ ^0.5
 

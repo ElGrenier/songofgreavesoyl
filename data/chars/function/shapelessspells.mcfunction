@@ -97,14 +97,14 @@ execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_E_2] ~0.4
 execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_W_1] ~-0.49 ~0.5 ~
 execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_W_2] ~-0.49 ~1.5 ~
 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SE_1] ~0.49 ~0.5 ~0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SE_2] ~0.49 ~1.5 ~0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NW_1] ~-0.49 ~0.5 ~-0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NW_2] ~-0.49 ~1.5 ~-0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NE_1] ~0.49 ~0.5 ~-0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NE_2] ~0.49 ~1.5 ~-0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SW_1] ~-0.49 ~0.5 ~0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SW_2] ~-0.49 ~1.5 ~0.49 
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SE_1] ~0.49 ~0.5 ~0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SE_2] ~0.49 ~1.5 ~0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NW_1] ~-0.49 ~0.5 ~-0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NW_2] ~-0.49 ~1.5 ~-0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NE_1] ~0.49 ~0.5 ~-0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NE_2] ~0.49 ~1.5 ~-0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SW_1] ~-0.49 ~0.5 ~0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SW_2] ~-0.49 ~1.5 ~0.49
 
 execute at @e[tag=void_gate_visual_core] unless block ~1 ~ ~1 #dash unless entity @e[tag=voidgate_visual_SE_1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["voidgate_visual_SE_1","voidgate_visuals","entities_shapeless"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.5f,-0.1f],scale:[0.2f,1f,0.2f]},block_state:{Name:"minecraft:black_concrete_powder"}}
 execute at @e[tag=void_gate_visual_core] unless block ~1 ~1 ~1 #dash unless entity @e[tag=voidgate_visual_SE_2] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["voidgate_visual_SE_2","voidgate_visuals","entities_shapeless"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.5f,-0.1f],scale:[0.2f,1f,0.2f]},block_state:{Name:"minecraft:black_concrete_powder"}}
@@ -187,14 +187,14 @@ execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_
 execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_W_1] ~-0.49 ~0.5 ~
 execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_W_2] ~-0.49 ~1.5 ~
 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SE_1] ~0.49 ~0.5 ~0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SE_2] ~0.49 ~1.5 ~0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NW_1] ~-0.49 ~0.5 ~-0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NW_2] ~-0.49 ~1.5 ~-0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NE_1] ~0.49 ~0.5 ~-0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NE_2] ~0.49 ~1.5 ~-0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SW_1] ~-0.49 ~0.5 ~0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SW_2] ~-0.49 ~1.5 ~0.49 
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SE_1] ~0.49 ~0.5 ~0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SE_2] ~0.49 ~1.5 ~0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NW_1] ~-0.49 ~0.5 ~-0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NW_2] ~-0.49 ~1.5 ~-0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NE_1] ~0.49 ~0.5 ~-0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NE_2] ~0.49 ~1.5 ~-0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SW_1] ~-0.49 ~0.5 ~0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SW_2] ~-0.49 ~1.5 ~0.49
 
 execute at @e[tag=void_return_visual_core] unless block ~1 ~ ~1 #dash unless entity @e[tag=voidgate_return_visual_SE_1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["voidgate_return_visual_SE_1","returngate_visuals","entities_shapeless"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.5f,-0.1f],scale:[0.2f,1f,0.2f]},block_state:{Name:"minecraft:white_concrete_powder"}}
 execute at @e[tag=void_return_visual_core] unless block ~1 ~1 ~1 #dash unless entity @e[tag=voidgate_return_visual_SE_2] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["voidgate_return_visual_SE_2","returngate_visuals","entities_shapeless"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.5f,-0.1f],scale:[0.2f,1f,0.2f]},block_state:{Name:"minecraft:white_concrete_powder"}}

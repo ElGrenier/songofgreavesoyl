@@ -29,7 +29,7 @@ execute at @a[scores={char=2,s1_timer=1,CC_silence=0}] run playsound entity.skel
 execute at @a[scores={char=2,s1_timer=1}] run summon item_display ~ ~1 ~ {teleport_duration:1,transformation:[0.7071067812f,0.7071067812f,0f,0f,0f,0f,-1f,0f,-0.7071067812f,0.7071067812f,0f,0f,0f,0f,0f,1f],item:{id:"minecraft:arrow",count:1},Tags:["aim_sure_arrow","projectile","entities_huntress"]}
 scoreboard players operation @e[tag=projectile,tag=aim_sure_arrow] Team = @p[scores={char=2}] Team
 tp @e[tag=aim_sure_arrow,limit=1] @a[scores={char=2,s1_timer=1},limit=1]
-execute at @a[scores={char=2,s1_timer=1,CC_silence=0}] as @e[tag=aim_sure_arrow,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=2,s1_timer=1,CC_silence=0}] as @e[tag=aim_sure_arrow,limit=1] at @s run tp @s ~ ~1 ~
 execute at @a[scores={char=2,s1_timer=1..}] as @e[tag=aim_sure_arrow] at @s run tp @s ^ ^ ^1.2
 execute at @a[scores={char=2,s1_timer=11..}] as @e[tag=aim_sure_arrow] at @s run tp @s ~ ~-0.2 ~
 

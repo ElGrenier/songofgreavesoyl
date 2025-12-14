@@ -42,7 +42,7 @@ execute at @a[scores={char=46,s1_timer=30,CC_silence=0}] run summon marker ~ ~ ~
 tp @e[tag=bludgeon_visual,limit=1] @a[scores={char=46,s1_timer=31},limit=1]
 tp @e[tag=bludgeon_actual,limit=1] @a[scores={char=46,s1_timer=31},limit=1]
 execute at @a[scores={char=46,s1_timer=31,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run tp @s ~ ~ ~ ~ -80
-execute at @a[scores={char=46,s1_timer=31,CC_silence=0}] as @e[tag=bludgeon_visual,limit=1] at @s run tp @s ~ ~0.6 ~ 
+execute at @a[scores={char=46,s1_timer=31,CC_silence=0}] as @e[tag=bludgeon_visual,limit=1] at @s run tp @s ~ ~0.6 ~
 execute store result entity @e[tag=bludgeon_actual,limit=1] Rotation[1] float 1 run clear
 execute at @a[scores={char=46,s1_timer=31..50,CC_silence=0}] as @e[tag=bludgeon_actual] at @s run tp @s ^ ^ ^0.15
 execute at @a[scores={char=46,s1_timer=31..50,CC_silence=0}] as @e[tag=bludgeon_visual] at @s run tp @s ^ ^ ^0.15

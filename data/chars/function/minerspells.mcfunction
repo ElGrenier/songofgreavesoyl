@@ -14,7 +14,7 @@ execute at @a[scores={char=40,s1_timer=1,CC_silence=0}] run playsound entity.pla
 execute at @a[scores={char=40,s1_timer=1,CC_silence=0}] run summon item_display ~ ~ ~ {Tags:["skullsplit","projectile","entities_miner"],item:{count:1,id:"minecraft:iron_pickaxe"},transformation:{left_rotation:[0.0f,0.7071068f,0.0f,0.7071068f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[2.0f,2.0f,2.0f],translation:[0.0f,0.0f,0.0f]}}
 scoreboard players operation @e[tag=projectile,tag=skullsplit] Team = @p[scores={char=40}] Team
 tp @e[tag=skullsplit,limit=1] @a[scores={char=40,s1_timer=1},limit=1]
-execute at @a[scores={char=40,s1_timer=1,CC_silence=0}] as @e[tag=skullsplit,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=40,s1_timer=1,CC_silence=0}] as @e[tag=skullsplit,limit=1] at @s run tp @s ~ ~1 ~
 
 
 execute at @e[tag=skullsplit] run particle sweep_attack ~ ~ ~ 1 0.1 1 0.0001 3 normal

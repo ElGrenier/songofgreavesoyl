@@ -1,6 +1,3 @@
-
-# TP to team select temporary room and launch with it #lobby:loss_teams
-# tp @a 288.5 29.00 -107.5
 scoreboard players set game_state settings 1
 
 
@@ -14,10 +11,7 @@ kill @e[tag=char_displays]
 #function chars:char_display_stands
 
 scoreboard objectives setdisplay sidebar Picks
-team join yellow =Yellow=
-team join purple =Purple=
-scoreboard players set =Purple= Picks 2
-scoreboard players set =Yellow= Picks 0
+
 scoreboard players set confirmation_counter lobby 0
 
 # scoreboard players enable @a ClassPickTrigger

@@ -11,6 +11,7 @@ scoreboard players operation team_select settings = team_select lobby
 scoreboard players operation max_loading settings = max_loading lobby
 scoreboard players operation fallen_flag_max_countdown settings = fallen_flag_max_countdown lobby
 scoreboard players operation require_confirmation settings = require_confirmation lobby
+scoreboard players operation all_random settings = all_random lobby
 
 execute if score map_type settings matches 1 run scoreboard players operation score_max settings = score lobby
 execute if score map_type settings matches 2 run scoreboard players operation score_max settings = dm_score lobby

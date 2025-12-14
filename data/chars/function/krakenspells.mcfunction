@@ -64,7 +64,7 @@ execute at @a[scores={char=10,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ 
 execute at @a[scores={char=10,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["kraken_tentacle_visual_core","entities_kraken"]}
 scoreboard players operation @e[tag=projectile,tag=kraken_tentacle] Team = @p[scores={char=10}] Team
 tp @e[tag=kraken_tentacle,limit=1] @a[scores={char=10,s1_timer=1},limit=1]
-execute at @a[scores={char=10,s1_timer=1,CC_silence=0}] as @e[tag=kraken_tentacle,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=10,s1_timer=1,CC_silence=0}] as @e[tag=kraken_tentacle,limit=1] at @s run tp @s ~ ~1 ~
 
 execute at @a[scores={char=10,s1_timer=..10}] at @e[tag=tentacle_visuals_1] run particle block{block_state:{Name:"minecraft:water"}} ~ ~ ~ 0.3 0.3 0.3 0.0001 3 normal
 execute as @e[tag=kraken_tentacle] at @s run tp @s ^ ^ ^0.6

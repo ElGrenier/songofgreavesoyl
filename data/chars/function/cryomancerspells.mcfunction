@@ -18,7 +18,7 @@ execute at @a[scores={char=61,s1_timer=31..70,CC_silence=0}] run playsound entit
 execute at @a[scores={char=61,s1_timer=31..70,CC_silence=0}] run playsound block.snow.place master @a[distance=..12] ~ ~ ~ 0.2 0.8 1
 scoreboard players operation @e[tag=projectile,tag=cryostream] Team = @p[scores={char=2}] Team
 tp @e[tag=cryostream,scores={fire_life=1..2}] @a[scores={char=61},limit=1]
-execute as @e[tag=cryostream,scores={fire_life=2}] at @s run tp @s ~ ~1.4 ~ 
+execute as @e[tag=cryostream,scores={fire_life=2}] at @s run tp @s ~ ~1.4 ~
 
 execute as @e[tag=cryostream] at @s run tp @s ^ ^ ^0.6
 
@@ -76,7 +76,7 @@ execute as @e[tag=cone_of_cold_6,scores={fire_life=2}] at @s run rotate @s ~-10 
 execute as @e[tag=cone_of_cold_7,scores={fire_life=2}] at @s run rotate @s ~-20 ~
 execute as @e[tag=cone_of_cold_8,scores={fire_life=2}] at @s run rotate @s ~-30 ~
 execute as @e[tag=cone_of_cold_9,scores={fire_life=2}] at @s run rotate @s ~-40 ~
-execute as @e[tag=cold_cone,scores={fire_life=2}] at @s run tp @s ~ ~1.2 ~ 
+execute as @e[tag=cold_cone,scores={fire_life=2}] at @s run tp @s ~ ~1.2 ~
 
 execute as @e[tag=cold_cone] at @s run tp @s ^ ^ ^0.8
 
@@ -114,7 +114,7 @@ execute at @a[scores={char=61,s2_timer=21,CC_silence=0}] run summon item_display
 execute at @a[scores={char=61,s2_timer=21,CC_silence=0}] run playsound entity.snowball.throw master @a[distance=..10] ~ ~ ~ 1 1.3 1
 scoreboard players operation @e[tag=projectile,tag=cooling_can] Team = @p[scores={char=61}] Team
 tp @e[tag=cooling_can,limit=1] @a[scores={char=61,s2_timer=21},limit=1]
-execute at @a[scores={char=61,s2_timer=21,CC_silence=0}] as @e[tag=cooling_can,limit=1] at @s run tp @s ~ ~1.3 ~ 
+execute at @a[scores={char=61,s2_timer=21,CC_silence=0}] as @e[tag=cooling_can,limit=1] at @s run tp @s ~ ~1.3 ~
 
 execute at @a[scores={char=61,s2_timer=21..34}] as @e[tag=cooling_can] at @s run tp @s ^ ^ ^0.5
 execute at @a[scores={char=61,s2_timer=35..44}] as @e[tag=cooling_can] at @s run tp @s ^ ^ ^0.6

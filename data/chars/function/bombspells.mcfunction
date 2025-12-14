@@ -63,7 +63,7 @@ execute at @a[scores={char=11,s2_timer=1,CC_silence=0}] run summon block_display
 scoreboard players operation @e[tag=projectile,tag=bm_grenade] Team = @p[scores={char=11}] Team
 execute at @a[scores={char=11,s2_timer=1,CC_silence=0}] run playsound entity.snowball.throw master @a[distance=..10] ~ ~ ~ 1 0.8 1
 tp @e[tag=bm_grenade,limit=1] @a[scores={char=11,s2_timer=1},limit=1]
-execute at @a[scores={char=11,s2_timer=1,CC_silence=0}] as @e[tag=bm_grenade,limit=1] at @s run tp @s ~ ~1.2 ~ 
+execute at @a[scores={char=11,s2_timer=1,CC_silence=0}] as @e[tag=bm_grenade,limit=1] at @s run tp @s ~ ~1.2 ~
 execute at @a[tag=grenade] run kill @e[tag=bm_grenade]
 
 execute at @a[scores={char=11,s2_timer=1..14}] as @e[tag=bm_grenade] at @s run tp @s ^ ^ ^0.6

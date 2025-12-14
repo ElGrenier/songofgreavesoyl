@@ -152,7 +152,7 @@ execute at @a[tag=dazzle,scores={char=51,s2_timer=1,CC_silence=0}] run playsound
 execute at @a[tag=dazzle,scores={char=51,s2_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["dazzle_ball_initiall","dazzle_balls","projectile","entities_jester"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.15f,-0.15f,-0.15f],scale:[0.3f,0.3f,0.3f]},block_state:{Name:"minecraft:red_shulker_box"}}
 scoreboard players operation @e[tag=projectile,tag=dazzle_ball_initiall] Team = @p[scores={char=51}] Team
 tp @e[tag=dazzle_ball_initiall,limit=1] @a[scores={char=51,s2_timer=1},limit=1]
-execute at @a[scores={char=51,s2_timer=1,CC_silence=0}] as @e[tag=dazzle_ball_initiall,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=51,s2_timer=1,CC_silence=0}] as @e[tag=dazzle_ball_initiall,limit=1] at @s run tp @s ~ ~1 ~
 
 
 
@@ -213,8 +213,8 @@ execute at @a[tag=laugh,scores={char=51,s2_timer_recast=1,CC_silence=0}] run sum
 scoreboard players operation @e[tag=projectile,tag=shiv] Team = @p[scores={char=51}] Team
 tp @e[tag=shiv1,limit=1] @a[scores={char=51,s2_timer_recast=1},limit=1]
 tp @e[tag=shiv2,limit=1] @a[scores={char=51,s2_timer_recast=1},limit=1]
-execute at @a[scores={char=51,s2_timer_recast=1,CC_silence=0}] as @e[tag=shiv1,limit=1] at @s run tp @s ~ ~1 ~ 
-execute at @a[scores={char=51,s2_timer_recast=1,CC_silence=0}] as @e[tag=shiv2,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=51,s2_timer_recast=1,CC_silence=0}] as @e[tag=shiv1,limit=1] at @s run tp @s ~ ~1 ~
+execute at @a[scores={char=51,s2_timer_recast=1,CC_silence=0}] as @e[tag=shiv2,limit=1] at @s run tp @s ~ ~1 ~
 execute at @a[scores={char=51,s2_timer_recast=1,CC_silence=0}] as @e[tag=shiv1,limit=1] at @s run tp @s ^0.2 ^ ^
 execute at @a[scores={char=51,s2_timer_recast=1,CC_silence=0}] as @e[tag=shiv2,limit=1] at @s run tp @s ^-0.2 ^ ^
 

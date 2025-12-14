@@ -27,7 +27,7 @@ execute at @a[scores={char=15,s0_timer=1,CC_silence=0,shard_fragments=1..}] run 
 execute at @a[scores={char=15,s0_timer=1,CC_silence=0,shard_fragments=1..}] run summon item_display ~ ~1 ~ {teleport_duration:1,item:{id:"minecraft:amethyst_cluster",count:1},Tags:["pillar_grenade","projectile","entities_shard"]}
 scoreboard players operation @e[tag=projectile,tag=pillar_grenade] Team = @p[scores={char=15}] Team
 tp @e[tag=pillar_grenade,limit=1,scores={s0_timer=1}] @a[scores={char=15},limit=1]
-execute at @a[scores={char=15,s0_timer=2,CC_silence=0}] as @e[tag=pillar_grenade,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=15,s0_timer=2,CC_silence=0}] as @e[tag=pillar_grenade,limit=1] at @s run tp @s ~ ~1 ~
 
 scoreboard players add @e[tag=pillar_grenade] s0_timer 1
 scoreboard players add @a[scores={char=15,s0_timer=1..}] s0_timer 1
@@ -131,7 +131,7 @@ execute at @a[scores={char=15,s2_timer=1,CC_silence=0}] run playsound entity.zom
 execute at @a[scores={char=15,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["shard_acid","projectile","entities_shard"]}
 scoreboard players operation @e[tag=projectile,tag=shard_acid] Team = @p[scores={char=15}] Team
 tp @e[tag=shard_acid,limit=1] @a[scores={char=15,s2_timer=1},limit=1]
-execute at @a[scores={char=15,s2_timer=1,CC_silence=0}] as @e[tag=shard_acid,limit=1] at @s run tp @s ~ ~1.2 ~ 
+execute at @a[scores={char=15,s2_timer=1,CC_silence=0}] as @e[tag=shard_acid,limit=1] at @s run tp @s ~ ~1.2 ~
 
 execute as @e[tag=shard_acid] at @s positioned ~ ~ ~ unless block ^ ^ ^0.5 #dash run kill @s
 execute as @e[tag=shard_acid] at @s positioned ~ ~ ~ unless block ~ ~ ~ #dash run kill @s

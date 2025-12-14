@@ -23,7 +23,7 @@ execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run playsound block
 execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run particle wax_on ~ ~ ~ 0.6 1 0.6 1 10 normal
 execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run particle block{block_state:{Name:"minecraft:copper_bulb"}} ~ ~ ~ 0.5 1 0.5 0.001 40 normal
 execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run particle falling_dust{block_state:{Name:"minecraft:copper_bulb"}} ~ ~ ~ 0.5 1 0.5 0.001 40 normal
-execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] align xyz positioned ~0.5 ~ ~0.5 run summon strider ~ ~ ~ {NoAI:1,Silent:1,Tags:["turret","inactive_turret","valid_spell_target","entities_engineer"]}
+execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] align xyz positioned ~0.5 ~ ~0.5 run summon strider ~ ~ ~ {NoAI:1b,Silent:1b,Tags:["turret","inactive_turret","valid_spell_target","entities_engineer"]}
 scoreboard players operation @e[tag=turret] Team = @p[scores={char=30}] Team
 execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run scoreboard players add @e[tag=turret] SummonAge 1
 tp @e[tag=turret,limit=1,tag=!turret_initial_rotation] @a[scores={char=30},limit=1]
@@ -144,7 +144,7 @@ execute at @e[tag=turret,scores={turret_aggro=59}] run playsound entity.shulker.
 execute at @e[tag=turret,scores={turret_aggro=60}] run playsound entity.zombie_villager.cure master @a[distance=..15] ~ ~ ~ 0.2 2 1
 execute at @e[tag=turret,scores={turret_aggro=60}] run summon marker ~ ~ ~ {Tags:["turret_shoot","entities_engineer"]}
 execute as @e[tag=turret_shoot] at @s run tp @s @e[tag=turret,scores={turret_aggro=60},limit=1,sort=nearest,distance=..1]
-execute at @e[tag=turret,scores={turret_aggro=60}] as @e[tag=turret_shoot,limit=1,distance=..1] at @s run tp @s ~ ~1.4 ~ 
+execute at @e[tag=turret,scores={turret_aggro=60}] as @e[tag=turret_shoot,limit=1,distance=..1] at @s run tp @s ~ ~1.4 ~
 
 scoreboard players set @e[tag=turret,scores={turret_aggro=60..}] turret_aggro 0
 scoreboard players set @e[tag=turret,tag=inactive_turret] turret_aggro 0
@@ -201,7 +201,7 @@ execute at @a[scores={char=30,s2_timer=1,CC_silence=0}] run summon block_display
 scoreboard players operation @e[tag=projectile,tag=canister] Team = @p[scores={char=30}] Team
 execute at @a[scores={char=30,s2_timer=1,CC_silence=0}] run playsound entity.snowball.throw master @a[distance=..10] ~ ~ ~ 1 1.3 1
 tp @e[tag=canister,limit=1] @a[scores={char=30,s2_timer=1},limit=1]
-execute at @a[scores={char=30,s2_timer=1,CC_silence=0}] as @e[tag=canister,limit=1] at @s run tp @s ~ ~1.2 ~ 
+execute at @a[scores={char=30,s2_timer=1,CC_silence=0}] as @e[tag=canister,limit=1] at @s run tp @s ~ ~1.2 ~
 
 execute at @a[scores={char=30,s2_timer=1..14}] as @e[tag=canister] at @s run tp @s ^ ^ ^0.5
 execute at @a[scores={char=30,s2_timer=15..24}] as @e[tag=canister] at @s run tp @s ^ ^ ^0.6

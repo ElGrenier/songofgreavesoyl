@@ -55,7 +55,7 @@ execute at @a[scores={char=43,s1_timer=1..5,CC_silence=0}] run playsound minecra
 execute at @a[scores={char=43,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["breathofrime","projectile","entities_iceworm"]}
 scoreboard players operation @e[tag=projectile,tag=breathofrime] Team = @p[scores={char=43}] Team
 tp @e[tag=breathofrime,limit=1] @a[scores={char=43,s1_timer=1},limit=1]
-execute at @a[scores={char=43,s1_timer=1,CC_silence=0}] as @e[tag=breathofrime,limit=1] at @s run tp @s ~ ~1.5 ~ 
+execute at @a[scores={char=43,s1_timer=1,CC_silence=0}] as @e[tag=breathofrime,limit=1] at @s run tp @s ~ ~1.5 ~
 
 execute as @e[tag=breathofrime] at @s run tp @s ^ ^ ^0.3
 

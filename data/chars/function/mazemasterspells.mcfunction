@@ -93,7 +93,7 @@ execute as @e[tag=fissured_spike,scores={fissure_sound=..10}] at @s run tp @s ~ 
 execute as @e[tag=fissured_spike,scores={fissure_sound=11..}] at @s run tp @s ~ ~-0.01 ~
 execute as @e[tag=fissured_spike,scores={fissure_sound=15..}] at @s run tp @s ~ ~-0.1 ~
 kill @e[tag=fissured_spike,scores={fissure_sound=31..}]
-execute at @e[tag=corrupted_ground,scores={fissure_sound=41..}] run particle block{block_state:{Name:"minecraft:coal_block"}} ~ ~ ~ 0.5 0 0.5 0 10 
+execute at @e[tag=corrupted_ground,scores={fissure_sound=41..}] run particle block{block_state:{Name:"minecraft:coal_block"}} ~ ~ ~ 0.5 0 0.5 0 10
 kill @e[tag=corrupted_ground,scores={fissure_sound=41..}]
 
 execute as @e[tag=corrupted_ground] at @s if block ~ ~-1 ~ #minecraft:dash run tp @s ~ ~-0.5 ~
