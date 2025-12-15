@@ -32,9 +32,8 @@ execute if entity @a[scores={LobbyTrigger=101}] run function core:lobby/paramete
 execute if entity @a[scores={LobbyTrigger=104}] run function core:lobby/parameters/flag_countdown_down
 execute if entity @a[scores={LobbyTrigger=105}] run function core:lobby/parameters/flag_countdown_up
 
-execute at @a[scores={LobbyTrigger=1..}] run playsound minecraft:block.lever.click master @a[scores={LobbyTrigger=1..}] ~ ~ ~ 1 2 1
-execute as @a[scores={LobbyTrigger=5..99}] run function messages:lobby_map_info
-execute as @a[scores={LobbyTrigger=201..210}] run function messages:lobby_map_info_main
+execute at @a[scores={LobbyTrigger=1..199}] run playsound minecraft:block.lever.click master @a[scores={LobbyTrigger=1..199}] ~ ~ ~ 1 2 1
+execute as @a[scores={LobbyTrigger=200..210}] run function messages:lobby_map_info_main
 
 execute at @a[scores={LobbyTrigger=102}] run scoreboard players set wav_mode lobby 0
 execute at @a[scores={LobbyTrigger=103}] run scoreboard players set wav_mode lobby 1

@@ -8,6 +8,9 @@ scoreboard players operation tmp_flag_max_countdown lobby = fallen_flag_max_coun
 scoreboard players set tmp_20 lobby 20
 scoreboard players operation tmp_flag_max_countdown lobby /= tmp_20 lobby
 
+function battlegrounds:map_settings
+
+
 tellraw @a {text:"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",type:"text"}
 tellraw @a {text:"=================",color:"gold",type:"text"}
 #tellraw @a {"text":"GAME OPTIONS","color":"yellow"}

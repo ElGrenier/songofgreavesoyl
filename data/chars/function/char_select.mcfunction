@@ -545,37 +545,37 @@ execute unless entity @e[scores={char=72}] run fill 137 24 -109 139 22 -109 mine
 
 #special bans + trigger disable
 
-execute if entity @e[tag=GameStart,scores={tmp_respawn_time_left=..4}] unless entity @e[tag=special_slime_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_slime_ban","ban_12","ban_stand"]}
-execute unless entity @e[tag=GameStart,scores={tmp_respawn_time_left=..4}] run kill @e[tag=special_slime_ban]
+execute if score tmp_respawn_time_left settings matches ..4 unless entity @e[tag=special_slime_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_slime_ban","ban_12","ban_stand"]}
+execute unless score tmp_respawn_time_left settings matches ..4 run kill @e[tag=special_slime_ban]
 
-execute if entity @e[tag=GameStart,scores={Map=14}] unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=18}] unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
+execute if score map settings matches 14 unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
+execute if score map settings matches 18 unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
 
-execute if entity @e[tag=GameStart,scores={Map=5}] unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=9}] unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=15}] unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=21}] unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
+execute if score map settings matches 5 unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
+execute if score map settings matches 9 unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
+execute if score map settings matches 15 unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
+execute if score map settings matches 21 unless entity @e[tag=special_shapeless_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_shapeless_ban","ban_37","ban_stand"]}
 
-execute unless entity @e[tag=GameStart,scores={Map=14}] unless entity @e[tag=GameStart,scores={Map=15}] unless entity @e[tag=GameStart,scores={Map=9}] unless entity @e[tag=GameStart,scores={Map=5}] unless entity @e[tag=GameStart,scores={Map=18}] unless entity @e[tag=GameStart,scores={Map=21}] run kill @e[tag=special_shapeless_ban]
+execute unless score map settings matches 14 unless score map settings matches 15 unless score map settings matches 9 unless score map settings matches 5 unless score map settings matches 18 unless score map settings matches 21 run kill @e[tag=special_shapeless_ban]
 
-execute if entity @e[tag=GameStart,scores={Map=5}] unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=8}] unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=9}] unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=13}] unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=15}] unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=21}] unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
+execute if score map settings matches 5 unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
+execute if score map settings matches 8 unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
+execute if score map settings matches 9 unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
+execute if score map settings matches 13 unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
+execute if score map settings matches 15 unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
+execute if score map settings matches 21 unless entity @e[tag=special_crawler_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_crawler_ban","ban_9","ban_stand"]}
 
-execute unless entity @e[tag=GameStart,scores={Map=5}] unless entity @e[tag=GameStart,scores={Map=8}] unless entity @e[tag=GameStart,scores={Map=9}] unless entity @e[tag=GameStart,scores={Map=13}] unless entity @e[tag=GameStart,scores={Map=15}] unless entity @e[tag=GameStart,scores={Map=21}] run kill @e[tag=special_crawler_ban]
+execute unless score map settings matches 5 unless score map settings matches 8 unless score map settings matches 9 unless score map settings matches 13 unless score map settings matches 15 unless score map settings matches 21 run kill @e[tag=special_crawler_ban]
 
-execute if entity @e[tag=GameStart,scores={Map=14}] unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=18}] unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
+execute if score map settings matches 14 unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
+execute if score map settings matches 18 unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
 
-execute if entity @e[tag=GameStart,scores={Map=5}] unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=9}] unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=15}] unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
-execute if entity @e[tag=GameStart,scores={Map=21}] unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
+execute if score map settings matches 5 unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
+execute if score map settings matches 9 unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
+execute if score map settings matches 15 unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
+execute if score map settings matches 21 unless entity @e[tag=special_mold_ban] run summon minecraft:armor_stand 242 5 -126 {Tags:["special_mold_ban","ban_59","ban_stand"]}
 
-execute unless entity @e[tag=GameStart,scores={Map=14}] unless entity @e[tag=GameStart,scores={Map=15}] unless entity @e[tag=GameStart,scores={Map=9}] unless entity @e[tag=GameStart,scores={Map=5}] unless entity @e[tag=GameStart,scores={Map=18}] unless entity @e[tag=GameStart,scores={Map=21}] run kill @e[tag=special_mold_ban]
+execute unless score map settings matches 14 unless score map settings matches 15 unless score map settings matches 9 unless score map settings matches 5 unless score map settings matches 18 unless score map settings matches 21 run kill @e[tag=special_mold_ban]
 
 
 
