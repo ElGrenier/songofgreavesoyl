@@ -1,0 +1,2 @@
+execute store result score ctf_score lobby run scoreboard players get @s trigger_ctfscore
+tellraw @a ["",{text:"[@] The score needed Capture the flag has been set to "},{score:{name:"ctf_score",objective:"lobby"},color:"red"}]

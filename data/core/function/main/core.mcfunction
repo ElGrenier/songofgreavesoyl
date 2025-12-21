@@ -59,8 +59,6 @@ function core:score/visibility
 
 #Why was there a ticket things ?
 
-execute if entity @a[tag=in_game] as @a[tag=!in_game] run function core:main/game/spawn_outsider
-
 execute positioned 220 34 -130 run function core:main/spawn_new_player
 
 #lobby rzeczy

@@ -1,0 +1,2 @@
+execute store result score dm_score lobby run scoreboard players get @s trigger_dmscore
+tellraw @a ["",{text:"[@] The score needed Deathmatch has been set to "},{score:{name:"dm_score",objective:"lobby"},color:"red"}]

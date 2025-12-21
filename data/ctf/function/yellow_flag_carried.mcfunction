@@ -8,4 +8,5 @@ scoreboard players set @a[team=purple] yellow_flag_captured 0
 
 # scoreboard players operation @e[tag=ScorePurple,limit=1] Score -= C_dm dmTemp
 # scoreboard players operation Purple ScoreDisplay += C_dm dmTemp
-scoreboard players add purple score 1
+scoreboard players add .purple score 1
+

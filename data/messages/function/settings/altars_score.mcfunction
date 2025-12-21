@@ -1,0 +1,2 @@
+execute store result score score lobby run scoreboard players get @s trigger_acscore
+tellraw @a ["",{text:"[@] The score needed Altars Control has been set to "},{score:{name:"score",objective:"lobby"},color:"red"}]

@@ -2,9 +2,11 @@
 
 #entering from lobby
 
-execute positioned 186 9 -69 run tag @a[distance=..3] add EnterPracticeRoom
-execute positioned 186 9 -69 run tag @a[distance=..3] add PracticeCharPick
-execute positioned 186 9 -69 run tag @a[distance=..3] add PracticeRoom
+execute positioned 129 12 -154 run tag @a[distance=..3] add EnterPracticeRoom
+execute positioned 129 12 -154 run tag @a[distance=..3] add PracticeCharPick
+execute positioned 129 12 -154 run tag @a[distance=..3] add PracticeRoom
+
+
 
 #entering from practice room itself
 
@@ -46,7 +48,7 @@ scoreboard players set @a[tag=ExitPracticeRoom] char 0
 execute as @a[tag=ExitPracticeRoom] run function core:main/char_scores_reset
 clear @a[tag=ExitPracticeRoom]
 effect clear @a[tag=ExitPracticeRoom]
-tp @a[tag=ExitPracticeRoom] 181 9 -69 90 0
+tp @a[tag=ExitPracticeRoom] 124 12 -154 180 0
 tag @a[tag=ExitPracticeRoom] remove PracticeRoom
 team leave @a[tag=ExitPracticeRoom]
 title @a[tag=ExitPracticeRoom] actionbar {text:" ",type:"text"}

@@ -2,6 +2,9 @@
 #Manage respawn
 execute if score game_state settings matches 7.. positioned 207 34 -130 run function core:main/game/death_restart
 
+execute if score game_state settings matches 7.. run function core:main/game/manage_spawn_ffa
+
+
 #During game start, we show the picks scoreboard
 execute if score game_state settings matches 2..7 run function core:main/picks_scoreboard
 
@@ -9,7 +12,7 @@ execute if score game_state settings matches 2..7 run function core:main/picks_s
 execute if score game_state settings matches 2.. positioned 287 15.00 -126 run function core:main/game/loop_waiting_room
 
 #spawn outsider
-execute if score game_state settings matches 3.. as @a[tag=!in_game,tag=!outsider] run function core:main/game/spawn_outsider
+execute if score game_state settings matches 3.. as @a[tag=!in_game,tag=!outsider] at @s run function core:main/game/spawn_outsider
 
 
 # execute if score game_state settings matches 7.. run function chars:all_chars_spells
@@ -27,8 +30,8 @@ execute if score game_state settings matches 2 as @a run function core:lobby/tp_
 execute if score game_state settings matches 2 run function battlegrounds:map_settings
 execute if score game_state settings matches 2 run scoreboard players set @a[tag=in_game] Loading -1
 
-execute if score game_state settings matches 2 run execute store result bossbar minecraft:purple max run scoreboard players get score_max settings
-execute if score game_state settings matches 2 run execute store result bossbar minecraft:yellow max run scoreboard players get score_max settings
+execute if score game_state settings matches 2 unless score map_type settings matches 4 run execute store result bossbar minecraft:purple max run scoreboard players get score_max settings
+execute if score game_state settings matches 2 unless score map_type settings matches 4 run execute store result bossbar minecraft:yellow max run scoreboard players get score_max settings
 #execute unless entity @e[tag=PracticeCharPick] unless entity @e[tag=PracticeRoom] run kill @e[tag=lobby]
 
 #Why ? Dunno if its still necessary
@@ -51,8 +54,11 @@ execute if score game_state settings matches 2..4 if score all_random settings m
 
 execute if score game_state settings matches 4 run scoreboard players set game_state settings 5
 
-execute if score game_state settings matches 5 as @r[tag=!in_a_team,tag=in_game] run function core:main/game/join_purple
-execute if score game_state settings matches 5 as @r[tag=!in_a_team,tag=in_game] run function core:main/game/join_yellow
+execute if score game_state settings matches 5 unless score map_type settings matches 4 as @r[tag=!in_a_team,tag=in_game] run function core:main/game/join_purple
+execute if score game_state settings matches 5 unless score map_type settings matches 4 as @r[tag=!in_a_team,tag=in_game] run function core:main/game/join_yellow
+
+execute if score game_state settings matches 5 if score map_type settings matches 4 as @a[tag=!in_a_team,tag=in_game] run function core:main/game/join_yellow
+
 
 execute if score game_state settings matches 5 if score all_random settings matches 0 as @a[scores={char=0},tag=in_game] run function chars:char_select
 
@@ -64,8 +70,10 @@ execute if score game_state settings matches 5 unless entity @a[tag=!in_a_team,t
 
 #Set respawn to the respawn 
 execute if score game_state settings matches 6 run spawnpoint @a[tag=in_game] 207 34 -131
-execute if score game_state settings matches 6 run scoreboard players set .purple score 0
-execute if score game_state settings matches 6 run scoreboard players set .yellow score 0
+execute if score game_state settings matches 6 unless score map_type settings matches 4 run scoreboard players set .purple score 0
+execute if score game_state settings matches 6 unless score map_type settings matches 4 run scoreboard players set .yellow score 0
+execute if score game_state settings matches 6 if score map_type settings matches 4 run scoreboard players reset .purple score
+execute if score game_state settings matches 6 if score map_type settings matches 4 run scoreboard players reset .yellow score
 execute if score game_state settings matches 6 run function battlegrounds:setup
 execute if score game_state settings matches 6 run function core:main/game/start_game_spawn
 

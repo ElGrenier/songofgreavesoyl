@@ -113,9 +113,9 @@ execute if score map_type settings matches 3 run tellraw @a [{text:"",type:"text
 
 
 
-execute if score map_type settings matches 1 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Get ",color:"green",type:"text"},{score:{name:"score",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" points to win!",color:"green",type:"text"}]
-execute if score map_type settings matches 2 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Get ",color:"green",type:"text"},{score:{name:"score",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" kills to win! ",color:"green",type:"text"}]
-execute if score map_type settings matches 3 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture the enemy flag ",color:"green",type:"text"},{score:{name:"score",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" times to win! ",color:"green",type:"text"}]
+execute if score map_type settings matches 1 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Get ",color:"green",type:"text"},{score:{name:"score_max",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" points to win!",color:"green",type:"text"}]
+execute if score map_type settings matches 2 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Get ",color:"green",type:"text"},{score:{name:"score_max",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" kills to win! ",color:"green",type:"text"}]
+execute if score map_type settings matches 3 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture the enemy flag ",color:"green",type:"text"},{score:{name:"score_max",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" times to win! ",color:"green",type:"text"}]
 
 tellraw @a [{text:"\nYou can",color:"green",type:"text"},{text:" use/drop the book ",color:"gold",bold:1b,type:"text"},{text:"in your",color:"green",type:"text"},{text:" 5th slot ",color:"gold",bold:1b,type:"text"},{text:"to see a detailed description of your abilities.",color:"green",type:"text"}]
 

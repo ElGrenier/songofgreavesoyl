@@ -4,7 +4,7 @@
 # 1 : Altar
 # 2 : Deathmatch
 # 3 : CTF
-# 4 : 1v1 (like deathmatch, but with automatic health regain after a kill)
+# 4 : FFA
 
 #The all random type is removed, to be an option in game settings instead
 
