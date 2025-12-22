@@ -460,7 +460,47 @@ scoreboard objectives remove Deathmatch_Kills
 scoreboard objectives remove Time
 scoreboard objectives remove Outsider
 scoreboard objectives remove Temp2
-
+scoreboard objectives remove passive_gole
+scoreboard objectives remove creeper
+scoreboard objectives remove looking_at_aberration
+scoreboard objectives remove guardian_mark
+scoreboard objectives remove passive_skel
+scoreboard objectives remove skyq_reset2
+scoreboard objectives remove skyq_reset1
+scoreboard objectives remove passive_empe_res
+scoreboard objectives remove tornado_life
+scoreboard objectives remove Spawned
+scoreboard objectives remove Queue
+scoreboard objectives remove reset_barrier
+scoreboard objectives remove passive_skyq
+scoreboard objectives remove trackedlife
+scoreboard objectives remove dmScore
+scoreboard objectives remove grapple_use
+scoreboard objectives remove shadowdash_damage_2
+scoreboard objectives remove draft_title_tick
+scoreboard objectives remove tentacledrop
+scoreboard objectives remove customhit_id
+scoreboard objectives remove damagetest
+scoreboard objectives remove hatred
+scoreboard objectives remove addsorrow
+scoreboard objectives remove MinionDamageKnife
+scoreboard objectives remove BombAge
+scoreboard objectives remove sand_kills
+scoreboard objectives remove itr_temp
+scoreboard objectives remove load_bar.main
+scoreboard objectives remove anchorTime
+scoreboard objectives remove MVP
+scoreboard objectives remove energy_unload
+scoreboard objectives remove customhitage
+scoreboard objectives remove creeper_die_out
+scoreboard objectives remove Const
+scoreboard objectives remove slim_kill
+scoreboard objectives remove Waiting
+scoreboard objectives remove kingcrimson
+scoreboard objectives remove dragonShotFire
+scoreboard objectives remove TurretAge
+scoreboard objectives remove guardian_mark_dh
+scoreboard objectives remove customhitfailsafe
 
 
 tellraw @a "Cleared All unused/useless scoreboard objectives"

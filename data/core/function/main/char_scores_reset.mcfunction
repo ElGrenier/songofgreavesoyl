@@ -58,6 +58,12 @@ scoreboard players set @s CC_madness 0
 scoreboard players set @s confusion_randomiser 0
 scoreboard players set @s CC_knockdown 0
 scoreboard players set @s twisted_garden 0
+scoreboard players set @s passive_enfo 0
+scoreboard players set @s passive_bard 0
+scoreboard players set @s passive_bard_use 0
+scoreboard players set @s champion_empower 0
+scoreboard players set @s treespirit_empower 0
+
 
 scoreboard players set @s burrowed 0
 scoreboard players set @s HUNDRED 100
@@ -78,10 +84,10 @@ scoreboard players set @s passive_witc 0
 scoreboard players set @s passive_skel 0
 scoreboard players set @s passive_engi 0
 scoreboard players set @s livesteal_cd 0
-scoreboard players set @s sorrow 0
+scoreboard players set @s cruelty 0
 scoreboard players set @s nestduration 0
 scoreboard players set @s abysssigil 0
-scoreboard players set @s stitches 0
+scoreboard players set @s stitches 100
 scoreboard players set @s stitches_timer 0
 scoreboard players set @s siren_blood_splash_damage 0
 scoreboard players set @s siren_blood_heal 0
@@ -94,7 +100,7 @@ scoreboard players set @s shadowdash_damage_2 0
 scoreboard players set @s passive_runa 0
 scoreboard players set @s passive_runa_reset 0
 scoreboard players set @s passive_puri 0
-scoreboard players set @s heat 0
+scoreboard players set @s heat 100
 scoreboard players set @s spores 0
 scoreboard players set @s spores_timer 0
 scoreboard players set @s passive_cryo_cd 0

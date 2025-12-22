@@ -16,8 +16,8 @@ execute store result bossbar minecraft:yellow max run scoreboard players get sco
 execute if score map_type settings matches 1..3 store result bossbar minecraft:purple value run scoreboard players get .purple score
 execute if score map_type settings matches 1..3 store result bossbar minecraft:yellow value run scoreboard players get .yellow score
 
-execute if score purple score >= score_max settings run function core:score/win_purple
-execute if score yellow score >= score_max settings run function core:score/win_yellow
+execute if score .purple score >= score_max settings run function core:score/win_purple
+execute if score .yellow score >= score_max settings run function core:score/win_yellow
 #FFA
 execute as @a[tag=in_game] if score @s score >= score_max settings run function core:score/win_solo
 
@@ -34,24 +34,20 @@ execute if score map_type settings matches 2 as @a[scores={Kills=1..},team=yello
 execute if score map_type settings matches 1 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"dark_green",bold:1b,"strikethrough":true},{text:" Score ",color:"green",bold:1b},{text:"=",color:"dark_green",bold:1b,"strikethrough":true}]
 execute if score map_type settings matches 2 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"dark_red",bold:1b,"strikethrough":true},{text:" Kills ",color:"red",bold:1b},{text:"=",color:"dark_red",bold:1b,"strikethrough":true}]
 execute if score map_type settings matches 3 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"blue",bold:1b,"strikethrough":true},{text:" Captures ",color:"aqua",bold:1b},{text:"=",color:"blue",bold:1b,"strikethrough":true}]
-execute if score map_type settings matches 4 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"dark_red",bold:1b,"strikethrough":true},{text:" Kills ",color:"red",bold:1b},{text:"=",color:"dark_red",bold:1b,"strikethrough":true}]
 
 
 scoreboard players display name .yellow score {color:yellow,bold:true,text:"Yellow"}
 scoreboard players display name .purple score {color:"dark_purple",bold:true,text:"Purple"}
 
 
-execute unless score map_type settings matches 4 unless score .purple score matches 0.. run scoreboard players set .purple score 0
-execute unless score map_type settings matches 4 unless score .yellow score matches 0.. run scoreboard players set .yellow score 0
+execute unless score .purple score matches 0.. run scoreboard players set .purple score 0
+execute unless score .yellow score matches 0.. run scoreboard players set .yellow score 0
 
 scoreboard objectives setdisplay sidebar score
 
 
 
 # Add kill count
-execute if score map_type settings matches 4 as @a[scores={Kills=1..}] run scoreboard players add @s score 1
-
-
 execute as @a[scores={Kills=1..}] run scoreboard players add @s StatKillsN 1
 
 execute as @a[scores={Kills=1..}] run scoreboard players remove @s Kills 1

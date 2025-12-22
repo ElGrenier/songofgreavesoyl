@@ -79,7 +79,7 @@ execute positioned 180 22 -105 run function core:lobby/char_choose/choose_66lich
 execute positioned 173 22 -105 run function core:lobby/char_choose/choose_67revenant
 execute positioned 166 22 -105 run function core:lobby/char_choose/choose_68enforcer
 execute positioned 159 22 -105 run function core:lobby/char_choose/choose_69painter
-execute positioned 152 22 -105 run function core:lobby/char_choose/choose_70
+execute positioned 152 22 -105 run function core:lobby/char_choose/choose_70bard
 execute positioned 145 22 -105 run function core:lobby/char_choose/choose_71
 execute positioned 138 22 -105 run function core:lobby/char_choose/choose_72
 

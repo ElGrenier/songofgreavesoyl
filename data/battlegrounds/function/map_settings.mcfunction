@@ -4,7 +4,7 @@
 # 1 : Altar
 # 2 : Deathmatch
 # 3 : CTF
-# 4 : FFA
+# 4 : 1v1 (like deathmatch, but with automatic health regain after a kill)
 
 #The all random type is removed, to be an option in game settings instead
 
@@ -55,6 +55,8 @@ execute if score map settings matches 21 run scoreboard players set map_type set
 
 execute if score map settings matches 22 run scoreboard players set map_type settings 1
 
+execute if score map settings matches 23 run scoreboard players set map_type settings 4
+
 # In-lobby
 execute if score map lobby matches 1 run scoreboard players set map_type lobby 1
 
@@ -99,3 +101,5 @@ execute if score map lobby matches 20 run scoreboard players set map_type lobby 
 execute if score map lobby matches 21 run scoreboard players set map_type lobby 2
 
 execute if score map lobby matches 22 run scoreboard players set map_type lobby 1
+
+execute if score map lobby matches 23 run scoreboard players set map_type lobby 4

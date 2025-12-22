@@ -43,6 +43,7 @@ execute if score map lobby matches 19 run scoreboard players display name map_na
 execute if score map lobby matches 20 run scoreboard players display name map_name Picks "Lost Halls"
 execute if score map lobby matches 21 run scoreboard players display name map_name Picks "Heart of the Swamp"
 execute if score map lobby matches 22 run scoreboard players display name map_name Picks "Fossiled Tomb"
+execute if score map lobby matches 23 run scoreboard players display name map_name Picks "Satran Square"
 
 
 
@@ -83,7 +84,7 @@ execute if entity @a[scores={char=6},team=yellow] run scoreboard players set Gui
 execute if entity @e[tag=ban_6] run scoreboard players set Guide Picks -3
 execute unless entity @a[scores={char=6}] unless entity @e[tag=ban_6] run scoreboard players reset Guide Picks
 
-scoreboard players display name picks_paladin Picks "Red-Eyes Dragon"
+scoreboard players display name picks_dragon Picks "Red-Eyes Dragon"
 execute if entity @a[scores={char=7},team=purple] run scoreboard players set picks_dragon Picks 1
 execute if entity @a[scores={char=7},team=yellow] run scoreboard players set picks_dragon Picks -1
 execute if entity @e[tag=ban_7] run scoreboard players set picks_dragon Picks -3
@@ -438,4 +439,9 @@ execute unless entity @a[scores={char=68}] unless entity @e[tag=ban_68] run scor
 execute if entity @a[scores={char=69},team=purple] run scoreboard players set Painter Picks 1
 execute if entity @a[scores={char=69},team=yellow] run scoreboard players set Painter Picks -1
 execute if entity @e[tag=ban_69] run scoreboard players set Painter Picks -3
-execute unless entity @a[scores={char=69}] unless entity @e[tag=ban_68] run scoreboard players reset Painter Picks
+execute unless entity @a[scores={char=69}] unless entity @e[tag=ban_69] run scoreboard players reset Painter Picks
+
+execute if entity @a[scores={char=70},team=purple] run scoreboard players set Bard Picks 1
+execute if entity @a[scores={char=70},team=yellow] run scoreboard players set Bard Picks -1
+execute if entity @e[tag=ban_70] run scoreboard players set Bard Picks -3
+execute unless entity @a[scores={char=70}] unless entity @e[tag=ban_70] run scoreboard players reset Bard Picks

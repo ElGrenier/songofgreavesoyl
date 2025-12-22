@@ -4,7 +4,7 @@ execute unless score wav_mode settings matches 1 run effect clear @a minecraft:h
 
 execute if score wav_mode settings matches 1 run effect give @a minecraft:hunger infinite 100 true
 effect give @a[scores={food=..5}] minecraft:saturation 1
-execute if score wav_mode settings matches 1 run effect clear @a minecraft:saturation
+
 
 execute if score wav_mode settings matches 1 as @a[scores={CC_stun=-11,CC_root=-11,CC_grounded=-11}] run attribute @s minecraft:movement_speed base set 0.12
 execute if score wav_mode settings matches 1 as @a[scores={CC_stun=-11,CC_root=-11,CC_grounded=-11}] run attribute @s minecraft:knockback_resistance base set 0.2

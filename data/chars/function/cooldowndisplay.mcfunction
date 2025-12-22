@@ -1,4 +1,4 @@
-kill @e[type=minecraft:item,nbt={Item:{id:"barrier"}}]
+kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:barrier"}}]
 scoreboard players remove @a[scores={CC_silence=0,spellCD1=1..}] spellCD1 1
 scoreboard players remove @a[scores={CC_silence=0,spellCD2=1..}] spellCD2 1
 scoreboard players remove @a[scores={CC_silence=0,spellCD3=1..}] spellCD3 1

@@ -21,6 +21,7 @@ function chars:check_armor
 function chars:team_wool
 function chars:char_display_stands
 function core:lobby/choose_char
+function core:lobby/lobby_credits
 
 function chars:surrender
 
@@ -36,6 +37,9 @@ tag @a[tag=!recipe] add recipe
 xp set @a 0 points
 xp set @a 0 levels
 difficulty easy
+
+#setblock 119 15 -185 redstone_lamp[lit=true]
+#setblock 129 15 -185 redstone_lamp[lit=true]
 
 kill @e[type=minecraft:tnt]
 kill @e[type=minecraft:end_crystal]

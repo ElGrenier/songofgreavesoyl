@@ -1,14 +1,13 @@
 
 # enter/exit
 
-execute positioned 119 12 -154 run tp @a[distance=..4] 186 9 -42
+execute positioned 155 9 -69 run tp @a[distance=..4] ~31 ~ ~26
 
 #exit
 
-execute positioned 131 9 -44 run tp @a[distance=..3] 124 12 -154
+execute positioned 131 9 -44 run tp @a[distance=..3] ~34 ~ ~-25
 
-execute positioned 192 9 -43 run tp @a[distance=..3] 124 12 -154
-
+execute positioned 192 9 -43 run tp @a[distance=..3] ~-28 ~ ~-26
 
 # part 1 - premise
 

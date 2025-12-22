@@ -17,9 +17,3 @@ scoreboard objectives add trigger_acscore trigger
 team add yellow
 team add purple
 scoreboard objectives add KillSpreeCounter playerKillCount
-bossbar add minecraft:purple "purple"
-bossbar add minecraft:yellow "yellow"
-scoreboard objectives add Kills playerKillCount
-scoreboard objectives add ClassPickTrigger trigger
-scoreboard objectives add JustLeft custom:leave_game
-scoreboard objectives add Loading dummy

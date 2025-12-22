@@ -208,5 +208,10 @@ execute unless entity @a[scores={char=68}] run kill @e[tag=entities_enforcer]
 
 execute unless entity @a[scores={char=69}] run kill @e[tag=entities_painter]
 
+execute unless entity @a[scores={char=70}] run kill @e[tag=entities_bard]
+execute unless entity @a[scores={char=70}] run tag @a remove bard_s1_perfect
+execute unless entity @a[scores={char=70}] run tag @a remove bard_s2_perfect
+execute unless entity @a[scores={char=70}] run tag @a remove bard_fear
+
 
 

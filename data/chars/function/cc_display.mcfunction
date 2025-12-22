@@ -44,6 +44,7 @@ scoreboard players remove @a[scores={CC_confusion=1..}] CC_confusion 1
 scoreboard players remove @a[scores={CC_knockdown=1..}] CC_knockdown 1
 scoreboard players remove @a[scores={CC_afterburn=1..}] CC_afterburn 1
 scoreboard players remove @a[scores={CC_hypothermia=1..}] CC_hypothermia 1
+scoreboard players remove @a[scores={CC_glaciate=1..}] CC_glaciate 1
 
 
 scoreboard players remove @a[scores={CC_madness=1..}] CC_madness 1
@@ -966,5 +967,9 @@ execute as @e[tag=display_afterburn] at @s positioned ~ ~-2.5 ~ unless entity @a
 execute at @a[scores={CC_hypothermia=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_hypothermia] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_hypothermia"],Marker:1b,Invisible:1b,CustomName:{text:"HYPOTHERMIA",color:"aqua",bold:1b},CustomNameVisible:1b}
 execute at @a[scores={CC_hypothermia=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_hypothermia] ~ ~ ~
 execute as @e[tag=display_hypothermia] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_hypothermia=1..}] run kill @s
+
+execute at @a[scores={CC_glaciate=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_glaciate] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_glaciate"],Marker:1b,Invisible:1b,CustomName:{text:"GLACIATED",color:"aqua",bold:1b},CustomNameVisible:1b}
+execute at @a[scores={CC_glaciate=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_glaciate] ~ ~ ~
+execute as @e[tag=display_glaciate] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_glaciate=1..}] run kill @s
 
 # ====================================================================================================================================================================================================================================

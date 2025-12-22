@@ -1,6 +1,0 @@
-
-item replace entity @s[scores={char=14}] armor.head with minecraft:player_head[minecraft:custom_name="Head",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:4.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-833706966,-1339801270,-1375001728,-1705020313],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWNmNDg5MTFjMTMyM2JmMTA5ZDk0ZTg5YmM2ZjhiMGEyNTFiMTdkMzJjYzViOWIxYWMxZGRjNWM5MzFhZTcifX19"}]}] 1
-item replace entity @s[scores={char=14}] armor.chest with minecraft:leather_chestplate[minecraft:trim={pattern:"raiser",material:"iron"},minecraft:custom_name="Armor",minecraft:dyed_color=12431233,minecraft:unbreakable={}] 1
-item replace entity @s[scores={char=14}] armor.legs with minecraft:leather_leggings[minecraft:trim={pattern:"ward",material:"iron"},minecraft:custom_name="Armor",minecraft:dyed_color=12431233,minecraft:unbreakable={}] 1
-item replace entity @s[scores={char=14}] armor.feet with minecraft:leather_boots[minecraft:trim={pattern:"snout",material:"quartz"},minecraft:custom_name="Armor",minecraft:dyed_color=16777215,minecraft:unbreakable={}] 1
-scoreboard players set @a[scores={char=14}] MaxHP 24

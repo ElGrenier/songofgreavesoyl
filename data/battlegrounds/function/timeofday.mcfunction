@@ -18,3 +18,5 @@ execute if score map settings matches 18 run time set 13500
 #19
 #20
 execute if score map settings matches 21 run time set 14000
+#22
+execute if score map settings matches 23 run time set 12500
