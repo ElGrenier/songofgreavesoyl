@@ -34,14 +34,15 @@ execute if score map_type settings matches 2 as @a[scores={Kills=1..},team=yello
 execute if score map_type settings matches 1 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"dark_green",bold:1b,"strikethrough":true},{text:" Score ",color:"green",bold:1b},{text:"=",color:"dark_green",bold:1b,"strikethrough":true}]
 execute if score map_type settings matches 2 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"dark_red",bold:1b,"strikethrough":true},{text:" Kills ",color:"red",bold:1b},{text:"=",color:"dark_red",bold:1b,"strikethrough":true}]
 execute if score map_type settings matches 3 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"blue",bold:1b,"strikethrough":true},{text:" Captures ",color:"aqua",bold:1b},{text:"=",color:"blue",bold:1b,"strikethrough":true}]
+execute if score map_type settings matches 4 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"dark_red",bold:1b,"strikethrough":true},{text:" Kills ",color:"red",bold:1b},{text:"=",color:"dark_red",bold:1b,"strikethrough":true}]
 
 
 scoreboard players display name .yellow score {color:yellow,bold:true,text:"Yellow"}
 scoreboard players display name .purple score {color:"dark_purple",bold:true,text:"Purple"}
 
 
-execute unless score .purple score matches 0.. run scoreboard players set .purple score 0
-execute unless score .yellow score matches 0.. run scoreboard players set .yellow score 0
+execute unless score map_type settings matches 4 unless score .purple score matches 0.. run scoreboard players set .purple score 0
+execute unless score map_type settings matches 4 unless score .yellow score matches 0.. run scoreboard players set .yellow score 0
 
 scoreboard objectives setdisplay sidebar score
 

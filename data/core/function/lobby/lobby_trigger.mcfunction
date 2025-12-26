@@ -7,8 +7,8 @@ scoreboard players enable @a trigger_acscore
 
 #scoreboard players enable @a GamemodeSelectTrigger
 
-execute if entity @a[scores={LobbyTrigger=1}] run scoreboard players set all_random lobby 1
-execute if entity @a[scores={LobbyTrigger=2}] run scoreboard players set all_random lobby 0
+execute if entity @a[scores={LobbyTrigger=1}] run function messages:settings/activate_all_random
+execute if entity @a[scores={LobbyTrigger=2}] run function messages:settings/desactivate_all_random
 # execute if entity @a[scores={LobbyTrigger=3}] run function core:lobby/parameters/
 # execute if entity @a[scores={LobbyTrigger=4}] run function core:lobby/parameters/
 execute if entity @a[scores={LobbyTrigger=5}] run function core:lobby/map/map_choose_1
@@ -41,18 +41,17 @@ execute if entity @a[scores={LobbyTrigger=27}] run function core:lobby/map/map_c
 #execute at @a[scores={LobbyTrigger=1..199}] run playsound minecraft:block.lever.click master @a[scores={LobbyTrigger=1..199}] ~ ~ ~ 1 2 1
 execute as @a[scores={LobbyTrigger=200..210}] run function messages:lobby_map_info_main
 
-execute at @a[scores={LobbyTrigger=102}] run scoreboard players set wav_mode lobby 0
-execute at @a[scores={LobbyTrigger=103}] run scoreboard players set wav_mode lobby 1
-execute at @a[scores={LobbyTrigger=104}] run scoreboard players set memorize lobby 0
-execute at @a[scores={LobbyTrigger=105}] run scoreboard players set memorize lobby 1
-
+execute at @a[scores={LobbyTrigger=102}] run function messages:settings/desactivate_wav_mode
+execute at @a[scores={LobbyTrigger=103}] run function messages:settings/activate_wav_mode
+execute at @a[scores={LobbyTrigger=104}] run function messages:settings/desactivate_memory
+execute at @a[scores={LobbyTrigger=105}] run function messages:settings/activate_memory
 
 execute as @a[scores={LobbyTrigger=110..115}] run function core:lobby/options
 execute as @a[scores={trigger_respawn=1..}] run function core:lobby/calculate_respawn
 execute as @a[scores={trigger_flag_max_countdown=1..}] run function core:lobby/calculate_flag
-execute as @a[scores={trigger_dmscore=1..}] store result score dm_score lobby run scoreboard players get @s trigger_dmscore
-execute as @a[scores={trigger_ctfscore=1..}] store result score ctf_score lobby run scoreboard players get @s trigger_ctfscore
-execute as @a[scores={trigger_acscore=1..}] store result score score lobby run scoreboard players get @s trigger_acscore
+execute as @a[scores={trigger_dmscore=1..}] run function messages:settings/dm_score
+execute as @a[scores={trigger_ctfscore=1..}] run function messages:settings/ctf_score
+execute as @a[scores={trigger_acscore=1..}] run function messages:settings/altars_score
 
 execute as @a[scores={trigger_respawn=1..}] run scoreboard players set @s trigger_respawn 0
 execute as @a[scores={trigger_flag_max_countdown=1..}] run scoreboard players set @s trigger_flag_max_countdown 0
