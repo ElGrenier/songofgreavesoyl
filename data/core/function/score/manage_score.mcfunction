@@ -9,7 +9,6 @@ execute if score yellow temp_score matches 80.. run scoreboard players add .yell
 execute if score yellow temp_score matches 80.. run scoreboard players set yellow temp_score 0
 
 
-#TO EDIT FOR FFA
 execute store result bossbar minecraft:purple max run scoreboard players get score_max settings
 execute store result bossbar minecraft:yellow max run scoreboard players get score_max settings
 
@@ -29,6 +28,8 @@ execute if score map_type settings matches 1 as @a[scores={Kills=1..},team=yello
 execute if score map_type settings matches 2 as @a[scores={Kills=1..},team=purple] run scoreboard players add .purple score 1
 execute if score map_type settings matches 2 as @a[scores={Kills=1..},team=yellow] run scoreboard players add .yellow score 1
 
+execute if score map_type settings matches 4 as @a[scores={Kills=1..}] run scoreboard players add @s score 1
+
 
 #Scoreboard display
 execute if score map_type settings matches 1 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"dark_green",bold:1b,"strikethrough":true},{text:" Score ",color:"green",bold:1b},{text:"=",color:"dark_green",bold:1b,"strikethrough":true}]
@@ -37,8 +38,8 @@ execute if score map_type settings matches 3 run scoreboard objectives modify sc
 execute if score map_type settings matches 4 run scoreboard objectives modify score displayname [{"text":""},{text:"=",color:"dark_red",bold:1b,"strikethrough":true},{text:" Kills ",color:"red",bold:1b},{text:"=",color:"dark_red",bold:1b,"strikethrough":true}]
 
 
-scoreboard players display name .yellow score {color:yellow,bold:true,text:"Yellow"}
-scoreboard players display name .purple score {color:"dark_purple",bold:true,text:"Purple"}
+execute unless score map_type settings matches 4 run scoreboard players display name .yellow score {color:yellow,bold:true,text:"Yellow"}
+execute unless score map_type settings matches 4 run scoreboard players display name .purple score {color:"dark_purple",bold:true,text:"Purple"}
 
 
 execute unless score map_type settings matches 4 unless score .purple score matches 0.. run scoreboard players set .purple score 0

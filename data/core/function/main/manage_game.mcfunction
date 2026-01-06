@@ -27,7 +27,6 @@ execute if score game_state settings matches 1 run function core:main/game/initi
 # Define the types of game from the map type
 
 execute if score game_state settings matches 2 as @a run function core:lobby/tp_blackbox
-execute if score game_state settings matches 2 run function battlegrounds:map_settings
 execute if score game_state settings matches 2 run scoreboard players set @a[tag=in_game] Loading -1
 
 execute if score game_state settings matches 2 unless score map_type settings matches 4 run execute store result bossbar minecraft:purple max run scoreboard players get score_max settings
@@ -57,7 +56,7 @@ execute if score game_state settings matches 4 run scoreboard players set game_s
 execute if score game_state settings matches 5 unless score map_type settings matches 4 as @r[tag=!in_a_team,tag=in_game] run function core:main/game/join_purple
 execute if score game_state settings matches 5 unless score map_type settings matches 4 as @r[tag=!in_a_team,tag=in_game] run function core:main/game/join_yellow
 
-execute if score game_state settings matches 5 if score map_type settings matches 4 as @a[tag=!in_a_team,tag=in_game] run function core:main/game/join_yellow
+execute if score game_state settings matches 5 if score map_type settings matches 4 as @a[tag=!in_a_team,tag=in_game] run function core:main/game/join_ffa
 
 
 execute if score game_state settings matches 5 if score all_random settings matches 0 as @a[scores={char=0},tag=in_game] run function chars:char_select
@@ -88,8 +87,8 @@ execute if score game_state settings matches 8 run function core:score/manage_sc
 execute if score game_state settings matches 9 run scoreboard players add loading settings 1
 execute if score game_state settings matches 9 if score loading settings matches 160.. run function reset:reset
 
-execute if score game_state settings matches 9 if score purple score >= score_max settings run scoreboard players operation purple score = score_max settings
-execute if score game_state settings matches 9 if score yellow score >= score_max settings run scoreboard players operation yellow score = score_max settings
+execute if score game_state settings matches 9 if score .purple score >= score_max settings run scoreboard players operation .purple score = score_max settings
+execute if score game_state settings matches 9 if score .yellow score >= score_max settings run scoreboard players operation .yellow score = score_max settings
 
 #Anti "leaving" prevention
 execute if score game_state settings matches 5 as @a if entity @s[scores={JustLeft=1},tag=in_game] run trigger ClassPickTrigger set 8

@@ -51,8 +51,8 @@ execute as @a run function core:main/hpercentage
 execute as @e[type=minecraft:falling_block,tag=FAKE_BLOCK] run data merge entity @s {Time:1}
 
 
-scoreboard players set @a[team=purple] Team 1
-scoreboard players set @a[team=yellow] Team -1
+execute unless score map_type settings matches 4 run scoreboard players set @a[team=purple] Team 1
+execute unless score map_type settings matches 4 run scoreboard players set @a[team=yellow] Team -1
 execute as @a[scores={DisplayDeath=1..}] run function core:main/deathmessages
 function core:main/anti_spawnkill
 #function buffs:system
