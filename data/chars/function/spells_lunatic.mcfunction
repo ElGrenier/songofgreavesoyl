@@ -15,7 +15,7 @@ execute at @a[scores={char=19}] as @a unless score @s Team = @p[scores={char=19}
 execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..12,tag=lunatic_valid_hug_target] run scoreboard players set @a[scores={char=19}] spellCD1 20
 execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..12,tag=lunatic_valid_hug_target] run scoreboard players set @a[scores={char=19}] s1_timer 280
 
-execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] as @p[distance=1..12,tag=valid_spell_target] if score @s Team = @p[scores={char=19}] Team run tag @s add hug
+execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] as @p[distance=1..12,tag=valid_spell_target,tag=lunatic_valid_hug_target] if score @s Team = @p[scores={char=19}] Team run tag @s add hug
 tp @a[scores={char=19}] @p[distance=1..,tag=hug]
 effect give @a[tag=hug] absorption 4 2
 execute at @a[tag=hug] run effect give @a[scores={char=19}] absorption 4 1

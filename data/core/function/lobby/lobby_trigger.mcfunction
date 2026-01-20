@@ -34,6 +34,10 @@ execute if entity @a[scores={LobbyTrigger=24}] run function core:lobby/map/map_c
 execute if entity @a[scores={LobbyTrigger=25}] run function core:lobby/map/map_choose_21
 execute if entity @a[scores={LobbyTrigger=26}] run function core:lobby/map/map_choose_22
 execute if entity @a[scores={LobbyTrigger=27}] run function core:lobby/map/map_choose_23
+execute if entity @a[scores={LobbyTrigger=28}] run function core:lobby/map/map_choose_24
+execute if entity @a[scores={LobbyTrigger=29}] run function core:lobby/map/map_choose_25
+execute if entity @a[scores={LobbyTrigger=30}] run function core:lobby/map/map_choose_26
+execute if entity @a[scores={LobbyTrigger=31}] run function core:lobby/map/map_choose_27
 # execute if entity @a[scores={LobbyTrigger=101}] run function core:lobby/parameters/
 # execute if entity @a[scores={LobbyTrigger=104}] run function core:lobby/parameters/
 # execute if entity @a[scores={LobbyTrigger=105}] run function core:lobby/parameters/

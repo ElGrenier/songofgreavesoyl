@@ -84,6 +84,10 @@ execute if entity @a[scores={char=67}] run function chars:spells_revenant
 execute if entity @a[scores={char=68}] run function chars:spells_enforcer
 execute if entity @a[scores={char=69}] run function chars:spells_painter
 execute if entity @a[scores={char=70}] run function chars:spells_bard
+execute if entity @a[scores={char=71}] run function chars:spells_alternate
+execute if entity @a[scores={char=72}] run function chars:spells_caretaker
+execute if entity @a[scores={char=73}] run function chars:spells_conductor
+execute if entity @a[scores={char=74}] run function chars:spells_fortress
 
 execute if entity @a[scores={char=23}] run function chars:spells_prowler
 
@@ -136,6 +140,9 @@ scoreboard players set @a[scores={s4_drop=1..}] s4_drop 0
 scoreboard players set @a[scores={s0_use=1..}] s0_use 0
 scoreboard players set @a[scores={s0_drop=1..}] s0_drop 0
 
+execute as @a[scores={universal_death=1..}] as @s run attribute @s jump_strength base set 0.41
+execute as @a[scores={universal_death=1..}] as @s run attribute @s movement_speed base set 0.1
+execute as @a[scores={universal_death=1..}] as @s run attribute @s attack_damage base set 1
 
 scoreboard players set @a[scores={universal_hit=1..}] universal_hit 0
 scoreboard players set @a[scores={universal_shoot=1..}] universal_shoot 0

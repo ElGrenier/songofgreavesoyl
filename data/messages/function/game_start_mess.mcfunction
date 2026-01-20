@@ -28,6 +28,11 @@ execute if score map settings matches 19 run tellraw @a [{text:" ==== ",color:"d
 execute if score map settings matches 20 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Lost Halls ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
 execute if score map settings matches 21 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Heart of the Swamp ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
 execute if score map settings matches 22 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Fossiled Tomb ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
+execute if score map settings matches 23 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Satran Square ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
+execute if score map settings matches 24 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" The Stage ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
+execute if score map settings matches 25 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Oasis Garden ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
+execute if score map settings matches 26 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Chain Tower ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
+execute if score map settings matches 27 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Infected Crypt ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
 
 
 execute if score map settings matches 1 run tellraw @a [{text:"      ",color:"dark_gray",italic:1b,type:"text"},{text:" Where it all started ",color:"gray",italic:1b,type:"text"},{text:"      ",color:"dark_gray",italic:1b,type:"text"}]
@@ -53,53 +58,17 @@ execute if score map settings matches 19 run tellraw @a [{text:"      ",color:"d
 execute if score map settings matches 20 run tellraw @a [{text:" ",color:"dark_gray",italic:1b,type:"text"},{text:"Did something moved in the darkness?",color:"gray",italic:1b,type:"text"},{text:"      ",color:"dark_gray",italic:1b,type:"text"}]
 execute if score map settings matches 21 run tellraw @a [{text:"           ",color:"dark_gray",italic:1b,type:"text"},{text:"Rotten grave of hunger",color:"gray",italic:1b,type:"text"},{text:"      ",color:"dark_gray",italic:1b,type:"text"}]
 execute if score map settings matches 22 run tellraw @a [{text:"     ",color:"dark_gray",italic:1b,type:"text"},{text:"Buried city of the Ancients",color:"gray",italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
+execute if score map settings matches 23 run tellraw @a [{text:"       ",color:"dark_gray",italic:1b,type:"text"},{text:"The toxicity of this city",color:"gray",italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
+execute if score map settings matches 24 run tellraw @a [{text:"       ",color:"dark_gray",italic:1b,type:"text"},{text:"stage desc",color:"gray",italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
+execute if score map settings matches 25 run tellraw @a [{text:"       ",color:"dark_gray",italic:1b,type:"text"},{text:"oasis desc",color:"gray",italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
+execute if score map settings matches 26 run tellraw @a [{text:"       ",color:"dark_gray",italic:1b,type:"text"},{text:"tower desc",color:"gray",italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
+execute if score map settings matches 27 run tellraw @a [{text:"       ",color:"dark_gray",italic:1b,type:"text"},{text:"crypt desc desc",color:"gray",italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
 
 
 tellraw @a {text:" ",type:"text"}
-# execute if score map settings matches 1 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture Altars and kill your enemies!",color:"green",type:"text"}]
-# execute if score map settings matches 2 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture Altars and kill your enemies!",color:"green",type:"text"}]
-# execute if score map settings matches 3 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No Altars! ",color:"green",type:"text"}]
-# execute if score map settings matches 3 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No points! ",color:"green",type:"text"}]
-# execute if score map settings matches 3 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Go and fight! ",color:"green",type:"text"}]
-# execute if score map settings matches 4 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No Altars! ",color:"green",type:"text"}]
-# execute if score map settings matches 4 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No points! ",color:"green",type:"text"}]
-# execute if score map settings matches 4 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Go and fight! ",color:"green",type:"text"}]
-# execute if score map settings matches 5 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"It's only you and them!",color:"green",type:"text"}]
-# execute if score map settings matches 6 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture Altars and kill your enemies!",color:"green",type:"text"}]
-# execute if score map settings matches 7 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture Altars and kill your enemies!",color:"green",type:"text"}]
-# execute if score map settings matches 8 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"One bridge, one altar!",color:"green",type:"text"}]
-# #execute if score map settings matches 8 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Everyone got random character!",color:"green",type:"text"}]
-# execute if score map settings matches 9 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"It's only you and them!",color:"green",type:"text"}]
-# execute if score map settings matches 10 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture Altars and kill your enemies!",color:"green",type:"text"}]
-# execute if score map settings matches 11 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No Altars! ",color:"green",type:"text"}]
-# execute if score map settings matches 11 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No points! ",color:"green",type:"text"}]
-# execute if score map settings matches 11 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Go and fight! ",color:"green",type:"text"}]
-# execute if score map settings matches 12 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture Altars and kill your enemies!",color:"green",type:"text"}]
-# execute if score map settings matches 13 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Two teams, two altars!",color:"green",type:"text"}]
-# #execute if score map settings matches 13 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Everyone got random character!",color:"green",type:"text"}]
-# execute if score map settings matches 14 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Steal the enemy flag and bring it back to your base!",color:"green",type:"text"}]
-# execute if score map settings matches 14 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"While carrying the flag, you are ",color:"green",type:"text"},{text:"silenced",underlined:1b,color:"light_purple",type:"text",hover_event:{action:"show_text",value:"Silenced players cannot use non-melee active abilities, and have their channelled abilities interrupted."}},{text:"! ",color:"green",type:"text"}]
-# execute if score map settings matches 14 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Getting ",color:"green",type:"text"},{text:"immobilized",color:"light_purple",type:"text"},{text:" causes you to drop the flag.",color:"green",type:"text"}]
-# execute if score map settings matches 14 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Killing enemies grants no points - only captures matter!",color:"green",type:"text"}]
-# execute if score map settings matches 15 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"It's only you and them!",color:"green",type:"text"}]
-# execute if score map settings matches 16 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No Altars! ",color:"green",type:"text"}]
-# execute if score map settings matches 16 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No points! ",color:"green",type:"text"}]
-# execute if score map settings matches 16 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Go and fight! ",color:"green",type:"text"}]
-# execute if score map settings matches 17 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture Altars and kill your enemies!",color:"green",type:"text"}]
-# execute if score map settings matches 18 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Steal the enemy flag and bring it back to your base!",color:"green",type:"text"}]
-# execute if score map settings matches 18 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"While carrying the flag, you are ",color:"green",type:"text"},{text:"silenced",underlined:1b,color:"light_purple",type:"text",hover_event:{action:"show_text",value:"Silenced players cannot use non-melee active abilities, and have their channelled abilities interrupted."}},{text:"! ",color:"green",type:"text"}]
-# execute if score map settings matches 18 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Getting ",color:"green",type:"text"},{text:"immobilized",color:"light_purple",type:"text"},{text:" causes you to drop the flag.",color:"green",type:"text"}]
-# execute if score map settings matches 18 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Killing enemies grants no points - only captures matter!",color:"green",type:"text"}]
-# execute if score map settings matches 19 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture Altars and kill your enemies!",color:"green",type:"text"}]
-# execute if score map settings matches 20 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No Altars! ",color:"green",type:"text"}]
-# execute if score map settings matches 20 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No points! ",color:"green",type:"text"}]
-# execute if score map settings matches 20 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Go and fight! ",color:"green",type:"text"}]
-# execute if score map settings matches 21 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"It's only you and them!",color:"green",type:"text"}]
-# execute if score map settings matches 22 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture Altars and kill your enemies!",color:"green",type:"text"}]
 
 
 execute if score map_type settings matches 1 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture Altars and kill your enemies!",color:"green",type:"text"}]
-
 
 execute if score map_type settings matches 2 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No Altars! ",color:"green",type:"text"}]
 execute if score map_type settings matches 2 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No points! ",color:"green",type:"text"}]
@@ -111,11 +80,13 @@ execute if score map_type settings matches 3 run tellraw @a [{text:"",type:"text
 execute if score map_type settings matches 3 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Getting ",color:"green",type:"text"},{text:"immobilized",color:"light_purple",type:"text"},{text:" causes you to drop the flag.",color:"green",type:"text"}]
 execute if score map_type settings matches 3 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Killing enemies grants no points - only captures matter!",color:"green",type:"text"}]
 
-
+execute if score map_type settings matches 4 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"No Altars, no teams, no allies!",color:"green",type:"text"}]
+execute if score map_type settings matches 4 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"You are on your own! ",color:"green",type:"text"}]
 
 execute if score map_type settings matches 1 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Get ",color:"green",type:"text"},{score:{name:"score_max",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" points to win!",color:"green",type:"text"}]
 execute if score map_type settings matches 2 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Get ",color:"green",type:"text"},{score:{name:"score_max",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" kills to win! ",color:"green",type:"text"}]
 execute if score map_type settings matches 3 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture the enemy flag ",color:"green",type:"text"},{score:{name:"score_max",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" times to win! ",color:"green",type:"text"}]
+execute if score map_type settings matches 4 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"The first player to get ",color:"green",type:"text"},{score:{name:"score_max",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" kills wins! ",color:"green",type:"text"}]
 
 tellraw @a [{text:"\nYou can",color:"green",type:"text"},{text:" use/drop the book ",color:"gold",bold:1b,type:"text"},{text:"in your",color:"green",type:"text"},{text:" 5th slot ",color:"gold",bold:1b,type:"text"},{text:"to see a detailed description of your abilities.",color:"green",type:"text"}]
 

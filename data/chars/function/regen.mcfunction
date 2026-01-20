@@ -222,3 +222,12 @@ scoreboard players set @a[scores={char=69,regen=61..}] regen 0
 
 effect give @a[scores={char=70,regen=70..}] regeneration 1 2 true
 scoreboard players set @a[scores={char=70,regen=71..}] regen 0
+
+effect give @a[scores={char=71,regen=80..}] regeneration 1 2 true
+scoreboard players set @a[scores={char=71,regen=80..}] regen 0
+
+effect give @a[scores={char=72,regen=60..}] regeneration 1 2 true
+scoreboard players set @a[scores={char=72,regen=60..}] regen 0
+
+effect give @a[scores={char=73,regen=80..}] regeneration 1 2 true
+scoreboard players set @a[scores={char=73,regen=80..}] regen 0

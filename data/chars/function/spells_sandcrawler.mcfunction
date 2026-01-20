@@ -16,14 +16,16 @@ scoreboard players set @a[scores={char=9,passive_craw=40..89,burrowed=1}] passiv
 
 title @a[scores={char=9,passive_craw=1..40,burrowed=0}] times 0 2 1
 title @a[scores={char=9,passive_craw=1..40,burrowed=0}] title {text:" ",type:"text"}
+title @a[scores={char=9,passive_craw=1,burrowed=0}] subtitle {text:" ",type:"text"}
 
-title @a[scores={char=9,passive_craw=1..10,burrowed=0}] subtitle [{text:"[",bold:1b,color:"#684822",type:"text"},{text:"=",color:"gold",bold:0b,type:"text"},{text:"===",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"#684822",type:"text"}]
+title @a[scores={char=9,passive_craw=2..10,burrowed=0}] subtitle [{text:"[",bold:1b,color:"#684822",type:"text"},{text:"=",color:"gold",bold:0b,type:"text"},{text:"===",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"#684822",type:"text"}]
 title @a[scores={char=9,passive_craw=11..20,burrowed=0}] subtitle [{text:"[",bold:1b,color:"#684822",type:"text"},{text:"==",color:"gold",bold:0b,type:"text"},{text:"==",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"#684822",type:"text"}]
 title @a[scores={char=9,passive_craw=21..30,burrowed=0}] subtitle [{text:"[",bold:1b,color:"#684822",type:"text"},{text:"===",color:"gold",bold:0b,type:"text"},{text:"=",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"#684822",type:"text"}]
 title @a[scores={char=9,passive_craw=31..40,burrowed=0}] subtitle [{text:"[",bold:1b,color:"#684822",type:"text"},{text:"====",color:"gold",bold:0b,type:"text"},{text:"",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"#684822",type:"text"}]
 
 title @a[scores={char=9,passive_craw=100..130,burrowed=1}] times 0 2 1
 title @a[scores={char=9,passive_craw=100..130,burrowed=1}] title {text:" ",type:"text"}
+title @a[scores={char=9,passive_craw=100,burrowed=1}] subtitle {text:" ",type:"text"}
 
 title @a[scores={char=9,passive_craw=101..110,burrowed=1}] subtitle [{text:"[",bold:1b,color:"#684822",type:"text"},{text:"=",color:"gold",bold:0b,type:"text"},{text:"==",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"#684822",type:"text"}]
 title @a[scores={char=9,passive_craw=111..120,burrowed=1}] subtitle [{text:"[",bold:1b,color:"#684822",type:"text"},{text:"==",color:"gold",bold:0b,type:"text"},{text:"=",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"#684822",type:"text"}]
@@ -51,15 +53,12 @@ execute at @a[scores={char=9,passive_craw=130,burrowed=0}] run scoreboard player
 
 scoreboard players set @a[scores={char=9,CC_silence=1..,burrowed=0}] passive_craw 0
 scoreboard players set @a[scores={char=9,universal_jump=1..,burrowed=0}] passive_craw 0
-scoreboard players set @a[scores={char=9,burrow_interrupt=1..,burrowed=0}] passive_craw 0
-scoreboard players set @a[scores={char=9,burrowinterrupt1=1..,burrowed=0}] passive_craw 0
-scoreboard players set @a[scores={char=9,burrowinterrupt2=1..,burrowed=0}] passive_craw 0
-scoreboard players set @a[scores={char=9,burrow_interrupt=1..,burrowed=1}] passive_craw 100
-scoreboard players set @a[scores={char=9,burrowinterrupt1=1..,burrowed=1}] passive_craw 100
-scoreboard players set @a[scores={char=9,burrowinterrupt2=1..,burrowed=1}] passive_craw 100
-scoreboard players set @a[scores={char=9,burrow_interrupt=1..}] burrow_interrupt 0
-scoreboard players set @a[scores={char=9,burrowinterrupt1=1..}] burrowinterrupt1 0
-scoreboard players set @a[scores={char=9,burrowinterrupt2=1..}] burrowinterrupt2 0
+scoreboard players set @a[scores={char=9,universal_walk=1..,burrowed=0}] passive_craw 0
+scoreboard players set @a[scores={char=9,universal_sprint=1..,burrowed=0}] passive_craw 0
+
+scoreboard players set @a[scores={char=9,universal_jump=1..,burrowed=1}] passive_craw 100
+scoreboard players set @a[scores={char=9,universal_walk=1..,burrowed=1}] passive_craw 100
+scoreboard players set @a[scores={char=9,universal_sprint=1..,burrowed=1}] passive_craw 100
 
 
 execute at @a[scores={char=9,passive_craw=1..39}] run particle block{block_state:{Name:"minecraft:sand"}} ~ ~ ~ 0.5 0.5 0.5 0.01 30 force

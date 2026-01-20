@@ -1,0 +1,8 @@
+{
+  "replace": true,
+  "values": [
+    "minecraft:freeze",
+    "minecraft:lava",
+    "minecraft:dragon_breath"
+  ]
+}

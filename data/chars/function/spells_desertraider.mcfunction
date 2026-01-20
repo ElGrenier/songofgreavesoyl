@@ -16,13 +16,21 @@ execute as @a[scores={char=44,CC_root=1..}] run kill @e[tag=raider_hook]
 execute as @a[scores={char=44,CC_stun=1..}] run kill @e[tag=raider_hook]
 execute as @a[scores={char=44,CC_silence=1..}] run kill @e[tag=raider_hook]
 
+execute as @a[scores={char=44,universal_death=1..}] run kill @e[tag=grapple_rope_point]
+execute as @a[scores={char=44,universal_death=1..}] run kill @e[tag=grapple_rope_point]
+execute as @a[scores={char=44,CC_grounded=1..}] run kill @e[tag=grapple_rope_point]
+execute as @a[scores={char=44,CC_root=1..}] run kill @e[tag=grapple_rope_point]
+execute as @a[scores={char=44,CC_stun=1..}] run kill @e[tag=grapple_rope_point]
+execute as @a[scores={char=44,CC_silence=1..}] run kill @e[tag=grapple_rope_point]
+
 execute if entity @a[scores={char=44,universal_death=1..}] run kill @e[tag=raider_hook]
+execute if entity @a[scores={char=44,universal_death=1..}] run kill @e[tag=grapple_rope_point]
 execute if entity @e[tag=raider_hook] run scoreboard players set @a s0_timer 0
 
 
 
-execute at @a[scores={s0_timer=1..,passive_raid=1..,passive_raid_timer=0..}] run playsound item.crossbow.loading_end master @a[distance=..10] ~ ~ ~ 1 1.6 1
-execute as @a[scores={s0_timer=1..,passive_raid=1..,passive_raid_timer=0..}] at @s run summon block_display ~ ~ ~ {Tags:["raider_hook","entities_raider"],block_state:{Name:"minecraft:iron_bars",Properties:{east:"true",north:"true",south:"true",waterlogged:"false",west:"true"}},transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[1.0f,1.0f,1.0f],translation:[-0.5f,-0.5f,-0.5f]}}
+execute at @a[scores={s0_timer=1..,passive_raid=1..,passive_raid_timer=0..,char=44}] run playsound item.crossbow.loading_end master @a[distance=..10] ~ ~ ~ 1 1.6 1
+execute as @a[scores={s0_timer=1..,passive_raid=1..,passive_raid_timer=0..,char=44}] at @s run summon block_display ~ ~ ~ {Tags:["raider_hook","entities_raider"],block_state:{Name:"minecraft:iron_bars",Properties:{east:"true",north:"true",south:"true",waterlogged:"false",west:"true"}},transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[1.0f,1.0f,1.0f],translation:[-0.5f,-0.5f,-0.5f]}}
 tp @e[tag=raider_hook,scores={passive_raid=1}] @p[scores={char=44}]
 execute as @e[tag=raider_hook,scores={passive_raid=1}] positioned as @s run tp @s ~ ~1 ~
 scoreboard players add @a[scores={char=44,passive_raid_timer=..200}] passive_raid_timer 1
@@ -146,8 +154,6 @@ execute unless entity @e[tag=grapple_rope_point] run kill @e[tag=grappling_hook_
 
 
 
-
-
 #constrict
 clear @a[scores={char=44,s1_timer=1,CC_silence=0}] *[custom_data={s1:1}]
 clear @a[scores={char=44,s1_timer_recast=1,CC_silence=0}] *[custom_data={s1:2}]
@@ -244,7 +250,7 @@ execute at @a[scores={char=44,s2_timer=1,CC_silence=0}] run playsound entity.pla
 execute at @a[scores={char=44,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["s_dash_first","sands_dashes","entities_raider"]}
 execute at @a[scores={char=44,s2_timer=1,CC_silence=0}] run particle falling_dust{block_state:{Name:"minecraft:sand"}} ~ ~ ~ 0.5 0.4 0.5 0.00001 50 normal
 tp @e[tag=s_dash_first,limit=1] @a[scores={char=44,s2_timer=1},limit=1]
-execute at @a[scores={char=44,s2_timer=1},limit=1] run tp @e[tag=s_dash_first,limit=1] ~ ~0.5 ~
+execute at @a[scores={char=44,s2_timer=1},limit=1] run tp @e[tag=s_dash_first,limit=1] ~ ~0.75 ~
 
 execute as @e[tag=s_dash_first] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
 execute as @e[tag=s_dash_first] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s

@@ -55,6 +55,9 @@ title @a[tag=ExitPracticeRoom] actionbar {text:" ",type:"text"}
 tag @a remove ExitPracticeRoom
 
 
+#dying
+scoreboard players set @a[tag=PracticeRoom,scores={universal_death=1..}] char 0
+tag @a[tag=PracticeRoom,scores={universal_death=1..}] remove PracticeRoom
 
 #other
 
@@ -72,7 +75,7 @@ execute positioned 57 12 -14 if entity @a[distance=..15] unless entity @e[tag=pr
 execute positioned 57 12 -14 unless entity @a[distance=..15] run kill @e[tag=practice_holograms]
 execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run tp @e[tag=practice_dummy,scores={SummonAge=5..}] ~ ~-200 ~
 execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run kill @e[tag=practice_dummy,scores={SummonAge=5..}] 
-execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run summon mannequin 72 13 -24 {Tags:["valid_spell_target","practice_dummy"],profile:{"properties":[{"name":"textures","value":"e3RleHR1cmVzOntTS0lOOnt1cmw6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTg4ZTU2MTViYWFlODZjNTYwNzAxNDY2NTdkNmIxZjkyYmE2ODNlM2QxZTZmNjMyNWQyYzQ1NTUwY2MxMmQzYiJ9fX0"}]}}
+execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run summon mannequin 72 13 -24 {Tags:["valid_spell_target","practice_dummy"],profile:{"properties":[{"name":"textures","value":"e3RleHR1cmVzOntTS0lOOnt1cmw6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTg4ZTU2MTViYWFlODZjNTYwNzAxNDY2NTdkNmIxZjkyYmE2ODNlM2QxZTZmNjMyNWQyYzQ1NTUwY2MxMmQzYiJ9fX0"}],model:"slim"}}
 execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run scoreboard players add @e[tag=practice_dummy] SummonAge 1
 execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run setblock 72 14 -20 polished_blackstone_button[face=floor]
 

@@ -43,7 +43,7 @@ execute at @e[tag=renegade_ebw_shot] run particle enchanted_hit ~ ~ ~ 0.1 0.1 0.
 execute at @e[tag=renegade_ebw_shot] run particle dust{color:[0.33,1.0,1.0],scale:1} ~ ~ ~ 0 0 0 0 2
 execute at @e[tag=renegade_ebw_shot] run particle dust{color:[0.33,0.33,1.0],scale:1} ~ ~ ~ 0 0 0 0 2
 
-execute as @e[tag=renegade_ebw_shot] at @s positioned ~ ~ ~ unless block ^ ^ ^0.4 #dash run kill @s
+execute as @e[tag=renegade_ebw_shot] at @s positioned ~ ~ ~ unless block ^ ^ ^0.2 #dash run kill @s
 execute as @e[tag=renegade_ebw_shot] at @s positioned ~ ~ ~ unless block ~ ~ ~ #dash run kill @s
 
 execute at @e[tag=renegade_ebw_shot] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=26}] Team run tag @s add kayraled
@@ -108,7 +108,8 @@ execute as @e[tag=kick_in_the_balls] at @s run tp @s ^ ^ ^0.9
 execute as @e[tag=backflip_v2] at @s run tp @s ^ ^ ^-0.9
 
 execute at @e[tag=backflip_v2] run effect give @a[scores={char=26}] speed 1 1 true
-execute at @e[tag=kick_in_the_balls] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target,limit=1] unless score @s Team = @p[scores={char=26}] Team run tag @s add renegade_kicked
+execute at @e[tag=kick_in_the_balls] positioned ~-.75 ~-.75 ~-.75 as @e[dx=0.5,dy=0.5,dz=0.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=26}] Team run tag @s add renegade_kicked
+#execute at @e[tag=kick_in_the_balls] as @e[distance=..3,tag=valid_spell_target,limit=1] unless score @s Team = @p[scores={char=26}] Team run tag @s add renegade_kicked
 
 execute at @e[tag=renegade_kicked] run kill @e[tag=kick_in_the_balls]
 execute at @e[tag=renegade_kicked] run tag @a[scores={char=26}] add add_cruelty
@@ -117,12 +118,12 @@ scoreboard players set @e[tag=renegade_kicked] CC_stun 10
 effect give @e[tag=renegade_kicked] blindness 1 0 true
 execute if entity @e[tag=renegade_kicked] at @a[scores={char=26}] run playsound entity.player.attack.strong master @a[distance=..10] ~ ~ ~ 1 0.5 1
 
-damage @e[tag=renegade_kicked,limit=1] 3 generic by @p[scores={char=26}] from @p[scores={char=26}]
+damage @e[tag=renegade_kicked,limit=1] 3 player_attack by @p[scores={char=26}] from @p[scores={char=26}]
 tag @e remove renegade_kicked
 
-tp @a[scores={char=26,s1_timer=1..8,death_dash_reset=0}] @e[tag=renegade_dash,limit=1]
-execute at @a[scores={char=26,s1_timer=4}] run kill @e[tag=kick_in_the_balls]
-execute at @a[scores={char=26,s1_timer=4}] run kill @e[tag=backflip_v2]
+tp @a[scores={char=26,s1_timer=1..5,death_dash_reset=0}] @e[tag=renegade_dash,limit=1]
+execute at @a[scores={char=26,s1_timer=4..20}] run kill @e[tag=kick_in_the_balls]
+execute at @a[scores={char=26,s1_timer=4..20}] run kill @e[tag=backflip_v2]
 
 
 
@@ -217,7 +218,7 @@ scoreboard players add @a[scores={char=26,demontrigger=1..,universal_kill=1..}] 
 execute at @a[scores={char=26,demontrigger=1..,universal_kill=1..}] run playsound entity.enderman.scream master @a[distance=..15] ~ ~ ~ 1 0.6 1
 
 item replace entity @a[scores={char=26,demontrigger=2..200}] armor.head with player_head[minecraft:custom_name="Head",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:-4.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:movement_speed",amount:0.3d,operation:"add_multiplied_base",slot:"head"}],minecraft:profile={id:[I;-1525471341,42943223,-1836502789,1793436656],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjAyYmFjYWQ2OTA4YThmOGI1OTg1NGNiYzJmZjc0YWFhMGNhNmZlMTU3YzQ0Yzc2ZTAwNjZkZjA1MWYxMGMwZCJ9fX0="}]}] 1
-execute as @a[scores={char=26,s3_timer=2}] at @s run summon armor_stand ^ ^0.5 ^-0.5 {attributes:[{id:"minecraft:scale",base:1.5}],Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["eyes"],equipment:{chest:{id:"minecraft:leather_chestplate",components:{"minecraft:dyed_color":7208960,"minecraft:trim":{material:"minecraft:redstone",pattern:"minecraft:silence"}},count:1},head:{id:"minecraft:player_head",components:{"minecraft:profile":{id:[I;-1956923902,-1153610189,-1450835436,374665507],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2ViOTMyMzU2NzY0YTQ3NTBhYmYzMmUxOTcyNTAyN2VkMzhiMzFkOTE3ZDE1YTdlMzIxOGFiYWNjOTYwNTgifX19"}]}},count:1}}}
+execute as @a[scores={char=26,s3_timer=2}] at @s run summon armor_stand ^ ^0.5 ^-0.5 {attributes:[{id:"minecraft:scale",base:1.5}],Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["eyes","entities_renegade"],equipment:{chest:{id:"minecraft:leather_chestplate",components:{"minecraft:dyed_color":7208960,"minecraft:trim":{material:"minecraft:redstone",pattern:"minecraft:silence"}},count:1},head:{id:"minecraft:player_head",components:{"minecraft:profile":{id:[I;-1956923902,-1153610189,-1450835436,374665507],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2ViOTMyMzU2NzY0YTQ3NTBhYmYzMmUxOTcyNTAyN2VkMzhiMzFkOTE3ZDE1YTdlMzIxOGFiYWNjOTYwNTgifX19"}]}},count:1}}}
 
 
 
@@ -227,13 +228,10 @@ execute at @a[scores={char=26,demontrigger=1..2}] run kill @e[tag=eyes]
 item replace entity @a[scores={char=26,demontrigger=1..2}] armor.head with player_head[minecraft:custom_name="Head",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:-4.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-1658334643,491734479,-2036031261,-2059642805],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzY2NDUzNmY1MjY5NTIyNTc0Yjk5YjdkYmRlZjQ1YzM3N2I4ZWU2ZTI4NzA0YWZjY2JlYjljZjRkOTUxZGZhNCJ9fX0="}]}] 1
 
 
-
-
-
 #eyes wings
 
-execute if entity @e[tag=eyes] unless entity @e[tag=eyes_wingL] run summon armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["eyes_wingL","eyes_wings"],equipment:{head:{id:"minecraft:red_banner",count:1}},attributes:[{id:"minecraft:scale",base:1.5}]}
-execute if entity @e[tag=eyes] unless entity @e[tag=eyes_wingR] run summon armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["eyes_wingR","eyes_wings"],equipment:{head:{id:"minecraft:red_banner",count:1}},attributes:[{id:"minecraft:scale",base:1.5}]}
+execute if entity @e[tag=eyes] unless entity @e[tag=eyes_wingL] run summon armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["eyes_wingL","eyes_wings","entities_renegade"],equipment:{head:{id:"minecraft:red_banner",count:1}},attributes:[{id:"minecraft:scale",base:1.5}]}
+execute if entity @e[tag=eyes] unless entity @e[tag=eyes_wingR] run summon armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["eyes_wingR","eyes_wings","entities_renegade"],equipment:{head:{id:"minecraft:red_banner",count:1}},attributes:[{id:"minecraft:scale",base:1.5}]}
 
 execute unless entity @e[tag=eyes] run kill @e[tag=eyes_wings]
 execute as @e[tag=eyes,limit=1] at @s run tp @e[tag=eyes_wingL] ^-0.1 ^-0.2 ^-0.2 facing entity @e[tag=eyes,limit=1]
@@ -268,7 +266,6 @@ scoreboard players set @a[scores={char=26}] MaxHP 16
 
 
 scoreboard players add @a[scores={s0_timer=1..,char=26}] s0_timer 1
-scoreboard players add @a[scores={s0_timer=2..,char=26},tag=sentrymode] s0_timer 2
 scoreboard players set @a[scores={s0_timer=21..,demontrigger=1..,char=26}] s0_timer 31
 scoreboard players set @a[scores={s0_timer=30..,char=26}] s0_timer 0
 

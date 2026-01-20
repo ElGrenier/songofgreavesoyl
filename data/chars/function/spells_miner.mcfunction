@@ -23,6 +23,9 @@ execute at @e[tag=skullsplit] run particle crit ~ ~ ~ 0.1 0.3 0.1 0.0001 3 norma
 execute as @e[tag=skullsplit] at @s run tp @s ^ ^ ^0.6
 execute at @a[scores={char=40,s1_timer=8..}] run kill @e[tag=skullsplit]
 
+execute as @e[tag=skullsplit] at @s positioned ~ ~ ~ unless block ^ ^ ^0.5 #dash run kill @s
+execute as @e[tag=skullsplit] at @s positioned ~ ~ ~ unless block ~ ~ ~ #dash run kill @s
+
 execute at @a[scores={char=40,s1_timer=3}] as @e[tag=skullsplit] run data merge entity @s {item:{count:1,id:"minecraft:iron_pickaxe"},transformation:{left_rotation:[0.21263112f,0.6743797f,0.21263112f,0.6743797f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[2.0f,2.0f,2.0f],translation:[0.0f,0.0f,0.0f]}}
 execute at @a[scores={char=40,s1_timer=6}] as @e[tag=skullsplit] run data merge entity @s {item:{count:1,id:"minecraft:iron_pickaxe"},transformation:{left_rotation:[0.40557984f,0.579228f,0.40557984f,0.579228f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[2.0f,2.0f,2.0f],translation:[0.0f,0.0f,0.0f]}}
 

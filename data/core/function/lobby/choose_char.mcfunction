@@ -80,7 +80,16 @@ execute positioned 173 22 -105 run function core:lobby/char_choose/choose_67reve
 execute positioned 166 22 -105 run function core:lobby/char_choose/choose_68enforcer
 execute positioned 159 22 -105 run function core:lobby/char_choose/choose_69painter
 execute positioned 152 22 -105 run function core:lobby/char_choose/choose_70bard
-execute positioned 145 22 -105 run function core:lobby/char_choose/choose_71
-execute positioned 138 22 -105 run function core:lobby/char_choose/choose_72
+execute positioned 145 22 -105 run function core:lobby/char_choose/choose_71alternate
+execute positioned 138 22 -105 run function core:lobby/char_choose/choose_72caretaker
+
+execute positioned 187 28 -128 run function core:lobby/char_choose/choose_73conductor
+execute positioned 180 28 -128 run function core:lobby/char_choose/choose_74
+execute positioned 173 28 -128 run function core:lobby/char_choose/choose_75
+execute positioned 166 28 -128 run function core:lobby/char_choose/choose_76
+execute positioned 159 28 -128 run function core:lobby/char_choose/choose_77
+execute positioned 152 28 -128 run function core:lobby/char_choose/choose_78
+execute positioned 145 28 -128 run function core:lobby/char_choose/choose_79
+execute positioned 138 28 -128 run function core:lobby/char_choose/choose_80
 
 

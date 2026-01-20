@@ -38,7 +38,6 @@ effect give @a[scores={char=13,s2_timer=1}] speed 3 1 true
 effect give @a[scores={char=13,s2_timer=1}] weakness 3 100 true
 effect give @a[scores={char=13,s2_timer=1}] resistance 3 100 true
 scoreboard players set @a[scores={char=13,s2_timer=1}] CC_intangible 60
-scoreboard players set @a[scores={char=13,s2_timer=1}] unstoppable 60
 item replace entity @a[scores={char=13,s2_timer=1}] armor.head with player_head[minecraft:custom_name="Skull",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:8.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:1.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-672593164,1073039141,-1481174912,860659466],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2JjYmJmOTRkNjAzNzQzYTFlNzE0NzAyNmUxYzEyNDBiZDk4ZmU4N2NjNGVmMDRkY2FiNTFhMzFjMzA5MTRmZCJ9fX0="}]}] 1
 item replace entity @a[scores={char=13,s2_timer=1}] armor.chest with air
 item replace entity @a[scores={char=13,s2_timer=1}] armor.legs with air

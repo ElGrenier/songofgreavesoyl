@@ -38,9 +38,6 @@ scoreboard players set @a[scores={asphyxiation_immunity=1..}] asphyxiation 0
 scoreboard players remove @a[scores={asphyxiation_immunity=1..}] asphyxiation_immunity 1
 
 
-
-
-
 execute at @a[scores={asphyxiation=1}] positioned ~ ~2.2 ~ unless entity @e[distance=..1,tag=display_asphyxiation_1] run summon minecraft:armor_stand ~ ~ ~ {CustomNameVisible:1b,Marker:1b,Invisible:1b,Tags:["display_asphyxiation_1","asph_display","entities_smokebride"],CustomName:{text:"X",extra:[{text:" - - - -",color:"gray",bold:1b}],color:"dark_gray",bold:1b}}
 execute at @a[scores={asphyxiation=1}] positioned ~ ~2.2 ~ run tp @e[distance=..1,tag=display_asphyxiation_1] ~ ~ ~
 execute as @e[tag=display_asphyxiation_1] at @s positioned ~ ~-2.2 ~ unless entity @a[distance=..1,scores={asphyxiation=1}] run kill @s
@@ -121,9 +118,7 @@ execute at @e[tag=ember,scores={s0_timer=32}] run playsound block.lava.extinguis
 execute at @e[tag=ember,scores={s0_timer=32}] run particle dust{color:[0.67,0.67,0.67],scale:1} ~ ~1 ~ 2 1 2 0 500
 execute at @e[tag=ember,scores={s0_timer=32}] positioned ~ ~1 ~ as @e[tag=valid_spell_target,distance=..4] unless score @s Team = @p[scores={char=56}] Team run tag @s add smoked_by_fekhi
 
-execute as @e[tag=smoked_by_fekhi] run attribute @s knockback_resistance base set 100
-execute as @e[tag=smoked_by_fekhi] run damage @s 3 generic by @p[scores={char=56}] from @p[scores={char=56}]
-execute as @e[tag=smoked_by_fekhi] run attribute @s knockback_resistance base set 0
+execute as @e[tag=smoked_by_fekhi] run damage @s 3 in_fire by @p[scores={char=56}] from @p[scores={char=56}]
 execute as @e[tag=smoked_by_fekhi] run scoreboard players add @s asphyxiation 1
 execute as @e[tag=smoked_by_fekhi] run scoreboard players add @s asphyxiation_decay_initial 0
 execute as @e[tag=smoked_by_fekhi] run scoreboard players add @s asphyxiation_decay 0

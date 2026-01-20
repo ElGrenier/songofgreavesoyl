@@ -23,5 +23,9 @@ execute if score map settings matches 20 run function battlegrounds:setup/lostha
 execute if score map settings matches 21 run function battlegrounds:setup/heartoftheswamp
 execute if score map settings matches 22 run function battlegrounds:setup/fossiledtomb
 execute if score map settings matches 23 run function battlegrounds:setup/satra
+execute if score map settings matches 24 run function battlegrounds:setup/stage
+execute if score map settings matches 25 run function battlegrounds:setup/oasis
+execute if score map settings matches 26 run function battlegrounds:setup/chaintower
+execute if score map settings matches 27 run function battlegrounds:setup/infectedcryptctf
 
 execute if entity @a[tag=debug] run say "setup initialized"

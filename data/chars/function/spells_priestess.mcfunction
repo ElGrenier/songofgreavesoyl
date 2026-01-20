@@ -117,7 +117,7 @@ execute as @e[tag=silencedash] at @s run tp @s ^ ^ ^1
 
 execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5] unless score @s Team = @p[scores={char=35,CC_silence=0}] Team run particle cloud ~ ~1.5 ~ 0.5 0 0.5 0.01 10
 execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5] unless score @s Team = @p[scores={char=35,CC_silence=0}] Team run playsound entity.player.attack.nodamage master @a[distance=..10] ~ ~ ~ 1 0.5 1
-execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5] unless score @s Team = @p[scores={char=35}] Team run scoreboard players set @s CC_silence 60
+execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5] unless score @s Team = @p[scores={char=35}] Team run scoreboard players set @s CC_silence 40
 execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] as @a[distance=..2.5] unless score @s Team = @p[scores={char=35}] Team at @s run particle enchant ~ ~0.5 ~ 0.3 1 0.3 0.01 20
 
 tp @a[scores={char=35,s2_timer=2..7,death_dash_reset=0}] @e[tag=silencedash,limit=1]
@@ -143,7 +143,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=35}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=301..,char=35}] s2_timer 0
 
 execute as @a[scores={char=35}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_shovel",Slot:0b}]}] run clear @a[scores={char=35}] golden_shovel
-item replace entity @a[scores={char=35}] hotbar.0 with minecraft:golden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=35}] hotbar.0 with minecraft:golden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 
 execute as @a[scores={char=35,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=35}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=35,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:allay_spawn_egg",minecraft:custom_name={text:"Drizzle Dance",color:"dark_aqua",bold:1b}] 1

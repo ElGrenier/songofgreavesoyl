@@ -59,6 +59,8 @@ execute at @a[scores={passive_aber_stack=1..}] run particle sculk_charge_pop ~ ~
 execute at @a[scores={passive_aber_stack=2..}] run particle sculk_charge{roll:1} ~ ~1 ~ 0.6 0.8 0.6 0.01 1
 execute at @a[scores={passive_aber_stack=3..}] run particle soul ~ ~1 ~ 0.8 0.8 0.8 0.01 1
 
+scoreboard players set @a[scores={passive_aber_stack=1..,universal_death=1..}] passive_aber_stack 0
+
 #s1
 
 execute at @a[scores={char=49,s1_timer=1,CC_silence=0}] run playsound entity.warden.agitated master @a[distance=..10] ~ ~ ~ 1 2 1

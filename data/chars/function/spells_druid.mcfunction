@@ -40,7 +40,6 @@ scoreboard players set @a[scores={char=63,s1_timer=1,CC_silence=1..}] s1_timer 2
 
 execute at @a[scores={char=63,s1_timer=1,CC_silence=0}] run playsound block.vine.place master @a[distance=..10] ~ ~ ~ 0.5 1.2 1
 execute at @a[scores={char=63,s1_timer=1,CC_silence=0}] run playsound block.flowering_azalea.place master @a[distance=..10] ~ ~ ~ 1 0.5 1
-#execute at @a[scores={char=63,s1_timer=1,CC_silence=0}] run summon armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["tanglebarbs_projectile","entities_druid","projectile"],NoGravity:1b,Small:1b,Pose:{Head:[90.0f,0.0f,0.0f]},equipment:{head:{id:"minecraft:vine",count:1}}}
 execute at @a[scores={char=63,s1_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,-0.3f,-0.3f],scale:[0.6f,0.6f,0.6f]},block_state:{Name:"minecraft:vine"},Tags:["tanglebarbs_projectile","entities_druid","projectile"]}
 scoreboard players operation @e[tag=projectile,tag=tanglebarbs_projectile] Team = @p[scores={char=63}] Team
 tp @e[tag=tanglebarbs_projectile,limit=1] @a[scores={char=63,s1_timer=1},limit=1]

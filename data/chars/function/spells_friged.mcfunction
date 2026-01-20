@@ -66,8 +66,8 @@ execute at @e[tag=friged_dash] as @e[tag=valid_spell_target,distance=..1.5] unle
 execute at @e[tag=friged_dash] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=42}] Team run effect clear @p[scores={char=42}] slow_falling
 execute at @e[tag=friged_dash] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=42}] Team run effect give @p[scores={char=42}] absorption 1
 execute at @e[tag=friged_dash] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=42}] Team run effect give @p[scores={char=42}] speed 1
-execute at @e[tag=friged_dash] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=42}] Team run playsound minecraft:entity.player.hurt_freeze master @a[distance=..8] ~ ~ ~ 1 1.2 1
-execute at @e[tag=friged_dash] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=42}] Team run playsound minecraft:entity.player.attack.crit master @a[distance=..8] ~ ~ ~ 1 1.3 1
+execute at @e[tag=friged_dash] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=42}] Team run playsound entity.player.hurt_freeze master @a[distance=..8] ~ ~ ~ 1 1.2 1
+execute at @e[tag=friged_dash] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=42}] Team run playsound entity.player.attack.crit master @a[distance=..8] ~ ~ ~ 1 1.3 1
 execute at @e[tag=friged_dash] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=42}] Team at @p[scores={char=42}] run particle snowflake ~ ~1 ~ 1.5 1 1.5 0.01 100
 execute at @e[tag=friged_dash] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=42}] Team run kill @e[tag=friged_dash]
 

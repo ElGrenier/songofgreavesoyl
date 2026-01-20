@@ -27,6 +27,7 @@ execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run scoreboard play
 tp @e[tag=turret,limit=1,tag=!turret_initial_rotation] @a[scores={char=30},limit=1]
 
 effect give @e[type=strider] invisibility infinite 1 true
+effect clear @e[type=strider] glowing
 
 execute at @e[tag=turret] unless entity @e[tag=turret_visuals_1,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_1","turret_visuals","turret_bottom","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.35f,-0.5f,-0.45f],scale:[0.7f,1f,0.9f]},block_state:{Name:"minecraft:cyan_terracotta"}}
 execute at @e[tag=turret] unless entity @e[tag=turret_visuals_1_2,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_1_2","turret_visuals","turret_bottom","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.2f,-0.05f],scale:[0.2f,0.4f,0.1f]},block_state:{Name:"minecraft:redstone_lamp"}}
@@ -80,14 +81,32 @@ execute as @e[tag=turret,tag=active_turret] at @s run tp @e[tag=turret_visuals_1
 execute as @e[tag=turret,tag=active_turret] at @s run tp @e[tag=turret_visuals_16,distance=..1] ^0.25 ^0.5 ^0.55
 execute as @e[tag=turret,tag=active_turret] at @s run tp @e[tag=turret_visuals_17,distance=..1] ^-0.25 ^0.5 ^0.55
 
+
+execute at @e[tag=turret] unless entity @e[tag=turret_active_range_display,distance=..1] run summon marker ~ ~ ~ {Tags:["turret_active_range_display","entities_engineer"]}
+execute at @e[tag=turret] run tp @e[tag=turret_active_range_display,distance=..1] ~ ~0.2 ~
+execute at @e[tag=turret_active_range_display] unless entity @e[tag=turret,distance=..1] run kill @s
+
+execute as @e[tag=turret_active_range_display] at @s run rotate @s ~11 ~
+execute as @e[tag=turret_active_range_display] at @s run particle crit ^ ^ ^10 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle crit ^ ^ ^-10 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle crit ^10 ^ ^ 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle crit ^-10 ^ ^ 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle crit ^7 ^ ^7 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle crit ^-7 ^ ^-7 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle crit ^7 ^ ^-7 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle crit ^-7 ^ ^7 0 0 0 0 1 force @a[scores={char=30}]
+
+
+
 execute as @e[tag=turret] at @s unless entity @p[scores={tracked=1..}] run rotate @s facing entity @e[tag=enginner_valid_turret_target,distance=..10,limit=1,sort=nearest]
 execute as @e[tag=turret] at @s if entity @p[scores={tracked=1..}] run rotate @s facing entity @p[scores={tracked=1..},tag=enginner_valid_turret_target,distance=..10,limit=1,sort=nearest]
 
 execute at @e[tag=turret,tag=inactive_turret] if entity @e[tag=enginner_valid_turret_target,distance=..10] run playsound block.piston.extend master @a[distance=..15] ~ ~ ~ 1 1.5 1
 execute at @e[tag=turret,tag=active_turret] unless entity @e[tag=enginner_valid_turret_target,distance=..10] run playsound block.piston.contract master @a[distance=..15] ~ ~ ~ 1 1.2 1
 
-execute as @e[tag=turret] at @s if entity @e[tag=enginner_valid_turret_target,distance=..10] run tag @s remove inactive_turret
-execute as @e[tag=turret] at @s if entity @e[tag=enginner_valid_turret_target,distance=..10] run tag @s add active_turret
+execute as @e[tag=turret] at @s if entity @e[tag=enginner_valid_turret_target,distance=..10] if entity @a[distance=..15,scores={char=30}] run tag @s remove inactive_turret
+execute as @e[tag=turret] at @s if entity @e[tag=enginner_valid_turret_target,distance=..10] if entity @a[distance=..15,scores={char=30}] run tag @s add active_turret
+
 execute as @e[tag=turret] at @s unless entity @e[tag=enginner_valid_turret_target,distance=..10] run tag @s remove active_turret
 execute as @e[tag=turret] at @s unless entity @e[tag=enginner_valid_turret_target,distance=..10] run tag @s add inactive_turret
 
@@ -157,13 +176,16 @@ execute at @e[tag=turret_shoot] run particle wax_on ~ ~ ~ 0.1 0.1 0.1 0.001 5 no
 execute as @e[tag=turret_shoot] at @s run tp @s ^ ^ ^0.3
 execute at @e[tag=turret_shoot] run particle dust{color:[1.0,1.0,0.33],scale:1} ~ ~ ~ 0.1 0.1 0.1 0.001 3 normal
 execute at @e[tag=turret_shoot] run particle wax_on ~ ~ ~ 0.1 0.1 0.1 0.001 5 normal
+execute as @e[tag=turret_shoot] at @s run tp @s ^ ^ ^0.3
+execute at @e[tag=turret_shoot] run particle dust{color:[1.0,1.0,0.33],scale:1} ~ ~ ~ 0.1 0.1 0.1 0.001 3 normal
+execute at @e[tag=turret_shoot] run particle wax_on ~ ~ ~ 0.1 0.1 0.1 0.001 5 normal
 
 
 execute at @e[tag=turret_shoot] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=30}] Team run tag @s add shot_by_the_turret
 execute at @e[tag=turret_shoot] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=30}] Team run kill @e[dx=0,dy=0,dz=0,tag=turret_shoot]
 
 execute at @e[tag=shot_by_the_turret] run kill @e[tag=turret_shoot,distance=..1,limit=1,sort=nearest]
-damage @e[tag=shot_by_the_turret,limit=1] 4 generic by @p[scores={char=30}] from @p[scores={char=30}]
+damage @e[tag=shot_by_the_turret,limit=1] 4 dragon_breath by @p[scores={char=30}] from @p[scores={char=30}]
 tag @e remove shot_by_the_turret
 
 scoreboard players add @e[tag=turret_shoot] turret_aggro 1

@@ -4,7 +4,7 @@
 # 1 : Altar
 # 2 : Deathmatch
 # 3 : CTF
-# 4 : 1v1 (like deathmatch, but with automatic health regain after a kill)
+# 4 : FFA
 
 #The all random type is removed, to be an option in game settings instead
 
@@ -35,7 +35,7 @@ execute if score map settings matches 11 run scoreboard players set map_type set
 
 execute if score map settings matches 12 run scoreboard players set map_type settings 1
 
-execute if score map settings matches 13 run scoreboard players set map_type settings 2
+execute if score map settings matches 13 run scoreboard players set map_type settings 1
 
 execute if score map settings matches 14 run scoreboard players set map_type settings 3
 
@@ -56,6 +56,14 @@ execute if score map settings matches 21 run scoreboard players set map_type set
 execute if score map settings matches 22 run scoreboard players set map_type settings 1
 
 execute if score map settings matches 23 run scoreboard players set map_type settings 4
+
+execute if score map settings matches 24 run scoreboard players set map_type settings 4
+
+execute if score map settings matches 25 run scoreboard players set map_type settings 4
+
+execute if score map settings matches 26 run scoreboard players set map_type settings 4
+
+execute if score map settings matches 27 run scoreboard players set map_type settings 3
 
 # In-lobby
 execute if score map lobby matches 1 run scoreboard players set map_type lobby 1
@@ -82,7 +90,7 @@ execute if score map lobby matches 11 run scoreboard players set map_type lobby 
 
 execute if score map lobby matches 12 run scoreboard players set map_type lobby 1
 
-execute if score map lobby matches 13 run scoreboard players set map_type lobby 2
+execute if score map lobby matches 13 run scoreboard players set map_type lobby 1
 
 execute if score map lobby matches 14 run scoreboard players set map_type lobby 3
 
@@ -103,3 +111,12 @@ execute if score map lobby matches 21 run scoreboard players set map_type lobby 
 execute if score map lobby matches 22 run scoreboard players set map_type lobby 1
 
 execute if score map lobby matches 23 run scoreboard players set map_type lobby 4
+
+execute if score map lobby matches 24 run scoreboard players set map_type lobby 4
+
+execute if score map lobby matches 25 run scoreboard players set map_type lobby 4
+
+execute if score map lobby matches 26 run scoreboard players set map_type lobby 4
+
+execute if score map lobby matches 27 run scoreboard players set map_type lobby 3
+

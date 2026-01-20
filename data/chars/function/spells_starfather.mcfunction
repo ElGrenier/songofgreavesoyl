@@ -100,8 +100,6 @@ scoreboard players set @a[scores={char=60,s1_timer=1,CC_silence=1..}] s1_timer 2
 scoreboard players set @a[scores={char=60,s1_timer=2,s2_timer=1..58,CC_silence=0}] s2_timer 58
 
 
-scoreboard players set @a[scores={char=60,s1_timer=1,CC_silence=0}] arrowcd 1
-scoreboard players set @a[scores={char=60,s1_timer=1,CC_silence=0}] arrowcd_1 60
 execute at @a[scores={char=60,s1_timer=2,CC_silence=0}] run playsound block.end_portal.spawn master @a[distance=..15] ~ ~ ~ 0.1 2 1
 execute at @a[scores={char=60,s1_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["meteor_marker","entities_starfather"],teleport_duration:1,block_state:{Name:"minecraft:deepslate_diamond_ore"},transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.4f,0.4f,0.4f],translation: [-0.2f,-0.4f,-0.4f]}}
 execute at @a[scores={char=60,s1_timer=1,CC_silence=0}] run playsound entity.snowball.throw master @a[distance=..10] ~ ~ ~ 1 0.8 1

@@ -16,6 +16,11 @@ execute at @a[scores={char=59},team=yellow] run team join yellow @e[tag=MoldHost
 execute at @a[scores={char=59},team=purple] run team join purple @e[tag=MoldStructure]
 execute at @a[scores={char=59},team=yellow] run team join yellow @e[tag=MoldStructure]
 
+scoreboard players set @e[tag=MoldHost,team=yellow] Team -1
+scoreboard players set @e[tag=MoldHost,team=purple] Team 1
+scoreboard players set @e[tag=MoldStructure,team=yellow] Team -1
+scoreboard players set @e[tag=MoldStructure,team=purple] Team 1
+
 execute as @e[tag=MoldProjectile] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
 execute as @e[tag=MoldProjectile] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
 execute as @e[tag=MoldProjectile] at @s unless block ^ ^ ^0.5 #minecraft:dash run kill @s
@@ -455,8 +460,9 @@ execute at @a[scores={char=59,MoldMinions=5,spores=..0}] run playsound entity.wa
 execute as @a[scores={char=59,MoldMinions=5,spores=1..}] at @s run summon husk ^ ^ ^ {Health:16.0f,IsBaby:1b,Tags:["MoldHost","Mold_Runner","entities_redmold","valid_spell_target"],active_effects:[{id:"minecraft:invisibility",amplifier:1b,duration:19999980,show_particles:0b}],attributes:[{id:"minecraft:attack_damage",base:0},{id:"minecraft:max_health",base:16},{id:"minecraft:movement_speed",base:0.3}],equipment:{chest:{id:"minecraft:leather_chestplate",components:{"minecraft:dyed_color":14548992},count:1},head:{id:"minecraft:player_head",components:{"minecraft:profile":{id:[I;1786004301,-1930670662,-1498883828,1723512729],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmFmMjdiNTg1NTA4YWRiNTA5MDRkY2QxMDY1Nzc1ZjNiODMwMjlhOThiZTkyZTk4ZDMwMWJhMzdlNDRkZDM4NCJ9fX0="}]}},count:1}}}
 scoreboard players remove @a[scores={char=59,MoldMinions=5,spores=1..}] spores 1
 
-execute at @e[tag=Mold_Runner] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=59}] Team run summon minecraft:marker ~ ~ ~ {Tags:["runner_boom","entities_redmold"]}
+execute at @e[tag=Mold_Runner] as @e[tag=valid_spell_target,distance=0.5..1.5] unless score @s Team = @p[scores={char=59}] Team run summon marker ~ ~ ~ {Tags:["runner_boom","entities_redmold"]}
 
+execute at @e[tag=runner_boom] run playsound entity.strider.death master @a[distance=..10] ~ ~ ~ 0.5 1.8 1
 execute at @e[tag=runner_boom] run tp @e[tag=Mold_Runner] ~ ~-100 ~
 execute at @e[tag=runner_boom] run kill @e[tag=Mold_Runner]
 execute at @e[tag=runner_boom] run particle crimson_spore ~ ~ ~ 2 2 2 0.1 600

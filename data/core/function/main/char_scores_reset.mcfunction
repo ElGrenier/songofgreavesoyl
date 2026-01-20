@@ -63,8 +63,11 @@ scoreboard players set @s passive_bard 0
 scoreboard players set @s passive_bard_use 0
 scoreboard players set @s champion_empower 0
 scoreboard players set @s treespirit_empower 0
+scoreboard players set @s warper_empower 0
 
-
+scoreboard players set @s shapeless_s2_empower 0
+scoreboard players set @s passive_raid 3
+scoreboard players set @s passive_raid_timer 0
 scoreboard players set @s burrowed 0
 scoreboard players set @s HUNDRED 100
 scoreboard players set @s passive_slim 0
@@ -104,7 +107,7 @@ scoreboard players set @s heat 100
 scoreboard players set @s spores 0
 scoreboard players set @s spores_timer 0
 scoreboard players set @s passive_cryo_cd 0
-scoreboard players set @s scarlet_knifes 0
+scoreboard players set @s scarlet_knifes 7
 scoreboard players set @s knifes_cd 0
 scoreboard players set @s lich_scrap_damage 0
 scoreboard players set @s lich_scrap_damage2 0
@@ -153,6 +156,19 @@ scoreboard players set @s shard_petrify 0
 scoreboard players set @s demontrigger 0
 scoreboard players set @s choose_char 0
 scoreboard players set @s siren_abyssflow_damage 0
+scoreboard players set @s juggle 0
+scoreboard players set @s shard_fragments 0
+scoreboard players set @s form_cooldown 0
+scoreboard players set @s spores 7
+scoreboard players set @s CelestialBody1 190
+scoreboard players set @s CelestialBody2 190
+scoreboard players set @s CelestialBody3 190
+scoreboard players set @s CelestialBody4 190
+scoreboard players set @s spellCD0alt1 0
+scoreboard players set @s spellCD0alt2 0
+scoreboard players set @s passive_caretaker 10
+scoreboard players set @s nectar 10
+scoreboard players set @s passive_conductor 10
 
 scoreboard players set @s red 0
 scoreboard players set @s yellow 0

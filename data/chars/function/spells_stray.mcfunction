@@ -35,7 +35,7 @@ scoreboard players set @a[scores={char=33,s1_timer=1,CC_silence=1..}] s1_timer 2
 
 execute at @a[scores={char=33,s1_timer=2,CC_silence=0}] run playsound minecraft:entity.wither_skeleton.ambient master @a[distance=..14] ~ ~ ~ 1 0.1 1
 
-execute at @a[scores={char=33,s1_timer=2,CC_silence=0}] as @e[tag=valid_spell_target,distance=..4] unless score @s Team = @p[scores={char=33}] Team run particle falling_dust{block_state:{Name:"minecraft:coal_block"}} ~ ~1.6 ~ 0.3 0.4 0.3 1 50
+execute at @a[scores={char=33,s1_timer=2,CC_silence=0}] as @e[tag=valid_spell_target,distance=..14] unless score @s Team = @p[scores={char=33}] Team run particle falling_dust{block_state:{Name:"minecraft:coal_block"}} ~ ~1.6 ~ 0.3 0.4 0.3 1 50
 
 execute at @a[scores={char=33,s1_timer=2,CC_silence=0}] as @a[tag=valid_spell_target,distance=..14] unless score @s Team = @p[scores={char=33}] Team run effect give @s blindness 4 1
 execute at @a[scores={char=33,s1_timer=2,CC_silence=0}] as @a[tag=valid_spell_target,distance=..14,scores={prey=1..}] unless score @s Team = @p[scores={char=33}] Team run effect give @s blindness 6 1

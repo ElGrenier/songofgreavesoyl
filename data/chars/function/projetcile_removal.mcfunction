@@ -84,10 +84,7 @@ execute unless entity @a[scores={char=32}] run kill @e[tag=entities_emperor]
 execute unless entity @a[scores={char=33}] run kill @e[tag=entities_stray]
 execute unless entity @a[scores={char=33}] run scoreboard players set @a[scores={stray_terrorradius=1..}] stray_terrorradius 0
 
-execute unless entity @a[scores={char=34}] run kill @e[tag=puddle]
-execute unless entity @a[scores={char=34}] run kill @e[tag=raincloud]
-execute as @e[tag=cloud] at @s unless entity @a[scores={char=34}] run fill ~4 ~-2 ~4 ~-4 ~2 ~-4 minecraft:air replace minecraft:light_gray_stained_glass
-execute unless entity @a[scores={char=34}] run kill @e[tag=cloud]
+execute unless entity @a[scores={char=34}] run kill @e[tag=entities_rainmaker]
 
 execute unless entity @a[scores={char=35}] run kill @e[tag=entities_priestess]
 
@@ -212,6 +209,10 @@ execute unless entity @a[scores={char=70}] run kill @e[tag=entities_bard]
 execute unless entity @a[scores={char=70}] run tag @a remove bard_s1_perfect
 execute unless entity @a[scores={char=70}] run tag @a remove bard_s2_perfect
 execute unless entity @a[scores={char=70}] run tag @a remove bard_fear
+
+execute unless entity @a[scores={char=71}] run kill @e[tag=entities_alternate]
+
+execute unless entity @a[scores={char=72}] run kill @e[tag=entities_caretaker]
 
 
 

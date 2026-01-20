@@ -43,7 +43,7 @@ execute at @e[tag=aim_sure_arrow] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0
 
 execute at @e[tag=aimed_true] run kill @e[tag=aim_sure_arrow]
 execute if entity @e[tag=aimed_true] at @a[scores={char=2}] run playsound entity.experience_orb.pickup master @a[scores={char=2}] ~ ~ ~ 1 0.1 1
-damage @e[tag=aimed_true,limit=1] 6 generic by @p[scores={char=2}] from @p[scores={char=2}]
+damage @e[tag=aimed_true,limit=1] 6 arrow by @p[scores={char=2}] from @p[scores={char=2}]
 effect give @e[tag=aimed_true] slowness 1 3
 tag @e remove aimed_true
 

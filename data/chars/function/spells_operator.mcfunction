@@ -25,6 +25,7 @@ execute at @a[scores={char=28,s0_timer=21,CC_silence=0}] run kill @e[tag=overloa
 attribute @p[scores={char=28,s0_timer=20..22}] jump_strength base set 0.41
 
 scoreboard players set @a[tag=overloaded,scores={CC_mindrot=1..}] CC_mindrot 100
+execute if entity @e[tag=overloaded] at @a[scores={char=28}] run playsound entity.experience_orb.pickup master @a[scores={char=28}] ~ ~ ~ 1 0.1 1
 execute as @e[tag=overloaded,scores={CC_mindrot=0}] as @s run damage @s 4 generic by @p[scores={char=28}]
 execute as @e[tag=overloaded,scores={CC_mindrot=1..}] as @s run damage @s 6 generic by @p[scores={char=28}]
 tag @e remove overloaded
@@ -107,7 +108,7 @@ execute at @e[tag=anguish_shoot,scores={knowledgelife=1}] run playsound entity.g
 
 execute as @e[tag=anguish_shoot,scores={knowledgelife=1..4}] at @s run tp @s ~ ~ ~ facing entity @e[tag=operator_valid_anguish_target,sort=nearest,limit=1] eyes
 execute as @e[tag=anguish_shoot,scores={knowledgelife=1..4}] at @s run tp @s ^ ^ ^0.3
-execute as @e[tag=anguish_shoot,scores={knowledgelife=5..}] at @s run tp @s ^ ^ ^0.6
+execute as @e[tag=anguish_shoot,scores={knowledgelife=5..}] at @s run tp @s ^ ^ ^0.5
 scoreboard players add @e[tag=anguish_shoot] knowledgelife 1
 kill @e[tag=anguish_shoot,scores={knowledgelife=15..}]
 
@@ -116,8 +117,8 @@ execute at @e[tag=anguish_shoot] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,
 
 execute at @e[tag=anguished] run kill @e[tag=anguish_shoot,distance=..1,limit=1,sort=nearest]
 scoreboard players set @a[tag=anguished,scores={CC_mindrot=1..}] CC_mindrot 100
-damage @e[tag=anguished,limit=1,scores={CC_mindrot=0}] 2 generic by @p[scores={char=28}] from @p[scores={char=28}]
-damage @e[tag=anguished,limit=1,scores={CC_mindrot=1..}] 4 generic by @p[scores={char=28}] from @p[scores={char=28}]
+damage @e[tag=anguished,limit=1,scores={CC_mindrot=0}] 2 dragon_breath by @p[scores={char=28}] from @p[scores={char=28}]
+damage @e[tag=anguished,limit=1,scores={CC_mindrot=1..}] 4 dragon_breath by @p[scores={char=28}] from @p[scores={char=28}]
 tag @e remove anguished
 
 
@@ -131,8 +132,8 @@ execute at @e[tag=sphere_goes_boom] run particle enchanted_hit ~ ~ ~ 3 2 3 0.01 
 execute at @e[tag=sphere_goes_boom] run particle soul ~ ~ ~ 2 2 2 0.1 50 force
 execute at @e[tag=sphere_goes_boom] run particle enchant ~ ~ ~ 2 2 2 0.1 250 force
 
-execute at @e[tag=sphere_goes_boom] as @e[distance=..6,tag=valid_spell_target,scores={CC_mindrot=0}] unless score @s Team = @p[scores={char=28}] Team run damage @s 6 generic by @p[scores={char=28}] from @p[scores={char=28}]
-execute at @e[tag=sphere_goes_boom] as @e[distance=..6,tag=valid_spell_target,scores={CC_mindrot=1..}] unless score @s Team = @p[scores={char=28}] Team run damage @s 8 generic by @p[scores={char=28}] from @p[scores={char=28}]
+execute at @e[tag=sphere_goes_boom] as @e[distance=..6,tag=valid_spell_target,scores={CC_mindrot=0}] unless score @s Team = @p[scores={char=28}] Team run damage @s 6 dragon_breath by @p[scores={char=28}] from @p[scores={char=28}]
+execute at @e[tag=sphere_goes_boom] as @e[distance=..6,tag=valid_spell_target,scores={CC_mindrot=1..}] unless score @s Team = @p[scores={char=28}] Team run damage @s 8 dragon_breath by @p[scores={char=28}] from @p[scores={char=28}]
 execute at @e[tag=sphere_goes_boom] as @e[distance=..6,tag=valid_spell_target] unless score @s Team = @p[scores={char=28}] Team run scoreboard players set @s CC_silence 20
 
 kill @e[tag=sphere_goes_boom]

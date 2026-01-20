@@ -18,21 +18,31 @@ scoreboard players add @a[scores={char=58,heat=..99,heat_timer=10}] heat 1
 scoreboard players set @a[scores={heat_timer=10..,heat=..99}] heat_timer 0
 
 scoreboard players add @e[tag=fire_cleanse] fire_life 1
-kill @e[tag=fire_cleanse,scores={fire_life=20..}]
+kill @e[tag=fire_cleanse,scores={fire_life=15..}]
 
-execute at @a[scores={passive_puri=1..,heat=1..}] if items entity @p[scores={char=58}] weapon.mainhand carrot_on_a_stick[custom_data={arson:1}] run summon marker ~ ~ ~ {Tags:["fire_cleanse","projectile","entities_purifier","projectile"]}
-execute at @a[scores={passive_puri=1..,heat=1..}] if items entity @p[scores={char=58}] weapon.mainhand carrot_on_a_stick[custom_data={arson:1}] run playsound entity.blaze.shoot master @a[distance=..15] ~ ~ ~ 0.4 0.5 1
-execute at @a[scores={passive_puri=1..,heat=0}] if items entity @p[scores={char=58}] weapon.mainhand carrot_on_a_stick[custom_data={arson:1}] run playsound block.lever.click master @a[distance=..15] ~ ~ ~ 1 1.5 1
+execute at @a[scores={passive_puri=1..,heat=1..,char=58}] if items entity @p[scores={char=58}] weapon.mainhand carrot_on_a_stick[custom_data={arson:1}] run summon marker ~ ~ ~ {Tags:["fire_cleanse","projectile","entities_purifier","projectile"]}
+execute at @a[scores={passive_puri=1..,heat=1..,char=58}] if items entity @p[scores={char=58}] weapon.mainhand carrot_on_a_stick[custom_data={arson:1}] run playsound entity.blaze.shoot master @a[distance=..15] ~ ~ ~ 0.4 0.5 1
+execute at @a[scores={passive_puri=1..,heat=0,char=58}] if items entity @p[scores={char=58}] weapon.mainhand carrot_on_a_stick[custom_data={arson:1}] run playsound block.lever.click master @a[distance=..15] ~ ~ ~ 1 1.5 1
 scoreboard players operation @e[tag=projectile,tag=fire_cleanse] Team = @p[scores={char=58}] Team
 tp @e[tag=fire_cleanse,scores={fire_life=1}] @a[scores={char=58},limit=1]
 execute as @e[tag=fire_cleanse,scores={fire_life=1}] at @s run tp @s ~ ~1.3 ~
 
-execute as @e[tag=fire_cleanse,scores={fire_life=1..}] at @s run tp @s ^ ^ ^0.4
+execute as @e[tag=fire_cleanse,scores={fire_life=1..}] at @s run tp @s ^ ^ ^0.15
+execute at @e[tag=fire_cleanse,scores={fire_life=1..3}] run particle flame ~ ~ ~ 0.05 0.05 0.05 0.001 1 force
+execute at @e[tag=fire_cleanse,scores={fire_life=4..6}] run particle flame ~ ~ ~ 0.15 0.15 0.15 0.01 2 force
+execute at @e[tag=fire_cleanse,scores={fire_life=7..9}] run particle flame ~ ~ ~ 0.2 0.2 0.2 0.016 3 force
+execute at @e[tag=fire_cleanse,scores={fire_life=10..}] run particle flame ~ ~ ~ 0.4 0.4 0.4 0.01 3 force
+execute as @e[tag=fire_cleanse,scores={fire_life=1..}] at @s run tp @s ^ ^ ^0.15
+execute at @e[tag=fire_cleanse,scores={fire_life=1..3}] run particle flame ~ ~ ~ 0.05 0.05 0.05 0.001 1 force
+execute at @e[tag=fire_cleanse,scores={fire_life=4..6}] run particle flame ~ ~ ~ 0.15 0.15 0.15 0.01 2 force
+execute at @e[tag=fire_cleanse,scores={fire_life=7..9}] run particle flame ~ ~ ~ 0.2 0.2 0.2 0.016 3 force
+execute at @e[tag=fire_cleanse,scores={fire_life=10..}] run particle flame ~ ~ ~ 0.4 0.4 0.4 0.01 3 force
+execute as @e[tag=fire_cleanse,scores={fire_life=1..}] at @s run tp @s ^ ^ ^0.15
+execute at @e[tag=fire_cleanse,scores={fire_life=1..3}] run particle flame ~ ~ ~ 0.05 0.05 0.05 0.001 1 force
+execute at @e[tag=fire_cleanse,scores={fire_life=4..6}] run particle flame ~ ~ ~ 0.15 0.15 0.15 0.01 2 force
+execute at @e[tag=fire_cleanse,scores={fire_life=7..9}] run particle flame ~ ~ ~ 0.2 0.2 0.2 0.016 3 force
+execute at @e[tag=fire_cleanse,scores={fire_life=10..}] run particle flame ~ ~ ~ 0.4 0.4 0.4 0.01 3 force
 
-execute at @e[tag=fire_cleanse,scores={fire_life=1..5}] run particle flame ~ ~ ~ 0.05 0.05 0.05 0.001 3 force
-execute at @e[tag=fire_cleanse,scores={fire_life=6..10}] run particle flame ~ ~ ~ 0.15 0.15 0.15 0.01 5 force
-execute at @e[tag=fire_cleanse,scores={fire_life=11..15}] run particle flame ~ ~ ~ 0.3 0.3 0.3 0.016 7 force
-execute at @e[tag=fire_cleanse,scores={fire_life=16..}] run particle flame ~ ~ ~ 0.5 0.5 0.5 0.01 7 force
 
 scoreboard players set @a[scores={passive_puri=1..}] heat_timer -20
 scoreboard players remove @a[scores={passive_puri=1..,heat=1..}] heat 3
@@ -49,15 +59,15 @@ scoreboard players add @e[scores={purifier_ignite=1..}] purifier_ignite 1
 execute at @e[scores={purifier_ignite=1..}] run particle flame ~ ~1 ~ 0.3 0.6 0.3 0.01 3
 
 execute as @e[scores={purifier_ignite=3}] run attribute @s knockback_resistance base set 100
-execute as @e[scores={purifier_ignite=3}] run damage @s 1 generic by @p[scores={char=58}] from @p[scores={char=58}]
+execute as @e[scores={purifier_ignite=3}] run damage @s 1 lava by @p[scores={char=58}] from @p[scores={char=58}]
 execute as @e[scores={purifier_ignite=3}] run attribute @s knockback_resistance base set 0
 
 execute as @e[scores={purifier_ignite=13}] run attribute @s knockback_resistance base set 100
-execute as @e[scores={purifier_ignite=13}] run damage @s 1 generic by @p[scores={char=58}] from @p[scores={char=58}]
+execute as @e[scores={purifier_ignite=13}] run damage @s 1 lava by @p[scores={char=58}] from @p[scores={char=58}]
 execute as @e[scores={purifier_ignite=13}] run attribute @s knockback_resistance base set 0
 
 execute as @e[scores={purifier_ignite=23}] run attribute @s knockback_resistance base set 100
-execute as @e[scores={purifier_ignite=23}] run damage @s 1 generic by @p[scores={char=58}] from @p[scores={char=58}]
+execute as @e[scores={purifier_ignite=23}] run damage @s 1 lava by @p[scores={char=58}] from @p[scores={char=58}]
 execute as @e[scores={purifier_ignite=23}] run attribute @s knockback_resistance base set 0
 
 scoreboard players set @e[scores={purifier_ignite=30..}] purifier_ignite 0

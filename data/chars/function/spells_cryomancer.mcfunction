@@ -11,6 +11,9 @@ execute at @a[scores={char=61,s1_timer=1,CC_silence=0}] run playsound block.beac
 execute at @a[scores={char=61,s1_timer=1..29,CC_silence=0}] run playsound block.snow.break master @a[distance=..12] ~ ~ ~ 0.2 0.8 1
 execute at @a[scores={char=61,s1_timer=1..29,CC_silence=0}] run particle block{block_state:{Name:"minecraft:blue_candle"}} ~ ~1 ~ 0.5 0.8 0.5 0.1 10 force
 
+scoreboard players set @a[scores={char=61,s1_timer=1..30,CC_silence=1..}] spellCD1 150
+scoreboard players set @a[scores={char=61,s1_timer=1..30,CC_silence=1..}] s1_timer 81
+
 clear @a[scores={char=61,s1_timer=31..80}] *[custom_data={s1:1}]
 clear @a[scores={char=61,s1_timer=31..80}] *[custom_data={s1:2}]
 execute at @a[scores={char=61,s1_timer=31..80,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["cryostream","entities_cryomancer","projectile"]}
@@ -82,7 +85,7 @@ execute as @e[tag=cold_cone] at @s run tp @s ^ ^ ^0.8
 
 scoreboard players set @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] spellCD1 150
 
-execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run damage @s 5 generic by @p[scores={char=61}] from @p[scores={char=61}]
+execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run damage @s 5 freeze by @p[scores={char=61}] from @p[scores={char=61}]
 execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @s CC_root 40
 execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target,scores={CC_silence=0,HPercentage=..50}] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @s CC_silence 60
 execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target,scores={CC_silence=0,HPercentage=..50}] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @a[scores={char=61}] passive_cryo_cd 100
@@ -146,7 +149,7 @@ execute at @e[tag=hypotermia_gas] run playsound entity.player.hurt_freeze master
 
 execute at @e[tag=hypotermia_gas] as @a[distance=..4] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @s CC_stun 20
 execute at @e[tag=hypotermia_gas] as @a[distance=..4] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @s CC_hypothermia 120
-execute at @e[tag=hypotermia_gas] as @a[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run damage @s 2 generic by @p[scores={char=61}] from @p[scores={char=61}]
+execute at @e[tag=hypotermia_gas] as @a[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run damage @s 2 freeze by @p[scores={char=61}] from @p[scores={char=61}]
 
 execute at @e[tag=hypotermia_gas] if entity @a[scores={char=61,passive_cryo_cd=0}] as @a[distance=..4,scores={CC_silence=0,HPercentage=..50}] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @s CC_silence 60
 execute at @e[tag=hypotermia_gas] if entity @a[scores={char=61,passive_cryo_cd=0}] as @a[distance=..4,scores={CC_silence=0,HPercentage=..50}] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @a[scores={char=61}] passive_cryo_cd 100

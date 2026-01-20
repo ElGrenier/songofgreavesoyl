@@ -6,9 +6,6 @@ tag @e add siren_abyssflow_uninitiated
 
 #passive
 
-execute as @a[tag=form_stitched,scores={char=53}] run title @s[scores={char=53}] actionbar [{text:"[",bold:1b,color:"dark_purple",type:"text"},{text:" Stitches Durability: ",color:"gray",bold:0b,type:"text"},{score:{name:"@s",objective:"stitches"},color:"light_purple",bold:0b,type:"score"},{text:"% ",color:"light_purple",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_purple",type:"text"}]
-execute as @a[tag=form_siren,scores={char=53}] run title @s[scores={char=53}] actionbar [{text:">",bold:1b,color:"dark_red",type:"text"},{text:" Stitches Durability: ",color:"gray",bold:0b,type:"text"},{score:{name:"@s",objective:"stitches"},color:"red",bold:0b,type:"score"},{text:"% ",color:"red",bold:0b,type:"text"},{text:"<",bold:1b,color:"dark_red",type:"text"}]
-
 effect give @a[tag=form_stitched,scores={char=53}] resistance 2 0 true
 
 scoreboard players add @a[scores={char=53}] stitches_counter 1
@@ -23,6 +20,9 @@ scoreboard players set @a[tag=form_siren,scores={char=53,stitches=..0}] stitches
 
 execute at @a[tag=form_siren,scores={char=53}] run particle falling_dust{block_state:{Name:"minecraft:bubble_coral"}} ~ ~1 ~ 0.4 0.6 0.4 0.1 1
 execute at @a[tag=form_siren,scores={char=53}] run particle block{block_state:{Name:"minecraft:bubble_coral"}} ~ ~0.5 ~ 0.3 0.8 0.3 0.1 1
+
+execute as @a[tag=form_stitched,scores={char=53}] run title @s[scores={char=53}] actionbar [{text:"[",bold:1b,color:"dark_purple",type:"text"},{text:" Stitches Durability: ",color:"gray",bold:0b,type:"text"},{score:{name:"@s",objective:"stitches"},color:"light_purple",bold:0b,type:"score"},{text:"% ",color:"light_purple",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_purple",type:"text"}]
+execute as @a[tag=form_siren,scores={char=53}] run title @s[scores={char=53}] actionbar [{text:">",bold:1b,color:"dark_red",type:"text"},{text:" Stitches Durability: ",color:"gray",bold:0b,type:"text"},{score:{name:"@s",objective:"stitches"},color:"red",bold:0b,type:"score"},{text:"% ",color:"red",bold:0b,type:"text"},{text:"<",bold:1b,color:"dark_red",type:"text"}]
 
 
 #transform to siren
@@ -114,9 +114,6 @@ execute at @a[tag=form_stitched,scores={char=53,s3_timer=2,CC_silence=0}] run su
 tp @e[tag=abyssblade,limit=1] @a[scores={char=53,s3_timer=2},limit=1]
 execute at @a[scores={char=53,s3_timer=2},limit=1] run tp @e[tag=abyssblade,limit=1] ~ ~0.5 ~
 
-#data modify entity @e[tag=abyssblade,limit=1] Rotation set from entity @p[scores={char=53}] Rotation
-#execute at @e[tag=abyssblade,scores={stitches=1},limit=1] run tp @e[tag=abyssblade,limit=1] ~ ~0.5 ~
-
 execute as @e[tag=abyssblade] at @s run tp @s ^ ^ ^0.9
 execute at @e[tag=abyssblade] run particle sweep_attack ~ ~1 ~ 0.2 0.6 0.2 0.1 3 normal
 
@@ -182,7 +179,7 @@ execute as @e[tag=abyssblade,scores={stitches=8}] at @s run particle crit ^-1.6 
 
 execute at @e[tag=abyssblade,scores={stitches=8}] run playsound entity.player.attack.sweep master @a[distance=..10] ~ ~ ~ 1 1.4 1
 
-execute at @e[tag=abyssblade] positioned ~-0.75 ~-0.75 ~-0.75 as @e[dx=0.5,dy=0.5,dz=0.5,tag=valid_spell_target,limit=1] unless score @s Team = @p[scores={char=53}] Team run tag @s add siren_botched
+execute at @e[tag=abyssblade] positioned ~-0.75 ~-0.75 ~-0.75 as @e[dx=0.5,dy=0.5,dz=0.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=53}] Team run tag @s add siren_botched
 
 execute at @e[tag=siren_botched] run kill @e[tag=abyssblade]
 execute at @e[tag=siren_botched] run particle sweep_attack ~ ~1.4 ~ 0.15 0.1 0.15 0.1 10

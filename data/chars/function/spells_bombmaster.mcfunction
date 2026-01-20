@@ -82,6 +82,7 @@ execute at @e[tag=bm_grenade] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag
 
 
 execute as @e[tag=bm_grenade] at @s unless block ^ ^ ^0.5 #minecraft:dash run summon marker ~ ~1 ~ {Tags:["grenade","entities_bombmaster"]}
+execute as @e[tag=bm_grenade] at @s unless block ^ ^ ^1 #minecraft:dash run summon marker ~ ~1 ~ {Tags:["grenade","entities_bombmaster"]}
 execute at @e[tag=grenade] run kill @e[tag=bm_grenade]
 execute at @e[tag=grenade] run particle explosion ~ ~1 ~ 2.5 2.5 2.5 0.01 20 normal
 execute at @e[tag=grenade] run particle enchanted_hit ~ ~1 ~ 3 3 3 0.0001 400 normal
@@ -89,7 +90,6 @@ execute at @e[tag=grenade] run particle falling_dust{block_state:{Name:"minecraf
 execute at @e[tag=grenade] run playsound entity.dragon_fireball.explode master @a[distance=..16] ~ ~ ~ 0.8 1.5 1
 execute at @e[tag=grenade] run playsound entity.zombie_villager.cure master @a[distance=..16] ~ ~ ~ 1 1.8 1
 
-execute as @e[tag=bm_grenade] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
 
 execute at @e[tag=grenade] as @e[distance=..5,scores={HP=..8},tag=valid_spell_target] unless score @s Team = @p[scores={char=11}] Team run tag @p[scores={char=11}] add pyrophilia
 execute at @e[tag=grenade] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=11}] Team run damage @s 8 generic by @p[scores={char=11}] from @p[scores={char=11}]

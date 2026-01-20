@@ -6,8 +6,8 @@ team leave @a[tag=PracticeRoom,scores={universal_death=1..}]
 tag @a[tag=PracticeRoom,scores={universal_death=1..}] add ExitPracticeRoom
 scoreboard players set @a[tag=ExitPracticeRoom] Team 0
 
+function core:main/practice_room
 
-#function customhit:core
 function chars:showkit
 function chars:all_chars_spells
 function chars:rangedcd
@@ -21,7 +21,6 @@ function chars:check_armor
 function chars:team_wool
 function chars:char_display_stands
 function core:lobby/choose_char
-function core:lobby/lobby_credits
 
 function chars:surrender
 
@@ -44,11 +43,13 @@ difficulty easy
 kill @e[type=minecraft:tnt]
 kill @e[type=minecraft:end_crystal]
 
-#azeth rzeczy
+#system shit
 
 function core:main/kilin_spree
 execute as @a run function core:main/hpercentage
-execute as @e[type=minecraft:falling_block,tag=FAKE_BLOCK] run data merge entity @s {Time:1}
+
+function core:lobby/lobby_credits
+function core:main/display_captured_altars
 
 
 execute unless score map_type settings matches 4 run scoreboard players set @a[team=purple] Team 1
@@ -67,13 +68,19 @@ execute positioned 220 34 -130 run function core:main/spawn_new_player
 
 #lobby rzeczy
 
-function core:main/practice_room
+
 function core:main/tutorial_stuff
 function core:lobby/lobby_trigger
 function bans:bans_system
 function chars:char_select
 execute if score confirmation_counter lobby matches 1.. run function core:lobby/confirmation/confirmation_loop
 
+#lobby holograms
+execute positioned 127 12 -154 if entity @a[distance=..10] unless entity @e[tag=lobby_hologram_1] run summon minecraft:text_display 127 14 -154 {Tags:["lobby_holograms","lobby_hologram_1"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Practice Room", text_opacity: 255, transformation: {left_rotation: [0.0f, -0.7071068f, 0.0f, 0.7071068f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999999f, 0.99999994f, 0.9999999f], translation: [0.0f, 0.0f, 0.0f]}}
+execute positioned 121 12 -154 if entity @a[distance=..10] unless entity @e[tag=lobby_hologram_2] run summon minecraft:text_display 121 14 -154 {Tags:["lobby_holograms","lobby_hologram_2"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Tutorial", text_opacity: 255, transformation: {left_rotation: [0.0f, 0.7071068f, 0.0f, 0.7071068f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999999f, 0.99999994f, 0.9999999f], translation: [0.0f, 0.0f, 0.0f]}}
+
+
+execute positioned 124 11 -154 unless entity @a[distance=..10] run kill @e[tag=lobby_holograms]
 
 function core:main/wavmode
 

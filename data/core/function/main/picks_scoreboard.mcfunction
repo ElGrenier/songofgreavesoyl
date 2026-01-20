@@ -43,7 +43,11 @@ execute if score map lobby matches 19 run scoreboard players display name map_na
 execute if score map lobby matches 20 run scoreboard players display name map_name Picks "Lost Halls"
 execute if score map lobby matches 21 run scoreboard players display name map_name Picks "Heart of the Swamp"
 execute if score map lobby matches 22 run scoreboard players display name map_name Picks "Fossiled Tomb"
-execute if score map lobby matches 23 run scoreboard players display name map_name Picks "Satran Square"
+execute if score map lobby matches 23 run scoreboard players display name map_name Picks "Satran Downtown"
+execute if score map lobby matches 24 run scoreboard players display name map_name Picks "The Stage"
+execute if score map lobby matches 25 run scoreboard players display name map_name Picks "Oasis Garden"
+execute if score map lobby matches 26 run scoreboard players display name map_name Picks "Chain Tower"
+execute if score map lobby matches 27 run scoreboard players display name map_name Picks "Infected Crypt"
 
 
 
@@ -195,10 +199,10 @@ execute if entity @a[scores={char=25},team=yellow] run scoreboard players set Sc
 execute if entity @e[tag=ban_25] run scoreboard players set Scourge Picks -3
 execute unless entity @a[scores={char=25}] unless entity @e[tag=ban_25] run scoreboard players reset Scourge Picks
 
-execute if entity @a[scores={char=26},team=purple] run scoreboard players set Sharpshooter Picks 1
-execute if entity @a[scores={char=26},team=yellow] run scoreboard players set Sharpshooter Picks -1
-execute if entity @e[tag=ban_26] run scoreboard players set Sharpshooter Picks -3
-execute unless entity @a[scores={char=26}] unless entity @e[tag=ban_26] run scoreboard players reset Sharpshooter Picks
+execute if entity @a[scores={char=26},team=purple] run scoreboard players set Renegade Picks 1
+execute if entity @a[scores={char=26},team=yellow] run scoreboard players set Renegade Picks -1
+execute if entity @e[tag=ban_26] run scoreboard players set Renegade Picks -3
+execute unless entity @a[scores={char=26}] unless entity @e[tag=ban_26] run scoreboard players reset Renegade Picks
 
 execute if entity @a[scores={char=27},team=purple] run scoreboard players set Champion Picks 1
 execute if entity @a[scores={char=27},team=yellow] run scoreboard players set Champion Picks -1
@@ -445,3 +449,18 @@ execute if entity @a[scores={char=70},team=purple] run scoreboard players set Ba
 execute if entity @a[scores={char=70},team=yellow] run scoreboard players set Bard Picks -1
 execute if entity @e[tag=ban_70] run scoreboard players set Bard Picks -3
 execute unless entity @a[scores={char=70}] unless entity @e[tag=ban_70] run scoreboard players reset Bard Picks
+
+execute if entity @a[scores={char=71},team=purple] run scoreboard players set Alternate Picks 1
+execute if entity @a[scores={char=71},team=yellow] run scoreboard players set Alternate Picks -1
+execute if entity @e[tag=ban_71] run scoreboard players set Alternate Picks -3
+execute unless entity @a[scores={char=71}] unless entity @e[tag=ban_71] run scoreboard players reset Alternate Picks
+
+execute if entity @a[scores={char=72},team=purple] run scoreboard players set Caretaker Picks 1
+execute if entity @a[scores={char=72},team=yellow] run scoreboard players set Caretaker Picks -1
+execute if entity @e[tag=ban_72] run scoreboard players set Caretaker Picks -3
+execute unless entity @a[scores={char=72}] unless entity @e[tag=ban_72] run scoreboard players reset Caretaker Picks
+
+execute if entity @a[scores={char=73},team=purple] run scoreboard players set Conductor Picks 1
+execute if entity @a[scores={char=73},team=yellow] run scoreboard players set Conductor Picks -1
+execute if entity @e[tag=ban_73] run scoreboard players set Conductor Picks -3
+execute unless entity @a[scores={char=73}] unless entity @e[tag=ban_73] run scoreboard players reset Conductor Picks

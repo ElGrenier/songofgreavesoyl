@@ -44,7 +44,7 @@ execute at @a[scores={holding_debris=99,char=48}] run playsound entity.item.pick
 
 #pulling players
 
-execute at @e[tag=g_well] positioned ~-0.75 ~-0.75 ~-0.75 as @p[dx=0.5,dy=0.5,dz=0.5,tag=valid_spell_target,limit=1] unless score @s Team = @p[scores={char=48}] Team run tag @s add artificer_grounded
+execute at @e[tag=g_well] positioned ~-0.75 ~-0.75 ~-0.75 as @e[dx=0.5,dy=0.5,dz=0.5,tag=valid_spell_target,limit=1] unless score @s Team = @p[scores={char=48}] Team run tag @s add artificer_grounded
 
 execute at @e[tag=artificer_grounded] run particle enchanted_hit ~ ~0.5 ~ 0.4 0.6 0.4 0 20
 execute at @e[tag=artificer_grounded] run particle nautilus ~ ~0.5 ~ 0.3 0.5 0.3 0 100

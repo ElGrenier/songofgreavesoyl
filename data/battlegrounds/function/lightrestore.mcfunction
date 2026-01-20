@@ -58,6 +58,9 @@ fill 113 14 -439 110 16 -431 minecraft:light[level=8] replace minecraft:air
 fill 172 19 -443 157 19 -438 minecraft:light[level=8] replace minecraft:air
 fill 124 19 -477 119 19 -492 minecraft:light[level=8] replace minecraft:air
 
+# oasis
+fill 328 13 -585 411 15 -486 minecraft:light replace air
+
 # practice room
 fill 50 13 -36 94 13 8 light[level=15] replace air
 fill 65 18 -27 78 18 -37 light[level=15] replace air

@@ -20,6 +20,21 @@
 	"minecraft:air",
 	"minecraft:light",
 	"minecraft:fire",
-	"minecraft:rail"
+	"minecraft:rail",
+	"minecraft:wildflowers",
+	"minecraft:sunflower",
+	"minecraft:oxeye_daisy",
+	"minecraft:cornflower",
+	"minecraft:blue_orchid",
+	"minecraft:pitcher_plant",
+	"minecraft:twisting_vines_plant",
+	"minecraft:twisting_vines",
+	"minecraft:orange_tulip",
+	"minecraft:open_eyeblossom",
+	"minecraft:allium",
+	"minecraft:pink_petals",
+	"minecraft:torchflower",
+	"minecraft:dandelion",
+	"minecraft:cactus_flower"
   ]
 }

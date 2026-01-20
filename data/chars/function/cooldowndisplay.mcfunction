@@ -152,7 +152,31 @@ item replace entity @a[scores={CC_silence=0,spellCD0=581..600}] hotbar.0 with ba
 clear @a[scores={CC_silence=0,spellCD0=1..2}] barrier
 item replace entity @a[scores={CC_silence=0,spellCD0=2..3}] hotbar.0 with minecraft:air
 
+#alternate unique
 
+scoreboard players remove @a[scores={spellCD0alt1=1..}] spellCD0alt1 1
+scoreboard players remove @a[scores={spellCD0alt2=1..}] spellCD0alt2 1
+
+item replace entity @a[scores={spellCD0alt1=3..20},tag=alternate_no_enemy] hotbar.0 with minecraft:barrier[minecraft:custom_name={text:"This ability is on cooldown",color:"gray"}] 1
+item replace entity @a[scores={spellCD0alt1=21..40},tag=alternate_no_enemy] hotbar.0 with minecraft:barrier[minecraft:custom_name={text:"This ability is on cooldown",color:"gray"}] 2
+item replace entity @a[scores={spellCD0alt1=41..60},tag=alternate_no_enemy] hotbar.0 with minecraft:barrier[minecraft:custom_name={text:"This ability is on cooldown",color:"gray"}] 3
+item replace entity @a[scores={spellCD0alt1=61..80},tag=alternate_no_enemy] hotbar.0 with minecraft:barrier[minecraft:custom_name={text:"This ability is on cooldown",color:"gray"}] 4
+item replace entity @a[scores={spellCD0alt1=81..},tag=alternate_no_enemy] hotbar.0 with minecraft:barrier[minecraft:custom_name={text:"This ability is on cooldown",color:"gray"}] 5
+
+clear @a[scores={spellCD0alt1=1..2}] minecraft:barrier
+item replace entity @a[scores={spellCD0alt1=2..3}] hotbar.0 with minecraft:air
+
+item replace entity @a[scores={spellCD0alt2=3..20},tag=!alternate_no_enemy] hotbar.0 with minecraft:barrier[minecraft:custom_name={text:"This ability is on cooldown",color:"gray"}] 1
+item replace entity @a[scores={spellCD0alt2=21..40},tag=!alternate_no_enemy] hotbar.0 with minecraft:barrier[minecraft:custom_name={text:"This ability is on cooldown",color:"gray"}] 2
+item replace entity @a[scores={spellCD0alt2=41..60},tag=!alternate_no_enemy] hotbar.0 with minecraft:barrier[minecraft:custom_name={text:"This ability is on cooldown",color:"gray"}] 3
+item replace entity @a[scores={spellCD0alt2=61..80},tag=!alternate_no_enemy] hotbar.0 with minecraft:barrier[minecraft:custom_name={text:"This ability is on cooldown",color:"gray"}] 4
+item replace entity @a[scores={spellCD0alt2=81..},tag=!alternate_no_enemy] hotbar.0 with minecraft:barrier[minecraft:custom_name={text:"This ability is on cooldown",color:"gray"}] 5
+
+clear @a[scores={spellCD0alt2=1..2}] minecraft:barrier
+item replace entity @a[scores={spellCD0alt2=2..3}] hotbar.0 with minecraft:air
+
+execute unless score @p[scores={char=71}] spellCD0alt1 matches 0.. run scoreboard players set @a[scores={char=71}] spellCD0alt1 0
+execute unless score @p[scores={char=71}] spellCD0alt2 matches 0.. run scoreboard players set @a[scores={char=71}] spellCD0alt2 0
 
 
 
