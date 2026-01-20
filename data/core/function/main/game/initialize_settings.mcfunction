@@ -19,7 +19,7 @@ scoreboard players operation fallen_flag_max_countdown settings = fallen_flag_ma
 scoreboard players operation require_confirmation settings = require_confirmation lobby
 scoreboard players operation all_random settings = all_random lobby
 scoreboard players operation wav_mode settings = wav_mode lobby
-
+execute store result score ticket settings run random value -900000000..900000000
 
 
 scoreboard players set game_state settings 2

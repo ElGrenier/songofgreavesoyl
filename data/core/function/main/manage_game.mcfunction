@@ -36,6 +36,7 @@ execute if score game_state settings matches 2 unless score map_type settings ma
 #Why ? Dunno if its still necessary
 execute if score game_state settings matches 2 run team join yellow .yellow
 execute if score game_state settings matches 2 run team join purple .purple
+execute as @a[tag=in_game] store result score @s ticket run scoreboard players get ticket settings
 
 #execute if score game_state settings matches 2 run tp @a 288 29 -108
 execute if score game_state settings matches 2 run scoreboard players set game_state settings 3
@@ -69,8 +70,8 @@ execute if score game_state settings matches 5 unless entity @a[tag=!in_a_team,t
 
 #Set respawn to the respawn 
 execute if score game_state settings matches 6 run spawnpoint @a[tag=in_game] 207 34 -131
-execute if score game_state settings matches 6 unless score map_type settings matches 4 run scoreboard players set .purple score 0
-execute if score game_state settings matches 6 unless score map_type settings matches 4 run scoreboard players set .yellow score 0
+execute if score game_state settings matches 6 run scoreboard players set .purple score 0
+execute if score game_state settings matches 6 run scoreboard players set .yellow score 0
 execute if score game_state settings matches 6 if score map_type settings matches 4 run scoreboard players reset .purple score
 execute if score game_state settings matches 6 if score map_type settings matches 4 run scoreboard players reset .yellow score
 execute if score game_state settings matches 6 run function battlegrounds:setup
@@ -81,7 +82,7 @@ execute if score game_state settings matches 7 run function chars:all
 execute if score game_state settings matches 7 run scoreboard players set game_state settings 8
 
 execute if score game_state settings matches 8 run function core:score/manage_score
-execute if score game_state settings matches 8 if score map_type setting matches 4 as @a store result score @s Team run scoreboard players get @s char
+execute if score game_state settings matches 8 if score map_type settings matches 4 as @a store result score @s Team run scoreboard players get @s char
 
 
 #Game Win management

@@ -21,6 +21,7 @@ scoreboard players set map settings 0
 scoreboard players set game_state settings 0
 scoreboard players set @a Loading -1
 scoreboard players reset * score
+scoreboard players reset * ticket
 
 tag @a remove outsider
 tag @a remove in_a_team

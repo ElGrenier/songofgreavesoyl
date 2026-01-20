@@ -62,7 +62,11 @@ function ctf:main
 function battlegrounds:timeofday
 function core:score/visibility
 
-#Why was there a ticket things ?
+#Ticket (to make the player leaving a match not being stuck after rejoining)
+execute if score game_state settings matches 1.. as @a unless score @s ticket = ticket settings run function core:main/game/spawn_outsider
+execute unless score game_state settings matches 1.. as @a[scores={ticket=..0,ticket=0..}] run function core:main/reset_ticket
+
+
 
 execute positioned 220 34 -130 run function core:main/spawn_new_player
 
