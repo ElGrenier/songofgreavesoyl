@@ -21,7 +21,8 @@ scoreboard players set map settings 0
 scoreboard players set game_state settings 0
 scoreboard players set @a Loading -1
 scoreboard players reset * score
-scoreboard players reset * ticket
+scoreboard players reset @a ticket
+scoreboard players reset ticket settings
 
 tag @a remove outsider
 tag @a remove in_a_team
@@ -43,7 +44,7 @@ setblock 176 12 -85 minecraft:oak_wall_sign[facing=south]{front_text:{messages:[
 
 kill @e[tag=ban_stand]
 
-
+function crawlermode:reset
 function core:lobby/initialize_lobby
 
 #credits stands

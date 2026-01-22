@@ -38,6 +38,7 @@ execute if entity @a[scores={LobbyTrigger=28}] run function core:lobby/map/map_c
 execute if entity @a[scores={LobbyTrigger=29}] run function core:lobby/map/map_choose_25
 execute if entity @a[scores={LobbyTrigger=30}] run function core:lobby/map/map_choose_26
 execute if entity @a[scores={LobbyTrigger=31}] run function core:lobby/map/map_choose_27
+execute if entity @a[scores={LobbyTrigger=32}] run function core:lobby/map/map_choose_28
 # execute if entity @a[scores={LobbyTrigger=101}] run function core:lobby/parameters/
 # execute if entity @a[scores={LobbyTrigger=104}] run function core:lobby/parameters/
 # execute if entity @a[scores={LobbyTrigger=105}] run function core:lobby/parameters/
@@ -49,6 +50,8 @@ execute at @a[scores={LobbyTrigger=102}] run function messages:settings/desactiv
 execute at @a[scores={LobbyTrigger=103}] run function messages:settings/activate_wav_mode
 execute at @a[scores={LobbyTrigger=104}] run function messages:settings/desactivate_memory
 execute at @a[scores={LobbyTrigger=105}] run function messages:settings/activate_memory
+execute at @a[scores={LobbyTrigger=106}] run function messages:settings/desactivate_choose_team
+execute at @a[scores={LobbyTrigger=107}] run function messages:settings/activate_choose_team
 
 execute as @a[scores={LobbyTrigger=110..115}] run function core:lobby/options
 execute as @a[scores={trigger_respawn=1..}] run function core:lobby/calculate_respawn

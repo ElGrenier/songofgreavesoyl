@@ -1,0 +1,6 @@
+kill @e[tag=extinguisher_spawnpoint]
+kill @e[tag=attacker_ceiling_spawnpoint]
+kill @e[tag=crawlers_campfire]
+kill @e[tag=crawlers_centre]
+kill @e[tag=crawlers_downward]
+kill @e[tag=crawlers_descent]

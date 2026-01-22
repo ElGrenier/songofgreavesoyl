@@ -1,6 +1,8 @@
 #chars related
 
-function core:main/manage_game
+execute if score game_type settings matches 1 run function core:main/manage_game
+execute if score game_type settings matches 2 run function crawlermode:manage_game
+
 
 team leave @a[tag=PracticeRoom,scores={universal_death=1..}]
 tag @a[tag=PracticeRoom,scores={universal_death=1..}] add ExitPracticeRoom

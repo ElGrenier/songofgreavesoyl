@@ -27,5 +27,7 @@ execute if score map settings matches 24 run function battlegrounds:setup/stage
 execute if score map settings matches 25 run function battlegrounds:setup/oasis
 execute if score map settings matches 26 run function battlegrounds:setup/chaintower
 execute if score map settings matches 27 run function battlegrounds:setup/infectedcryptctf
+execute if score map settings matches 28 run function battlegrounds:setup/crawler_mode
+
 
 execute if entity @a[tag=debug] run say "setup initialized"

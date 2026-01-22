@@ -1,3 +1,4 @@
+scoreboard players set game_type lobby 1
 scoreboard players set map lobby 14
 clone 221 34 -110 233 41 -103 118 11 -193
 

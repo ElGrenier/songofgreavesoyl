@@ -1,8 +1,5 @@
-
-# TP to team select temporary room and launch with it #lobby:loss_teams
-# tp @a 288.5 29.00 -107.5
+scoreboard players operation game_type settings = game_type lobby
 scoreboard players set game_state settings 1
-
 
 team empty purple
 team empty yellow
