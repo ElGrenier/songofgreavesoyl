@@ -11,7 +11,7 @@ scoreboard players set =Yellow= Picks 0
 scoreboard objectives modify Picks numberformat blank
 
 scoreboard players set bans Picks -2
-scoreboard players display name map Picks {text:"-=Bans=-",color:"red",bold:1b}
+scoreboard players display name bans Picks {text:"-=Bans=-",color:"red",bold:1b}
 
 
 scoreboard players set map Picks -4

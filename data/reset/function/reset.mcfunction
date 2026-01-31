@@ -22,6 +22,7 @@ scoreboard players set game_state settings 0
 scoreboard players set @a Loading -1
 scoreboard players reset * score
 scoreboard players reset @a ticket
+scoreboard players reset * Picks
 scoreboard players reset ticket settings
 
 tag @a remove outsider

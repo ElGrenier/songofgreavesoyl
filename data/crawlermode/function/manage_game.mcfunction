@@ -34,7 +34,7 @@ execute if score game_state settings matches 2..4 if score all_random settings m
 
 execute if score game_state settings matches 4 run scoreboard players set game_state settings 5
 
-execute if score game_state settings matches 5 unless score map_type settings matches 4 as @a[tag=in_game,tag=!spectator] run function core:main/game/join_purple
+execute if score game_state settings matches 5 as @a[tag=in_game,tag=!spectator] run function core:main/game/join_purple
 
 execute if score game_state settings matches 5 if score all_random settings matches 0 as @a[scores={char=0},tag=in_game] run function chars:char_select
 
@@ -59,10 +59,10 @@ execute unless entity @a[tag=!waiting_respawn] run scoreboard players set @a[sco
 # execute if score game_state settings matches 9 if score .yellow score >= score_max settings run scoreboard players operation .yellow score = score_max settings
 
 #Anti "leaving" prevention
-execute if score game_state settings matches 5 as @a if entity @s[scores={JustLeft=1},tag=in_game] run trigger ClassPickTrigger set 8
-execute if score game_state settings matches 6.. as @a if entity @s[scores={JustLeft=1,char=0},tag=in_game] run tag @s remove in_a_team
-execute if score game_state settings matches 6.. as @a if entity @s[scores={JustLeft=1,char=0},tag=in_game] run team leave @s
-execute if score game_state settings matches 6.. as @a if entity @s[scores={JustLeft=1,char=0},tag=in_game] run tag @s remove in_game
+execute if score game_state settings matches 5 as @a[scores={JustLeft=1},tag=in_game] run trigger ClassPickTrigger set 8
+execute if score game_state settings matches 6.. as @a[scores={JustLeft=1,char=0},tag=in_game] run tag @s remove in_a_team
+execute if score game_state settings matches 6.. as @a[scores={JustLeft=1,char=0},tag=in_game] run team leave @s
+execute if score game_state settings matches 6.. as @a[scores={JustLeft=1,char=0},tag=in_game] run tag @s remove in_game
 
 execute as @a if score @s JustLeft matches 1 run scoreboard players set @s JustLeft 0
 
