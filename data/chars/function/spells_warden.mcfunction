@@ -244,18 +244,16 @@ execute unless entity @e[scores={rite_of_chains=6..}] run kill @e[tag=riteofchai
 
 # warden
 
-scoreboard players set @a[scores={char=38}] MaxHP 26
-
 scoreboard players set @a[scores={s1_timer=1,char=38}] spellCD1 240
 scoreboard players add @a[scores={s1_timer=1..,char=38}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=241..,char=38}] s1_timer 0
 
-scoreboard players set @a[scores={s2_timer=1,char=38}] spellCD2 440
+scoreboard players set @a[scores={s2_timer=1,char=38}] spellCD2 360
 scoreboard players add @a[scores={s2_timer=1..,char=38}] s2_timer 1
-scoreboard players set @a[scores={s2_timer=441..,char=38}] s2_timer 0
+scoreboard players set @a[scores={s2_timer=360..,char=38}] s2_timer 0
 
 execute as @a[scores={char=38}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_pickaxe",Slot:0b}]}] run clear @a[scores={char=38}] stone_pickaxe
-item replace entity @a[scores={char=38}] hotbar.0 with stone_pickaxe[custom_data={warden:1},minecraft:custom_name={bold:1b,color:"gray",text:"Hook"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=38}] hotbar.0 with stone_pickaxe[custom_data={warden:1},minecraft:custom_name={bold:1b,color:"gray",text:"Hook"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=38,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=38}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=38,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:iron_bars",minecraft:custom_name={text:"Lockdown",color:"dark_aqua",bold:1b}] 1

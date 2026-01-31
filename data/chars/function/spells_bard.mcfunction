@@ -210,7 +210,7 @@ scoreboard players add @a[scores={char=70,s2_timer=1..}] s2_timer 1
 scoreboard players set @a[scores={char=70,s2_timer=361..}] s2_timer 0
 
 execute as @a[scores={char=70}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_shovel",Slot:0b}]}] run clear @a[scores={char=70}] golden_shovel
-item replace entity @a[scores={char=70}] hotbar.0 with golden_shovel[custom_name={"bold":true,"color":"gray","text":"Guitar"},unbreakable={},attribute_modifiers=[{id:"armor",type:"attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=70}] hotbar.0 with golden_shovel[custom_name={"bold":true,"color":"gray","text":"Guitar"},unbreakable={},attribute_modifiers=[{id:"armor",type:"attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=70,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=70}] carrot_on_a_stick
 item replace entity @a[scores={char=70,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={"text":"A Part Falls","color":"dark_aqua","bold":true},custom_data={s1:1},item_model="music_disc_5"] 1

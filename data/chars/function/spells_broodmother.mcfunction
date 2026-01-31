@@ -102,8 +102,6 @@ scoreboard players remove @a[scores={spiderkill=1..}] spiderkill 1
 
 # broodmother
 
-scoreboard players set @a[scores={char=41}] MaxHP 20
-
 scoreboard players set @a[scores={char=41,s1_timer=1}] spellCD1 360
 scoreboard players add @a[scores={char=41,s1_timer=1..}] s1_timer 1
 scoreboard players set @a[scores={char=41,s1_timer=361..}] s1_timer 0

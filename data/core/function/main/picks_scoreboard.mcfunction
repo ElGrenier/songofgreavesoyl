@@ -2,20 +2,29 @@
 # team modify bans_color color dark_red
 # team join bans_color -=Bans=-
 
-team join yellow =Yellow=
-team join purple =Purple=
-execute unless score map_type settings matches 4 run scoreboard players set =Purple= Picks 2
-scoreboard players set =Yellow= Picks 0
+team join yellow Picks_Yellow
+team join purple Picks_Purple
+execute unless score map_type settings matches 4 run scoreboard players set Picks_Purple Picks 2
+execute unless score map_type settings matches 4 run scoreboard players set Picks_Yellow Picks 0
 
+execute if score map_type settings matches 4 run scoreboard players reset Picks_Purple Picks
+execute if score map_type settings matches 4 run scoreboard players reset Picks_Yellow Picks
+
+execute if score map_type settings matches 4 run scoreboard players set Picks_FFA Picks 0
+execute unless score map_type settings matches 4 run scoreboard players reset Picks_FFA Picks 
+
+execute unless score map_type settings matches 4 run scoreboard players display name Picks_Purple Picks ["",{text:"Purple Team",color:"dark_purple",bold:0b}]
+execute unless score map_type settings matches 4 run scoreboard players display name Picks_Yellow Picks ["",{text:"Yellow Team",color:"yellow",bold:0b}]
+execute if score map_type settings matches 4 run scoreboard players display name Picks_FFA Picks ["",{text:"Characters Picked",color:"aqua",bold:0b}]
 
 scoreboard objectives modify Picks numberformat blank
 
 scoreboard players set bans Picks -2
-scoreboard players display name bans Picks {text:"-=Bans=-",color:"red",bold:1b}
+scoreboard players display name bans Picks ["",{text:"=",color:"dark_red",bold:1b},{text:" Bans ",color:"red",bold:1b},{text:"=",color:"dark_red",bold:1b}]
 
 
 scoreboard players set map Picks -4
-scoreboard players display name map Picks {text:"-=Map=-",color:"aqua",bold:1b}
+scoreboard players display name map Picks ["",{text:"=",color:"blue",bold:1b},{text:" Map ",color:"aqua",bold:1b},{text:"=",color:"blue",bold:1b}]
 
 
 # maps
@@ -53,8 +62,6 @@ execute if score map settings matches 27 run scoreboard players display name map
 
 #chars
 
-# execute if entity @e[tag=ban_stand] run scoreboard players set -=Bans=- Picks -2
-# execute unless entity @e[tag=ban_stand] run scoreboard players reset -=Bans=- Picks
 
 execute if entity @a[scores={char=1},team=purple] run scoreboard players set Demonslayer Picks 1
 execute if entity @a[scores={char=1},team=yellow] run scoreboard players set Demonslayer Picks -1

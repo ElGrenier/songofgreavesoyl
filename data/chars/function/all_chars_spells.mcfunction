@@ -93,6 +93,8 @@ execute if entity @a[scores={char=23}] run function chars:spells_prowler
 
 function chars:projetcile_removal
 
+execute as @a[scores={char=1..}] store result score @s MaxHP run attribute @s max_health get
+
 execute if entity @e[tag=Settings,scores={Map=5}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
 execute if entity @e[tag=Settings,scores={Map=9}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
 execute if entity @e[tag=Settings,scores={Map=15}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4

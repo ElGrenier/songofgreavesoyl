@@ -200,8 +200,6 @@ scoreboard players set @a[scores={universal_death=1..}] CC_mindrot 0
 
 # operator
 
-scoreboard players set @a[scores={char=28}] MaxHP 14
-
 scoreboard players set @a[scores={s0_timer=1,char=28}] spellCD0 60
 scoreboard players add @a[scores={s0_timer=1..,char=28}] s0_timer 1
 scoreboard players set @a[scores={s0_timer=61..,char=28}] s0_timer 0

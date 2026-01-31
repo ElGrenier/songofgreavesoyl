@@ -16,7 +16,7 @@ execute unless entity @a[scores={char=5}] run kill @e[tag=entities_cremator]
 
 execute unless entity @a[scores={char=6}] run kill @e[tag=entities_guide]
 
-execute unless entity @a[scores={char=7}] run kill @e[tag=dragondash]
+execute unless entity @a[scores={char=7}] run kill @e[tag=entities_dragon]
 
 execute unless entity @a[scores={char=8}] run kill @e[tag=entities_trickstress]
 
@@ -34,9 +34,10 @@ execute unless entity @a[scores={char=14}] run kill @e[tag=entities_skyqueen]
 execute unless entity @a[scores={char=14}] run scoreboard players set @a[scores={nestduration=1..}] nestduration 0
 execute unless entity @a[scores={char=14}] run tag @a remove nest
 
-execute unless entity @a[scores={char=15}] run kill @e[tag=entities_shard]
+execute unless entity @a[scores={char=15}] at @e[tag=containment_cube] run fill ~2 ~3 ~2 ~-2 ~-2 ~-2 air replace magenta_stained_glass
+execute unless entity @a[scores={char=15}] at @a[scores={shard_petrify=1..}] run fill ~2 ~3 ~2 ~-2 ~-2 ~-2 air replace magenta_stained_glass
 execute unless entity @a[scores={char=15}] run scoreboard players set @a[scores={shard_petrify=1..}] shard_petrify 0
-execute unless entity @a[scores={char=15}] at @e[tag=containment_cube] run fill ~1 ~2 ~1 ~-1 ~-1 ~-1 air replace magenta_stained_glass
+execute unless entity @a[scores={char=15}] run kill @e[tag=entities_shard]
 
 execute unless entity @a[scores={char=17}] run kill @e[tag=entities_technomancer]
 execute unless entity @a[scores={char=17}] run tag @a remove techno_melee

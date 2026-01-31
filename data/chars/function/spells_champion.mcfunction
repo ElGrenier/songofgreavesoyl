@@ -66,8 +66,6 @@ execute at @a[scores={char=27,s2_timer=20..}] run kill @e[tag=blessingofflames_v
 
 # champion
 
-scoreboard players set @a[scores={char=27}] MaxHP 28
-
 scoreboard players set @a[scores={s1_timer=1,char=27}] spellCD1 180
 scoreboard players add @a[scores={s1_timer=1..,char=27}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=181..,char=27}] s1_timer 0
@@ -77,10 +75,10 @@ scoreboard players add @a[scores={s2_timer=1..,char=27}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=201..,char=27}] s2_timer 0
 
 execute as @a[scores={char=27,champion_empower=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_shovel",Slot:0b}]}] run clear @a[scores={char=27}] netherite_shovel
-item replace entity @a[scores={char=27,champion_empower=0}] hotbar.0 with netherite_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Mace"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=27,champion_empower=0}] hotbar.0 with netherite_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Mace"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=27,champion_empower=1}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:copper_shovel",Slot:0b}]}] run clear @a[scores={char=27}] copper_shovel
-item replace entity @a[scores={char=27,champion_empower=1}] hotbar.0 with copper_shovel[custom_data={champion:1},minecraft:custom_name={bold:1b,color:"gray",text:"Mace"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:fire_aspect":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=27,champion_empower=1}] hotbar.0 with copper_shovel[custom_data={champion:1},minecraft:custom_name={bold:1b,color:"gray",text:"Mace"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:fire_aspect":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 
 execute as @a[scores={char=27,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=27}] carrot_on_a_stick[custom_data={s1:1}]

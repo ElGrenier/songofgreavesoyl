@@ -84,7 +84,7 @@ execute as @e[tag=turret,tag=active_turret] at @s run tp @e[tag=turret_visuals_1
 
 execute at @e[tag=turret] unless entity @e[tag=turret_active_range_display,distance=..1] run summon marker ~ ~ ~ {Tags:["turret_active_range_display","entities_engineer"]}
 execute at @e[tag=turret] run tp @e[tag=turret_active_range_display,distance=..1] ~ ~0.2 ~
-execute at @e[tag=turret_active_range_display] unless entity @e[tag=turret,distance=..1] run kill @s
+execute as @e[tag=turret_active_range_display] at @s unless entity @e[tag=turret,distance=..1] run kill @s
 
 execute as @e[tag=turret_active_range_display] at @s run rotate @s ~11 ~
 execute as @e[tag=turret_active_range_display] at @s run particle crit ^ ^ ^10 0 0 0 0 1 force @a[scores={char=30}]
@@ -98,10 +98,10 @@ execute as @e[tag=turret_active_range_display] at @s run particle crit ^-7 ^ ^7 
 
 
 
-execute as @e[tag=turret] at @s unless entity @p[scores={tracked=1..}] run rotate @s facing entity @e[tag=enginner_valid_turret_target,distance=..10,limit=1,sort=nearest]
-execute as @e[tag=turret] at @s if entity @p[scores={tracked=1..}] run rotate @s facing entity @p[scores={tracked=1..},tag=enginner_valid_turret_target,distance=..10,limit=1,sort=nearest]
+execute as @e[tag=turret,tag=active_turret] at @s unless entity @p[scores={tracked=1..}] run rotate @s facing entity @e[tag=enginner_valid_turret_target,distance=..10,limit=1,sort=nearest]
+execute as @e[tag=turret,tag=active_turret] at @s if entity @p[scores={tracked=1..}] run rotate @s facing entity @p[scores={tracked=1..},tag=enginner_valid_turret_target,distance=..10,limit=1,sort=nearest]
 
-execute at @e[tag=turret,tag=inactive_turret] if entity @e[tag=enginner_valid_turret_target,distance=..10] run playsound block.piston.extend master @a[distance=..15] ~ ~ ~ 1 1.5 1
+execute at @e[tag=turret,tag=inactive_turret] if entity @a[distance=..15,scores={char=30}] if entity @e[tag=enginner_valid_turret_target,distance=..10] run playsound block.piston.extend master @a[distance=..15] ~ ~ ~ 1 1.5 1
 execute at @e[tag=turret,tag=active_turret] unless entity @e[tag=enginner_valid_turret_target,distance=..10] run playsound block.piston.contract master @a[distance=..15] ~ ~ ~ 1 1.2 1
 
 execute as @e[tag=turret] at @s if entity @e[tag=enginner_valid_turret_target,distance=..10] if entity @a[distance=..15,scores={char=30}] run tag @s remove inactive_turret
@@ -109,6 +109,10 @@ execute as @e[tag=turret] at @s if entity @e[tag=enginner_valid_turret_target,di
 
 execute as @e[tag=turret] at @s unless entity @e[tag=enginner_valid_turret_target,distance=..10] run tag @s remove active_turret
 execute as @e[tag=turret] at @s unless entity @e[tag=enginner_valid_turret_target,distance=..10] run tag @s add inactive_turret
+
+execute as @e[tag=turret] at @s unless entity @a[distance=..15,scores={char=30}] run tag @s remove active_turret
+execute as @e[tag=turret] at @s unless entity @a[distance=..15,scores={char=30}] run tag @s add inactive_turret
+
 
 effect give @e[tag=inactive_turret] resistance 1 2 true
 effect clear @e[tag=active_turret] resistance
@@ -137,8 +141,6 @@ execute at @e[tag=turret,scores={SummonAge=5..}] run particle block{block_state:
 execute at @e[tag=turret,scores={SummonAge=5..}] run playsound entity.iron_golem.damage master @a[distance=..10] ~ ~ ~ 1 1.2 1
 tp @e[tag=turret,scores={SummonAge=5..}] ~ ~-100 ~
 
-execute as @e[tag=turret] at @s unless entity @a[distance=..15,scores={char=30}] run tag @s remove active_turret
-execute as @e[tag=turret] at @s unless entity @a[distance=..15,scores={char=30}] run tag @s add inactive_turret
 
 
 title @a[scores={char=30,passive_engi=1..90}] times 0 2 1
@@ -273,8 +275,6 @@ kill @e[tag=toxicdisorder,scores={toxic_life=100..}]
 
 # engineer
 
-scoreboard players set @a[scores={char=30}] MaxHP 20
-
 scoreboard players set @a[scores={s1_timer=1,char=30}] spellCD1 280
 scoreboard players add @a[scores={s1_timer=1..,char=30}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=281..,char=30}] s1_timer 0
@@ -284,7 +284,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=30}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=361..,char=30}] s2_timer 0
 
 execute as @a[scores={char=30}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:copper_axe",Slot:0b}]}] run clear @a[scores={char=30}] copper_axe
-item replace entity @a[scores={char=30}] hotbar.0 with copper_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Tools"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=30}] hotbar.0 with copper_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Tools"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=30,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=30}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=30,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:music_disc_pigstep",minecraft:custom_name={text:"Sad Machine",color:"dark_aqua",bold:1b}] 1

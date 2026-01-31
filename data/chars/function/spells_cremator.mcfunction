@@ -6,8 +6,8 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:copper_shovel"}}]
 effect give @a[scores={char=5}] fire_resistance infinite 0 true
 
 execute as @a[scores={char=5}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_shovel",Slot:0b}]}] run clear @a[scores={char=5}] minecraft:golden_shovel
-item replace entity @a[scores={char=5,fire=-1..}] hotbar.0 with copper_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Blazing Hand"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:fire_aspect":2},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
-item replace entity @a[scores={char=5,fire=..0}] hotbar.0 with golden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Hand"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=5,fire=-1..}] hotbar.0 with copper_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Blazing Hand"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:fire_aspect":2},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=5,fire=..0}] hotbar.0 with golden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Hand"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 #infernal discharge
 
@@ -78,8 +78,6 @@ effect give @a[tag=friendly_fire] minecraft:fire_resistance 1 0 true
 tag @a[scores={fire=..-20}] remove friendly_fire
 
 # cremator
-
-scoreboard players set @a[scores={char=5}] MaxHP 16
 
 scoreboard players set @a[scores={s1_timer=1,char=5}] spellCD1 140
 scoreboard players add @a[scores={s1_timer=1..,char=5}] s1_timer 1

@@ -167,8 +167,11 @@ scoreboard players set @s CelestialBody4 190
 scoreboard players set @s spellCD0alt1 0
 scoreboard players set @s spellCD0alt2 0
 scoreboard players set @s passive_caretaker 10
-scoreboard players set @s nectar 10
+scoreboard players set @s nectar 0
 scoreboard players set @s passive_conductor 10
+scoreboard players set @s shard_fragments_cd 1
+scoreboard players set @s shard_fragments 3
+
 
 scoreboard players set @s red 0
 scoreboard players set @s yellow 0

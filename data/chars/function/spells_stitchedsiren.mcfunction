@@ -362,8 +362,6 @@ execute at @e[tag=blood_splash] run particle bubble_pop ~ ~ ~ 0.2 0.2 0.2 0.1 5
 
 # siren
 
-scoreboard players set @a[scores={char=53}] MaxHP 24
-
 scoreboard players set @a[scores={s1_timer=200,char=53}] spellCD1 200
 scoreboard players add @a[scores={s1_timer=1..,char=53}] s1_timer 1
 scoreboard players add @a[scores={s1_timer_recast=1..,char=53}] s1_timer_recast 1
@@ -378,8 +376,8 @@ scoreboard players add @a[scores={s2_timer=1..,char=53}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=121..,char=53}] s2_timer 0
 
 execute as @a[scores={char=53}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run clear @a[scores={char=53}] iron_sword
-item replace entity @a[tag=form_stitched,scores={char=53}] hotbar.0 with iron_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Scalpel"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
-item replace entity @a[tag=form_siren,scores={char=53}] hotbar.0 with iron_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Scalpel"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:aqua_affinity":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[tag=form_stitched,scores={char=53}] hotbar.0 with iron_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Scalpel"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[tag=form_siren,scores={char=53}] hotbar.0 with iron_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Scalpel"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:aqua_affinity":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 
 #stitched

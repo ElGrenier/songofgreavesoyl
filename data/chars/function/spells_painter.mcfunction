@@ -339,8 +339,6 @@ tag @a remove color_reset
 
 # painter
 
-scoreboard players set @a[scores={char=69}] MaxHP 16
-
 scoreboard players set @a[scores={s1_timer=1,char=69}] spellCD1 10
 scoreboard players add @a[scores={s1_timer=1..,char=69}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=11..,char=69}] s1_timer 0
@@ -354,17 +352,23 @@ scoreboard players add @a[scores={s3_timer=1..,char=69}] s3_timer 1
 scoreboard players set @a[scores={s3_timer=11..,char=69}] s3_timer 0
 
 execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run clear @a[scores={char=69}] iron_sword
-item replace entity @a[scores={char=69}] hotbar.0 with minecraft:iron_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Dirk"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=69}] hotbar.0 with minecraft:iron_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Dirk"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=69}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=69,red=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Red",color:"dark_aqua",bold:1b},item_model="red_dye",custom_data={s1:1}] 1
-item replace entity @a[scores={char=69,red=1..}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Red",color:"dark_aqua",bold:1b},enchantment_glint_override=true,item_model="red_dye",custom_data={s1:1}] 1
+item replace entity @a[scores={char=69,red=1..}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Red",color:"dark_aqua",bold:1b},item_model="red_dye",custom_data={s1:1}] 1
+item replace entity @a[scores={char=69,blue=1..}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Purple",color:"dark_aqua",bold:1b},item_model="purple_dye",custom_data={s1:1}] 1
+item replace entity @a[scores={char=69,yellow=1..}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Orange",color:"dark_aqua",bold:1b},item_model="orange_dye",custom_data={s1:1}] 1
 
 execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=69}] warped_fungus_on_a_stick[custom_data={s2:1}]
 item replace entity @a[scores={char=69,yellow=0}] hotbar.2 with warped_fungus_on_a_stick[minecraft:custom_name={text:"Yellow",color:"dark_aqua",bold:1b},item_model="yellow_dye",custom_data={s2:1}] 1
-item replace entity @a[scores={char=69,yellow=1..}] hotbar.2 with warped_fungus_on_a_stick[minecraft:custom_name={text:"Yellow",color:"dark_aqua",bold:1b},enchantment_glint_override=true,item_model="yellow_dye",custom_data={s2:1}] 1
+item replace entity @a[scores={char=69,yellow=1..}] hotbar.2 with warped_fungus_on_a_stick[minecraft:custom_name={text:"Yellow",color:"dark_aqua",bold:1b},item_model="yellow_dye",custom_data={s2:1}] 1
+item replace entity @a[scores={char=69,blue=1..}] hotbar.2 with warped_fungus_on_a_stick[minecraft:custom_name={text:"Green",color:"dark_aqua",bold:1b},item_model="green_dye",custom_data={s2:1}] 1
+item replace entity @a[scores={char=69,red=1..}] hotbar.2 with warped_fungus_on_a_stick[minecraft:custom_name={text:"Orange",color:"dark_aqua",bold:1b},item_model="orange_dye",custom_data={s2:1}] 1
 
 execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:3b}]}] run clear @a[scores={char=69}] carrot_on_a_stick[custom_data={s3:1}]
 item replace entity @a[scores={char=69,blue=0}] hotbar.3 with carrot_on_a_stick[minecraft:custom_name={text:"Blue",color:"dark_aqua",bold:1b},item_model="blue_dye",custom_data={s3:1}] 1
-item replace entity @a[scores={char=69,blue=1..}] hotbar.3 with carrot_on_a_stick[minecraft:custom_name={text:"Blue",color:"dark_aqua",bold:1b},enchantment_glint_override=true,item_model="blue_dye",custom_data={s3:1}] 1
+item replace entity @a[scores={char=69,blue=1..}] hotbar.3 with carrot_on_a_stick[minecraft:custom_name={text:"Blue",color:"dark_aqua",bold:1b},item_model="blue_dye",custom_data={s3:1}] 1
+item replace entity @a[scores={char=69,red=1..}] hotbar.3 with carrot_on_a_stick[minecraft:custom_name={text:"Purple",color:"dark_aqua",bold:1b},item_model="purple_dye",custom_data={s3:1}] 1
+item replace entity @a[scores={char=69,yellow=1..}] hotbar.3 with carrot_on_a_stick[minecraft:custom_name={text:"Green",color:"dark_aqua",bold:1b},item_model="green_dye",custom_data={s3:1}] 1
 

@@ -62,8 +62,9 @@ execute at @e[tag=void_blade] as @e[tag=valid_spell_target,distance=..2] unless 
 execute if entity @e[tag=void_banish] run kill @e[tag=void_blade]
 execute at @a[scores={char=37,s1_timer=30..}] run kill @e[tag=void_blade]
 
-execute at @e[tag=void_banish] as @e[distance=..3,tag=valid_spell_target,sort=nearest] unless score @s Team = @p[scores={char=37}] Team run scoreboard players set @s CC_banish 40
-execute at @e[tag=void_banish] as @e[distance=..3,tag=valid_spell_target,sort=nearest] unless score @s Team = @p[scores={char=37}] Team run scoreboard players set @s void 1
+execute at @e[tag=void_banish] as @p[distance=..3,tag=valid_spell_target] unless score @s Team = @p[scores={char=37}] Team run scoreboard players set @s CC_banish 40
+execute at @e[tag=void_banish] as @p[distance=..3,tag=valid_spell_target] unless score @s Team = @p[scores={char=37}] Team run scoreboard players set @s CC_silence 5
+execute at @e[tag=void_banish] as @p[distance=..3,tag=valid_spell_target] unless score @s Team = @p[scores={char=37}] Team run scoreboard players set @s void 1
 execute at @e[tag=void_banish] run particle smoke ~ ~1 ~ 2 2 2 0.001 400 force
 execute at @e[tag=void_banish] run playsound entity.elder_guardian.curse master @a[distance=..20] ~ ~ ~ 1 0.8 1
 kill @e[tag=void_banish]
@@ -288,8 +289,6 @@ scoreboard players set @a[scores={char=37,shapeless_s2_empower=4..}] shapeless_s
 
 #shapeless
 
-scoreboard players set @a[scores={char=37}] MaxHP 16
-
 advancement revoke @a[advancements={chars:shapeless_hit=true}] only chars:shapeless_hit
 
 scoreboard players set @a[scores={s1_timer=1,char=37}] spellCD1 280
@@ -305,10 +304,10 @@ scoreboard players add @a[scores={s3_timer=1..,char=37}] s3_timer 1
 scoreboard players set @a[scores={s3_timer=60..,char=37}] s3_timer 0
 
 execute as @a[scores={char=37,shapeless_s2_empower=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_hoe",Slot:0b}]}] run clear @a[scores={char=37}] stone_hoe
-item replace entity @a[scores={char=37,shapeless_s2_empower=0}] hotbar.0 with minecraft:stone_hoe[custom_data={shapeless:1},minecraft:custom_name={bold:1b,color:"gray",text:"Melted Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=37,shapeless_s2_empower=0}] hotbar.0 with minecraft:stone_hoe[custom_data={shapeless:1},minecraft:custom_name={bold:1b,color:"gray",text:"Melted Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=37,shapeless_s2_empower=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_hoe",Slot:0b}]}] run clear @a[scores={char=37}] netherite_hoe
-item replace entity @a[scores={char=37,shapeless_s2_empower=1..}] hotbar.0 with netherite_hoe[custom_data={shapeless:1},minecraft:custom_name={bold:1b,color:"gray",text:"Melted Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=37,shapeless_s2_empower=1..}] hotbar.0 with netherite_hoe[custom_data={shapeless:1},minecraft:custom_name={bold:1b,color:"gray",text:"Melted Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=37,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=37}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=37,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:crying_obsidian",minecraft:custom_name={text:"Into the Void",color:"dark_aqua",bold:1b}] 1

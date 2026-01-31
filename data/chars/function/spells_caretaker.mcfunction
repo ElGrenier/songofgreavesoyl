@@ -3,7 +3,10 @@
 
 #nectar
 
-scoreboard players add @a[scores={char=72,universal_hit=15..}] nectar 1
+
+execute at @a[advancements={chars:caretaker_caretaking_your_ass=true}] run scoreboard players add @a[scores={char=72}] nectar 1
+advancement revoke @a[advancements={chars:caretaker_caretaking_your_ass=true}] only chars:caretaker_caretaking_your_ass
+
 
 scoreboard players set @a[scores={char=72,nectar=..-1}] nectar 0
 scoreboard players set @a[scores={char=72,nectar=6..}] nectar 5
@@ -136,7 +139,7 @@ execute as @e[tag=pollen_dash] at @s unless block ^ ^ ^1 #minecraft:dash run kil
 
 execute as @e[tag=pollen_dash] at @s run tp @s ^ ^ ^0.8
 
-execute at @a[scores={char=72,s2_timer=10,CC_silence=0}] run playsound entity.zombie.infect master @a[distance=..10] ~ ~ ~ 1 2 1
+execute at @a[scores={char=72,s2_timer=10,CC_silence=0}] run playsound entity.zombie.infect master @a[distance=..10] ~ ~ ~ 0.4 2 1
 execute at @a[scores={char=72,s2_timer=10,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["pollen_cloud","pollen_2","entities_caretaker"]}
 execute at @a[scores={char=72,s2_timer=10,nectar=0}] run scoreboard players set @n[tag=pollen_2] s0_timer 20
 execute at @a[scores={char=72,s2_timer=10,nectar=1}] run scoreboard players set @n[tag=pollen_2] s0_timer 40
@@ -178,8 +181,6 @@ execute as @e[tag=pollen_cloud] at @s run particle dust{color:[1.0,0.33,1.0],sca
 
 # caretaker
 
-scoreboard players set @a[scores={char=72}] MaxHP 20
-
 scoreboard players set @a[scores={s1_timer=1,char=72}] spellCD1 160
 scoreboard players add @a[scores={s1_timer=1..,char=72}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=160..,char=72}] s1_timer 0
@@ -189,7 +190,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=72}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=240..,char=72}] s2_timer 0
 
 execute as @a[scores={char=72}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:0b,components:{"minecraft:custom_data":{proboscis:1,s0:1}}}]}] run clear @a[scores={char=72}] warped_fungus_on_a_stick[custom_data={proboscis:1,s0:1}]
-item replace entity @a[scores={char=72}] hotbar.0 with warped_fungus_on_a_stick[minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:item_model="minecraft:wooden_hoe",minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],custom_data={proboscis:1,s0:1}] 1
+item replace entity @a[scores={char=72}] hotbar.0 with warped_fungus_on_a_stick[minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:item_model="minecraft:wooden_shovel",minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],custom_data={proboscis:1},minimum_attack_charge=1] 1
 
 execute as @a[scores={char=72,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=72}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=72,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:honey_block",minecraft:custom_name={text:"Gift of Life",color:"dark_aqua",bold:1b}] 1

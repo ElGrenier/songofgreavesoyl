@@ -419,8 +419,6 @@ execute unless entity @e[tag=lifeline_point] run kill @e[tag=lifeline_rope_visua
 
 # drowned
 
-scoreboard players set @a[scores={char=31}] MaxHP 24
-
 scoreboard players set @a[scores={s1_timer=1,char=31}] spellCD1 320
 scoreboard players add @a[scores={s1_timer=1..,char=31}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=321..,char=31}] s1_timer 0
@@ -432,12 +430,12 @@ scoreboard players add @a[scores={s2_timer_recast=1..,char=31}] s2_timer_recast 
 scoreboard players set @a[scores={s2_timer_recast=10..,char=31}] s2_timer_recast 0
 
 execute as @a[scores={char=31,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_pickaxe",Slot:0b}]}] run clear @a[scores={char=31}] stone_pickaxe
-item replace entity @a[scores={char=31,s2_timer=0}] hotbar.0 with minecraft:stone_pickaxe[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Anchor"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=31,s2_timer=0}] hotbar.0 with minecraft:stone_pickaxe[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Anchor"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 execute as @a[scores={char=31,s2_timer=101..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_pickaxe",Slot:0b}]}] run clear @a[scores={char=31}] stone_pickaxe
-item replace entity @a[scores={char=31,s2_timer=101..}] hotbar.0 with minecraft:stone_pickaxe[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Anchor"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=31,s2_timer=101..}] hotbar.0 with minecraft:stone_pickaxe[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Anchor"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=31,s2_timer=1..100}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run clear @a[scores={char=31}] diamond_shovel
-item replace entity @a[scores={char=31,s2_timer=1..100}] hotbar.0 with diamond_shovel[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Tentacles"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=31,s2_timer=1..100}] hotbar.0 with diamond_shovel[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Tentacles"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=31,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=31}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=31,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:tripwire_hook",minecraft:custom_name={text:"Keelhaul",color:"dark_aqua",bold:1b}] 1

@@ -123,8 +123,6 @@ execute at @a[scores={devoured=61}] run kill @e[tag=spit_if_dead]
 
 # devourer
 
-scoreboard players set @a[scores={char=22}] MaxHP 32
-
 scoreboard players set @a[scores={s1_timer=1,char=22}] spellCD1 260
 scoreboard players add @a[scores={s1_timer=1..,char=22}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=261..,char=22}] s1_timer 0
@@ -134,7 +132,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=22}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=401..,char=22}] s2_timer 0
 
 execute as @a[scores={char=22}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_axe",Slot:0b}]}] run clear @a[scores={char=22}] netherite_axe[custom_data={s1:1}]
-item replace entity @a[scores={char=22}] hotbar.0 with netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Matter"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minecraft:enchantments={"minecraft:infinity":1}] 1
+item replace entity @a[scores={char=22}] hotbar.0 with netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Matter"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minecraft:enchantments={"minecraft:infinity":1},minimum_attack_charge=1] 1
 
 execute as @a[scores={char=22,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=22}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=22,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:nether_star",minecraft:custom_name={text:"Star Catcher",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:infinity":1}] 1

@@ -10,6 +10,8 @@ scoreboard players set @a[tag=ExitPracticeRoom] Team 0
 
 function core:main/practice_room
 
+function chars:surrender
+
 function chars:showkit
 function chars:all_chars_spells
 function chars:rangedcd
@@ -23,8 +25,6 @@ function chars:check_armor
 function chars:team_wool
 function chars:char_display_stands
 function core:lobby/choose_char
-
-function chars:surrender
 
 execute as @a run function core:main/hp_display
 

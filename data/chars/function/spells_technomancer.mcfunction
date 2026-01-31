@@ -103,8 +103,6 @@ execute at @a[scores={char=17,s1_timer=1,CC_silence=0}] run effect give @a[score
 
 # technomancer
 
-scoreboard players set @a[scores={char=17}] MaxHP 16
-
 #scoreboard players set @a[scores={s1_timer=1,char=17}] spellCD1 60
 #scoreboard players add @a[scores={s1_timer=1..,char=17}] s1_timer 1
 #scoreboard players set @a[scores={s1_timer=61..,char=17}] s1_timer 0
@@ -150,9 +148,9 @@ execute as @a[scores={char=17,s3_timer=0,CC_silence=0}] at @s unless entity @s[n
 item replace entity @a[scores={char=17,s3_timer=0,CC_silence=0}] hotbar.3 with carrot_on_a_stick[custom_data={s3:1},minecraft:item_model="minecraft:iron_nugget",minecraft:custom_name={bold:1b,color:"dark_aqua",text:"Flash"},minecraft:enchantments={"minecraft:power":1}] 1
 
 execute as @a[scores={char=17},tag=techno_melee] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:trident",Slot:0b}]}] run clear @a[scores={char=17}] trident
-item replace entity @a[scores={char=17},tag=techno_melee] hotbar.0 with trident[minecraft:custom_name={bold:1b,color:"gray",text:"Spear (Melee)"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:riptide":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=17},tag=techno_melee] hotbar.0 with trident[minecraft:custom_name={bold:1b,color:"gray",text:"Spear (Melee)"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:riptide":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 execute as @a[scores={char=17},tag=techno_ranged] at @s unless entity @s[nbt={equipment:{offhand:{id:"minecraft:trident"}}}] run clear @a[scores={char=17}] trident
-item replace entity @a[scores={char=17,tridentcd=0},tag=techno_ranged] weapon.offhand with trident[minecraft:custom_name={bold:1b,color:"gray",text:"Harpoon (Ranged)"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:0.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.99d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=17,tridentcd=0},tag=techno_ranged] weapon.offhand with trident[minecraft:custom_name={bold:1b,color:"gray",text:"Harpoon (Ranged)"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:0.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.99d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=17},tag=techno_melee] at @s if entity @s[nbt={equipment:{offhand:{id:"minecraft:trident"}}}] run clear @a[scores={char=17}] trident
 scoreboard players operation @e[type=trident] Team = @p[scores={char=17}] Team

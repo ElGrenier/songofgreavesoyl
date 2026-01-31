@@ -48,7 +48,8 @@ scoreboard players set @a[scores={char=73,arrowcd_1=60..}] arrowcd_1 0
 
 #arrowdrop
 
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow",count:1}}]
+kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:arrow"}}]
+kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:tipped_arrow"}}]
 
 execute as @a[scores={char=2,arrowcd=0}] at @s unless entity @s[nbt={Inventory:[{Slot:8b,id:"minecraft:arrow"}]}] run clear @a[scores={char=2}] arrow
 item replace entity @a[scores={char=2,arrowcd=0}] hotbar.8 with arrow[custom_name={bold:1b,color:"gray",text:"Arrow"}]

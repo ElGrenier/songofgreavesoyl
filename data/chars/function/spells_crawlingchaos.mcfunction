@@ -339,16 +339,15 @@ title @a[scores={CC_madness=1..,char=66}] subtitle {text:"So THIS is a LICH in t
 title @a[scores={CC_madness=1..,char=67}] subtitle {text:"Ravaged, despite all of this iron...",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=68}] subtitle {text:"How it feels to fight with borrowed bones?",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=69}] subtitle {text:"You still look better in a dress",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=70}] subtitle {text:"MADNESS",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=71}] subtitle {text:"MADNESS",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=70}] subtitle {text:"I know where you buried her",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=71}] subtitle {text:"Which one of you is the pet?",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=72}] subtitle {text:"She loves me not",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=73}] subtitle {text:"Nothing but their lapdog",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=74}] subtitle {text:"MADNESS",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=75}] subtitle {text:"MADNESS",color:"red",type:"text"}
 
 
 #chaos
-
-scoreboard players set @a[scores={char=50},tag=pharaoh] MaxHP 20
-scoreboard players set @a[scores={char=50},tag=tongue] MaxHP 30
-scoreboard players set @a[scores={char=50},tag=dweller] MaxHP 20
-scoreboard players set @a[scores={char=50},tag=faceless] MaxHP 16
 
 scoreboard players set @a[scores={s1_timer=1,char=50}] spellCD1 360
 scoreboard players add @a[scores={s1_timer=1..,char=50}] s1_timer 1
@@ -376,13 +375,13 @@ scoreboard players set @a[scores={s3_timer=21..,char=50}] s3_timer 0
 
 #weapons
 execute as @a[tag=pharaoh,scores={char=50}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_hoe",Slot:0b}]}] run clear @a[scores={char=50}] golden_hoe
-item replace entity @a[tag=pharaoh,scores={char=50}] hotbar.0 with minecraft:golden_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Scepter"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}]] 1
+item replace entity @a[tag=pharaoh,scores={char=50}] hotbar.0 with minecraft:golden_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Scepter"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[tag=tongue,scores={char=50}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:wooden_axe",Slot:0b}]}] run clear @a[scores={char=50}] wooden_axe
-item replace entity @a[tag=tongue,scores={char=50}] hotbar.0 with wooden_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Appendage"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.85d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}]] 1
+item replace entity @a[tag=tongue,scores={char=50}] hotbar.0 with wooden_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Appendage"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.85d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[tag=dweller,scores={char=50}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b}]}] run clear @a[scores={char=50}] netherite_sword
-item replace entity @a[tag=dweller,scores={char=50}] hotbar.0 with netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Darkness Tendril"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.55d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"}]] 1
+item replace entity @a[tag=dweller,scores={char=50}] hotbar.0 with netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Darkness Tendril"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.55d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[tag=faceless,scores={char=50}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] run clear @a[scores={char=50}] bow
 item replace entity @a[tag=faceless,scores={char=50}] hotbar.0 with bow[minecraft:custom_name={text:"Reach",color:"gray",bold:1b},minecraft:unbreakable={}] 1

@@ -232,7 +232,6 @@ scoreboard players remove @a[scores={kneel=1..}] kneel 1
 
 # scarlet lady
 
-scoreboard players set @a[scores={char=64}] MaxHP 18
 scoreboard players set @a[scores={char=64,s0_timer=..0}] s0_timer 0
 
 scoreboard players set @a[scores={char=64,s0_timer=1,char=64}] spellCD0 20

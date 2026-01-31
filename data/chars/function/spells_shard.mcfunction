@@ -168,8 +168,6 @@ execute at @p[scores={shard_petrify=1}] run function battlegrounds:lightrestore
 
 # shard
 
-scoreboard players set @a[scores={char=15}] MaxHP 16
-
 scoreboard players set @a[scores={s1_timer=1,char=15}] spellCD1 320
 scoreboard players add @a[scores={s1_timer=1..,char=15}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=321..,char=15}] s1_timer 0
@@ -179,7 +177,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=15}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=361..,char=15}] s2_timer 0
 
 execute as @a[scores={char=15,CC_disarm=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:0b}]}] run clear @a[scores={char=15}] warped_fungus_on_a_stick[minecraft:custom_data={s0:1}]
-item replace entity @a[scores={char=15,CC_disarm=0}] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:stone_hoe",minecraft:custom_name={bold:1b,color:"gray",text:"Crystal Shard"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:unbreaking":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=15,CC_disarm=0}] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:stone_hoe",minecraft:custom_name={bold:1b,color:"gray",text:"Crystal Shard"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:unbreaking":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=15,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=15}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=15,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:magenta_stained_glass_pane",minecraft:custom_name={text:"Gate of Shivers",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1

@@ -14,11 +14,15 @@ scoreboard players set @e[scores={decay=101..}] decay 100
 
 scoreboard players add @e[scores={decay=2..}] decay_timer 1
 scoreboard players set @e[scores={decay=..1}] decay_timer 0
-
 scoreboard players set @e[scores={decay=1..}] regen 0
-scoreboard players add @e[scores={decay=1..}] decay_timer 1
-effect give @e[scores={decay_timer=2..3}] wither 1 2
-scoreboard players set @e[scores={decay_timer=40..}] decay_timer 0
+
+execute as @e[scores={decay_timer=5}] run damage @s 1 dragon_breath
+#execute as @e[scores={decay_timer=5}] run damage @s 1 dragon_breath by @p[scores={char=36}] from @p[scores={char=36}]
+#execute as @e[scores={decay_timer=5}] run particle dust{color:[0.67,0.0,0.0],scale:1} ~ ~1 ~ 0.6 0.6 0.6 0 5
+#execute as @e[scores={decay_timer=5}] run particle dust{color:[0.0,0.0,0.0],scale:1} ~ ~1 ~ 0.6 0.6 0.6 0 5
+#execute as @e[scores={decay_timer=5}] run particle entity_effect{color:[0.0,0.0,0.0,1.0]} ~ ~1 ~ 0.5 0.8 0.5 0 5
+#effect give @e[scores={decay_timer=2..3}] wither 1 2
+scoreboard players set @e[scores={decay_timer=20..}] decay_timer 0
 
 #title @a[scores={decay=1..}] times 0 3 1
 #title @a[scores={decay=1..}] title {"text":" "}
@@ -281,8 +285,6 @@ kill @e[tag=small_splash,scores={eye_damage=10..}]
 
 # maze master
 
-scoreboard players set @a[scores={char=36}] MaxHP 24
-
 scoreboard players set @a[scores={s1_timer=1,char=36}] spellCD1 280
 scoreboard players add @a[scores={s1_timer=1..,char=36}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=281..,char=36}] s1_timer 0
@@ -294,7 +296,7 @@ scoreboard players add @a[scores={s2_timer_recast=1..,char=36}] s2_timer_recast 
 scoreboard players set @a[scores={s2_timer_recast=100..,char=36}] s2_timer_recast 0
 
 execute as @a[scores={char=36}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_shovel",Slot:0b}]}] run clear @a[scores={char=36}] netherite_shovel
-item replace entity @a[scores={char=36}] hotbar.0 with netherite_shovel[custom_data={mazemaster:1},minecraft:custom_name={bold:1b,color:"gray",text:"Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.75d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=36}] hotbar.0 with netherite_shovel[custom_data={mazemaster:1},minecraft:custom_name={bold:1b,color:"gray",text:"Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.75d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=36,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=36}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=36,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:weeping_vines",minecraft:custom_name={text:"Corrupted Fissure",color:"dark_aqua",bold:1b}] 1

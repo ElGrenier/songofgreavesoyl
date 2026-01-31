@@ -109,8 +109,6 @@ effect clear @a[scores={char=2,s2_timer=20}] slow_falling
 
 # huntress
 
-scoreboard players set @a[scores={char=2}] MaxHP 20
-
 scoreboard players set @a[scores={s1_timer=1,char=2}] spellCD1 180
 scoreboard players add @a[scores={s1_timer=1..,char=2}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=181..,char=2}] s1_timer 0

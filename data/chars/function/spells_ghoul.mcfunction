@@ -231,8 +231,6 @@ tag @a remove ghoul_ambushed_2
 
 # ghoul
 
-scoreboard players set @a[scores={char=65}] MaxHP 16
-
 scoreboard players set @a[scores={char=65,s1_timer=1}] spellCD1 200
 scoreboard players add @a[scores={char=65,s1_timer=1..}] s1_timer 1
 scoreboard players set @a[scores={char=65,s1_timer=200..}] s1_timer 0
@@ -242,7 +240,7 @@ scoreboard players add @a[scores={char=65,s2_timer=1..}] s2_timer 1
 scoreboard players set @a[scores={char=65,s2_timer=320..}] s2_timer 0
 
 execute as @a[scores={char=65}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:brush",Slot:0b}]}] run clear @a[scores={char=65}] brush
-item replace entity @a[scores={char=65}] hotbar.0 with brush[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=65}] hotbar.0 with brush[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=65,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=65}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=65,s1_timer=0}] hotbar.1 with carrot_on_a_stick[minecraft:enchantments={"minecraft:quick_charge":1},custom_data={s1:1},minecraft:item_model="minecraft:rotten_flesh",minecraft:custom_name={text:"Septic Bite",color:"dark_aqua",bold:1b}] 1

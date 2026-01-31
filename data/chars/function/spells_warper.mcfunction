@@ -1,4 +1,5 @@
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:netherite_axe"}}]
+kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:ender_pearl"}}]
 
 
 # void dust
@@ -7,16 +8,15 @@ scoreboard players set @e[scores={char=4,s1_timer=2}] warper_empower 1
 scoreboard players set @e[scores={char=4,s2_timer=20}] warper_empower 1
 scoreboard players set @e[scores={char=4,s1_timer_recast=1}] warper_empower 1
 
-execute at @e[scores={char=4,s1_timer=2}] run item replace entity @a[scores={char=4}] hotbar.0 with minecraft:netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:5.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
-execute at @e[scores={char=4,s2_timer=20}] run item replace entity @a[scores={char=4}] hotbar.0 with minecraft:netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:5.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
-execute at @e[scores={char=4,s1_timer_recast=1}] run item replace entity @a[scores={char=4}] hotbar.0 with minecraft:netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:5.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+execute at @e[scores={char=4,s1_timer=2}] run item replace entity @a[scores={char=4}] hotbar.0 with minecraft:netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:5.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+execute at @e[scores={char=4,s2_timer=20}] run item replace entity @a[scores={char=4}] hotbar.0 with minecraft:netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:5.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+execute at @e[scores={char=4,s1_timer_recast=1}] run item replace entity @a[scores={char=4}] hotbar.0 with minecraft:netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:5.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute at @a[scores={char=4,warper_empower=2..}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=4}] Team run effect give @s blindness 2
 execute at @a[scores={char=4,warper_empower=2..}] run particle smoke ~ ~ ~ 2 1 2 0.001 200 normal
 execute at @a[scores={char=4,warper_empower=2..}] run particle squid_ink ~ ~ ~ 1.5 0.5 1.5 0.1 100
 execute at @a[scores={char=4,warper_empower=2..}] run playsound entity.wither.ambient master @a[distance=..7] ~ ~ ~ 0.3 1.5 1
 
-item replace entity @a[scores={char=4,warper_empower=2}] hotbar.0 with netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
 scoreboard players set @a[scores={char=4,warper_empower=2..}] warper_empower 0
 
 # blink/return
@@ -90,8 +90,6 @@ execute at @a[scores={char=4,s2_timer=20}] run particle portal ~ ~ ~ 0.4 1 0.4 0
 
 # warper
 
-scoreboard players set @a[scores={char=4}] MaxHP 16
-
 #scoreboard players set @a[scores={s1_timer=1,char=4}] spellCD1 200
 scoreboard players set @a[scores={s1_use_warper=1..,char=4}] s1_timer 1
 scoreboard players add @a[scores={s1_timer=1..,char=4}] s1_timer 1
@@ -105,8 +103,8 @@ scoreboard players add @a[scores={s2_timer=1..,char=4}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=281..,char=4}] s2_timer 0
 
 execute as @a[scores={char=4,CC_disarm=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_axe",Slot:0b}]}] run clear @a[scores={char=4}] netherite_axe
-item replace entity @a[scores={char=4,warper_empower=0,CC_disarm=0}] hotbar.0 with netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
-item replace entity @a[scores={char=4,warper_empower=1,CC_disarm=0}] hotbar.0 with netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:5.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=4,warper_empower=0,CC_disarm=0}] hotbar.0 with netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=4,warper_empower=1,CC_disarm=0}] hotbar.0 with netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:5.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=4,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:ender_pearl",Slot:1b}]}] run clear @a[scores={char=4}] ender_pearl
 item replace entity @a[scores={char=4,s1_timer=0,CC_silence=0}] hotbar.1 with ender_pearl[minecraft:custom_name={text:"Blink",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1

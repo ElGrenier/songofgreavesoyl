@@ -32,9 +32,9 @@ execute at @a[scores={char=49}] unless entity @a[scores={char=49},predicate=char
 execute at @a[scores={char=49}] unless entity @a[scores={char=49},predicate=chars:aberration_looking_at] as @p[distance=..0.6,scores={passive_aber_stack=1..}] run scoreboard players set @s passive_aber_display_timer 80
 execute at @a[scores={char=49}] unless entity @a[scores={char=49},predicate=chars:aberration_looking_at] as @p[distance=..0.6,scores={passive_aber_stack=1..}] run scoreboard players operation @a[scores={char=49}] passive_aber = @s passive_aber_stack
 
-execute as @a[scores={char=49}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_pickaxe",Slot:0b}]}] run clear @a[scores={char=49}] minecraft:diamond_pickaxe
-item replace entity @a[scores={char=49,aber_s2_buff=0}] hotbar.0 with minecraft:diamond_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Lashers"},minecraft:unbreakable={},minecraft:custom_data={terminus:1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
-item replace entity @a[scores={char=49,aber_s2_buff=1..}] hotbar.0 with minecraft:diamond_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Lashers"},minecraft:unbreakable={},minecraft:custom_data={terminus:1},minecraft:enchantments={},minecraft:enchantment_glint_override=0b,minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.55d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+execute as @a[scores={char=49}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_pickaxe",Slot:0b}]}] run clear @a[scores={char=49}] diamond_pickaxe
+item replace entity @a[scores={char=49,aber_s2_buff=0}] hotbar.0 with diamond_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Lashers"},minecraft:unbreakable={},minecraft:custom_data={terminus:1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=49,aber_s2_buff=1..}] hotbar.0 with diamond_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Lashers"},minecraft:unbreakable={},minecraft:custom_data={terminus:1},minecraft:enchantments={},minecraft:enchantment_glint_override=0b,minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.55d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 scoreboard players set @a[scores={char=49},nbt=!{SelectedItem:{components:{"minecraft:custom_data":{terminus:1}}}}] passive_aber 0
 
@@ -105,8 +105,6 @@ execute as @a[scores={char=49,aber_s2_buff=20..}] run effect give @s speed 1 0 t
 
 
 # aberration
-
-scoreboard players set @a[scores={char=49}] MaxHP 28
 
 scoreboard players set @a[scores={s1_timer=1,char=49}] spellCD1 320
 scoreboard players add @a[scores={s1_timer=1..,char=49}] s1_timer 1

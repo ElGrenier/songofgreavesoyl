@@ -253,8 +253,6 @@ execute at @e[tag=BlackFuckingHole] as @a[tag=valid_spell_target,distance=..2] u
 
 # father of stars
 
-scoreboard players set @a[scores={char=60}] MaxHP 24
-
 scoreboard players set @a[scores={s1_timer=1,char=60}] spellCD1 300
 scoreboard players add @a[scores={s1_timer=1..,char=60}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=301..,char=60}] s1_timer 0

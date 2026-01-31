@@ -162,8 +162,6 @@ effect give @a[scores={CC_hypothermia=1..100,universal_damagetaken=1..},nbt={act
 
 # cryomancer
 
-scoreboard players set @a[scores={char=61}] MaxHP 16
-
 scoreboard players set @a[scores={s1_timer=80,char=61}] spellCD1 150
 scoreboard players add @a[scores={s1_timer=1..,char=61}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=231..,char=61}] s1_timer 0
@@ -176,7 +174,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=61}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=301..,char=61}] s2_timer 0
 
 execute as @a[scores={char=61}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b}]}] run clear @a[scores={char=61}] netherite_sword
-item replace entity @a[scores={char=61}] hotbar.0 with minecraft:netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Knife"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=61}] hotbar.0 with minecraft:netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Knife"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=61,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=61}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=61,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:light_blue_candle",minecraft:custom_name={text:"Cryostream",color:"dark_aqua",bold:1b}] 1

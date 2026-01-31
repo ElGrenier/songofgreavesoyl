@@ -176,8 +176,6 @@ execute at @a[scores={char=34,s2_timer=60..,CC_silence=0}] run kill @e[tag=delug
 
 # rainmaker
 
-scoreboard players set @a[scores={char=34}] MaxHP 20
-
 scoreboard players set @a[scores={s1_timer=1,char=34}] spellCD1 260
 scoreboard players add @a[scores={s1_timer=1..,char=34}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=261..,char=34}] s1_timer 0

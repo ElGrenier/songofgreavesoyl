@@ -6,29 +6,33 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:bow"}}]
 
 execute at @a[scores={char=7,arrowcd_1=..10}] run tag @e[type=minecraft:arrow,distance=..2] add dragonshot_ar
 execute at @e[tag=dragonshot_ar] run particle minecraft:flame ~ ~ ~ 0.1 0.1 0.1 0.1 2
-execute at @a[scores={char=7,s1_timer=1..140}] at @e[tag=dragonshot_ar] run particle minecraft:block{block_state:{Name:"minecraft:magma_block"}} ~ ~ ~ 0.1 0.1 0.1 0.1 2
-execute at @a[scores={char=7,s1_timer=1..140}] at @e[tag=dragonshot_ar] run particle minecraft:flame ~ ~ ~ 0.1 0.1 0.1 0.01 4
+execute at @a[scores={char=7,s1_timer=1..140}] at @e[tag=dragonshot_ar] run particle block{block_state:{Name:"minecraft:magma_block"}} ~ ~ ~ 0.1 0.1 0.1 0.1 2
+execute at @a[scores={char=7,s1_timer=1..140}] at @e[tag=dragonshot_ar] run particle flame ~ ~ ~ 0.1 0.1 0.1 0.01 4
 
 execute at @a[scores={char=7,CC_disarm=1..}] run kill @e[tag=dragonshot_ar]
 
 kill @e[type=minecraft:arrow,tag=dragonshot_ar,nbt={inGround:1b}]
 
-effect give @a[scores={char=7},nbt={SelectedItem:{id:"minecraft:bow"}}] minecraft:weakness 1 100 true
+effect give @a[scores={char=7},nbt={SelectedItem:{id:"minecraft:bow"}}] weakness 1 100 true
 
 #fire shit
 
 scoreboard players set @a[scores={char=7,s1_timer=1,CC_silence=1..}] spellCD1 20
 scoreboard players set @a[scores={char=7,s1_timer=1,CC_silence=1..}] s1_timer 460
 
-execute at @a[scores={char=7,s1_timer=1..2}] run particle minecraft:flame ~ ~1 ~ 1 1 1 0.001 40 normal
-execute at @a[scores={char=7,s1_timer=1..140}] run particle minecraft:flame ~ ~0.5 ~ 0.3 0.7 0.3 0.001 2 normal
-execute at @a[scores={char=7,s1_timer=1}] run playsound minecraft:entity.ender_dragon.growl ambient @a[distance=..15] ~ ~ ~ 1 1.2 1
-execute at @a[scores={char=7,s1_timer=2}] run playsound minecraft:entity.blaze.ambient master @a[distance=..15] ~ ~ ~ 1 2 1
+tag @a[scores={char=7,s1_timer=1..2}] add dragon_flames
+clear @a[scores={char=7,s1_timer=2}] leather_chestplate
+execute at @a[scores={char=7,s1_timer=1..2}] run particle flame ~ ~1.2 ~ 1 1 1 0.001 40 normal
+execute at @a[scores={char=7,s1_timer=1..150}] run particle flame ~ ~0.8 ~ 0.3 0.5 0.3 0.001 2 normal
+execute at @a[scores={char=7,s1_timer=1}] run playsound entity.ender_dragon.growl ambient @a[distance=..15] ~ ~ ~ 1 1.2 1
+execute at @a[scores={char=7,s1_timer=2}] run playsound entity.blaze.ambient master @a[distance=..15] ~ ~ ~ 1 2 1
 
-clear @a[scores={char=7,s1_timer=1}] minecraft:bow
-item replace entity @a[scores={char=7,s1_timer=1}] hotbar.0 with minecraft:bow[minecraft:custom_name={text:"Dragon Fire",color:"gray",bold:1b},minecraft:enchantments={"minecraft:flame":1,"minecraft:infinity":1},minecraft:unbreakable={}] 1
-clear @a[scores={char=7,s1_timer=160}] minecraft:bow
-item replace entity @a[scores={char=7,s1_timer=160}] hotbar.0 with minecraft:bow[minecraft:custom_name={text:"Dragon Fire",color:"gray",bold:1b},minecraft:enchantments={"minecraft:flame":1},minecraft:unbreakable={}] 1
+clear @a[scores={char=7,s1_timer=1}] bow
+item replace entity @a[scores={char=7,s1_timer=1}] hotbar.0 with bow[minecraft:custom_name={text:"Dragon Fire",color:"gray",bold:1b},minecraft:enchantments={"minecraft:flame":1,"minecraft:infinity":1},minecraft:unbreakable={}] 1
+clear @a[scores={char=7,s1_timer=160}] bow
+item replace entity @a[scores={char=7,s1_timer=160}] hotbar.0 with bow[minecraft:custom_name={text:"Dragon Fire",color:"gray",bold:1b},minecraft:enchantments={"minecraft:flame":1},minecraft:unbreakable={}] 1
+tag @a[scores={char=7,s1_timer=160..163}] remove dragon_flames
+clear @a[scores={char=7,s1_timer=162}] leather_chestplate
 
 title @a[scores={char=7,s1_timer=1..20}] actionbar [{text:"[",color:"dark_red",bold:1b,type:"text"},{text:"========",color:"red",type:"text"},{text:"",color:"gray",type:"text"},{text:"]",color:"dark_red",bold:1b,type:"text"}]
 title @a[scores={char=7,s1_timer=21..40}] actionbar [{text:"[",color:"dark_red",bold:1b,type:"text"},{text:"=======",color:"red",type:"text"},{text:"=",color:"gray",type:"text"},{text:"]",color:"dark_red",bold:1b,type:"text"}]
@@ -73,14 +77,14 @@ execute at @a[scores={char=7,s2_timer=1,CC_silence=0}] run playsound entity.ende
 
 execute at @a[scores={char=7,s2_timer=15,CC_silence=0}] run playsound entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
 execute at @a[scores={char=7,s2_timer=25,CC_silence=0}] run playsound entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
-execute at @a[scores={char=7,s2_timer=15,CC_silence=0}] run summon minecraft:armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["dragondash"],NoGravity:1b}
+execute at @a[scores={char=7,s2_timer=15,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["dragondash","entities_dragon"]}
 tp @e[tag=dragondash,limit=1] @a[scores={char=7,s2_timer=15},limit=1]
 execute at @a[scores={char=7,s2_timer=15},limit=1] run tp @e[tag=dragondash,limit=1] ~ ~0.5 ~
 effect give @a[scores={char=7,s2_timer=25,CC_silence=0}] levitation 1 0 true
 
 execute at @a[scores={char=7,s2_timer=41,CC_silence=0}] run playsound entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
 execute at @a[scores={char=7,s2_timer=51,CC_silence=0}] run playsound entity.ender_dragon.flap master @a[distance=..15] ~ ~ ~ 1 1.2 1
-execute at @a[scores={char=7,s2_timer=41,CC_silence=0}] run summon armor_stand ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["dragondash"],NoGravity:1b}
+execute at @a[scores={char=7,s2_timer=41,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["dragondash","entities_dragon"]}
 tp @e[tag=dragondash,limit=1] @a[scores={char=7,s2_timer=41},limit=1]
 execute at @a[scores={char=7,s2_timer=41},limit=1] run tp @e[tag=dragondash,limit=1] ~ ~0.5 ~
 
@@ -103,8 +107,6 @@ execute as @a[scores={char=7,s2_timer=1..60}] at @s unless block ~ ~ ~ #minecraf
 
 
 # dragon
-
-scoreboard players set @a[scores={char=7}] MaxHP 16
 
 scoreboard players set @a[scores={s1_timer=1,char=7}] spellCD1 480
 scoreboard players add @a[scores={s1_timer=1..,char=7}] s1_timer 1

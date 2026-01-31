@@ -104,8 +104,6 @@ tag @a[tag=pyrophilia] remove pyrophilia
 
 # bomb master
 
-scoreboard players set @a[scores={char=11}] MaxHP 20
-
 scoreboard players set @a[scores={s1_timer=1,char=11}] spellCD1 100
 scoreboard players add @a[scores={s1_timer=1..,char=11}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=101..,char=11}] s1_timer 0

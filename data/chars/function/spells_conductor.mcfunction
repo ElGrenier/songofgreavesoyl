@@ -109,8 +109,6 @@ execute as @e[tag=chain_lightning_next] at @s unless entity @e[tag=conductor_val
 
 # conductor
 
-scoreboard players set @a[scores={char=73}] MaxHP 16
-
 scoreboard players set @a[scores={s1_timer=1,char=73}] spellCD1 240
 scoreboard players add @a[scores={s1_timer=1..,char=73}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=240..,char=73}] s1_timer 0

@@ -131,8 +131,6 @@ execute at @a[scores={char=18,CC_disarm=1..}] run kill @e[tag=golemshot_ar]
 
 # golem
 
-scoreboard players set @a[scores={char=18}] MaxHP 28
-
 scoreboard players add @a[scores={s0_timer=1..,char=18}] s0_timer 1
 scoreboard players add @a[scores={s0_timer=2..,char=18},tag=sentrymode] s0_timer 2
 scoreboard players set @a[scores={s0_timer=30..,char=18}] s0_timer 0

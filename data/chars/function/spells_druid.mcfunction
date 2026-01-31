@@ -153,8 +153,6 @@ execute unless entity @a[scores={handofthorns=3..}] run kill @e[tag=handofthorns
 
 # blight druid
 
-scoreboard players set @a[scores={char=63}] MaxHP 20
-
 scoreboard players set @a[scores={s1_timer=1,char=63}] spellCD1 300
 scoreboard players add @a[scores={s1_timer=1..,char=63}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=301..,char=63}] s1_timer 0
@@ -164,7 +162,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=63}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=261..,char=63}] s2_timer 0
 
 execute as @a[scores={char=63,CC_disarm=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:wooden_hoe",Slot:0b}]}] run clear @a[scores={char=63}] wooden_hoe
-item replace entity @a[scores={char=63,CC_disarm=0}] hotbar.0 with wooden_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Scythe"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=63,CC_disarm=0}] hotbar.0 with wooden_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Scythe"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=63,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=63}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=63,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:vine",minecraft:custom_name={text:"Tangle of Thorns",color:"gray",bold:1b}] 1
