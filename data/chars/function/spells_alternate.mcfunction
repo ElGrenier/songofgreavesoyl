@@ -57,7 +57,7 @@ execute as @a[scores={char=71}] at @s as @e[distance=..3.5,tag=valid_spell_targe
 
 execute at @a[scores={char=71,s3_timer=1,CC_silence=0},tag=alternate_no_enemy] run playsound entity.player.attack.sweep master @a[distance=..10] ~ ~ ~ 1 2 1
 execute at @a[scores={char=71,s3_timer=1,CC_silence=0},tag=alternate_no_enemy] run summon block_display ~ ~ ~ {Passengers:[{id:"minecraft:item_display",item:{id:"minecraft:iron_sword",Count:1},item_display:"none",transformation:[-0.7071067812f,-0.7071067812f,0f,0f,0f,0f,1f,0f,-0.7071067812f,0.7071067812f,0f,0f,0f,0f,0f,1f],Tags:["alt_homing_shot_display","entities_alternate"]}],Tags:["alt_homing_shot","projectile","entities_alternate"]}
-scoreboard players operation @e[tag=alt_homing_shot,tag=chillrend] Team = @p[scores={char=71}] Team
+scoreboard players operation @e[tag=alt_homing_shot,tag=projectile] Team = @p[scores={char=71}] Team
 tp @e[tag=alt_homing_shot,limit=1] @a[scores={char=71,s3_timer=1},limit=1]
 execute if entity @a[scores={char=71,s3_timer=1},limit=1] as @e[tag=alt_homing_shot,limit=1] at @s run tp @s ~ ~1 ~
 
@@ -113,6 +113,10 @@ execute as @n[tag=alt_demon_display1,scores={s0_timer=51..}] run scoreboard play
 #execute at @a[scores={char=71,s3_timer=1,CC_silence=0},tag=!alternate_no_enemy] as @e[distance=..3.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run damage @s 4 player_attack by @p[scores={char=71}] from @p[scores={char=71}]
 
 #biden blast
+
+execute as @a[scores={char=71,death_dash_reset=1..}] run tag @s remove alt_pull1
+execute as @a[scores={char=71,death_dash_reset=1..}] run tag @s remove alt_pull2
+
 
 scoreboard players set @a[scores={char=71,s1_timer=1,CC_silence=1..}] spellCD2 20
 scoreboard players add @a[scores={char=71,s1_timer=1,CC_silence=1..}] s1_timer 180
@@ -218,4 +222,7 @@ execute as @a[scores={char=71,s2_timer=0}] at @s unless entity @s[nbt={Inventory
 item replace entity @a[scores={char=71,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:bat_spawn_egg",minecraft:custom_name={text:"Leap Over",color:"dark_aqua",bold:1b}] 1
 
 execute as @a[scores={char=71,s2_timer=1..35,s2_timer_recast=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=71}] minecraft:warped_fungus_on_a_stick
-item replace entity @a[scores={char=71,s2_timer=1..35,s2_timer_recast=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:2},minecraft:item_model="minecraft:black_glazed_terracotta",minecraft:custom_name={text:"Crush",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=71,s2_timer=5..10,s2_timer_recast=0}] hotbar.2 with warped_fungus_on_a_stick[damage=0,max_damage=4,custom_data={s2:2},minecraft:item_model="minecraft:black_glazed_terracotta",minecraft:custom_name={text:"Crush",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=71,s2_timer=11..20,s2_timer_recast=0}] hotbar.2 with warped_fungus_on_a_stick[damage=1,max_damage=4,custom_data={s2:2},minecraft:item_model="minecraft:black_glazed_terracotta",minecraft:custom_name={text:"Crush",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=71,s2_timer=21..30,s2_timer_recast=0}] hotbar.2 with warped_fungus_on_a_stick[damage=2,max_damage=4,custom_data={s2:2},minecraft:item_model="minecraft:black_glazed_terracotta",minecraft:custom_name={text:"Crush",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=71,s2_timer=30..35,s2_timer_recast=0}] hotbar.2 with warped_fungus_on_a_stick[damage=3,max_damage=4,custom_data={s2:2},minecraft:item_model="minecraft:black_glazed_terracotta",minecraft:custom_name={text:"Crush",color:"dark_aqua",bold:1b}] 1

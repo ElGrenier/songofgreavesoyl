@@ -215,5 +215,9 @@ execute unless entity @a[scores={char=71}] run kill @e[tag=entities_alternate]
 
 execute unless entity @a[scores={char=72}] run kill @e[tag=entities_caretaker]
 
+execute unless entity @a[scores={char=73}] run kill @e[tag=entities_conductor]
+
+execute unless entity @a[scores={char=74}] run kill @e[tag=entities_fortress]
+
 
 

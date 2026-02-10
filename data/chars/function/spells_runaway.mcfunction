@@ -201,7 +201,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=57}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=281..,char=57}] s2_timer 0
 
 execute as @a[scores={char=57}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_shovel",Slot:0b}]}] run clear @a[scores={char=57}] iron_shovel
-item replace entity @a[scores={char=57}] hotbar.0 with minecraft:iron_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Mace"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=57}] hotbar.0 with minecraft:iron_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Mace"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=57,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=57}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=57,s1_timer=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Unshackled",color:"dark_aqua",bold:1b},item_model="rail",custom_data={s1:1}] 1

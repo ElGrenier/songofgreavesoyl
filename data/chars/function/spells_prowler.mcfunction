@@ -111,11 +111,9 @@ scoreboard players set @a[tag=prowler_marked] detonatemark 1
 tag @a[tag=prowler_marked] add prowler_scorn_mark
 tag @a remove prowler_marked
 
-
 scoreboard players remove @a[scores={stab_timer=1..}] stab_timer 1
 scoreboard players set @a[scores={stab_timer=1..2}] detonatemark 0
 tag @a[scores={stab_timer=1..2}] remove prowler_scorn_mark
-
 
 execute at @a[scores={char=23,universal_hit=20..}] as @a[advancements={chars:prowler_hit=true},tag=valid_spell_target,scores={detonatemark=1..3}] unless score @s Team = @p[scores={char=23}] Team run scoreboard players add @s detonatemark 1
 advancement revoke @a[advancements={chars:prowler_hit=true}] only chars:prowler_hit
@@ -131,7 +129,6 @@ scoreboard players set @a[scores={detonatemark=20..}] stab_timer 2
 tag @a[scores={detonatemark=20..}] remove prowler_scorn_mark
 scoreboard players set @a[scores={detonatemark=20..}] detonatemark 0
 
-
 execute at @a[tag=prowler_scorn_mark] positioned ~ ~2.9 ~ unless entity @e[distance=..1,tag=display_khaakraff] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_khaakraff","entities_prowler"],Marker:1b,Invisible:1b,CustomName:{text:"Stabbed",color:"gray",bold:1b},CustomNameVisible:1b}
 execute at @a[tag=prowler_scorn_mark] positioned ~ ~2.9 ~ run tp @e[distance=..1,tag=display_khaakraff] ~ ~ ~
 execute as @e[tag=display_khaakraff] at @s positioned ~ ~-2.9 ~ unless entity @a[distance=..1,tag=prowler_scorn_mark] run kill @s
@@ -146,7 +143,7 @@ scoreboard players set @a[scores={char=23,universal_damagetaken=1..}] passive_pr
 scoreboard players set @a[scores={char=23,universal_damagetaken_shield=1..}] passive_prow 1
 
 scoreboard players add @a[scores={char=23,passive_prow=1..}] passive_prow 1
-effect give @a[scores={char=23,passive_prow=199..}] minecraft:absorption infinite 5 true
+effect give @a[scores={char=23,passive_prow=199..}] absorption infinite 8 true
 tag @a[scores={char=23,passive_prow=199..}] add sand_barrier
 scoreboard players set @a[scores={char=23,passive_prow=200..}] passive_prow 0
 
@@ -200,7 +197,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=23}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=261..,char=23}] s2_timer 0
 
 execute as @a[scores={char=23}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_sword",Slot:0b}]}] run clear @a[scores={char=23}] golden_sword
-item replace entity @a[scores={char=23}] hotbar.0 with golden_sword[custom_data={prowler:1},minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=23}] hotbar.0 with golden_sword[custom_data={prowler:1},minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=23,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=23}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=23,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:golden_carrot",minecraft:custom_name={text:"Eviscerate",color:"dark_aqua",bold:1b}] 1

@@ -71,6 +71,7 @@ execute positioned 57 12 -14 if entity @a[distance=..15] unless entity @e[tag=pr
 execute positioned 57 12 -14 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_3] run summon minecraft:text_display 61 15 1 {Tags:["practice_holograms","practice_hologram_3"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Switch team", text_opacity: 255, transformation: {left_rotation: [0.0f, 0.99984777f, 0.0f, 0.017452212f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999998f, 1.0f, 0.9999998f], translation: [0.0f, 0.0f, 0.0f]}}
 
 
+execute as @e[tag=practice_dummy] store result score @s dummy_hp run data get entity @s Health
 
 execute positioned 57 12 -14 unless entity @a[distance=..15] run kill @e[tag=practice_holograms]
 execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run tp @e[tag=practice_dummy,scores={SummonAge=5..}] ~ ~-200 ~
@@ -80,5 +81,5 @@ execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] ru
 execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run setblock 72 14 -20 polished_blackstone_button[face=floor]
 
 
-scoreboard players set @e[tag=test_dummy] Team -6699
-scoreboard players set @e[tag=test_dummy] HPercentage 100
+scoreboard players set @e[tag=practice_dummy] Team -6699
+scoreboard players set @e[tag=practice_dummy] HPercentage 100

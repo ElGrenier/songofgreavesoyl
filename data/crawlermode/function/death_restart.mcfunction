@@ -29,7 +29,7 @@ tag @a[distance=11..] remove respawn_box
 # Handling players respawning during the game
 effect give @a[distance=..5] minecraft:instant_health 2 100 true
 
-tag @a[distance=..10] add waiting_respawn
+
 execute as @a[tag=respawn_box] run function core:lobby/tp_waiting_room
 
 # scoreboard players set @a[distance=5..] Loading -1

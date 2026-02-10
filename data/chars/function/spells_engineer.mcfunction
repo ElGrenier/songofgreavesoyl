@@ -284,7 +284,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=30}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=361..,char=30}] s2_timer 0
 
 execute as @a[scores={char=30}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:copper_axe",Slot:0b}]}] run clear @a[scores={char=30}] copper_axe
-item replace entity @a[scores={char=30}] hotbar.0 with copper_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Tools"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=30}] hotbar.0 with copper_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Tools"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=30,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=30}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=30,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:music_disc_pigstep",minecraft:custom_name={text:"Sad Machine",color:"dark_aqua",bold:1b}] 1

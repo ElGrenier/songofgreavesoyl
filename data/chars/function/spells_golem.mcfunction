@@ -39,10 +39,41 @@ execute at @a[scores={char=18,s0_timer=1,CC_silence=0}] as @e[tag=golem_flamethr
 scoreboard players add @e[tag=golem_projectile] s0_timer 1
 scoreboard players add @e[tag=golem_flamethrower] s0_timer 1
 
-execute as @e[tag=golem_projectile,scores={s0_timer=1..}] at @s run tp @s ^ ^ ^0.9
-execute as @e[tag=golem_projectile,scores={s0_timer=6..}] at @s run tp @s ~ ~-0.2 ~
+execute as @e[tag=golem_projectile,scores={s0_timer=1..}] at @s run tp @s ^ ^ ^0.4
+execute as @e[tag=golem_projectile,scores={s0_timer=6..}] at @s run tp @s ~ ~-0.02 ~
+execute at @e[tag=golem_projectile] run particle crit ~ ~ ~ 0 0 0 0.01 1
+execute at @e[tag=golem_projectile] run particle dust{color:[1.0,1.0,1.0],scale:1} ~ ~ ~ 0.4 0.4 0.4 0 2
+execute at @e[tag=golem_projectile] run particle soul_fire_flame ~ ~ ~ 0.3 0.3 0.3 0 1
+execute as @e[tag=golem_projectile,scores={s0_timer=1..}] at @s run tp @s ^ ^ ^0.4
+execute as @e[tag=golem_projectile,scores={s0_timer=6..}] at @s run tp @s ~ ~-0.02 ~
+execute at @e[tag=golem_projectile] run particle crit ~ ~ ~ 0 0 0 0.01 1
+execute at @e[tag=golem_projectile] run particle dust{color:[1.0,1.0,1.0],scale:1} ~ ~ ~ 0.4 0.4 0.4 0 2
+execute at @e[tag=golem_projectile] run particle soul_fire_flame ~ ~ ~ 0.3 0.3 0.3 0 1
+execute as @e[tag=golem_projectile,scores={s0_timer=1..}] at @s run tp @s ^ ^ ^0.4
+execute as @e[tag=golem_projectile,scores={s0_timer=6..}] at @s run tp @s ~ ~-0.02 ~
+execute at @e[tag=golem_projectile] run particle crit ~ ~ ~ 0 0 0 0.01 1
+execute at @e[tag=golem_projectile] run particle dust{color:[1.0,1.0,1.0],scale:1} ~ ~ ~ 0.4 0.4 0.4 0 2
+execute at @e[tag=golem_projectile] run particle soul_fire_flame ~ ~ ~ 0.3 0.3 0.3 0 1
 
-execute as @e[tag=golem_flamethrower,scores={s0_timer=1..}] at @s run tp @s ^ ^ ^0.6
+
+
+execute as @e[tag=golem_flamethrower,scores={s0_timer=1..}] at @s run tp @s ^ ^ ^0.25
+execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle firework ~ ~ ~ 0.2 0.2 0.2 0 1
+execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle soul_fire_flame ~ ~ ~ 0.2 0.2 0.2 0 1
+execute at @e[tag=golem_flamethrower,scores={s0_timer=3..}] run particle soul_fire_flame ~ ~ ~ 0.3 0.3 0.3 0 2
+execute at @e[tag=golem_flamethrower,scores={s0_timer=5..}] run particle soul_fire_flame ~ ~ ~ 0.4 0.4 0.4 0 3
+execute as @e[tag=golem_flamethrower,scores={s0_timer=1..}] at @s run tp @s ^ ^ ^0.25
+execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle firework ~ ~ ~ 0.2 0.2 0.2 0 1
+execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle soul_fire_flame ~ ~ ~ 0.2 0.2 0.2 0 1
+execute at @e[tag=golem_flamethrower,scores={s0_timer=3..}] run particle soul_fire_flame ~ ~ ~ 0.3 0.3 0.3 0 2
+execute at @e[tag=golem_flamethrower,scores={s0_timer=5..}] run particle soul_fire_flame ~ ~ ~ 0.4 0.4 0.4 0 3
+execute as @e[tag=golem_flamethrower,scores={s0_timer=1..}] at @s run tp @s ^ ^ ^0.25
+execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle firework ~ ~ ~ 0.2 0.2 0.2 0 1
+execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle soul_fire_flame ~ ~ ~ 0.2 0.2 0.2 0 1
+execute at @e[tag=golem_flamethrower,scores={s0_timer=3..}] run particle soul_fire_flame ~ ~ ~ 0.3 0.3 0.3 0 2
+execute at @e[tag=golem_flamethrower,scores={s0_timer=5..}] run particle soul_fire_flame ~ ~ ~ 0.4 0.4 0.4 0 3
+
+
 
 execute as @e[tag=golem_projectile] at @s positioned ~ ~ ~ unless block ^ ^ ^0.4 #dash run kill @s
 execute as @e[tag=golem_projectile] at @s positioned ~ ~ ~ unless block ~ ~ ~ #dash run kill @s
@@ -54,10 +85,6 @@ execute at @e[tag=golem_projectile] run particle crit ~ ~ ~ 0 0 0 0.01 1
 execute at @e[tag=golem_projectile] run particle dust{color:[1.0,1.0,1.0],scale:1} ~ ~ ~ 0.4 0.4 0.4 0 4
 execute at @e[tag=golem_projectile] run particle soul_fire_flame ~ ~ ~ 0.3 0.3 0.3 0 3
 
-execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle firework ~ ~ ~ 0.2 0.2 0.2 0 2
-execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle soul_fire_flame ~ ~ ~ 0.2 0.2 0.2 0 2
-execute at @e[tag=golem_flamethrower,scores={s0_timer=3..}] run particle soul_fire_flame ~ ~ ~ 0.3 0.3 0.3 0 3
-execute at @e[tag=golem_flamethrower,scores={s0_timer=5..}] run particle soul_fire_flame ~ ~ ~ 0.4 0.4 0.4 0 5
 
 kill @e[tag=golem_projectile,scores={s0_timer=10..}]
 kill @e[tag=golem_flamethrower,scores={s0_timer=8..}]
@@ -91,9 +118,9 @@ effect give @a[scores={char=18,s2_timer=1,CC_silence=0}] resistance 3 1
 attribute @p[scores={char=18,s2_timer=1,CC_silence=0}] jump_strength base set 0
 effect give @a[scores={char=18,s2_timer=2..40}] slowness 1 100
 attribute @p[scores={char=18,s2_timer=2..40}] jump_strength base set 0
-item replace entity @a[scores={char=18,s2_timer=1,CC_silence=0}] armor.head with player_head[minecraft:custom_name="Core",minecraft:enchantments={"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:8.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:100.0d,operation:"add_multiplied_base",slot:"head"}],minecraft:profile={id:[I;-2088556085,-83734688,-2129708947,-1030770170],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDE0YTJlYTIxZDZjOTY5MzhhMjcxZmNmZjUyM2E2NTA3YjQ1NGY4NGJhZDk1OTkzZjQ0OTJhNmZiYzMwOTRmNSJ9fX0="}]}] 1
+item replace entity @a[scores={char=18,s2_timer=1,CC_silence=0}] armor.head with player_head[minecraft:custom_name="Core",minecraft:enchantments={"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:24.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:100.0d,operation:"add_multiplied_base",slot:"head"}],minecraft:profile={id:[I;-2088556085,-83734688,-2129708947,-1030770170],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDE0YTJlYTIxZDZjOTY5MzhhMjcxZmNmZjUyM2E2NTA3YjQ1NGY4NGJhZDk1OTkzZjQ0OTJhNmZiYzMwOTRmNSJ9fX0="}]}] 1
 item replace entity @a[scores={char=18,s2_timer=1,CC_silence=0}] armor.chest with leather_chestplate[minecraft:trim={pattern:"ward",material:"quartz"},minecraft:custom_name="Armor",minecraft:dyed_color=7236457,minecraft:unbreakable={}] 1
-item replace entity @a[scores={char=18,s2_timer=60}] armor.head with player_head[minecraft:custom_name="Core",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:8.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-2088556085,-83734688,-2129708947,-1030770170],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDE0YTJlYTIxZDZjOTY5MzhhMjcxZmNmZjUyM2E2NTA3YjQ1NGY4NGJhZDk1OTkzZjQ0OTJhNmZiYzMwOTRmNSJ9fX0="}]}] 1
+item replace entity @a[scores={char=18,s2_timer=60}] armor.head with player_head[minecraft:custom_name="Core",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:24.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-2088556085,-83734688,-2129708947,-1030770170],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDE0YTJlYTIxZDZjOTY5MzhhMjcxZmNmZjUyM2E2NTA3YjQ1NGY4NGJhZDk1OTkzZjQ0OTJhNmZiYzMwOTRmNSJ9fX0="}]}] 1
 item replace entity @a[scores={char=18,s2_timer=60}] armor.chest with leather_chestplate[minecraft:trim={pattern:"ward",material:"copper"},minecraft:custom_name="Armor",minecraft:dyed_color=7236457,minecraft:unbreakable={}] 1
 attribute @p[scores={char=18,s2_timer=61..70}] minecraft:jump_strength base set 0.41
 
@@ -115,7 +142,7 @@ attribute @p[tag=sentrymode] minecraft:jump_strength base set 0
 
 tag @a[scores={char=18,s1_timer=1}] add sentrymode
 item replace entity @a[scores={char=18,s1_timer=1}] hotbar.0 with crossbow[minecraft:custom_name={bold:1b,color:"gray",text:"Soul Cannon"},minecraft:unbreakable={},minecraft:charged_projectiles=[{id:"minecraft:tipped_arrow",count:1,components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:levitation",amplifier:1,duration:1,show_particles:1b,show_icon:0b}]}}}]] 1
-item replace entity @a[scores={char=18,s1_timer=1}] armor.head with player_head[minecraft:custom_name="Core",minecraft:enchantments={"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:8.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:100.0d,operation:"add_multiplied_base",slot:"head"}],minecraft:profile={id:[I;-2088556085,-83734688,-2129708947,-1030770170],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDE0YTJlYTIxZDZjOTY5MzhhMjcxZmNmZjUyM2E2NTA3YjQ1NGY4NGJhZDk1OTkzZjQ0OTJhNmZiYzMwOTRmNSJ9fX0="}]}] 1
+item replace entity @a[scores={char=18,s1_timer=1}] armor.head with player_head[minecraft:custom_name="Core",minecraft:enchantments={"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:24.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:100.0d,operation:"add_multiplied_base",slot:"head"}],minecraft:profile={id:[I;-2088556085,-83734688,-2129708947,-1030770170],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDE0YTJlYTIxZDZjOTY5MzhhMjcxZmNmZjUyM2E2NTA3YjQ1NGY4NGJhZDk1OTkzZjQ0OTJhNmZiYzMwOTRmNSJ9fX0="}]}] 1
 
 #cannon mode OFF
 execute at @a[scores={char=18,s1_timer_recast=1}] run playsound block.iron_trapdoor.open master @a[distance=..10] ~ ~ ~ 1 0.1 1
@@ -123,7 +150,7 @@ effect clear @a[scores={char=18,s1_timer_recast=1}] resistance
 effect clear @a[scores={char=18,s1_timer_recast=1}] slowness
 attribute @p[scores={char=18,s1_timer_recast=1}] minecraft:jump_strength base set 0.41
 tag @a[scores={char=18,s1_timer_recast=1}] remove sentrymode
-item replace entity @a[scores={char=18,s1_timer_recast=2}] armor.head with player_head[minecraft:custom_name="Core",minecraft:enchantments={"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:8.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-2088556085,-83734688,-2129708947,-1030770170],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDE0YTJlYTIxZDZjOTY5MzhhMjcxZmNmZjUyM2E2NTA3YjQ1NGY4NGJhZDk1OTkzZjQ0OTJhNmZiYzMwOTRmNSJ9fX0="}]}] 1
+item replace entity @a[scores={char=18,s1_timer_recast=2}] armor.head with player_head[minecraft:custom_name="Core",minecraft:enchantments={"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:24.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-2088556085,-83734688,-2129708947,-1030770170],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDE0YTJlYTIxZDZjOTY5MzhhMjcxZmNmZjUyM2E2NTA3YjQ1NGY4NGJhZDk1OTkzZjQ0OTJhNmZiYzMwOTRmNSJ9fX0="}]}] 1
 
 
 

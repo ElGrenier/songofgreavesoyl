@@ -39,10 +39,10 @@ execute at @e[tag=firestream,scores={fire_life=3..}] run fill ~ ~2 ~ ~ ~-1 ~ fir
 execute at @e[tag=firestream] if entity @a[scores={char=25}] run execute as @a[distance=..2] unless score @s Team = @p[scores={char=25}] Team run scoreboard players set @s scourge_damage 100
 
 
-execute at @a[scores={char=25,s1_timer=31..32}] run kill @e[tag=firestream] 
-execute at @a[scores={char=25,s1_timer=31..32}] at @e[tag=firenomore] run fill ~15 ~10 ~15 ~-15 ~-10 ~-15 air replace fire
-execute at @a[scores={char=25,s1_timer=31..32}] at @e[tag=firenomore] run fill ~15 ~10 ~15 ~-15 ~-10 ~-15 air replace soul_fire
-execute at @a[scores={char=25,s1_timer=1..41}] run fill ~1 ~3 ~1 ~-1 ~-3 ~-1 minecraft:air replace minecraft:fire
+execute at @a[scores={char=25,s1_timer=41..42}] run kill @e[tag=firestream] 
+execute at @a[scores={char=25,s1_timer=41..42}] at @e[tag=firenomore] run fill ~15 ~10 ~15 ~-15 ~-10 ~-15 air replace fire
+execute at @a[scores={char=25,s1_timer=41..42}] at @e[tag=firenomore] run fill ~15 ~10 ~15 ~-15 ~-10 ~-15 air replace soul_fire
+execute at @a[scores={char=25,s1_timer=1..51}] run fill ~1 ~3 ~1 ~-1 ~-3 ~-1 minecraft:air replace minecraft:fire
 scoreboard players add @e[tag=firestream] fire_life 1
 scoreboard players add @e[tag=firenomore] fire_life 1
 kill @e[tag=firestream,scores={fire_life=10..}]
@@ -160,7 +160,7 @@ scoreboard players set @a[scores={s2_timer=301..,char=25}] s2_timer 0
 
 
 execute as @a[scores={char=25}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_pickaxe",Slot:0b}]}] run clear @a[scores={char=25}] netherite_pickaxe
-item replace entity @a[scores={char=25}] hotbar.0 with minecraft:netherite_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Tail"},custom_data={scourges_dong:1},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=25}] hotbar.0 with minecraft:netherite_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Tail"},custom_data={scourges_dong:1},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=25,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=25}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=25,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:campfire",minecraft:custom_name={text:"To Ashes",color:"dark_aqua",bold:1b}] 1

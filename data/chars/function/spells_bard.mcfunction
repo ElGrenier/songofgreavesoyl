@@ -52,7 +52,7 @@ execute as @e[tag=sog_visuals,tag=!sog_visual_core] at @s run tp @s ^0.9 ^ ^-0.2
 
 kill @e[tag=sog_visuals,scores={s0_timer=10}]
 
-#> The Parts Falling (formerly song of healing, formerly crescendo)
+#> The Parts Falling (formerly Song of Healing, formerly crescendo)
 
 clear @a[scores={char=70,s1_timer=1,CC_silence=0}] *[custom_data={s1:1}]
 clear @a[scores={char=70,s1_timer_recast=1,CC_silence=0}] *[custom_data={s1:2}]
@@ -92,7 +92,7 @@ execute at @a[scores={char=70,s1_timer=30..39,CC_silence=0,passive_bard=21},tag=
 execute at @a[scores={char=70,s1_timer=1..40,CC_silence=0}] as @a[distance=..4] if score @s Team = @p[scores={char=70}] Team run effect give @s speed 1 1
 execute at @a[scores={char=70,s1_timer=1..40,CC_silence=0}] as @a[distance=..4] unless score @s Team = @p[scores={char=70}] Team run scoreboard players set @s CC_grounded 2
 
-#--- recast --- (song of healing (hey wait its back))
+#--- recast --- (Repose (hey wait its back))
 
 clear @a[scores={char=70,s1_timer_recast=1..}] *[custom_data={s1:2}]
 
@@ -210,13 +210,13 @@ scoreboard players add @a[scores={char=70,s2_timer=1..}] s2_timer 1
 scoreboard players set @a[scores={char=70,s2_timer=361..}] s2_timer 0
 
 execute as @a[scores={char=70}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_shovel",Slot:0b}]}] run clear @a[scores={char=70}] golden_shovel
-item replace entity @a[scores={char=70}] hotbar.0 with golden_shovel[custom_name={"bold":true,"color":"gray","text":"Guitar"},unbreakable={},attribute_modifiers=[{id:"armor",type:"attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=70}] hotbar.0 with golden_shovel[custom_name={"bold":true,"color":"gray","text":"Guitar"},unbreakable={},attribute_modifiers=[{id:"armor",type:"attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=70,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=70}] carrot_on_a_stick
 item replace entity @a[scores={char=70,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={"text":"A Part Falls","color":"dark_aqua","bold":true},custom_data={s1:1},item_model="music_disc_5"] 1
 
 execute as @a[scores={char=70,s1_timer=20..40,s1_timer_recast=0,CC_silence=0},tag=bard_s1_perfect] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=70}] carrot_on_a_stick
-item replace entity @a[scores={char=70,s1_timer=20..40,s1_timer_recast=0,CC_silence=0},tag=bard_s1_perfect] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={"text":"Song of Healing","color":"dark_aqua","bold":true},custom_data={s1:2},item_model="music_disc_precipice"] 1
+item replace entity @a[scores={char=70,s1_timer=20..40,s1_timer_recast=0,CC_silence=0},tag=bard_s1_perfect] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={"text":"Repose","color":"dark_aqua","bold":true},custom_data={s1:2},item_model="music_disc_precipice"] 1
 
 execute as @a[scores={char=70,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=70}] warped_fungus_on_a_stick
 item replace entity @a[scores={char=70,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[minecraft:custom_name={"text":"Trapped Under Ice","color":"dark_aqua","bold":true},custom_data={s2:1},item_model="music_disc_relic"] 1

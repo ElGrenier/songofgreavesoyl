@@ -73,7 +73,6 @@ execute at @a[scores={nestduration=80..}] as @a[distance=..4,tag=valid_spell_tar
 tag @a[scores={nestduration=80..}] remove nest
 scoreboard players set @a[scores={nestduration=80..}] nestduration 0
 
-
 execute at @e[tag=nest] run particle cloud ~ ~1 ~ 0.9 0.6 0.9 0.0001 2 normal
 
 execute unless entity @a[tag=nest] run kill @e[tag=nest_visuals]
@@ -203,13 +202,16 @@ scoreboard players set @a[scores={s2_timer=321..,char=14}] s2_timer_recast 0
 scoreboard players set @a[scores={s2_timer=321..,char=14}] s2_timer 0
 
 execute as @a[scores={char=14}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_pickaxe",Slot:0b}]}] run clear @a[scores={char=14}] minecraft:iron_pickaxe
-item replace entity @a[scores={char=14}] hotbar.0 with minecraft:iron_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=14}] hotbar.0 with minecraft:iron_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=14,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=14}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=14,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:quartz",minecraft:custom_name={text:"Pin the Prey",color:"dark_aqua",bold:1b}] 1
 
 execute as @a[scores={char=14,s2_timer=10..79,s2_timer_recast=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=14}] warped_fungus_on_a_stick[custom_data={s2:2}]
-item replace entity @a[scores={char=14,s2_timer=10..79,s2_timer_recast=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:2},minecraft:item_model="minecraft:happy_ghast_spawn_egg",minecraft:custom_name={text:"Queen's Protection",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=14,s2_timer=10..20,s2_timer_recast=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[damage=0,max_damage=4,custom_data={s2:2},minecraft:item_model="minecraft:happy_ghast_spawn_egg",minecraft:custom_name={text:"Queen's Protection",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=14,s2_timer=21..40,s2_timer_recast=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[damage=1,max_damage=4,custom_data={s2:2},minecraft:item_model="minecraft:happy_ghast_spawn_egg",minecraft:custom_name={text:"Queen's Protection",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=14,s2_timer=41..60,s2_timer_recast=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[damage=2,max_damage=4,custom_data={s2:2},minecraft:item_model="minecraft:happy_ghast_spawn_egg",minecraft:custom_name={text:"Queen's Protection",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=14,s2_timer=61..79,s2_timer_recast=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[damage=3,max_damage=4,custom_data={s2:2},minecraft:item_model="minecraft:happy_ghast_spawn_egg",minecraft:custom_name={text:"Queen's Protection",color:"dark_aqua",bold:1b}] 1
 
 execute as @a[scores={char=14,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=14}] warped_fungus_on_a_stick[custom_data={s2:1}]
 item replace entity @a[scores={char=14,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:ghast_spawn_egg",minecraft:custom_name={text:"Nesting Storm",color:"dark_aqua",bold:1b}] 1

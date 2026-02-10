@@ -352,7 +352,7 @@ scoreboard players add @a[scores={s3_timer=1..,char=69}] s3_timer 1
 scoreboard players set @a[scores={s3_timer=11..,char=69}] s3_timer 0
 
 execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run clear @a[scores={char=69}] iron_sword
-item replace entity @a[scores={char=69}] hotbar.0 with minecraft:iron_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Dirk"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=69}] hotbar.0 with iron_sword[swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Dirk"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=69}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=69,red=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Red",color:"dark_aqua",bold:1b},item_model="red_dye",custom_data={s1:1}] 1

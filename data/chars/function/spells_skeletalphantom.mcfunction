@@ -38,7 +38,7 @@ effect give @a[scores={char=13,s2_timer=1}] speed 3 1 true
 effect give @a[scores={char=13,s2_timer=1}] weakness 3 100 true
 effect give @a[scores={char=13,s2_timer=1}] resistance 3 100 true
 scoreboard players set @a[scores={char=13,s2_timer=1}] CC_intangible 60
-item replace entity @a[scores={char=13,s2_timer=1}] armor.head with player_head[minecraft:custom_name="Skull",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:8.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:1.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-672593164,1073039141,-1481174912,860659466],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2JjYmJmOTRkNjAzNzQzYTFlNzE0NzAyNmUxYzEyNDBiZDk4ZmU4N2NjNGVmMDRkY2FiNTFhMzFjMzA5MTRmZCJ9fX0="}]}] 1
+item replace entity @a[scores={char=13,s2_timer=1}] armor.head with player_head[minecraft:custom_name="Skull",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:16.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:1.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-672593164,1073039141,-1481174912,860659466],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2JjYmJmOTRkNjAzNzQzYTFlNzE0NzAyNmUxYzEyNDBiZDk4ZmU4N2NjNGVmMDRkY2FiNTFhMzFjMzA5MTRmZCJ9fX0="}]}] 1
 item replace entity @a[scores={char=13,s2_timer=1}] armor.chest with air
 item replace entity @a[scores={char=13,s2_timer=1}] armor.legs with air
 item replace entity @a[scores={char=13,s2_timer=1}] armor.feet with air
@@ -72,7 +72,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=13}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=381..,char=13}] s2_timer 0
 
 execute as @a[scores={char=13}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_shovel",Slot:0b}]}] run clear @a[scores={char=13}] stone_shovel
-item replace entity @a[scores={char=13}] hotbar.0 with minecraft:stone_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Club"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=13}] hotbar.0 with minecraft:stone_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Skeletal Hand"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=13,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=13}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=13,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:wither_skeleton_spawn_egg",minecraft:custom_name={bold:1b,color:"dark_aqua",text:"Dread"}] 1

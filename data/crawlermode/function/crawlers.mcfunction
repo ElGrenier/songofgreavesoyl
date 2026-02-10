@@ -266,14 +266,14 @@ title @a[scores={crawlers_end=60..}] title ["",{text:"-= ",color:"green"},{text:
 execute as @p[scores={crawlers_end=99}] at @s run playsound ui.toast.challenge_complete master @a[distance=..30] ~ ~ ~ 3 1
 
 execute as @p[scores={crawlers_end=1}] at @s run function crawlermode:reset
-execute as @p[scores={crawlers_end=1}] at @s run function main:reset
+execute as @p[scores={crawlers_end=1}] at @s run function reset:reset
 
 scoreboard players add @a[scores={crawlers_end=..-1}] crawlers_end 1
 title @a[scores={crawlers_end=..-60}] title ["",{text:"-= ",color:"red"},{text:"Defeat",bold:true,color:"dark_red"},{text:" =-",color:"red"}]
 execute as @p[scores={crawlers_end=-99}] at @s run playsound entity.wither.ambient master @a[distance=..30] ~ ~ ~ 3 0.3
 
 execute as @p[scores={crawlers_end=-1}] at @s run function crawlermode:reset
-execute as @p[scores={crawlers_end=-1}] at @s run function main:reset
+execute as @p[scores={crawlers_end=-1}] at @s run function reset:reset
 
 #campfire destroyed
 execute if score -floor crawlers_floor matches 1.. if score -HP campfire_hp matches -100..0 run scoreboard players set @a[scores={char=1..}] crawlers_end -100

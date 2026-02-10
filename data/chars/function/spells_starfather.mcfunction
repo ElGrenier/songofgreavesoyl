@@ -137,7 +137,7 @@ execute at @e[tag=meteor] run particle dust{color:[0.38,0.96,0.86],scale:1.0f} ~
 execute as @e[tag=meteor,scores={s1_timer=..61}] at @s run tp @s ~ ~-0.5 ~
 
 
-execute at @e[tag=meteor,scores={s1_timer=60}] as @e[tag=valid_spell_target,distance=..3] unless score @s Team = @p[scores={char=60}] Team run damage @s 8 generic by @p[scores={char=60}] from @p[scores={char=60}]
+execute at @e[tag=meteor,scores={s1_timer=60}] as @e[tag=valid_spell_target,distance=..3] unless score @s Team = @p[scores={char=60}] Team run damage @s 10 generic by @p[scores={char=60}] from @p[scores={char=60}]
 execute at @e[tag=meteor,scores={s1_timer=60}] as @e[tag=valid_spell_target,distance=..3] unless score @s Team = @p[scores={char=60}] Team run effect give @s blindness 1 1 true
 
 

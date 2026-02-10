@@ -84,7 +84,7 @@ execute positioned 145 22 -105 run function core:lobby/char_choose/choose_71alte
 execute positioned 138 22 -105 run function core:lobby/char_choose/choose_72caretaker
 
 execute positioned 187 28 -128 run function core:lobby/char_choose/choose_73conductor
-execute positioned 180 28 -128 run function core:lobby/char_choose/choose_74
+execute positioned 180 28 -128 run function core:lobby/char_choose/choose_74fortress
 execute positioned 173 28 -128 run function core:lobby/char_choose/choose_75
 execute positioned 166 28 -128 run function core:lobby/char_choose/choose_76
 execute positioned 159 28 -128 run function core:lobby/char_choose/choose_77

@@ -89,16 +89,27 @@ execute at @a[scores={char=20,s2_timer=1..5}] at @e[tag=venomsplit] run particle
 execute at @a[scores={char=20,s2_timer=5..10}] at @e[tag=venomsplit] run particle composter ~ ~ ~ 0.4 0.3 0.4 0.01 7 force
 execute at @a[scores={char=20,s2_timer=10..15}] at @e[tag=venomsplit] run particle composter ~ ~ ~ 0.7 0.3 0.7 0.01 10 force
 
-execute as @a[tag=weaver_venom,scores={HP=4..7}] run damage @s 1 generic by @p[scores={char=20}] from @p[scores={char=20}]
-execute as @a[tag=weaver_venom,scores={HP=8..11}] run damage @s 2 generic by @p[scores={char=20}] from @p[scores={char=20}]
-execute as @a[tag=weaver_venom,scores={HP=12..15}] run damage @s 3 generic by @p[scores={char=20}] from @p[scores={char=20}]
-execute as @a[tag=weaver_venom,scores={HP=16..19}] run damage @s 4 generic by @p[scores={char=20}] from @p[scores={char=20}]
-execute as @a[tag=weaver_venom,scores={HP=20..23}] run damage @s 5 generic by @p[scores={char=20}] from @p[scores={char=20}]
-execute as @a[tag=weaver_venom,scores={HP=24..27}] run damage @s 6 generic by @p[scores={char=20}] from @p[scores={char=20}]
-execute as @a[tag=weaver_venom,scores={HP=28..31}] run damage @s 7 generic by @p[scores={char=20}] from @p[scores={char=20}]
-execute as @a[tag=weaver_venom,scores={HP=32..35}] run damage @s 8 generic by @p[scores={char=20}] from @p[scores={char=20}]
-execute as @a[tag=weaver_venom,scores={HP=36..39}] run damage @s 9 generic by @p[scores={char=20}] from @p[scores={char=20}]
-execute as @a[tag=weaver_venom,scores={HP=40..}] run damage @s 10 generic by @p[scores={char=20}] from @p[scores={char=20}]
+execute at @a[tag=weaver_venom] run particle entity_effect{color:[0.0,0.67,0.0,1.0]} ~ ~0.8 ~ 0.3 0.6 0.3 0 20
+execute as @a[tag=weaver_venom,scores={HP=4..7}] run damage @s 1 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=8..11}] run damage @s 2 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=12..15}] run damage @s 3 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=16..19}] run damage @s 4 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=20..23}] run damage @s 5 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=24..27}] run damage @s 6 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=28..31}] run damage @s 7 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=32..35}] run damage @s 8 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=36..39}] run damage @s 9 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=40..43}] run damage @s 10 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=44..47}] run damage @s 11 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=48..51}] run damage @s 12 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=52..55}] run damage @s 13 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=56..59}] run damage @s 14 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=60..63}] run damage @s 15 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=64..67}] run damage @s 16 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=68..71}] run damage @s 17 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=72..75}] run damage @s 18 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=76..79}] run damage @s 19 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
+execute as @a[tag=weaver_venom,scores={HP=80..}] run damage @s 20 dragon_breath by @p[scores={char=20}] from @p[scores={char=20}]
 
 tag @a remove weaver_venom
 
@@ -114,11 +125,10 @@ scoreboard players set @a[scores={s2_timer=181..,char=20}] s2_timer 0
 
 
 execute as @a[scores={char=20}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_hoe",Slot:0b}]}] run clear @a[scores={char=20}] golden_hoe
-item replace entity @a[scores={char=20}] hotbar.0 with minecraft:golden_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Fang"},custom_data={weaver:1},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=20}] hotbar.0 with golden_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Fang"},custom_data={weaver:1},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=20,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=20}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=20,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:cobweb",minecraft:custom_name={text:"Weaver's Snare",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:binding_curse":1}] 1
 
 execute as @a[scores={char=20,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=20}] warped_fungus_on_a_stick[custom_data={s2:1}]
-execute unless entity @e[tag=1984] run item replace entity @a[scores={char=20,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:spider_eye",minecraft:custom_name={text:"Kiss of Death",color:"dark_aqua",bold:1b}] 1
-execute if entity @e[tag=1984] run item replace entity @a[scores={char=20,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:spider_eye",minecraft:custom_name={text:"Venom Spit",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=20,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:spider_eye",minecraft:custom_name={text:"Venom Spit",color:"dark_aqua",bold:1b}] 1

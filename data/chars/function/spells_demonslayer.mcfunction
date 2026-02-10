@@ -33,7 +33,7 @@ execute at @a[scores={char=1,s1_timer=6}] as @e[tag=slayer_slash] run data merge
 
 execute at @e[tag=slayer_slash] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=1}] Team run tag @s add slayer_slashed
 
-scoreboard players set @e[tag=slayer_slashed] CC_disarm 40
+scoreboard players set @e[tag=slayer_slashed] CC_disarm 30
 damage @e[tag=slayer_slashed,limit=1] 4 generic by @p[scores={char=1}] from @p[scores={char=1}]
 execute if entity @e[tag=slayer_slashed] run kill @e[tag=slayer_slash]
 tag @e remove slayer_slashed
@@ -88,8 +88,8 @@ scoreboard players add @a[scores={s2_timer=1..,char=1}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=261..,char=1}] s2_timer 0
 
 execute as @a[scores={char=1,CC_disarm=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b}]}] run clear @a[scores={char=1}] netherite_sword
-item replace entity @a[scores={char=1,HP=11..,CC_disarm=0}] hotbar.0 with netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Sword"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
-item replace entity @a[scores={char=1,HP=..10,CC_disarm=0}] hotbar.0 with netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Sword"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=1,HP=11..,CC_disarm=0}] hotbar.0 with netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Sword"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=1,HP=..10,CC_disarm=0}] hotbar.0 with netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Sword"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=1,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=1}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=1,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:glow_item_frame",minecraft:custom_name={bold:1b,color:"dark_aqua",text:"Breaking Blow"},minecraft:max_damage=1,minecraft:enchantments={"minecraft:power":1}] 1

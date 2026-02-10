@@ -160,7 +160,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=3}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=261..,char=3}] s2_timer 0
 
 execute as @a[scores={char=3,CC_disarm=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_sword",Slot:0b}]}] run clear @a[scores={char=3}] diamond_sword
-item replace entity @a[scores={char=3,CC_disarm=0}] hotbar.0 with diamond_sword[minecraft:custom_name=[{color:"gray",text:"\""},{bold:1b,color:"gray",text:"Rimebreaker"},{color:"gray",text:"\""}],minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=3,CC_disarm=0}] hotbar.0 with diamond_sword[minecraft:custom_name=[{color:"gray",text:"\""},{bold:1b,color:"gray",text:"Rimebreaker"},{color:"gray",text:"\""}],minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=3,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=3}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=3,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:white_candle",minecraft:custom_name={text:"Chillrend",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:frost_walker":1}] 1

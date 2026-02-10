@@ -121,7 +121,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=54}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=501..,char=54}] s2_timer 0
 
 execute as @a[scores={char=54}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:wooden_pickaxe",Slot:0b}]}] run clear @a[scores={char=54}] wooden_pickaxe
-item replace entity @a[scores={char=54}] hotbar.0 with minecraft:wooden_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Rusted Hook"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],custom_data={shaman:1},minimum_attack_charge=1] 1
+item replace entity @a[scores={char=54}] hotbar.0 with minecraft:wooden_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Rusted Hook"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],custom_data={shaman:1},minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=54,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=54}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=54,s1_timer=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Breath of the Deep",color:"dark_aqua",bold:1b},item_model="blue_stained_glass",custom_data={s1:1}]

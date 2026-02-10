@@ -85,7 +85,7 @@ effect give @a[scores={char=9,s1_timer=1..2}] resistance 2 100 true
 effect give @a[scores={char=9,s1_timer=1..2}] weakness 2 100 true
 scoreboard players set @a[scores={char=9,s1_timer=1..2}] CC_intangible 8
 execute store result entity @e[tag=death_from_below_thing,limit=1] Rotation[1] float 1 run clear
-execute if entity @e[tag=death_from_below_thing] run item replace entity @a[scores={char=9}] armor.head with air
+execute if entity @e[tag=death_from_below_thing] run item replace entity @a[scores={char=9}] armor.head with stone[item_model=air,minecraft:custom_name="aaaa",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:10.0d,operation:"add_value",slot:"head"}]] 1
 execute if entity @e[tag=death_from_below_thing] run item replace entity @a[scores={char=9}] armor.chest with air
 execute if entity @e[tag=death_from_below_thing] run item replace entity @a[scores={char=9}] armor.legs with air
 execute if entity @e[tag=death_from_below_thing] run item replace entity @a[scores={char=9}] armor.feet with :air
@@ -116,7 +116,7 @@ tag @a[scores={char=9,s1_timer=10..12}] remove invisible
 execute at @e[tag=death_from_below_thing] as @p[distance=..1.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=9}] Team run playsound entity.cat.hiss master @a[distance=..10] ~ ~ ~ 1 0.8 1
 execute at @e[tag=death_from_below_thing] as @p[distance=..1.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=9}] Team run effect give @s slowness 2 3
 execute at @e[tag=death_from_below_thing] as @p[distance=..1.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=9}] Team run damage @s 5 generic by @p[scores={char=9}] from @p[scores={char=9}]
-execute at @e[tag=death_from_below_thing] as @p[distance=..1.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=9}] Team run item replace entity @a[scores={char=9}] hotbar.0 with minecraft:wooden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Tail"},minecraft:damage=54,minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+execute at @e[tag=death_from_below_thing] as @p[distance=..1.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=9}] Team run item replace entity @a[scores={char=9}] hotbar.0 with minecraft:wooden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Tail"},minecraft:damage=54,minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 execute at @e[tag=death_from_below_thing] as @p[distance=..1.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=9}] Team run kill @e[tag=death_from_below_thing]
 
 
@@ -165,17 +165,17 @@ execute at @e[tag=sandstorm_source] run particle block{block_state:{Name:"minecr
 
 execute at @e[tag=sandstorm_source] run tag @a[distance=..6,scores={char=9}] add invisible
 execute at @e[tag=sandstorm_source] run effect give @a[distance=..6,scores={char=9}] invisibility 999 0 true
-execute at @e[tag=sandstorm_source] run item replace entity @a[distance=..6,scores={char=9}] armor.head with minecraft:air
-execute at @e[tag=sandstorm_source] run item replace entity @a[distance=..6,scores={char=9}] armor.chest with minecraft:air
-execute at @e[tag=sandstorm_source] run item replace entity @a[distance=..6,scores={char=9}] armor.legs with minecraft:air
-execute at @e[tag=sandstorm_source] run item replace entity @a[distance=..6,scores={char=9}] armor.feet with minecraft:air
+execute at @e[tag=sandstorm_source] run item replace entity @a[distance=..6,scores={char=9}] armor.head with stone[item_model=air,minecraft:custom_name="aaaa",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:10.0d,operation:"add_value",slot:"head"}]] 1
+execute at @e[tag=sandstorm_source] run item replace entity @a[distance=..6,scores={char=9}] armor.chest with air
+execute at @e[tag=sandstorm_source] run item replace entity @a[distance=..6,scores={char=9}] armor.legs with air
+execute at @e[tag=sandstorm_source] run item replace entity @a[distance=..6,scores={char=9}] armor.feet with air
 
 effect clear @a[scores={char=9,CC_silence=1..}] minecraft:invisibility
 tag @a[scores={char=9,CC_silence=1..}] remove invisible
 execute at @e[tag=sandstorm_source] run tag @a[distance=6.1..,scores={char=9}] remove invisible
-execute at @e[tag=sandstorm_source] run effect clear @a[distance=6.1..,scores={char=9}] minecraft:invisibility
+execute at @e[tag=sandstorm_source] run effect clear @a[distance=6.1..,scores={char=9}] invisibility
 
-execute at @a[scores={char=9,s2_timer=120}] run effect clear @a[scores={char=9}] minecraft:invisibility
+execute at @a[scores={char=9,s2_timer=120}] run effect clear @a[scores={char=9}] invisibility
 tag @a[scores={char=9,s2_timer=120}] remove invisible
 
 execute as @e[tag=sandstorm_source] at @s run rotate @s ~6 ~
@@ -204,7 +204,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=9}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=441..,char=9}] s2_timer 0
 
 execute as @a[scores={char=9}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:copper_hoe",Slot:0b}]}] run clear @a[scores={char=9}] copper_hoe
-item replace entity @a[scores={char=9}] hotbar.0 with copper_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Tail"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=9}] hotbar.0 with copper_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Tail"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=9,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=9}] minecraft:carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=9,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:spectral_arrow",minecraft:custom_name={text:"Death from Below",color:"dark_aqua",bold:1b}] 1

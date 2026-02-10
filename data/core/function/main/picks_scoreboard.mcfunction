@@ -76,7 +76,8 @@ execute if entity @e[tag=ban_2] run scoreboard players set Huntress Picks -3
 execute unless entity @a[scores={char=2}] unless entity @e[tag=ban_2] run scoreboard players reset Huntress Picks
 
 
-scoreboard players display name picks_paladin Picks "Frozen Paladin"
+execute if entity @a[scores={char=3}] run scoreboard players display name picks_paladin Picks "Frozen Paladin"
+execute if entity @e[tag=ban_3] run scoreboard players display name picks_paladin Picks "Frozen Paladin"
 execute if entity @a[scores={char=3},team=purple] run scoreboard players set picks_paladin Picks 1
 execute if entity @a[scores={char=3},team=yellow] run scoreboard players set picks_paladin Picks -1
 execute if entity @a[scores={char=3},team=ffa] run scoreboard players set picks_paladin Picks -1
@@ -101,7 +102,8 @@ execute if entity @a[scores={char=6},team=ffa] run scoreboard players set Guide 
 execute if entity @e[tag=ban_6] run scoreboard players set Guide Picks -3
 execute unless entity @a[scores={char=6}] unless entity @e[tag=ban_6] run scoreboard players reset Guide Picks
 
-scoreboard players display name picks_dragon Picks "Red-Eyes Dragon"
+execute if entity @a[scores={char=8}] run scoreboard players display name picks_dragon Picks "Red-Eyes Dragon"
+execute if entity @e[tag=ban_8] run scoreboard players display name picks_dragon Picks "Red-Eyes Dragon"
 execute if entity @a[scores={char=7},team=purple] run scoreboard players set picks_dragon Picks 1
 execute if entity @a[scores={char=7},team=yellow] run scoreboard players set picks_dragon Picks -1
 execute if entity @a[scores={char=7},team=ffa] run scoreboard players set picks_dragon Picks -1
@@ -114,7 +116,8 @@ execute if entity @a[scores={char=8},team=ffa] run scoreboard players set Tricks
 execute if entity @e[tag=ban_8] run scoreboard players set Trickstress Picks -3
 execute unless entity @a[scores={char=8}] unless entity @e[tag=ban_8] run scoreboard players reset Trickstress Picks
 
-scoreboard players display name picks_crawler Picks "Sand Crawler"
+execute if entity @a[scores={char=9}] run scoreboard players display name picks_crawler Picks "Sand Crawler"
+execute if entity @e[tag=ban_9] run scoreboard players display name picks_crawler Picks "Sand Crawler"
 execute if entity @a[scores={char=9},team=purple] run scoreboard players set picks_crawler Picks 1
 execute if entity @a[scores={char=9},team=yellow] run scoreboard players set picks_crawler Picks -1
 execute if entity @a[scores={char=9},team=ffa] run scoreboard players set picks_crawler Picks -1
@@ -127,7 +130,8 @@ execute if entity @a[scores={char=10},team=ffa] run scoreboard players set Krake
 execute if entity @e[tag=ban_10] run scoreboard players set Kraken Picks -3
 execute unless entity @a[scores={char=10}] unless entity @e[tag=ban_10] run scoreboard players reset Kraken Picks
 
-scoreboard players display name picks_bomb Picks "Bomb Master"
+execute if entity @a[scores={char=11}] run scoreboard players display name picks_bomb Picks "Bomb Master"
+execute if entity @e[tag=ban_11] run scoreboard players display name picks_bomb Picks "Bomb Master"
 execute if entity @a[scores={char=11},team=purple] run scoreboard players set picks_bomb Picks 1
 execute if entity @a[scores={char=11},team=yellow] run scoreboard players set picks_bomb Picks -1
 execute if entity @a[scores={char=11},team=ffa] run scoreboard players set picks_bomb Picks -1
@@ -135,7 +139,8 @@ execute if entity @e[tag=ban_11] run scoreboard players set picks_bomb Picks -3
 execute unless entity @a[scores={char=11}] unless entity @e[tag=ban_11] run scoreboard players reset picks_bomb Picks
 
 
-scoreboard players display name picks_slime Picks "Slime Core"
+execute if entity @a[scores={char=12}] run scoreboard players display name picks_slime Picks "Slime Core"
+execute if entity @e[tag=ban_12] run scoreboard players display name picks_slime Picks "Slime Core"
 execute if entity @a[scores={char=12},team=purple] run scoreboard players set picks_slime Picks 1
 execute if entity @a[scores={char=12},team=yellow] run scoreboard players set picks_slime Picks -1
 execute if entity @a[scores={char=12},team=ffa] run scoreboard players set picks_slime Picks -1
@@ -143,7 +148,8 @@ execute if entity @e[tag=ban_12] run scoreboard players set picks_slime Picks -3
 execute unless entity @a[scores={char=12}] unless entity @e[tag=ban_12] run scoreboard players reset picks_slime Picks
 
 
-scoreboard players display name picks_skeleton Picks "Skeletal Phantom"
+execute if entity @a[scores={char=13}] run scoreboard players display name picks_skeleton Picks "Skeletal Phantom"
+execute if entity @e[tag=ban_13] run scoreboard players display name picks_skeleton Picks "Skeletal Phantom"
 execute if entity @a[scores={char=13},team=purple] run scoreboard players set picks_skeleton Picks 1
 execute if entity @a[scores={char=13},team=yellow] run scoreboard players set picks_skeleton Picks -1
 execute if entity @a[scores={char=13},team=ffa] run scoreboard players set picks_skeleton Picks -1
@@ -151,7 +157,8 @@ execute if entity @e[tag=ban_13] run scoreboard players set picks_skeleton Picks
 execute unless entity @a[scores={char=13}] unless entity @e[tag=ban_13] run scoreboard players reset picks_skeleton Picks
 
 
-scoreboard players display name picks_skyqueen Picks "Sky Queen"
+execute if entity @a[scores={char=14}] run scoreboard players display name picks_skyqueen Picks "Sky Queen"
+execute if entity @e[tag=ban_14] run scoreboard players display name picks_skyqueen Picks "Sky Queen"
 execute if entity @a[scores={char=14},team=purple] run scoreboard players set picks_skyqueen Picks 1
 execute if entity @a[scores={char=14},team=yellow] run scoreboard players set picks_skyqueen Picks -1
 execute if entity @a[scores={char=14},team=ffa] run scoreboard players set picks_skyqueen Picks -1
@@ -165,7 +172,8 @@ execute if entity @e[tag=ban_15] run scoreboard players set Shard Picks -3
 execute unless entity @a[scores={char=15}] unless entity @e[tag=ban_15] run scoreboard players reset Shard Picks
 
 
-scoreboard players display name picks_treespirit Picks "Tree Spirit"
+execute if entity @a[scores={char=16}] run scoreboard players display name picks_treespirit Picks "Tree Spirit"
+execute if entity @e[tag=ban_16] run scoreboard players display name picks_treespirit Picks "Tree Spirit"
 execute if entity @a[scores={char=16},team=purple] run scoreboard players set picks_treespirit Picks 1
 execute if entity @a[scores={char=16},team=yellow] run scoreboard players set picks_treespirit Picks -1
 execute if entity @a[scores={char=16},team=ffa] run scoreboard players set picks_treespirit Picks -1
@@ -184,7 +192,8 @@ execute if entity @a[scores={char=18},team=ffa] run scoreboard players set Golem
 execute if entity @e[tag=ban_18] run scoreboard players set Golem Picks -3
 execute unless entity @a[scores={char=18}] unless entity @e[tag=ban_18] run scoreboard players reset Golem Picks
 
-scoreboard players display name picks_lunatic Picks "Lunatic and her Demon"
+execute if entity @a[scores={char=19}] run scoreboard players display name picks_lunatic Picks "Lunatic and her Demon"
+execute if entity @e[tag=ban_19] run scoreboard players display name picks_lunatic Picks "Lunatic and her Demon"
 execute if entity @a[scores={char=19},team=purple] run scoreboard players set picks_lunatic Picks 1
 execute if entity @a[scores={char=19},team=yellow] run scoreboard players set picks_lunatic Picks -1
 execute if entity @a[scores={char=19},team=ffa] run scoreboard players set picks_lunatic Picks -1
@@ -217,7 +226,8 @@ execute if entity @a[scores={char=23},team=ffa] run scoreboard players set Prowl
 execute if entity @e[tag=ban_23] run scoreboard players set Prowler Picks -3
 execute unless entity @a[scores={char=23}] unless entity @e[tag=ban_23] run scoreboard players reset Prowler Picks
 
-scoreboard players display name picks_sandwitch Picks "Sand Witch"
+execute if entity @a[scores={char=24}] run scoreboard players display name picks_sandwitch Picks "Sand Witch"
+execute if entity @e[tag=ban_24] run scoreboard players display name picks_sandwitch Picks "Sand Witch"
 execute if entity @a[scores={char=24},team=purple] run scoreboard players set picks_sandwitch Picks 1
 execute if entity @a[scores={char=24},team=yellow] run scoreboard players set picks_sandwitch Picks -1
 execute if entity @a[scores={char=24},team=ffa] run scoreboard players set picks_sandwitch Picks -1
@@ -248,20 +258,14 @@ execute if entity @a[scores={char=28},team=ffa] run scoreboard players set Opera
 execute if entity @e[tag=ban_28] run scoreboard players set Operator Picks -3
 execute unless entity @a[scores={char=28}] unless entity @e[tag=ban_28] run scoreboard players reset Operator Picks
 
-scoreboard players display name picks_parasite Picks "Parasite Host"
-execute if entity @a[scores={char=29},team=purple] run scoreboard players set picks_parasite Picks 1
-execute if entity @a[scores={char=29},team=yellow] run scoreboard players set picks_parasite Picks -1
-execute if entity @a[scores={char=29},team=ffa] run scoreboard players set picks_parasite Picks -1
-execute if entity @e[tag=ban_29] run scoreboard players set picks_parasite Picks -3
-execute unless entity @a[scores={char=29}] unless entity @e[tag=ban_29] run scoreboard players reset picks_parasite Picks
-
 execute if entity @a[scores={char=30},team=purple] run scoreboard players set Engineer Picks 1
 execute if entity @a[scores={char=30},team=yellow] run scoreboard players set Engineer Picks -1
 execute if entity @a[scores={char=30},team=ffa] run scoreboard players set Engineer Picks -1
 execute if entity @e[tag=ban_30] run scoreboard players set Engineer Picks -3
 execute unless entity @a[scores={char=30}] unless entity @e[tag=ban_30] run scoreboard players reset Engineer Picks
 
-scoreboard players display name picks_drowned Picks "Drowned Captain"
+execute if entity @a[scores={char=31}] run scoreboard players display name picks_drowned Picks "Drowned Captain"
+execute if entity @e[tag=ban_31] run scoreboard players display name picks_drowned Picks "Drowned Captain"
 execute if entity @a[scores={char=31},team=purple] run scoreboard players set picks_drowned Picks 1
 execute if entity @a[scores={char=31},team=yellow] run scoreboard players set picks_drowned Picks -1
 execute if entity @a[scores={char=31},team=ffa] run scoreboard players set picks_drowned Picks -1
@@ -294,7 +298,8 @@ execute if entity @a[scores={char=35},team=ffa] run scoreboard players set Pries
 execute if entity @e[tag=ban_35] run scoreboard players set Priestess Picks -3
 execute unless entity @a[scores={char=35}] unless entity @e[tag=ban_35] run scoreboard players reset Priestess Picks
 
-scoreboard players display name picks_mazemaster Picks "Maze Master"
+execute if entity @a[scores={char=36}] run scoreboard players display name picks_mazemaster Picks "Maze Master"
+execute if entity @e[tag=ban_36] run scoreboard players display name picks_mazemaster Picks "Maze Master"
 execute if entity @a[scores={char=36},team=purple] run scoreboard players set picks_mazemaster Picks 1
 execute if entity @a[scores={char=36},team=yellow] run scoreboard players set picks_mazemaster Picks -1
 execute if entity @a[scores={char=36},team=ffa] run scoreboard players set picks_mazemaster Picks -1
@@ -341,14 +346,16 @@ execute if entity @a[scores={char=42},team=ffa] run scoreboard players set Frige
 execute if entity @e[tag=ban_42] run scoreboard players set Friged Picks -3
 execute unless entity @a[scores={char=42}] unless entity @e[tag=ban_42] run scoreboard players reset Friged Picks
 
-scoreboard players display name picks_iceworm Picks "Ice Worm"
+execute if entity @a[scores={char=43}] run scoreboard players display name picks_iceworm Picks "Ice Worm"
+execute if entity @e[tag=ban_43] run scoreboard players display name picks_iceworm Picks "Ice Worm"
 execute if entity @a[scores={char=43},team=purple] run scoreboard players set picks_iceworm Picks 1
 execute if entity @a[scores={char=43},team=yellow] run scoreboard players set picks_iceworm Picks -1
 execute if entity @a[scores={char=43},team=ffa] run scoreboard players set picks_iceworm Picks -1
 execute if entity @e[tag=ban_43] run scoreboard players set picks_iceworm Picks -3
 execute unless entity @a[scores={char=43}] unless entity @e[tag=ban_40] run scoreboard players reset picks_iceworm Picks
 
-scoreboard players display name picks_raider Picks "Desert Raider"
+execute if entity @a[scores={char=44}] run scoreboard players display name picks_raider Picks "Desert Raider"
+execute if entity @e[tag=ban_44] run scoreboard players display name picks_raider Picks "Desert Raider"
 execute if entity @a[scores={char=44},team=purple] run scoreboard players set picks_raider Picks 1
 execute if entity @a[scores={char=44},team=yellow] run scoreboard players set picks_raider Picks -1
 execute if entity @a[scores={char=44},team=ffa] run scoreboard players set picks_raider Picks -1
@@ -385,7 +392,8 @@ execute if entity @a[scores={char=49},team=ffa] run scoreboard players set Aberr
 execute if entity @e[tag=ban_49] run scoreboard players set Aberration Picks -3
 execute unless entity @a[scores={char=49}] unless entity @e[tag=ban_49] run scoreboard players reset Aberration Picks
 
-scoreboard players display name picks_chaos Picks "Crawling Chaos"
+execute if entity @a[scores={char=50}] run scoreboard players display name picks_chaos Picks "Crawling Chaos"
+execute if entity @e[tag=ban_50] run scoreboard players display name picks_chaos Picks "Crawling Chaos"
 execute if entity @a[scores={char=50},team=purple] run scoreboard players set picks_chaos Picks 1
 execute if entity @a[scores={char=50},team=yellow] run scoreboard players set picks_chaos Picks -1
 execute if entity @a[scores={char=50},team=ffa] run scoreboard players set picks_chaos Picks -1
@@ -405,7 +413,8 @@ execute if entity @e[tag=ban_52] run scoreboard players set Sandbender Picks -3
 execute unless entity @a[scores={char=52}] unless entity @e[tag=ban_52] run scoreboard players reset Sandbender Picks
 
 
-scoreboard players display name picks_stitchedsiren Picks "Stitched Siren"
+execute if entity @a[scores={char=53}] run scoreboard players display name picks_stitchedsiren Picks "Stitched Siren"
+execute if entity @e[tag=ban_53] run scoreboard players display name picks_stitchedsiren Picks "Stitched Siren"
 execute if entity @a[scores={char=53},team=purple] run scoreboard players set picks_stitchedsiren Picks 1
 execute if entity @a[scores={char=53},team=yellow] run scoreboard players set picks_stitchedsiren Picks -1
 execute if entity @a[scores={char=53},team=ffa] run scoreboard players set picks_stitchedsiren Picks -1
@@ -425,7 +434,8 @@ execute if entity @e[tag=ban_55] run scoreboard players set Shadowdancer Picks -
 execute unless entity @a[scores={char=55}] unless entity @e[tag=ban_55] run scoreboard players reset Shadowdancer Picks
 
 
-scoreboard players display name picks_smokebride Picks "Smoke Bride"
+execute if entity @a[scores={char=56}] run scoreboard players display name picks_smokebride Picks "Smoke Bride"
+execute if entity @e[tag=ban_56] run scoreboard players display name picks_smokebride Picks "Smoke Bride"
 execute if entity @a[scores={char=56},team=purple] run scoreboard players set picks_smokebride Picks 1
 execute if entity @a[scores={char=56},team=yellow] run scoreboard players set picks_smokebride Picks -1
 execute if entity @a[scores={char=56},team=ffa] run scoreboard players set picks_smokebride Picks -1
@@ -445,7 +455,8 @@ execute if entity @e[tag=ban_58] run scoreboard players set Purifier Picks -3
 execute unless entity @a[scores={char=58}] unless entity @e[tag=ban_58] run scoreboard players reset Purifier Picks
 
 
-scoreboard players display name picks_redmold Picks "Red Mold"
+execute if entity @a[scores={char=59}] run scoreboard players display name picks_redmold Picks "Red Mold"
+execute if entity @e[tag=ban_59] run scoreboard players display name picks_redmold Picks "Red Mold"
 execute if entity @a[scores={char=59},team=purple] run scoreboard players set picks_redmold Picks 1
 execute if entity @a[scores={char=59},team=yellow] run scoreboard players set picks_redmold Picks -1
 execute if entity @a[scores={char=59},team=ffa] run scoreboard players set picks_redmold Picks -1
@@ -453,7 +464,8 @@ execute if entity @e[tag=ban_59] run scoreboard players set picks_redmold Picks 
 execute unless entity @a[scores={char=59}] unless entity @e[tag=ban_59] run scoreboard players reset picks_redmold Picks
 
 
-scoreboard players display name picks_starfather Picks "Father of Stars"
+execute if entity @a[scores={char=60}] run scoreboard players display name picks_starfather Picks "Father of Stars"
+execute if entity @e[tag=ban_60] run scoreboard players display name picks_starfather Picks "Father of Stars"
 execute if entity @a[scores={char=60},team=purple] run scoreboard players set picks_starfather Picks 1
 execute if entity @a[scores={char=60},team=yellow] run scoreboard players set picks_starfather Picks -1
 execute if entity @a[scores={char=60},team=ffa] run scoreboard players set picks_starfather Picks -1
@@ -467,7 +479,8 @@ execute if entity @e[tag=ban_61] run scoreboard players set Cryomancer Picks -3
 execute unless entity @a[scores={char=61}] unless entity @e[tag=ban_61] run scoreboard players reset Cryomancer Picks
 
 
-scoreboard players display name picks_thornfiend Picks "Thorn Fiend"
+execute if entity @a[scores={char=62}] run scoreboard players display name picks_thornfiend Picks "Thorn Fiend"
+execute if entity @e[tag=ban_62] run scoreboard players display name picks_thornfiend Picks "Thorn Fiend"
 execute if entity @a[scores={char=62},team=purple] run scoreboard players set picks_thornfiend Picks 1
 execute if entity @a[scores={char=62},team=yellow] run scoreboard players set picks_thornfiend Picks -1
 execute if entity @a[scores={char=62},team=ffa] run scoreboard players set picks_thornfiend Picks -1
@@ -482,7 +495,8 @@ execute if entity @e[tag=ban_63] run scoreboard players set Druid Picks -3
 execute unless entity @a[scores={char=63}] unless entity @e[tag=ban_63] run scoreboard players reset Druid Picks
 
 
-scoreboard players display name picks_scarletlady Picks "Scarlet Lady"
+execute if entity @a[scores={char=64}] run scoreboard players display name picks_scarletlady Picks "Scarlet Lady"
+execute if entity @e[tag=ban_64] run scoreboard players display name picks_scarletlady Picks "Scarlet Lady"
 execute if entity @a[scores={char=64},team=purple] run scoreboard players set picks_scarletlady Picks 1
 execute if entity @a[scores={char=64},team=yellow] run scoreboard players set picks_scarletlady Picks -1
 execute if entity @a[scores={char=64},team=ffa] run scoreboard players set picks_scarletlady Picks -1

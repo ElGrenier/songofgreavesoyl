@@ -171,6 +171,10 @@ scoreboard players set @s nectar 0
 scoreboard players set @s passive_conductor 10
 scoreboard players set @s shard_fragments_cd 1
 scoreboard players set @s shard_fragments 3
+scoreboard players set @s heat_shield_power 5
+scoreboard players set @s heat_shield_timer 0
+scoreboard players set @s heat_shields_cooldown 0
+scoreboard players set @s fortress_shields 0
 
 
 scoreboard players set @s red 0

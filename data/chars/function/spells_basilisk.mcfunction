@@ -48,10 +48,10 @@ effect give @p[scores={char=39,s1_timer=1..10}] resistance 1 100 true
 effect give @p[scores={char=39,s1_timer=1..10}] weakness 1 100 true
 scoreboard players set @a[scores={char=39,s1_timer=1..10}] CC_intangible 20
 execute store result entity @e[tag=burrowstrike_thing,limit=1] Rotation[1] float 1 run clear
-#execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.head with air
-#execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.chest with air
-#execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.legs with air
-#execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.feet with air
+execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.head with stone[item_model=air,minecraft:custom_name="aaaa",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:26.0d,operation:"add_value",slot:"head"}]] 1
+execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.chest with air
+execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.legs with air
+execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.feet with air
 tp @p[scores={char=39}] @e[tag=burrowstrike_thing,limit=1]
 
 
@@ -67,7 +67,8 @@ effect give @a[tag=burrowstrike_knocked_up] weakness 1 100
 tag @a remove burrowstrike_knocked_up
 
 execute as @e[tag=burrowstrike_thing] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
-execute as @e[tag=burrowstrike_thing] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
+#execute as @e[tag=burrowstrike_thing] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
+execute as @e[tag=burrowstrike_thing] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
 execute as @e[tag=burrowstrike_thing] at @s run tp @s ^ ^ ^0.6
 execute as @e[tag=burrowstrike_thing] at @s if block ~ ~-1 ~ #minecraft:dash run tp @s ~ ~-0.5 ~
 execute as @e[tag=burrowstrike_thing] at @s if block ~ ~-0.5 ~ #minecraft:dash run tp @s ~ ~-0.5 ~
@@ -157,7 +158,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=39}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=361..,char=39}] s2_timer 0
 
 execute as @a[scores={char=39}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_shovel",Slot:0b}]}] run clear @a[scores={char=39}] minecraft:stone_shovel
-item replace entity @a[scores={char=39}] hotbar.0 with minecraft:stone_shovel[custom_data={basilisk:1},minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=39}] hotbar.0 with minecraft:stone_shovel[custom_data={basilisk:1},minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=39,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=39}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=39,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:iron_horse_armor",minecraft:custom_name={text:"Burrowstrike",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:protection":1}] 1

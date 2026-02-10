@@ -112,7 +112,7 @@ execute at @a[scores={char=10,s1_timer=15..25}] run kill @e[tag=kraken_tentacle]
 execute at @a[scores={char=10,s1_timer=15..25}] run kill @e[tag=kraken_tentacle_visual_core]
 execute at @a[scores={char=10,s1_timer=15..25}] run kill @e[tag=tentacle_visuals_1]
 
-execute at @e[tag=kraken_tentacle] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=10}] Team run tag @s add kraken_slammed
+execute at @e[tag=kraken_tentacle] positioned ~-0.75 ~-0.75 ~-0.75 as @e[dx=0.5,dy=0.5,dz=0.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=10}] Team run tag @s add kraken_slammed
 
 effect give @e[tag=kraken_slammed] blindness 2 1 true
 damage @e[tag=kraken_slammed,limit=1] 6 generic by @p[scores={char=10}] from @p[scores={char=10}]
@@ -202,7 +202,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=10}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=401..,char=10}] s2_timer 0
 
 execute as @a[scores={char=10}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run clear @a[scores={char=10}] minecraft:diamond_shovel
-item replace entity @a[scores={char=10}] hotbar.0 with minecraft:diamond_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Tentacle"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=10}] hotbar.0 with minecraft:diamond_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Tentacle"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 
 execute as @a[scores={char=10,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=10}] carrot_on_a_stick[custom_data={s1:1}]

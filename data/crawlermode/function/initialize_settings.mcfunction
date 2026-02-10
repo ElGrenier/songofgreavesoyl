@@ -4,6 +4,7 @@ scoreboard players set loading settings 0
 
 function battlegrounds:map_settings
 
+execute unless score difficulty lobby matches 0.. run scoreboard players set difficulty lobby 0
 scoreboard players operation difficulty settings = difficulty lobby
 #scoreboard players operation max_loading settings = max_loading lobby
 scoreboard players operation all_random settings = all_random lobby

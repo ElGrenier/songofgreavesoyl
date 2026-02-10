@@ -195,17 +195,16 @@ execute at @a[scores={char=48,s2_timer=10}] run kill @e[tag=v_scatter]
 
 # artificer
 
-
-scoreboard players set @a[scores={s1_timer=1,char=48}] spellCD1 140
+scoreboard players set @a[scores={s1_timer=1,char=48}] spellCD1 120
 scoreboard players add @a[scores={s1_timer=1..,char=48}] s1_timer 1
-scoreboard players set @a[scores={s1_timer=141..,char=48}] s1_timer 0
+scoreboard players set @a[scores={s1_timer=120..,char=48}] s1_timer 0
 
-scoreboard players set @a[scores={s2_timer=1,char=48}] spellCD2 220
+scoreboard players set @a[scores={s2_timer=1,char=48}] spellCD2 200
 scoreboard players add @a[scores={s2_timer=1..,char=48}] s2_timer 1
-scoreboard players set @a[scores={s2_timer=221..,char=48}] s2_timer 0
+scoreboard players set @a[scores={s2_timer=200..,char=48}] s2_timer 0
 
 execute as @a[scores={char=48}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run clear @a[scores={char=48}] diamond_shovel
-item replace entity @a[scores={char=48}] hotbar.0 with diamond_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Gravity Gloves"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:unbreaking":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=48}] hotbar.0 with diamond_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Gravity Gloves"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:unbreaking":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=48,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=48}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=48,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:enchantments={"minecraft:power":1},minecraft:item_model="minecraft:warped_roots",minecraft:custom_name={text:"Gravity Well",color:"dark_aqua",bold:1b}] 1

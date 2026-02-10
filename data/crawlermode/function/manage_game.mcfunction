@@ -1,16 +1,12 @@
 #Base ticking function
 execute if score game_state settings matches 7.. run function crawlermode:crawlers
 
-#Manage respawn
-execute if score game_state settings matches 7.. positioned 207 34 -130 run function crawlermode:death_restart
-
-
 #During game start, we show the picks scoreboard
 execute if score game_state settings matches 2..7 run function core:main/picks_scoreboard
 
 #Waiting room management
 execute if score game_state settings matches 2.. positioned 287 15.00 -126 run function core:main/game/loop_waiting_room
-
+execute if score game_state settings matches 8.. positioned 287 15.00 -126 run tag @a[distance=..10] add waiting_respawn
 #spawn outsider
 execute if score game_state settings matches 3.. as @a[tag=!in_game,tag=!outsider] at @s run function core:main/game/spawn_outsider
 
@@ -29,6 +25,8 @@ execute if score game_state settings matches 2 as @a[tag=in_game] store result s
 
 execute if score game_state settings matches 2 run scoreboard players set game_state settings 3
 
+execute if score game_state settings matches 3 run scoreboard players set game_state settings 4
+
 execute if score game_state settings matches 4 run function core:lobby/tp_blackbox
 execute if score game_state settings matches 2..4 if score all_random settings matches 0 as @a[scores={char=0},tag=in_game] run scoreboard players set @s ClassPickTrigger 8
 
@@ -45,12 +43,19 @@ execute if score game_state settings matches 5 unless entity @a[tag=!in_a_team,t
 
 #Set respawn to the respawn 
 execute if score game_state settings matches 6 run spawnpoint @a[tag=in_game] 207 34 -131
+execute if score game_state settings matches 6 run function crawlermode:start_game_spawn
 
-execute if score game_state settings matches 6 run function core:main/game/start_game_spawn
+#we ignore the 7
 
-execute if score game_state settings matches 7 run scoreboard players set game_state settings 8
+execute if score game_state settings matches 7 run function crawlermode:start_handle
 
-execute unless entity @a[tag=!waiting_respawn] run scoreboard players set @a[scores={char=1..}] crawlers_end -100
+execute if score game_state settings matches 8 unless entity @a[tag=!waiting_respawn] unless score @a[limit=1,tag=waiting_respawn] crawlers_end matches -100..-1 run scoreboard players set @a[scores={char=1..}] crawlers_end -100
+
+#Manage respawn
+execute if score game_state settings matches 8.. positioned 207 34 -130 run function crawlermode:death_restart
+
+
+
 #Game Win management
 # execute if score game_state settings matches 9 run scoreboard players add loading settings 1
 # execute if score game_state settings matches 9 if score loading settings matches 160.. run function reset:reset

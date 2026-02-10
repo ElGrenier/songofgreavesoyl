@@ -52,7 +52,6 @@ function core:lobby/initialize_lobby
 
 kill @e[tag=credits_stands]
 
-
 #mrkisiel
 summon armor_stand 124 13 -141 {Invulnerable:1b,ShowArms:1b,Marker:1b,NoBasePlate:1b,Tags:["credit_stand_1","credits_stands"],Pose:{Body:[357f,0f,0f],Head:[344f,0f,7f],LeftLeg:[313f,27f,0f],RightLeg:[337f,351f,0f],LeftArm:[29f,16f,0f],RightArm:[240f,66f,0f]},Rotation:[181.0f,0.0f],equipment:{feet:{id:"minecraft:leather_boots",components:{"minecraft:dyed_color":4601162},count:1},legs:{id:"minecraft:leather_leggings",components:{"minecraft:dyed_color":5323092},count:1},chest:{id:"minecraft:leather_chestplate",components:{"minecraft:dyed_color":1776425},count:1},head:{id:"minecraft:player_head",components:{"minecraft:profile":{id:[I;1019899568,1107578268,-1075045540,-1027306440],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzA3YjRiODMwNDg1MDJhYWJjYzkzYmE5ZTdmNDQxYmQzZDllYTFmZWM5YWMzNzMyYTNmNGYyNjJhNDVkYTVmIn19fQ=="}]}},count:1}}}
 summon item_display 124 13 -141 {item: {count: 1, id: "minecraft:barrel"},Tags:["credit_stand_1_1","credits_stands"], transformation: {left_rotation: [0.0f, -0.17364818f, 0.0f, 0.9848077f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0000001f, 0.99999994f, 1.0000001f], translation: [0.0f, 0.0f, 0.0f]}}

@@ -20,7 +20,7 @@ title @a[scores={char=35,passive_pris=701..}] actionbar {text:"Thank you!",color
 
 title @a[scores={char=35,passive_pris=0}] actionbar [{text:"[",bold:1b,color:"blue",type:"text"},{text:"The Gift is ready",color:"aqua",bold:0b,type:"text"},{text:"]",bold:1b,color:"blue",type:"text"}]
 
-scoreboard players set @a[scores={passive_pris=0,char=35,universal_damagetaken=1..,HP=..10}] passive_pris 740
+scoreboard players set @a[scores={passive_pris=0,char=35,universal_damagetaken=1..,HP=..15}] passive_pris 740
 
 
 effect give @a[scores={passive_pris=739,char=35}] absorption 7 2
@@ -79,7 +79,7 @@ execute at @a[scores={char=35,s1_timer=1..10,CC_silence=0}] if entity @e[tag=hea
 
 effect give @a[scores={priestess_heal=2}] instant_health
 effect give @a[scores={priestess_heal=2}] absorption 4
-execute at @a[scores={priestess_heal=3}] run playsound entity.experience_orb.pickup master @a[distance=..3] ~ ~ ~ 0.3 1.5 1
+execute at @a[scores={char=35}] at @a[scores={priestess_heal=3},distance=0.2..] run playsound entity.experience_orb.pickup master @a[distance=..3] ~ ~ ~ 0.3 1.5 1
 execute at @a[scores={priestess_heal=1..}] run particle rain ~ ~0.6 ~ 0.6 0.8 0.6 1 10
 scoreboard players add @a[scores={priestess_heal=1..}] priestess_heal 1
 scoreboard players set @a[scores={priestess_heal=10..}] priestess_heal 0
@@ -132,16 +132,16 @@ execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] run particle cloud ~
 
 # priestess
 
-scoreboard players set @a[scores={s1_timer=1,char=35}] spellCD1 200
+scoreboard players set @a[scores={s1_timer=1,char=35}] spellCD1 180
 scoreboard players add @a[scores={s1_timer=1..,char=35}] s1_timer 1
-scoreboard players set @a[scores={s1_timer=201..,char=35}] s1_timer 0
+scoreboard players set @a[scores={s1_timer=180..,char=35}] s1_timer 0
 
 scoreboard players set @a[scores={s2_timer=1,char=35}] spellCD2 300
 scoreboard players add @a[scores={s2_timer=1..,char=35}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=301..,char=35}] s2_timer 0
 
 execute as @a[scores={char=35}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_shovel",Slot:0b}]}] run clear @a[scores={char=35}] golden_shovel
-item replace entity @a[scores={char=35}] hotbar.0 with minecraft:golden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=35}] hotbar.0 with minecraft:golden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=35,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=35}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=35,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:allay_spawn_egg",minecraft:custom_name={text:"Drizzle Dance",color:"dark_aqua",bold:1b}] 1

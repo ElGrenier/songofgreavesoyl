@@ -112,7 +112,7 @@ execute at @a[scores={char=24,s2_timer=1..40,CC_silence=0}] run particle minecra
 execute at @a[scores={char=24,s2_timer=1..20,CC_silence=0}] run particle minecraft:block{block_state:{Name:"minecraft:sand"}} ~ ~ ~ 0.5 0.1 0.5 0.001 10 force
 execute at @a[scores={char=24,s2_timer=21..40,CC_silence=0}] run particle minecraft:block{block_state:{Name:"minecraft:sand"}} ~ ~ ~ 1 0.1 1 0.001 20 force
 execute at @a[scores={char=24,s2_timer=41..60,CC_silence=0}] run particle minecraft:block{block_state:{Name:"minecraft:sand"}} ~ ~ ~ 2 0.1 2 0.001 30 force
-execute at @a[scores={char=24,s2_timer=61,CC_silence=0}] as @p[distance=0.5..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=24}] Team run scoreboard players set @s desert_funeral 1
+execute at @a[scores={char=24,s2_timer=61,CC_silence=0}] as @p[distance=0.5..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=24}] Team run scoreboard players set @s desert_funeral 1
 execute at @a[scores={char=24,s2_timer=61..65,CC_silence=0}] run playsound minecraft:block.sand.fall master @a[distance=..20] ~ ~ ~ 1.0 0.3 1.0
 
 effect give @a[scores={desert_funeral=2..7}] blindness 2
@@ -141,8 +141,6 @@ execute at @a[scores={desert_funeral=30}] run playsound block.sand.break master 
 
 scoreboard players add @a[scores={desert_funeral=1..}] desert_funeral 1
 scoreboard players set @a[scores={desert_funeral=40..}] desert_funeral 0
-
-
 
 title @a[scores={char=24,s2_timer=1..75,CC_silence=0}] times 0 20 0
 title @a[scores={char=24,s2_timer=1..75,CC_silence=0}] title {text:" ",type:"text"}
@@ -231,7 +229,7 @@ scoreboard players add @a[scores={s3_timer=1..,char=24}] s3_timer 1
 scoreboard players set @a[scores={s3_timer=20..,char=24}] s3_timer 0
 
 execute as @a[scores={char=24}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_axe",Slot:0b}]}] run clear @a[scores={char=24}] golden_axe
-item replace entity @a[scores={char=24}] hotbar.0 with minecraft:golden_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Mantis Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=24}] hotbar.0 with minecraft:golden_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Mantis Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=24,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=24}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=24,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:beetroot_seeds",minecraft:custom_name={text:"Claws of the Desert",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1

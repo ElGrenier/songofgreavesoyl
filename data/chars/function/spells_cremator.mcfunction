@@ -6,13 +6,13 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:copper_shovel"}}]
 effect give @a[scores={char=5}] fire_resistance infinite 0 true
 
 execute as @a[scores={char=5}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_shovel",Slot:0b}]}] run clear @a[scores={char=5}] minecraft:golden_shovel
-item replace entity @a[scores={char=5,fire=-1..}] hotbar.0 with copper_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Blazing Hand"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:fire_aspect":2},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
-item replace entity @a[scores={char=5,fire=..0}] hotbar.0 with golden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Hand"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=5,fire=-1..}] hotbar.0 with copper_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Blazing Hand"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:fire_aspect":2},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=5,fire=..0}] hotbar.0 with golden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Hand"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 #infernal discharge
 
 scoreboard players set @a[scores={char=5,s1_timer=1,CC_silence=1..}] spellCD1 20
-scoreboard players set @a[scores={char=5,s1_timer=1,CC_silence=1..}] s1_timer 120
+scoreboard players set @a[scores={char=5,s1_timer=1,CC_silence=1..}] s1_timer 100
 
 execute at @a[scores={char=5,s1_timer=1,CC_silence=0}] run playsound entity.ghast.shoot master @a[distance=..10] ~ ~ ~ 1 1 1
 execute at @a[scores={char=5,s1_timer=1,CC_silence=0}] run summon item_display ~ ~ ~ {billboard:"center",transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1.5f,1.5f,1.5f]},item:{id:"minecraft:fire_charge",count:1},Tags:["NewFireball","projectile","entities_cremator"]}
@@ -23,11 +23,11 @@ execute if entity @a[scores={char=5,s1_timer=1},limit=1] as @e[tag=NewFireball,l
 execute at @e[tag=NewFireball] run particle block{block_state:{Name:"minecraft:magma_block"}} ~ ~ ~ 0.2 0.2 0.2 0.0001 5 force
 execute at @e[tag=NewFireball] run particle flame ~ ~ ~ 0.3 0.3 0.3 0.0001 10 force
 execute at @e[tag=NewFireball] run particle small_flame ~ ~ ~ 0.4 0.4 0.4 0.01 10 force
-execute as @e[tag=NewFireball,x_rotation=20..90] at @s run tp @s ~ ~ ~ ~ 21
+execute as @e[tag=NewFireball,x_rotation=10..90] at @s run tp @s ~ ~ ~ ~ 11
 execute as @e[tag=NewFireball] at @s run tp @s ^ ^ ^0.65
 execute as @e[tag=NewFireball] at @s unless block ^ ^ ^0.1 #minecraft:dash run summon marker ~ ~ ~ {Tags:["CrematorBoom","entities_cremator"]}
 
-execute at @e[tag=NewFireball] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=5}] Team run summon marker ~ ~ ~ {Tags:["CrematorBoom","entities_cremator"]}
+execute at @e[tag=NewFireball] positioned ~-0.75 ~-0.75 ~-0.75 as @e[dx=0.5,dy=0.5,dz=0.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=5}] Team run summon marker ~ ~ ~ {Tags:["CrematorBoom","entities_cremator"]}
 execute at @a[scores={char=5,s1_timer=50..}] run kill @e[tag=NewFireball]
 
 execute if entity @e[tag=CrematorBoom] run kill @e[tag=NewFireball]
@@ -79,9 +79,9 @@ tag @a[scores={fire=..-20}] remove friendly_fire
 
 # cremator
 
-scoreboard players set @a[scores={s1_timer=1,char=5}] spellCD1 140
+scoreboard players set @a[scores={s1_timer=1,char=5}] spellCD1 120
 scoreboard players add @a[scores={s1_timer=1..,char=5}] s1_timer 1
-scoreboard players set @a[scores={s1_timer=141..,char=5}] s1_timer 0
+scoreboard players set @a[scores={s1_timer=121..,char=5}] s1_timer 0
 
 scoreboard players set @a[scores={s2_timer=1,char=5}] spellCD2 240
 scoreboard players add @a[scores={s2_timer=1..,char=5}] s2_timer 1

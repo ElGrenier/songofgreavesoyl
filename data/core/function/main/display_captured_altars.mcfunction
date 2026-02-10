@@ -77,7 +77,7 @@ scoreboard players set @e[tag=Altars,name="Ruined City - Purple Side"] score -10
 
 #fossiled tomb
 scoreboard players display name @e[tag=Altars,name="Descent"] score "Descent"
-scoreboard players display name @e[tag=Altars,name="Town Square"] score "own Square"
+scoreboard players display name @e[tag=Altars,name="Town Square"] score "Town Square"
 scoreboard players display name @e[tag=Altars,name="Tomb of the Fossiled God"] score "Tomb of the Fossiled God"
 scoreboard players set @e[tag=Altars,name="Town Square"] score -3
 scoreboard players set @e[tag=Altars,name="Tomb of the Fossiled God"] score -4
