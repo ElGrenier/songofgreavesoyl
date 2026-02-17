@@ -39,11 +39,12 @@ execute if entity @a[scores={LobbyTrigger=29}] run function core:lobby/map/map_c
 execute if entity @a[scores={LobbyTrigger=30}] run function core:lobby/map/map_choose_26
 execute if entity @a[scores={LobbyTrigger=31}] run function core:lobby/map/map_choose_27
 execute if entity @a[scores={LobbyTrigger=32}] run function core:lobby/map/map_choose_28
+execute if entity @a[scores={LobbyTrigger=33}] run function core:lobby/map/map_choose_29
 # execute if entity @a[scores={LobbyTrigger=101}] run function core:lobby/parameters/
 # execute if entity @a[scores={LobbyTrigger=104}] run function core:lobby/parameters/
 # execute if entity @a[scores={LobbyTrigger=105}] run function core:lobby/parameters/
 
-#execute at @a[scores={LobbyTrigger=1..199}] run playsound minecraft:block.lever.click master @a[scores={LobbyTrigger=1..199}] ~ ~ ~ 1 2 1
+#execute at @a[scores={LobbyTrigger=1..199}] run playsound block.lever.click master @a[scores={LobbyTrigger=1..199}] ~ ~ ~ 1 2 1
 execute as @a[scores={LobbyTrigger=200..210}] run function messages:lobby_map_info_main
 
 execute at @a[scores={LobbyTrigger=102}] run function messages:settings/desactivate_wav_mode
@@ -53,7 +54,20 @@ execute at @a[scores={LobbyTrigger=105}] run function messages:settings/activate
 execute at @a[scores={LobbyTrigger=106}] run function messages:settings/desactivate_choose_team
 execute at @a[scores={LobbyTrigger=107}] run function messages:settings/activate_choose_team
 
-execute as @a[scores={LobbyTrigger=110..115}] run function core:lobby/options
+#un-checkmark-fied options
+execute as @a[scores={LobbyTrigger=110..130}] run function core:lobby/options
+#all random ON/OFF
+execute as @a[scores={LobbyTrigger=122}] run scoreboard players set all_random lobby 1
+execute as @a[scores={LobbyTrigger=123}] run scoreboard players set all_random lobby 0
+#wavmode ON/OFF
+execute as @a[scores={LobbyTrigger=125}] run scoreboard players set wav_mode settings 1
+execute as @a[scores={LobbyTrigger=126}] run scoreboard players set wav_mode settings 0
+execute as @a[scores={LobbyTrigger=125}] run scoreboard players set wav_mode lobby 1
+execute as @a[scores={LobbyTrigger=126}] run scoreboard players set wav_mode lobby 0
+#all random ON/OFF
+execute as @a[scores={LobbyTrigger=128}] run scoreboard players set memorize lobby 1
+execute as @a[scores={LobbyTrigger=129}] run scoreboard players set memorize lobby 0
+
 execute as @a[scores={trigger_respawn=1..}] run function core:lobby/calculate_respawn
 execute as @a[scores={trigger_flag_max_countdown=1..}] run function core:lobby/calculate_flag
 execute as @a[scores={trigger_dmscore=1..}] run function messages:settings/dm_score

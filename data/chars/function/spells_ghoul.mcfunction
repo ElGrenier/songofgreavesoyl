@@ -13,7 +13,7 @@ scoreboard players set @a[scores={char=65,outofcombat=200..}] outofcombat 180
 effect clear @a[scores={stealth=1..}] glowing
 execute at @a[scores={char=65,outofcombat=180..210}] unless entity @e[distance=..10,tag=Altars] unless entity @e[tag=ghoul_stealtt_interrupt,distance=..10] run scoreboard players set @p[scores={char=65,outofcombat=180..210}] stealth 4
 
-scoreboard players remove @a[scores={stealth=1..}] stealth 1
+scoreboard players remove @a[scores={stealth=1..,char=65}] stealth 1
 
 scoreboard players add @a[scores={stealth=3..,char=65,regen=..40}] regen 1
 tag @a[scores={stealth=3,char=65}] add invisible
@@ -121,18 +121,18 @@ clear @a[scores={char=65,s2_timer=2,CC_silence=0}] *[custom_data={s2:1}]
 tp @e[tag=ghoul_ambushdash_1,limit=1] @a[scores={char=65,s2_timer=2},limit=1]
 execute at @a[scores={char=65,s2_timer=2},limit=1] run tp @e[tag=ghoul_ambushdash_1,limit=1] ~ ~0.5 ~
 
-execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] rotated ~ 0 unless block ^ ^ ^1 #minecraft:dash run summon marker ~ ~ ~ {Tags:["ghoul_ambush_cling","entities_ghoul"]}
-execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~1 ~ ~ #minecraft:dash run summon marker ~ ~ ~ {Tags:["ghoul_ambush_cling","entities_ghoul"]}
-execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~-1 ~ ~ #minecraft:dash run summon marker ~ ~ ~ {Tags:["ghoul_ambush_cling","entities_ghoul"]}
-execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~ ~ ~1 #minecraft:dash run summon marker ~ ~ ~ {Tags:["ghoul_ambush_cling","entities_ghoul"]}
-execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~ ~ ~-1 #minecraft:dash run summon marker ~ ~ ~ {Tags:["ghoul_ambush_cling","entities_ghoul"]}
+execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] rotated ~ 0 unless block ^ ^ ^1 #minecraft:dash run summon marker ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
+execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~1 ~ ~ #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
+execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~-1 ~ ~ #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
+execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~ ~ ~1 #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
+execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~ ~ ~-1 #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
 
-execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] rotated ~ 0 unless block ^ ^ ^1.5 #minecraft:dash run summon marker ~ ~ ~ {Tags:["ghoul_ambush_cling","entities_ghoul"]}
+execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] rotated ~ 0 unless block ^ ^ ^1.5 #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
 
-execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~1.5 ~ ~ #minecraft:dash run summon marker ~ ~ ~ {Tags:["ghoul_ambush_cling","entities_ghoul"]}
-execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~-1.5 ~ ~ #minecraft:dash run summon marker ~ ~ ~ {Tags:["ghoul_ambush_cling","entities_ghoul"]}
-execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~ ~ ~1.5 #minecraft:dash run summon marker ~ ~ ~ {Tags:["ghoul_ambush_cling","entities_ghoul"]}
-execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~ ~ ~-1.5 #minecraft:dash run summon marker ~ ~ ~ {Tags:["ghoul_ambush_cling","entities_ghoul"]}
+execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~1.5 ~ ~ #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
+execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~-1.5 ~ ~ #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
+execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~ ~ ~1.5 #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
+execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~ ~ ~-1.5 #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
 
 
 execute as @e[tag=ghoul_ambushdash_1] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
@@ -151,6 +151,7 @@ execute at @a[scores={char=65,s2_timer=12}] run kill @e[tag=ghoul_ambushdash_1]
 execute as @a[scores={char=65,s2_timer=12}] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
 effect clear @a[scores={char=65,s2_timer=11..13,CC_silence=0}] slow_falling
 
+execute at @e[tag=ghoul_ambush_cling] run kill @e[tag=ghoul_ambushdash_1]
 execute at @a[tag=ghoul_ambushed_1] run kill @e[tag=ghoul_ambushdash_1]
 scoreboard players set @a[tag=ghoul_ambushed_1] CC_stun 10
 execute at @a[tag=ghoul_ambushed_1] run playsound entity.zombie.ambient master @a[distance=..12] ~ ~ ~ 1 0.8 1
@@ -165,8 +166,8 @@ execute at @e[tag=ghoul_ambush_cling] run particle item{item:"rotten_flesh"} ~ ~
 execute at @e[tag=ghoul_ambush_cling] run particle crit ~ ~1 ~ 0.4 0.8 0.4 0.01 2
 execute at @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=2}] run playsound entity.player.small_fall master @a[distance=..10] ~ ~ ~ 1 0.8 1
 execute if entity @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=80..}] run clear @a *[custom_data={s1:1}]
-execute if entity @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=1..9}] run effect give @a[scores={char=65}] slow_falling 1 0 true
-execute if entity @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=1..9}] run effect give @a[scores={char=65}] levitation 1 0 true
+#execute if entity @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=1..9}] run effect give @a[scores={char=65}] slow_falling 1 0 true
+#execute if entity @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=1..9}] run effect give @a[scores={char=65}] levitation 1 0 true
 execute if entity @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=1..5}] run effect give @a[scores={char=65}] slowness 1 4 true
 
 execute if entity @e[tag=ghoul_ambush_cling] as @a[scores={char=65}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=65}] warped_fungus_on_a_stick[custom_data={s2:2}]
@@ -178,7 +179,9 @@ execute if entity @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=31..}] run i
 
 #execute if entity @e[tag=ghoul_ambush_cling] run title @a title {"text":"ambush cling"}
 
-execute at @e[tag=ghoul_ambush_cling] run tp @a[scores={char=65}] ~ ~ ~
+ride @p[scores={char=65}] mount @n[tag=ghoul_ambush_cling] 
+#execute as @e[tag=ghoul_ambush_cling] at @s run tp @s ~ ~-0.03 ~
+#execute as @e[tag=ghoul_ambush_cling] at @s run tp @a[scores={char=65}] ~ ~ ~
 scoreboard players add @e[tag=ghoul_ambush_cling] s2_timer_recast 1
 execute at @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=40..}] run clear @a[scores={char=65}] warped_fungus_on_a_stick[custom_data={s2:2}]
 kill @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=40..}]
@@ -235,6 +238,8 @@ scoreboard players set @a[scores={s2_timer_recast=40..,char=65}] s2_timer_recast
 
 execute at @a[tag=ghoul_ambushed_2] run kill @e[tag=ghoul_ambushdash_2]
 scoreboard players set @a[tag=ghoul_ambushed_2] CC_stun 20
+execute at @a[tag=ghoul_ambushed_2] run effect clear @a[scores={char=65}] slow_falling
+execute at @a[tag=ghoul_ambushed_2] run effect clear @a[scores={char=65}] levitation
 execute at @a[tag=ghoul_ambushed_2] run playsound entity.zombie.ambient master @a[distance=..12] ~ ~ ~ 1 0.4 1
 execute at @a[tag=ghoul_ambushed_2] run playsound entity.player.big_fall master @a[distance=..12] ~ ~ ~ 1 0.6 1
 damage @p[tag=ghoul_ambushed_2] 4 generic by @p[scores={char=65}] from @p[scores={char=65}]

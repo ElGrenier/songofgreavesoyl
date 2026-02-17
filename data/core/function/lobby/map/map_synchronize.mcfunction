@@ -29,4 +29,6 @@ execute if score map lobby matches 24 run function core:lobby/map/map_choose_24
 execute if score map lobby matches 25 run function core:lobby/map/map_choose_25
 execute if score map lobby matches 26 run function core:lobby/map/map_choose_26
 execute if score map lobby matches 27 run function core:lobby/map/map_choose_27
+execute if score map lobby matches 28 run function core:lobby/map/map_choose_28
+execute if score map lobby matches 29 run function core:lobby/map/map_choose_29
 

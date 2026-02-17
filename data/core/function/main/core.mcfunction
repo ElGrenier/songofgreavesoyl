@@ -12,6 +12,8 @@ function core:main/practice_room
 
 function chars:surrender
 
+function core:main/wavmode
+
 function chars:showkit
 function chars:all_chars_spells
 function chars:rangedcd
@@ -88,7 +90,6 @@ execute positioned 121 12 -154 if entity @a[distance=..10] unless entity @e[tag=
 
 execute positioned 124 11 -154 unless entity @a[distance=..10] run kill @e[tag=lobby_holograms]
 
-function core:main/wavmode
 
 
 #spectator

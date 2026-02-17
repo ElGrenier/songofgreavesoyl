@@ -57,7 +57,8 @@ execute if score map settings matches 24 run scoreboard players display name map
 execute if score map settings matches 25 run scoreboard players display name map_name Picks "Oasis Garden"
 execute if score map settings matches 26 run scoreboard players display name map_name Picks "Chain Tower"
 execute if score map settings matches 27 run scoreboard players display name map_name Picks "Infected Crypt"
-
+execute if score map settings matches 28 run scoreboard players display name map_name Picks "Crawlermode"
+execute if score map settings matches 29 run scoreboard players display name map_name Picks "Temple of Rainmaker"
 
 
 #chars
@@ -557,3 +558,9 @@ execute if entity @a[scores={char=73},team=yellow] run scoreboard players set Co
 execute if entity @a[scores={char=73},team=ffa] run scoreboard players set Conductor Picks -1
 execute if entity @e[tag=ban_73] run scoreboard players set Conductor Picks -3
 execute unless entity @a[scores={char=73}] unless entity @e[tag=ban_73] run scoreboard players reset Conductor Picks
+
+execute if entity @a[scores={char=74},team=purple] run scoreboard players set Fortress Picks 1
+execute if entity @a[scores={char=74},team=yellow] run scoreboard players set Fortress Picks -1
+execute if entity @a[scores={char=74},team=ffa] run scoreboard players set Fortress Picks -1
+execute if entity @e[tag=ban_74] run scoreboard players set Fortress Picks -3
+execute unless entity @a[scores={char=74}] unless entity @e[tag=ban_74] run scoreboard players reset Fortress Picks

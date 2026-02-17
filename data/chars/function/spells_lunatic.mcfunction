@@ -61,7 +61,7 @@ scoreboard players set @a[scores={combatreset=1..}] outofcombat 0
 scoreboard players set @a[scores={combatreset=1..}] combatreset 0
 
 scoreboard players add @a[scores={char=19}] outofcombat 1
-scoreboard players set @a[scores={outofcombat=190..}] outofcombat 160
+scoreboard players set @a[scores={outofcombat=190..,char=19}] outofcombat 160
 scoreboard players add @a[scores={char=19,outofcombat=160..180}] regen 2
 execute at @a[scores={char=19,outofcombat=180}] run particle heart ~ ~ ~ 0.5 0.1 0.5 1 3 normal
 

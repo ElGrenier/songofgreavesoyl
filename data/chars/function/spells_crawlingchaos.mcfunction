@@ -196,7 +196,7 @@ effect give @a[scores={char=50,s2_timer=1..2,CC_silence=0},tag=dweller] resistan
 tag @a[scores={char=50,s2_timer=2..25,CC_silence=0},tag=dweller] add invisible
 scoreboard players set @a[scores={char=50,s2_timer=2,CC_silence=0},tag=dweller] CC_intangible 100
 
-item replace entity @a[scores={char=50,s2_timer=2..25},tag=dweller] armor.head with air
+item replace entity @a[scores={char=50,s2_timer=2..25},tag=dweller] armor.head with stone[item_model=air,minecraft:custom_name="aaaa",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:10.0d,operation:"add_value",slot:"head"}]] 1
 clear @a[scores={char=50,s2_timer=2..25},tag=dweller] leather_chestplate
 clear @a[scores={char=50,s2_timer=2..25},tag=dweller] leather_leggings
 clear @a[scores={char=50,s2_timer=2..25},tag=dweller] leather_boots
