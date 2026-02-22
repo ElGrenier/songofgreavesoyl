@@ -84,7 +84,7 @@ scoreboard players set @a[scores={char=41,s3_timer=1,CC_silence=1..}] s3_timer 6
 
 execute at @a[scores={char=41,s3_timer=1,CC_silence=0}] at @e[tag=swarmer_egg] run particle block{block_state:{Name:"minecraft:magma_block"}} ~ ~1 ~ 0.4 0.4 0.4 0.1 20
 execute at @a[scores={char=41,s3_timer=1,CC_silence=0}] at @e[tag=swarmer_egg] run summon spider ~ ~1 ~ {Health:30.0f,Tags:["swarmerboi","valid_spell_target","entities_broodmother"],attributes:[{id:"minecraft:attack_damage",base:6},{id:"minecraft:knockback_resistance",base:1},{id:"minecraft:max_health",base:8}],equipment:{legs:{id:"minecraft:leather_boots",components:{"minecraft:enchantments":{"minecraft:feather_falling":10}},count:1}}}
-
+scoreboard players operation @e[tag=swarmerboi] Team = @p[scores={char=41}] Team
 execute at @a[scores={char=41},team=purple] run team join purple @e[tag=swarmerboi]
 execute at @a[scores={char=41},team=yellow] run team join yellow @e[tag=swarmerboi]
 

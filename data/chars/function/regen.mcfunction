@@ -38,8 +38,8 @@ scoreboard players set @a[scores={char=7,regen=41..}] regen 0
 effect give @a[scores={char=8,regen=60}] regeneration 1 2 true
 scoreboard players set @a[scores={char=8,regen=61..}] regen 0
 
-effect give @a[scores={char=9,regen=120..}] regeneration 1 2 true
-scoreboard players set @a[scores={char=9,regen=121..}] regen 0
+effect give @a[scores={char=9,regen=80..}] regeneration 1 2 true
+scoreboard players set @a[scores={char=9,regen=81..}] regen 0
 
 effect give @a[scores={char=10,regen=60}] regeneration 1 2 true
 scoreboard players set @a[scores={char=10,regen=61..}] regen 0

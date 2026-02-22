@@ -4,7 +4,7 @@
 
 #effects
 
-tag @a[scores={char=59}] add the_mold
+tag @a[scores={char=59}] add cannot_capture_altars
 effect give @a[scores={char=59}] invisibility infinite 0 true
 effect give @a[scores={char=59}] weakness infinite 100 true
 effect give @a[scores={char=59}] resistance infinite 100 true

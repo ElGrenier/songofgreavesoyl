@@ -95,15 +95,22 @@ execute at @a[scores={char=50,s1_timer=2,CC_silence=0}] run playsound entity.gha
 execute at @a[scores={char=50,s1_timer=2,CC_silence=0}] run playsound entity.wither.ambient master @a[distance=..16] ~ ~ ~ 1 1.2 1
 execute at @a[scores={char=50,s1_timer=3,CC_silence=0}] run playsound block.sculk_shrieker.shriek master @a[distance=..16] ~ ~ ~ 1 1.8 1
 
-tag @a[scores={CC_madness=99..100},team=purple] add actual_team_purple
-tag @a[scores={CC_madness=99..100},team=yellow] add actual_team_yellow
-team join purple @a[tag=actual_team_yellow,scores={CC_madness=98}]
-team join yellow @a[tag=actual_team_purple,scores={CC_madness=98}]
+#madness in team modes
+execute unless score map_type settings matches 4 run tag @a[scores={CC_madness=99..100},team=purple] add actual_team_purple
+execute unless score map_type settings matches 4 run tag @a[scores={CC_madness=99..100},team=yellow] add actual_team_yellow
+execute unless score map_type settings matches 4 run team join purple @a[tag=actual_team_yellow,scores={CC_madness=98}]
+execute unless score map_type settings matches 4 run team join yellow @a[tag=actual_team_purple,scores={CC_madness=98}]
 
-team join purple @a[tag=actual_team_purple,scores={CC_madness=3..4}]
-team join yellow @a[tag=actual_team_yellow,scores={CC_madness=3..4}]
-tag @a[scores={CC_madness=1..2}] remove actual_team_purple
-tag @a[scores={CC_madness=1..2}] remove actual_team_yellow
+execute unless score map_type settings matches 4 run team join purple @a[tag=actual_team_purple,scores={CC_madness=3..4}]
+execute unless score map_type settings matches 4 run team join yellow @a[tag=actual_team_yellow,scores={CC_madness=3..4}]
+execute unless score map_type settings matches 4 run tag @a[scores={CC_madness=1..2}] remove actual_team_purple
+execute unless score map_type settings matches 4 run tag @a[scores={CC_madness=1..2}] remove actual_team_yellow
+
+#madness in ffa
+execute if score map_type settings matches 4 run tag @a[scores={CC_madness=99..100}] add madness_ffa
+execute if score map_type settings matches 4 run scoreboard players set @a[scores={CC_madness=99..100}] Team 50
+execute if score map_type settings matches 4 run tag @a[scores={CC_madness=1..2}] remove madness_ffa
+
 
 execute at @a[scores={CC_madness=1..100}] run particle sculk_charge_pop ~ ~1.5 ~ 0.6 0.6 0.6 0.001 20 force
 execute at @a[scores={CC_madness=10..100}] run playsound entity.ghast.ambient master @a[distance=..1,scores={CC_madness=1..100}] ~ ~ ~ 0.2 0.1 1
@@ -303,7 +310,7 @@ title @a[scores={CC_madness=1..,char=30}] subtitle {text:"Afraid of growing tall
 title @a[scores={CC_madness=1..,char=31}] subtitle {text:"Where is your crew, captain?",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=32}] subtitle {text:"Impressive, but futile",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=33}] subtitle {text:"Blind vengeance, that's the spirit!",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=34}] subtitle {text:"They will die, but you will remain",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=34}] subtitle {text:"They will grow old, and you will watch",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=35}] subtitle {text:"Pretty sinful for a priestess",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=36}] subtitle {text:"Your dungeon was too noisy",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=37}] subtitle {text:"Now we can talk!",color:"red",type:"text"}
@@ -312,10 +319,10 @@ title @a[scores={CC_madness=1..,char=39}] subtitle {text:"You won't be able to s
 title @a[scores={CC_madness=1..,char=40}] subtitle {text:"And they won't stop coming!",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=41}] subtitle {text:"Living in the light!",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=42}] subtitle {text:"Be hunted",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=43}] subtitle {text:"They forgot, but you won't ever",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=43}] subtitle {text:"They forgot, but you will never",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=44}] subtitle {text:"Back to the roots, I see",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=45}] subtitle {text:"Need a hand?",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=46}] subtitle {text:"Bruteforce throught THIS!",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=46}] subtitle {text:"Can't tell if you're brave of stupid",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=47}] subtitle {text:"Missed me, traitor?",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=48}] subtitle {text:"And now do it without the toys",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=49}] subtitle {text:"Good job",color:"red",type:"text"}
@@ -325,7 +332,7 @@ title @a[scores={CC_madness=1..,char=52}] subtitle {text:"I'd SHOW you something
 title @a[scores={CC_madness=1..,char=53}] subtitle {text:"You can't cut out your memories",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=54}] subtitle {text:"Driven mad by a sea monster, how original...",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=55}] subtitle {text:"Watch out for that shadow, young man...",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=56}] subtitle {text:"More like, smoke widow",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=56}] subtitle {text:"Soon to be a smoke widow",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=57}] subtitle {text:"YOU CAN'T ESCAPE",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=58}] subtitle {text:"Ashes to ashes, and you've made her ash",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=59}] subtitle {text:"Burn away",color:"red",type:"text"}
@@ -336,15 +343,20 @@ title @a[scores={CC_madness=1..,char=63}] subtitle {text:"Spectrum of talking to
 title @a[scores={CC_madness=1..,char=64}] subtitle {text:"Forever a prisoner of your own desires",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=65}] subtitle {text:"Unravel you cookbook",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=66}] subtitle {text:"So THIS is a LICH in this world?",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=67}] subtitle {text:"Ravaged, despite all of this iron...",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=67}] subtitle {text:"Ravaged, despite all of this iron",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=68}] subtitle {text:"How it feels to fight with borrowed bones?",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=69}] subtitle {text:"You still look better in a dress",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=70}] subtitle {text:"I know where you buried her",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=71}] subtitle {text:"Which one of you is the pet?",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=72}] subtitle {text:"She loves me not",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=72}] subtitle {text:"She saved you, and you FAILED her",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=73}] subtitle {text:"Nothing but their lapdog",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=74}] subtitle {text:"MADNESS",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=74}] subtitle {text:"Making up for something with all this metal?",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=75}] subtitle {text:"MADNESS",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=76}] subtitle {text:"MADNESS",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=77}] subtitle {text:"MADNESS",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=78}] subtitle {text:"MADNESS",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=79}] subtitle {text:"MADNESS",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=80}] subtitle {text:"MADNESS",color:"red",type:"text"}
 
 
 #chaos

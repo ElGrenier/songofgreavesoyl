@@ -10,10 +10,8 @@ tag @a[scores={CC_intangible=1..}] remove valid_spell_target
 #tag @a[scores={char=7}] add archer_disarm
 #tag @a[scores={char=11}] add archer_disarm
 
-
 execute as @a unless predicate chars:cant_crit run attribute @s minecraft:attack_damage modifier add no_crit -.3333333 add_multiplied_total
 execute as @a if predicate chars:cant_crit run attribute @s minecraft:attack_damage modifier remove no_crit
-
 
 #execute as @a[tag=archer_disarm] run attribute @s minecraft:attack_damage base set 0
 #execute as @a[tag=!archer_disarm] run attribute @s minecraft:attack_damage base set 1

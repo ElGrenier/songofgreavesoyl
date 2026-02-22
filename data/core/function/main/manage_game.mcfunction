@@ -82,7 +82,7 @@ execute if score game_state settings matches 7 run function chars:all
 execute if score game_state settings matches 7 run scoreboard players set game_state settings 8
 
 execute if score game_state settings matches 8 run function core:score/manage_score
-execute if score game_state settings matches 8 if score map_type settings matches 4 as @a store result score @s Team run scoreboard players get @s char
+execute if score game_state settings matches 8 if score map_type settings matches 4 as @a[tag=!madness_ffa] store result score @s Team run scoreboard players get @s char
 
 
 #Game Win management

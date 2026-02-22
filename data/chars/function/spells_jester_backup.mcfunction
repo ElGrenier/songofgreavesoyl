@@ -12,13 +12,17 @@ tag @a[scores={char=51,juggle=1}] remove dazzle
 tag @a[scores={char=51,juggle=1}] add laugh
 scoreboard players set @a[scores={char=51,juggle=1}] juggle_animation 1
 scoreboard players set @a[scores={char=51,juggle=1,s2_timer=0}] spellCD2 59
+scoreboard players set @a[scores={char=51,juggle=1,s2_timer_recast=0}] spellCD2 59
 scoreboard players set @a[scores={char=51,juggle=1,s2_timer=0}] s2_timer 100
+scoreboard players set @a[scores={char=51,juggle=1,s2_timer_recast=0}] s2_timer_recast 100
 
 tag @a[scores={char=51,juggle=101}] remove laugh
 tag @a[scores={char=51,juggle=101}] add dazzle
 scoreboard players set @a[scores={char=51,juggle=101}] juggle_animation 1
 scoreboard players set @a[scores={char=51,juggle=101,s2_timer=0}] spellCD2 59
+scoreboard players set @a[scores={char=51,juggle=101,s2_timer_recast=0}] spellCD2 59
 scoreboard players set @a[scores={char=51,juggle=101,s2_timer=0}] s2_timer 100
+scoreboard players set @a[scores={char=51,juggle=101,s2_timer_recast=0}] s2_timer_recast 100
 
 effect give @a[scores={char=51,juggle_animation=1}] speed 3
 
@@ -203,23 +207,23 @@ execute at @a[scores={char=51,CC_grounded=1..}] run kill @e[tag=last_laugh]
 execute at @a[scores={char=51,CC_root=1..}] run kill @e[tag=last_laugh]
 execute at @a[scores={char=51,CC_stun=1..}] run kill @e[tag=last_laugh]
 
-execute at @a[tag=laugh,scores={char=51,s2_timer=1,CC_silence=0}] run playsound entity.player.attack.strong master @a[distance=..15] ~ ~ ~ 1 0.7 1
-execute at @a[tag=laugh,scores={char=51,s2_timer=1,CC_silence=0}] run summon item_display ~ ~1 ~ {Tags:["shiv","shiv1","projectile","entities_jester"],teleport_duration:1,transformation:{left_rotation:[0.6532815f,0.27059808f,-0.27059808f,0.6532815f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.3f,0.3f,0.5f],translation:[0.0f,0.0f,0.0f]},item:{id:"minecraft:iron_sword",count:1}}
-execute at @a[tag=laugh,scores={char=51,s2_timer=1,CC_silence=0}] run summon item_display ~ ~1 ~ {Tags:["shiv","shiv2","projectile","entities_jester"],teleport_duration:1,transformation:{left_rotation:[0.6532815f,0.27059808f,-0.27059808f,0.6532815f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.3f,0.3f,0.5f],translation:[0.0f,0.0f,0.0f]},item:{id:"minecraft:iron_sword",count:1}}
+execute at @a[tag=laugh,scores={char=51,s2_timer_recast=1,CC_silence=0}] run playsound entity.player.attack.strong master @a[distance=..15] ~ ~ ~ 1 0.7 1
+execute at @a[tag=laugh,scores={char=51,s2_timer_recast=1,CC_silence=0}] run summon item_display ~ ~1 ~ {Tags:["shiv","shiv1","projectile","entities_jester"],teleport_duration:1,transformation:{left_rotation:[0.6532815f,0.27059808f,-0.27059808f,0.6532815f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.3f,0.3f,0.5f],translation:[0.0f,0.0f,0.0f]},item:{id:"minecraft:iron_sword",count:1}}
+execute at @a[tag=laugh,scores={char=51,s2_timer_recast=1,CC_silence=0}] run summon item_display ~ ~1 ~ {Tags:["shiv","shiv2","projectile","entities_jester"],teleport_duration:1,transformation:{left_rotation:[0.6532815f,0.27059808f,-0.27059808f,0.6532815f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.3f,0.3f,0.5f],translation:[0.0f,0.0f,0.0f]},item:{id:"minecraft:iron_sword",count:1}}
 scoreboard players operation @e[tag=projectile,tag=shiv] Team = @p[scores={char=51}] Team
-tp @e[tag=shiv1,limit=1] @a[scores={char=51,s2_timer=1},limit=1]
-tp @e[tag=shiv2,limit=1] @a[scores={char=51,s2_timer=1},limit=1]
-execute at @a[scores={char=51,s2_timer=1,CC_silence=0}] as @e[tag=shiv1,limit=1] at @s run tp @s ~ ~1 ~ 
-execute at @a[scores={char=51,s2_timer=1,CC_silence=0}] as @e[tag=shiv2,limit=1] at @s run tp @s ~ ~1 ~ 
-execute at @a[scores={char=51,s2_timer=1,CC_silence=0}] as @e[tag=shiv1,limit=1] at @s run tp @s ^0.2 ^ ^
-execute at @a[scores={char=51,s2_timer=1,CC_silence=0}] as @e[tag=shiv2,limit=1] at @s run tp @s ^-0.2 ^ ^
+tp @e[tag=shiv1,limit=1] @a[scores={char=51,s2_timer_recast=1},limit=1]
+tp @e[tag=shiv2,limit=1] @a[scores={char=51,s2_timer_recast=1},limit=1]
+execute at @a[scores={char=51,s2_timer_recast=1,CC_silence=0}] as @e[tag=shiv1,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=51,s2_timer_recast=1,CC_silence=0}] as @e[tag=shiv2,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=51,s2_timer_recast=1,CC_silence=0}] as @e[tag=shiv1,limit=1] at @s run tp @s ^0.2 ^ ^
+execute at @a[scores={char=51,s2_timer_recast=1,CC_silence=0}] as @e[tag=shiv2,limit=1] at @s run tp @s ^-0.2 ^ ^
 
 execute at @e[tag=shiv] run particle dust{color:[0.67,0.0,0.0],scale:1} ~ ~ ~ 0.2 0.1 0.2 0.01 1 normal
-execute at @a[scores={char=51,s2_timer=2..}] as @e[tag=shiv] at @s run tp @s ^ ^ ^0.6
+execute at @a[scores={char=51,s2_timer_recast=2..}] as @e[tag=shiv] at @s run tp @s ^ ^ ^0.6
 execute as @e[tag=shiv] at @s positioned ~ ~ ~ unless block ^ ^ ^0.4 #dash run kill @s
 execute as @e[tag=shiv] at @s positioned ~ ~ ~ unless block ~ ~ ~ #dash run kill @s
 
-execute at @a[scores={char=51,s2_timer=20..}] run kill @e[tag=shiv]
+execute at @a[scores={char=51,s2_timer_recast=20..}] run kill @e[tag=shiv]
 
 
 execute at @e[tag=shiv] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=51}] Team run tag @s add jester_shivved
@@ -232,12 +236,12 @@ execute at @e[tag=jester_shivved] run particle damage_indicator ~ ~1 ~ 0.5 0.9 0
 
 tag @e remove jester_shivved
 
-execute at @a[tag=laugh,scores={char=51,s2_timer=1,CC_silence=0}] run particle falling_dust{block_state:{Name:"minecraft:red_wool"}} ~ ~0.1 ~ 0.6 0.3 0.6 0.01 40 normal
-execute at @a[tag=laugh,scores={char=51,s2_timer=1,CC_silence=0}] run playsound entity.snow_golem.shoot master @a[distance=..16] ~ ~ ~ 1 1.5 1
-execute at @a[tag=laugh,scores={char=51,s2_timer=1,CC_silence=0}] run playsound entity.witch.celebrate master @a[distance=..10] ~ ~ ~ 1 1 1
-execute at @a[tag=laugh,scores={char=51,s2_timer=2,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["last_laugh","entities_jester"],NoGravity:1b}
-tp @e[tag=last_laugh,limit=1] @a[scores={char=51,s2_timer=2,CC_silence=0},limit=1]
-execute at @a[scores={char=51,s2_timer=2,CC_silence=0},limit=1] run tp @e[tag=last_laugh,limit=1] ~ ~0.5 ~
+execute at @a[tag=laugh,scores={char=51,s2_timer_recast=1,CC_silence=0}] run particle falling_dust{block_state:{Name:"minecraft:red_wool"}} ~ ~0.1 ~ 0.6 0.3 0.6 0.01 40 normal
+execute at @a[tag=laugh,scores={char=51,s2_timer_recast=1,CC_silence=0}] run playsound entity.snow_golem.shoot master @a[distance=..16] ~ ~ ~ 1 1.5 1
+execute at @a[tag=laugh,scores={char=51,s2_timer_recast=1,CC_silence=0}] run playsound entity.witch.celebrate master @a[distance=..10] ~ ~ ~ 1 1 1
+execute at @a[tag=laugh,scores={char=51,s2_timer_recast=2,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["last_laugh","entities_jester"],NoGravity:1b}
+tp @e[tag=last_laugh,limit=1] @a[scores={char=51,s2_timer_recast=2,CC_silence=0},limit=1]
+execute at @a[scores={char=51,s2_timer_recast=2,CC_silence=0},limit=1] run tp @e[tag=last_laugh,limit=1] ~ ~0.5 ~
 
 execute as @e[tag=last_laugh] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
 execute as @e[tag=last_laugh] at @s unless block ^ ^ ^-1 #minecraft:dash run kill @s
@@ -248,11 +252,11 @@ execute as @e[tag=last_laugh] at @s unless block ^ ^ ^-1 #minecraft:dash run kil
 
 execute as @e[tag=last_laugh] at @s run tp @s ^ ^ ^-0.7
 
-tp @a[scores={char=51,s2_timer=2..9,CC_silence=0,death_dash_reset=0}] @e[tag=last_laugh,limit=1]
-execute at @a[scores={char=51,s2_timer=10,CC_silence=0}] run kill @e[tag=last_laugh]
-execute as @a[tag=laugh,scores={char=51,s2_timer=10,CC_silence=0}] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
-effect give @a[tag=laugh,scores={char=51,s2_timer=10,CC_silence=0}] minecraft:slow_falling 1 1 true
-effect clear @a[tag=laugh,scores={char=51,s2_timer=20,CC_silence=0}] minecraft:slow_falling
+tp @a[scores={char=51,s2_timer_recast=2..9,CC_silence=0,death_dash_reset=0}] @e[tag=last_laugh,limit=1]
+execute at @a[scores={char=51,s2_timer_recast=10,CC_silence=0}] run kill @e[tag=last_laugh]
+execute as @a[tag=laugh,scores={char=51,s2_timer_recast=10,CC_silence=0}] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
+effect give @a[tag=laugh,scores={char=51,s2_timer_recast=10,CC_silence=0}] minecraft:slow_falling 1 1 true
+effect clear @a[tag=laugh,scores={char=51,s2_timer_recast=20,CC_silence=0}] minecraft:slow_falling
 
 #confuse effect
 
@@ -274,7 +278,7 @@ tag @a[scores={CC_confusion=1..2}] remove spin_right
 # jester
 
 scoreboard players add @a[scores={s0_timer=1..,char=51}] s0_timer 1
-scoreboard players set @a[scores={s0_timer=70..,char=51}] s0_timer 0
+scoreboard players set @a[scores={s0_timer=61..,char=51}] s0_timer 0
 
 scoreboard players set @a[scores={s1_timer=1,char=51}] spellCD1 260
 scoreboard players add @a[scores={s1_timer=1..,char=51}] s1_timer 1
@@ -285,12 +289,12 @@ scoreboard players add @a[scores={s2_timer=1..,char=51}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=161..,char=51}] s2_timer_recast 0
 scoreboard players set @a[scores={s2_timer=161..,char=51}] s2_timer 0
 
-#scoreboard players set @a[tag=laugh,scores={char=51}] s2_timer -1
+scoreboard players set @a[tag=laugh,scores={char=51}] s2_timer -1
 
-#scoreboard players set @a[scores={s2_timer_recast=1,char=51}] spellCD2 160
-#scoreboard players add @a[scores={s2_timer_recast=1..,char=51}] s2_timer_recast 1
-#scoreboard players set @a[scores={s2_timer_recast=161..,char=51}] s2_timer 0
-#scoreboard players set @a[scores={s2_timer_recast=161..,char=51}] s2_timer_recast 0
+scoreboard players set @a[scores={s2_timer_recast=1,char=51}] spellCD2 160
+scoreboard players add @a[scores={s2_timer_recast=1..,char=51}] s2_timer_recast 1
+scoreboard players set @a[scores={s2_timer_recast=161..,char=51}] s2_timer 0
+scoreboard players set @a[scores={s2_timer_recast=161..,char=51}] s2_timer_recast 0
 
 
 execute as @a[scores={char=51}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:0b}]}] run clear @a[scores={char=51}] warped_fungus_on_a_stick[custom_data={s0:1}]
@@ -299,10 +303,10 @@ item replace entity @a[scores={char=51}] hotbar.0 with warped_fungus_on_a_stick[
 execute as @a[scores={char=51,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=51}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=51,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:red_wool",minecraft:custom_name={text:"SURPRISE!",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[tag=dazzle,scores={char=51,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=51}] warped_fungus_on_a_stick[custom_data={s2:1}]
-item replace entity @a[tag=dazzle,scores={char=51,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:red_glazed_terracotta",minecraft:custom_name={text:"Dazzle Orb",color:"dark_aqua",bold:1b}] 1
+execute as @a[tag=dazzle,scores={char=51,s2_timer=0,s2_timer_recast=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=51}] warped_fungus_on_a_stick[custom_data={s2:1}]
+item replace entity @a[tag=dazzle,scores={char=51,s2_timer=0,s2_timer_recast=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:red_glazed_terracotta",minecraft:custom_name={text:"Dazzle Orb",color:"dark_aqua",bold:1b}] 1
 
-execute as @a[tag=laugh,scores={char=51,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=51}] warped_fungus_on_a_stick[custom_data={s2:1}]
-item replace entity @a[tag=laugh,scores={char=51,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:light_gray_glazed_terracotta",minecraft:custom_name={text:"Last Laugh",color:"dark_aqua",bold:1b}] 1
+execute as @a[tag=laugh,scores={char=51,s2_timer=0,s2_timer_recast=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=51}] warped_fungus_on_a_stick[custom_data={s2:2}]
+item replace entity @a[tag=laugh,scores={char=51,s2_timer=0,s2_timer_recast=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:2},minecraft:item_model="minecraft:light_gray_glazed_terracotta",minecraft:custom_name={text:"Last Laugh",color:"dark_aqua",bold:1b}] 1
 
 tag @a[scores={char=51},tag=!laugh,tag=!dazzle] add dazzle

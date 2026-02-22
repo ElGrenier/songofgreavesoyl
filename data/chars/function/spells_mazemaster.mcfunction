@@ -33,7 +33,8 @@ execute at @a[scores={decay=1..}] positioned ~ ~3 ~ run tp @e[distance=..1,tag=d
 execute as @e[tag=display_decay] at @s positioned ~ ~-3 ~ unless entity @a[distance=..1,scores={decay=1..}] run kill @s
 
 
-execute as @a[scores={HPercentage=..10,decay=1..,CC_intangible=0}] run damage @s 100 generic by @p[scores={char=36}] from @p[scores={char=34}] 
+
+execute as @a[scores={HPercentage=..10,decay=1..}] run damage @s 100 dragon_breath by @p[scores={char=36}] from @p[scores={char=36}] 
 scoreboard players set @a[scores={universal_death=1..}] decay_timer 0
 scoreboard players set @a[scores={universal_death=1..}] decay 0
 

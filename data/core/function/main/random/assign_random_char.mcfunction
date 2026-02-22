@@ -82,3 +82,10 @@ execute if entity @s[scores={out_Random=67}] run function core:lobby/char_choose
 execute if entity @s[scores={out_Random=67}] run function core:lobby/char_choose/choose_68enforcer
 execute if entity @s[scores={out_Random=69}] run function core:lobby/char_choose/choose_69painter
 
+execute if entity @s[scores={out_Random=70}] run function core:lobby/char_choose/choose_70bard
+execute if entity @s[scores={out_Random=71}] run function core:lobby/char_choose/choose_71alternate
+execute if entity @s[scores={out_Random=72}] run function core:lobby/char_choose/choose_72conductor
+execute if entity @s[scores={out_Random=73}] run function core:lobby/char_choose/choose_74caretaker
+execute if entity @s[scores={out_Random=74}] run function core:lobby/char_choose/choose_74fortress
+execute if entity @s[scores={out_Random=75}] run function core:lobby/char_choose/choose_a
+

@@ -104,23 +104,23 @@ scoreboard players set @a[scores={universal_death=1..}] basilisk_venom 0
 
 execute at @a[scores={char=39,s2_timer=1,CC_silence=0}] run scoreboard players set @a[scores={basilisk_venom=1..}] basilisk_petrify 1
 
-effect give @a[scores={basilisk_petrify=1..2}] minecraft:slowness 3 100 true
-effect give @a[scores={basilisk_petrify=1..2}] minecraft:weakness 3 100 true
-effect give @a[scores={basilisk_petrify=1..2}] minecraft:resistance 3 100 true
+effect give @a[scores={basilisk_petrify=1..2}] slowness 3 100 true
+effect give @a[scores={basilisk_petrify=1..2}] weakness 3 100 true
+effect give @a[scores={basilisk_petrify=1..2}] resistance 3 100 true
 scoreboard players set @a[scores={basilisk_petrify=1}] CC_petrify 60
 scoreboard players set @a[scores={basilisk_petrify=1}] CC_intangible 60
 
 
-execute as @a[scores={basilisk_petrify=1..2}] run attribute @s minecraft:knockback_resistance base set 1
-execute as @a[scores={basilisk_petrify=1..2}] run attribute @s minecraft:jump_strength base set 0
+execute as @a[scores={basilisk_petrify=1..2}] run attribute @s knockback_resistance base set 1
+execute as @a[scores={basilisk_petrify=1..2}] run attribute @s jump_strength base set 0
 execute at @a[scores={basilisk_petrify=1..60}] run particle falling_dust{block_state:{Name:"minecraft:stone"}} ~ ~ ~ 0.6 1.2 0.6 1 10
 
 execute at @a[scores={basilisk_petrify=1..2}] run particle happy_villager ~ ~ ~ 0.8 1.2 0.8 1 30
 execute at @a[scores={basilisk_petrify=1..2}] run playsound entity.cat.hiss master @a[distance=..10] ~ ~ ~ 1 0.5 1
 execute at @a[scores={basilisk_petrify=1..2}] run playsound entity.wither.shoot master @a[distance=..10] ~ ~ ~ 0.6 0.5 1
 execute at @a[scores={basilisk_petrify=1..3}] run playsound block.stone.place master @a[distance=..10] ~ ~ ~ 0.3 0.5 1
-execute as @a[scores={basilisk_petrify=59..61}] run attribute @s minecraft:knockback_resistance base set 0
-execute as @a[scores={basilisk_petrify=59..61}] run attribute @s minecraft:jump_strength base set 0.41
+execute as @a[scores={basilisk_petrify=59..61}] run attribute @s knockback_resistance base set 0
+execute as @a[scores={basilisk_petrify=59..61}] run attribute @s jump_strength base set 0.41
 execute at @a[scores={basilisk_petrify=59..61}] run particle block{block_state:{Name:"minecraft:stone"}} ~ ~ ~ 0.5 1.2 0.5 1 50
 execute at @a[scores={basilisk_petrify=59..61}] run particle block{block_state:{Name:"minecraft:cobblestone"}} ~ ~ ~ 0.5 1.2 0.5 1 50
 execute at @a[scores={basilisk_petrify=60..61}] run playsound block.stone.break master @a[distance=..10] ~ ~ ~ 1 0.1 1

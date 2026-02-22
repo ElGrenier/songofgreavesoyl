@@ -168,7 +168,6 @@ execute unless entity @a[scores={char=58}] run kill @e[tag=entities_purifier]
 execute unless entity @a[scores={char=58}] run tag @a remove purifier
 
 execute unless entity @a[scores={char=59}] run kill @e[tag=entities_redmold]
-execute unless entity @a[scores={char=59}] run tag @e remove the_mold
 
 execute unless entity @a[scores={char=60}] run kill @e[tag=entities_starfather]
 
@@ -220,4 +219,4 @@ execute unless entity @a[scores={char=73}] run kill @e[tag=entities_conductor]
 execute unless entity @a[scores={char=74}] run kill @e[tag=entities_fortress]
 
 
-
+execute as @a unless score @s char matches 9 unless score @s char matches 59 run tag @s remove cannot_capture_altars
