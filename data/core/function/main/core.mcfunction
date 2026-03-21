@@ -30,6 +30,7 @@ function core:lobby/choose_char
 
 execute as @a run function core:main/hp_display
 
+execute as @a[tag=!welcomemessage] run function core:main/spawn_new_player
 execute as @a[tag=!welcomemessage] run function core:lobby/welcome_message
 
 #mc related
@@ -67,12 +68,12 @@ function battlegrounds:timeofday
 function core:score/visibility
 
 #Ticket (to make the player leaving a match not being stuck after rejoining)
-execute if score game_state settings matches 1.. as @a unless score @s ticket = ticket settings run function core:main/game/spawn_outsider
+execute if score game_state settings matches 1.. as @a[tag=!outsider] unless score @s ticket = ticket settings run function core:main/game/spawn_outsider
 execute unless score game_state settings matches 1.. as @a[scores={ticket=..0,ticket=0..}] run function core:main/reset_ticket
 
 
 
-execute positioned 220 34 -130 run function core:main/spawn_new_player
+
 
 #lobby rzeczy
 
@@ -84,11 +85,22 @@ function chars:char_select
 execute if score confirmation_counter lobby matches 1.. run function core:lobby/confirmation/confirmation_loop
 
 #lobby holograms
-execute positioned 127 12 -154 if entity @a[distance=..10] unless entity @e[tag=lobby_hologram_1] run summon minecraft:text_display 127 14 -154 {Tags:["lobby_holograms","lobby_hologram_1"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Practice Room", text_opacity: 255, transformation: {left_rotation: [0.0f, -0.7071068f, 0.0f, 0.7071068f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999999f, 0.99999994f, 0.9999999f], translation: [0.0f, 0.0f, 0.0f]}}
-execute positioned 121 12 -154 if entity @a[distance=..10] unless entity @e[tag=lobby_hologram_2] run summon minecraft:text_display 121 14 -154 {Tags:["lobby_holograms","lobby_hologram_2"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Tutorial", text_opacity: 255, transformation: {left_rotation: [0.0f, 0.7071068f, 0.0f, 0.7071068f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999999f, 0.99999994f, 0.9999999f], translation: [0.0f, 0.0f, 0.0f]}}
-
-
+execute positioned 127 12 -154 if entity @a[distance=..10] unless entity @e[tag=lobby_hologram_1] run summon text_display 127 14 -154 {Tags:["lobby_holograms","lobby_hologram_1"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Practice Room", text_opacity: 255, transformation: {left_rotation: [0.0f, -0.7071068f, 0.0f, 0.7071068f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999999f, 0.99999994f, 0.9999999f], translation: [0.0f, 0.0f, 0.0f]}}
+execute positioned 121 12 -154 if entity @a[distance=..10] unless entity @e[tag=lobby_hologram_2] run summon text_display 121 14 -154 {Tags:["lobby_holograms","lobby_hologram_2"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Tutorial", text_opacity: 255, transformation: {left_rotation: [0.0f, 0.7071068f, 0.0f, 0.7071068f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999999f, 0.99999994f, 0.9999999f], translation: [0.0f, 0.0f, 0.0f]}}
 execute positioned 124 11 -154 unless entity @a[distance=..10] run kill @e[tag=lobby_holograms]
+
+#credits holograms
+execute positioned 124 11 -143 if entity @a[distance=..20] unless entity @e[tag=credits_hologram_1] run summon text_display 124 14.5 -135 {Rotation:[180f,0f],billboard:"vertical",Tags:["credits_hologram_1","credits_holograms"],line_width:220,text:["",{text:"",extra:[{text:"=",color:"red",bold:1b},{text:" MrKisiel ",color:"gold",bold:1b},{text:"=",color:"red",bold:1b},{text:"\nMain Creator",color:"yellow"}]}],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1.3f,1.3f,1.3f]}}
+
+execute positioned 124 11 -143 if entity @a[distance=..20] unless entity @e[tag=credits_hologram_2] run summon text_display 129 14.3 -136 {Rotation:[180f,0f],billboard:"vertical",Tags:["credits_hologram_2","credits_holograms"],line_width:220,text:["",{text:"",extra:[{text:"=",color:"red",bold:1b},{text:" Grenier ",color:"gold",bold:1b},{text:"=",color:"red",bold:1b},{text:"\nEngine Code Rework",color:"yellow"}]}],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1f,1f,1f]}}
+execute positioned 124 11 -143 if entity @a[distance=..20] unless entity @e[tag=credits_hologram_3] run summon text_display 130 14.3 -146 {Rotation:[180f,0f],billboard:"vertical",Tags:["credits_hologram_3","credits_holograms"],line_width:220,text:["",{text:"",extra:[{text:"=",color:"red",bold:1b},{text:" Franklo & Jajoman ",color:"gold",bold:1b},{text:"=",color:"red",bold:1b},{text:"\nAdditional Code",color:"yellow"}]}],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1f,1f,1f]}}
+
+execute positioned 124 11 -143 if entity @a[distance=..20] unless entity @e[tag=credits_hologram_4] run summon text_display 118 14.3 -147 {Rotation:[180f,0f],billboard:"vertical",Tags:["credits_hologram_4","credits_holograms"],line_width:220,text:["",{text:"",extra:[{text:"=",color:"red",bold:1b},{text:" Exo ",color:"gold",bold:1b},{text:"=",color:"red",bold:1b},{text:"\nCustom Heads",color:"yellow"}]}],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1f,1f,1f]}}
+execute positioned 124 11 -143 if entity @a[distance=..20] unless entity @e[tag=credits_hologram_5] run summon text_display 118 14.3 -143 {Rotation:[180f,0f],billboard:"vertical",Tags:["credits_hologram_5","credits_holograms"],line_width:220,text:["",{text:"",extra:[{text:"=",color:"red",bold:1b},{text:" wavgudbye ",color:"gold",bold:1b},{text:"=",color:"red",bold:1b},{text:"\nAdditional Code",color:"yellow"}]}],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1f,1f,1f]}}
+
+execute positioned 124 11 -143 if entity @a[distance=..20] unless entity @e[tag=credits_hologram_6] run summon text_display 119 14.3 -134 {Rotation:[180f,0f],billboard:"vertical",Tags:["credits_hologram_6","credits_holograms"],line_width:220,text:["",{text:"",extra:[{text:"=",color:"red",bold:1b},{text:" AzethMeron ",color:"gold",bold:1b},{text:"=",color:"red",bold:1b},{text:"\nLegacy Engine",color:"yellow"}]}],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[0.8f,0.8f,0.8f]}}
+
+execute positioned 124 11 -143 unless entity @a[distance=..20] run kill @e[tag=credits_holograms]
 
 
 

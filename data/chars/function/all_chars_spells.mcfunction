@@ -10,6 +10,7 @@ tag @a[scores={CC_intangible=1..}] remove valid_spell_target
 #tag @a[scores={char=7}] add archer_disarm
 #tag @a[scores={char=11}] add archer_disarm
 
+#crit disable (just like in idol clash!)
 execute as @a unless predicate chars:cant_crit run attribute @s minecraft:attack_damage modifier add no_crit -.3333333 add_multiplied_total
 execute as @a if predicate chars:cant_crit run attribute @s minecraft:attack_damage modifier remove no_crit
 
@@ -91,6 +92,7 @@ execute if entity @a[scores={char=71}] run function chars:spells_alternate
 execute if entity @a[scores={char=72}] run function chars:spells_caretaker
 execute if entity @a[scores={char=73}] run function chars:spells_conductor
 execute if entity @a[scores={char=74}] run function chars:spells_fortress
+execute if entity @a[scores={char=75}] run function chars:spells_glasswonder
 
 execute if entity @a[scores={char=23}] run function chars:spells_prowler
 
@@ -98,15 +100,24 @@ function chars:projetcile_removal
 
 execute as @a[scores={char=1..}] store result score @s MaxHP run attribute @s max_health get
 
-execute if entity @e[tag=Settings,scores={Map=5}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
-execute if entity @e[tag=Settings,scores={Map=9}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
-execute if entity @e[tag=Settings,scores={Map=15}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
-execute if entity @e[tag=Settings,scores={Map=21}] run effect give @a[scores={universal_kill=1..}] regeneration 6 4
+execute if score map settings matches 5 run effect give @a[scores={universal_kill=1..}] regeneration 3 6 true
+execute if score map settings matches 9 run effect give @a[scores={universal_kill=1..}] regeneration 3 6 true
+execute if score map settings matches 15 run effect give @a[scores={universal_kill=1..}] regeneration 3 6 true
+execute if score map settings matches 21 run effect give @a[scores={universal_kill=1..}] regeneration 3 6 true
 
 scoreboard players set @a[scores={universal_damagetaken=1..}] outofcombat 0
 
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:carrot_on_a_stick"}}]
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:warped_fungus_on_a_stick"}}]
+
+#surrender checks
+
+scoreboard players set @a[scores={surrender=0,s1_use=1..,char=1..},nbt={SelectedItem:{components: {"minecraft:custom_data": {surrender_flag: 1}}, count: 1, id: "minecraft:carrot_on_a_stick"}}] surrender 1
+scoreboard players set @a[scores={surrender=0,s1_drop=1..,char=1..},nbt={SelectedItem:{components: {"minecraft:custom_data": {surrender_flag: 1}}, count: 1, id: "minecraft:carrot_on_a_stick"}}] surrender 1
+
+scoreboard players set @a[scores={cancel_sur=0,s1_use=1..,char=1..},nbt={SelectedItem:{components: {"minecraft:custom_data": {surrender_flag: 2}}, count: 1, id: "minecraft:carrot_on_a_stick"}}] cancel_sur 1
+scoreboard players set @a[scores={cancel_sur=0,s1_drop=1..,char=1..},nbt={SelectedItem:{components: {"minecraft:custom_data": {surrender_flag: 2}}, count: 1, id: "minecraft:carrot_on_a_stick"}}] cancel_sur 1
+
 
 scoreboard players set @a[scores={s1_use=1..,char=1..},nbt={SelectedItem:{components: {"minecraft:custom_data": {showkit: 1}}, count: 1, id: "minecraft:carrot_on_a_stick"}}] showkit 1
 scoreboard players set @a[scores={s1_drop=1..,char=1..},nbt={SelectedItem:{components: {"minecraft:custom_data": {showkit: 1}}, count: 1, id: "minecraft:carrot_on_a_stick"}}] showkit 1

@@ -37,9 +37,7 @@ execute at @e[tag=puddle,scores={puddle_life=60}] positioned ~ ~1 ~ as @e[tag=va
 execute at @e[tag=puddle,scores={puddle_life=80}] positioned ~ ~1 ~ as @e[tag=valid_spell_target,distance=..3] unless score @s Team = @p[scores={char=34}] Team run tag @s add sogged_by_deshh
 execute at @e[tag=puddle,scores={puddle_life=100}] positioned ~ ~1 ~ as @e[tag=valid_spell_target,distance=..3] unless score @s Team = @p[scores={char=34}] Team run tag @s add sogged_by_deshh
 
-execute as @e[tag=sogged_by_deshh] run attribute @s knockback_resistance base set 100
 execute as @e[tag=sogged_by_deshh] run damage @s 1 generic by @p[scores={char=34}] from @p[scores={char=34}]
-execute as @e[tag=sogged_by_deshh] run attribute @s knockback_resistance base set 0
 tag @e remove sogged_by_deshh
 
 

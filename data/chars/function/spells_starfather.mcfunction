@@ -198,8 +198,12 @@ scoreboard players set @a[scores={char=60,s2_timer=1,CC_silence=1..}] s2_timer 3
 execute at @a[scores={char=60,s2_timer=1,CC_silence=0}] run playsound entity.wither.ambient master @a[distance=..10] ~ ~ ~ 0.2 1.5 1
 execute at @a[scores={char=60,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["BlackHole","entities_starfather"]}
 execute at @a[scores={char=60,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["BlackHoleEventHorizon","entities_starfather"]}
+execute at @a[scores={char=60,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["BlackHoleReturnPoint","entities_starfather"]}
 tp @e[tag=BlackHole,limit=1] @a[scores={char=60,s2_timer=1},limit=1]
 execute if entity @a[scores={char=60,s2_timer=1},limit=1] as @e[tag=BlackHole,limit=1] at @s run tp @s ~ ~1 ~
+
+tp @e[tag=BlackHoleReturnPoint] @e[tag=BlackHole,limit=1]
+tp @e[tag=BlackHoleReturnPoint] @e[tag=BlackFuckingHole,limit=1]
 
 execute as @e[tag=BlackHoleEventHorizon] at @s positioned as @n[tag=BlackFuckingHole] run tp @s ~ ~ ~
 execute as @e[tag=BlackHoleEventHorizon] at @s run rotate @s ~12 0
@@ -220,7 +224,6 @@ execute at @e[tag=BlackHoleEventHorizon] if entity @e[tag=BlackFuckingHole] posi
 execute at @e[tag=BlackHoleEventHorizon] if entity @e[tag=BlackFuckingHole] positioned ~ ~.5 ~ run particle dust_color_transition{from_color:[1.0,0.647,0.0],scale:2f,to_color:[1.0,0.835,0.5]} ^3 ^ ^ .65 0 .65 0.01 5
 execute at @e[tag=BlackHoleEventHorizon] if entity @e[tag=BlackFuckingHole] positioned ~ ~.5 ~ run particle dust_color_transition{from_color:[1.0,0.647,0.0],scale:2f,to_color:[1.0,0.835,0.5]} ^-3 ^ ^ .65 0 .65 0.01 5
 
-execute as @e[tag=BlackHole] at @s unless block ~ ~-0.5 ~ #minecraft:dash run kill @s
 execute as @e[tag=BlackHole] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
 execute as @e[tag=BlackHole] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
 execute as @e[tag=BlackHole] at @s unless block ^ ^1 ^0.5 #minecraft:dash run kill @s
@@ -228,26 +231,29 @@ execute as @e[tag=BlackHole] at @s unless block ^ ^1.5 ^1.5 #minecraft:dash run 
 execute as @e[tag=BlackHole] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
 execute as @e[tag=BlackHole] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
 
-execute as @e[tag=BlackFuckingHole] at @s unless block ~ ~-0.5 ~ #minecraft:dash run kill @s
 execute as @e[tag=BlackFuckingHole] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
 execute as @e[tag=BlackFuckingHole] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
-execute as @e[tag=BlackFuckingHole] at @s unless block ^ ^1 ^0.5 #minecraft:dash run kill @s
-execute as @e[tag=BlackFuckingHole] at @s unless block ^ ^1.5 ^1.5 #minecraft:dash run kill @s
-execute as @e[tag=BlackFuckingHole] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
-execute as @e[tag=BlackFuckingHole] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
+execute as @e[tag=BlackFuckingHole] at @s unless block ^ ^ ^0.5 #minecraft:dash run kill @s
+#execute as @e[tag=BlackFuckingHole] at @s unless block ^ ^ ^1.5 #minecraft:dash run kill @s
+
 
 execute as @e[tag=BlackHole] at @s run tp @s ^ ^ ^0.18
 execute as @e[tag=BlackFuckingHole] at @s run tp @s ^ ^ ^0.15
 
-execute at @a[scores={char=60,s2_timer=140..}] run kill @e[tag=BlackHole]
-execute at @a[scores={char=60,s2_timer=140..}] run kill @e[tag=BlackFuckingHole]
-execute at @a[scores={char=60,s2_timer=140..}] run kill @e[tag=BlackHoleEventHorizon]
+execute at @a[scores={char=60,s2_timer=80..}] run kill @e[tag=BlackHole]
+execute at @a[scores={char=60,s2_timer=80..}] run kill @e[tag=BlackFuckingHole]
+execute at @a[scores={char=60,s2_timer=80..}] run kill @e[tag=BlackHoleEventHorizon]
 
 execute at @e[tag=BlackFuckingHole] as @e[tag=valid_spell_target,distance=..6] unless score @s Team = @p[scores={char=60}] Team run effect give @s slowness 1 5
 
-execute at @e[tag=BlackFuckingHole] as @a[tag=valid_spell_target,distance=..2] unless score @s Team = @p[scores={char=60}] Team run tp @s @n[tag=BlackFuckingHole]
+execute at @e[tag=BlackFuckingHole] as @e[tag=valid_spell_target,distance=..2] unless score @s Team = @p[scores={char=60}] Team run tp @s @n[tag=BlackFuckingHole]
+execute at @e[tag=BlackFuckingHole] as @e[tag=valid_spell_target,distance=..1] unless score @s Team = @p[scores={char=60}] Team run tag @s add get_blackholed_asshole
+execute at @e[tag=BlackFuckingHole] as @e[tag=valid_spell_target,distance=..1] unless score @s Team = @p[scores={char=60}] Team run tp @s 157 4 -206
 
-
+execute at @e[tag=BlackHoleReturnPoint] unless entity @e[tag=BlackFuckingHole] unless entity @e[tag=BlackHole] run tp @e[tag=get_blackholed_asshole] ~ ~-0.2 ~
+execute at @e[tag=BlackHoleReturnPoint] unless entity @e[tag=BlackFuckingHole] unless entity @e[tag=BlackHole] as @e[tag=get_blackholed_asshole] at @s unless block ~ ~ ~ #dash run tp @s ~ ~1 ~
+execute at @e[tag=BlackHoleReturnPoint] unless entity @e[tag=BlackFuckingHole] unless entity @e[tag=BlackHole] run tag @e remove get_blackholed_asshole
+execute as @e[tag=BlackHoleReturnPoint] unless entity @e[tag=BlackFuckingHole] unless entity @e[tag=BlackHole] run kill @s
 
 
 

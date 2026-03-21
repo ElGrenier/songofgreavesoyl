@@ -258,7 +258,7 @@ execute at @a[tag=form_stitched,scores={char=53,s2_timer=10,CC_silence=0}] run p
 execute at @a[tag=form_stitched,scores={char=53,s2_timer=1,CC_silence=0}] run playsound entity.squid.hurt master @a[distance=..10] ~ ~ ~ 0.4 1.8 1
 execute at @a[tag=form_stitched,scores={char=53,s2_timer=1,CC_silence=0}] run particle block{block_state:{Name:"minecraft:water"}} ~ ~0.5 ~ 2 0.5 2 0.1 100
 execute at @a[tag=form_stitched,scores={char=53,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["siren_bleed","entities_stitchedsiren"]}
-execute at @a[tag=form_stitched,scores={char=53,s2_timer=1,CC_silence=0}] as @a[distance=0.5..6,tag=valid_spell_target] if score @s Team = @p[scores={char=52}] Team run tag @s add stitched_by_siren
+execute at @a[tag=form_stitched,scores={char=53,s2_timer=1,CC_silence=0}] as @a[distance=0.5..6,tag=valid_spell_target] if score @s Team = @p[scores={char=53}] Team run tag @s add stitched_by_siren
 
 execute at @e[tag=stitched_by_siren] run particle falling_dust{block_state:{Name:"minecraft:water"}} ~ ~1 ~ 0.5 0.6 0.5 0.1 10
 execute at @e[tag=stitched_by_siren] run particle falling_dust{block_state:{Name:"minecraft:bubble_coral"}} ~ ~1 ~ 0.5 0.6 0.5 0.1 50

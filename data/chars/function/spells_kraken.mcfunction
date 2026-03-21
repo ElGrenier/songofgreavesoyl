@@ -115,7 +115,7 @@ execute at @a[scores={char=10,s1_timer=15..25}] run kill @e[tag=tentacle_visuals
 execute at @e[tag=kraken_tentacle] positioned ~-0.75 ~-0.75 ~-0.75 as @e[dx=0.5,dy=0.5,dz=0.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=10}] Team run tag @s add kraken_slammed
 
 effect give @e[tag=kraken_slammed] blindness 2 1 true
-damage @e[tag=kraken_slammed,limit=1] 6 generic by @p[scores={char=10}] from @p[scores={char=10}]
+damage @e[tag=kraken_slammed,limit=1] 8 mob_attack by @p[scores={char=10}] from @p[scores={char=10}]
 execute at @e[tag=kraken_slammed] run particle block{block_state:{Name:"minecraft:dark_prismarine"}} ~ ~ ~ 1 1 1 0.1 100
 execute if entity @e[tag=kraken_slammed] run kill @e[tag=kraken_tentacle]
 tag @e remove kraken_slammed

@@ -1,5 +1,4 @@
 kill @e[type=item,nbt={Item:{id:"minecraft:golden_shovel"}}]
-scoreboard players set @s MaxHP 16
 
 #> Songs of Greavesoyl
 
@@ -9,7 +8,6 @@ title @a[scores={char=70,passive_bard=0..10,CC_silence=0},tag=!bard_jumped_displ
 title @a[scores={char=70,passive_bard=11..20,CC_silence=0},tag=!bard_jumped_display] actionbar [{"text": "[ ","color": "dark_purple","bold": true},{"text": "=","color": "light_purple","bold": false},{"text": " - || - ","color": "dark_gray","bold": false},{"text": "=","color": "light_purple","bold": false},{"text": " ]","color": "dark_purple","bold": true}]
 title @a[scores={char=70,passive_bard=21..30,CC_silence=0},tag=!bard_jumped_display] actionbar [{"text": "[ ","color": "dark_purple","bold": true},{"text": "= -","color": "light_purple","bold": false},{"text": " || ","color": "dark_gray","bold": false},{"text": "- =","color": "light_purple","bold": false},{"text": " ]","color": "dark_purple","bold": true}]
 title @a[scores={char=70,passive_bard=31..40,CC_silence=0},tag=!bard_jumped_display] actionbar [{"text": "[ ","color": "dark_purple","bold": true},{"text": "= - || - =","color": "light_purple","bold": false},{"text": " ]","color": "dark_purple","bold": true}]
-
 title @a[scores={char=70,CC_silence=1..},tag=!bard_jumped_display] actionbar [{"text": "[ ","color": "dark_purple","bold": true},{"text": "You can't shut me up forever!","color": "dark_gray","bold": false},{"text": " ]","color": "dark_purple","bold": true}]
 
 scoreboard players add @a[scores={char=70}] passive_bard 1
@@ -90,30 +88,22 @@ execute at @a[scores={char=70,s1_timer=20..29,CC_silence=0,passive_bard=11},tag=
 execute at @a[scores={char=70,s1_timer=30..39,CC_silence=0,passive_bard=21},tag=bard_s1_perfect] run playsound block.note_block.bass master @a[distance=..12] ~ ~ ~ 10 2 1
 
 execute at @a[scores={char=70,s1_timer=1..40,CC_silence=0}] as @a[distance=..4] if score @s Team = @p[scores={char=70}] Team run effect give @s speed 1 1
-execute at @a[scores={char=70,s1_timer=1..40,CC_silence=0}] as @a[distance=..4] unless score @s Team = @p[scores={char=70}] Team run scoreboard players set @s CC_grounded 2
+execute at @a[scores={char=70,s1_timer=1..40,CC_silence=0}] as @a[distance=..4] unless score @s Team = @p[scores={char=70}] Team run scoreboard players set @s CC_silence 2
 
-#--- recast --- (Repose (hey wait its back))
+#--- recast ---
 
 clear @a[scores={char=70,s1_timer_recast=1..}] *[custom_data={s1:2}]
 
-tag @a[scores={char=70,s1_timer_recast=1,passive_bard=30..32,CC_silence=0,passive_bard_use=1}] add bard_s1_recast_perfect
+tag @a[scores={char=70,s1_timer_recast=1,passive_bard=29..31,CC_silence=0,passive_bard_use=1}] add bard_s1_recast_perfect
 title @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] actionbar [{"text": "[ ","color": "dark_purple","bold": true},{"text": "Perfect!","color": "gold","bold": false},{"text": " ]","color": "dark_purple","bold": true}]
 
 execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] run playsound block.note_block.guitar master @a[distance=..12] ~ ~ ~ 10 2 1
 execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=!bard_s1_recast_perfect] run playsound block.note_block.guitar master @a[distance=..12] ~ ~ ~ 10 1 1
-execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] as @a[distance=..12] unless score @s Team = @p[scores={char=70}] Team run playsound ambient.cave master @s ~ ~ ~ 1 1 1
 
-execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=!bard_s1_recast_perfect] as @a[distance=..4] unless score @s Team = @p[scores={char=70}] Team run scoreboard players set @s CC_grounded 20
+execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=!bard_s1_recast_perfect] as @a[distance=..4] unless score @s Team = @p[scores={char=70}] Team run scoreboard players set @s CC_silence 40
 
 scoreboard players set @a[scores={char=70,s1_timer_recast=1,CC_silence=0}] s1_timer 39
-effect give @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] regeneration 2 2 true
-execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] as @a[distance=.5..4,scores={CC_defiled=0}] if score @s Team = @p[scores={char=70}] Team run effect give @s regeneration 4 2 true
-
-execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] as @a[distance=..4] unless score @s Team = @p[scores={char=70}] Team run tag @s add bard_fear
-
-scoreboard players set @e[tag=bard_fear,tag=valid_spell_target] CC_disarm 40
-execute as @e[tag=bard_fear,tag=valid_spell_target] at @s facing entity @p[scores={char=70},distance=.5..] feet run rotate @s ~180 ~
-tag @e[tag=bard_fear,tag=valid_spell_target] remove bard_fear
+execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] as @a[distance=..4,scores={CC_defiled=0}] if score @s Team = @p[scores={char=70}] Team run effect give @s regeneration 4 2 true
 
 execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0}] run summon marker ~ ~0.25 ~ {Tags:["crescendo_visual_core","crescendo_visuals","entities_bard"]}
 execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0}] run summon marker ~0.5 ~0.25 ~ {Tags:["crescendo_visual_1","crescendo_visuals","entities_bard"]}
@@ -181,6 +171,7 @@ execute at @a[scores={char=70,s2_timer=20..}] run kill @e[tag=encore_visuals]
 execute at @a[scores={char=70,s2_timer=1,CC_silence=0}] as @e[tag=valid_spell_target,distance=..6] if score @s Team = @p[scores={char=70}] Team run effect give @s speed 2 1
 
 execute at @a[scores={char=70,s2_timer=1,CC_silence=0},tag=!bard_s2_perfect] as @e[tag=valid_spell_target,distance=..6] unless score @s Team = @p[scores={char=70}] Team run effect give @s slowness 2 2
+execute at @a[scores={char=70,s2_timer=1,CC_silence=0},tag=!bard_s2_perfect] as @e[tag=valid_spell_target,distance=..6] unless score @s Team = @p[scores={char=70}] Team run scoreboard players set @s CC_glaciate 50
 execute at @a[scores={char=70,s2_timer=1,CC_silence=0},tag=bard_s2_perfect] as @e[tag=valid_spell_target,distance=..6] unless score @s Team = @p[scores={char=70}] Team run scoreboard players set @s CC_glaciate 100
 
 tag @a[scores={char=70,s2_timer=2},tag=bard_s2_perfect] remove bard_s2_perfect

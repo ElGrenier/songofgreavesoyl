@@ -12,8 +12,9 @@ execute if score game_state settings matches 2..7 run function core:main/picks_s
 execute if score game_state settings matches 2.. positioned 287 15.00 -126 run function core:main/game/loop_waiting_room
 
 #spawn outsider
-execute if score game_state settings matches 3.. as @a[tag=!in_game,tag=!outsider] at @s run function core:main/game/spawn_outsider
+#execute if score game_state settings matches 3.. as @a[tag=!in_game,tag=!outsider] at @s run function core:main/game/spawn_outsider
 
+execute if score game_state settings matches 1.. as @a[tag=!outsider] unless score @s ticket = ticket settings run function core:main/game/spawn_outsider
 
 # execute if score game_state settings matches 7.. run function chars:all_chars_spells
 #execute if score game_state settings matches 7.. run function chars:all

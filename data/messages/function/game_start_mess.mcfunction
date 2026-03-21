@@ -34,6 +34,8 @@ execute if score map settings matches 25 run tellraw @a [{text:" ==== ",color:"d
 execute if score map settings matches 26 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Chain Tower ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
 execute if score map settings matches 27 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Infected Crypt ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
 
+execute if score map settings matches 29 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Temple of Rainmaker ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
+
 
 execute if score map settings matches 1 run tellraw @a [{text:"      ",color:"dark_gray",italic:1b,type:"text"},{text:" Where it all started ",color:"gray",italic:1b,type:"text"},{text:"      ",color:"dark_gray",italic:1b,type:"text"}]
 execute if score map settings matches 2 run tellraw @a [{text:"      ",color:"dark_gray",italic:1b,type:"text"},{text:"    The Mold hungers ",color:"gray",italic:1b,type:"text"},{text:"      ",color:"dark_gray",italic:1b,type:"text"}]
@@ -63,6 +65,8 @@ execute if score map settings matches 24 run tellraw @a [{text:"      ",color:"d
 execute if score map settings matches 25 run tellraw @a [{text:"       ",color:"dark_gray",italic:1b,type:"text"},{text:"Jewel of the Desert",color:"gray",italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
 execute if score map settings matches 26 run tellraw @a [{text:"  ",color:"dark_gray",italic:1b,type:"text"},{text:"The High Court of Seru has\n     made the final verdict",color:"gray",italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
 execute if score map settings matches 27 run tellraw @a [{text:"     ",color:"dark_gray",italic:1b,type:"text"},{text:"Red spores over purgatory",color:"gray",italic:1b,italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
+
+execute if score map settings matches 29 run tellraw @a [{text:"             ",color:"dark_gray",italic:1b,type:"text"},{text:"Deshh loves you too",color:"gray",italic:1b,italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
 
 
 tellraw @a {text:" ",type:"text"}

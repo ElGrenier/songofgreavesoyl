@@ -35,6 +35,7 @@ execute at @a[scores={char=8,s1_timer=102}] run kill @e[tag=decoy]
 
 execute store result entity @e[tag=decoy,limit=1] Rotation[1] float 1 run clear
 execute at @a[scores={char=8,s1_timer=1..30}] as @e[tag=moving_decoy] at @s if block ^ ^1 ^1 #minecraft:dash if block ^ ^ ^1 #minecraft:dash run tp @s ^ ^ ^0.3
+execute as @e[tag=decoy] at @s if block ~ ~-0.2 ~ #minecraft:dash run tp @s ~ ~-0.2 ~
 execute as @e[tag=decoy] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
 execute as @e[tag=decoy] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
 

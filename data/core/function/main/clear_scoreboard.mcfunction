@@ -501,6 +501,20 @@ scoreboard objectives remove dragonShotFire
 scoreboard objectives remove TurretAge
 scoreboard objectives remove guardian_mark_dh
 scoreboard objectives remove customhitfailsafe
+scoreboard objectives remove kp
+scoreboard objectives remove lj_time
+scoreboard objectives remove Weapun
+scoreboard objectives remove SnareAge
+scoreboard objectives remove burrowinterrupt1
+scoreboard objectives remove burrowinterrupt2
+scoreboard objectives remove checkDelay
+scoreboard objectives remove shapeless_hit
+scoreboard objectives remove dragonTest
+scoreboard objectives remove TempScore
+scoreboard objectives remove Kills
+scoreboard objectives remove Winner
+scoreboard objectives remove killedByDragon
+scoreboard objectives remove memScore
 
 
 tellraw @a "Cleared All unused/useless scoreboard objectives"

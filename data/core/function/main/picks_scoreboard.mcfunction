@@ -57,7 +57,7 @@ execute if score map settings matches 24 run scoreboard players display name map
 execute if score map settings matches 25 run scoreboard players display name map_name Picks "Oasis Garden"
 execute if score map settings matches 26 run scoreboard players display name map_name Picks "Chain Tower"
 execute if score map settings matches 27 run scoreboard players display name map_name Picks "Infected Crypt"
-execute if score map settings matches 28 run scoreboard players display name map_name Picks "Crawlermode"
+execute if score map settings matches 28 run scoreboard players display name map_name Picks "Mine Control"
 execute if score map settings matches 29 run scoreboard players display name map_name Picks "Temple of Rainmaker"
 
 
@@ -564,3 +564,12 @@ execute if entity @a[scores={char=74},team=yellow] run scoreboard players set Fo
 execute if entity @a[scores={char=74},team=ffa] run scoreboard players set Fortress Picks -1
 execute if entity @e[tag=ban_74] run scoreboard players set Fortress Picks -3
 execute unless entity @a[scores={char=74}] unless entity @e[tag=ban_74] run scoreboard players reset Fortress Picks
+
+execute if entity @a[scores={char=75}] run scoreboard players display name picks_glasswonder Picks "Glass Wonder"
+execute if entity @e[tag=ban_75] run scoreboard players display name picks_glasswonder Picks "Scarlet Lady"
+execute if entity @a[scores={char=75},team=purple] run scoreboard players set picks_glasswonder Picks 1
+execute if entity @a[scores={char=75},team=yellow] run scoreboard players set picks_glasswonder Picks -1
+execute if entity @a[scores={char=75},team=ffa] run scoreboard players set picks_glasswonder Picks -1
+execute if entity @e[tag=ban_75] run scoreboard players set picks_glasswonder Picks -3
+execute unless entity @a[scores={char=75}] unless entity @e[tag=ban_75] run scoreboard players reset picks_glasswonder Picks
+

@@ -23,8 +23,8 @@ execute if entity @a[scores={char=5,s1_timer=1},limit=1] as @e[tag=NewFireball,l
 execute at @e[tag=NewFireball] run particle block{block_state:{Name:"minecraft:magma_block"}} ~ ~ ~ 0.2 0.2 0.2 0.0001 5 force
 execute at @e[tag=NewFireball] run particle flame ~ ~ ~ 0.3 0.3 0.3 0.0001 10 force
 execute at @e[tag=NewFireball] run particle small_flame ~ ~ ~ 0.4 0.4 0.4 0.01 10 force
-execute as @e[tag=NewFireball,x_rotation=10..90] at @s run tp @s ~ ~ ~ ~ 11
-execute as @e[tag=NewFireball] at @s run tp @s ^ ^ ^0.65
+#execute as @e[tag=NewFireball,x_rotation=10..90] at @s run tp @s ~ ~ ~ ~ 11
+execute as @e[tag=NewFireball] at @s run tp @s ^ ^ ^0.75
 execute as @e[tag=NewFireball] at @s unless block ^ ^ ^0.1 #minecraft:dash run summon marker ~ ~ ~ {Tags:["CrematorBoom","entities_cremator"]}
 
 execute at @e[tag=NewFireball] positioned ~-0.75 ~-0.75 ~-0.75 as @e[dx=0.5,dy=0.5,dz=0.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=5}] Team run summon marker ~ ~ ~ {Tags:["CrematorBoom","entities_cremator"]}
@@ -37,8 +37,8 @@ execute at @e[tag=CrematorBoom] run particle explosion ~ ~ ~ 3 3 3 0.01 40 force
 execute at @e[tag=CrematorBoom] run particle flame ~ ~ ~ 4 4 4 0.01 300 force
 execute at @e[tag=CrematorBoom] run particle small_flame ~ ~ ~ 3.5 3.5 3.5 0.1 200 force
 
-execute at @e[tag=CrematorBoom] as @e[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=5}] Team run damage @s 8 fireball by @n[tag=CrematorBoom] from @p[scores={char=5}]
-execute at @e[tag=CrematorBoom] as @e[distance=2.1..6,tag=valid_spell_target] unless score @s Team = @p[scores={char=5}] Team run damage @s 4 fireball by @n[tag=CrematorBoom] from @p[scores={char=5}]
+execute at @e[tag=CrematorBoom] as @e[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=5}] Team run damage @s 12 fireball by @n[tag=CrematorBoom] from @p[scores={char=5}]
+execute at @e[tag=CrematorBoom] as @e[distance=2.1..6,tag=valid_spell_target] unless score @s Team = @p[scores={char=5}] Team run damage @s 6 fireball by @n[tag=CrematorBoom] from @p[scores={char=5}]
 execute at @e[tag=CrematorBoom] as @e[distance=..6,tag=valid_spell_target] unless score @s Team = @p[scores={char=5}] Team run scoreboard players set @s CC_stun 10
 
 kill @e[tag=CrematorBoom]

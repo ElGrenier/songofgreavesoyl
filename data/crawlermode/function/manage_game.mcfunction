@@ -42,6 +42,7 @@ execute if score game_state settings matches 5 as @a[scores={char=1..},tag=!wait
 execute if score game_state settings matches 5 unless entity @a[tag=!in_a_team,tag=in_game] unless entity @a[scores={char=0},tag=in_game] run scoreboard players set game_state settings 6
 
 #Set respawn to the respawn 
+execute if score game_state settings matches 6 run scoreboard objectives setdisplay sidebar
 execute if score game_state settings matches 6 run spawnpoint @a[tag=in_game] 207 34 -131
 execute if score game_state settings matches 6 run function crawlermode:start_game_spawn
 

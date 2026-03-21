@@ -38,7 +38,6 @@ tp @e[tag=void_blade,limit=1] @a[scores={char=37,s1_timer=1},limit=1]
 execute if entity @a[scores={char=37,CC_silence=1..}] run kill @e[tag=void_gate]
 
 
-
 execute as @e[tag=void_gate] at @s if block ~ ~-0.5 ~ #minecraft:dash run tp @s ~ ~-1 ~
 execute as @e[tag=void_gate] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
 execute at @e[tag=void_gate] run playsound entity.wither_skeleton.ambient master @a[distance=..10] ~ ~ ~ 0.03 0.1 1
@@ -47,8 +46,12 @@ execute at @e[tag=void_blade] run particle block{block_state:{Name:"minecraft:bl
 execute at @e[tag=void_blade] run particle smoke ~ ~ ~ 0.2 1 0.2 0.0001 20 normal
 execute at @e[tag=void_blade] run particle falling_dust{block_state:{Name:"minecraft:crying_obsidian"}} ~ ~ ~ 0.2 1 0.2 0.0001 20 normal
 
-
 execute store result entity @e[tag=void_blade,limit=1] Rotation[1] float 1 run clear
+
+execute at @e[tag=void_blade] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=37}] Team run summon marker ~ ~ ~ {Tags:["void_banish","entities_shapeless"]}
+execute if entity @e[tag=void_banish] run kill @e[tag=void_blade]
+execute at @a[scores={char=37,s1_timer=30..}] run kill @e[tag=void_blade]
+
 execute as @e[tag=void_blade] at @s unless block ^ ^0.5 ^0.5 #minecraft:dash run kill @e[tag=voidgate_visuals]
 execute as @e[tag=void_blade] at @s unless block ^ ^0.5 ^0.5 #minecraft:dash run kill @e[tag=void_gate]
 execute as @e[tag=void_blade] at @s unless block ^ ^0.5 ^0.5 #minecraft:dash align xyz positioned ~0.5 ~ ~0.5 run summon marker ~ ~ ~ {Tags:["void_gate","void_gate_visual_core","entities_shapeless"]}
@@ -58,9 +61,6 @@ execute as @e[tag=void_blade] at @s if block ~ ~-0.2 ~ #minecraft:dash run tp @s
 execute as @e[tag=void_blade] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
 execute as @e[tag=void_blade] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
 
-execute at @e[tag=void_blade] as @e[tag=valid_spell_target,distance=..2] unless score @s Team = @p[scores={char=37}] Team run summon marker ~ ~ ~ {Tags:["void_banish","entities_shapeless"]}
-execute if entity @e[tag=void_banish] run kill @e[tag=void_blade]
-execute at @a[scores={char=37,s1_timer=30..}] run kill @e[tag=void_blade]
 
 execute at @e[tag=void_banish] as @p[distance=..3,tag=valid_spell_target] unless score @s Team = @p[scores={char=37}] Team run scoreboard players set @s CC_banish 40
 execute at @e[tag=void_banish] as @p[distance=..3,tag=valid_spell_target] unless score @s Team = @p[scores={char=37}] Team run scoreboard players set @s CC_silence 5
@@ -143,6 +143,7 @@ execute if entity @e[tag=void_gate] run playsound block.soul_sand.break master @
 execute if entity @e[tag=void_gate] run playsound block.soul_sand.break master @a[tag=in_the_void,scores={char=37}] ~ ~ ~ 16 0.4 1
 execute if entity @e[tag=void_gate] run playsound block.soul_sand.break master @a[tag=in_the_void,scores={char=37}] ~ ~ ~ 16 0.2 1
 
+execute if entity @a[tag=in_the_void,scores={char=37}] run tag @a remove remember_me
 execute if entity @a[tag=in_the_void,scores={char=37}] run kill @e[tag=void_gate]
 effect clear @a[tag=in_the_void,scores={char=37}] glowing
 effect give @a[tag=in_the_void,scores={char=37}] speed 1 1 true
@@ -278,12 +279,9 @@ execute at @a[scores={universal_hit=1..,char=37,CC_silence=0,s2_timer=0}] as @a[
 execute unless entity @p[tag=remember_me] run scoreboard players set @a[scores={char=37,s2_timer=2,CC_silence=0}] spellCD2 20
 execute unless entity @p[tag=remember_me] run scoreboard players set @a[scores={char=37,s2_timer=2,CC_silence=0}] s2_timer 240
 
-#execute if entity @p[tag=remember_me] run clear @a[scores={char=37,s2_timer=1,CC_silence=0}] minecraft:stone_hoe
-#execute if entity @p[tag=remember_me] run item replace entity @a[scores={char=37,s2_timer=1,CC_silence=0}] hotbar.0 with stone_hoe[custom_data={shapeless:1},minecraft:custom_name={bold:1b,color:"gray",text:"Melted Grasp"},minecraft:max_damage=5,minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"}]] 1
-
 execute as @a[scores={char=37,s2_timer=2..3,CC_silence=0}] run tp @p[tag=remember_me]
 execute if entity @p[tag=remember_me] at @a[scores={char=37,s2_timer=1,CC_silence=0}] run playsound minecraft:entity.drowned.hurt master @a[distance=..10] ~ ~ ~ 1 0.1 1
-execute at @a[scores={char=37,s2_timer=5,CC_silence=0}] run tag @a remove remember_me
+execute at @a[scores={char=37}] run tag @a[distance=..0.5] remove remember_me
 
 scoreboard players set @a[scores={char=37,shapeless_s2_empower=4..}] shapeless_s2_empower 0
 

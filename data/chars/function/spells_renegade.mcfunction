@@ -16,7 +16,7 @@ execute at @a[scores={char=26,s0_timer=1}] run playsound entity.zombie_villager.
 execute at @a[scores={char=26,s0_timer=1}] run summon marker ~ ~1 ~ {Tags:["renegade_ebw_shot","entities_renegade"]}
 scoreboard players operation @e[tag=projectile,tag=renegade_ebw_shot] Team = @p[scores={char=26}] Team
 tp @e[tag=renegade_ebw_shot,limit=1] @a[scores={char=26,s0_timer=1},limit=1]
-execute at @a[scores={char=26,s0_timer=1,CC_silence=0}] as @e[tag=renegade_ebw_shot,limit=1] at @s run tp @s ~ ~1.5 ~ 
+execute at @a[scores={char=26,s0_timer=1}] as @e[tag=renegade_ebw_shot,limit=1] at @s run tp @s ~ ~1.5 ~ 
 
 execute as @e[tag=renegade_ebw_shot] at @s run tp @s ^ ^ ^0.3
 execute at @e[tag=renegade_ebw_shot] run particle enchanted_hit ~ ~ ~ 0.1 0.1 0.1 0.01 1

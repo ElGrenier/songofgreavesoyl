@@ -282,7 +282,8 @@ execute if score -floor crawlers_floor matches 1.. if score -HP campfire_hp matc
 execute if score -floor crawlers_floor matches 1.. if score -HP campfire_hp matches -101..0 run scoreboard players remove -HP campfire_hp 15
 
 #
-execute if score -floor crawlers_floor matches 1.. positioned 97 10 -126 if entity @a[scores={char=1..},distance=..5] run scoreboard players add -wait crawlers_wave 1
-execute if score -floor crawlers_floor matches 1.. positioned 97 10 -126 unless entity @a[scores={char=1..},distance=..5] run scoreboard players set -wait crawlers_wave 0
+execute positioned 97 10 -126 if score -floor crawlers_floor matches 1.. positioned 97 10 -126 if entity @p[scores={char=1..},distance=..6] run scoreboard players add -wait crawlers_floor 1
+execute positioned 97 10 -126 if score -floor crawlers_floor matches 1.. positioned 97 10 -126 unless entity @p[scores={char=1..},distance=..6] run scoreboard players set -wait crawlers_floor 0
 
 execute if score -wait crawlers_floor matches 100.. run function crawlermode:start_handle
+execute if score -wait crawlers_floor matches 100.. run scoreboard players set -wait crawlers_floor 0

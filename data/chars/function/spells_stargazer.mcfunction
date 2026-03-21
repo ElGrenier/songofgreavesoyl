@@ -56,7 +56,7 @@ execute at @e[scores={fate_snared=40}] run summon marker ~-0.5 ~0.5 ~ {Tags:["bl
 execute at @e[scores={fate_snared=40}] run summon marker ~ ~0.5 ~0.5 {Tags:["blessing_visual_3","snare_explosion_visuals","entities_stargazer"]}
 execute at @e[scores={fate_snared=40}] run summon marker ~ ~0.5 ~-0.5 {Tags:["blessing_visual_4","snare_explosion_visuals","entities_stargazer"]}
 
-execute at @e[scores={fate_snared=40}] as @e[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=45}] Team run damage @s 6 generic by @p[scores={char=45}] from @p[scores={char=45}]
+execute at @e[scores={fate_snared=40}] as @e[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=45}] Team run damage @s 8 generic by @p[scores={char=45}] from @p[scores={char=45}]
 
 execute at @e[tag=snare_explosion_visuals,tag=!snare_explosion_visual_core] run particle sculk_charge_pop ~ ~0.2 ~ 0.1 0.1 0.1 0.001 15
 execute as @e[tag=snare_explosion_visuals,tag=!snare_explosion_visual_core] at @s run tp @s ~ ~ ~ facing entity @e[tag=snare_explosion_visual_core,limit=1]

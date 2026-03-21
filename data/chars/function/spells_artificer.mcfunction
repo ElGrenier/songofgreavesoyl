@@ -51,7 +51,7 @@ execute at @e[tag=artificer_grounded] run particle nautilus ~ ~0.5 ~ 0.3 0.5 0.3
 execute at @e[tag=artificer_grounded] run playsound block.beacon.deactivate master @a[distance=..10] ~ ~ ~ 0.4 0.8 1
 scoreboard players set @e[tag=artificer_grounded] CC_grounded 20
 effect give @e[tag=artificer_grounded] slowness 1 5
-damage @e[tag=artificer_grounded,limit=1] 4 generic by @p[scores={char=48}] from @p[scores={char=48}]
+damage @e[tag=artificer_grounded,limit=1] 6 generic by @p[scores={char=48}] from @p[scores={char=48}]
 tag @e remove artificer_grounded
 
 
@@ -173,7 +173,7 @@ execute at @e[tag=scatter_face_slammed_to_a_wall] run effect clear @a[scores={sc
 execute at @e[tag=scatter_face_slammed_to_a_wall] run kill @e[tag=scatter_marker]
 execute at @e[tag=scatter_face_slammed_to_a_wall] unless entity @e[distance=..2,tag=debris] run summon item ~ ~ ~ {PickupDelay:32767,Tags:["debris","entities_artificer"],Item:{id:"minecraft:weathered_copper",count:1}}
 
-execute at @e[tag=scatter_face_slammed_to_a_wall] as @p[scores={scatter=1..}] run damage @s 4 generic by @p[scores={char=48}] from @p[scores={char=48}]
+execute at @e[tag=scatter_face_slammed_to_a_wall] as @p[scores={scatter=1..}] run damage @s 6 generic by @p[scores={char=48}] from @p[scores={char=48}]
 execute at @e[tag=scatter_face_slammed_to_a_wall] run scoreboard players set @e scatter 0
 kill @e[tag=scatter_face_slammed_to_a_wall]
 

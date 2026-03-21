@@ -3,47 +3,60 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:golden_axe"}}]
 
 #big warm hug
 
-scoreboard players set @a[scores={char=19,s1_timer=1,CC_silence=1..}] spellCD1 20
-scoreboard players set @a[scores={char=19,s1_timer=1,CC_silence=1..}] s1_timer 280
+execute as @a[scores={char=19,s1_timer=1,CC_silence=0}] at @s positioned ~ ~1.1 ~ run function chars:lunatic_hug_raycast
+execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] run playsound entity.allay.item_taken master @a[distance=..15] ~ ~ ~ 0.9 1.4 1
 
-execute at @a[scores={char=19}] as @a[distance=1..12] if score @s Team = @p[scores={char=19}] Team run tag @s add lunatic_valid_hug_target
-execute at @a[scores={char=19}] as @a[distance=12.1..] if score @s Team = @p[scores={char=19}] Team run tag @s remove lunatic_valid_hug_target
-execute at @a[scores={char=19}] as @a unless score @s Team = @p[scores={char=19}] Team run tag @s remove lunatic_valid_hug_target
+execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] unless entity @e[distance=0.5..12,tag=hug] run scoreboard players set @a[scores={char=19}] spellCD1 20
+execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] unless entity @e[distance=0.5..12,tag=hug] run scoreboard players set @a[scores={char=19}] s1_timer 280
 
-#execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..12,tag=lunatic_valid_hug_target] run title @a[scores={char=19}] times 0 20 0
-#execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..12,tag=lunatic_valid_hug_target] run title @a[scores={char=19}] actionbar {text:"No allies within range",color:red,bold:1b}
-execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..12,tag=lunatic_valid_hug_target] run scoreboard players set @a[scores={char=19}] spellCD1 20
-execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..12,tag=lunatic_valid_hug_target] run scoreboard players set @a[scores={char=19}] s1_timer 280
 
-execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] as @p[distance=1..12,tag=valid_spell_target,tag=lunatic_valid_hug_target] if score @s Team = @p[scores={char=19}] Team run tag @s add hug
 tp @a[scores={char=19}] @p[distance=1..,tag=hug]
 effect give @a[tag=hug] absorption 4 2
 execute at @a[tag=hug] run effect give @a[scores={char=19}] absorption 4 1
 execute at @a[tag=hug] run particle heart ~ ~1.5 ~ 0.5 1 0.5 0.1 20 normal
+execute at @a[tag=hug] run playsound entity.allay.ambient_with_item master @a[distance=..15] ~ ~ ~ 0.6 1.2 1
+execute at @a[tag=hug] run playsound item.armor.equip_leather master @a[distance=..15] ~ ~ ~ 1 0.8 1
 tag @a remove hug
 
-#kind words
 
-scoreboard players set @a[scores={char=19,s2_timer=1,CC_silence=1..}] spellCD2 20
-scoreboard players set @a[scores={char=19,s2_timer=1,CC_silence=1..}] s2_timer 140
+
+
+#kind words
 
 execute at @a[scores={char=19}] as @a[distance=1..5] if score @s Team = @p[scores={char=19}] Team run tag @s add lunatic_valid_words_target
 execute at @a[scores={char=19}] as @a[distance=5.1..] if score @s Team = @p[scores={char=19}] Team run tag @s remove lunatic_valid_words_target
 execute at @a[scores={char=19}] as @a unless score @s Team = @p[scores={char=19}] Team run tag @s remove lunatic_valid_words_target
 
-execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..5,tag=lunatic_valid_words_target] run title @a[scores={char=19}] times 0 20 0
-execute at @a[scores={char=19,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..5,tag=lunatic_valid_words_target] run title @a[scores={char=19}] actionbar {text:"No allies within range",color:red,bold:1b}
-execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] unless entity @a[distance=1..5,tag=lunatic_valid_words_target] run scoreboard players set @a[scores={char=19}] spellCD2 20
-execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] unless entity @a[distance=1..5,tag=lunatic_valid_words_target] run scoreboard players set @a[scores={char=19}] s2_timer 140
 
 
-execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] run playsound entity.player.levelup master @a[distance=..8] ~ ~ ~ 0.4 1.5 1
-execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] run particle heart ~ ~1 ~ 2 1 2 0.1 30 normal
+#execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target,tag=lunatic_valid_words_target] if score @s Team = @p[scores={char=19}] Team run effect give @s speed 2 2
+#execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target,tag=lunatic_valid_words_target] if score @s Team = @p[scores={char=19}] Team run effect give @s instant_health 1
+#execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target,tag=lunatic_valid_words_target] at @s if score @s Team = @p[scores={char=19}] Team run particle heart ~ ~1 ~ 2 1 2 0.1 30 normal
 
 
-execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target,tag=lunatic_valid_words_target] if score @s Team = @p[scores={char=19}] Team run effect give @s speed 2 2
-execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target,tag=lunatic_valid_words_target] if score @s Team = @p[scores={char=19}] Team run effect give @s instant_health 1
-execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] as @p[distance=..5,tag=valid_spell_target,tag=lunatic_valid_words_target] at @s if score @s Team = @p[scores={char=19}] Team run particle heart ~ ~1 ~ 2 1 2 0.1 30 normal
+execute as @a[scores={char=19,s2_timer=1,CC_silence=0}] at @s positioned ~ ~1.3 ~ run function chars:lunatic_words_raycast
+execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] run playsound entity.allay.ambient_with_item master @a[distance=..15] ~ ~ ~ 0.9 0.9 1
+
+
+execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] run particle heart ~ ~1 ~ 2 1 2 0.1 3 normal
+
+execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] unless entity @e[distance=0.5..5,tag=kindly_worded] run scoreboard players set @a[scores={char=19}] spellCD2 20
+execute at @a[scores={char=19,s2_timer=1,CC_silence=0}] unless entity @e[distance=0.5..5,tag=kindly_worded] run scoreboard players set @a[scores={char=19}] s2_timer 140
+
+
+effect give @a[tag=kindly_worded] instant_health 1
+effect give @a[tag=kindly_worded] speed 2 2
+execute at @a[tag=kindly_worded] run particle heart ~ ~1 ~ 2 1 2 0.1 30 normal
+execute at @a[tag=kindly_worded] run playsound entity.player.levelup master @a[distance=..8] ~ ~ ~ 0.4 1.5 1
+tag @a remove kindly_worded
+
+
+
+
+
+
+
+
 
 #despair
 execute as @a[scores={char=19,despair=400}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:3b}]}] run clear @a[scores={char=19}] carrot_on_a_stick[custom_data={s3:1}]
@@ -148,14 +161,14 @@ scoreboard players set @a[scores={beating=2}] CC_knockup 30
 scoreboard players set @a[scores={beating=31}] CC_crippled 80
 
 execute at @a[scores={beating=1..}] run particle minecraft:sweep_attack ~ ~0.2 ~ 0.2 0.5 0.2 1 4
-execute at @a[scores={beating=5}] run playsound minecraft:entity.player.attack.sweep master @a[distance=..10] ~ ~ ~ 1 0.5 1
-execute at @a[scores={beating=10}] run playsound minecraft:entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
-execute at @a[scores={beating=15}] run playsound minecraft:entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
-execute at @a[scores={beating=20}] run playsound minecraft:entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
-execute at @a[scores={beating=25}] run playsound minecraft:entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
-execute at @a[scores={beating=30}] run playsound minecraft:entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
-execute at @a[scores={beating=35}] run playsound minecraft:entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
-#execute at @a[scores={beating=40}] run playsound minecraft:entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.3 1
+execute at @a[scores={beating=5}] run playsound entity.player.attack.sweep master @a[distance=..10] ~ ~ ~ 1 0.5 1
+execute at @a[scores={beating=10}] run playsound entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
+execute at @a[scores={beating=15}] run playsound entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
+execute at @a[scores={beating=20}] run playsound entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
+execute at @a[scores={beating=25}] run playsound entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
+execute at @a[scores={beating=30}] run playsound entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
+execute at @a[scores={beating=35}] run playsound entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.8 1
+#execute at @a[scores={beating=40}] run playsound entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 1 0.3 1
 
 #cranium breaker
 
@@ -170,10 +183,10 @@ execute at @a[scores={char=666}] as @a if score @s Team = @p[scores={char=666}] 
 execute at @a[scores={char=666,s2_timer=1,CC_silence=0}] unless entity @a[distance=..6,tag=demon_valid_breaker_target] run scoreboard players set @a[scores={char=666}] spellCD2 20
 execute at @a[scores={char=666,s2_timer=1,CC_silence=0}] unless entity @a[distance=..6,tag=demon_valid_breaker_target] run scoreboard players set @a[scores={char=666}] s2_timer 200
 
-execute at @a[scores={char=666,s2_timer=2,CC_silence=0}] run playsound minecraft:entity.ravager.attack master @a[distance=..10] ~ ~ ~ 1 1 1
-execute at @a[scores={char=666,s2_timer=1..19,CC_silence=0}] run particle minecraft:crit ~ ~1 ~ 1 1 1 0.5 10
+execute at @a[scores={char=666,s2_timer=2,CC_silence=0}] run playsound entity.ravager.attack master @a[distance=..10] ~ ~ ~ 1 1 1
+execute at @a[scores={char=666,s2_timer=1..19,CC_silence=0}] run particle crit ~ ~1 ~ 1 1 1 0.5 10
 
-execute at @a[scores={char=666,s2_timer=20,CC_silence=0}] as @p[distance=..6,tag=valid_spell_target] unless score @s Team = @p[scores={char=666}] Team run tag @s add demon_breaker
+execute at @a[scores={char=666,s2_timer=20,CC_silence=0}] as @p[distance=0.4..6,tag=valid_spell_target] unless score @s Team = @p[scores={char=666}] Team run tag @s add demon_breaker
 
 
 execute as @a[scores={char=666,s2_timer=20,CC_silence=0}] at @s run tp @s ~ ~ ~ facing entity @p[distance=..6,tag=demon_breaker]
@@ -225,7 +238,7 @@ execute as @a[scores={char=19}] at @s unless entity @s[nbt={Inventory:[{id:"mine
 item replace entity @a[scores={char=19}] hotbar.0 with minecraft:stick[minecraft:custom_name={bold:1b,color:"gray",text:"Stick"},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=0.8] 1
 
 execute as @a[scores={char=19,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=19}] carrot_on_a_stick[custom_data={s1:1}]
-item replace entity @a[scores={char=19,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:leather",minecraft:custom_name={text:"Big Warm hug",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=19,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:axolotl_spawn_egg",minecraft:custom_name={text:"Big Warm hug",color:"dark_aqua",bold:1b}] 1
 
 execute as @a[scores={char=19,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=19}] warped_fungus_on_a_stick[custom_data={s2:1}]
 item replace entity @a[scores={char=19,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:book",minecraft:custom_name={text:"Kind Words",color:"dark_aqua",bold:1b}] 1

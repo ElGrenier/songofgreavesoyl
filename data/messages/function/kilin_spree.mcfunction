@@ -21,3 +21,7 @@ execute if entity @s[scores={KillSpree=4}] run title @a title {text:"Quadra Kill
 execute if entity @s[scores={KillSpree=5}] run title @a times 0 100 20
 execute if entity @s[scores={KillSpree=5}] run title @a subtitle {selector:"@s",color:"red",type:"selector"}
 execute if entity @s[scores={KillSpree=5}] run title @a title {text:"PENTAKILL",color:"dark_red",bold:1b,type:"text"}
+
+execute if entity @s[scores={KillSpree=6..}] run title @a times 0 100 20
+execute if entity @s[scores={KillSpree=6..}] run title @a subtitle {selector:"@s",color:"yellow",type:"selector"}
+execute if entity @s[scores={KillSpree=6..}] run title @a title {text:"ULTRAKILL",color:"gold",bold:1b,type:"text"}

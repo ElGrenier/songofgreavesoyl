@@ -38,16 +38,15 @@ tag @a[scores={char=54}] remove shamansacrifice
 scoreboard players set @a[scores={char=54,s1_timer=1,CC_silence=1..}] spellCD1 20
 scoreboard players set @a[scores={char=54,s1_timer=1,CC_silence=1..}] s1_timer 120
 
-execute at @a[scores={char=54}] as @a[distance=1..10] if score @s Team = @p[scores={char=54}] Team run tag @s add shaman_valid_breath_target
-execute at @a[scores={char=54}] as @a[distance=10.1..] if score @s Team = @p[scores={char=54}] Team run tag @s remove shaman_valid_breath_target
-execute at @a[scores={char=54}] as @a unless score @s Team = @p[scores={char=54}] Team run tag @s remove shaman_valid_breath_target
 
-execute at @a[scores={char=54,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..10,tag=shaman_valid_breath_target] run title @a[scores={char=54}] times 0 20 0
-execute at @a[scores={char=54,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..10,tag=shaman_valid_breath_target] run title @a[scores={char=54}] actionbar {text:"No allies within range",color:red,bold:1b}
-execute at @a[scores={char=54,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..10,tag=shaman_valid_breath_target] run scoreboard players set @a[scores={char=54}] spellCD1 20
-execute at @a[scores={char=54,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..10,tag=shaman_valid_breath_target] run scoreboard players set @a[scores={char=54}] s1_timer 120
+execute as @a[scores={char=54,s1_timer=1,CC_silence=0}] at @s positioned ~ ~1.1 ~ run function chars:shaman_breath_raycast
+execute at @a[scores={char=54,s1_timer=1,CC_silence=0}] run playsound entity.guardian.ambient master @a[distance=..15] ~ ~ ~ 0.2 2 1
 
-execute at @a[scores={char=54,s1_timer=1,CC_silence=0}] as @p[distance=1..10,tag=shaman_valid_breath_target] run tag @s add shaman_heal
+execute at @a[scores={char=54,s1_timer=1,CC_silence=0}] unless entity @e[distance=1..10,tag=shaman_heal] run scoreboard players set @a[scores={char=54}] spellCD1 20
+execute at @a[scores={char=54,s1_timer=1,CC_silence=0}] unless entity @e[distance=1..10,tag=shaman_heal] run scoreboard players set @a[scores={char=54}] s1_timer 120
+
+
+#execute at @a[scores={char=54,s1_timer=1,CC_silence=0}] as @p[distance=1..10,tag=shaman_valid_breath_target] run tag @s add shaman_heal
 
 scoreboard players set @p[tag=shaman_heal] regen 0
 scoreboard players set @p[tag=shaman_heal] abysssigil 100
@@ -55,10 +54,10 @@ execute at @p[tag=shaman_heal] run particle dust{color:[0.376,0.509,0.713],scale
 #execute at @p[tag=shaman_heal] run particle falling_dust{block_state:{Name:"minecraft:lapis_block"}} ~ ~0.5 ~ 0.5 0.8 0.5 1 20
 execute at @p[tag=shaman_heal] run particle block{block_state:{Name:"minecraft:water"}} ~ ~0.5 ~ 0.5 0.8 0.5 1 100
 execute at @p[tag=shaman_heal] run playsound entity.player.splash.high_speed master @a[distance=..15] ~ ~ ~ 1 2 1
-execute at @p[tag=shaman_heal] run playsound entity.guardian.ambient master @a[distance=..15] ~ ~ ~ 0.5 2 1
+execute at @p[tag=shaman_heal] run playsound entity.guardian.ambient master @a[distance=..15] ~ ~ ~ 0.5 1.5 1
 effect give @p[tag=shaman_heal] instant_health
 effect give @p[tag=shaman_heal] regeneration 4 2
-execute as @a[scores={char=54,s1_timer=1,CC_silence=0}] at @s run tp @s ~ ~ ~ facing entity @p[tag=shaman_heal]
+#execute as @a[scores={char=54,s1_timer=1,CC_silence=0}] at @s run tp @s ~ ~ ~ facing entity @p[tag=shaman_heal]
 
 tag @a remove shaman_heal
 

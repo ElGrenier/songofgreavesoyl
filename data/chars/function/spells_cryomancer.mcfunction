@@ -85,11 +85,7 @@ execute as @e[tag=cold_cone] at @s run tp @s ^ ^ ^0.8
 
 scoreboard players set @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] spellCD1 150
 
-execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run damage @s 5 freeze by @p[scores={char=61}] from @p[scores={char=61}]
-execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @s CC_root 40
-execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target,scores={CC_silence=0,HPercentage=..50}] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @s CC_silence 60
-execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target,scores={CC_silence=0,HPercentage=..50}] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @a[scores={char=61}] passive_cryo_cd 100
-execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run kill @n[tag=cold_cone]
+execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run tag @s add cryomancer_coned
 
 execute at @e[tag=cold_cone,scores={fire_life=2..}] run particle block{block_state:{Name:"minecraft:ice"}} ~ ~ ~ 0.2 0.1 0.2 0.01 5 force
 execute at @e[tag=cold_cone,scores={fire_life=2..}] run particle dust{color:[1.0,1.0,1.0],scale:1.0f} ~ ~ ~ 0.2 0.1 0.2 0.01 3 force
@@ -97,6 +93,12 @@ execute as @e[tag=cold_cone] at @s unless block ~ ~1 ~ #minecraft:dash run kill 
 
 scoreboard players add @e[tag=cold_cone] fire_life 1
 kill @e[tag=cold_cone,scores={fire_life=10..}]
+
+execute as @e[tag=cryomancer_coned] run damage @s 7 generic by @p[scores={char=61}] from @p[scores={char=61}]
+scoreboard players set @e[tag=cryomancer_coned] CC_root 40
+scoreboard players set @e[tag=cryomancer_coned,scores={CC_silence=0,HPercentage=..50}] passive_cryo_cd 100
+scoreboard players set @e[tag=cryomancer_coned,scores={CC_silence=0,HPercentage=..50}] CC_silence 60
+tag @e remove cryomancer_coned
 
 #cooling fluids
 

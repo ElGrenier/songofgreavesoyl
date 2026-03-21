@@ -57,6 +57,7 @@ tag @a remove ExitPracticeRoom
 
 #dying
 scoreboard players set @a[tag=PracticeRoom,scores={death_dash_reset=1..}] char 0
+clear @a[tag=PracticeRoom,scores={death_dash_reset=1..}]
 tag @a[tag=PracticeRoom,scores={death_dash_reset=1..}] remove PracticeRoom
 
 #other

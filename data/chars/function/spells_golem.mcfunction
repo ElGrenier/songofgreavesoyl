@@ -54,9 +54,18 @@ execute as @e[tag=golem_projectile,scores={s0_timer=6..}] at @s run tp @s ~ ~-0.
 execute at @e[tag=golem_projectile] run particle crit ~ ~ ~ 0 0 0 0.01 1
 execute at @e[tag=golem_projectile] run particle dust{color:[1.0,1.0,1.0],scale:1} ~ ~ ~ 0.4 0.4 0.4 0 2
 execute at @e[tag=golem_projectile] run particle soul_fire_flame ~ ~ ~ 0.3 0.3 0.3 0 1
+execute as @e[tag=golem_projectile,scores={s0_timer=1..}] at @s run tp @s ^ ^ ^0.4
+execute at @e[tag=golem_projectile] run particle crit ~ ~ ~ 0 0 0 0.01 1
+execute at @e[tag=golem_projectile] run particle dust{color:[1.0,1.0,1.0],scale:1} ~ ~ ~ 0.4 0.4 0.4 0 2
+execute at @e[tag=golem_projectile] run particle soul_fire_flame ~ ~ ~ 0.3 0.3 0.3 0 1
 
 
 
+execute as @e[tag=golem_flamethrower,scores={s0_timer=1..}] at @s run tp @s ^ ^ ^0.25
+execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle firework ~ ~ ~ 0.2 0.2 0.2 0 1
+execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle soul_fire_flame ~ ~ ~ 0.2 0.2 0.2 0 1
+execute at @e[tag=golem_flamethrower,scores={s0_timer=3..}] run particle soul_fire_flame ~ ~ ~ 0.3 0.3 0.3 0 2
+execute at @e[tag=golem_flamethrower,scores={s0_timer=5..}] run particle soul_fire_flame ~ ~ ~ 0.4 0.4 0.4 0 3
 execute as @e[tag=golem_flamethrower,scores={s0_timer=1..}] at @s run tp @s ^ ^ ^0.25
 execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle firework ~ ~ ~ 0.2 0.2 0.2 0 1
 execute at @e[tag=golem_flamethrower,scores={s0_timer=1..}] run particle soul_fire_flame ~ ~ ~ 0.2 0.2 0.2 0 1
@@ -98,7 +107,7 @@ tag @e remove golem_burned
 
 execute at @e[tag=golem_flamethrower] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target,scores={golem_pierce=0}] unless score @s Team = @p[scores={char=18}] Team run tag @s add golem_pierced
 #execute if entity @e[tag=golem_pierced] at @a[scores={char=18}] run playsound entity.experience_orb.pickup master @a[scores={char=18}] ~ ~ ~ 1 0.1 1
-execute as @e[tag=golem_pierced] run damage @s 2 generic by @p[scores={char=18}] from @p[scores={char=18}]
+execute as @e[tag=golem_pierced] run damage @s 4 generic by @p[scores={char=18}] from @p[scores={char=18}]
 tag @e remove golem_pierced
 
 scoreboard players add @e[scores={golem_pierce=1..}] golem_pierce 1

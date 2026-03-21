@@ -20,11 +20,12 @@ scoreboard players set @a[scores={flag_carrier_death=1..}] flag_carrier_death 0
 execute as @e[tag=flag] at @s run tp @s ~ ~ ~ ~2 ~
 
 # Capturing flag
-execute as @a[scores={CC_noflag=0,yellow_flag_captured=0},team=purple] at @s if entity @e[distance=..2,tag=flag,scores={flag_pick_restriction=0,yellow_flag_captured=0},team=yellow] run scoreboard players set @s yellow_flag_captured 1
+execute as @a[scores={CC_noflag=0,yellow_flag_captured=0},team=purple,tag=!cannot_capture_altars] at @s if entity @e[distance=..2,tag=flag,scores={flag_pick_restriction=0,yellow_flag_captured=0},team=yellow] run scoreboard players set @s yellow_flag_captured 1
 execute as @a[scores={yellow_flag_captured=1}] at @s run scoreboard players set @e[tag=flag,team=yellow] yellow_flag_captured 1
 execute as @e[tag=flag,scores={yellow_flag_captured=1},team=yellow] run function messages:yellow_flag_pickup
 execute as @e[scores={yellow_flag_captured=1}] run scoreboard players set @s yellow_flag_captured 2
-execute as @a[scores={CC_noflag=0,purple_flag_captured=0},team=yellow] at @s if entity @e[distance=..2,tag=flag,scores={flag_pick_restriction=0,purple_flag_captured=0},team=purple] run scoreboard players set @s purple_flag_captured 1
+
+execute as @a[scores={CC_noflag=0,purple_flag_captured=0},team=yellow,tag=!cannot_capture_altars] at @s if entity @e[distance=..2,tag=flag,scores={flag_pick_restriction=0,purple_flag_captured=0},team=purple] run scoreboard players set @s purple_flag_captured 1
 execute as @a[scores={purple_flag_captured=1}] at @s run scoreboard players set @e[tag=flag,team=purple] purple_flag_captured 1
 execute as @e[tag=flag,scores={purple_flag_captured=1},team=purple] run function messages:purple_flag_pickup
 execute as @e[scores={purple_flag_captured=1}] run scoreboard players set @s purple_flag_captured 2

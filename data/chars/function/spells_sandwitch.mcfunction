@@ -92,7 +92,7 @@ execute at @e[tag=sandexplosion] run particle wax_on ~ ~1 ~ 2 2 2 1 100 force
 execute at @e[tag=sandexplosion] run playsound block.sand.fall master @a[distance=..20] ~ ~ ~ 1.0 0.6 1.0
 
 effect give @e[tag=sandexplosion] slowness 2 1
-damage @n[tag=sandexplosion] 6 generic by @p[scores={char=24}] from @p[scores={char=24}]
+damage @n[tag=sandexplosion] 7 generic by @p[scores={char=24}] from @p[scores={char=24}]
 
 tag @e remove sandexplosion
 

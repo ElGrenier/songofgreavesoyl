@@ -11,12 +11,12 @@ scoreboard players set @a[scores={char=64}] CC_disarm 0
 execute as @a[scores={char=64,scarlet_knifes=1..7}] run title @s[scores={char=64}] actionbar [{text:"[ ",color:"dark_red",bold:1b,type:"text"},{text:"Knives: ",color:"red",bold:0b,type:"text"},{score:{name:"@s",objective:"scarlet_knifes"},color:"red",bold:0b,type:"score"},{text:"/",color:"dark_red",bold:1b,type:"text"},{text:"7",color:"red",bold:0b,type:"text"},{text:" ]",color:"dark_red",bold:1b,type:"text"}]
 execute as @a[scores={char=64,scarlet_knifes=0}] run title @s[scores={char=64}] actionbar [{text:"[ ",color:"dark_red",bold:1b,type:"text"},{text:"Damn, I'm out of knives!",color:"red",bold:0b,type:"text",italic:1b},{text:" ]",color:"dark_red",bold:1b,type:"text"}]
 
-execute at @a[scores={char=64,knifes_cd=58}] run playsound item.armor.equip_iron master @a[scores={char=64,knifes_cd=58}] ~ ~ ~ 0.1 2 1
-execute at @a[scores={char=64,knifes_cd=59}] run playsound entity.item.pickup master @a[scores={char=64,knifes_cd=59}] ~ ~ ~ 0.1 2 1
+execute at @a[scores={char=64,knifes_cd=38}] run playsound item.armor.equip_iron master @a[scores={char=64,knifes_cd=38}] ~ ~ ~ 0.2 2 1
+execute at @a[scores={char=64,knifes_cd=39}] run playsound entity.item.pickup master @a[scores={char=64,knifes_cd=39}] ~ ~ ~ 0.2 2 1
 
-scoreboard players add @a[scores={char=64,knifes_cd=..60,scarlet_knifes=..6}] knifes_cd 1
-scoreboard players add @a[scores={char=64,knifes_cd=60,scarlet_knifes=..6}] scarlet_knifes 1
-scoreboard players set @a[scores={char=64,knifes_cd=60..}] knifes_cd 0
+scoreboard players add @a[scores={char=64,knifes_cd=..40,scarlet_knifes=..6}] knifes_cd 1
+scoreboard players add @a[scores={char=64,knifes_cd=40,scarlet_knifes=..6}] scarlet_knifes 1
+scoreboard players set @a[scores={char=64,knifes_cd=40..}] knifes_cd 0
 scoreboard players set @a[scores={char=64,scarlet_knifes=7..}] knifes_cd 0
 
 
@@ -62,7 +62,7 @@ execute at @e[tag=laceration_knife] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz
 execute at @e[tag=scarlet_lacerated] run kill @e[tag=laceration_knife]
 execute at @e[tag=scarlet_lacerated] run particle block{block_state:{Name:"minecraft:redstone_block"}} ~ ~.5 ~ 0.3 0.8 0.3 0.001 10 force
 execute at @e[tag=scarlet_lacerated] run playsound entity.player.hurt_sweet_berry_bush master @a[distance=..15] ~ ~ ~ 0.4 1.2 1
-execute if entity @e[tag=scarlet_lacerated] at @a[scores={char=64}] run playsound entity.experience_orb.pickup master @a[scores={char=64}] ~ ~ ~ 1 0.1 1
+execute if entity @e[tag=scarlet_lacerated] at @a[scores={char=64}] run playsound entity.experience_orb.pickup master @a[scores={char=64}] ~ ~ ~ 0.4 0.1 1
 scoreboard players add @a[tag=scarlet_lacerated] laceration_counter 1
 scoreboard players add @a[tag=scarlet_lacerated] laceration_timer_initial 1
 scoreboard players add @a[tag=scarlet_lacerated] laceration_timer 1
@@ -77,8 +77,8 @@ scoreboard players add @a[scores={laceration_timer_initial=120..}] laceration_ti
 scoreboard players remove @a[scores={laceration_timer=30..,laceration_counter=1..}] laceration_counter 1
 scoreboard players set @a[scores={laceration_timer=30..}] laceration_timer 1
 
-scoreboard players set @a[scores={laceration_counter=4..}] laceration 60
-scoreboard players set @a[scores={laceration_counter=4..}] laceration_immunity 60
+scoreboard players set @a[scores={laceration_counter=4..}] laceration 100
+scoreboard players set @a[scores={laceration_counter=4..}] laceration_immunity 100
 execute at @a[scores={laceration_counter=4..}] run summon item ~ ~ ~ {PickupDelay:32767,Invulnerable:1b,Tags:["mosquito_blood","entities_scarletlady"],Item:{id:"minecraft:redstone",count:1}}
 execute at @a[scores={laceration_counter=4..}] run particle dust{color:[1.0,0.0,0.0],scale:1.0f} ~ ~1 ~ 1 0.5 1 0.01 100 normal
 
@@ -93,29 +93,17 @@ scoreboard players set @a[scores={universal_death=1..}] laceration 0
 scoreboard players set @a[scores={laceration_counter=0}] laceration_timer_initial 0
 scoreboard players set @a[scores={laceration_counter=0}] laceration_timer 0
 
-execute as @a[scores={laceration=51}] run attribute @s minecraft:knockback_resistance base set 100
-execute as @a[scores={laceration=51}] run damage @s 1 generic by @p[scores={char=64}] from @p[scores={char=64}]
-execute as @a[scores={laceration=51}] run attribute @s minecraft:knockback_resistance base set 0
+execute as @a[scores={laceration=91}] run damage @s 1 dragon_breath by @p[scores={char=64}] from @p[scores={char=64}]
+execute as @a[scores={laceration=81}] run damage @s 1 dragon_breath by @p[scores={char=64}] from @p[scores={char=64}]
+execute as @a[scores={laceration=71}] run damage @s 1 dragon_breath by @p[scores={char=64}] from @p[scores={char=64}]
+execute as @a[scores={laceration=61}] run damage @s 1 dragon_breath by @p[scores={char=64}] from @p[scores={char=64}]
+execute as @a[scores={laceration=51}] run damage @s 1 dragon_breath by @p[scores={char=64}] from @p[scores={char=64}]
+execute as @a[scores={laceration=41}] run damage @s 1 dragon_breath by @p[scores={char=64}] from @p[scores={char=64}]
+execute as @a[scores={laceration=31}] run damage @s 1 dragon_breath by @p[scores={char=64}] from @p[scores={char=64}]
+execute as @a[scores={laceration=21}] run damage @s 1 dragon_breath by @p[scores={char=64}] from @p[scores={char=64}]
+execute as @a[scores={laceration=11}] run damage @s 1 dragon_breath by @p[scores={char=64}] from @p[scores={char=64}]
+execute as @a[scores={laceration=1}] run damage @s 1 dragon_breath by @p[scores={char=64}] from @p[scores={char=64}]
 
-execute as @a[scores={laceration=41}] run attribute @s minecraft:knockback_resistance base set 100
-execute as @a[scores={laceration=41}] run damage @s 1 generic by @p[scores={char=64}] from @p[scores={char=64}]
-execute as @a[scores={laceration=41}] run attribute @s minecraft:knockback_resistance base set 0
-
-execute as @a[scores={laceration=31}] run attribute @s minecraft:knockback_resistance base set 100
-execute as @a[scores={laceration=31}] run damage @s 1 generic by @p[scores={char=64}] from @p[scores={char=64}]
-execute as @a[scores={laceration=31}] run attribute @s minecraft:knockback_resistance base set 0
-
-execute as @a[scores={laceration=21}] run attribute @s minecraft:knockback_resistance base set 100
-execute as @a[scores={laceration=21}] run damage @s 1 generic by @p[scores={char=64}] from @p[scores={char=64}]
-execute as @a[scores={laceration=21}] run attribute @s minecraft:knockback_resistance base set 0
-
-execute as @a[scores={laceration=11}] run attribute @s minecraft:knockback_resistance base set 100
-execute as @a[scores={laceration=11}] run damage @s 1 generic by @p[scores={char=64}] from @p[scores={char=64}]
-execute as @a[scores={laceration=11}] run attribute @s minecraft:knockback_resistance base set 0
-
-execute as @a[scores={laceration=1}] run attribute @s minecraft:knockback_resistance base set 100
-execute as @a[scores={laceration=1}] run damage @s 1 generic by @p[scores={char=64}] from @p[scores={char=64}]
-execute as @a[scores={laceration=1}] run attribute @s minecraft:knockback_resistance base set 0
 
 execute at @a[scores={laceration=1..}] run particle dust{color:[1.0,0.0,0.0],scale:1.0f} ~ ~1 ~ 0.3 0.6 0.3 0.01 1
 execute at @a[scores={laceration=1..}] run particle entity_effect{color:[1.0,0.0,0.0,1.0]} ~ ~1 ~ 0.3 0.6 0.3 0.01 1

@@ -24,7 +24,7 @@ scoreboard players set @a[scores={universal_death=1..}] asphyxiation_timer 0
 scoreboard players set @a[scores={universal_death=1..}] asphyxiation 0
 
 
-execute as @a[scores={asphyxiation=5..}] run damage @s 5 generic by @p[scores={char=56}] from @p[scores={char=56}]
+execute as @a[scores={asphyxiation=5..}] run damage @s 6 generic by @p[scores={char=56}] from @p[scores={char=56}]
 execute at @a[scores={asphyxiation=5..}] run particle campfire_cosy_smoke ~ ~1.5 ~ 0.3 0.3 0.3 0.01 5
 execute at @a[scores={asphyxiation=5..}] run particle crit ~ ~1.8 ~ 0.5 0.3 0.5 0.1 10
 execute at @a[scores={asphyxiation=5..}] run playsound entity.blaze.ambient master @a[distance=..10] ~ ~ ~ 1 1.7 1
@@ -118,7 +118,7 @@ execute at @e[tag=ember,scores={s0_timer=32}] run playsound block.lava.extinguis
 execute at @e[tag=ember,scores={s0_timer=32}] run particle dust{color:[0.67,0.67,0.67],scale:1} ~ ~1 ~ 2 1 2 0 500
 execute at @e[tag=ember,scores={s0_timer=32}] positioned ~ ~1 ~ as @e[tag=valid_spell_target,distance=..4] unless score @s Team = @p[scores={char=56}] Team run tag @s add smoked_by_fekhi
 
-execute as @e[tag=smoked_by_fekhi] run damage @s 3 in_fire by @p[scores={char=56}] from @p[scores={char=56}]
+execute as @e[tag=smoked_by_fekhi] run damage @s 4 in_fire by @p[scores={char=56}] from @p[scores={char=56}]
 execute as @e[tag=smoked_by_fekhi] run scoreboard players add @s asphyxiation 1
 execute as @e[tag=smoked_by_fekhi] run scoreboard players add @s asphyxiation_decay_initial 0
 execute as @e[tag=smoked_by_fekhi] run scoreboard players add @s asphyxiation_decay 0

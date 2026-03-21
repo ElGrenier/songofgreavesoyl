@@ -33,9 +33,8 @@ tag @e remove guide_deathmarked
 scoreboard players set @a[scores={char=6,s2_timer=1,CC_silence=1..}] spellCD2 20
 scoreboard players set @a[scores={char=6,s2_timer=1,CC_silence=1..}] s2_timer 220
 
-execute at @a[scores={char=6,s2_timer=2,CC_silence=0}] run playsound minecraft:entity.wither.ambient master @a[distance=..10] ~ ~ ~ 0.1 1.4 1
-execute at @a[scores={char=6,s2_timer=3,CC_silence=0}] run playsound minecraft:entity.wither_skeleton.ambient master @a[distance=..10] ~ ~ ~ 1 0.8 1
-
+execute at @a[scores={char=6,s2_timer=2,CC_silence=0}] run playsound entity.wither.ambient master @a[distance=..10] ~ ~ ~ 0.1 1.4 1
+execute at @a[scores={char=6,s2_timer=3,CC_silence=0}] run playsound entity.wither_skeleton.ambient master @a[distance=..10] ~ ~ ~ 1 0.8 1
 
 execute as @a[scores={char=6,s2_timer=1,CC_silence=0}] at @s positioned ~ ~0.2 ~ rotated ~35 0 run function chars:guide_harvest_raycast
 execute as @a[scores={char=6,s2_timer=1,CC_silence=0}] at @s positioned ~ ~0.2 ~ rotated ~25 0 run function chars:guide_harvest_raycast

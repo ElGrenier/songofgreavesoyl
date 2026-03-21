@@ -55,7 +55,7 @@ execute at @a[scores={LobbyTrigger=106}] run function messages:settings/desactiv
 execute at @a[scores={LobbyTrigger=107}] run function messages:settings/activate_choose_team
 
 #un-checkmark-fied options
-execute as @a[scores={LobbyTrigger=110..130}] run function core:lobby/options
+execute as @a[scores={LobbyTrigger=110..140}] run function core:lobby/options
 #all random ON/OFF
 execute as @a[scores={LobbyTrigger=122}] run scoreboard players set all_random lobby 1
 execute as @a[scores={LobbyTrigger=123}] run scoreboard players set all_random lobby 0
@@ -67,6 +67,17 @@ execute as @a[scores={LobbyTrigger=126}] run scoreboard players set wav_mode lob
 #all random ON/OFF
 execute as @a[scores={LobbyTrigger=128}] run scoreboard players set memorize lobby 1
 execute as @a[scores={LobbyTrigger=129}] run scoreboard players set memorize lobby 0
+#pve difficulty
+execute as @a[scores={LobbyTrigger=130}] run scoreboard players set difficulty lobby 0
+execute as @a[scores={LobbyTrigger=131}] run scoreboard players set difficulty lobby 1
+execute as @a[scores={LobbyTrigger=132}] run scoreboard players set difficulty lobby 2
+execute as @a[scores={LobbyTrigger=133}] run scoreboard players set difficulty lobby 3
+execute as @a[scores={LobbyTrigger=134}] run scoreboard players set difficulty lobby 4
+#manual/random team selection
+execute as @a[scores={LobbyTrigger=136}] run scoreboard players set team_select settings 1
+execute as @a[scores={LobbyTrigger=137}] run scoreboard players set team_select settings 0
+
+
 
 execute as @a[scores={trigger_respawn=1..}] run function core:lobby/calculate_respawn
 execute as @a[scores={trigger_flag_max_countdown=1..}] run function core:lobby/calculate_flag

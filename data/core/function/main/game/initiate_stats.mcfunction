@@ -39,19 +39,9 @@ kill @e[type=minecraft:item]
 title @a actionbar {text:"  ",type:"text"}
 
 
-
-scoreboard players set @s spell_guardian_1 0
-scoreboard players set @s spell_guardian_2 0
-scoreboard players set @s spell_guardian_3 0
-scoreboard players set @s spell_guardian_4 0
-scoreboard players set @s guardian_mark 0
-scoreboard players set @s guardian_mark_dh 0
-scoreboard players set @s killedByDragon 0
-
 scoreboard players set @s LobbyTrigger 0
 scoreboard players enable @s LobbyTrigger
-scoreboard players set @s KillRestriction 0
-scoreboard players set @s KillRestriction2 0
+
 
 scoreboard players set @s JustLeft 0
 scoreboard players set @s CtfLeft 0

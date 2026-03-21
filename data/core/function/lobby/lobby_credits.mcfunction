@@ -2,22 +2,32 @@
 
 scoreboard players enable @a lobby_credits
 
-execute as @a[scores={lobby_credits=1..}] at @s run playsound entity.player.levelup master @s ~ ~ ~ 1 1 1
 
+execute as @e[tag=interaction_mrkisiel] on target run trigger lobby_credits set 1
 dialog show @a[scores={lobby_credits=1}] {type:"minecraft:multi_action",title:{text:" ",color:"gold",bold:1},body:{type:"minecraft:plain_message",contents:{text:"MrKisiel\n\n",bold:1b,color:"gold",extra:[{text:"Project lead, character and game design, main builder, game balance and world lore.",bold:1b,color:"yellow"},{text:"\n\nI was once unironically told that removing half of the characters would somehow improve the map, so I took it to heart and added twice as much since then. \n\nThanks for playing\nSongs of Greavesoyl!",color:"white",bold:0b,italic:1b}]}},can_close_with_escape:1,pause:0b,actions:[{label:{text:"My Other Maps",type:"text",color:"gold"},action:{type:"minecraft:open_url",url:"https://www.planetminecraft.com/member/mrkisiel/"}}]}
 
+execute as @e[tag=interaction_azeth] on target run trigger lobby_credits set 2
 dialog show @a[scores={lobby_credits=2}] {type:"minecraft:multi_action",title:{text:" ",color:"gold",bold:1},body:{type:"minecraft:plain_message",contents:{text:"AzethMeron\n\n",bold:1b,color:"gold",extra:[{text:"Legacy engine code",bold:1b,color:"yellow"},{text:"\n\nI was going through a very dark time when we started working on this map. This project and these people help me get back to light. I've never imagined how far SoG would go and I'm proud I could contribute to this.",color:"white",bold:0b,italic:1b}]}},can_close_with_escape:1,pause:0b,actions:[{label:{text:"Github",type:"text",color:"gold"},action:{type:"minecraft:open_url",url:"https://github.com/AzethMeron"}}]}
 
+execute as @e[tag=interaction_grenier] on target run trigger lobby_credits set 3
 dialog show @a[scores={lobby_credits=3}] {type:"minecraft:notice",title:{text:" ",color:"gold",bold:1},body:{type:"minecraft:plain_message",contents:{text:"Grenier\n\n",bold:1b,color:"gold",extra:[{text:"Engine code rework",bold:1b,color:"yellow"},{text:"\n\nI reworked and fully recoded the entire game system from the ground up. I enjoy tackling absurdly complex problems — mostly because I apparently like to suffer.",color:"white",bold:0b,italic:1b}]}},can_close_with_escape:1,pause:0b}
 
+execute as @e[tag=interaction_wav] on target run trigger lobby_credits set 4
 dialog show @a[scores={lobby_credits=4}] {type:"minecraft:multi_action",title:{text:" ",color:"gold",bold:1},body:{type:"minecraft:plain_message",contents:{text:"wavgudbye\n\n",bold:1b,color:"gold",extra:[{text:"Wav Mode, additional character design, shield point display, additional UI design, testing",bold:1b,color:"yellow"},{text:"\n\nI initially started making modifications to the game and adding characters on my own personal server as a way to kill time during quarantine. This caused me to rekindle my love for game design & discussion relating to it. I am looking forward to making even further contributions and sticking with the community in the future.",color:"white",bold:0b,italic:1b},{text:"\n\nDiscord:",color:"blue",bold:0b,italic:0b},{text:" wavgudbye",color:"aqua",bold:0b,italic:0b}]}},can_close_with_escape:1,pause:0b,actions:[{label:{text:"Other Maps",type:"text",color:"gold"},action:{type:"minecraft:open_url",url:"https://www.planetminecraft.com/member/wavgudbye/"}}]}
 
+execute as @e[tag=interaction_exo] on target run trigger lobby_credits set 5
 dialog show @a[scores={lobby_credits=5}] {type:"minecraft:multi_action",title:{text:" ",color:"gold",bold:1},body:{type:"minecraft:plain_message",contents:{text:"exo\n\n",bold:1b,color:"gold",extra:[{text:"Many custom character heads, testing",bold:1b,color:"yellow"},{text:"\n\nSoup",color:"white",bold:0b,italic:1b}]}},can_close_with_escape:1,pause:0b,actions:[{label:{text:"SoG skins",type:"text",color:"gold"},action:{type:"minecraft:open_url",url:"https://namemc.com/profile/Exonuts.1"}}]}
 
+execute as @e[tag=interaction_jajo] on target run trigger lobby_credits set 6
 dialog show @a[scores={lobby_credits=6}] {type:"minecraft:notice",title:{text:" ",color:"gold",bold:1},body:{type:"minecraft:plain_message",contents:{text:"Jajoman\n\n",bold:1b,color:"gold",extra:[{text:"Additional character design, building, PvE gamemode",bold:1b,color:"yellow"},{text:"\n\nHow do you like that Operator?! I PISSED ON THE ARCHIIIVEEE, you idiot!",color:"white",bold:0b,italic:1b},{text:"\n\nDiscord:",color:"blue",bold:0b,italic:0b},{text:" jajomenzczyzna",color:"aqua",bold:0b,italic:0b}]}},can_close_with_escape:1,pause:0b}
 
+execute as @e[tag=interaction_franklo] on target run trigger lobby_credits set 7
 dialog show @a[scores={lobby_credits=7}] {type:"minecraft:notice",title:{text:" ",color:"gold",bold:1},body:{type:"minecraft:plain_message",contents:{text:"Franklo\n\n",bold:1b,color:"gold",extra:[{text:"Additional character design, building",bold:1b,color:"yellow"},{text:"\n\nI've come to make an announcement",color:"white",bold:0b,italic:1b},{text:"\n\nDiscord:",color:"blue",bold:0b,italic:0b},{text:" franklo784",color:"aqua",bold:0b,italic:0b}]}},can_close_with_escape:1,pause:0b}
 
+execute as @a[scores={lobby_credits=1..}] at @s run playsound entity.player.levelup master @s ~ ~ ~ 1 1 1
+
+
+execute as @e[tag=credits_interaction] run data remove entity @s interaction
 
 execute at @a[scores={lobby_credits=69}] run setblock 124 12 -144 oak_wall_sign[facing=north]{front_text:{messages:["",[{"text":" ","bold":true,"color":"dark_red"},{"text":"MrKisiel","bold":true,"color":"gold"},{"text":" ","bold":true,"color":"dark_red"}],{text:"Main Creator",color:"yellow",bold:0b,type:"text",click_event:{action:"run_command",command:"/trigger lobby_credits set 1"}},""]}} destroy
 execute at @a[scores={lobby_credits=69}] run setblock 126 12 -144 oak_wall_sign[facing=north]{front_text:{messages:["",[{"text":" ","bold":true,"color":"dark_red"},{"text":"AzethMeron","bold":true,"color":"gold"},{"text":" ","bold":true,"color":"dark_red"}],{text:"Legacy Code",color:"yellow",bold:0b,type:"text",click_event:{action:"run_command",command:"/trigger lobby_credits set 2"}},""]}} destroy

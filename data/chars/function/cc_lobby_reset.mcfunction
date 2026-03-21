@@ -13,8 +13,6 @@ scoreboard players set @s passive_basi 0
 scoreboard players set @s passive_skel 0
 scoreboard players set @s livesteal_cd 0
 scoreboard players set @s petrify_hit 0
-scoreboard players set @s spell_luna_3 0
-scoreboard players set @s spell_demo_3 0
 scoreboard players set @s beating 0
 scoreboard players set @s passive_weav 0
 scoreboard players set @s panic_bite_cd 0
@@ -33,8 +31,6 @@ scoreboard players set @s void 0
 scoreboard players set @s abyss 0
 scoreboard players set @s lunatic_delay 0
 scoreboard players set @s passive_drow 0
-scoreboard players set @s spell_shap_2_1 0
-scoreboard players set @s spell_basi_2_1 0
 scoreboard players set @s passive_shap 0
 scoreboard players set @s passive_witc 0
 scoreboard players set @s passive_bend 0
@@ -44,7 +40,6 @@ scoreboard players set @s aber_s2_buff 0
 scoreboard players set @s siren_blood_splash_damage 0
 scoreboard players set @s friged_boost 0
 scoreboard players set @s shadowdash_damage 0
-scoreboard players set @s shadowdash_damage_2 0
 scoreboard players set @s shard_petrify 0
 
 

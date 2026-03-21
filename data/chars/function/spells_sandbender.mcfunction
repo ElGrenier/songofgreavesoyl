@@ -84,7 +84,7 @@ execute at @e[tag=sand_scorn_explosion] run particle witch ~ ~1 ~ 2 2 2 2 100 fo
 execute at @e[tag=sand_scorn_explosion] run kill @e[tag=sand_scorn]
 
 scoreboard players set @e[tag=sand_scorn_explosion] CC_root 10
-damage @n[tag=sand_scorn_explosion] 6 generic by @p[scores={char=52}] from @p[scores={char=52}]
+damage @n[tag=sand_scorn_explosion] 9 generic by @p[scores={char=52}] from @p[scores={char=52}]
 
 tag @e remove sand_scorn_explosion
 
@@ -132,19 +132,23 @@ execute at @a[scores={char=52,s2_timer=120..}] run kill @e[tag=last_sandstorm]
 
 execute at @e[tag=last_sandstorm] as @a[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=52}] Team run scoreboard players set @s sandgrasp 50
 
-effect give @a[scores={sandgrasp=2..}] slow_falling 1 0 true
-#execute as @a[scores={sandgrasp=2..}] at @s run tp @e[tag=sandgrasp_grasp,limit=1,sort=nearest,distance=..1.5]
-execute at @e[tag=sandgrasp_grasp] run tp @a[distance=..1.5,scores={sandgrasp=2..},limit=1] ~ ~ ~
+#effect give @a[scores={sandgrasp=2..}] slow_falling 1 0 true
 
-execute as @e[tag=sandgrasp_grasp] at @s run tp @s ~ ~ ~ ~ 90
-execute as @e[tag=sandgrasp_grasp] at @s run tp @s ^ ^ ^0.4
-execute as @e[tag=sandgrasp_grasp] at @s unless block ^ ^ ^1.5 #minecraft:dash run scoreboard players set @p[distance=..1,scores={sandgrasp=2..}] sandgrasp 1
-execute as @e[tag=sandgrasp_grasp] at @s unless block ^ ^ ^1 #minecraft:dash run scoreboard players set @p[distance=..1,scores={sandgrasp=2..}] sandgrasp 1
-execute as @e[tag=sandgrasp_grasp] at @s unless block ^ ^ ^1 #minecraft:dash run scoreboard players set @p[distance=..1,scores={sandgrasp=2..}] sandgrasp 1
-execute as @e[tag=sandgrasp_grasp] at @s unless block ~ ~-1 ~ #minecraft:dash run scoreboard players set @p[distance=..1,scores={sandgrasp=2..}] sandgrasp 1
+execute as @a[scores={sandgrasp=40..50}] run attribute @s gravity base set 0.16
+execute as @a[scores={sandgrasp=-40..1}] run attribute @s gravity base set 0.08
 
 execute at @a[scores={sandgrasp=2..}] run particle falling_dust{block_state:{Name:"minecraft:sand"}} ~ ~ ~ 0.6 0.6 0.6 0.1 3
 execute at @a[scores={sandgrasp=2..}] run particle witch ~ ~ ~ 0.6 0.6 0.6 0.1 1
+
+execute as @a[scores={sandgrasp=2..}] at @s unless block ~ ~-1 ~ #dash run playsound block.sand.fall master @a[distance=..10] ~ ~ ~ 1 0.4 1
+execute as @a[scores={sandgrasp=2..}] at @s unless block ~ ~-1 ~ #dash run scoreboard players set @s sandgrasp 1
+scoreboard players set @a[scores={sandgrasp=1}] sandgrasp -1
+scoreboard players remove @a[scores={sandgrasp=-40..-1}] sandgrasp 1
+scoreboard players remove @a[scores={sandgrasp=2..}] sandgrasp 1
+scoreboard players set @a[scores={sandgrasp=..-40}] sandgrasp 0
+
+
+#execute as @a[scores={sandgrasp=2..}] at @s run scoreboard players set @s sandgrasp 1
 
 scoreboard players set @a[scores={sandgrasp=3..}] CC_knockdown 3
 scoreboard players set @a[scores={sandgrasp=1}] CC_stagger 60
@@ -157,14 +161,10 @@ effect give @a[scores={sandgrasp=1..2}] slowness 3 4
 effect give @a[scores={sandgrasp=1..2}] glowing 3 0 true
 effect clear @a[scores={sandgrasp=1..2}] slow_falling
 
-scoreboard players set @a[scores={sandgrasp=1}] sandgrasp -1
-scoreboard players remove @a[scores={sandgrasp=-40..-1}] sandgrasp 1
-scoreboard players remove @a[scores={sandgrasp=2..}] sandgrasp 1
-scoreboard players set @a[scores={sandgrasp=..-40}] sandgrasp 0
 
-execute at @a[scores={sandgrasp=3..}] unless entity @e[distance=..1,tag=sandgrasp_grasp] run summon minecraft:marker ~ ~ ~ {Tags:["sandgrasp_grasp"]}
 
-execute as @e[tag=sandgrasp_grasp] at @s unless entity @a[distance=..1,scores={sandgrasp=3..}] run kill @s
+
+
 
 title @a[scores={char=52,s2_timer=1..75,CC_silence=0}] times 0 20 0
 title @a[scores={char=52,s2_timer=1..75,CC_silence=0}] title {text:" ",type:"text"}
@@ -178,9 +178,6 @@ title @a[scores={char=52,s2_timer=71..75,CC_silence=0}] subtitle {text:" ",type:
 
 effect give @a[scores={char=52}] blindness infinite 0 true
 
-execute at @a[scores={char=52}] as @a[distance=..10,scores={universal_damagetaken=1..}] unless score @s Team = @p[scores={char=52}] Team run effect give @s glowing 3 0 true
-execute at @a[scores={char=52}] as @a[distance=..10,scores={universal_damagetaken_shield=1..}] unless score @s Team = @p[scores={char=52}] Team run effect give @s glowing 3 0 true
-
 scoreboard players add @a[scores={char=52,s1_timer=1}] passive_bend 1
 scoreboard players add @a[scores={char=52,s2_timer=1}] passive_bend 1
 scoreboard players set @a[scores={char=52,passive_bend=5}] passive_bend 6
@@ -193,9 +190,14 @@ execute at @a[scores={char=52,s3_timer=1,CC_silence=0}] as @e[tag=valid_spell_ta
 
 scoreboard players set @e[tag=blind_vengeanced] CC_knockup 10
 execute at @e[tag=blind_vengeanced] run particle falling_dust{block_state:{Name:"minecraft:sand"}} ~ ~0.3 ~ 0.3 1 0.3 1 130 force
-execute as @e[tag=blind_vengeanced] run damage @s 6 generic by @p[scores={char=52}] from @p[scores={char=52}]
+execute as @e[tag=blind_vengeanced] run damage @s 2 generic by @p[scores={char=52}] from @p[scores={char=52}]
 
 tag @e remove blind_vengeanced
+
+
+execute at @a[scores={char=52}] as @a[distance=..10,scores={universal_damagetaken=1..}] unless score @s Team = @p[scores={char=52}] Team run effect give @s glowing 3 0 true
+execute at @a[scores={char=52}] as @a[distance=..10,scores={universal_damagetaken_shield=1..}] unless score @s Team = @p[scores={char=52}] Team run effect give @s glowing 3 0 true
+
 
 execute at @a[scores={char=52,s3_timer=1,CC_silence=0}] run playsound item.totem.use master @a[distance=..15] ~ ~ ~ 0.2 2 1
 execute at @a[scores={char=52,s3_timer=1..5,CC_silence=0}] run playsound block.sand.fall master @a[distance=..15] ~ ~ ~ 1.0 0.6 1.0

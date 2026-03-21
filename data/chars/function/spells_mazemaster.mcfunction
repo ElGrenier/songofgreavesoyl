@@ -22,7 +22,7 @@ execute as @e[scores={decay_timer=5}] run damage @s 1 dragon_breath
 #execute as @e[scores={decay_timer=5}] run particle dust{color:[0.0,0.0,0.0],scale:1} ~ ~1 ~ 0.6 0.6 0.6 0 5
 #execute as @e[scores={decay_timer=5}] run particle entity_effect{color:[0.0,0.0,0.0,1.0]} ~ ~1 ~ 0.5 0.8 0.5 0 5
 #effect give @e[scores={decay_timer=2..3}] wither 1 2
-scoreboard players set @e[scores={decay_timer=20..}] decay_timer 0
+scoreboard players set @e[scores={decay_timer=15..}] decay_timer 0
 
 #title @a[scores={decay=1..}] times 0 3 1
 #title @a[scores={decay=1..}] title {"text":" "}
@@ -34,6 +34,10 @@ execute as @e[tag=display_decay] at @s positioned ~ ~-3 ~ unless entity @a[dista
 
 
 
+execute at @a[scores={HPercentage=..10,decay=1..}] run particle dust{color:[0.67,0.0,0.0],scale:1} ~ ~1 ~ 0.4 0.6 0.4 0 40
+execute at @a[scores={HPercentage=..10,decay=1..}] run particle entity_effect{color:[0.0,0.0,0.0,1.0]} ~ ~1 ~ 0.3 0.5 0.3 0 30
+execute at @a[scores={HPercentage=..10,decay=1..}] run playsound entity.wither_skeleton.death master @a[distance=..16] ~ ~ ~ 0.5 0.7 1
+execute at @a[scores={HPercentage=..10,decay=1..}] run playsound entity.wither.hurt master @a[distance=..16] ~ ~ ~ 1 0.5 1
 execute as @a[scores={HPercentage=..10,decay=1..}] run damage @s 100 dragon_breath by @p[scores={char=36}] from @p[scores={char=36}] 
 scoreboard players set @a[scores={universal_death=1..}] decay_timer 0
 scoreboard players set @a[scores={universal_death=1..}] decay 0
@@ -164,17 +168,17 @@ execute as @e[tag=dungeoneye] at @s if block ~ ~-1 ~ #minecraft:dash run tp @s ~
 execute as @e[tag=dungeoneye] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
 
 clear @a[scores={char=36,s2_timer_recast=1..}] *[custom_data={s2:2}]
-execute at @a[scores={s2_timer_recast=1,CC_silence=0}] at @e[tag=dungeoneye] run summon zombie ~ ~-3 ~ {Silent:1b,NoAI:1b,Tags:["dungeoneye_visual_main","eye_particles","entities_mazemaster"],equipment:{head:{id:"minecraft:player_head",components:{"minecraft:profile":{id:[I;505442887,-2020588899,-1601849828,-237322492],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGNlM2IxZjI2ZjY1MjVhZjgyZjViYTE0ZGJiOTNiNWU3YTU0M2Q0NzdmYThkYTEyM2RiZmFhNmQyMjlmZGE0ZiJ9fX0="}]}},count:1}},active_effects:[{id:"minecraft:invisibility",amplifier:1,duration:200000,show_particles:0b}],attributes:[{id:"minecraft:scale",base:1.5}]}
-execute at @a[scores={s2_timer_recast=1,CC_silence=0}] at @e[tag=dungeoneye] run summon marker ~ ~ ~ {Tags:["dungeoneye_core","entities_mazemaster"]}
-execute at @a[scores={s2_timer_recast=1,CC_silence=0}] at @e[tag=dungeoneye] run summon block_display ~ ~-1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,-0.75f,-0.4f],scale:[0.8f,1.5f,0.8f]},block_state:{Name:"minecraft:nether_wart_block"},Tags:["eye_splash_1","eye_splash_first","entities_mazemaster"]}
-execute at @a[scores={s2_timer_recast=1,CC_silence=0}] at @e[tag=dungeoneye] run summon block_display ~ ~-1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.75f,-0.25f],scale:[0.5f,1.5f,0.5f]},block_state:{Name:"minecraft:nether_wart_block"},Tags:["eye_splash_2","eye_splash_first","entities_mazemaster"]}
+execute at @a[scores={char=36,s2_timer_recast=1,CC_silence=0}] at @e[tag=dungeoneye] run summon zombie ~ ~-3 ~ {Silent:1b,NoAI:1b,Tags:["dungeoneye_visual_main","eye_particles","entities_mazemaster"],equipment:{head:{id:"minecraft:player_head",components:{"minecraft:profile":{id:[I;505442887,-2020588899,-1601849828,-237322492],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGNlM2IxZjI2ZjY1MjVhZjgyZjViYTE0ZGJiOTNiNWU3YTU0M2Q0NzdmYThkYTEyM2RiZmFhNmQyMjlmZGE0ZiJ9fX0="}]}},count:1}},active_effects:[{id:"minecraft:invisibility",amplifier:1,duration:200000,show_particles:0b}],attributes:[{id:"minecraft:scale",base:1.5}]}
+execute at @a[scores={char=36,s2_timer_recast=1,CC_silence=0}] at @e[tag=dungeoneye] run summon marker ~ ~ ~ {Tags:["dungeoneye_core","entities_mazemaster"]}
+execute at @a[scores={char=36,s2_timer_recast=1,CC_silence=0}] at @e[tag=dungeoneye] run summon block_display ~ ~-1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,-0.75f,-0.4f],scale:[0.8f,1.5f,0.8f]},block_state:{Name:"minecraft:nether_wart_block"},Tags:["eye_splash_1","eye_splash_first","entities_mazemaster"]}
+execute at @a[scores={char=36,s2_timer_recast=1,CC_silence=0}] at @e[tag=dungeoneye] run summon block_display ~ ~-1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.75f,-0.25f],scale:[0.5f,1.5f,0.5f]},block_state:{Name:"minecraft:nether_wart_block"},Tags:["eye_splash_2","eye_splash_first","entities_mazemaster"]}
 
-execute at @a[scores={s2_timer_recast=1,CC_silence=0}] run kill @e[tag=dungeoneye]
+execute at @a[scores={char=36,s2_timer_recast=1,CC_silence=0}] run kill @e[tag=dungeoneye]
 
-execute at @a[scores={s2_timer_recast=0,s2_timer=80,CC_silence=0}] at @e[tag=dungeoneye] run summon zombie ~ ~-3 ~ {Silent:1b,NoAI:1b,Tags:["dungeoneye_visual_main","eye_particles","entities_mazemaster"],equipment:{head:{id:"minecraft:player_head",components:{"minecraft:profile":{id:[I;505442887,-2020588899,-1601849828,-237322492],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGNlM2IxZjI2ZjY1MjVhZjgyZjViYTE0ZGJiOTNiNWU3YTU0M2Q0NzdmYThkYTEyM2RiZmFhNmQyMjlmZGE0ZiJ9fX0="}]}},count:1}},active_effects:[{id:"minecraft:invisibility",amplifier:1,duration:200000,show_particles:0b}],attributes:[{id:"minecraft:scale",base:1.5}]}
-execute at @a[scores={s2_timer_recast=0,s2_timer=80,CC_silence=0}] at @e[tag=dungeoneye] run summon marker ~ ~ ~ {Tags:["dungeoneye_core","entities_mazemaster"]}
-execute at @a[scores={s2_timer_recast=0,s2_timer=80,CC_silence=0}] at @e[tag=dungeoneye] run summon block_display ~ ~-1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,-0.75f,-0.4f],scale:[0.8f,1.5f,0.8f]},block_state:{Name:"minecraft:nether_wart_block"},Tags:["eye_splash_1","eye_splash_first","entities_mazemaster"]}
-execute at @a[scores={s2_timer_recast=0,s2_timer=80,CC_silence=0}] at @e[tag=dungeoneye] run summon block_display ~ ~-1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.75f,-0.25f],scale:[0.5f,1.5f,0.5f]},block_state:{Name:"minecraft:nether_wart_block"},Tags:["eye_splash_2","eye_splash_first","entities_mazemaster"]}
+execute at @a[scores={char=36,s2_timer_recast=0,s2_timer=80,CC_silence=0}] at @e[tag=dungeoneye] run summon zombie ~ ~-3 ~ {Silent:1b,NoAI:1b,Tags:["dungeoneye_visual_main","eye_particles","entities_mazemaster"],equipment:{head:{id:"minecraft:player_head",components:{"minecraft:profile":{id:[I;505442887,-2020588899,-1601849828,-237322492],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGNlM2IxZjI2ZjY1MjVhZjgyZjViYTE0ZGJiOTNiNWU3YTU0M2Q0NzdmYThkYTEyM2RiZmFhNmQyMjlmZGE0ZiJ9fX0="}]}},count:1}},active_effects:[{id:"minecraft:invisibility",amplifier:1,duration:200000,show_particles:0b}],attributes:[{id:"minecraft:scale",base:1.5}]}
+execute at @a[scores={char=36,s2_timer_recast=0,s2_timer=80,CC_silence=0}] at @e[tag=dungeoneye] run summon marker ~ ~ ~ {Tags:["dungeoneye_core","entities_mazemaster"]}
+execute at @a[scores={char=36,s2_timer_recast=0,s2_timer=80,CC_silence=0}] at @e[tag=dungeoneye] run summon block_display ~ ~-1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,-0.75f,-0.4f],scale:[0.8f,1.5f,0.8f]},block_state:{Name:"minecraft:nether_wart_block"},Tags:["eye_splash_1","eye_splash_first","entities_mazemaster"]}
+execute at @a[scores={char=36,s2_timer_recast=0,s2_timer=80,CC_silence=0}] at @e[tag=dungeoneye] run summon block_display ~ ~-1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.75f,-0.25f],scale:[0.5f,1.5f,0.5f]},block_state:{Name:"minecraft:nether_wart_block"},Tags:["eye_splash_2","eye_splash_first","entities_mazemaster"]}
 
 
 execute at @a[scores={char=36,s2_timer=80..}] run kill @e[tag=dungeoneye]
@@ -243,9 +247,8 @@ tag @e[tag=dungeoneye_core,scores={eye_damage=40}] add dungeoneye_eruption
 execute at @e[tag=dungeoneye_core,tag=dungeoneye_eruption] run particle block{block_state:{Name:"minecraft:netherrack"}} ~ ~ ~ 4 0.2 4 0.3 100 normal
 execute at @e[tag=dungeoneye_core,tag=dungeoneye_eruption] run summon marker ~ ~ ~ {Tags:["erupt","entities_mazemaster"]}
 execute at @e[tag=dungeoneye_core,tag=dungeoneye_eruption] run playsound entity.wither.shoot master @a[distance=..15] ~ ~ ~ 0.2 0.8 1
-execute at @e[tag=dungeoneye_core,tag=dungeoneye_eruption] as @e[distance=..3,scores={decay=1..},tag=valid_spell_target] unless score @s Team = @p[scores={char=36}] Team run damage @s 4 generic by @p[scores={char=36}] from @p[scores={char=36}]
+execute at @e[tag=dungeoneye_core,tag=dungeoneye_eruption] as @e[distance=..3,scores={decay=1..},tag=valid_spell_target] unless score @s Team = @p[scores={char=36}] Team run damage @s 6 generic by @p[scores={char=36}] from @p[scores={char=36}]
 execute at @e[tag=dungeoneye_core,tag=dungeoneye_eruption] as @e[distance=..3,tag=valid_spell_target] unless score @s Team = @p[scores={char=36}] Team run scoreboard players set @s decay_add 1
-
 
 tag @e remove dungeoneye_eruption
  
@@ -265,16 +268,8 @@ kill @e[tag=erupt]
 
 execute as @e[tag=eruption_visuals] at @s run rotate @s facing entity @e[tag=dungeoneye_core,limit=1]
 execute as @e[tag=eruption_visuals] at @s run tp @s ^ ^ ^-0.5
-#execute as @e[tag=eruption_visual_1] at @s run tp @s ~0.5 ~ ~
-#execute as @e[tag=eruption_visual_2] at @s run tp @s ~-0.5 ~ ~
-#execute as @e[tag=eruption_visual_3] at @s run tp @s ~ ~ ~0.5
-#execute as @e[tag=eruption_visual_4] at @s run tp @s ~ ~ ~-0.5
-#execute as @e[tag=eruption_visual_5] at @s run tp @s ~0.4 ~ ~0.4
-#execute as @e[tag=eruption_visual_6] at @s run tp @s ~-0.4 ~ ~-0.4
-#execute as @e[tag=eruption_visual_7] at @s run tp @s ~0.4 ~ ~-0.4
-#execute as @e[tag=eruption_visual_8] at @s run tp @s ~-0.4 ~ ~0.4
 
-execute at @e[tag=eruption_visuals] run particle minecraft:block{block_state:{Name:"minecraft:netherrack"}} ~ ~0.3 ~ 0.1 0.1 0.1 0.1 10
+execute at @e[tag=eruption_visuals] run particle block{block_state:{Name:"minecraft:netherrack"}} ~ ~0.3 ~ 0.1 0.1 0.1 0.1 10
 execute at @e[tag=eruption_visuals] run summon block_display ~ ~-0.1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.2f,-0.1f,-0.2f],scale:[0.4f,0.2f,0.4f]},block_state:{Name:"minecraft:nether_wart_block"},Tags:["small_splash","entities_mazemaster"]}
 
 scoreboard players add @e[tag=eruption_visuals] eye_damage 1

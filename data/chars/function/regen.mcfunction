@@ -3,7 +3,6 @@ effect clear @a[scores={CC_defiled=1..}] regeneration
 
 scoreboard players add @a[scores={char=0..}] regen 1
 scoreboard players add @a[scores={out_of_combat=199..}] regen 1
-scoreboard players add @a[scores={char=9,burrowed=1}] regen 3
 
 effect give @a[scores={char=666,regen=40}] regeneration 1 2 true
 scoreboard players set @a[scores={char=666,regen=41..}] regen 0
@@ -235,3 +234,6 @@ scoreboard players set @a[scores={char=73,regen=80..}] regen 0
 
 effect give @a[scores={char=74,regen=70..}] regeneration 1 2 true
 scoreboard players set @a[scores={char=74,regen=70..}] regen 0
+
+effect give @a[scores={char=75,regen=80..}] regeneration 1 2 true
+scoreboard players set @a[scores={char=75,regen=80..}] regen 0

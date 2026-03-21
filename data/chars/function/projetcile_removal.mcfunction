@@ -218,5 +218,7 @@ execute unless entity @a[scores={char=73}] run kill @e[tag=entities_conductor]
 
 execute unless entity @a[scores={char=74}] run kill @e[tag=entities_fortress]
 
+execute unless entity @a[scores={char=75}] run kill @e[tag=entities_wonder]
+
 
 execute as @a unless score @s char matches 9 unless score @s char matches 59 run tag @s remove cannot_capture_altars

@@ -400,7 +400,7 @@ item replace entity @a[tag=faceless,scores={char=50}] hotbar.0 with bow[minecraf
 
 #bout of madness
 execute as @a[scores={char=50,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=51}] carrot_on_a_stick[custom_data={s1:1}]
-item replace entity @a[scores={char=50,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:music_disc_5",minecraft:custom_name={text:"Bout of Madness",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=50,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:warden_spawn_egg",minecraft:custom_name={text:"Bout of Madness",color:"dark_aqua",bold:1b}] 1
 
 #abilities
 

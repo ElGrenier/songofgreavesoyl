@@ -2,7 +2,7 @@
 scoreboard players display numberformat @e[tag=Altars] score blank
 scoreboard players display numberformat altars_list score blank
 execute as @e[tag=Altars] if score @s Team matches 0 run team leave @s
-scoreboard players display name altars_list score [{"text":" = ","color":dark_green},{"text":"Altars","color":green},{"text":" = ","color":dark_green}]
+execute if score map_type settings matches 1 run scoreboard players display name altars_list score [{"text":" = ","color":dark_green},{"text":"Altars","color":green},{"text":" = ","color":dark_green}]
 
 
 execute if score map_type settings matches 1 run scoreboard players set altars_list score -1

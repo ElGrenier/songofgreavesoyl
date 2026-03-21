@@ -137,9 +137,9 @@ scoreboard players set @a[scores={char=67,s1_timer=1}] spellCD1 220
 scoreboard players add @a[scores={char=67,s1_timer=1..}] s1_timer 1
 scoreboard players set @a[scores={char=67,s1_timer=221..}] s1_timer 0
 
-scoreboard players set @a[scores={char=67,s2_timer=1}] spellCD2 360
+scoreboard players set @a[scores={char=67,s2_timer=1}] spellCD2 320
 scoreboard players add @a[scores={char=67,s2_timer=1..}] s2_timer 1
-scoreboard players set @a[scores={char=67,s2_timer=361..}] s2_timer 0
+scoreboard players set @a[scores={char=67,s2_timer=321..}] s2_timer 0
 
 execute as @a[scores={char=67}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:wooden_sword",Slot:0b}]}] run clear @a[scores={char=67}] wooden_sword
 item replace entity @a[scores={char=67,s2_timer=0}] hotbar.0 with wooden_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Broadsword"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1

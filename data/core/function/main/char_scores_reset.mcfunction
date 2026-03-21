@@ -1,7 +1,5 @@
 
 scoreboard players set @s Team 0
-scoreboard players set @s Kills 0
-scoreboard players set @s Winner 0
 scoreboard players set @s Loading 0
 scoreboard players set @s SoundProof 0
 #scoreboard players set @s Queue 1
@@ -71,9 +69,7 @@ scoreboard players set @s passive_raid_timer 0
 scoreboard players set @s burrowed 0
 scoreboard players set @s HUNDRED 100
 scoreboard players set @s passive_slim 0
-scoreboard players set @s MVP 0
 scoreboard players set @s burrow_dur 0
-scoreboard players set @s dragonShotFire 0
 scoreboard players set @s passive_gole 0
 scoreboard players set @s despair 0
 scoreboard players set @s pull 0
@@ -99,7 +95,6 @@ scoreboard players set @s asphyxiation_timer 0
 scoreboard players set @s asphyxiation_decay 0
 scoreboard players set @s asphyxiation_decay_initial 0
 scoreboard players set @s shadowdash_damage 0
-scoreboard players set @s shadowdash_damage_2 0
 scoreboard players set @s passive_runa 0
 scoreboard players set @s passive_runa_reset 0
 scoreboard players set @s passive_puri 0
@@ -121,8 +116,6 @@ scoreboard players set @s passive_basi 0
 scoreboard players set @s passive_skel 0
 scoreboard players set @s livesteal_cd 0
 scoreboard players set @s petrify_hit 0
-scoreboard players set @s spell_luna_3 0
-scoreboard players set @s spell_demo_3 0
 scoreboard players set @s beating 0
 scoreboard players set @s passive_weav 0
 scoreboard players set @s panic_bite_cd 0
@@ -140,8 +133,6 @@ scoreboard players set @s void 0
 scoreboard players set @s abyss 0
 scoreboard players set @s lunatic_delay 0
 scoreboard players set @s passive_drow 0
-scoreboard players set @s spell_shap_2_1 0
-scoreboard players set @s spell_basi_2_1 0
 scoreboard players set @s passive_shap 0
 scoreboard players set @s passive_witc 0
 scoreboard players set @s passive_bend 0
@@ -151,7 +142,6 @@ scoreboard players set @s aber_s2_buff 0
 scoreboard players set @s siren_blood_splash_damage 0
 scoreboard players set @s friged_boost 0
 scoreboard players set @s shadowdash_damage 0
-scoreboard players set @s shadowdash_damage_2 0
 scoreboard players set @s shard_petrify 0
 scoreboard players set @s demontrigger 0
 scoreboard players set @s choose_char 0
@@ -175,6 +165,14 @@ scoreboard players set @s heat_shield_power 8
 scoreboard players set @s heat_shield_timer 0
 scoreboard players set @s heat_shields_cooldown 0
 scoreboard players set @s fortress_shields 0
+scoreboard players set @s passive_craw 0
+scoreboard players set @s CC_exposed 0
+scoreboard players set @s spell_painter_red 0
+scoreboard players set @s spell_painter_blue 0
+scoreboard players set @s spell_painter_yellow 0
+scoreboard players set @s spell_painter_purple 0
+scoreboard players set @s spell_painter_green 0
+scoreboard players set @s spell_painter_orange 0
 
 
 scoreboard players set @s red 0

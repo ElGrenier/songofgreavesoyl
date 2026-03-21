@@ -50,6 +50,5 @@ scoreboard objectives setdisplay sidebar score
 
 
 # Add kill count
-execute as @a[scores={Kills=1..}] run scoreboard players add @s StatKillsN 1
-
-execute as @a[scores={Kills=1..}] run scoreboard players remove @s Kills 1
+scoreboard players add @a[scores={Kills=1..}] StatKillsN 1
+scoreboard players set @a[scores={Kills=1..}] Kills 0
