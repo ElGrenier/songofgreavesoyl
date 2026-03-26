@@ -47,11 +47,13 @@ execute if score game_state settings matches 2 run scoreboard players set game_s
 execute if score game_state settings matches 3 if score team_select settings matches 0 run scoreboard players set game_state settings 4
 
 # If its "team_select 1" (tournament mode) we tp the player to the "selection room" 
-execute if score game_state settings matches 3 if score team_select settings matches 1 run tp @a[tag=in_game] 288.5 15.00 -107.5
+execute if score game_state settings matches 3 if score team_select settings matches 1 run tp @a[tag=in_game,tag=!selecting_team] 288.5 15.00 -107.5
+execute if score game_state settings matches 3 if score team_select settings matches 1 run tag @a add selecting_team
 execute if score game_state settings matches 3 if score team_select settings matches 1 unless entity @a[tag=!in_a_team,tag=in_game] run scoreboard players set game_state settings 4
 
 execute if score game_state settings matches 4 run function core:lobby/tp_blackbox
-execute if score game_state settings matches 2..4 if score all_random settings matches 0 as @a[scores={char=0},tag=in_game] run scoreboard players set @s ClassPickTrigger 8
+execute if score game_state settings matches 4 run tag @a remove selecting_team
+execute if score game_state settings matches 4 if score all_random settings matches 0 as @a[scores={char=0},tag=in_game] run scoreboard players set @s ClassPickTrigger 8
 
 execute if score game_state settings matches 4 run scoreboard players set game_state settings 5
 
