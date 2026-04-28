@@ -85,3 +85,15 @@ scoreboard players set @e[tag=Altars,name="Tomb of the Fossiled God"] score -4
 #frozen burrow
 scoreboard players display name @e[tag=Altars,name="Frozen Lake"] score "Frozen Lake"
 scoreboard players display name @e[tag=Altars,name="Entrance"] score "Entrance"
+
+#pier
+scoreboard players display name @e[tag=Altars,name="Pier - Purple Side"] score "Pier - (PS)"
+scoreboard players display name @e[tag=Altars,name="Building - Purple Side"] score "Building - (PS)"
+scoreboard players display name @e[tag=Altars,name="Pier - Yellow Side"] score "Pier - (YS)"
+scoreboard players display name @e[tag=Altars,name="Building - Yellow Side"] score "Building - (YS)"
+scoreboard players display name @e[tag=Altars,name="Center"] score "Center"
+scoreboard players set @e[tag=Altars,name="Pier - Yellow Side"] score -3
+scoreboard players set @e[tag=Altars,name="Pier - Purple Side"] score -4
+scoreboard players set @e[tag=Altars,name="Center"] score -5
+scoreboard players set @e[tag=Altars,name="Building - Yellow Side"] score -6
+scoreboard players set @e[tag=Altars,name="Building - Purple Side"] score -7

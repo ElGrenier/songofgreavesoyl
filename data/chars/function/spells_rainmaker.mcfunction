@@ -7,6 +7,9 @@ effect give @a[scores={char=34},nbt={SelectedItem:{id:"minecraft:bow"}}] minecra
 execute at @a[scores={char=34,arrowcd_1=..10}] run tag @e[type=minecraft:arrow,distance=..2] add rainmakershoot_ar
 execute at @e[tag=rainmakershoot_ar] run particle minecraft:block{block_state:{Name:"minecraft:water"}} ~ ~ ~ 0.1 0.1 0.1 0.1 5
 
+tag @e[tag=rainmakershoot_ar] add projectile
+scoreboard players operation @e[tag=projectile,tag=rainmakershoot_ar] Team = @p[scores={char=34}] Team
+
 execute at @a[scores={char=34,CC_disarm=1..}] run kill @e[tag=rainmakershoot_ar]
 
 execute at @a[scores={char=34,rainmaker_shoot=1..}] run tag @e[type=minecraft:arrow,distance=..2,nbt={crit:1b}] add puddleShoot
@@ -142,6 +145,7 @@ execute at @a[scores={char=34,s2_timer=1,CC_silence=0}] run summon marker ~ ~1 ~
 execute at @a[scores={char=34,s2_timer=1,CC_silence=0}] run summon marker ~ ~1 ~ {Tags:["deluge_wave_7","deluge_things","projectile","entities_rainmaker"]}
 execute at @a[scores={char=34,s2_timer=1,CC_silence=0}] run summon marker ~ ~1 ~ {Tags:["deluge_wave_8","deluge_things","projectile","entities_rainmaker"]}
 execute at @a[scores={char=34,s2_timer=1,CC_silence=0}] run summon marker ~ ~1 ~ {Tags:["deluge_wave_9","deluge_things","projectile","entities_rainmaker"]}
+execute at @a[scores={char=34,s2_timer=1,CC_silence=0}] run summon marker ~ ~1 ~ {Tags:["deluge_sound","deluge_things","projectile","entities_rainmaker"]}
 
 scoreboard players operation @e[tag=projectile,tag=deluge_things] Team = @p[scores={char=34}] Team
 execute as @e[tag=deluge_things] run tp @p[scores={char=34,s2_timer=1}]
@@ -157,10 +161,12 @@ execute at @a[scores={char=34,s2_timer=1,CC_silence=0}] as @e[tag=deluge_wave_7]
 execute at @a[scores={char=34,s2_timer=1,CC_silence=0}] as @e[tag=deluge_wave_8] run rotate @s ~-30 ~
 execute at @a[scores={char=34,s2_timer=1,CC_silence=0}] as @e[tag=deluge_wave_9] run rotate @s ~-40 ~
 
+execute as @e[tag=deluge_things,tag=!deluge_sound] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
+execute as @e[tag=deluge_things,tag=!deluge_sound] at @s unless block ^ ^ ^0.5 #minecraft:dash run kill @s
 
 execute as @e[tag=deluge_things] at @s run tp @s ^ ^ ^0.2
 
-execute at @e[tag=deluge_wave_5] run playsound weather.rain master @a[distance=..10] ~ ~ ~ 0.05 0.8 1
+execute at @e[tag=deluge_sound] run playsound weather.rain master @a[distance=..10] ~ ~ ~ 0.05 0.8 1
 execute at @e[tag=deluge_things] run particle rain ~ ~ ~ 0.5 1 0.5 0.01 20 normal
 execute at @a[scores={char=34,s2_timer=3..}] at @e[tag=deluge_things] run particle dust{color:[0.33,0.33,1.0],scale:1} ~ ~ ~ 0.5 1 0.5 0.01 3 normal
 

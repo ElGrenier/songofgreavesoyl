@@ -17,7 +17,6 @@ execute if score map settings matches 16 run function battlegrounds:setup/thearb
 execute if score map settings matches 17 run function battlegrounds:setup/theisland
 # THE FUCKING ALLEY
 execute if score map settings matches 18 run function battlegrounds:setup/shadyalleys
-
 execute if score map settings matches 19 run function battlegrounds:setup/parasitechambers
 execute if score map settings matches 20 run function battlegrounds:setup/losthalls
 execute if score map settings matches 21 run function battlegrounds:setup/heartoftheswamp
@@ -29,6 +28,7 @@ execute if score map settings matches 26 run function battlegrounds:setup/chaint
 execute if score map settings matches 27 run function battlegrounds:setup/infectedcryptctf
 execute if score map settings matches 28 run function battlegrounds:setup/crawler_mode
 execute if score map settings matches 29 run function battlegrounds:setup/rainmaker_temple
+execute if score map settings matches 30 run function battlegrounds:setup/pier
 
 
 execute if entity @a[tag=debug] run say "setup initialized"

@@ -43,11 +43,11 @@ execute unless entity @a[scores={char=17}] run kill @e[tag=entities_technomancer
 execute unless entity @a[scores={char=17}] run tag @a remove techno_melee
 execute unless entity @a[scores={char=17}] run tag @a remove techno_ranged
 
+execute unless entity @a[scores={char=18}] run tag @a remove sentrymode
 execute unless entity @a[scores={char=18}] run kill @e[tag=entities_golem]
 
 execute unless entity @a[scores={char=666}] run kill @e[tag=entities_demon]
 
-execute unless entity @a[scores={char=20}] at @e[tag=snare_webs] run fill ~20 ~10 ~20 ~-20 ~-3 ~-20 air replace cobweb
 execute unless entity @a[scores={char=20}] run kill @e[tag=entities_weaver]
 
 execute unless entity @a[scores={char=21}] at @e[tag=tomb] run fill ~4 ~4 ~4 ~-4 ~-2 ~-4 air replace blue_ice
@@ -56,6 +56,8 @@ execute unless entity @a[scores={char=21}] run kill @e[tag=entities_necrolord]
 execute unless entity @a[scores={char=21}] run scoreboard players set @a[scores={chilledroot_visual=1..}] chilledroot_visual 0
 execute unless entity @a[scores={char=21}] run scoreboard players set @a[scores={curse=1..}] curse 0
 
+execute unless entity @a[scores={char=22}] run tp @a[scores={devoured=1..}] @e[tag=spit_if_dead,limit=1]
+execute unless entity @a[scores={char=22}] run scoreboard players set @a[scores={devoured=1..}] devoured 0
 execute unless entity @a[scores={char=22}] run kill @e[tag=entities_devourer]
 
 execute unless entity @a[scores={char=23}] run tag @a remove prowlermark
@@ -84,6 +86,7 @@ execute unless entity @a[scores={char=32}] run kill @e[tag=entities_emperor]
 
 execute unless entity @a[scores={char=33}] run kill @e[tag=entities_stray]
 execute unless entity @a[scores={char=33}] run scoreboard players set @a[scores={stray_terrorradius=1..}] stray_terrorradius 0
+execute unless entity @a[scores={char=33}] run scoreboard players set @a[scores={prey=1..}] prey 0
 
 execute unless entity @a[scores={char=34}] run kill @e[tag=entities_rainmaker]
 
@@ -100,7 +103,7 @@ execute unless entity @a[scores={char=37}] run kill @e[tag=entities_shapeless]
 execute unless entity @a[scores={char=38}] run kill @e[tag=entities_warden]
 execute unless entity @a[scores={char=38}] run tag @a remove outlaw
 
-execute unless entity @a[scores={char=39}] run kill @e[tag=entities_basilik]
+execute unless entity @a[scores={char=39}] run kill @e[tag=entities_basilisk]
 execute unless entity @a[scores={char=39}] as @a[scores={basilisk_petrify=1..}] run attribute @s minecraft:knockback_resistance base set 0
 execute unless entity @a[scores={char=39}] run scoreboard players set @a[scores={basilisk_petrify=1..}] basilisk_petrify 0
 execute unless entity @a[scores={char=39}] run scoreboard players set @a[scores={basilisk_venom=1..}] basilisk_venom 0
@@ -169,11 +172,15 @@ execute unless entity @a[scores={char=58}] run tag @a remove purifier
 
 execute unless entity @a[scores={char=59}] run kill @e[tag=entities_redmold]
 
+
+execute unless entity @a[scores={char=60}] run tp @e[tag=get_blackholed_asshole] @e[tag=BlackHoleReturnPoint,limit=1]
+execute unless entity @a[scores={char=60}] run tag @e remove get_blackholed_asshole
 execute unless entity @a[scores={char=60}] run kill @e[tag=entities_starfather]
 
 execute unless entity @a[scores={char=61}] run kill @e[tag=entities_cryomancer]
 
 execute unless entity @a[scores={char=62}] run kill @e[tag=entities_thornfiend]
+execute unless entity @a[scores={char=62}] run scoreboard players set @a[scores={thorns_timer=1..}] thorns_timer 0
 
 execute unless entity @a[scores={char=63}] run kill @e[tag=entities_druid]
 execute unless entity @a[scores={char=63}] run tag @a remove druid_root
@@ -181,6 +188,9 @@ execute unless entity @a[scores={char=63}] run scoreboard players set @a[scores=
 
 execute unless entity @a[scores={char=64}] run kill @e[tag=entities_scarletlady]
 execute unless entity @a[scores={char=64}] run scoreboard players set @a[scores={laceration=1..}] laceration 0
+execute unless entity @a[scores={char=64}] run scoreboard players set @a[scores={laceration_timer_initial=1..}] laceration_timer_initial 0
+execute unless entity @a[scores={char=64}] run scoreboard players set @a[scores={laceration_counter=1..}] laceration_counter 0
+execute unless entity @a[scores={char=64}] run scoreboard players set @a[scores={laceration_immunity=1..}] laceration_immunity 0
 execute unless entity @a[scores={char=64}] run scoreboard players set @a[scores={kneel=1..}] kneel 0
 execute unless entity @a[scores={char=64}] run tag @a remove mosquito_kiss
 execute unless entity @a[scores={char=64}] run tag @a remove mosquito_bite

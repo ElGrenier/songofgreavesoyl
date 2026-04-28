@@ -33,11 +33,11 @@ execute if score map settings matches 24 run tellraw @a [{text:" ==== ",color:"d
 execute if score map settings matches 25 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Oasis Garden ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
 execute if score map settings matches 26 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Chain Tower ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
 execute if score map settings matches 27 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Infected Crypt ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
-
+execute if score map lobby matches 28 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Mine Control ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
 execute if score map settings matches 29 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Temple of Rainmaker ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
+execute if score map settings matches 30 run tellraw @a [{text:" ==== ",color:"dark_green",bold:1b,type:"text"},{text:" Port of Shraa'Ini ",color:"green",bold:1b,type:"text"},{text:" ==== ",color:"dark_green",bold:1b,type:"text"}]
 
-
-execute if score map settings matches 1 run tellraw @a [{text:"      ",color:"dark_gray",italic:1b,type:"text"},{text:" Where it all started ",color:"gray",italic:1b,type:"text"},{text:"      ",color:"dark_gray",italic:1b,type:"text"}]
+execute if score map settings matches 1 run tellraw @a [{text:"      ",color:"dark_gray",italic:1b,type:"text"},{text:"Where it all started ",color:"gray",italic:1b,type:"text"},{text:"      ",color:"dark_gray",italic:1b,type:"text"}]
 execute if score map settings matches 2 run tellraw @a [{text:"      ",color:"dark_gray",italic:1b,type:"text"},{text:"    The Mold hungers ",color:"gray",italic:1b,type:"text"},{text:"      ",color:"dark_gray",italic:1b,type:"text"}]
 execute if score map settings matches 3 run tellraw @a [{text:"      ",color:"dark_gray",italic:1b,type:"text"},{text:"    Where the light will never reach ",color:"gray",italic:1b,type:"text"},{text:"      ",color:"dark_gray",italic:1b,type:"text"}]
 execute if score map settings matches 4 run tellraw @a [{text:"  ",color:"dark_gray",italic:1b,type:"text"},{text:" Haiir ro Shraa'Sift, horro wo Shraa'Sift ",color:"gray",italic:1b,type:"text"},{text:"      ",color:"dark_gray",italic:1b,type:"text"}]
@@ -65,8 +65,9 @@ execute if score map settings matches 24 run tellraw @a [{text:"      ",color:"d
 execute if score map settings matches 25 run tellraw @a [{text:"       ",color:"dark_gray",italic:1b,type:"text"},{text:"Jewel of the Desert",color:"gray",italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
 execute if score map settings matches 26 run tellraw @a [{text:"  ",color:"dark_gray",italic:1b,type:"text"},{text:"The High Court of Seru has\n     made the final verdict",color:"gray",italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
 execute if score map settings matches 27 run tellraw @a [{text:"     ",color:"dark_gray",italic:1b,type:"text"},{text:"Red spores over purgatory",color:"gray",italic:1b,italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
-
+execute if score map lobby matches 28 run tellraw @a [{text:" ",color:"dark_gray",italic:1b,type:"text"},{text:"Squash and Exterminate, until they are gone",color:"gray",italic:1b,italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
 execute if score map settings matches 29 run tellraw @a [{text:"             ",color:"dark_gray",italic:1b,type:"text"},{text:"Deshh loves you too",color:"gray",italic:1b,italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
+execute if score map settings matches 30 run tellraw @a [{text:"         ",color:"dark_gray",italic:1b,type:"text"},{text:"Gateway of the Desert",color:"gray",italic:1b,italic:1b,type:"text"},{text:"  ",color:"dark_gray",italic:1b,type:"text"}]
 
 
 tellraw @a {text:" ",type:"text"}
@@ -91,6 +92,9 @@ execute if score map_type settings matches 1 run tellraw @a [{text:"",type:"text
 execute if score map_type settings matches 2 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Get ",color:"green",type:"text"},{score:{name:"score_max",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" kills to win! ",color:"green",type:"text"}]
 execute if score map_type settings matches 3 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Capture the enemy flag ",color:"green",type:"text"},{score:{name:"score_max",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" times to win! ",color:"green",type:"text"}]
 execute if score map_type settings matches 4 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"The first player to get ",color:"green",type:"text"},{score:{name:"score_max",objective:"settings"},color:"gold",bold:1b,type:"score"},{text:" kills wins! ",color:"green",type:"text"}]
+
+execute if score game_type settings matches 2 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Fight through waves of enemies!",color:"green",type:"text"}]
+execute if score game_type settings matches 2 run tellraw @a [{text:"",type:"text"},{text:"> ",color:"gold",bold:1b,type:"text"},{text:"Can you make it to the end?",color:"green",type:"text"}]
 
 tellraw @a [{text:"\nYou can",color:"green",type:"text"},{text:" use/drop the book ",color:"gold",bold:1b,type:"text"},{text:"in your",color:"green",type:"text"},{text:" 5th slot ",color:"gold",bold:1b,type:"text"},{text:"to see a detailed description of your abilities.",color:"green",type:"text"}]
 

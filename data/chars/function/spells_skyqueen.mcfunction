@@ -62,7 +62,7 @@ execute at @a[scores={char=14,s2_timer_recast=1}] if entity @p[distance=1..7,tag
 execute at @a[scores={char=14,s2_timer_recast=1}] if entity @p[distance=1..7,tag=skyqueen_valid_protection_target] run scoreboard players set @a nestduration 0
 execute at @a[scores={char=14,s2_timer_recast=1}] run tag @p[distance=1..7,tag=skyqueen_valid_protection_target] add nest
 
-execute at @a[scores={char=14,s2_timer_recast=1,CC_silence=0}] run clear @a[scores={char=14}] *[minecraft:custom_data={s1:2}]
+execute at @a[scores={char=14,s2_timer_recast=1,CC_silence=0}] run clear @a[scores={char=14}] *[minecraft:custom_data={s2:2}]
 
 execute at @a[scores={nestduration=79..}] run playsound entity.breeze.shoot master @a[distance=..10] ~ ~ ~ 1 0.5 1
 execute at @a[scores={nestduration=1..60}] run playsound entity.breeze.inhale master @a[distance=..10] ~ ~ ~ 0.1 0.2 1
@@ -73,7 +73,8 @@ execute at @a[scores={nestduration=80..}] as @a[distance=..4,tag=valid_spell_tar
 tag @a[scores={nestduration=80..}] remove nest
 scoreboard players set @a[scores={nestduration=80..}] nestduration 0
 
-execute at @e[tag=nest] run particle cloud ~ ~1 ~ 0.9 0.6 0.9 0.0001 2 normal
+execute at @e[tag=nest] run particle cloud ~ ~1 ~ 0.8 0.6 0.8 0.0001 1 normal
+execute at @e[tag=nest] run particle cloud ~ ~0.4 ~ 0.5 0.3 0.5 0.0001 10 normal
 
 execute unless entity @a[tag=nest] run kill @e[tag=nest_visuals]
 
@@ -127,67 +128,33 @@ execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_14] ^-1.
 execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_15] ^ ^ ^1.5
 execute as @e[tag=nest_visuals_core_1] at @s run tp @e[tag=nest_visuals_16] ^ ^ ^-1.5
 
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_5] ^-1.2 ^ ^1.2
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_6] ^-1.2 ^ ^-1.2
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_7] ^1.2 ^ ^1.2
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_8] ^1.2 ^ ^-1.2
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_5] ^-1.1 ^ ^1.1
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_6] ^-1.1 ^ ^-1.1
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_7] ^1.1 ^ ^1.1
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_8] ^1.1 ^ ^-1.1
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_17] ^1.3 ^ ^
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_18] ^-1.3 ^ ^
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_19] ^ ^ ^1.3
+execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_20] ^ ^ ^-1.3
 
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_17] ^1.5 ^ ^
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_18] ^-1.5 ^ ^
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_19] ^ ^ ^1.5
-execute as @e[tag=nest_visuals_core_2] at @s run tp @e[tag=nest_visuals_20] ^ ^ ^-1.5
-
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_9] ^-1.2 ^ ^1.2
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_10] ^-1.2 ^ ^-1.2
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_11] ^1.2 ^ ^1.2
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_12] ^1.2 ^ ^-1.2
-
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_21] ^1.5 ^ ^
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_22] ^-1.5 ^ ^
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_23] ^ ^ ^1.5
-execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_24] ^ ^ ^-1.5
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_9] ^-0.9 ^ ^0.9
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_10] ^-0.9 ^ ^-0.9
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_11] ^0.9 ^ ^0.9
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_12] ^0.9 ^ ^-0.9
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_21] ^1.1 ^ ^
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_22] ^-1.1 ^ ^
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_23] ^ ^ ^1.1
+execute as @e[tag=nest_visuals_core_3] at @s run tp @e[tag=nest_visuals_24] ^ ^ ^-1.1
 
 #windshield
 
-#arrows
+execute at @e[tag=nest] as @e[distance=..4,tag=projectile,type=arrow] unless score @s Team = @p[scores={char=14}] Team run tag @s add feel_the_wind
+execute at @e[tag=nest] as @e[distance=..3,tag=projectile] unless score @s Team = @p[scores={char=14}] Team run tag @s add feel_the_wind
 
-execute at @e[tag=nest] if entity @p[scores={char=14},team=yellow] if entity @p[scores={char=2},team=purple] run kill @e[distance=..4,tag=huntressshot_ar]
-execute at @e[tag=nest] if entity @p[scores={char=14},team=purple] if entity @p[scores={char=2},team=yellow] run kill @e[distance=..4,tag=huntressshot_ar]
+execute at @e[tag=feel_the_wind] run particle cloud ~ ~ ~ 0.1 0.1 0.1 0.1 10
+execute at @e[tag=feel_the_wind] run playsound entity.breeze.deflect master @a[distance=..15] ~ ~ ~ 1 0.8 1
+kill @e[tag=feel_the_wind]
 
-execute at @e[tag=nest] if entity @p[scores={char=14},team=yellow] if entity @p[scores={char=7},team=purple] run kill @e[distance=..4,tag=dragonshot_ar]
-execute at @e[tag=nest] if entity @p[scores={char=14},team=purple] if entity @p[scores={char=7},team=yellow] run kill @e[distance=..4,tag=dragonshot_ar]
-
-execute at @e[tag=nest] if entity @p[scores={char=14},team=yellow] if entity @p[scores={char=18},team=purple] run kill @e[distance=..4,tag=golemshot_ar]
-execute at @e[tag=nest] if entity @p[scores={char=14},team=purple] if entity @p[scores={char=18},team=yellow] run kill @e[distance=..4,tag=golemshot_ar]
-
-execute at @e[tag=nest] if entity @p[scores={char=14},team=yellow] if entity @p[scores={char=26},team=purple] run kill @e[distance=..4,tag=sharpshootershot_ar]
-execute at @e[tag=nest] if entity @p[scores={char=14},team=purple] if entity @p[scores={char=26},team=yellow] run kill @e[distance=..4,tag=sharpshootershot_ar]
-
-execute at @e[tag=nest] if entity @p[scores={char=14},team=yellow] if entity @p[scores={char=34},team=purple] run kill @e[distance=..4,tag=rainmakershoot_ar]
-execute at @e[tag=nest] if entity @p[scores={char=14},team=purple] if entity @p[scores={char=34},team=yellow] run kill @e[distance=..4,tag=rainmakershoot_ar]
-
-execute at @e[tag=nest] if entity @p[scores={char=14},team=yellow] if entity @p[scores={char=41},team=purple] run kill @e[distance=..4,tag=broodmothershot_ar]
-execute at @e[tag=nest] if entity @p[scores={char=14},team=purple] if entity @p[scores={char=41},team=yellow] run kill @e[distance=..4,tag=broodmothershot_ar]
-
-execute at @e[tag=nest] if entity @p[scores={char=14},team=yellow] if entity @p[scores={char=50},team=purple] run kill @e[distance=..4,tag=chaosshot_ar]
-execute at @e[tag=nest] if entity @p[scores={char=14},team=purple] if entity @p[scores={char=50},team=yellow] run kill @e[distance=..4,tag=chaosshot_ar]
-
-execute at @e[tag=nest] if entity @p[scores={char=14},team=yellow] if entity @p[scores={char=60},team=purple] run kill @e[distance=..4,tag=starfather_ar]
-execute at @e[tag=nest] if entity @p[scores={char=14},team=purple] if entity @p[scores={char=60},team=yellow] run kill @e[distance=..4,tag=starfather_ar]
-
-
-#vanilla
-
-execute at @e[tag=nest] if entity @p[scores={char=14},team=yellow] if entity @p[scores={char=4},team=purple] run kill @e[type=minecraft:ender_pearl,distance=..4]
-execute at @e[tag=nest] if entity @p[scores={char=14},team=purple] if entity @p[scores={char=4},team=yellow] run kill @e[type=minecraft:ender_pearl,distance=..4]
-
-execute at @e[tag=nest] if entity @p[scores={char=14},team=yellow] if entity @p[scores={char=17},team=purple] run kill @e[type=minecraft:trident,distance=..4]
-execute at @e[tag=nest] if entity @p[scores={char=14},team=purple] if entity @p[scores={char=17},team=yellow] run kill @e[type=minecraft:trident,distance=..4]
-
-
-#custom
-
-execute at @e[tag=nest] as @e[distance=..4,tag=projectile] unless score @s Team = @p[scores={char=14}] Team run kill @s
 
 # sky queen
 
@@ -202,7 +169,7 @@ scoreboard players set @a[scores={s2_timer=321..,char=14}] s2_timer_recast 0
 scoreboard players set @a[scores={s2_timer=321..,char=14}] s2_timer 0
 
 execute as @a[scores={char=14}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_pickaxe",Slot:0b}]}] run clear @a[scores={char=14}] minecraft:iron_pickaxe
-item replace entity @a[scores={char=14}] hotbar.0 with minecraft:iron_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=14}] hotbar.0 with minecraft:iron_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Talons"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=14,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=14}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=14,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:quartz",minecraft:custom_name={text:"Pin the Prey",color:"dark_aqua",bold:1b}] 1

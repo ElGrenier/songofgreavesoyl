@@ -200,7 +200,23 @@ execute if entity @a[scores={char=44,universal_death=1..}] run scoreboard player
 scoreboard players remove @e[scores={constricted=1..}] constricted 1
 execute as @e[scores={constricted=100}] at @s run playsound entity.leash_knot.place master @s ~ ~ ~ 1 0.5 1
 effect give @e[scores={constricted=100}] slowness 1 4
-execute as @e[scores={constricted=1..}] at @s run particle item{item:"lead"} ~ ~1 ~ 0 .6 0 0 30 normal
+
+execute at @e[scores={constricted=1..}] unless entity @e[tag=constrict_visual_spin] run summon marker ~ ~ ~ {Tags:["constrict_visual_spin","entities_raider"]}
+
+execute as @e[scores={constricted=1..}] at @s run tp @e[tag=constrict_visual_spin] ~ ~1 ~
+
+execute as @e[tag=constrict_visual_spin] at @s run tp @s ~ ~ ~ ~8 ~
+execute as @e[tag=constrict_visual_spin] at @s run particle crit ^ ^ ^1 0 0 0 0 1
+execute as @e[tag=constrict_visual_spin] at @s run particle crit ^ ^ ^-1 0 0 0 0 1
+execute as @e[tag=constrict_visual_spin] at @s run particle crit ^1 ^ ^ 0 0 0 0 1
+execute as @e[tag=constrict_visual_spin] at @s run particle crit ^-1 ^ ^ 0 0 0 0 1
+execute as @e[tag=constrict_visual_spin] at @s run particle crit ^0.75 ^ ^0.75 0 0 0 0 1
+execute as @e[tag=constrict_visual_spin] at @s run particle crit ^-0.75 ^ ^-0.75 0 0 0 0 1
+execute as @e[tag=constrict_visual_spin] at @s run particle crit ^0.75 ^ ^-0.75 0 0 0 0 1
+execute as @e[tag=constrict_visual_spin] at @s run particle crit ^-0.75 ^ ^0.75 0 0 0 0 1
+
+execute unless entity @e[scores={constricted=1..}] run kill @e[tag=constrict_visual_spin]
+
 
 execute at @a[scores={char=44}] run scoreboard players add @e[scores={constricted=1..},distance=..10] constrict_choke 1
 
@@ -327,7 +343,7 @@ scoreboard players add @a[scores={s2_timer_recast=1..,char=44}] s2_timer_recast 
 scoreboard players set @a[scores={s2_timer_recast=20..,char=44}] s2_timer_recast 0
 
 execute as @a[scores={char=44}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:0b}]}] run clear @a[scores={char=44}] warped_fungus_on_a_stick[custom_data={s0:1}]
-item replace entity @a[scores={char=44}] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:wooden_sword",minecraft:custom_name={bold:1b,color:"gray",text:"Rusted Knife"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=44}] hotbar.0 with warped_fungus_on_a_stick[swing_animation={type:"stab"},custom_data={s0:1},minecraft:item_model="minecraft:wooden_sword",minecraft:custom_name={bold:1b,color:"gray",text:"Rusted Knife"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=44,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=44}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=44,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:string",minecraft:custom_name={text:"Constrict",color:"dark_aqua",bold:1b}] 1
@@ -335,6 +351,7 @@ item replace entity @a[scores={char=44,s1_timer=0}] hotbar.1 with carrot_on_a_st
 execute at @a[scores={char=44}] if entity @e[scores={constrict_choke=40..},distance=..10] as @a[scores={char=44,s1_timer_recast=0,s1_timer=1..139}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=44}] carrot_on_a_stick[custom_data={s1:2}]
 execute at @a[scores={char=44}] if entity @e[scores={constrict_choke=40..},distance=..10] run item replace entity @a[scores={char=44,s1_timer_recast=0,s1_timer=1..139}] hotbar.1 with carrot_on_a_stick[custom_data={s1:2},minecraft:item_model="minecraft:bone_meal",minecraft:custom_name={text:"Choke",color:"dark_aqua",bold:1b}] 1
 execute at @a[scores={char=44}] unless entity @e[scores={constrict_choke=40..},distance=..10] run clear @a[scores={char=44}] carrot_on_a_stick[custom_data={s1:2}]
+execute at @a[scores={char=44}] unless entity @e[scores={constricted=1..}] run clear @a[scores={char=44}] carrot_on_a_stick[custom_data={s1:2}]
 
 execute as @a[scores={char=44,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=44}] warped_fungus_on_a_stick[custom_data={s2:1}]
 item replace entity @a[scores={char=44,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:suspicious_sand",minecraft:custom_name={text:"Dead in the Sands",color:"dark_aqua",bold:1b}] 1

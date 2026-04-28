@@ -4,15 +4,19 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:iron_shovel"}}]
 #stempede
 
 
-scoreboard players set @a[scores={universal_sprint=1..,char=57}] passive_runa_reset 15
-scoreboard players add @a[scores={universal_sprint=1..,char=57}] passive_runa 1
+scoreboard players set @a[scores={universal_walk=1..,char=57}] passive_runa_reset 15
+scoreboard players add @a[scores={universal_walk=1..,char=57}] passive_runa 1
+scoreboard players set @a[scores={universal_hit=1..,char=57}] passive_runa 0
+
+#scoreboard players set @a[scores={universal_sprint=1..,char=57}] passive_runa_reset 15
+#scoreboard players add @a[scores={universal_sprint=1..,char=57}] passive_runa 1
 
 scoreboard players set @a[scores={passive_runa=1..,passive_runa_reset=1..2,char=57}] passive_runa 0
 scoreboard players remove @a[scores={passive_runa_reset=1..,char=57}] passive_runa_reset 1
 
 effect give @a[scores={passive_runa=40..119,char=57}] speed 1
 effect give @a[scores={passive_runa=40..119,char=57}] resistance 1
-effect give @a[scores={passive_runa=121..,char=57}] resistance 1 2
+effect give @a[scores={passive_runa=121..,char=57}] resistance 1 1
 effect give @a[scores={passive_runa=121..,char=57}] speed 1 1
 
 execute at @a[scores={passive_runa=41..119,char=57}] run particle crit ~ ~ ~ 0.3 0.1 0.3 0.3 5
@@ -22,17 +26,27 @@ execute at @a[scores={passive_runa=121..,char=57}] run particle falling_dust{blo
 
 execute at @a[scores={passive_runa=121..,char=57}] as @a[distance=..1,tag=valid_spell_target,limit=1,sort=furthest] unless score @s Team = @p[scores={char=57}] Team at @s run summon marker ~ ~ ~ {Tags:["stempede_collision","entities_runaway"]}
 
+scoreboard players set @a[scores={passive_runa_reset=..10,char=57}] s0_timer 0
+scoreboard players set @a[scores={passive_runa=0,char=57}] s0_timer 0
 
-execute at @e[tag=stempede_collision] as @a[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=57}] Team run scoreboard players set @s CC_stun 20
+scoreboard players add @a[scores={passive_runa=40..,char=57}] s0_timer 1
+scoreboard players add @a[scores={passive_runa=121..,char=57}] s0_timer 1
+execute at @a[scores={char=57,s0_timer=11..}] run playsound entity.ravager.step master @a[distance=..16] ~ ~ ~ 0.2 1.2 1
+scoreboard players set @a[scores={s0_timer=11..,char=57}] s0_timer 0
 
+
+execute at @e[tag=stempede_collision] as @a[distance=..1.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=57}] Team run scoreboard players set @s CC_stun 20
+
+execute at @e[tag=stempede_collision] as @a[distance=..1.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=57}] Team run damage @s 0.000000000000000001 player_attack by @p[scores={char=57}] from @p[scores={char=57}]
 execute at @e[tag=stempede_collision] run effect clear @a[scores={char=57}] speed
-execute at @e[tag=stempede_collision] run effect give @a[scores={char=57}] resistance 3 2
+execute at @e[tag=stempede_collision] run effect give @a[scores={char=57}] resistance 3 1
 execute at @e[tag=stempede_collision] run scoreboard players set @a[scores={char=57}] passive_runa 0
 execute at @e[tag=stempede_collision] run scoreboard players set @a[scores={char=57}] passive_runa_reset 0
 execute at @e[tag=stempede_collision] run particle cloud ~ ~1 ~ 1 1 1 0.1 10
 execute at @e[tag=stempede_collision] run particle crit ~ ~1 ~ 2 2 2 0.6 100
 execute at @e[tag=stempede_collision] run playsound entity.player.hurt master @a[distance=..15] ~ ~ ~ 1 0.2 1
-execute at @e[tag=stempede_collision] run playsound entity.zombie.break_wooden_door master @a[distance=..15] ~ ~ ~ 0.5 0.9 1
+execute at @e[tag=stempede_collision] run playsound entity.player.attack.crit master @a[distance=..15] ~ ~ ~ 1 0.8 1
+execute at @e[tag=stempede_collision] run playsound entity.zombie.break_wooden_door master @a[distance=..15] ~ ~ ~ 0.2 0.9 1
 kill @e[tag=stempede_collision]
 
 title @a[scores={char=57,passive_runa=0..19}] actionbar [{text:"[",bold:1b,color:"dark_gray",type:"text"},{text:"",color:"yellow",type:"text"},{text:"======",color:"gray",type:"text"},{text:"]",bold:1b,color:"dark_gray",type:"text"}]
@@ -58,7 +72,7 @@ execute at @a[scores={char=57,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ 
 tp @e[tag=grab_chain,limit=1] @a[scores={char=57,s1_timer=1},limit=1]
 execute at @a[scores={char=57,s1_timer=1,CC_silence=0}] as @e[tag=grab_chain,limit=1] at @s run tp @s ~ ~1 ~ 
 
-execute as @e[tag=grab_chain] at @s run tp @s ^ ^ ^0.5
+execute as @e[tag=grab_chain] at @s run tp @s ^ ^ ^0.65
 
 execute store result entity @e[tag=grab_chain,limit=1] Rotation[1] float 1 run clear
 execute as @e[tag=grab_chain] at @s unless block ^ ^1 ^0.5 #minecraft:dash run kill @s
@@ -104,7 +118,6 @@ execute if entity @a[scores={char=57,CC_silence=0}] at @e[tag=grab_chain] positi
 execute at @a[tag=runaway_pull] run kill @e[tag=grab_chain_visual_core]
 execute at @a[tag=runaway_pull] run kill @e[tag=ch_shackle_visuals_1]
 
-
 scoreboard players set @a[tag=runaway_pull] CC_stun 10
 
 execute if entity @p[tag=runaway_pull] run effect give @a[scores={char=57}] slow_falling 1 1 true
@@ -113,8 +126,28 @@ execute at @a[scores={char=57}] run scoreboard players set @a[distance=..1,tag=r
 execute at @a[scores={char=57}] run scoreboard players set @a[distance=..1,tag=runaway_pull] CC_disarm 40
 execute at @a[scores={char=57}] run tag @a[distance=..1,tag=runaway_pull] remove runaway_pull
 
-execute if entity @n[tag=runaway_pull] as @a[scores={char=57}] at @s facing entity @p[tag=runaway_pull] feet run tp @s ^ ^ ^.5
-execute as @a[scores={char=57,s1_timer=20..22}] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
+execute unless entity @n[tag=runaway_pull] run kill @e[tag=runaway_pull_dash]
+
+execute at @a[scores={char=57,death_dash_reset=1..}] run kill @e[tag=runaway_pull_dash]
+execute at @a[scores={char=57,universal_death=1..}] run kill @e[tag=runaway_pull_dash]
+execute at @a[scores={char=57,CC_grounded=1..}] run kill @e[tag=runaway_pull_dash]
+execute at @a[scores={char=57,CC_root=1..}] run kill @e[tag=runaway_pull_dash]
+execute at @a[scores={char=57,CC_stun=1..}] run kill @e[tag=runaway_pull_dash]
+execute at @a[scores={char=57,CC_silence=1..}] run kill @e[tag=runaway_pull_dash]
+
+
+execute if entity @n[tag=runaway_pull] at @a[scores={char=57}] unless entity @e[tag=runaway_pull_dash] run summon marker ~ ~ ~ {Tags:["runaway_pull_dash","entities_runaway"]}
+
+execute as @e[tag=runaway_pull_dash,tag=!pull_dash_adjust] at @s run tp @s ~ ~0.5 ~ facing entity @p[tag=runaway_pull]
+tag @e[tag=runaway_pull_dash] add pull_dash_adjust
+
+tp @a[scores={char=57}] @e[tag=runaway_pull_dash,limit=1]
+
+execute as @e[tag=runaway_pull_dash] at @s run tp @s ~ ~ ~ facing entity @p[tag=runaway_pull]
+execute as @e[tag=runaway_pull_dash] at @s run tp @s ^ ^ ^0.8
+
+#execute if entity @n[tag=runaway_pull] as @a[scores={char=57}] at @s facing entity @p[tag=runaway_pull] feet run tp @s ^ ^ ^.5
+#execute as @a[scores={char=57,s1_timer=20..22}] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
 
 execute at @a[scores={char=57,universal_death=1..}] run tag @a remove runaway_pull
 tag @a[tag=runaway_pull,scores={universal_death=1..}] remove runaway_pull
@@ -124,11 +157,13 @@ tag @a[tag=runaway_pull,scores={universal_death=1..}] remove runaway_pull
 scoreboard players set @a[scores={char=57,s2_timer=1,CC_silence=1..}] spellCD2 20
 scoreboard players set @a[scores={char=57,s2_timer=1,CC_silence=1..}] s2_timer 260
 
+
 execute at @a[scores={char=57,s2_timer=1,CC_silence=0}] run playsound item.bundle.drop_contents master @a[distance=..15] ~ ~ ~ 0.5 0.8 1
 execute at @a[scores={char=57,s2_timer=1,CC_silence=0}] run playsound entity.player.attack.strong master @a[distance=..15] ~ ~ ~ 1 0.6 1
 execute at @a[scores={char=57,s2_timer=1,CC_silence=0,passive_runa=0..119}] run summon marker ~ ~ ~ {Tags:["overpower_grab","grab_normal","entities_runaway"]}
 execute at @a[scores={char=57,s2_timer=1,CC_silence=0,passive_runa=120..}] run particle cloud ~ ~0.3 ~ 0.5 0.3 0.5 0 50
 execute at @a[scores={char=57,s2_timer=1,CC_silence=0,passive_runa=120..}] run summon marker ~ ~ ~ {Tags:["overpower_grab","grab_dash","entities_runaway"]}
+scoreboard players set @a[scores={char=57,s2_timer=1,CC_silence=0,passive_runa=120..}] passive_runa 0
 tp @e[tag=overpower_grab,limit=1] @a[scores={char=57,s2_timer=1},limit=1]
 execute at @a[scores={char=57,s2_timer=1},limit=1] run tp @e[tag=overpower_grab,limit=1] ~ ~1.2 ~
 execute at @a[scores={char=57,s2_timer=1},limit=1] run tp @e[tag=grab_dash,limit=1] ~ ~0.5 ~
@@ -136,7 +171,10 @@ execute at @a[scores={char=57,s2_timer=1},limit=1] run tp @e[tag=grab_dash,limit
 
 execute at @e[tag=overpower_grab] run particle sculk_charge_pop ~ ~ ~ 0.8 0.4 0.8 0 3
 execute at @e[tag=overpower_grab] run particle crit ~ ~ ~ 0.8 0.4 0.8 0.1 30
-execute as @e[tag=overpower_grab] at @s run tp @s ^ ^ ^0.5
+execute as @e[tag=overpower_grab] at @s run tp @s ^ ^ ^0.4
+execute as @e[tag=overpower_grab] at @s unless block ^ ^1 ^0.5 #minecraft:dash run kill @s
+execute as @e[tag=overpower_grab] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
+execute as @e[tag=overpower_grab] at @s run tp @s ^ ^ ^0.4
 execute as @e[tag=overpower_grab] at @s unless block ^ ^1 ^0.5 #minecraft:dash run kill @s
 execute as @e[tag=overpower_grab] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
 
@@ -151,8 +189,9 @@ execute if entity @a[scores={char=57,CC_silence=0}] at @e[tag=overpower_grab] po
 execute if entity @a[scores={char=57,CC_silence=0}] at @e[tag=overpower_grab] positioned ~-.75 ~-.5 ~-.75 as @a[dx=.5,dy=0,dz=.5] unless score @s Team = @p[scores={char=57}] Team run tag @s add runaway_hold
 execute if entity @a[scores={char=57,CC_silence=0}] at @e[tag=overpower_grab] positioned ~-.75 ~-.5 ~-.75 as @a[dx=.5,dy=0,dz=.5] unless score @s Team = @p[scores={char=57}] Team run kill @e[tag=overpower_grab]
 
-execute at @a[scores={char=57,s2_timer=21,CC_silence=0}] if entity @a[tag=runaway_hold] run playsound entity.player.attack.strong master @a[distance=..15] ~ ~ ~ 1 0.4 1
-execute at @a[scores={char=57,s2_timer=21,CC_silence=0}] if entity @a[tag=runaway_hold] run playsound entity.snowball.throw master @a[distance=..15] ~ ~ ~ 1 0.1 1
+execute at @a[scores={char=57,s2_timer=21,CC_silence=0}] if entity @a[tag=runaway_hold] run playsound entity.player.attack.knockbask master @a[distance=..15] ~ ~ ~ 1 0.4 1
+execute at @a[scores={char=57,s2_timer=21,CC_silence=0}] if entity @a[tag=runaway_hold] run playsound entity.player.attack.strong master @a[distance=..15] ~ ~ ~ 0.8 0.4 1
+execute at @a[scores={char=57,s2_timer=21,CC_silence=0}] if entity @a[tag=runaway_hold] run playsound entity.snowball.throw master @a[distance=..15] ~ ~ ~ 0.5 0.1 1
 execute at @a[scores={char=57,s2_timer=21,CC_silence=0}] if entity @a[tag=runaway_hold] run summon marker ~ ~ ~ {Tags:["overpower_throw","entities_runaway"]}
 tp @e[tag=overpower_throw,limit=1] @a[scores={char=57,s2_timer=21},limit=1]
 
@@ -161,7 +200,7 @@ execute at @a[scores={char=57,universal_death=1..}] run tag @e remove runaway_ho
 execute at @a[tag=runaway_hold,scores={universal_death=1..}] run kill @e[tag=overpower_throw]
 tag @e[tag=runaway_hold,scores={universal_death=1..}] remove runaway_hold
 
-execute at @e[tag=overpower_throw] run particle minecraft:crit ~ ~1.5 ~ 0.8 0.4 0.8 0.1 50
+execute at @e[tag=overpower_throw] run particle crit ~ ~1.5 ~ 0.8 0.4 0.8 0.1 50
 execute as @e[tag=overpower_throw] at @s run tp @s ^ ^ ^0.9
 execute as @e[tag=overpower_throw] at @s unless block ^ ^1 ^0.5 #minecraft:dash run kill @s
 execute as @e[tag=overpower_throw] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
@@ -173,7 +212,7 @@ execute at @a[scores={char=57,s2_timer=31..35}] as @e[tag=runaway_hold] at @s un
 execute at @a[scores={char=57,s2_timer=31..}] run tag @e remove runaway_hold
 
 scoreboard players set @a[tag=runaway_hold] CC_stun 5
-effect give @a[tag=runaway_hold] minecraft:slow_falling 1 100 true
+effect give @a[tag=runaway_hold] slow_falling 1 100 true
 
 execute as @a[scores={char=57,CC_silence=0,s2_timer=1..20}] at @s run tp @e[tag=runaway_hold] ^ ^1.5 ^0.8
 execute at @a[scores={char=57,CC_silence=0,s2_timer=21..30}] run tp @e[tag=runaway_hold] @e[tag=overpower_throw,limit=1]
@@ -183,9 +222,9 @@ execute at @a[scores={char=57,CC_silence=0,s2_timer=21..30}] at @e[tag=overpower
 execute at @e[tag=throw_collision] positioned ~-1.5 ~-1.5 ~-1.5 as @a[dx=1.5,dy=1.5,dz=1.5] unless score @s Team = @p[scores={char=57}] Team run scoreboard players set @s CC_stun 50
 execute at @e[tag=throw_collision] positioned ~-1.5 ~-1.5 ~-1.5 as @e[dx=1.5,dy=1.5,dz=1.5,tag=valid_spell_target,type=!player] unless score @s Team = @p[scores={char=57}] Team run damage @s 5 generic by @p[scores={char=57}]
 
-execute at @e[tag=throw_collision] run particle minecraft:cloud ~ ~ ~ 1 1 1 0.1 30
-execute at @e[tag=throw_collision] run particle minecraft:crit ~ ~ ~ 1.5 1.5 1.5 0.5 100
-execute at @e[tag=throw_collision] run playsound minecraft:entity.zombie.break_wooden_door master @a[distance=..15] ~ ~ ~ 1 1.5 1
+execute at @e[tag=throw_collision] run particle cloud ~ ~ ~ 1 1 1 0.1 30
+execute at @e[tag=throw_collision] run particle crit ~ ~ ~ 1.5 1.5 1.5 0.5 100
+execute at @e[tag=throw_collision] run playsound entity.zombie.break_wooden_door master @a[distance=..15] ~ ~ ~ 1 1.5 1
 execute at @e[tag=throw_collision] run kill @e[tag=overpower_throw]
 kill @e[tag=throw_collision]
 
@@ -201,7 +240,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=57}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=281..,char=57}] s2_timer 0
 
 execute as @a[scores={char=57}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_shovel",Slot:0b}]}] run clear @a[scores={char=57}] iron_shovel
-item replace entity @a[scores={char=57}] hotbar.0 with minecraft:iron_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Mace"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=57}] hotbar.0 with minecraft:iron_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Mace"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=57,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=57}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=57,s1_timer=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Unshackled",color:"dark_aqua",bold:1b},item_model="rail",custom_data={s1:1}] 1

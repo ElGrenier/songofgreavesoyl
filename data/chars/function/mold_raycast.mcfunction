@@ -5,4 +5,4 @@ execute at @e[distance=..1.5,tag=MoldHost,tag=!marked_host] run particle minecra
 execute at @e[distance=..1.5,tag=MoldHost,tag=!marked_host] run playsound minecraft:entity.experience_orb.pickup master @a[scores={char=59}] ~ ~ ~ 1 0.8 1
 tag @e[distance=..1.5,tag=MoldHost,tag=!marked_host] add marked_host
 
-execute positioned ^ ^ ^1 if entity @s[distance=..50] unless entity @e[distance=..1,tag=MoldHost] if block ~ ~ ~ #minecraft:dash run function chars:mold_raycast
+execute positioned ^ ^ ^1 if entity @s[distance=..20] unless entity @e[distance=..1,tag=MoldHost] if block ~ ~ ~ #minecraft:dash run function chars:mold_raycast

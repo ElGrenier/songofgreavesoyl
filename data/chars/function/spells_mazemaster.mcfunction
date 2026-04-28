@@ -28,9 +28,9 @@ scoreboard players set @e[scores={decay_timer=15..}] decay_timer 0
 #title @a[scores={decay=1..}] title {"text":" "}
 #title @a[scores={decay=1..}] subtitle {"text":"DECAY","color":"red","bold":true}
 
-execute at @a[scores={decay=1..}] positioned ~ ~3 ~ unless entity @e[distance=..1,tag=display_decay] run summon armor_stand ~ ~ ~ {Tags:["display_decay","entities_mazemaster"],Marker:1b,Invisible:1b,CustomName:{text:"DECAY",color:"dark_red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={decay=1..}] positioned ~ ~3 ~ run tp @e[distance=..1,tag=display_decay] ~ ~ ~
-execute as @e[tag=display_decay] at @s positioned ~ ~-3 ~ unless entity @a[distance=..1,scores={decay=1..}] run kill @s
+execute at @a[scores={decay=1..}] unless entity @e[distance=..1,tag=display_decay] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_decay","entities_mazemaster"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"DECAY",color:"dark_red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,3f,0.0f]}}
+execute at @a[scores={decay=1..}] run tp @e[distance=..1,tag=display_decay] ~ ~ ~
+execute as @e[tag=display_decay] at @s unless entity @a[distance=..1,scores={decay=1..}] run kill @s
 
 
 
@@ -77,17 +77,19 @@ execute at @e[scores={fissure_sound=5},tag=fissure] positioned ^ ^ ^0.5 run summ
 execute at @e[scores={fissure_sound=3},tag=fissure_return] positioned ^ ^ ^0.5 run summon marker ~ ~ ~ {Tags:["spawn_spike_return","entities_mazemaster"]}
 execute at @e[scores={fissure_sound=5},tag=fissure_return] positioned ^ ^ ^0.5 run summon marker ~ ~ ~ {Tags:["spawn_spike_return","entities_mazemaster"]}
 
-execute at @e[tag=spawn_spike] run summon block_display ~ ~-3 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,-1.5f,-0.4f],scale:[0.8f,3f,0.8f]},block_state:{Name:"minecraft:deepslate_coal_ore"},Tags:["fissured_spike","f_spike_0","entities_mazemaster"]}
-execute at @e[tag=spawn_spike] run summon block_display ~ ~-1.5 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,-0.75f,-0.4f],scale:[0.8f,1.5f,0.8f]},block_state:{Name:"minecraft:deepslate_coal_ore"},Tags:["fissured_spike","f_spike_1","entities_mazemaster"]}
-execute at @e[tag=spawn_spike] run summon block_display ~ ~-1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,-0.75f,-0.3f],scale:[0.6f,1.5f,0.6f]},block_state:{Name:"minecraft:deepslate_coal_ore"},Tags:["fissured_spike","f_spike_2","entities_mazemaster"]}
-execute at @e[tag=spawn_spike] run summon block_display ~ ~-0.5 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.2f,-0.75f,-0.2f],scale:[0.4f,1.5f,0.4f]},block_state:{Name:"minecraft:deepslate_coal_ore"},Tags:["fissured_spike","f_spike_3","entities_mazemaster"]}
-execute at @e[tag=spawn_spike_return] run summon block_display ~ ~-3 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,-1.5f,-0.4f],scale:[0.8f,3f,0.8f]},block_state:{Name:"minecraft:deepslate_redstone_ore"},Tags:["fissured_spike","f_spike_0","entities_mazemaster"]}
-execute at @e[tag=spawn_spike_return] run summon block_display ~ ~-1.5 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,-0.75f,-0.4f],scale:[0.8f,1.5f,0.8f]},block_state:{Name:"minecraft:deepslate_redstone_ore"},Tags:["fissured_spike","f_spike_1","entities_mazemaster"]}
-execute at @e[tag=spawn_spike_return] run summon block_display ~ ~-1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,-0.75f,-0.3f],scale:[0.6f,1.5f,0.6f]},block_state:{Name:"minecraft:deepslate_redstone_ore"},Tags:["fissured_spike","f_spike_2","entities_mazemaster"]}
-execute at @e[tag=spawn_spike_return] run summon block_display ~ ~-0.5 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.2f,-0.75f,-0.2f],scale:[0.4f,1.5f,0.4f]},block_state:{Name:"minecraft:deepslate_redstone_ore"},Tags:["fissured_spike","f_spike_3","entities_mazemaster"]}
-execute at @e[tag=spawn_corruptedground_1] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.6f,-0.1f,-0.6f],scale:[1.2f,0.2f,1.2]},block_state:{Name:"minecraft:coal_block"},Tags:["corrupted_ground","entities_mazemaster"]}
-execute at @e[tag=spawn_corruptedground_2] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.6f,-0.15f,-0.6f],scale:[1.2,0.3f,1.2]},block_state:{Name:"minecraft:coal_block"},Tags:["corrupted_ground","entities_mazemaster"]}
-execute at @e[tag=spawn_corruptedground_3] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.6f,-0.22f,-0.6f],scale:[1.2,0.25f,1.2]},block_state:{Name:"minecraft:coal_block"},Tags:["corrupted_ground","entities_mazemaster"]}
+execute at @e[tag=spawn_spike] run summon block_display ~ ~-1.5 ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.45f,-0.1f,-0.45f],scale:[0.9f,1f,0.9f]},block_state:{Name:"minecraft:deepslate_coal_ore"},Tags:["fissured_spike","f_spike_0","entities_mazemaster"]}
+execute at @e[tag=spawn_spike] run summon block_display ~ ~-0.75 ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,0f,-0.4f],scale:[0.8f,0.75f,0.8f]},block_state:{Name:"minecraft:deepslate_coal_ore"},Tags:["fissured_spike","f_spike_1","entities_mazemaster"]}
+execute at @e[tag=spawn_spike] run summon block_display ~ ~-0.5 ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,0f,-0.3f],scale:[0.6f,0.75f,0.6f]},block_state:{Name:"minecraft:deepslate_coal_ore"},Tags:["fissured_spike","f_spike_2","entities_mazemaster"]}
+execute at @e[tag=spawn_spike] run summon block_display ~ ~ ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.2f,0f,-0.2f],scale:[0.4f,0.75f,0.4f]},block_state:{Name:"minecraft:deepslate_coal_ore"},Tags:["fissured_spike","f_spike_3","entities_mazemaster"]}
+
+execute at @e[tag=spawn_spike_return] run summon block_display ~ ~-1.5 ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,-0.1f,-0.4f],scale:[0.9f,1f,0.9f]},block_state:{Name:"minecraft:deepslate_redstone_ore"},Tags:["fissured_spike","f_spike_0","entities_mazemaster"]}
+execute at @e[tag=spawn_spike_return] run summon block_display ~ ~-0.75 ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,0f,-0.4f],scale:[0.8f,0.75f,0.8f]},block_state:{Name:"minecraft:deepslate_redstone_ore"},Tags:["fissured_spike","f_spike_1","entities_mazemaster"]}
+execute at @e[tag=spawn_spike_return] run summon block_display ~ ~-0.5 ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,0f,-0.3f],scale:[0.6f,0.75f,0.6f]},block_state:{Name:"minecraft:deepslate_redstone_ore"},Tags:["fissured_spike","f_spike_2","entities_mazemaster"]}
+execute at @e[tag=spawn_spike_return] run summon block_display ~ ~ ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.2f,0f,-0.2f],scale:[0.4f,0.75f,0.4f]},block_state:{Name:"minecraft:deepslate_redstone_ore"},Tags:["fissured_spike","f_spike_3","entities_mazemaster"]}
+
+execute at @e[tag=spawn_corruptedground_1] run summon block_display ~ ~ ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.6f,-0.1f,-0.6f],scale:[1.2f,0.2f,1.2]},block_state:{Name:"minecraft:coal_block"},Tags:["corrupted_ground","entities_mazemaster"]}
+execute at @e[tag=spawn_corruptedground_2] run summon block_display ~ ~ ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.6f,-0.15f,-0.6f],scale:[1.2,0.3f,1.2]},block_state:{Name:"minecraft:coal_block"},Tags:["corrupted_ground","entities_mazemaster"]}
+execute at @e[tag=spawn_corruptedground_3] run summon block_display ~ ~ ~ {brightness:{sky:8,block:8},teleport_duratio:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.6f,-0.22f,-0.6f],scale:[1.2,0.25f,1.2]},block_state:{Name:"minecraft:coal_block"},Tags:["corrupted_ground","entities_mazemaster"]}
 
 tp @e[tag=corrupted_ground,tag=!corrupted_readjust] @e[tag=fissure_main_parts,limit=1]
 tag @e[tag=corrupted_ground] add corrupted_readjust
@@ -101,7 +103,8 @@ execute at @e[tag=fissured_spike] run particle dust{color:[0.67,0.0,0.0],scale:1
 execute as @e[tag=fissured_spike,scores={fissure_sound=..10}] at @s run tp @s ~ ~0.18 ~
 execute as @e[tag=fissured_spike,scores={fissure_sound=11..}] at @s run tp @s ~ ~-0.01 ~
 execute as @e[tag=fissured_spike,scores={fissure_sound=15..}] at @s run tp @s ~ ~-0.1 ~
-kill @e[tag=fissured_spike,scores={fissure_sound=31..}]
+kill @e[tag=f_spike_0,scores={fissure_sound=26..}]
+kill @e[tag=fissured_spike,scores={fissure_sound=35..}]
 execute at @e[tag=corrupted_ground,scores={fissure_sound=41..}] run particle block{block_state:{Name:"minecraft:coal_block"}} ~ ~ ~ 0.5 0 0.5 0 10 
 kill @e[tag=corrupted_ground,scores={fissure_sound=41..}]
 
@@ -140,7 +143,8 @@ execute as @e[tag=fissure_return] at @s run tp @s ^ ^ ^0.4
 execute as @e[tag=fissure_return] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~0.8 ~
 execute as @e[tag=fissure_return] at @s if block ~ ~-1 ~ #minecraft:dash run tp @s ~ ~-0.5 ~
 execute as @e[tag=fissure_return] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
-execute as @e[tag=fissure_return] at @s if entity @p[distance=..2,scores={char=36}] run kill @s
+
+execute at @e[tag=fissure_return] positioned ~-0.75 ~-0.75 ~-0.75 as @e[dx=0.5,dy=20,dz=0.5,scores={char=36}] run kill @e[tag=fissure_return]
 
 execute at @e[tag=fissure_return] as @e[distance=..1.5,tag=valid_spell_target,scores={decay=1..}] unless score @s Team = @p[scores={char=36}] Team run scoreboard players set @s CC_root 40
 
@@ -292,7 +296,7 @@ scoreboard players add @a[scores={s2_timer_recast=1..,char=36}] s2_timer_recast 
 scoreboard players set @a[scores={s2_timer_recast=100..,char=36}] s2_timer_recast 0
 
 execute as @a[scores={char=36}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_shovel",Slot:0b}]}] run clear @a[scores={char=36}] netherite_shovel
-item replace entity @a[scores={char=36}] hotbar.0 with netherite_shovel[custom_data={mazemaster:1},minecraft:custom_name={bold:1b,color:"gray",text:"Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.75d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=36}] hotbar.0 with netherite_shovel[custom_data={mazemaster:1},minecraft:custom_name={bold:1b,color:"gray",text:"Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.75d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=36,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=36}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=36,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:weeping_vines",minecraft:custom_name={text:"Corrupted Fissure",color:"dark_aqua",bold:1b}] 1

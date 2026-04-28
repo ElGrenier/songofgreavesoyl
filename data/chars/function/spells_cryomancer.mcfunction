@@ -2,7 +2,9 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:netherite_sword"}}]
 
 #brain freeze
 
-scoreboard players remove @a[scores={char=61,passive_cryo_cd=1..}] passive_cryo_cd 1
+execute at @a[scores={passive_cryo_cd=199..}] run particle entity_effect{color:[1.0,1.,1.0,1.0]} ~ ~1.5 ~ 0.4 0.4 0.3 0.5 100 force @a[scores={char=61}]
+execute at @a[scores={passive_cryo_cd=1..}] run particle entity_effect{color:[1.0,1.,1.0,1.0]} ~ ~0.5 ~ 0.8 0.4 0.8 0.5 1 force @a[scores={char=61}]
+scoreboard players remove @a[scores={passive_cryo_cd=1..}] passive_cryo_cd 1
 
 #extinguisher
 clear @a[scores={char=61,s1_timer=1,CC_silence=0}] *[custom_data={s1:1}]
@@ -25,19 +27,19 @@ execute as @e[tag=cryostream,scores={fire_life=2}] at @s run tp @s ~ ~1.4 ~
 
 execute as @e[tag=cryostream] at @s run tp @s ^ ^ ^0.6
 
-execute at @e[tag=cryostream] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run damage @s 2 generic by @p[scores={char=61}] from @p[scores={char=61}]
-execute at @e[tag=cryostream] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run effect give @s slowness 2 4
-execute at @e[tag=cryostream] positioned ~-0.5 ~-0.5 ~-0.5 as @a[scores={CC_silence=0,HPercentage=..50,passive_cryo_cd=0},dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @s CC_silence 60
-execute at @e[tag=cryostream] positioned ~-0.5 ~-0.5 ~-0.5 as @a[scores={CC_silence=0,HPercentage=..50,passive_cryo_cd=0},dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @a[scores={char=61}] passive_cryo_cd 100
-execute at @e[tag=cryostream] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run kill @n[tag=cryostream]
+execute at @e[tag=cryostream] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run tag @s add rink_idol_clash
 
+execute at @e[tag=rink_idol_clash] run kill @n[tag=cryostream]
+scoreboard players set @a[tag=rink_idol_clash,scores={passive_cryo_cd=0,HPercentage=..50}] CC_silence 50
+scoreboard players set @a[tag=rink_idol_clash,scores={passive_cryo_cd=0,HPercentage=..50}] passive_cryo_cd 200
+effect give @e[tag=rink_idol_clash] slowness 2 4
+execute as @e[tag=rink_idol_clash] run damage @s 3 generic by @p[scores={char=61}] from @p[scores={char=61}]
+tag @e remove rink_idol_clash
 
 execute at @e[tag=cryostream,scores={fire_life=2..}] run particle entity_effect{color:[0.33,1.0,1.0,1.0]} ~ ~ ~ 0.2 0.2 0.2 0.1 1 force
-#execute at @e[tag=cryostream,scores={fire_life=2..}] run particle falling_dust{block_state:{Name:"minecraft:snow"}} ~ ~ ~ 0.2 0.2 0.2 0.1 1 force
 execute at @e[tag=cryostream,scores={fire_life=2..}] run particle dust{color:[1.0,1.0,1.0],scale:1.0f} ~ ~ ~ 0.3 0.3 0.3 0.01 1 force
 execute at @e[tag=cryostream,scores={fire_life=2..}] run particle dust{color:[0.33,0.33,1.0],scale:1.0f} ~ ~ ~ 0.3 0.3 0.3 0.01 1 normal
 execute as @e[tag=cryostream] at @s unless block ~ ~1 ~ #minecraft:dash run kill @s
-
 
 scoreboard players add @e[tag=cryostream] fire_life 1
 kill @e[tag=cryostream,scores={fire_life=16..}]
@@ -52,23 +54,21 @@ execute at @a[scores={char=61,s1_timer=81..85,CC_silence=0}] run function battle
 scoreboard players set @a[scores={char=61,s1_timer=1,CC_silence=1..}] spellCD1 20
 scoreboard players set @a[scores={char=61,s1_timer=1,CC_silence=1..}] s1_timer 180
 
-scoreboard players set @a[scores={char=61,s2_timer=1..21,CC_silence=1..}] spellCD1 288
-scoreboard players set @a[scores={char=61,s2_timer=1..21,CC_silence=1..}] s2_timer 22
-
 scoreboard players set @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] s1_timer 80
-execute at @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] run playsound entity.wither.shoot master @a[distance=..12] ~ ~ ~ 0.7 0.6 0.1
-execute at @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] run playsound entity.player.hurt_freeze master @a[distance=..12] ~ ~ ~ 1 0.8 0.1
+execute at @a[scores={char=61,s1_timer_recast=2,CC_silence=0}] run playsound entity.wither.shoot master @a[distance=..12] ~ ~ ~ 0.7 0.6 0.1
+execute at @a[scores={char=61,s1_timer_recast=2,CC_silence=0}] run playsound entity.player.hurt_freeze master @a[distance=..12] ~ ~ ~ 1 0.8 0.1
 
-execute at @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_1","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
-execute at @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_2","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
-execute at @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_3","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
-execute at @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_4","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
-execute at @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_5","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
-execute at @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_6","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
-execute at @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_7","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
-execute at @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_8","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
-execute at @a[scores={char=61,s1_timer_recast=1,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_9","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
+execute at @a[scores={char=61,s1_timer_recast=2,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_1","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
+execute at @a[scores={char=61,s1_timer_recast=2,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_2","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
+execute at @a[scores={char=61,s1_timer_recast=2,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_3","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
+execute at @a[scores={char=61,s1_timer_recast=2,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_4","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
+execute at @a[scores={char=61,s1_timer_recast=2,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_5","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
+execute at @a[scores={char=61,s1_timer_recast=2,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_6","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
+execute at @a[scores={char=61,s1_timer_recast=2,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_7","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
+execute at @a[scores={char=61,s1_timer_recast=2,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_8","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
+execute at @a[scores={char=61,s1_timer_recast=2,CC_silence=0}] run summon block_display ~ ~ ~ {Tags:["cone_of_cold_9","cold_cone","entities_cryomancer","projectile"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:ice"}}
 
+scoreboard players add @e[tag=cold_cone] fire_life 1
 
 tp @e[tag=cold_cone,scores={fire_life=1..2}] @a[scores={char=61},limit=1]
 execute as @e[tag=cone_of_cold_1,scores={fire_life=2}] at @s run rotate @s ~40 ~
@@ -89,15 +89,15 @@ execute at @e[tag=cold_cone] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,t
 
 execute at @e[tag=cold_cone,scores={fire_life=2..}] run particle block{block_state:{Name:"minecraft:ice"}} ~ ~ ~ 0.2 0.1 0.2 0.01 5 force
 execute at @e[tag=cold_cone,scores={fire_life=2..}] run particle dust{color:[1.0,1.0,1.0],scale:1.0f} ~ ~ ~ 0.2 0.1 0.2 0.01 3 force
-execute as @e[tag=cold_cone] at @s unless block ~ ~1 ~ #minecraft:dash run kill @s
+execute as @e[tag=cold_cone,scores={fire_life=2..}] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
 
-scoreboard players add @e[tag=cold_cone] fire_life 1
 kill @e[tag=cold_cone,scores={fire_life=10..}]
 
+
+scoreboard players set @a[tag=cryomancer_coned,scores={passive_cryo_cd=0,HPercentage=..50}] CC_silence 50
+scoreboard players set @a[tag=cryomancer_coned,scores={passive_cryo_cd=0,HPercentage=..50}] passive_cryo_cd 200
 execute as @e[tag=cryomancer_coned] run damage @s 7 generic by @p[scores={char=61}] from @p[scores={char=61}]
-scoreboard players set @e[tag=cryomancer_coned] CC_root 40
-scoreboard players set @e[tag=cryomancer_coned,scores={CC_silence=0,HPercentage=..50}] passive_cryo_cd 100
-scoreboard players set @e[tag=cryomancer_coned,scores={CC_silence=0,HPercentage=..50}] CC_silence 60
+scoreboard players set @a[tag=cryomancer_coned] CC_root 40
 tag @e remove cryomancer_coned
 
 #cooling fluids
@@ -149,17 +149,21 @@ execute at @e[tag=hypotermia_gas] run playsound block.lava.extinguish master @a[
 execute at @e[tag=hypotermia_gas] run playsound block.glass.break master @a[distance=..16] ~ ~ ~ 1.0 0.1 1
 execute at @e[tag=hypotermia_gas] run playsound entity.player.hurt_freeze master @a[distance=..16] ~ ~ ~ 1 0.1 1
 
-execute at @e[tag=hypotermia_gas] as @a[distance=..4] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @s CC_stun 20
-execute at @e[tag=hypotermia_gas] as @a[distance=..4] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @s CC_hypothermia 120
-execute at @e[tag=hypotermia_gas] as @a[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run damage @s 2 freeze by @p[scores={char=61}] from @p[scores={char=61}]
+execute at @e[tag=hypotermia_gas] as @a[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=61}] Team run tag @s add cold_piss_jar
 
-execute at @e[tag=hypotermia_gas] if entity @a[scores={char=61,passive_cryo_cd=0}] as @a[distance=..4,scores={CC_silence=0,HPercentage=..50}] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @s CC_silence 60
-execute at @e[tag=hypotermia_gas] if entity @a[scores={char=61,passive_cryo_cd=0}] as @a[distance=..4,scores={CC_silence=0,HPercentage=..50}] unless score @s Team = @p[scores={char=61}] Team run scoreboard players set @a[scores={char=61}] passive_cryo_cd 100
+
+scoreboard players set @a[tag=cold_piss_jar,scores={passive_cryo_cd=0,HPercentage=..50}] CC_silence 50
+scoreboard players set @a[tag=cold_piss_jar,scores={passive_cryo_cd=0,HPercentage=..50}] passive_cryo_cd 200
+execute as @e[tag=cold_piss_jar] run damage @s 5 generic by @p[scores={char=61}] from @p[scores={char=61}]
+scoreboard players set @a[tag=cold_piss_jar] CC_stun 20
+scoreboard players set @a[tag=cold_piss_jar] CC_hypothermia 120
+tag @e remove cold_piss_jar
 
 kill @e[tag=hypotermia_gas]
 
-effect give @a[scores={CC_hypothermia=1..100,universal_damagetaken=1..},nbt={active_effects:[{id:"minecraft:slowness"}]}] slowness 1 5
-effect give @a[scores={CC_hypothermia=1..100,universal_damagetaken=1..},nbt={active_effects:[{id:"minecraft:slowness"}]}] nausea 5
+effect give @a[scores={CC_hypothermia=1..,universal_damagetaken=1..},nbt={active_effects:[{id:"minecraft:slowness"}]}] slowness 1 5
+effect give @a[scores={CC_hypothermia=1..,universal_damagetaken_shield=1..},nbt={active_effects:[{id:"minecraft:slowness"}]}] slowness 1 5
+
 
 
 # cryomancer
@@ -168,15 +172,15 @@ scoreboard players set @a[scores={s1_timer=80,char=61}] spellCD1 150
 scoreboard players add @a[scores={s1_timer=1..,char=61}] s1_timer 1
 scoreboard players set @a[scores={s1_timer=231..,char=61}] s1_timer 0
 
-scoreboard players add @a[scores={char=61,s1_timer_recast=1..,char=61}] s1_timer_recast 1
-scoreboard players set @a[scores={char=61,s1_timer_recast=10..,char=61}] s1_timer_recast 0
+scoreboard players add @a[scores={char=61,s1_timer_recast=1..}] s1_timer_recast 1
+scoreboard players set @a[scores={char=61,s1_timer_recast=40..}] s1_timer_recast 0
 
 scoreboard players set @a[scores={s2_timer=1,char=61}] spellCD2 300
 scoreboard players add @a[scores={s2_timer=1..,char=61}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=301..,char=61}] s2_timer 0
 
 execute as @a[scores={char=61}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b}]}] run clear @a[scores={char=61}] netherite_sword
-item replace entity @a[scores={char=61}] hotbar.0 with minecraft:netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Knife"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=61}] hotbar.0 with minecraft:netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Knife"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=61,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=61}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=61,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:light_blue_candle",minecraft:custom_name={text:"Cryostream",color:"dark_aqua",bold:1b}] 1

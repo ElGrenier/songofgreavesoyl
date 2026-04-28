@@ -11,8 +11,14 @@
                                 "expected": true
                             }
                         ],
-                        "direct_entity": {
-                            "nbt": "{Tags:[\"yummy_weak\"]}"
+                        "source_entity": {
+                            "slots": {
+                                "weapon.mainhand": {
+                                    "components": {
+                                        "minecraft:custom_data": "{fiend:1}"
+                                    }
+                                }
+                            }
                         }
                     }
                 }

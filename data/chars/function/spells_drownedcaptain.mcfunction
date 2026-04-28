@@ -4,9 +4,14 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:diamond_shovel"}}]
 #passive
 
 
-execute as @a[scores={universal_hit=1..,passive_drow=0,char=31}] as @a[advancements={chars:drowned_passive=true}] unless score @s Team = @p[scores={char=31}] Team run scoreboard players set @s CC_root 20
-execute as @a[scores={universal_hit=1..,passive_drow=0,char=31}] as @a[advancements={chars:drowned_passive=true}] unless score @s Team = @p[scores={char=31}] Team run scoreboard players set @s drownedroot_visual 5
-execute as @a[scores={universal_hit=1..,passive_drow=0,char=31}] as @a[advancements={chars:drowned_passive=true}] unless score @s Team = @p[scores={char=31}] Team run scoreboard players set @a[scores={char=31}] passive_drow 160
+execute as @a[scores={passive_drow=0,char=31}] as @a[advancements={chars:drowned_passive=true}] unless score @s Team = @p[scores={char=31}] Team run tag @s add drowned_nautilused
+
+
+execute at @a[tag=drowned_nautilused] run scoreboard players set @a[scores={char=31}] passive_drow 160
+scoreboard players set @a[tag=drowned_nautilused] CC_root 10
+scoreboard players set @a[tag=drowned_nautilused] passive_drow 5
+tag @a remove drowned_nautilused
+
 advancement revoke @a[advancements={chars:drowned_passive=true}] only chars:drowned_passive
 
 execute at @a[scores={drownedroot_visual=1..}] run particle block{block_state:{Name:"minecraft:tuff"}} ~ ~0.5 ~ 0.5 1 0.5 0.1 5
@@ -36,6 +41,7 @@ scoreboard players set @a[scores={char=31,s1_timer=1,CC_silence=1..}] spellCD1 2
 scoreboard players set @a[scores={char=31,s1_timer=1,CC_silence=1..}] s1_timer 300
 
 execute at @a[scores={s1_timer=1,CC_silence=0}] run playsound entity.drowned.ambient_water master @a[distance=..15] ~ ~ ~ 1 2 1
+execute at @a[scores={s1_timer=1,CC_silence=0}] run playsound entity.player.attack.sweep master @a[distance=..15] ~ ~ ~ 1 0.5 1
 execute at @a[scores={char=31,s1_timer=1,CC_silence=0}] run summon item_display ~ ~ ~ {Tags:["keelhaul_hook","keelhaul_point_location","projectile","entities_drownedcaptain"],item:{count:1,id:"minecraft:iron_pickaxe"},teleport_duration:1,transformation:{left_rotation:[0.64755577f,0.2682264f,-0.2729492f,0.6589575f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[2f,2f,2f],translation:[0f,0f,0f]}}
 scoreboard players operation @e[tag=projectile,tag=keelhaul_hook] Team = @p[scores={char=31}] Team
 tp @e[tag=keelhaul_hook,limit=1] @a[scores={char=31,s1_timer=1},limit=1]
@@ -50,18 +56,23 @@ execute at @a[scores={char=31,s1_timer=30..}] run kill @e[tag=keelhaul_hook]
 execute as @e[tag=keelhaul_hook] at @s positioned ~ ~ ~ unless block ^ ^ ^0.5 #dash run kill @s
 execute as @e[tag=keelhaul_hook] at @s positioned ~ ~ ~ unless block ~ ~ ~ #dash run kill @s
 
+execute at @e[tag=keelhaul_hook] positioned ~-.5 ~-.5 ~-.5 as @p[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=31}] Team run playsound entity.player.attack.strong master @a[distance=..15] ~ ~ ~ 1 0.5 1
+execute at @e[tag=keelhaul_hook] positioned ~-.5 ~-.5 ~-.5 as @p[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=31}] Team run playsound block.iron_trapdoor.close master @a[distance=..15] ~ ~ ~ 1 0.5 1
 execute at @e[tag=keelhaul_hook] positioned ~-.5 ~-.5 ~-.5 as @p[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=31}] Team run scoreboard players set @s keelhauling 5
 execute at @e[tag=keelhaul_hook] positioned ~-.5 ~-.5 ~-.5 as @p[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=31}] Team run playsound item.crossbow.loading_start master @a[distance=..15] ~ ~ ~ 1 0.8 1
 
 execute if entity @a[scores={keelhauling=1..}] run kill @e[tag=keelhaul_hook]
 tag @a[scores={keelhauling=3..}] add keelhaul_point_location
 
+scoreboard players set @a[scores={unstoppable=1..}] keelhauling 0
+tag @a[scores={unstoppable=1..}] remove keelhaul_point_location
+
 
 execute as @a[scores={keelhauling=4..5}] at @s run tp @s ~ ~ ~ facing entity @a[scores={char=31},limit=1]
 execute as @a[scores={keelhauling=4..5}] at @s if entity @a[distance=..5,scores={char=31}] run tp @s ^ ^ ^0.4
 execute as @a[scores={keelhauling=4..5}] at @s if entity @a[distance=5..,scores={char=31}] run tp @s ^ ^ ^0.5
 scoreboard players set @a[scores={keelhauling=4..5}] CC_intangible 5
-scoreboard players set @a[scores={keelhauling=3..5}] CC_stun 2
+scoreboard players set @a[scores={keelhauling=3..5}] CC_stun 20
 effect give @a[scores={keelhauling=3..5}] resistance 2 100 true
 effect give @a[scores={keelhauling=3..5}] slow_falling 1 100 true
 
@@ -273,8 +284,9 @@ execute as @e[tag=lifeline_return] at @s run tp @s ^ ^ ^0.9
 execute as @a[scores={char=31}] run tp @e[tag=lifeline_return,limit=1]
 
 execute if entity @e[tag=lifeline_return] run scoreboard players set @a[scores={char=31}] CC_intangible 5
-execute if entity @e[tag=lifeline_return] run effect give @a[scores={char=31}] resistance 2 100 true
+execute if entity @e[tag=lifeline_return] run effect give @a[scores={char=31}] resistance 1 100 true
 execute if entity @e[tag=lifeline_return] run effect give @a[scores={char=31}] slow_falling 1 1 true
+execute as @e[tag=lifeline_return] at @s if entity @e[distance=..1,tag=lifeline_point] run effect clear @a[scores={char=31}] resistance
 execute as @e[tag=lifeline_return] at @s if entity @e[distance=..1,tag=lifeline_point] run effect clear @a[scores={char=31}] slow_falling
 execute as @e[tag=lifeline_return] at @s if entity @e[distance=..1,tag=lifeline_point] run tp @a[scores={char=31}] ~ ~1 ~
 execute as @e[tag=lifeline_return] at @s if entity @e[distance=..1,tag=lifeline_point] run particle bubble ~ ~ ~ 8 3 8 0.001 500
@@ -430,12 +442,12 @@ scoreboard players add @a[scores={s2_timer_recast=1..,char=31}] s2_timer_recast 
 scoreboard players set @a[scores={s2_timer_recast=10..,char=31}] s2_timer_recast 0
 
 execute as @a[scores={char=31,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_pickaxe",Slot:0b}]}] run clear @a[scores={char=31}] stone_pickaxe
-item replace entity @a[scores={char=31,s2_timer=0}] hotbar.0 with minecraft:stone_pickaxe[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Anchor"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=31,s2_timer=0}] hotbar.0 with minecraft:stone_pickaxe[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Anchor"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 execute as @a[scores={char=31,s2_timer=101..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_pickaxe",Slot:0b}]}] run clear @a[scores={char=31}] stone_pickaxe
-item replace entity @a[scores={char=31,s2_timer=101..}] hotbar.0 with minecraft:stone_pickaxe[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Anchor"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=31,s2_timer=101..}] hotbar.0 with minecraft:stone_pickaxe[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Anchor"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=31,s2_timer=1..100}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run clear @a[scores={char=31}] diamond_shovel
-item replace entity @a[scores={char=31,s2_timer=1..100}] hotbar.0 with diamond_shovel[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Tentacles"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=31,s2_timer=1..100}] hotbar.0 with diamond_shovel[custom_data={drowned:1},minecraft:custom_name={bold:1b,color:"gray",text:"Tentacles"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:power":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=31,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=31}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=31,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:tripwire_hook",minecraft:custom_name={text:"Keelhaul",color:"dark_aqua",bold:1b}] 1

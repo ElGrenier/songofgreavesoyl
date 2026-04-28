@@ -5,29 +5,44 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:copper_axe"}}]
 execute at @a[scores={char=30}] as @e[tag=valid_spell_target] unless score @s Team = @p[scores={char=30}] Team run tag @s add enginner_valid_turret_target
 execute at @a[scores={char=30}] as @e[tag=valid_spell_target] if score @s Team = @p[scores={char=30}] Team run tag @s remove enginner_valid_turret_target
 
-
+scoreboard players add @a[scores={char=30,universal_sneak=1..}] passive_engi 1
 execute at @a[scores={char=30}] if block ~ ~-1 ~ #dash run scoreboard players set @a[scores={char=30}] passive_engi 0
-execute at @a[scores={char=30}] if entity @e[tag=turret,distance=..3] run scoreboard players set @a[scores={char=30}] passive_engi 0
+execute at @a[scores={char=30}] if entity @e[tag=turret,distance=..5] run scoreboard players set @a[scores={char=30}] passive_engi 0
 scoreboard players set @e[scores={CC_silence=1..}] passive_engi 0
 scoreboard players set @e[scores={universal_walk=1..}] passive_engi 0
 scoreboard players set @e[scores={universal_sprint=1..}] passive_engi 0
 scoreboard players set @e[scores={universal_jump=1..}] passive_engi 0
+scoreboard players set @a[scores={char=30,universal_sneak=0}] passive_engi 0
+
+
+#scoreboard players set @a[scores={char=30,universal_sneak=0,passive_engi=1..}] engi_turret_cooldown 60
+#scoreboard players remove @a[scores={char=30,engi_turret_cooldown=1..}] engi_turret_cooldown 1
 
 execute at @a[scores={char=30},team=purple] run team join purple @e[tag=turret]
 execute at @a[scores={char=30},team=yellow] run team join yellow @e[tag=turret]
+execute at @a[scores={char=30},team=ffa] run team join ffa @e[tag=turret]
+execute at @a[scores={char=30},team=purple] run team join purple @e[tag=turret_hp_display]
+execute at @a[scores={char=30},team=yellow] run team join yellow @e[tag=turret_hp_display]
+execute at @a[scores={char=30},team=ffa] run team join ffa @e[tag=turret_hp_display]
 
 execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run playsound entity.iron_golem.repair master @a[distance=..10] ~ ~ ~ 1 0.8 1
 execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run playsound block.anvil.use master @a[distance=..10] ~ ~ ~ 0.3 0.4 1
 execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run particle wax_on ~ ~ ~ 0.6 1 0.6 1 10 normal
 execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run particle block{block_state:{Name:"minecraft:copper_bulb"}} ~ ~ ~ 0.5 1 0.5 0.001 40 normal
 execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run particle falling_dust{block_state:{Name:"minecraft:copper_bulb"}} ~ ~ ~ 0.5 1 0.5 0.001 40 normal
-execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] align xyz positioned ~0.5 ~ ~0.5 run summon strider ~ ~ ~ {NoAI:1,Silent:1,Tags:["turret","inactive_turret","valid_spell_target","entities_engineer"]}
+execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] align xyz positioned ~0.5 ~ ~0.5 run summon strider ~ ~ ~ {NoAI:1,Silent:1,Tags:["summon","turret","inactive_turret","valid_spell_target","entities_engineer"]}
 scoreboard players operation @e[tag=turret] Team = @p[scores={char=30}] Team
 execute at @a[scores={char=30,passive_engi=59,CC_silence=0}] run scoreboard players add @e[tag=turret] SummonAge 1
 tp @e[tag=turret,limit=1,tag=!turret_initial_rotation] @a[scores={char=30},limit=1]
 
 effect give @e[type=strider] invisibility infinite 1 true
 effect clear @e[type=strider] glowing
+
+execute at @e[tag=turret] unless entity @e[tag=turret_hp_display,distance=..2] run summon armor_stand ~ ~ ~ {Tags:["entities_engineer","turret_hp_display"],Marker:1b,CustomName:"Turret",CustomNameVisible:1,Invisible:1b}
+execute as @e[tag=turret] at @s run tp @e[tag=turret_hp_display,distance=..2] ~ ~1.8 ~
+execute as @e[tag=turret_hp_display] at @s unless entity @e[tag=turret,distance=..2] run kill @s
+
+execute as @e[tag=turret_hp_display] at @s run function chars:enginner_turret_hp_first
 
 execute at @e[tag=turret] unless entity @e[tag=turret_visuals_1,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_1","turret_visuals","turret_bottom","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.35f,-0.5f,-0.45f],scale:[0.7f,1f,0.9f]},block_state:{Name:"minecraft:cyan_terracotta"}}
 execute at @e[tag=turret] unless entity @e[tag=turret_visuals_1_2,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_1_2","turret_visuals","turret_bottom","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.2f,-0.05f],scale:[0.2f,0.4f,0.1f]},block_state:{Name:"minecraft:redstone_lamp"}}
@@ -37,9 +52,9 @@ execute at @e[tag=turret] unless entity @e[tag=turret_visuals_3,distance=..1] ru
 execute at @e[tag=turret] unless entity @e[tag=turret_visuals_4,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_4","turret_visuals","turret_bottom","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.525f,-0.1f],scale:[0.2f,1.05f,0.2f]},block_state:{Name:"minecraft:brown_terracotta"}}
 execute at @e[tag=turret] unless entity @e[tag=turret_visuals_5,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_5","turret_visuals","turret_bottom","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.525f,-0.1f],scale:[0.2f,1.05f,0.2f]},block_state:{Name:"minecraft:brown_terracotta"}}
 
-execute at @e[tag=turret] unless entity @e[tag=turret_visuals_6,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_6","turret_visuals","turret_upper","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.15f,-0.9f,-0.15f],scale:[0.3f,1.8,0.3f]},block_state:{Name:"minecraft:chiseled_copper"}}
-execute at @e[tag=turret] unless entity @e[tag=turret_visuals_7,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_7","turret_visuals","turret_upper","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.05f,-0.9f,-0.05f],scale:[0.1f,1.8f,0.1f]},block_state:{Name:"minecraft:chiseled_copper"}}
-execute at @e[tag=turret] unless entity @e[tag=turret_visuals_8,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_8","turret_visuals","turret_upper","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.05f,-0.9f,-0.05f],scale:[0.1f,1.8f,0.1f]},block_state:{Name:"minecraft:chiseled_copper"}}
+execute at @e[tag=turret] unless entity @e[tag=turret_visuals_6,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_6","turret_visuals","turret_upper","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.15f,-0.3f,-0.15f],scale:[0.3f,1,0.3f]},block_state:{Name:"minecraft:chiseled_copper"}}
+execute at @e[tag=turret] unless entity @e[tag=turret_visuals_7,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_7","turret_visuals","turret_upper","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.05f,-0.3f,-0.05f],scale:[0.1f,1f,0.1f]},block_state:{Name:"minecraft:chiseled_copper"}}
+execute at @e[tag=turret] unless entity @e[tag=turret_visuals_8,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_8","turret_visuals","turret_upper","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.05f,-0.3f,-0.05f],scale:[0.1f,1f,0.1f]},block_state:{Name:"minecraft:chiseled_copper"}}
 execute at @e[tag=turret] unless entity @e[tag=turret_visuals_9,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_9","turret_visuals","turret_upper","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.225f,0.7f,-0.375f],scale:[0.45f,0.4f,0.75f]},block_state:{Name:"minecraft:black_terracotta"}}
 execute at @e[tag=turret] unless entity @e[tag=turret_visuals_10,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_10","turret_visuals","turret_upper","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,0.85f,-0.25f],scale:[0.6f,0.4f,0.5f]},block_state:{Name:"minecraft:cyan_terracotta"}}
 execute at @e[tag=turret] unless entity @e[tag=turret_visuals_11,distance=..1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["turret_visuals_11","turret_visuals","turret_upper","entities_engineer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,0.75f,-0.25f],scale:[0.6f,0.5f,0.5f]},block_state:{Name:"minecraft:cyan_terracotta"}}
@@ -96,6 +111,14 @@ execute as @e[tag=turret_active_range_display] at @s run particle crit ^-7 ^ ^-7
 execute as @e[tag=turret_active_range_display] at @s run particle crit ^7 ^ ^-7 0 0 0 0 1 force @a[scores={char=30}]
 execute as @e[tag=turret_active_range_display] at @s run particle crit ^-7 ^ ^7 0 0 0 0 1 force @a[scores={char=30}]
 
+execute as @e[tag=turret_active_range_display] at @s run particle enchanted_hit ^ ^ ^5 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle enchanted_hit ^ ^ ^-5 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle enchanted_hit ^5 ^ ^ 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle enchanted_hit ^-5 ^ ^ 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle enchanted_hit ^3.5 ^ ^3.5 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle enchanted_hit ^-3.5 ^ ^-3.5 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle enchanted_hit ^3.5 ^ ^-3.5 0 0 0 0 1 force @a[scores={char=30}]
+execute as @e[tag=turret_active_range_display] at @s run particle enchanted_hit ^-3.5 ^ ^3.5 0 0 0 0 1 force @a[scores={char=30}]
 
 
 execute as @e[tag=turret,tag=active_turret] at @s unless entity @p[scores={tracked=1..}] run rotate @s facing entity @e[tag=enginner_valid_turret_target,distance=..10,limit=1,sort=nearest]
@@ -114,32 +137,43 @@ execute as @e[tag=turret] at @s unless entity @a[distance=..15,scores={char=30}]
 execute as @e[tag=turret] at @s unless entity @a[distance=..15,scores={char=30}] run tag @s add inactive_turret
 
 
-effect give @e[tag=inactive_turret] resistance 1 2 true
-effect clear @e[tag=active_turret] resistance
-
 tag @e[tag=turret] add turret_initial_rotation
 
-execute as @e[tag=turret_visuals] at @s unless entity @e[tag=turret,distance=..1] run particle minecraft:block{block_state:{Name:"minecraft:copper_bulb"}} ~ ~ ~ 0.5 1 0.5 0.001 20 normal
+execute as @e[tag=turret_visuals] at @s unless entity @e[tag=turret,distance=..1] run particle wax_on ~ ~ ~ 0.8 1.2 0.8 0.001 3 normal
+execute as @e[tag=turret_visuals] at @s unless entity @e[tag=turret,distance=..1] run particle block{block_state:{Name:"minecraft:cyan_terracotta"}} ~ ~ ~ 0.4 1 0.4 0.001 10 normal
+execute as @e[tag=turret_visuals] at @s unless entity @e[tag=turret,distance=..1] run particle block{block_state:{Name:"minecraft:copper_bulb"}} ~ ~ ~ 0.5 1 0.5 0.001 10 normal
 execute as @e[tag=turret_visuals] at @s unless entity @e[tag=turret,distance=..1] run playsound entity.iron_golem.damage master @a[distance=..10] ~ ~ ~ 0.2 1.2 1
+execute as @e[tag=turret_visuals] at @s unless entity @e[tag=turret,distance=..1] run playsound entity.breeze.death master @a[distance=..10] ~ ~ ~ 0.1 0.8 1
 execute as @e[tag=turret_visuals] at @s unless entity @e[tag=turret,distance=..1] run kill @s
 
 #execute as @e[tag=turret] at @s if block ~ ~-0.2 ~ #minecraft:dash run tp @s ~ ~-0.2 ~
 execute as @e[tag=turret] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
 
-execute at @a[scores={char=30,passive_engi=10,CC_silence=0}] run playsound minecraft:block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.2 1
-execute at @a[scores={char=30,passive_engi=20,CC_silence=0}] run playsound minecraft:block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.3 1
-execute at @a[scores={char=30,passive_engi=30,CC_silence=0}] run playsound minecraft:block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.4 1
-execute at @a[scores={char=30,passive_engi=40,CC_silence=0}] run playsound minecraft:block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.5 1
-execute at @a[scores={char=30,passive_engi=50,CC_silence=0}] run playsound minecraft:block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.6 1
-execute at @a[scores={char=30,passive_engi=60,CC_silence=0}] run playsound minecraft:block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.7 1
+execute at @a[scores={char=30,passive_engi=10,CC_silence=0}] run playsound block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.2 1
+execute at @a[scores={char=30,passive_engi=20,CC_silence=0}] run playsound block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.3 1
+execute at @a[scores={char=30,passive_engi=30,CC_silence=0}] run playsound block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.4 1
+execute at @a[scores={char=30,passive_engi=40,CC_silence=0}] run playsound block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.5 1
+execute at @a[scores={char=30,passive_engi=50,CC_silence=0}] run playsound block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.6 1
+execute at @a[scores={char=30,passive_engi=60,CC_silence=0}] run playsound block.anvil.place master @a[distance=..10] ~ ~ ~ 0.2 1.7 1
 scoreboard players set @a[scores={char=30,passive_engi=59}] passive_engi 80
 
 scoreboard players add @a[scores={char=30,passive_engi=80..}] passive_engi 1
 scoreboard players set @a[scores={char=30,passive_engi=90..}] passive_engi 0
 
-execute at @e[tag=turret,scores={SummonAge=5..}] run particle block{block_state:{Name:"minecraft:copper_bulb"}} ~ ~ ~ 0.5 1 0.5 0.001 60 normal
-execute at @e[tag=turret,scores={SummonAge=5..}] run playsound entity.iron_golem.damage master @a[distance=..10] ~ ~ ~ 1 1.2 1
+execute unless entity @e[tag=turret,scores={SummonAge=3}] run scoreboard players remove @e[tag=turret,scores={SummonAge=4..}] SummonAge 1
+execute unless entity @e[tag=turret,scores={SummonAge=2}] run scoreboard players remove @e[tag=turret,scores={SummonAge=3..}] SummonAge 1
+execute unless entity @e[tag=turret,scores={SummonAge=1}] run scoreboard players remove @e[tag=turret,scores={SummonAge=2..}] SummonAge 1
+
+execute at @e[tag=turret,nbt={HurtTime:10s}] run playsound entity.iron_golem.hurt master @a[distance=..12] ~ ~ ~ 0.5 2 1
+execute at @e[tag=turret,nbt={HurtTime:10s}] run playsound entity.iron_golem.damage master @a[distance=..12] ~ ~ ~ 0.5 1.8 1
+execute at @e[tag=turret,nbt={HurtTime:10s}] run particle block{block_state:{Name:"minecraft:copper_bulb"}} ~ ~ ~ 0.4 1 0.4 0.001 30 normal
+execute at @e[tag=turret,nbt={HurtTime:10s}] run particle block{block_state:{Name:"minecraft:cyan_terracotta"}} ~ ~ ~ 0.4 1 0.4 0.001 30 normal
+
+#execute at @e[tag=turret,scores={SummonAge=5..}] 
+#execute at @e[tag=turret,scores={SummonAge=5..}] run particle block{block_state:{Name:"minecraft:copper_bulb"}} ~ ~ ~ 0.4 1 0.4 0.001 40 normal
+#execute at @e[tag=turret,scores={SummonAge=5..}] run playsound entity.iron_golem.damage master @a[distance=..10] ~ ~ ~ 1 1.2 1
 tp @e[tag=turret,scores={SummonAge=5..}] ~ ~-100 ~
+kill @e[tag=turret,scores={SummonAge=5..}]
 
 
 
@@ -200,11 +234,17 @@ scoreboard players set @a[scores={char=30,s1_timer=1,CC_silence=1..}] s1_timer 2
 
 execute as @a[scores={char=30,s1_timer=1,CC_silence=0}] at @s positioned ~ ~1.5 ~ run function chars:engineer_mark_raycast
 
+execute at @a[scores={char=30,s1_timer=1,CC_silence=0}] run playsound entity.arrow.hit_player master @a[distance=..12] ~ ~ ~ 0.5 2 1
+
 execute at @a[scores={char=30,s1_timer=1,CC_silence=0}] unless entity @e[distance=1..12,tag=engineer_marked] run scoreboard players set @a[scores={char=30}] spellCD1 20
 execute at @a[scores={char=30,s1_timer=1,CC_silence=0}] unless entity @e[distance=1..12,tag=engineer_marked] run scoreboard players set @a[scores={char=30}] s1_timer 260
 
 
 scoreboard players set @a[tag=engineer_marked] tracked 1
+
+execute at @a[scores={tracked=5}] run playsound entity.arrow.hit_player master @a[distance=..12] ~ ~ ~ 0.5 1.2 1
+execute at @a[scores={tracked=15}] run playsound entity.arrow.hit_player master @a[distance=..12] ~ ~ ~ 0.5 1.2 1
+execute at @a[scores={tracked=25}] run playsound entity.arrow.hit_player master @a[distance=..12] ~ ~ ~ 0.5 1.2 1
 
 effect give @a[scores={tracked=1..}] glowing 1 0 true
 scoreboard players add @a[scores={tracked=1..}] tracked 1
@@ -284,7 +324,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=30}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=361..,char=30}] s2_timer 0
 
 execute as @a[scores={char=30}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:copper_axe",Slot:0b}]}] run clear @a[scores={char=30}] copper_axe
-item replace entity @a[scores={char=30}] hotbar.0 with copper_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Tools"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=30}] hotbar.0 with copper_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Tools"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=30,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=30}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=30,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:music_disc_pigstep",minecraft:custom_name={text:"Sad Machine",color:"dark_aqua",bold:1b}] 1

@@ -23,6 +23,20 @@ scoreboard players add @a[scores={char=68,passive_enfo=1..}] passive_enfo 1
 scoreboard players set @a[scores={char=68,passive_enfo=200..}] passive_enfo 0
 
 
+title @a[scores={char=68,passive_enfo=0}] actionbar [{text:"[",color:"dark_aqua",bold:1b,type:"text"},{text:" Pummeling Strike is ready ",bold:0b,color:"aqua",type:"text"},{text:"]",color:"dark_aqua",bold:1b,type:"text"}]
+title @a[scores={char=68,passive_enfo=1..20}] actionbar [{text:"[",color:"dark_aqua",bold:1b,type:"text"},{text:"",color:"blue",type:"text"},{text:"=========",color:"gray",type:"text"},{text:"]",color:"dark_aqua",bold:1b,type:"text"}]
+title @a[scores={char=68,passive_enfo=21..40}] actionbar [{text:"[",color:"dark_aqua",bold:1b,type:"text"},{text:"=",color:"blue",type:"text"},{text:"========",color:"gray",type:"text"},{text:"]",color:"dark_aqua",bold:1b,type:"text"}]
+title @a[scores={char=68,passive_enfo=41..60}] actionbar [{text:"[",color:"dark_aqua",bold:1b,type:"text"},{text:"==",color:"blue",type:"text"},{text:"=======",color:"gray",type:"text"},{text:"]",color:"dark_aqua",bold:1b,type:"text"}]
+title @a[scores={char=68,passive_enfo=61..80}] actionbar [{text:"[",color:"dark_aqua",bold:1b,type:"text"},{text:"===",color:"blue",type:"text"},{text:"======",color:"gray",type:"text"},{text:"]",color:"dark_aqua",bold:1b,type:"text"}]
+title @a[scores={char=68,passive_enfo=81..100}] actionbar [{text:"[",color:"dark_aqua",bold:1b,type:"text"},{text:"====",color:"blue",type:"text"},{text:"=====",color:"gray",type:"text"},{text:"]",color:"dark_aqua",bold:1b,type:"text"}]
+title @a[scores={char=68,passive_enfo=101..120}] actionbar [{text:"[",color:"dark_aqua",bold:1b,type:"text"},{text:"=====",color:"blue",type:"text"},{text:"====",color:"gray",type:"text"},{text:"]",color:"dark_aqua",bold:1b,type:"text"}]
+title @a[scores={char=68,passive_enfo=121..140}] actionbar [{text:"[",color:"dark_aqua",bold:1b,type:"text"},{text:"======",color:"blue",type:"text"},{text:"===",color:"gray",type:"text"},{text:"]",color:"dark_aqua",bold:1b,type:"text"}]
+title @a[scores={char=68,passive_enfo=141..160}] actionbar [{text:"[",color:"dark_aqua",bold:1b,type:"text"},{text:"=======",color:"blue",type:"text"},{text:"==",color:"gray",type:"text"},{text:"]",color:"dark_aqua",bold:1b,type:"text"}]
+title @a[scores={char=68,passive_enfo=161..180}] actionbar [{text:"[",color:"dark_aqua",bold:1b,type:"text"},{text:"========",color:"blue",type:"text"},{text:"=",color:"gray",type:"text"},{text:"]",color:"dark_aqua",bold:1b,type:"text"}]
+title @a[scores={char=68,passive_enfo=181..200}] actionbar [{text:"[",color:"dark_aqua",bold:1b,type:"text"},{text:"=========",color:"blue",type:"text"},{text:"",color:"gray",type:"text"},{text:"]",color:"dark_aqua",bold:1b,type:"text"}]
+
+
+
 # pulverize
 clear @a[scores={char=68,s1_timer=1,CC_silence=0}] *[custom_data={s1:1}]
 
@@ -31,13 +45,21 @@ scoreboard players set @a[scores={char=68,s1_timer=1,CC_silence=1..}] s1_timer 1
 
 execute at @a[scores={char=68,s1_timer=1..20,CC_silence=0}] run particle enchanted_hit ~ ~1 ~ 0.5 0.5 0.5 0.001 5
 
-
+#/summon minecraft:item_display ~ ~ ~ {item: {count: 1, id: "minecraft:mace"}, transformation: {left_rotation: [-0.3044173f, 0.6382242f, -0.3044173f, 0.6382242f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.5f,1.5f,3f], translation: [0.0f, 0.0f, 0.0f]}}
 
 execute at @a[scores={char=68,s1_timer=21,CC_silence=0}] run particle enchanted_hit ~ ~1 ~ 1 1 1 0.1 50
 execute at @a[scores={char=68,s1_timer=21,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["pulverize_shockwave","entities_enforcer"]}
 execute at @a[scores={char=68,s1_timer=21,CC_silence=0}] run summon item_display ~ ~ ~ {Tags:["pulverize_shockwave_vis","entities_enforcer"],item:{count:1,id:"minecraft:mace"},transformation:{left_rotation:[0.0f,0.7071068f,0.0f,0.7071068f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[1.5f,1.5f,3.0f],translation:[0.0f,0.0f,0.0f]}}
+execute at @a[scores={char=68,s1_timer=1,CC_silence=0}] run summon item_display ~ ~ ~ {teleport_duration:1,Tags:["pulverize_visual_channel","entities_enforcer"],item:{count:1,id:"minecraft:mace"},transformation:{left_rotation: [-0.3044173f, 0.6382242f, -0.3044173f, 0.6382242f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.5f,1.5f,3f], translation: [0.0f, 0.0f, 0.0f]}}
+tp @e[tag=pulverize_visual_channel,limit=1] @a[scores={char=68,s1_timer=1..20},limit=1]
 tp @e[tag=pulverize_shockwave,limit=1] @a[scores={char=68,s1_timer=21},limit=1]
 tp @e[tag=pulverize_shockwave_vis,limit=1] @a[scores={char=68,s1_timer=21},limit=1]
+
+execute as @a[scores={char=68,s1_timer=1..20},limit=1] at @s run tp @e[tag=pulverize_visual_channel] ^ ^ ^0.8
+execute at @a[scores={char=68,s1_timer=1..20,CC_silence=0}] as @e[tag=pulverize_visual_channel] at @s run tp @s ~ ~2.1 ~ ~180 ~
+execute at @a[scores={char=68,s1_timer=20..}] run kill @e[tag=pulverize_visual_channel]
+
+
 
 execute at @a[scores={char=68,s1_timer=21,CC_silence=0}] as @e[tag=pulverize_shockwave_vis] at @s run tp @s ~ ~ ~ ~ -80
 execute at @a[scores={char=68,s1_timer=21,CC_silence=0}] as @e[tag=pulverize_shockwave_vis,limit=1] at @s run tp @s ~ ~0.6 ~ 
@@ -45,8 +67,6 @@ execute at @a[scores={char=68,s1_timer=21,CC_silence=0}] as @e[tag=pulverize_sho
 execute store result entity @e[tag=pulverize_shockwave,limit=1] Rotation[1] float 1 run clear
 
 execute as @e[tag=pulverize_shockwave] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
-
-#execute at @e[tag=pulverize_shockwave] run particle falling_dust{block_state: 'minecraft:sand'} ~ ~ ~ 0.2 1 0.2 0.0001 15 normal
 
 execute at @a[scores={char=68,s1_timer=20..30}] as @e[tag=pulverize_shockwave] at @s run tp @s ^ ^ ^0.15
 execute at @a[scores={char=68,s1_timer=31..}] as @e[tag=pulverize_shockwave] at @s run tp @s ^ ^ ^0.6
@@ -74,17 +94,16 @@ execute at @a[scores={char=68,s1_timer=40..}] run kill @e[tag=pulverize_shockwav
 execute at @a[scores={char=68,s1_timer=40..}] run kill @e[tag=pulverize_shockwave_vis]
 
 
-execute at @e[tag=pulverize_shockwave] as @a[distance=..2.5,scores={pulverized=0}] unless score @s Team = @p[scores={char=68}] Team run scoreboard players set @s pulverized 1
+execute at @e[tag=pulverize_shockwave] as @e[tag=valid_spell_target,distance=..2.5] unless score @s pulverized matches 1.. unless score @s Team = @p[scores={char=68}] Team run scoreboard players set @s pulverized 1
 
 #execute at @a[scores={pulverized=3}] run particle crit ~ ~1.5 ~ 0.2 0.2 0.2 0.5 10
-execute at @a[scores={pulverized=3}] run playsound entity.player.attack.knockback master @a[distance=..6] ~ ~ ~ 0.4 0.8 1
-execute as @a[scores={pulverized=2}] at @s run damage @s 4 generic by @p[scores={char=68}] from @p[scores={char=68}]
+execute at @e[scores={pulverized=3}] run playsound entity.player.attack.knockback master @a[distance=..6] ~ ~ ~ 0.4 0.8 1
+execute as @e[scores={pulverized=2}] at @s run damage @s 4 generic by @p[scores={char=68}] from @p[scores={char=68}]
 scoreboard players set @a[scores={pulverized=2}] CC_knockup 20
-scoreboard players add @a[scores={pulverized=1..}] pulverized 1
-scoreboard players set @a[scores={pulverized=20..}] pulverized 0
+scoreboard players add @e[scores={pulverized=1..}] pulverized 1
+scoreboard players set @e[scores={pulverized=20..}] pulverized 0
 
 # pulverize 2 - knockback
-
 
 scoreboard players set @a[scores={char=68,s1_timer_recast=1,CC_silence=0}] s1_timer 23
 scoreboard players set @a[scores={char=68,s1_timer_recast=1,CC_silence=0}] spellCD1 177
@@ -94,9 +113,7 @@ execute at @a[scores={char=68,s1_timer_recast=1,CC_silence=0}] run playsound ent
 execute at @a[scores={char=68,s1_timer_recast=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["pulverize_horizontal","entities_enforcer"]}
 tp @e[tag=pulverize_horizontal,limit=1] @a[scores={char=68,s1_timer_recast=1..},limit=1]
 
-
 scoreboard players set @a[scores={char=68,s1_timer_recast=1..,CC_silence=0}] s1_timer_recast 0
-
 
 execute store result entity @e[tag=pulverize_horizontal,limit=1] Rotation[1] float 1 run clear
 
@@ -104,7 +121,6 @@ execute at @a[scores={char=68,s1_timer=20..22}] as @e[tag=pulverize_horizontal] 
 execute at @a[scores={char=68,s1_timer=25..}] as @e[tag=pulverize_horizontal] at @s run tp @s ^ ^ ^0.3
 
 execute as @e[tag=pulverize_horizontal] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
-
 
 execute at @a[scores={char=68,s1_timer=21..}] at @e[tag=pulverize_horizontal] run particle sweep_attack ^-2 ^1.2 ^0.2 0.2 0.2 0.2 0.1 1
 execute at @a[scores={char=68,s1_timer=21..}] at @e[tag=pulverize_horizontal] run particle sweep_attack ^-1.5 ^1.2 ^0.4 0.2 0.2 0.2 0.1 1
@@ -121,26 +137,22 @@ execute at @a[scores={char=68,s1_timer=21..}] at @e[tag=pulverize_horizontal] ru
 
 execute at @a[scores={char=68,s1_timer=30..}] run kill @e[tag=pulverize_horizontal]
 
-execute at @e[tag=pulverize_horizontal] as @a[distance=..1.5,scores={pulverized_knocked=0}] unless score @s Team = @p[scores={char=68}] Team run scoreboard players set @s pulverized_knocked 21
-
-
+execute at @e[tag=pulverize_horizontal] as @e[tag=valid_spell_target,distance=..1.5] unless score @s pulverized_knocked matches 1.. unless score @s Team = @p[scores={char=68}] Team run scoreboard players set @s pulverized_knocked 21
 
 effect give @a[scores={pulverized_knocked=20}] slowness 1 100 true
 effect give @a[scores={pulverized_knocked=20}] weakness 1 100 true
 scoreboard players set @a[scores={pulverized_knocked=20}] CC_stun 10
 
-scoreboard players set @a[scores={pulverized_knocked=20}] CC_intangible 20
-#execute at @a[scores={pulverized_knocked=20}] run particle block{block_state: 'minecraft:sand'} ~ ~ ~ 0.2 2.5 0.2 1 150
-execute at @a[scores={pulverized_knocked=20}] run particle enchanted_hit ~ ~1 ~ 0.5 0.5 0.5 0.1 20
+#scoreboard players set @a[scores={pulverized_knocked=20}] CC_intangible 20
+execute at @e[scores={pulverized_knocked=20}] run particle enchanted_hit ~ ~1 ~ 0.5 0.5 0.5 0.1 20
 execute at @a[scores={pulverized_knocked=20}] run summon marker ~ ~ ~ {Tags:["enforcer_push","entities_enforcer"]}
 execute as @e[tag=enforcer_push] at @s run tp @p[distance=..1,scores={pulverized_knocked=19},limit=1]
 execute at @a[scores={pulverized_knocked=19}] as @e[distance=..1,tag=enforcer_push,limit=1] at @s run tp @s ~ ~0.5 ~
 execute at @a[scores={pulverized_knocked=19}] as @e[tag=enforcer_push] at @s run tp @s ~ ~ ~ facing entity @p[scores={char=68}]
 
-execute as @a[scores={pulverized_knocked=19}] at @s run damage @s 6 generic by @p[scores={char=68}] from @p[scores={char=68}]
+execute as @e[scores={pulverized_knocked=19}] at @s run damage @s 6 generic by @p[scores={char=68}] from @p[scores={char=68}]
 
-execute as @a[scores={pulverized_knocked=10..19}] at @s run tp @e[tag=enforcer_push,sort=nearest,limit=1]
-
+execute as @a[scores={pulverized_knocked=10..19,death_dash_reset=0}] at @s run tp @e[tag=enforcer_push,sort=nearest,limit=1]
 
 execute as @e[tag=enforcer_push] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
 execute as @e[tag=enforcer_push] at @s unless block ^ ^ ^-1 #minecraft:dash run kill @s
@@ -154,11 +166,7 @@ execute as @e[tag=enforcer_push] at @s run tp @s ^ ^ ^-0.6
 #execute at @e[tag=enforcer_push] run playsound block.sand.break master @a[distance=..8] ~ ~ ~ 1 0.2 1
 
 execute at @a[scores={pulverized_knocked=10}] run kill @e[distance=..1,tag=enforcer_push]
-scoreboard players remove @a[scores={pulverized_knocked=1..}] pulverized_knocked 1
-
-
-
-
+scoreboard players remove @e[scores={pulverized_knocked=1..}] pulverized_knocked 1
 
 
 # catch up
@@ -171,7 +179,7 @@ execute at @e[scores={char=68,s2_timer=2,CC_silence=0}] run playsound entity.ill
 
 effect give @a[scores={char=68,s2_timer=2,CC_silence=0}] speed 1 3 true
 effect give @a[scores={char=68,s2_timer=2,CC_silence=0}] absorption 1 2 true
-execute as @e[scores={char=68,s2_timer=2,CC_silence=0}] run attribute @s knockback_resistance base set 0.08
+execute as @e[scores={char=68,s2_timer=2,CC_silence=0}] run attribute @s knockback_resistance base set 0.8
 
 execute at @e[scores={char=68,s2_timer=2..25,CC_silence=0}] run particle crit ~ ~0.3 ~ 0.5 0.1 0.5 0.1 10
 execute at @e[scores={char=68,s2_timer=2..25,CC_silence=0}] run particle enchanted_hit ~ ~0.3 ~ 0.5 0.1 0.5 0.1 10
@@ -192,7 +200,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=68}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=241..,char=68}] s2_timer 0
 
 execute as @a[scores={char=68}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_axe",Slot:0b}]}] run clear @a[scores={char=68}] iron_axe
-item replace entity @a[scores={char=68}] hotbar.0 with minecraft:iron_axe[custom_data={enforcer:1},minecraft:custom_name={bold:1b,color:"gray",text:"Greathammer"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.75d,operation:"add_multiplied_base",slot:"mainhand"}],minecraft:item_model="minecraft:mace",minimum_attack_charge=0.8]
+item replace entity @a[scores={char=68}] hotbar.0 with minecraft:iron_axe[custom_data={enforcer:1},minecraft:custom_name={bold:1b,color:"gray",text:"Greathammer"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:4,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.75d,operation:"add_multiplied_base",slot:"mainhand"}],minecraft:item_model="minecraft:mace",minimum_attack_charge=1]
 
 execute as @a[scores={char=68,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=68}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=68,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:open_eyeblossom",minecraft:custom_name={text:"Pulverize",color:"dark_aqua",bold:1b}] 1

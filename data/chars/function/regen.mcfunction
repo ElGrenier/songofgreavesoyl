@@ -2,7 +2,7 @@
 effect clear @a[scores={CC_defiled=1..}] regeneration
 
 scoreboard players add @a[scores={char=0..}] regen 1
-scoreboard players add @a[scores={out_of_combat=199..}] regen 1
+scoreboard players add @a[scores={out_of_combat=200..}] regen 1
 
 effect give @a[scores={char=666,regen=40}] regeneration 1 2 true
 scoreboard players set @a[scores={char=666,regen=41..}] regen 0
@@ -187,8 +187,8 @@ scoreboard players set @a[scores={char=57,regen=61..}] regen 0
 effect give @a[scores={char=58,regen=80}] regeneration 1 2 true
 scoreboard players set @a[scores={char=58,regen=81..}] regen 0
 
-effect give @a[scores={char=59,regen=20}] regeneration 1 2 true
-scoreboard players set @a[scores={char=59,regen=21..}] regen 0
+effect give @a[scores={char=59,regen=80}] regeneration 1 2 true
+scoreboard players set @a[scores={char=59,regen=81..}] regen 0
 
 effect give @a[scores={char=60,regen=80}] regeneration 1 2 true
 scoreboard players set @a[scores={char=60,regen=81..}] regen 0

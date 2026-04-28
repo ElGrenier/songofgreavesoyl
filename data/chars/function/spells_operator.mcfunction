@@ -25,7 +25,6 @@ execute at @a[scores={char=28,s0_timer=21,CC_silence=0}] run kill @e[tag=overloa
 attribute @p[scores={char=28,s0_timer=20..22}] jump_strength base set 0.41
 
 scoreboard players set @a[tag=overloaded,scores={CC_mindrot=1..}] CC_mindrot 100
-execute if entity @e[tag=overloaded] at @a[scores={char=28}] run playsound entity.experience_orb.pickup master @a[scores={char=28}] ~ ~ ~ 1 0.1 1
 execute as @e[tag=overloaded,scores={CC_mindrot=0}] as @s run damage @s 4 generic by @p[scores={char=28}]
 execute as @e[tag=overloaded,scores={CC_mindrot=1..}] as @s run damage @s 7 generic by @p[scores={char=28}]
 tag @e remove overloaded
@@ -72,7 +71,7 @@ scoreboard players operation @e[tag=projectile,tag=anguish_sphere_main] Team = @
 tp @e[tag=anguish_sphere_main,limit=1] @a[scores={char=28,s1_timer=1},limit=1]
 execute at @a[scores={char=28,s1_timer=1,CC_silence=0}] as @e[tag=anguish_sphere_main,limit=1] at @s run tp @s ~ ~1.2 ~ 
 
-execute as @e[tag=anguish_sphere_main] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
+#execute as @e[tag=anguish_sphere_main] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
 
 execute at @e[tag=anguish_sphere_main] unless entity @e[tag=anguish_sphere_glass] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.4f,-0.4f,-0.4f],scale:[0.8f,0.8f,0.8f]},block_state:{Name:"minecraft:blue_stained_glass"},Tags:["anguish_sphere_glass","anguish_sphere_things","entities_operator"]}
 execute at @e[tag=anguish_sphere_main] unless entity @e[tag=anguish_sphere_soulsand] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,-0.3f,-0.3f],scale:[0.6f,0.6f,0.6f]},block_state:{Name:"minecraft:soul_sand"},Tags:["anguish_sphere_soulsand","anguish_sphere_things","entities_operator"]}
@@ -86,8 +85,8 @@ execute at @e[tag=anguish_sphere_main] run particle soul ~ ~ ~ 0.8 0 0.8 0 1 nor
 execute unless entity @e[tag=anguish_sphere_main] run kill @e[tag=anguish_sphere_things]
 
 
-execute at @a[scores={char=28,s1_timer=1..20}] as @e[tag=anguish_sphere_main] at @s run tp @s ^ ^ ^0.2
-execute at @a[scores={char=28,s1_timer=20..100}] as @e[tag=anguish_sphere_main] at @s run tp @s ^ ^ ^0.1
+execute at @a[scores={char=28,s1_timer=1..20}] as @e[tag=anguish_sphere_main] at @s if block ^ ^ ^0.5 #minecraft:dash run tp @s ^ ^ ^0.2
+execute at @a[scores={char=28,s1_timer=20..100}] as @e[tag=anguish_sphere_main] at @s if block ^ ^ ^0.5 #minecraft:dash run tp @s ^ ^ ^0.1
 #execute as @e[tag=anguish_sphere_main] at @s run tp @s ^ ^ ^0.2
 
 execute if entity @a[scores={char=28,s1_timer=30}] at @e[tag=anguish_sphere_main] run summon marker ~ ~ ~ {Tags:["anguish_shoot","projectile","entities_operator"]}
@@ -193,7 +192,8 @@ execute at @e[tag=braindamage] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,ta
 execute at @e[tag=braindamage] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=28}] Team run effect give @s glowing 5 1 true
 execute at @e[tag=braindamage] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=28}] Team run kill @e[dx=0,dy=0,dz=0,tag=braindamage]
 
-execute at @a[scores={CC_mindrot=1..}] run particle minecraft:block{block_state:{Name:"minecraft:diamond_block"}} ~ ~1.6 ~ 0.3 0.1 0.3 0.1 2 force
+execute at @a[scores={CC_mindrot=1..}] run particle enchanted_hit ~ ~1.6 ~ 0.3 0.1 0.3 0.1 2 force
+execute at @a[scores={CC_mindrot=1..}] run particle soul ~ ~1.6 ~ 0.5 0.5 0.5 0 1 force
 
 scoreboard players set @a[scores={universal_death=1..}] CC_mindrot 0
 

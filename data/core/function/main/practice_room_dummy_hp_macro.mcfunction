@@ -1,0 +1,1 @@
+$execute as @s run data merge entity @s {description:[{"text":"$(dummy_HP)"},{"text":"/","color":"gray",bold:1b},{"text":"20"}]}

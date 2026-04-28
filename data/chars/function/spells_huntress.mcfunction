@@ -1,7 +1,10 @@
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:bow"}}]
 
 execute at @a[scores={char=2,arrowcd_1=..10}] run tag @e[type=minecraft:arrow,distance=..2] add huntressshot_ar
-#execute at @e[tag=huntressshot] run particle block{block_state: 'minecraft:green_wool'} ~ ~ ~ 0.1 0.1 0.1 0.1 2
+#execute at @e[tag=huntressshot_ar] run particle block{block_state: 'minecraft:green_wool'} ~ ~ ~ 0.1 0.1 0.1 0.1 2
+
+tag @e[tag=huntressshot_ar] add projectile
+scoreboard players operation @e[tag=projectile,tag=huntressshot_ar] Team = @p[scores={char=2}] Team
 
 execute at @a[scores={char=2,CC_disarm=1..}] run kill @e[tag=huntressshot_ar]
 
@@ -9,9 +12,14 @@ effect give @a[scores={char=2},nbt={SelectedItem:{id:"minecraft:bow"}}] weakness
 
 #passive
 
-effect give @a[scores={char=2,universal_shoot=1..}] speed 1 1 true
-effect give @a[scores={char=2,s1_timer=1}] speed 1 1 true
-scoreboard players set @a[scores={universal_shoot=1..}] universal_shoot 0
+scoreboard players set @a[scores={char=2,arrowcd_1=1..2}] s0_timer 1
+scoreboard players set @a[scores={char=2,s1_timer=1}] s0_timer 1
+
+effect give @a[scores={char=2,s0_timer=1}] speed 1 1 
+effect clear @a[scores={char=2,s0_timer=11..}] speed
+scoreboard players add @a[scores={char=2,s0_timer=1..}] s0_timer 1
+scoreboard players set @a[scores={char=2,s0_timer=11..}] s0_timer 0
+
 
 item replace entity @a[scores={char=2,bowbreak=1..}] hotbar.0 with bow[minecraft:custom_name={text:"Bow",color:"gray",bold:1b},minecraft:unbreakable={}] 1
 scoreboard players set @a[scores={bowbreak=1..}] bowbreak 0
@@ -39,11 +47,11 @@ execute at @a[scores={char=2,s1_timer=40..}] run kill @e[tag=aim_sure_arrow]
 execute at @e[tag=aim_sure_arrow] run particle crit ~ ~ ~ 0 0 0 0.01 1
 execute at @e[tag=aim_sure_arrow] run particle dust{color:[0.67,0.67,0.67],scale:1} ~ ~ ~ 0.4 0.4 0.4 0 3
 
+execute at @e[tag=aim_sure_arrow] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=2}] Team at @a[scores={char=2}] run playsound entity.experience_orb.pickup master @a[scores={char=2}] ~ ~ ~ 1 0.1 1
 execute at @e[tag=aim_sure_arrow] positioned ~-.5 ~-.5 ~-.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=2}] Team run tag @s add aimed_true
 
 execute at @e[tag=aimed_true] run kill @e[tag=aim_sure_arrow]
-execute if entity @e[tag=aimed_true] at @a[scores={char=2}] run playsound entity.experience_orb.pickup master @a[scores={char=2}] ~ ~ ~ 1 0.1 1
-damage @e[tag=aimed_true,limit=1] 6 arrow by @p[scores={char=2}] from @p[scores={char=2}]
+damage @e[tag=aimed_true,limit=1] 6 player_attack by @p[scores={char=2}] from @p[scores={char=2}]
 effect give @e[tag=aimed_true] slowness 1 3
 tag @e remove aimed_true
 
@@ -58,15 +66,14 @@ execute at @a[scores={char=2,CC_grounded=1..}] run kill @e[tag=backflip]
 execute at @a[scores={char=2,CC_root=1..}] run kill @e[tag=backflip]
 execute at @a[scores={char=2,CC_stun=1..}] run kill @e[tag=backflip]
 
-item replace entity @a[scores={char=2,s2_timer=1..2,CC_silence=0}] armor.head with stone[item_model=air,minecraft:custom_name="aaaa",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:10.0d,operation:"add_value",slot:"head"}]] 1
+item replace entity @a[scores={char=2,s2_timer=1..2,CC_silence=0}] armor.head with stone[item_model=air,minecraft:custom_name={bold:1b,color:"aqua",text:"Super Secret Invisibility Health Retaining Tech(TM)"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:8.0d,operation:"add_value",slot:"head"}]] 1
 item replace entity @a[scores={char=2,s2_timer=1,CC_silence=0}] hotbar.0 with bow[minecraft:max_damage=1,minecraft:custom_name={text:"Bow",color:"gray",bold:1b},minecraft:enchantments={"minecraft:punch":2}] 1
 execute at @a[scores={char=2,s2_timer=1,CC_silence=0}] run particle falling_dust{block_state:{Name:"minecraft:gravel"}} ~ ~0.1 ~ 0.6 0.3 0.6 0.01 30 normal
 execute at @a[scores={char=2,s2_timer=1,CC_silence=0}] run playsound entity.zombie.infect master @a[distance=..10] ~ ~ ~ 1 2 1
-effect give @a[scores={char=2,s2_timer=2,CC_silence=0}] resistance 1 100 true
-scoreboard players set @a[scores={char=2,s2_timer=2,CC_silence=0}] CC_intangible 20
-effect give @a[scores={char=2,s2_timer=2,CC_silence=0}] weakness 1 100 true
-effect give @a[scores={char=2,s2_timer=2,CC_silence=0}] invisibility 1 100 true
-tag @a[scores={char=2,s2_timer=2,CC_silence=0}] add invisible
+effect give @a[scores={char=2,s2_timer=1,CC_silence=0}] resistance 1 100 true
+scoreboard players set @a[scores={char=2,s2_timer=1,CC_silence=0}] CC_intangible 10
+effect give @a[scores={char=2,s2_timer=1,CC_silence=0}] invisibility 1 100 true
+tag @a[scores={char=2,s2_timer=1,CC_silence=0}] add invisible
 
 execute at @a[scores={char=2,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["backflip","entities_huntress"]}
 
@@ -102,6 +109,7 @@ tp @a[scores={char=2,s2_timer=2..9,death_dash_reset=0}] @e[tag=backflip,limit=1]
 execute at @a[scores={char=2,s2_timer=10}] run kill @e[tag=backflip_vis]
 execute at @a[scores={char=2,s2_timer=10}] run kill @e[tag=backflip]
 effect clear @a[scores={char=2,s2_timer=10}] invisibility
+effect clear @a[scores={char=2,s2_timer=10}] resistance
 tag @a[scores={char=2,s2_timer=10}] remove invisible
 execute as @a[scores={char=2,s2_timer=10}] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
 effect give @a[scores={char=2,s2_timer=10}] slow_falling 1 1 true

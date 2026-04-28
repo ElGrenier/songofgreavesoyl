@@ -5,6 +5,9 @@ effect give @a[scores={char=41},nbt={SelectedItem:{id:"minecraft:bow"}}] weaknes
 execute at @a[scores={char=41,arrowcd_1=..10}] run tag @e[type=minecraft:arrow,distance=..2] add broodmothershot_ar
 execute at @e[tag=broodmothershot_ar] run particle dust{color:[1.0,1.0,0.33],scale:1} ~ ~ ~ 0.1 0.1 0.1 0.1 2
 
+tag @e[tag=broodmothershot_ar] add projectile
+scoreboard players operation @e[tag=projectile,tag=broodmothershot_ar] Team = @p[scores={char=41}] Team
+
 execute at @a[scores={char=41,CC_disarm=1..}] run kill @e[tag=broodmothershot_ar]
 
 #passive frenzy
@@ -83,10 +86,16 @@ scoreboard players set @a[scores={char=41,s3_timer=1,CC_silence=1..}] spellCD3 2
 scoreboard players set @a[scores={char=41,s3_timer=1,CC_silence=1..}] s3_timer 60
 
 execute at @a[scores={char=41,s3_timer=1,CC_silence=0}] at @e[tag=swarmer_egg] run particle block{block_state:{Name:"minecraft:magma_block"}} ~ ~1 ~ 0.4 0.4 0.4 0.1 20
-execute at @a[scores={char=41,s3_timer=1,CC_silence=0}] at @e[tag=swarmer_egg] run summon spider ~ ~1 ~ {Health:30.0f,Tags:["swarmerboi","valid_spell_target","entities_broodmother"],attributes:[{id:"minecraft:attack_damage",base:6},{id:"minecraft:knockback_resistance",base:1},{id:"minecraft:max_health",base:8}],equipment:{legs:{id:"minecraft:leather_boots",components:{"minecraft:enchantments":{"minecraft:feather_falling":10}},count:1}}}
+execute at @a[scores={char=41,s3_timer=1,CC_silence=0}] at @e[tag=swarmer_egg] run summon spider ~ ~1 ~ {CustomName:[{"text":"Aranite Crawler"}],CustomNameVisible:1,Health:30.0f,Tags:["summon","swarmerboi","valid_spell_target","entities_broodmother"],attributes:[{id:"minecraft:attack_damage",base:6},{id:"minecraft:knockback_resistance",base:1},{id:"minecraft:max_health",base:12}],equipment:{legs:{id:"minecraft:leather_boots",components:{"minecraft:enchantments":{"minecraft:feather_falling":25}},count:1}}}
 scoreboard players operation @e[tag=swarmerboi] Team = @p[scores={char=41}] Team
 execute at @a[scores={char=41},team=purple] run team join purple @e[tag=swarmerboi]
 execute at @a[scores={char=41},team=yellow] run team join yellow @e[tag=swarmerboi]
+execute at @a[scores={char=41},team=ffa_broodmother] run team join ffa_broodmother @e[tag=swarmerboi]
+execute if score map_type settings matches 4 run team join ffa_broodmother @a[scores={char=41}]
+team join ffa_broodmother @a[scores={char=41},team=ffa]
+
+execute as @e[tag=swarmerboi] at @s if block ~ ~-2 ~ #dash run effect give @s slow_falling 1 0 true
+
 
 execute at @a[scores={char=41,s3_timer=1,CC_silence=0}] at @e[tag=swarmer_egg] run playsound minecraft:entity.turtle.egg_break ambient @a[distance=..10] ~ ~ ~ 1 0.8 1
 execute at @a[scores={char=41,s3_timer=1,CC_silence=0}] run kill @e[tag=swarmer_egg]

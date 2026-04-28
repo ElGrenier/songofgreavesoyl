@@ -1,0 +1,15 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {}
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "chars:any_damage_dealt"
+  }
+}

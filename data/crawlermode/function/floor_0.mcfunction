@@ -45,7 +45,7 @@ execute if score -wave crawlers_wave matches -150 run effect clear @a[scores={ch
 execute if score -wave crawlers_wave matches -150 as @a[scores={char=1..}] run attribute @s jump_strength modifier remove crawl1
 
 execute if score -wave crawlers_wave matches -145 at @e[tag=crawlers_descent] run execute at @n[tag=crawlers_centre] run summon marker ~ ~ ~ {Tags:["crawlers_campfire"]}
-execute if score -wave crawlers_wave matches -145 at @e[tag=crawlers_descent] run execute at @n[tag=crawlers_centre] run setblock ~ ~ ~ campfire
+execute if score -wave crawlers_wave matches -145 at @e[tag=crawlers_descent] run execute at @n[tag=crawlers_centre] run setblock ~ ~ ~ spruce_slab
 
 execute if score -wave crawlers_wave matches -145 run execute at @e[tag=crawlers_campfire] run clone -56 22 -240 -68 21 -228 ~-6 ~3 ~-6
 execute if score -wave crawlers_wave matches -145 run execute at @e[tag=crawlers_campfire] run playsound block.iron_trapdoor.close master @a[distance=..30] ~ ~ ~ 2 0.8
@@ -125,7 +125,7 @@ execute if score -wave crawlers_wave matches 4055 run execute at @e[tag=crawlers
 
 execute if score -wave crawlers_wave matches 4053 run effect clear @a resistance
 execute if score -wave crawlers_wave matches 4053 run tellraw @a[scores={char=1..}] ["",{text:"",bold:true,color:"red"},{text:"=",color:"red"},{text:"Tip",bold:true,color:"gold"},{text:"=",bold:true,color:"red"},{text:" Entering an elevator in a normal game will cause you to go deeper, until you eventually face off against a ",color:"gray"},{text:"Broodmother",color:"red"},{text:", but here you will be sent back to the lobby.",color:"gray"}]
-execute if score -wave crawlers_wave matches 4050..4101 as @e[tag=crawlers_campfire] at @s unless entity @a[distance=1.6..40,tag=!waiting_respawn] run scoreboard players set -wave crawlers_wave 4301
+execute if score -wave crawlers_wave matches 4050..4101 as @e[tag=crawlers_campfire] at @s unless entity @a[distance=2.4..40,tag=!waiting_respawn] run scoreboard players set -wave crawlers_wave 4301
 
 execute if score -wave crawlers_wave matches 4300..4371 run scoreboard players add -wave crawlers_wave 1
 

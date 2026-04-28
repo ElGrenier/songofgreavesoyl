@@ -46,7 +46,7 @@ execute if score -wave crawlers_wave matches -150 run effect clear @a[scores={ch
 execute if score -wave crawlers_wave matches -150 as @a[scores={char=1..},tag=!waiting_respawn] run attribute @s jump_strength modifier remove crawl1
 
 execute if score -wave crawlers_wave matches -145 at @e[tag=crawlers_descent] run execute at @n[tag=crawlers_centre] run summon marker ~ ~ ~ {Tags:["crawlers_campfire"]}
-execute if score -wave crawlers_wave matches -145 at @e[tag=crawlers_descent] run execute at @n[tag=crawlers_centre] run setblock ~ ~ ~ campfire
+execute if score -wave crawlers_wave matches -145 at @e[tag=crawlers_descent] run execute at @n[tag=crawlers_centre] run setblock ~ ~ ~ spruce_slab
 
 execute if score -wave crawlers_wave matches -145 run execute at @e[tag=crawlers_campfire] run clone -56 22 -240 -68 21 -228 ~-6 ~3 ~-6
 execute if score -wave crawlers_wave matches -145 run execute at @e[tag=crawlers_campfire] run playsound block.iron_trapdoor.close master @a[distance=..30] ~ ~ ~ 2 0.8
@@ -94,7 +94,7 @@ execute if score -wave crawlers_wave matches 650 run scoreboard players set -att
 execute if score -wave crawlers_wave matches 3 run scoreboard players set -attacker_hatcher crawler_spawns 1
 execute if score -wave crawlers_wave matches 650 run scoreboard players set -attacker_hatcher crawler_spawns 0
 
-execute if score -wave crawlers_wave matches 700..701 unless entity @e[tag=crawlers_enemy] run scoreboard players add -wave crawlers_wave 1
+execute if score -wave crawlers_wave matches 700..801 unless entity @e[tag=crawlers_enemy] run scoreboard players add -wave crawlers_wave 1
 execute if score -wave crawlers_wave matches 705 unless entity @e[tag=crawlers_enemy] run execute at @n[tag=crawlers_campfire] run playsound minecraft:entity.player.levelup master @a[scores={char=1..},tag=!waiting_respawn,distance=..40] ~ ~ ~ 3 0.8
 
 #wave 2
@@ -302,7 +302,7 @@ execute if score -wave crawlers_wave matches 8055 run execute at @e[tag=crawlers
 
 
 execute if score -wave crawlers_wave matches 8053 run tellraw @a[scores={char=1..},tag=!waiting_respawn] ["",{text:"[WARNING]",bold:true,color:"dark_red"},{text:" The elevator can now leave.",color:"red"}]
-execute if score -wave crawlers_wave matches 8056..8101 as @e[tag=crawlers_campfire] at @s unless entity @a[distance=1.6..40,tag=!waiting_respawn] run scoreboard players set -wave crawlers_wave 8301
+execute if score -wave crawlers_wave matches 8056..8101 as @e[tag=crawlers_campfire] at @s unless entity @a[distance=2.4..40,tag=!waiting_respawn] run scoreboard players set -wave crawlers_wave 8301
 
 execute if score -wave crawlers_wave matches 8300..8371 run scoreboard players add -wave crawlers_wave 1
 

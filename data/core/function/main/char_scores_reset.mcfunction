@@ -13,6 +13,13 @@ scoreboard players set @s KillSpreeTick 0
 
 scoreboard players set @s death_dash_reset 0
 
+attribute @s attack_damage base set 0
+attribute @s gravity base set 0.08
+attribute @s step_height base set 0.6
+attribute @s scale base set 1
+attribute @s jump_strength base set 0.41
+
+
 scoreboard players set @s s0_use 0
 scoreboard players set @s s0_drop 0
 scoreboard players set @s s0_timer 0
@@ -53,8 +60,12 @@ scoreboard players set @s CC_taunt 0
 scoreboard players set @s CC_flag 0
 scoreboard players set @s CC_confusion 0
 scoreboard players set @s CC_madness 0
-scoreboard players set @s confusion_randomiser 0
 scoreboard players set @s CC_knockdown 0
+scoreboard players set @s CC_exposed 0
+scoreboard players set @s CC_charm 0
+scoreboard players set @s CC_entangled 0
+
+
 scoreboard players set @s twisted_garden 0
 scoreboard players set @s passive_enfo 0
 scoreboard players set @s passive_bard 0
@@ -62,7 +73,7 @@ scoreboard players set @s passive_bard_use 0
 scoreboard players set @s champion_empower 0
 scoreboard players set @s treespirit_empower 0
 scoreboard players set @s warper_empower 0
-
+scoreboard players set @s confusion_randomiser 0
 scoreboard players set @s shapeless_s2_empower 0
 scoreboard players set @s passive_raid 3
 scoreboard players set @s passive_raid_timer 0
@@ -166,18 +177,21 @@ scoreboard players set @s heat_shield_timer 0
 scoreboard players set @s heat_shields_cooldown 0
 scoreboard players set @s fortress_shields 0
 scoreboard players set @s passive_craw 0
-scoreboard players set @s CC_exposed 0
+scoreboard players set @s red 0
+scoreboard players set @s yellow 0
+scoreboard players set @s blue 0
 scoreboard players set @s spell_painter_red 0
 scoreboard players set @s spell_painter_blue 0
 scoreboard players set @s spell_painter_yellow 0
 scoreboard players set @s spell_painter_purple 0
 scoreboard players set @s spell_painter_green 0
 scoreboard players set @s spell_painter_orange 0
+scoreboard players set @s slime_feed 0
+scoreboard players set @s kayral_gun 0
+scoreboard players set @s passive_technomancer 0
+scoreboard players set @s passive_fien 0
 
 
-scoreboard players set @s red 0
-scoreboard players set @s yellow 0
-scoreboard players set @s blue 0
 
 
 tag @s remove deathmark
@@ -188,6 +202,8 @@ tag @s remove purifier
 tag @s remove abberation
 tag @s remove laugh
 tag @s remove dazzle
+tag @s remove handofthorns_player
+tag @s remove dreadnought_armor
 
 tag @s remove invisible
 tag @s remove barrier
@@ -203,6 +219,7 @@ tag @s remove spin_right
 tag @s remove actual_team_purple
 tag @s remove actual_team_yellow
 
+tag @s remove crawler_burrowed
 tag @s remove form_stitched
 tag @s remove form_siren
 tag @s remove pharaoh
@@ -220,8 +237,8 @@ scoreboard players set @s arrowcd_1 0
 scoreboard players set @s crossbowcd 0
 scoreboard players set @s tridentcd 0
 
-scoreboard players set @a spellCD0 0
-scoreboard players set @a spellCD1 0
-scoreboard players set @a spellCD2 0
-scoreboard players set @a spellCD3 0
-clear @a barrier
+scoreboard players set @s spellCD0 0
+scoreboard players set @s spellCD1 0
+scoreboard players set @s spellCD2 0
+scoreboard players set @s spellCD3 0
+clear @s barrier

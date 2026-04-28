@@ -4,27 +4,26 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:brush"}}]
 
 # grave feat
 
-execute at @a[scores={char=65}] as @a[distance=0.1..10] unless score @s Team = @p[scores={char=65}] Team run tag @s add ghoul_stealtt_interrupt
-execute at @a[scores={char=65}] as @a[distance=10.1..] unless score @s Team = @p[scores={char=65}] Team run tag @s remove ghoul_stealtt_interrupt
-execute at @a[scores={char=65}] as @a if score @s Team = @p[scores={char=65}] Team run tag @s remove ghoul_stealtt_interrupt
+execute at @a[scores={char=65}] as @e[distance=0.1..8] unless score @s Team = @p[scores={char=65}] Team run tag @s add ghoul_stealth_interrupt
+execute at @a[scores={char=65}] as @e[distance=8.1..] unless score @s Team = @p[scores={char=65}] Team run tag @s remove ghoul_stealth_interrupt
+execute at @a[scores={char=65}] as @e if score @s Team = @p[scores={char=65}] Team run tag @s remove ghoul_stealth_interrupt
 
-scoreboard players add @a[scores={char=65}] outofcombat 1
-scoreboard players set @a[scores={char=65,outofcombat=200..}] outofcombat 180
 effect clear @a[scores={stealth=1..}] glowing
-execute at @a[scores={char=65,outofcombat=180..210}] unless entity @e[distance=..10,tag=Altars] unless entity @e[tag=ghoul_stealtt_interrupt,distance=..10] run scoreboard players set @p[scores={char=65,outofcombat=180..210}] stealth 4
+execute as @a[scores={char=65,out_of_combat=200..}] at @s unless entity @e[distance=..8,tag=Altars] unless entity @e[tag=ghoul_stealth_interrupt,distance=..10] run scoreboard players set @s stealth 4
+effect give @a[scores={char=65,stealth=3..}] speed 1 0 true
 
 scoreboard players remove @a[scores={stealth=1..,char=65}] stealth 1
 
-scoreboard players add @a[scores={stealth=3..,char=65,regen=..40}] regen 1
+
 tag @a[scores={stealth=3,char=65}] add invisible
 effect give @a[scores={stealth=3..,char=65}] invisibility 1 1 true
-item replace entity @a[scores={stealth=3,char=65}] armor.head with stone[item_model=air,minecraft:custom_name="aaaa",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:4.0d,operation:"add_value",slot:"head"}]] 1
+item replace entity @a[scores={stealth=3,char=65}] armor.head with stone[item_model=air,minecraft:custom_name={bold:1b,color:"aqua",text:"Super Secret Invisibility Health Retaining Tech(TM)"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:4.0d,operation:"add_value",slot:"head"}]] 1
 item replace entity @a[scores={stealth=3,char=65}] armor.chest with air
 item replace entity @a[scores={stealth=3,char=65}] armor.legs with air
 item replace entity @a[scores={stealth=3,char=65}] armor.feet with air
 
 #execute at @a[scores={stealth=2,char=65}] run particle falling_dust{block_state: 'minecraft:coal_block'} ~ ~1 ~ 0.5 1 0.5 0.01 40
-#execute at @a[scores={stealth=1..2,char=65}] run playsound entity.zombie.infect master @a[distance=..10] ~ ~ ~ 1 1 1
+#execute at @a[scores={stealth=1..2,char=65}] run playsound entity.zombie.infect master @a[distance=..9] ~ ~ ~ 1 1 1
 
 effect clear @a[scores={stealth=..2,char=65}] invisibility
 tag @a[scores={stealth=..1,char=65}] remove invisible
@@ -128,7 +127,6 @@ execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cl
 execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~ ~ ~-1 #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
 
 execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] rotated ~ 0 unless block ^ ^ ^1.5 #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
-
 execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~1.5 ~ ~ #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
 execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~-1.5 ~ ~ #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
 execute as @e[tag=ghoul_ambushdash_1] at @s unless entity @e[tag=ghoul_ambush_cling] unless block ~ ~ ~1.5 #minecraft:dash run summon armor_stand ~ ~ ~ {Invisible:1,Marker:1,NoGravity:1,Tags:["ghoul_ambush_cling","entities_ghoul"]}
@@ -177,7 +175,7 @@ execute if entity @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=11..20}] run
 execute if entity @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=21..30}] run item replace entity @a[scores={char=65}] hotbar.2 with warped_fungus_on_a_stick[damage=2,max_damage=4,custom_data={s2:2},minecraft:item_model="minecraft:mushroom_stew",minecraft:custom_name={text:"Ambush",color:"dark_aqua",bold:1b}] 1
 execute if entity @e[tag=ghoul_ambush_cling,scores={s2_timer_recast=31..}] run item replace entity @a[scores={char=65}] hotbar.2 with warped_fungus_on_a_stick[damage=3,max_damage=4,custom_data={s2:2},minecraft:item_model="minecraft:mushroom_stew",minecraft:custom_name={text:"Ambush",color:"dark_aqua",bold:1b}] 1
 
-#execute if entity @e[tag=ghoul_ambush_cling] run title @a title {"text":"ambush cling"}
+execute if entity @e[tag=ghoul_ambush_cling] run title @a[scores={char=65}] actionbar {"text":" "}
 
 ride @p[scores={char=65}] mount @n[tag=ghoul_ambush_cling] 
 #execute as @e[tag=ghoul_ambush_cling] at @s run tp @s ~ ~-0.03 ~
@@ -257,7 +255,7 @@ scoreboard players add @a[scores={char=65,s2_timer=1..}] s2_timer 1
 scoreboard players set @a[scores={char=65,s2_timer=320..}] s2_timer 0
 
 execute as @a[scores={char=65}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:brush",Slot:0b}]}] run clear @a[scores={char=65}] brush
-item replace entity @a[scores={char=65}] hotbar.0 with brush[swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=65}] hotbar.0 with brush[swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=65,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=65}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=65,s1_timer=0}] hotbar.1 with carrot_on_a_stick[minecraft:enchantments={"minecraft:quick_charge":1},custom_data={s1:1},minecraft:item_model="minecraft:rotten_flesh",minecraft:custom_name={text:"Septic Bite",color:"dark_aqua",bold:1b}] 1

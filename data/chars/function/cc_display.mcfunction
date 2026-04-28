@@ -1,31 +1,18 @@
 
-#unstoppable
-
-effect clear @a[scores={unstoppable=1..}] minecraft:slowness
-effect clear @a[scores={unstoppable=1..,char=..12}] minecraft:weakness
-effect clear @a[scores={unstoppable=1..,char=14..}] minecraft:weakness
-effect clear @a[scores={unstoppable=1..}] minecraft:jump_boost
-#effect clear @a[scores={unstoppable=1..}] levitation
-
-scoreboard players set @a[scores={unstoppable=1..}] CC_stun 0
-scoreboard players set @a[scores={unstoppable=1..}] CC_root 0
-scoreboard players set @a[scores={unstoppable=1..}] CC_grounded 0
-scoreboard players set @a[scores={unstoppable=1..}] CC_disarm 0
-scoreboard players set @a[scores={unstoppable=1..}] CC_knockup 0
-scoreboard players set @a[scores={unstoppable=1..}] CC_stagger 0
-scoreboard players set @a[scores={unstoppable=1..}] CC_taunt 0
-
 scoreboard players remove @a[scores={unstoppable=1..}] unstoppable 1
 
-execute at @a[scores={unstoppable=1..}] positioned ~ ~2.7 ~ unless entity @e[distance=..1,tag=display_unstoppable] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_unstoppable"],Marker:1b,Invisible:1b,CustomName:{text:"[",extra:[{text:"UNSTOPPABLE",color:"yellow",bold:1b},{text:"]",color:"gold",bold:1b}],color:"gold",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={unstoppable=1..}] positioned ~ ~2.7 ~ run tp @e[distance=..1,tag=display_unstoppable] ~ ~ ~
-execute as @e[tag=display_unstoppable] at @s positioned ~ ~-2.7 ~ unless entity @a[distance=..1,scores={unstoppable=1..}] run kill @s
+scoreboard players remove @a[scores={cleanse=1..}] cleanse 1
+
+execute at @a[scores={unstoppable=1..}] unless entity @e[distance=..1,tag=display_unstoppable] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_unstoppable"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"[",color:"gold",bold:1b},{text:"UNSTOPPABLE",color:"yellow",bold:1b},{text:"]",color:"gold",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.7f,0.0f]}}
+execute at @a[scores={unstoppable=1..}] run tp @e[distance=..1,tag=display_unstoppable] ~ ~ ~
+execute as @e[tag=display_unstoppable] at @s unless entity @a[distance=..1,scores={unstoppable=1..}] run kill @s
 
 #effects removal ====================================================================================================================================================================================================================================
 
 scoreboard players remove @a[scores={CC_stun=-10..}] CC_stun 1
 scoreboard players remove @a[scores={CC_root=-10..}] CC_root 1
 scoreboard players remove @a[scores={CC_grounded=-10..}] CC_grounded 1
+scoreboard players remove @a[scores={CC_knockup=-10..}] CC_knockup 1
 
 
 scoreboard players remove @a[scores={CC_banish=1..}] CC_banish 1
@@ -36,15 +23,22 @@ scoreboard players remove @a[scores={CC_intangible=1..}] CC_intangible 1
 scoreboard players remove @a[scores={CC_defiled=1..}] CC_defiled 1
 scoreboard players remove @a[scores={CC_shieldbreak=1..}] CC_shieldbreak 1
 scoreboard players remove @a[scores={CC_silence=1..}] CC_silence 1
-scoreboard players remove @a[scores={CC_knockup=1..}] CC_knockup 1
 scoreboard players remove @a[scores={CC_stagger=1..}] CC_stagger 1
+
+scoreboard players remove @a[scores={CC_entangled=1..}] CC_entangled 1
+
+
+scoreboard players remove @e[scores={CC_taunt=1..}] CC_taunt 1
+scoreboard players remove @e[scores={CC_charm=1..}] CC_charm 1
+scoreboard players remove @e[scores={CC_fear=1..}] CC_fear 1
+
 scoreboard players remove @a[scores={CC_crystalize=1..}] CC_crystalize 1
-scoreboard players remove @a[scores={CC_taunt=1..}] CC_taunt 1
 scoreboard players remove @a[scores={CC_confusion=1..}] CC_confusion 1
 scoreboard players remove @a[scores={CC_knockdown=1..}] CC_knockdown 1
 scoreboard players remove @a[scores={CC_afterburn=1..}] CC_afterburn 1
 scoreboard players remove @a[scores={CC_hypothermia=1..}] CC_hypothermia 1
-scoreboard players remove @a[scores={CC_glaciate=1..}] CC_glaciate 1
+scoreboard players remove @e[scores={CC_glaciate=1..}] CC_glaciate 1
+
 
 
 scoreboard players remove @a[scores={CC_madness=1..}] CC_madness 1
@@ -58,62 +52,62 @@ scoreboard players remove @a[scores={CC_noflag=1..}] CC_noflag 1
 # display ====================================================================================================================================================================================================================================
 
 
-title @a[scores={CC_mindrot=1..}] times 0 5 0
-title @a[scores={CC_mindrot=1..2}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"1",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=3..4}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"2",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=5..6}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"3",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=7..8}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"4",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=9..10}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"5",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=11..12}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"6",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=13..14}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"7",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=15..16}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"8",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=17..18}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"9",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=19..20}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"0",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=1..}] times 0 5 0
+#title @a[scores={CC_mindrot=1..2}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"1",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=3..4}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"2",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=5..6}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"3",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=7..8}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"4",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=9..10}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"5",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=11..12}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"6",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=13..14}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"7",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=15..16}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"8",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=17..18}] title [{text:"0",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"9",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=19..20}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"0",type:"text",color:"aqua"}]
 
-title @a[scores={CC_mindrot=21..22}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"1",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=23..24}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"2",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=25..26}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"3",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=27..28}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"4",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=29..30}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"5",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=31..32}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"6",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=33..34}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"7",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=35..36}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"8",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=37..38}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"9",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=39..40}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"0",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=21..22}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"1",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=23..24}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"2",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=25..26}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"3",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=27..28}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"4",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=29..30}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"5",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=31..32}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"6",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=33..34}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"7",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=35..36}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"8",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=37..38}] title [{text:"1",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"9",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=39..40}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"0",type:"text",color:"aqua"}]
 
-title @a[scores={CC_mindrot=41..42}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"1",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=43..44}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"2",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=45..46}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"3",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=47..48}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"4",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=49..50}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"5",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=51..52}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"6",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=53..54}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"7",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=55..56}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"8",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=57..58}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"9",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=59..60}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"0",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=41..42}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"1",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=43..44}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"2",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=45..46}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"3",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=47..48}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"4",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=49..50}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"5",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=51..52}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"6",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=53..54}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"7",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=55..56}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"8",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=57..58}] title [{text:"2",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"9",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=59..60}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"0",type:"text",color:"aqua"}]
 
-title @a[scores={CC_mindrot=61..62}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"1",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=63..64}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"2",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=65..66}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"3",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=67..68}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"4",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=69..70}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"5",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=71..72}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"6",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=73..74}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"7",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=75..76}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"8",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=77..78}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"9",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=79..80}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"0",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=61..62}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"1",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=63..64}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"2",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=65..66}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"3",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=67..68}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"4",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=69..70}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"5",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=71..72}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"6",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=73..74}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"7",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=75..76}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"8",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=77..78}] title [{text:"3",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"9",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=79..80}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"0",type:"text",color:"aqua"}]
 
-title @a[scores={CC_mindrot=81..82}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"1",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=83..84}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"2",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=85..86}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"3",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=87..88}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"4",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=89..90}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"5",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=91..92}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"6",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=93..94}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"7",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=95..96}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"8",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=97..98}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"9",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=99..100}] title [{text:"5",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"0",type:"text",color:"aqua"}]
-title @a[scores={CC_mindrot=1..}] subtitle {text:"MIND ROT",color:"aqua",bold:1b,type:"text"}
+#title @a[scores={CC_mindrot=81..82}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"1",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=83..84}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"2",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=85..86}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"3",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=87..88}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"4",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=89..90}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"5",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=91..92}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"6",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=93..94}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"7",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=95..96}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"8",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=97..98}] title [{text:"4",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"9",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=99..100}] title [{text:"5",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"0",type:"text",color:"aqua"}]
+#title @a[scores={CC_mindrot=1..}] subtitle {text:"MIND ROT",color:"aqua",bold:1b,type:"text"}
 
 
 
@@ -235,121 +229,121 @@ title @a[scores={CC_root=1..}] subtitle {text:"ROOTED",color:"red",bold:1b,type:
 
 
 title @a[scores={CC_disarm=1..}] times 0 5 0
-title @a[scores={CC_disarm=1..2,CC_stun=..0,CC_knockup=..0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[scores={CC_disarm=3..4,CC_stun=..0,CC_knockup=..0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[scores={CC_disarm=5..6,CC_stun=..0,CC_knockup=..0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[scores={CC_disarm=7..8,CC_stun=..0,CC_knockup=..0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[scores={CC_disarm=9..10,CC_stun=..0,CC_knockup=..0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[scores={CC_disarm=11..12,CC_stun=..0,CC_knockup=..0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[scores={CC_disarm=13..14,CC_stun=..0,CC_knockup=..0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[scores={CC_disarm=15..16,CC_stun=..0,CC_knockup=..0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[scores={CC_disarm=17..18,CC_stun=..0,CC_knockup=..0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[scores={CC_disarm=19..20,CC_stun=..0,CC_knockup=..0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_disarm=1..2,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_disarm=3..4,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_disarm=5..6,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_disarm=7..8,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_disarm=9..10,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_disarm=11..12,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_disarm=13..14,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_disarm=15..16,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_disarm=17..18,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_disarm=19..20,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[scores={CC_disarm=21..22,CC_stun=..0,CC_knockup=..0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[scores={CC_disarm=23..24,CC_stun=..0,CC_knockup=..0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[scores={CC_disarm=25..26,CC_stun=..0,CC_knockup=..0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[scores={CC_disarm=27..28,CC_stun=..0,CC_knockup=..0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[scores={CC_disarm=29..30,CC_stun=..0,CC_knockup=..0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[scores={CC_disarm=31..32,CC_stun=..0,CC_knockup=..0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[scores={CC_disarm=33..34,CC_stun=..0,CC_knockup=..0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[scores={CC_disarm=35..36,CC_stun=..0,CC_knockup=..0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[scores={CC_disarm=37..38,CC_stun=..0,CC_knockup=..0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[scores={CC_disarm=39..40,CC_stun=..0,CC_knockup=..0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_disarm=21..22,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_disarm=23..24,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_disarm=25..26,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_disarm=27..28,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_disarm=29..30,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_disarm=31..32,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_disarm=33..34,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_disarm=35..36,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_disarm=37..38,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_disarm=39..40,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[scores={CC_disarm=41..42,CC_stun=..0,CC_knockup=..0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[scores={CC_disarm=43..44,CC_stun=..0,CC_knockup=..0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[scores={CC_disarm=45..46,CC_stun=..0,CC_knockup=..0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[scores={CC_disarm=47..48,CC_stun=..0,CC_knockup=..0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[scores={CC_disarm=49..50,CC_stun=..0,CC_knockup=..0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[scores={CC_disarm=51..52,CC_stun=..0,CC_knockup=..0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[scores={CC_disarm=53..54,CC_stun=..0,CC_knockup=..0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[scores={CC_disarm=55..56,CC_stun=..0,CC_knockup=..0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[scores={CC_disarm=57..58,CC_stun=..0,CC_knockup=..0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[scores={CC_disarm=59..60,CC_stun=..0,CC_knockup=..0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_disarm=41..42,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_disarm=43..44,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_disarm=45..46,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_disarm=47..48,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_disarm=49..50,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_disarm=51..52,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_disarm=53..54,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_disarm=55..56,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_disarm=57..58,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_disarm=59..60,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[scores={CC_disarm=61..62,CC_stun=..0,CC_knockup=..0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[scores={CC_disarm=63..64,CC_stun=..0,CC_knockup=..0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[scores={CC_disarm=65..66,CC_stun=..0,CC_knockup=..0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[scores={CC_disarm=67..68,CC_stun=..0,CC_knockup=..0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[scores={CC_disarm=69..70,CC_stun=..0,CC_knockup=..0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[scores={CC_disarm=71..72,CC_stun=..0,CC_knockup=..0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[scores={CC_disarm=73..74,CC_stun=..0,CC_knockup=..0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[scores={CC_disarm=75..76,CC_stun=..0,CC_knockup=..0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[scores={CC_disarm=77..78,CC_stun=..0,CC_knockup=..0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[scores={CC_disarm=79..80,CC_stun=..0,CC_knockup=..0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_disarm=61..62,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_disarm=63..64,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_disarm=65..66,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_disarm=67..68,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_disarm=69..70,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_disarm=71..72,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_disarm=73..74,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_disarm=75..76,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_disarm=77..78,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_disarm=79..80,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[scores={CC_disarm=81..82,CC_stun=..0,CC_knockup=..0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[scores={CC_disarm=83..84,CC_stun=..0,CC_knockup=..0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[scores={CC_disarm=85..86,CC_stun=..0,CC_knockup=..0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[scores={CC_disarm=87..88,CC_stun=..0,CC_knockup=..0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[scores={CC_disarm=89..90,CC_stun=..0,CC_knockup=..0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[scores={CC_disarm=91..92,CC_stun=..0,CC_knockup=..0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[scores={CC_disarm=93..94,CC_stun=..0,CC_knockup=..0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[scores={CC_disarm=95..96,CC_stun=..0,CC_knockup=..0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[scores={CC_disarm=97..98,CC_stun=..0,CC_knockup=..0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[scores={CC_disarm=99..100,CC_stun=..0,CC_knockup=..0}] title [{text:"5",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
-title @a[scores={CC_disarm=1..,CC_stun=..0,CC_knockup=..0}] subtitle {text:"DISARMED",color:"red",bold:1b,type:"text"}
+title @a[scores={CC_disarm=81..82,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_disarm=83..84,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_disarm=85..86,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_disarm=87..88,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_disarm=89..90,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_disarm=91..92,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_disarm=93..94,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_disarm=95..96,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_disarm=97..98,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_disarm=99..100,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_fear=0,CC_entangled=0}] title [{text:"5",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_disarm=1..,CC_stun=..0,CC_knockup=..0,CC_charm=0}] subtitle {text:"DISARMED",color:"red",bold:1b,type:"text"}
 
 
 
 
 title @a[scores={CC_grounded=1..}] times 0 5 0
-title @a[scores={CC_grounded=1..2,CC_knockdown=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[scores={CC_grounded=3..4,CC_knockdown=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[scores={CC_grounded=5..6,CC_knockdown=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[scores={CC_grounded=7..8,CC_knockdown=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[scores={CC_grounded=9..10,CC_knockdown=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[scores={CC_grounded=11..12,CC_knockdown=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[scores={CC_grounded=13..14,CC_knockdown=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[scores={CC_grounded=15..16,CC_knockdown=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[scores={CC_grounded=17..18,CC_knockdown=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[scores={CC_grounded=19..20,CC_knockdown=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_grounded=1..2,CC_knockdown=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_grounded=3..4,CC_knockdown=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_grounded=5..6,CC_knockdown=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_grounded=7..8,CC_knockdown=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_grounded=9..10,CC_knockdown=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_grounded=11..12,CC_knockdown=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_grounded=13..14,CC_knockdown=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_grounded=15..16,CC_knockdown=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_grounded=17..18,CC_knockdown=0,CC_entangled=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_grounded=19..20,CC_knockdown=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[scores={CC_grounded=21..22,CC_knockdown=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[scores={CC_grounded=23..24,CC_knockdown=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[scores={CC_grounded=25..26,CC_knockdown=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[scores={CC_grounded=27..28,CC_knockdown=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[scores={CC_grounded=29..30,CC_knockdown=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[scores={CC_grounded=31..32,CC_knockdown=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[scores={CC_grounded=33..34,CC_knockdown=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[scores={CC_grounded=35..36,CC_knockdown=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[scores={CC_grounded=37..38,CC_knockdown=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[scores={CC_grounded=39..40,CC_knockdown=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_grounded=21..22,CC_knockdown=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_grounded=23..24,CC_knockdown=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_grounded=25..26,CC_knockdown=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_grounded=27..28,CC_knockdown=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_grounded=29..30,CC_knockdown=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_grounded=31..32,CC_knockdown=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_grounded=33..34,CC_knockdown=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_grounded=35..36,CC_knockdown=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_grounded=37..38,CC_knockdown=0,CC_entangled=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_grounded=39..40,CC_knockdown=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[scores={CC_grounded=41..42,CC_knockdown=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[scores={CC_grounded=43..44,CC_knockdown=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[scores={CC_grounded=45..46,CC_knockdown=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[scores={CC_grounded=47..48,CC_knockdown=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[scores={CC_grounded=49..50,CC_knockdown=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[scores={CC_grounded=51..52,CC_knockdown=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[scores={CC_grounded=53..54,CC_knockdown=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[scores={CC_grounded=55..56,CC_knockdown=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[scores={CC_grounded=57..58,CC_knockdown=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[scores={CC_grounded=59..60,CC_knockdown=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_grounded=41..42,CC_knockdown=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_grounded=43..44,CC_knockdown=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_grounded=45..46,CC_knockdown=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_grounded=47..48,CC_knockdown=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_grounded=49..50,CC_knockdown=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_grounded=51..52,CC_knockdown=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_grounded=53..54,CC_knockdown=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_grounded=55..56,CC_knockdown=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_grounded=57..58,CC_knockdown=0,CC_entangled=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_grounded=59..60,CC_knockdown=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[scores={CC_grounded=61..62,CC_knockdown=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[scores={CC_grounded=63..64,CC_knockdown=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[scores={CC_grounded=65..66,CC_knockdown=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[scores={CC_grounded=67..68,CC_knockdown=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[scores={CC_grounded=69..70,CC_knockdown=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[scores={CC_grounded=71..72,CC_knockdown=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[scores={CC_grounded=73..74,CC_knockdown=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[scores={CC_grounded=75..76,CC_knockdown=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[scores={CC_grounded=77..78,CC_knockdown=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[scores={CC_grounded=79..80,CC_knockdown=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_grounded=61..62,CC_knockdown=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_grounded=63..64,CC_knockdown=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_grounded=65..66,CC_knockdown=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_grounded=67..68,CC_knockdown=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_grounded=69..70,CC_knockdown=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_grounded=71..72,CC_knockdown=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_grounded=73..74,CC_knockdown=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_grounded=75..76,CC_knockdown=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_grounded=77..78,CC_knockdown=0,CC_entangled=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_grounded=79..80,CC_knockdown=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[scores={CC_grounded=81..82,CC_knockdown=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[scores={CC_grounded=83..84,CC_knockdown=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[scores={CC_grounded=85..86,CC_knockdown=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[scores={CC_grounded=87..88,CC_knockdown=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[scores={CC_grounded=89..90,CC_knockdown=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[scores={CC_grounded=91..92,CC_knockdown=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[scores={CC_grounded=93..94,CC_knockdown=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[scores={CC_grounded=95..96,CC_knockdown=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[scores={CC_grounded=97..98,CC_knockdown=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[scores={CC_grounded=99..100,CC_knockdown=0}] title [{text:"5",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
-title @a[scores={CC_grounded=1..,CC_knockdown=0}] subtitle {text:"GROUNDED",color:"red",bold:1b,type:"text"}
+title @a[scores={CC_grounded=81..82,CC_knockdown=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_grounded=83..84,CC_knockdown=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_grounded=85..86,CC_knockdown=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_grounded=87..88,CC_knockdown=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_grounded=89..90,CC_knockdown=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_grounded=91..92,CC_knockdown=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_grounded=93..94,CC_knockdown=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_grounded=95..96,CC_knockdown=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_grounded=97..98,CC_knockdown=0,CC_entangled=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_grounded=99..100,CC_knockdown=0,CC_entangled=0}] title [{text:"5",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_grounded=1..,CC_knockdown=0,CC_entangled=0}] subtitle {text:"GROUNDED",color:"red",bold:1b,type:"text"}
 
 
 title @a[scores={CC_petrify=1..}] times 0 5 0
@@ -589,61 +583,61 @@ title @a[scores={CC_shieldbreak=1..,CC_crippled=0}] subtitle {text:"SHIELD BREAK
 
 
 title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=1..}] times 0 5 0
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=1..2,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=3..4,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=5..6,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=7..8,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=9..10,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=11..12,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=13..14,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=15..16,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=17..18,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=19..20,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=1..2,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=3..4,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=5..6,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=7..8,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=9..10,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=11..12,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=13..14,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=15..16,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=17..18,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=19..20,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=21..22,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=23..24,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=25..26,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=27..28,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=29..30,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=31..32,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=33..34,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=35..36,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=37..38,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=39..40,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=21..22,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=23..24,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=25..26,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=27..28,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=29..30,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=31..32,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=33..34,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=35..36,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=37..38,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=39..40,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=41..42,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=43..44,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=45..46,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=47..48,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=49..50,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=51..52,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=53..54,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=55..56,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=57..58,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=59..60,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=41..42,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=43..44,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=45..46,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=47..48,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=49..50,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=51..52,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=53..54,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=55..56,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=57..58,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=59..60,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=61..62,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=63..64,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=65..66,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=67..68,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=69..70,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=71..72,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=73..74,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=75..76,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=77..78,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=79..80,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=61..62,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=63..64,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=65..66,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=67..68,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=69..70,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=71..72,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=73..74,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=75..76,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=77..78,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=79..80,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
 
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=81..82,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=83..84,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=85..86,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=87..88,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=89..90,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=91..92,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=93..94,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=95..96,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=97..98,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=99..100,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] title [{text:"5",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
-title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=1..,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] subtitle {text:"SILENCED",color:"red",bold:1b,type:"text"}
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=81..82,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=83..84,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=85..86,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=87..88,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=89..90,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=91..92,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=93..94,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=95..96,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=97..98,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=99..100,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] title [{text:"5",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=1..,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0,CC_charm=0}] subtitle {text:"SILENCED",color:"red",bold:1b,type:"text"}
 
 
 
@@ -882,6 +876,180 @@ title @a[scores={frostbite=97..98}] title [{text:"4",type:"text",color:"aqua"},{
 title @a[scores={frostbite=99..100}] title [{text:"5",type:"text",color:"aqua"},{text:".",type:"text",color:"dark_aqua"},{text:"0",type:"text",color:"aqua"}]
 title @a[scores={frostbite=1..}] subtitle {text:"FROSTBITE",color:"aqua",bold:1b,type:"text"}
 
+title @a[scores={CC_charm=1..}] times 0 5 0
+title @a[scores={CC_charm=1..2}] title [{text:"0",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"1",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=3..4}] title [{text:"0",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"2",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=5..6}] title [{text:"0",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"3",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=7..8}] title [{text:"0",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"4",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=9..10}] title [{text:"0",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"5",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=11..12}] title [{text:"0",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"6",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=13..14}] title [{text:"0",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"7",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=15..16}] title [{text:"0",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"8",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=17..18}] title [{text:"0",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"9",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=19..20}] title [{text:"1",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"0",type:"text",color:"light_purple"}]
+
+title @a[scores={CC_charm=21..22}] title [{text:"1",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"1",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=23..24}] title [{text:"1",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"2",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=25..26}] title [{text:"1",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"3",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=27..28}] title [{text:"1",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"4",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=29..30}] title [{text:"1",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"5",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=31..32}] title [{text:"1",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"6",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=33..34}] title [{text:"1",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"7",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=35..36}] title [{text:"1",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"8",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=37..38}] title [{text:"1",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"9",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=39..40}] title [{text:"2",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"0",type:"text",color:"light_purple"}]
+
+title @a[scores={CC_charm=41..42}] title [{text:"2",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"1",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=43..44}] title [{text:"2",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"2",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=45..46}] title [{text:"2",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"3",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=47..48}] title [{text:"2",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"4",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=49..50}] title [{text:"2",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"5",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=51..52}] title [{text:"2",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"6",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=53..54}] title [{text:"2",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"7",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=55..56}] title [{text:"2",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"8",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=57..58}] title [{text:"2",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"9",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=59..60}] title [{text:"3",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"0",type:"text",color:"light_purple"}]
+
+title @a[scores={CC_charm=61..62}] title [{text:"3",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"1",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=63..64}] title [{text:"3",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"2",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=65..66}] title [{text:"3",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"3",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=67..68}] title [{text:"3",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"4",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=69..70}] title [{text:"3",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"5",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=71..72}] title [{text:"3",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"6",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=73..74}] title [{text:"3",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"7",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=75..76}] title [{text:"3",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"8",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=77..78}] title [{text:"3",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"9",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=79..80}] title [{text:"4",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"0",type:"text",color:"light_purple"}]
+
+title @a[scores={CC_charm=81..82}] title [{text:"4",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"1",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=83..84}] title [{text:"4",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"2",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=85..86}] title [{text:"4",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"3",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=87..88}] title [{text:"4",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"4",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=89..90}] title [{text:"4",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"5",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=91..92}] title [{text:"4",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"6",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=93..94}] title [{text:"4",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"7",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=95..96}] title [{text:"4",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"8",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=97..98}] title [{text:"4",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"9",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=99..100}] title [{text:"5",type:"text",color:"light_purple"},{text:".",type:"text",color:"dark_purple"},{text:"0",type:"text",color:"light_purple"}]
+title @a[scores={CC_charm=1..}] subtitle {text:"CHARMED",color:"light_purple",bold:1b,type:"text"}
+
+
+title @a[scores={CC_fear=1..}] times 0 5 0
+title @a[scores={CC_fear=1..2}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_fear=3..4}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_fear=5..6}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_fear=7..8}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_fear=9..10}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_fear=11..12}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_fear=13..14}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_fear=15..16}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_fear=17..18}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_fear=19..20}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+
+title @a[scores={CC_fear=21..22}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_fear=23..24}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_fear=25..26}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_fear=27..28}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_fear=29..30}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_fear=31..32}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_fear=33..34}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_fear=35..36}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_fear=37..38}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_fear=39..40}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+
+title @a[scores={CC_fear=41..42}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_fear=43..44}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_fear=45..46}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_fear=47..48}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_fear=49..50}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_fear=51..52}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_fear=53..54}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_fear=55..56}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_fear=57..58}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_fear=59..60}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+
+title @a[scores={CC_fear=61..62}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_fear=63..64}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_fear=65..66}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_fear=67..68}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_fear=69..70}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_fear=71..72}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_fear=73..74}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_fear=75..76}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_fear=77..78}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_fear=79..80}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+
+title @a[scores={CC_fear=81..82}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_fear=83..84}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_fear=85..86}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_fear=87..88}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_fear=89..90}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_fear=91..92}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_fear=93..94}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_fear=95..96}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_fear=97..98}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_fear=99..100}] title [{text:"5",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_fear=1..}] subtitle {text:"TERRIFIED",color:"red",bold:1b,type:"text"}
+
+
+
+title @a[scores={CC_entangled=1..}] times 0 5 0
+title @a[scores={CC_entangled=1..2}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_entangled=3..4}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_entangled=5..6}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_entangled=7..8}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_entangled=9..10}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_entangled=11..12}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_entangled=13..14}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_entangled=15..16}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_entangled=17..18}] title [{text:"0",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_entangled=19..20}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+
+title @a[scores={CC_entangled=21..22}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_entangled=23..24}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_entangled=25..26}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_entangled=27..28}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_entangled=29..30}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_entangled=31..32}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_entangled=33..34}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_entangled=35..36}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_entangled=37..38}] title [{text:"1",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_entangled=39..40}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+
+title @a[scores={CC_entangled=41..42}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_entangled=43..44}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_entangled=45..46}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_entangled=47..48}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_entangled=49..50}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_entangled=51..52}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_entangled=53..54}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_entangled=55..56}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_entangled=57..58}] title [{text:"2",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_entangled=59..60}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+
+title @a[scores={CC_entangled=61..62}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_entangled=63..64}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_entangled=65..66}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_entangled=67..68}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_entangled=69..70}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_entangled=71..72}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_entangled=73..74}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_entangled=75..76}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_entangled=77..78}] title [{text:"3",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_entangled=79..80}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+
+title @a[scores={CC_entangled=81..82}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"1",type:"text",color:"red"}]
+title @a[scores={CC_entangled=83..84}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"2",type:"text",color:"red"}]
+title @a[scores={CC_entangled=85..86}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"3",type:"text",color:"red"}]
+title @a[scores={CC_entangled=87..88}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"4",type:"text",color:"red"}]
+title @a[scores={CC_entangled=89..90}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"5",type:"text",color:"red"}]
+title @a[scores={CC_entangled=91..92}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"6",type:"text",color:"red"}]
+title @a[scores={CC_entangled=93..94}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"7",type:"text",color:"red"}]
+title @a[scores={CC_entangled=95..96}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"8",type:"text",color:"red"}]
+title @a[scores={CC_entangled=97..98}] title [{text:"4",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"9",type:"text",color:"red"}]
+title @a[scores={CC_entangled=99..100}] title [{text:"5",type:"text",color:"red"},{text:".",type:"text",color:"dark_red"},{text:"0",type:"text",color:"red"}]
+title @a[scores={CC_entangled=1..}] subtitle {text:"ENTANGLED",color:"red",bold:1b,type:"text"}
+
 title @a[scores={CC_flag=1..}] times 0 5 1
 title @a[scores={CC_flag=1..}] title {text:" ",type:"text"}
 title @a[scores={CC_flag=1..}] subtitle {text:"CARRY THE FLAG BACK TO YOUR BASE",color:"aqua",bold:1b,type:"text"}
@@ -896,80 +1064,92 @@ title @a[scores={CC_afterburn=1..}] subtitle {text:"AFTERBURN",color:"red",bold:
 
 # STANDS ====================================================================================================================================================================================================================================
 
-execute at @a[scores={CC_stun=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_stun] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_stun"],Marker:1b,Invisible:1b,CustomName:{text:"STUNNED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_stun=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_stun] ~ ~ ~
-execute as @e[tag=display_stun] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_stun=1..}] run kill @s
+execute at @a[scores={CC_stun=1..}] unless entity @e[distance=..1,tag=display_stun] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_stun"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"STUNNED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_stun=1..}] run tp @e[distance=..1,tag=display_stun] ~ ~ ~
+execute as @e[tag=display_stun] at @s unless entity @a[distance=..1,scores={CC_stun=1..}] run kill @s
 
-execute at @a[scores={CC_root=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_root] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_root"],Marker:1b,Invisible:1b,CustomName:{text:"ROOTED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_root=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_root] ~ ~ ~
-execute as @e[tag=display_root] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_root=1..}] run kill @s
+execute at @a[scores={CC_root=1..}] unless entity @e[distance=..1,tag=display_root] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_root"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"ROOTED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_root=1..}] run tp @e[distance=..1,tag=display_root] ~ ~ ~
+execute as @e[tag=display_root] at @s unless entity @a[distance=..1,scores={CC_root=1..}] run kill @s
 
-execute at @a[scores={CC_disarm=1..,CC_stun=..0,CC_knockup=..0}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_disarm] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_disarm"],Marker:1b,Invisible:1b,CustomName:{text:"DISARMED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_disarm=1..,CC_stun=..0,CC_knockup=..0}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_disarm] ~ ~ ~
-execute as @e[tag=display_disarm] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_disarm=1..}] run kill @s
+execute at @a[scores={CC_disarm=1..,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_entangled=0}] unless entity @e[distance=..1,tag=display_disarm] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_disarm"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"DISARMED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_disarm=1..,CC_stun=..0,CC_knockup=..0,CC_charm=0,CC_entangled=0}] run tp @e[distance=..1,tag=display_disarm] ~ ~ ~
+execute as @e[tag=display_disarm] at @s unless entity @a[distance=..1,scores={CC_disarm=1..}] run kill @s
 
-execute at @a[scores={CC_grounded=1..,CC_knockdown=0}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_grounded] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_grounded"],Marker:1b,Invisible:1b,CustomName:{text:"GROUNDED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_grounded=1..,CC_knockdown=0}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_grounded] ~ ~ ~
-execute as @e[tag=display_grounded] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_grounded=1..,CC_knockdown=0}] run kill @s
+execute at @a[scores={CC_grounded=1..,CC_knockdown=0,CC_entangled=0}] unless entity @e[distance=..1,tag=display_grounded] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_grounded"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"GROUNDED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_grounded=1..,CC_knockdown=0,CC_entangled=0}] run tp @e[distance=..1,tag=display_grounded] ~ ~ ~
+execute as @e[tag=display_grounded] at @s unless entity @a[distance=..1,scores={CC_grounded=1..,CC_knockdown=0,CC_entangled=0}] run kill @s
 
-execute at @a[scores={CC_exhaust=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_exhaust] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_exhaust"],Marker:1b,Invisible:1b,CustomName:{text:"EXHAUSTED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_exhaust=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_exhaust] ~ ~ ~
-execute as @e[tag=display_exhaust] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_exhaust=1..}] run kill @s
+execute at @a[scores={CC_exhaust=1..}] unless entity @e[distance=..1,tag=display_exhaust] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_exhaust"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"EXHAUSTED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_exhaust=1..}] run tp @e[distance=..1,tag=display_exhaust] ~ ~ ~
+execute as @e[tag=display_exhaust] at @s unless entity @a[distance=..1,scores={CC_exhaust=1..}] run kill @s
 
-execute at @a[scores={CC_defiled=1..,CC_crippled=0}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_defiled] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_defiled"],Marker:1b,Invisible:1b,CustomName:{text:"DEFILED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_defiled=1..,CC_crippled=0}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_defiled] ~ ~ ~
-execute as @e[tag=display_defiled] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_defiled=1..}] run kill @s
+execute at @a[scores={CC_defiled=1..,CC_crippled=0}] unless entity @e[distance=..1,tag=display_defiled] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_defiled"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"DEFILED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_defiled=1..,CC_crippled=0}] run tp @e[distance=..1,tag=display_defiled] ~ ~ ~
+execute as @e[tag=display_defiled] at @s unless entity @a[distance=..1,scores={CC_defiled=1..}] run kill @s
 
-execute at @a[scores={CC_shieldbreak=1..,CC_crippled=0}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_shieldbreak] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_shieldbreak"],Marker:1b,Invisible:1b,CustomName:{text:"SHIELD BREAK",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_shieldbreak=1..,CC_crippled=0}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_shieldbreak] ~ ~ ~
-execute as @e[tag=display_shieldbreak] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_shieldbreak=1..}] run kill @s
+execute at @a[scores={CC_shieldbreak=1..,CC_crippled=0}] unless entity @e[distance=..1,tag=display_shieldbreak] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_shieldbreak"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"SHIELDBREAK",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_shieldbreak=1..,CC_crippled=0}] run tp @e[distance=..1,tag=display_shieldbreak] ~ ~ ~
+execute as @e[tag=display_shieldbreak] at @s unless entity @a[distance=..1,scores={CC_shieldbreak=1..}] run kill @s
 
-execute at @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=1..,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_silence] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_silence"],Marker:1b,Invisible:1b,CustomName:{text:"SILENCED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=1..,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_petrify=0,shard_petrify=0}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_silence] ~ ~ ~
-execute as @e[tag=display_silence] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,tag=!waiting_room,tag=!respawn_box,scores={CC_silence=1..,CC_stun=..0}] run kill @s
+execute at @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=1..,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_charm=0,CC_petrify=0,shard_petrify=0}] unless entity @e[distance=..1,tag=display_silence] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_silence"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"SILENCED",color:"white",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[tag=!waiting_room,tag=!respawn_box,scores={CC_silence=1..,CC_stun=..0,CC_knockup=..0,CC_flag=0,CC_charm=0,CC_petrify=0,shard_petrify=0}] run tp @e[distance=..1,tag=display_silence] ~ ~ ~
+execute as @e[tag=display_silence] at @s unless entity @a[distance=..1,tag=!waiting_room,tag=!respawn_box,scores={CC_silence=1..,CC_stun=..0}] run kill @s
 
-execute at @a[scores={CC_knockup=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_knockup] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_knockup"],Marker:1b,Invisible:1b,CustomName:{text:"AIRBORNE",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_knockup=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_knockup] ~ ~ ~
-execute as @e[tag=display_knockup] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_knockup=1..}] run kill @s
+execute at @a[scores={CC_knockup=1..}] unless entity @e[distance=..1,tag=display_knockup] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_knockup"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"AIRBORNE",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_knockup=1..}] run tp @e[distance=..1,tag=display_knockup] ~ ~ ~
+execute as @e[tag=display_knockup] at @s unless entity @a[distance=..1,scores={CC_knockup=1..}] run kill @s
 
-execute at @a[scores={CC_stagger=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_stagger] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_stagger"],Marker:1b,Invisible:1b,CustomName:{text:"STAGGERED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_stagger=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_stagger] ~ ~ ~
-execute as @e[tag=display_stagger] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_stagger=1..}] run kill @s
+execute at @a[scores={CC_stagger=1..}] unless entity @e[distance=..1,tag=display_stagger] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_stagger"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"STAGGERED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_stagger=1..}] run tp @e[distance=..1,tag=display_stagger] ~ ~ ~
+execute as @e[tag=display_stagger] at @s unless entity @a[distance=..1,scores={CC_stagger=1..}] run kill @s
 
-execute at @a[scores={CC_crippled=1..,CC_stun=..0,CC_knockup=..0}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_crippled] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_crippled"],Marker:1b,Invisible:1b,CustomName:{text:"CRIPPLED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_crippled=1..,CC_stun=..0,CC_knockup=..0}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_crippled] ~ ~ ~
-execute as @e[tag=display_crippled] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_crippled=1..,CC_stun=..0}] run kill @s
+execute at @a[scores={CC_crippled=1..,CC_stun=..0,CC_knockup=..0}] unless entity @e[distance=..1,tag=display_crippled] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_crippled"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"CRIPPLED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_crippled=1..,CC_stun=..0,CC_knockup=..0}] run tp @e[distance=..1,tag=display_crippled] ~ ~ ~
+execute as @e[tag=display_crippled] at @s unless entity @a[distance=..1,scores={CC_crippled=1..,CC_stun=..0}] run kill @s
 
-execute at @a[scores={CC_petrify=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_petrify] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_petrify"],Marker:1b,Invisible:1b,CustomName:{text:"PETRIFIED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_petrify=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_petrify] ~ ~ ~
-execute as @e[tag=display_petrify] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_petrify=1..}] run kill @s
+execute at @a[scores={CC_petrify=1..}] unless entity @e[distance=..1,tag=display_petrify] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_petrify"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"PETRIFIED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_petrify=1..}] run tp @e[distance=..1,tag=display_petrify] ~ ~ ~
+execute as @e[tag=display_petrify] at @s unless entity @a[distance=..1,scores={CC_petrify=1..}] run kill @s
 
-execute at @a[scores={CC_taunt=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_taunt] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_taunt"],Marker:1b,Invisible:1b,CustomName:{text:"TAUNTED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_taunt=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_taunt] ~ ~ ~
-execute as @e[tag=display_taunt] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_taunt=1..}] run kill @s
+execute at @a[scores={CC_taunt=1..}] unless entity @e[distance=..1,tag=display_taunt] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_taunt"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"TAUNTED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_taunt=1..}] run tp @e[distance=..1,tag=display_taunt] ~ ~ ~
+execute as @e[tag=display_taunt] at @s unless entity @a[distance=..1,scores={CC_taunt=1..}] run kill @s
 
-execute at @a[scores={frostbite=1..}] positioned ~ ~3 ~ unless entity @e[distance=..1,tag=display_frostbite] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_frostbite"],Marker:1b,Invisible:1b,CustomName:{text:"FROSTBITE",color:"aqua",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={frostbite=1..}] positioned ~ ~3 ~ run tp @e[distance=..1,tag=display_frostbite] ~ ~ ~
-execute as @e[tag=display_frostbite] at @s positioned ~ ~-3 ~ unless entity @a[distance=..1,scores={frostbite=1..}] run kill @s
+execute at @a[scores={CC_charm=1..}] unless entity @e[distance=..1,tag=display_charm] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_charm"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"CHARMED",color:"light_purple",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_charm=1..}] run tp @e[distance=..1,tag=display_charm] ~ ~ ~
+execute as @e[tag=display_charm] at @s unless entity @a[distance=..1,scores={CC_charm=1..}] run kill @s
 
-execute at @a[scores={CC_confusion=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_confusion] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_confusion"],Marker:1b,Invisible:1b,CustomName:{text:"CONFUSED",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_confusion=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_confusion] ~ ~ ~
-execute as @e[tag=display_confusion] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_confusion=1..}] run kill @s
+execute at @a[scores={frostbite=1..}] unless entity @e[distance=..1,tag=display_frostbite] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_frostbite"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"FROSTBITE",color:"aqua",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,3f,0.0f]}}
+execute at @a[scores={frostbite=1..}] run tp @e[distance=..1,tag=display_frostbite] ~ ~ ~
+execute as @e[tag=display_frostbite] at @s unless entity @a[distance=..1,scores={frostbite=1..}] run kill @s
 
-execute at @a[scores={CC_madness=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_madness] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_madness"],Marker:1b,Invisible:1b,CustomName:{text:"INSANE",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_madness=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_madness] ~ ~ ~
-execute as @e[tag=display_madness] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_madness=1..}] run kill @s
+execute at @a[scores={CC_confusion=1..}] unless entity @e[distance=..1,tag=display_confusion] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_confusion"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"CONFUSED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_confusion=1..}] run tp @e[distance=..1,tag=display_confusion] ~ ~ ~
+execute as @e[tag=display_confusion] at @s unless entity @a[distance=..1,scores={CC_confusion=1..}] run kill @s
 
-execute at @a[scores={CC_afterburn=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_afterburn] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_afterburn"],Marker:1b,Invisible:1b,CustomName:{text:"AFTERBURN",color:"red",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_afterburn=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_afterburn] ~ ~ ~
-execute as @e[tag=display_afterburn] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_afterburn=1..}] run kill @s
+execute at @a[scores={CC_madness=1..}] unless entity @e[distance=..1,tag=display_madness] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_madness"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"INSANE",color:"dark_red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_madness=1..}] run tp @e[distance=..1,tag=display_madness] ~ ~ ~
+execute as @e[tag=display_madness] at @s unless entity @a[distance=..1,scores={CC_madness=1..}] run kill @s
 
-execute at @a[scores={CC_hypothermia=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_hypothermia] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_hypothermia"],Marker:1b,Invisible:1b,CustomName:{text:"HYPOTHERMIA",color:"aqua",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_hypothermia=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_hypothermia] ~ ~ ~
-execute as @e[tag=display_hypothermia] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_hypothermia=1..}] run kill @s
+execute at @a[scores={CC_afterburn=1..}] unless entity @e[distance=..1,tag=display_afterburn] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_afterburn"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"AFTERBURN",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_afterburn=1..}] run tp @e[distance=..1,tag=display_afterburn] ~ ~ ~
+execute as @e[tag=display_afterburn] at @s unless entity @a[distance=..1,scores={CC_afterburn=1..}] run kill @s
 
-execute at @a[scores={CC_glaciate=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_glaciate] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_glaciate"],Marker:1b,Invisible:1b,CustomName:{text:"GLACIATED",color:"aqua",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={CC_glaciate=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_glaciate] ~ ~ ~
-execute as @e[tag=display_glaciate] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={CC_glaciate=1..}] run kill @s
+execute at @a[scores={CC_entangled=1..}] unless entity @e[distance=..1,tag=display_entangle] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_entangle"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"ENTANGLED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_entangled=1..}] run tp @e[distance=..1,tag=display_entangle] ~ ~ ~
+execute as @e[tag=display_entangle] at @s unless entity @a[distance=..1,scores={CC_entangled=1..}] run kill @s
+
+execute at @a[scores={CC_hypothermia=1..}] unless entity @e[distance=..1,tag=display_hypothermia] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_hypothermia"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"HYPOTHERMIA",color:"aqua",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,3f,0.0f]}}
+execute at @a[scores={CC_hypothermia=1..}] run tp @e[distance=..1,tag=display_hypothermia] ~ ~ ~
+execute as @e[tag=display_hypothermia] at @s unless entity @a[distance=..1,scores={CC_hypothermia=1..}] run kill @s
+
+execute at @a[scores={CC_glaciate=1..}] unless entity @e[distance=..1,tag=display_glaciate] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_glaciate"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"GLACIATED",color:"red",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={CC_glaciate=1..}] run tp @e[distance=..1,tag=display_glaciate] ~ ~ ~
+execute as @e[tag=display_glaciate] at @s unless entity @a[distance=..1,scores={CC_glaciate=1..}] run kill @s
+
+execute at @a[scores={CC_mindrot=1..}] unless entity @e[distance=..1,tag=display_mindrot] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_mindrot"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"MIND ROT",color:"aqua",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,3f,0.0f]}}
+execute at @a[scores={CC_mindrot=1..}] run tp @e[distance=..1,tag=display_mindrot] ~ ~ ~
+execute as @e[tag=display_mindrot] at @s unless entity @a[distance=..1,scores={CC_mindrot=1..}] run kill @s
 
 # ====================================================================================================================================================================================================================================

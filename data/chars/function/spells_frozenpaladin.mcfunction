@@ -42,8 +42,8 @@ tp @e[tag=chillrend,limit=1] @a[scores={char=3,s1_timer=1},limit=1]
 
 execute store result entity @e[tag=chillrend,limit=1] Rotation[1] float 1 run clear
 
-execute as @e[tag=chillrend] at @s unless block ^ ^1 ^1 #minecraft:dash run summon marker ~ ~ ~ {Tags:["chillrend_nova","entities_frozenpaladin"]}
-execute as @e[tag=chillrend] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
+execute as @e[tag=chillrend] at @s unless block ^ ^ ^0.5 #minecraft:dash run summon marker ~ ~ ~ {Tags:["chillrend_nova","entities_frozenpaladin"]}
+execute as @e[tag=chillrend] at @s unless block ^ ^ ^0.5 #minecraft:dash run kill @s
 execute as @e[tag=chillrend] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~0.8 ~
 execute as @e[tag=chillrend] at @s if block ~ ~-1 ~ #minecraft:dash run tp @s ~ ~-0.5 ~
 execute as @e[tag=chillrend] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
@@ -87,7 +87,6 @@ execute at @e[tag=chillrend_nova] run particle falling_dust{block_state:{Name:"m
 execute at @e[tag=chillrend_nova] run particle block{block_state:{Name:"minecraft:ice"}} ~ ~ ~ 3 0.5 3 1 100 force
 execute at @e[tag=chillrend_nova] run playsound entity.player.hurt_freeze master @a[distance=..15] ~ ~ ~ 1.0 0.6 1.0
 execute at @e[tag=chillrend_nova] run playsound entity.snow_golem.death master @a[distance=..15] ~ ~ ~ 0.4 0.6 1.0
-
 execute at @e[tag=chillrend_nova] as @e[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=3}] Team run scoreboard players set @s CC_root 40
 execute at @e[tag=chillrend_nova] as @e[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=3}] Team run scoreboard players set @s chillrend_root_vis 40
 
@@ -160,7 +159,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=3}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=261..,char=3}] s2_timer 0
 
 execute as @a[scores={char=3,CC_disarm=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_sword",Slot:0b}]}] run clear @a[scores={char=3}] diamond_sword
-item replace entity @a[scores={char=3,CC_disarm=0}] hotbar.0 with diamond_sword[minecraft:custom_name=[{color:"gray",text:"\""},{bold:1b,color:"gray",text:"Rimebreaker"},{color:"gray",text:"\""}],minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=3,CC_disarm=0}] hotbar.0 with diamond_sword[minecraft:custom_name=[{color:"gray",text:"\""},{bold:1b,color:"gray",text:"Rimebreaker"},{color:"gray",text:"\""}],minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=3,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=3}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=3,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:white_candle",minecraft:custom_name={text:"Chillrend",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:frost_walker":1}] 1

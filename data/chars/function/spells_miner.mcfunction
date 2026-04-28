@@ -35,7 +35,7 @@ execute at @e[tag=skullsplitted] run kill @e[tag=skullsplit]
 execute at @e[tag=skullsplitted] run particle crit ~ ~1 ~ 0.4 0.6 0.4 0 50
 execute at @e[tag=skullsplitted] run playsound item.shield.break master @a[distance=..15] ~ ~ ~ 1 0.7 1
 scoreboard players set @e[tag=skullsplitted] CC_shieldbreak 20
-damage @e[tag=skullsplitted,limit=1] 5 generic by @p[scores={char=40}] from @p[scores={char=40}]
+damage @e[tag=skullsplitted,limit=1] 5 player_attack by @p[scores={char=40}] from @p[scores={char=40}]
 tag @e remove skullsplitted
 
 #bugbait/taunt
@@ -52,9 +52,9 @@ execute at @a[scores={char=40,s2_timer=2,CC_silence=0}] as @e[tag=taunt_source_m
 execute at @a[scores={char=40,s2_timer=2,CC_silence=0}] at @e[tag=taunt_source_miner] run particle angry_villager ~ ~1.2 ~ 0.4 0.4 0.4 1 10
 
 
-execute as @e[tag=taunt_source_miner,scores={CC_taunt=2..}] at @s run rotate @s facing entity @p[scores={char=40}]
-execute as @e[tag=taunt_source_miner,scores={CC_taunt=2..}] at @s unless entity @a[distance=..6,scores={char=40}] run scoreboard players set @s CC_taunt 2
-tag @a[scores={CC_taunt=..1}] remove taunt_source_miner
+execute as @e[tag=taunt_source_miner,scores={CC_taunt=1..40}] at @s run rotate @s facing entity @p[scores={char=40}]
+#execute as @e[tag=taunt_source_miner,scores={CC_taunt=1..40}] at @s unless entity @a[distance=..6,scores={char=40}] run scoreboard players set @s CC_taunt 2
+tag @e[scores={CC_taunt=..1}] remove taunt_source_miner
 
 
 
@@ -69,7 +69,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=40}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=341..,char=40}] s2_timer 0
 
 execute as @a[scores={char=40}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_pickaxe",Slot:0b}]}] run clear @a[scores={char=40}] iron_pickaxe
-item replace entity @a[scores={char=40}] hotbar.0 with iron_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Pick"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=40}] hotbar.0 with iron_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Pick"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=40,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=40}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=40,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:iron_block",minecraft:custom_name={text:"Skullsplitter",color:"dark_aqua",bold:1b}] 1

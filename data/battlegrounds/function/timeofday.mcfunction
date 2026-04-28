@@ -35,3 +35,5 @@ execute if score map settings matches 23 run time set 12500
 #temple of rainmaker
 execute if score map settings matches 29 run time set 12000
 
+#pier
+execute if score map settings matches 30 run time set 12800

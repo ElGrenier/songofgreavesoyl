@@ -4,9 +4,12 @@ effect give @a[scores={char=60},nbt={SelectedItem:{id:"minecraft:bow"}}] weaknes
 
 #starmaker
 
-execute at @a[scores={char=60,arrowcd_1=..10}] run tag @e[type=minecraft:arrow,distance=..2] add starfather_ar
+execute at @a[scores={char=60,arrowcd_1=..10}] run tag @e[type=arrow,distance=..2] add starfather_ar
 execute at @e[tag=starfather_ar] run particle sculk_charge_pop ~ ~ ~ 0.1 0.1 0.1 0.15 5
 execute at @e[tag=starfather_ar] run particle scrape ~ ~ ~ 0.5 0.5 0.5 0.1 1
+
+tag @e[tag=starfather_ar] add projectile
+scoreboard players operation @e[tag=projectile,tag=starfather_ar] Team = @p[scores={char=60}] Team
 
 
 execute at @a[scores={char=60,CC_disarm=1..}] run kill @e[tag=starfather_ar]
@@ -21,7 +24,7 @@ execute at @a[scores={char=60,CelestialBody3=200..}] unless entity @e[tag=celest
 execute at @a[scores={char=60,CelestialBody4=200..}] unless entity @e[tag=celestial_visual_4] run summon block_display ~ ~ ~ {Tags:["celestial_visual_4","celestial_bodies","entities_starfather"],teleport_duration:1,block_state: {Name: "minecraft:deepslate_lapis_ore"}, transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.625f,0.625f,0.625f], translation: [-0.3125f, -0.3125f, -0.3125f]}}
 
 execute as @a[scores={char=60}] at @s run tp @e[tag=celestial_visual_core] ~ ~1 ~
-execute as @e[tag=celestial_visual_core] at @s run tp @s ~ ~ ~ ~4 0
+execute as @e[tag=celestial_visual_core] at @s run tp @s ~ ~ ~ ~3 0
 execute as @e[tag=celestial_visual_core] at @s run tp @e[tag=celestial_visual_1] ^-4 ^0.3 ^4
 execute as @e[tag=celestial_visual_core] at @s run tp @e[tag=celestial_visual_3] ^-4 ^0.3 ^-4
 execute as @e[tag=celestial_visual_core] at @s run tp @e[tag=celestial_visual_2] ^4 ^0.3 ^4
@@ -31,7 +34,7 @@ execute as @e[tag=celestial_visual_2] at @s run tp @s ~ ~ ~ facing entity @e[tag
 execute as @e[tag=celestial_visual_3] at @s run tp @s ~ ~ ~ facing entity @e[tag=celestial_visual_core,limit=1]
 execute as @e[tag=celestial_visual_4] at @s run tp @s ~ ~ ~ facing entity @e[tag=celestial_visual_core,limit=1]
 
-execute at @e[type=minecraft:block_display,tag=celestial_bodies] run particle dust{color:[0.38,0.96,0.86],scale:1.0f} ~ ~ ~ 0.25 0.25 0.25 0.1 3
+execute at @e[type=block_display,tag=celestial_bodies] run particle dust{color:[0.38,0.96,0.86],scale:1.0f} ~ ~ ~ 0.25 0.25 0.25 0.1 3
 
 execute at @a[scores={char=60,CelestialBody1=199}] run playsound block.end_portal_frame.fill master @a[distance=..12] ~ ~ ~ 1 0.8 1
 execute at @a[scores={char=60,CelestialBody2=199}] run playsound block.end_portal_frame.fill master @a[distance=..12] ~ ~ ~ 1 0.8 1
@@ -48,20 +51,21 @@ tp @e[tag=comet_rotation_fix,limit=1] @a[scores={char=60,arrowcd_1=2},limit=1]
 execute at @e[scores={char=60,arrowcd_1=15..}] run kill @e[tag=comet_rotation_fix]
 
 scoreboard players remove @a[scores={char=60,starfather_comets=1}] CelestialBodiesCount 1
+execute at @a[scores={char=60,starfather_comets=1}] run kill @e[tag=starfather_ar]
 execute at @a[scores={char=60,starfather_comets=1}] run playsound entity.evoker.cast_spell master @a[distance=..10] ~ ~ ~ 1 1.5 1
 execute at @a[scores={char=60,starfather_comets=1}] run playsound block.end_portal_frame.fill master @a[distance=..10] ~ ~ ~ 1 0.3 1
-execute at @a[scores={char=60,starfather_comets=1}] run summon marker ~ ~ ~ {Tags:["CelestialProjectile","entities_starfather","projectile"]}
+#execute at @a[scores={char=60,starfather_comets=1}] run summon marker ~ ~ ~ {Tags:["CelestialProjectile","entities_starfather","projectile"]}
 scoreboard players operation @e[tag=projectile,tag=CelestialProjectile] Team = @p[scores={char=60}] Team
-execute if entity @a[scores={char=60,starfather_comets=1}] run tp @e[tag=CelestialProjectile,limit=1] @e[tag=comet_rotation_fix,limit=1]
+#execute if entity @a[scores={char=60,starfather_comets=1}] run tp @e[tag=CelestialProjectile,limit=1] @e[tag=comet_rotation_fix,limit=1]
 #tp @e[tag=CelestialProjectile,limit=1] @a[scores={char=60,starfather_comets=1},limit=1]
-execute if entity @a[scores={char=60,starfather_comets=1},limit=1] as @e[tag=CelestialProjectile,limit=1] at @s run tp @s ~ ~1 ~
-execute if entity @a[scores={char=60,starfather_comets=1},limit=1] as @e[tag=CelestialProjectile,limit=1] at @s run tp @s ^ ^0.3 ^4
+execute if entity @a[scores={char=60,starfather_comets=1},limit=1] as @e[tag=CelestialProjectile,limit=1] at @s run tp @s ~ ~ ~ facing entity @p[scores={char=60}]
+execute if entity @a[scores={char=60,starfather_comets=1},limit=1] as @e[tag=CelestialProjectile,limit=1] at @s run tp @s ~ ~ ~ ~ 0
 
 execute at @e[tag=CelestialProjectile] run particle sculk_charge_pop ~ ~ ~ 0.2 0.2 0.2 0.0001 40 force
 execute at @e[tag=CelestialProjectile] run particle dust{color:[0.38,0.96,0.86],scale:1.0f} ~ ~ ~ 0.3 0.3 0.3 0.0001 10 force
 execute at @e[tag=CelestialProjectile] run particle smoke ~ ~ ~ 0.4 0.4 0.4 0.01 5 force
 
-execute as @e[tag=CelestialProjectile] at @s run tp @s ^ ^ ^0.7
+execute as @e[tag=CelestialProjectile] at @s run tp @s ^ ^ ^-0.7
 
 
 execute as @e[tag=CelestialProjectile] at @s unless block ^ ^ ^0.1 #minecraft:dash run summon marker ~ ~ ~ {Tags:["CelestialBoom","entities_starfather"]}
@@ -82,14 +86,15 @@ kill @e[tag=CelestialBoom]
 scoreboard players add @a[scores={starfather_comets=1..}] starfather_comets 1
 scoreboard players set @a[scores={starfather_comets=20..}] starfather_comets 0
 
-execute at @e[tag=starfather_ar] if entity @e[distance=..1.8,tag=celestial_bodies] run particle sculk_charge_pop ~ ~ ~ 0.4 0.4 0.4 0.15 50
-execute at @e[tag=starfather_ar] if entity @e[distance=..1.8,tag=celestial_bodies] run scoreboard players set @a[scores={char=60}] starfather_comets 1
-execute at @e[tag=starfather_ar] if entity @e[distance=..1.8,tag=celestial_visual_1] run scoreboard players set @a[scores={char=60}] CelestialBody1 1
-execute at @e[tag=starfather_ar] if entity @e[distance=..1.8,tag=celestial_visual_2] run scoreboard players set @a[scores={char=60}] CelestialBody2 1
-execute at @e[tag=starfather_ar] if entity @e[distance=..1.8,tag=celestial_visual_3] run scoreboard players set @a[scores={char=60}] CelestialBody3 1
-execute at @e[tag=starfather_ar] if entity @e[distance=..1.8,tag=celestial_visual_4] run scoreboard players set @a[scores={char=60}] CelestialBody4 1
+execute at @e[tag=starfather_ar] if entity @e[distance=..1,tag=celestial_bodies] run particle sculk_charge_pop ~ ~ ~ 0.4 0.4 0.4 0.15 50
+execute at @e[tag=starfather_ar] if entity @e[distance=..1,tag=celestial_bodies] run scoreboard players set @a[scores={char=60}] starfather_comets 1
+execute at @e[tag=starfather_ar] at @n[distance=..1,tag=celestial_bodies] run summon marker ~ ~ ~ {Tags:["CelestialProjectile","entities_starfather","projectile"]}
+execute at @e[tag=starfather_ar] if entity @e[distance=..1,tag=celestial_visual_1] run scoreboard players set @a[scores={char=60}] CelestialBody1 1
+execute at @e[tag=starfather_ar] if entity @e[distance=..1,tag=celestial_visual_2] run scoreboard players set @a[scores={char=60}] CelestialBody2 1
+execute at @e[tag=starfather_ar] if entity @e[distance=..1,tag=celestial_visual_3] run scoreboard players set @a[scores={char=60}] CelestialBody3 1
+execute at @e[tag=starfather_ar] if entity @e[distance=..1,tag=celestial_visual_4] run scoreboard players set @a[scores={char=60}] CelestialBody4 1
 
-execute at @e[tag=starfather_ar] run kill @e[distance=..1.8,tag=celestial_bodies]
+execute at @e[tag=starfather_ar] run kill @e[distance=..1,tag=celestial_bodies]
 
 
 #sky collapse
@@ -268,7 +273,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=60}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=401..,char=60}] s2_timer 0
 
 execute as @a[scores={char=60}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] run clear @a[scores={char=60}] bow
-item replace entity @a[scores={char=60}] hotbar.0 with bow[minecraft:custom_name={text:"Comet",color:"gray",bold:1b},minecraft:enchantments={"minecraft:power":1},minecraft:unbreakable={}] 1
+item replace entity @a[scores={char=60}] hotbar.0 with bow[minecraft:custom_name={text:"Comet",color:"gray",bold:1b},minecraft:enchantments={"minecraft:density":1},minecraft:unbreakable={}] 1
 
 execute as @a[scores={char=60,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=60}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=60,s1_timer=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Sky Collapse",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1},item_model=phantom_spawn_egg,custom_data={s1:1}] 1

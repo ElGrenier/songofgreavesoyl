@@ -69,6 +69,8 @@ execute if score map settings matches 28 run scoreboard players set map_type set
 
 execute if score map settings matches 29 run scoreboard players set map_type settings 2
 
+execute if score map settings matches 30 run scoreboard players set map_type settings 1
+
 
 # In-lobby
 execute if score map lobby matches 1 run scoreboard players set map_type lobby 1
@@ -128,4 +130,6 @@ execute if score map lobby matches 27 run scoreboard players set map_type lobby 
 execute if score map lobby matches 28 run scoreboard players set map_type lobby 0
 
 execute if score map lobby matches 29 run scoreboard players set map_type lobby 2
+
+execute if score map lobby matches 30 run scoreboard players set map_type lobby 1
 

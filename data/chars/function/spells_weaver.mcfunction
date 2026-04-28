@@ -1,5 +1,3 @@
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:cobweb"}}]
-kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:spider_eye"}}]
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:golden_hoe"}}]
 
 
@@ -45,25 +43,32 @@ tp @e[tag=web,limit=1] @a[scores={char=20,s1_timer=1},limit=1]
 execute at @a[scores={char=20,s1_timer=1,CC_silence=0}] as @e[tag=web,limit=1] at @s run tp @s ~ ~1.1 ~ 
 
 execute as @e[tag=web] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
-execute as @e[tag=web] at @s run tp @s ^ ^ ^1
-execute at @e[tag=web] run particle end_rod ~ ~ ~ 0.1 0.1 0.1 0.001 10 normal
-execute at @e[tag=web] run particle item_cobweb ~ ~ ~ 0.1 0.1 0.1 0.001 10 normal
+execute as @e[tag=web] at @s run tp @s ^ ^ ^0.3
+execute at @e[tag=web] run particle end_rod ~ ~ ~ 0.1 0.1 0.1 0.001 4 normal
+execute at @e[tag=web] run particle item_cobweb ~ ~ ~ 0.2 0.2 0.2 0.001 6 normal
+execute as @e[tag=web] at @s run tp @s ^ ^ ^0.3
+execute at @e[tag=web] run particle end_rod ~ ~ ~ 0.1 0.1 0.1 0.001 4 normal
+execute at @e[tag=web] run particle item_cobweb ~ ~ ~ 0.2 0.2 0.2 0.001 6 normal
+execute as @e[tag=web] at @s run tp @s ^ ^ ^0.3
+execute at @e[tag=web] run particle end_rod ~ ~ ~ 0.1 0.1 0.1 0.001 4 normal
+execute at @e[tag=web] run particle item_cobweb ~ ~ ~ 0.2 0.2 0.2 0.001 6 normal
 
-execute at @e[tag=web] positioned ~-0.75 ~-0.75 ~-0.75 as @p[dx=0.5,dy=0.5,dz=0.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=20}] Team align xyz positioned ~0.5 ~ ~0.5 run summon marker ~ ~ ~ {Tags:["snare_webs","entities_weaver"]}
+execute at @e[tag=web] positioned ~-0.75 ~-0.75 ~-0.75 as @p[dx=0.5,dy=0.5,dz=0.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=20}] Team run tag @s add weaver_entangled
+
+execute at @a[tag=weaver_entangled] run kill @e[tag=web]
+execute at @a[tag=weaver_entangled] run playsound block.cobweb.place master @a[distance=..12] ~ ~ ~ 1 0.5 1
+effect give @a[tag=weaver_entangled] slowness 3 2
+scoreboard players set @a[tag=weaver_entangled] vis_weaver_entangle 60
+scoreboard players set @a[tag=weaver_entangled] CC_entangled 60
+tag @a remove weaver_entangled
+
+
+scoreboard players remove @a[scores={vis_weaver_entangle=1..}] vis_weaver_entangle 1
+execute at @a[scores={vis_weaver_entangle=1..}] run particle item{item:{id:cobweb}} ~ ~1 ~ 0.3 0.6 0.3 0 6
+execute at @a[scores={vis_weaver_entangle=1..}] run particle item_cobweb ~ ~0.3 ~ 0.8 0.5 0.8 0.1 5
 
 execute at @a[scores={char=20,s1_timer=30}] run kill @e[tag=web]
 
-scoreboard players add @e[tag=snare_webs] entagle 1
-execute at @e[tag=snare_webs] run kill @e[tag=web]
-execute at @e[tag=snare_webs,scores={entagle=1..5}] run fill ~1 ~ ~1 ~-1 ~ ~-1 cobweb replace #minecraft:dash
-execute at @e[tag=snare_webs,scores={entagle=1..5}] as @e[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=20}] Team run tp @s ~ ~ ~
-execute at @e[tag=snare_webs,scores={entagle=2}] run playsound block.cobweb.place master @a[distance=..8] ~ ~ ~ 1 0.5 1
-execute at @e[tag=snare_webs,scores={entagle=1..}] run particle item_cobweb ~ ~0.3 ~ 0.8 0.5 0.8 0.1 5
-execute at @e[tag=snare_webs,scores={entagle=59..61}] run particle item_cobweb ~ ~0.3 ~ 1 0.5 1 0.1 60
-execute at @e[tag=snare_webs,scores={entagle=60..}] run fill ~10 ~10 ~10 ~-10 ~-1 ~-10 air replace cobweb
-execute at @e[tag=snare_webs,scores={entagle=60}] run playsound block.cobweb.break master @a[distance=..8] ~ ~ ~ 1 1.2 1
-execute at @e[tag=snare_webs,scores={entagle=61..62}] run function battlegrounds:lightrestore
-kill @e[tag=snare_webs,scores={entagle=65..}]
 
 
 
@@ -76,7 +81,7 @@ execute at @a[scores={char=20,s2_timer=1,CC_silence=0}] run playsound entity.spi
 execute at @a[scores={char=20,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Marker:1b,Invisible:1b,Tags:["venomsplit","projectile","entities_weaver"],NoGravity:1b}
 scoreboard players operation @e[tag=projectile,tag=venomsplit] Team = @p[scores={char=20}] Team
 tp @e[tag=venomsplit,limit=1] @a[scores={char=20,s2_timer=1},limit=1]
-execute at @a[scores={char=20,s2_timer=1,CC_silence=0}] as @e[tag=venomsplit,limit=1] at @s run tp @s ~ ~1.4 ~ 
+execute at @a[scores={char=20,s2_timer=1,CC_silence=0}] as @e[tag=venomsplit,limit=1] at @s run tp @s ~ ~1.4 ~
 execute as @e[tag=venomsplit] at @s run tp @s ^ ^ ^0.35
 execute at @a[scores={char=20,s2_timer=15}] run kill @e[tag=venomsplit]
 
@@ -115,9 +120,9 @@ tag @a remove weaver_venom
 
 # weaver
 
-scoreboard players set @a[scores={s1_timer=1,char=20}] spellCD1 220
+scoreboard players set @a[scores={s1_timer=1,char=20}] spellCD1 320
 scoreboard players add @a[scores={s1_timer=1..,char=20}] s1_timer 1
-scoreboard players set @a[scores={s1_timer=221..,char=20}] s1_timer 0
+scoreboard players set @a[scores={s1_timer=321..,char=20}] s1_timer 0
 
 scoreboard players set @a[scores={s2_timer=1,char=20}] spellCD2 180
 scoreboard players add @a[scores={s2_timer=1..,char=20}] s2_timer 1
@@ -125,7 +130,7 @@ scoreboard players set @a[scores={s2_timer=181..,char=20}] s2_timer 0
 
 
 execute as @a[scores={char=20}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_hoe",Slot:0b}]}] run clear @a[scores={char=20}] golden_hoe
-item replace entity @a[scores={char=20}] hotbar.0 with golden_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Fang"},custom_data={weaver:1},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=20}] hotbar.0 with golden_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Fang"},custom_data={weaver:1},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=20,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=20}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=20,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:cobweb",minecraft:custom_name={text:"Weaver's Snare",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:binding_curse":1}] 1

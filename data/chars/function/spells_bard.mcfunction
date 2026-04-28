@@ -19,10 +19,10 @@ scoreboard players set @a[scores={char=70,s1_timer=1,CC_silence=0,passive_bard=2
 scoreboard players set @a[scores={char=70,s1_timer_recast=1,CC_silence=0,passive_bard=24..,passive_bard_use=0}] passive_bard_use 1
 scoreboard players set @a[scores={char=70,s2_timer=1,CC_silence=0,passive_bard=24..,passive_bard_use=0}] passive_bard_use 1
 
-execute as @a[scores={char=70,passive_bard=1,CC_silence=0}] at @s run playsound block.note_block.snare master @s ~ ~ ~ .5 1 1
-execute as @a[scores={char=70,passive_bard=11,CC_silence=0}] at @s run playsound block.note_block.snare master @s ~ ~ ~ .5 1 1
-execute as @a[scores={char=70,passive_bard=21,CC_silence=0}] at @s run playsound block.note_block.snare master @s ~ ~ ~ .5 1 1
-execute as @a[scores={char=70,passive_bard=31,CC_silence=0}] at @s run playsound block.note_block.snare master @s ~ ~ ~ .5 2 1
+execute as @a[scores={char=70,passive_bard=1,CC_silence=0}] at @s run playsound block.note_block.snare master @s ~ ~ ~ .3 1 1
+execute as @a[scores={char=70,passive_bard=11,CC_silence=0}] at @s run playsound block.note_block.snare master @s ~ ~ ~ .3 1 1
+execute as @a[scores={char=70,passive_bard=21,CC_silence=0}] at @s run playsound block.note_block.snare master @s ~ ~ ~ .3 1 1
+execute as @a[scores={char=70,passive_bard=31,CC_silence=0}] at @s run playsound block.note_block.snare master @s ~ ~ ~ .3 2 1
 
 execute as @a[scores={char=70,passive_bard=23..,passive_bard_use=1,CC_silence=0}] run tag @s add bard_jumped_display
 title @a[scores={char=70,passive_bard=30..32,passive_bard_use=1,CC_silence=0}] actionbar [{"text": "[ ","color": "dark_purple","bold": true},{"text": "Perfect!","color": "gold","bold": false},{"text": " ]","color": "dark_purple","bold": true}]
@@ -87,23 +87,29 @@ execute at @a[scores={char=70,s1_timer=10..19,CC_silence=0,passive_bard=1},tag=b
 execute at @a[scores={char=70,s1_timer=20..29,CC_silence=0,passive_bard=11},tag=bard_s1_perfect] run playsound block.note_block.bass master @a[distance=..12] ~ ~ ~ 10 1.5 1
 execute at @a[scores={char=70,s1_timer=30..39,CC_silence=0,passive_bard=21},tag=bard_s1_perfect] run playsound block.note_block.bass master @a[distance=..12] ~ ~ ~ 10 2 1
 
-execute at @a[scores={char=70,s1_timer=1..40,CC_silence=0}] as @a[distance=..4] if score @s Team = @p[scores={char=70}] Team run effect give @s speed 1 1
-execute at @a[scores={char=70,s1_timer=1..40,CC_silence=0}] as @a[distance=..4] unless score @s Team = @p[scores={char=70}] Team run scoreboard players set @s CC_silence 2
+
+execute at @a[scores={char=70,s1_timer=1..40,CC_silence=0}] as @a[distance=..4] if score @s Team = @p[scores={char=70}] Team unless entity @s[nbt={active_effects:[{id:"minecraft:regeneration"}]}] run effect give @s regeneration 1 3
 
 #--- recast ---
 
 clear @a[scores={char=70,s1_timer_recast=1..}] *[custom_data={s1:2}]
 
-tag @a[scores={char=70,s1_timer_recast=1,passive_bard=29..31,CC_silence=0,passive_bard_use=1}] add bard_s1_recast_perfect
+tag @a[scores={char=70,s1_timer_recast=1,passive_bard=30..32,CC_silence=0,passive_bard_use=1}] add bard_s1_recast_perfect
 title @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] actionbar [{"text": "[ ","color": "dark_purple","bold": true},{"text": "Perfect!","color": "gold","bold": false},{"text": " ]","color": "dark_purple","bold": true}]
 
 execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] run playsound block.note_block.guitar master @a[distance=..12] ~ ~ ~ 10 2 1
 execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=!bard_s1_recast_perfect] run playsound block.note_block.guitar master @a[distance=..12] ~ ~ ~ 10 1 1
 
-execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=!bard_s1_recast_perfect] as @a[distance=..4] unless score @s Team = @p[scores={char=70}] Team run scoreboard players set @s CC_silence 40
+execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] as @e[distance=..4] unless score @s Team = @p[scores={char=70}] Team run tag @s add charm_source_bard
+execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] as @e[tag=charm_source_bard] run scoreboard players set @s CC_charm 50
+execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] at @e[tag=charm_source_bard] run particle heart ~ ~1.2 ~ 0.4 0.4 0.4 1 10
+
+execute as @e[tag=charm_source_bard,scores={CC_charm=2..}] at @s run rotate @s facing entity @p[scores={char=70}]
+tag @e[scores={CC_charm=..1}] remove charm_source_bard
+
 
 scoreboard players set @a[scores={char=70,s1_timer_recast=1,CC_silence=0}] s1_timer 39
-execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0},tag=bard_s1_recast_perfect] as @a[distance=..4,scores={CC_defiled=0}] if score @s Team = @p[scores={char=70}] Team run effect give @s regeneration 4 2 true
+execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0}] as @a[distance=..4,scores={CC_defiled=0}] if score @s Team = @p[scores={char=70}] Team run effect give @s instant_health 1 0 true
 
 execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0}] run summon marker ~ ~0.25 ~ {Tags:["crescendo_visual_core","crescendo_visuals","entities_bard"]}
 execute at @a[scores={char=70,s1_timer_recast=1,CC_silence=0}] run summon marker ~0.5 ~0.25 ~ {Tags:["crescendo_visual_1","crescendo_visuals","entities_bard"]}

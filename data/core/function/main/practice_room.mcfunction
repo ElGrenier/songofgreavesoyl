@@ -8,42 +8,43 @@ execute positioned 131 11 -154 run tag @a[distance=..2.5] add PracticeRoom
 
 #entering from practice room itself
 
-execute positioned 45 13 -18 run tag @a[distance=..2] add EnterPracticeRoom
-execute positioned 45 13 -18 run tag @a[distance=..2] add PracticeCharPick
-execute positioned 45 13 -18 run tag @a[distance=..2] add PracticeRoom
+execute positioned 100 13 36 run tag @a[distance=..2] add EnterPracticeRoom
+execute positioned 100 13 36 run tag @a[distance=..2] add PracticeCharPick
+execute positioned 100 13 36 run tag @a[distance=..2] add PracticeRoom
 
 #entering actual
 
-execute at @a[tag=EnterPracticeRoom] run time set midnight
 effect clear @a[tag=EnterPracticeRoom]
-tp @a[tag=EnterPracticeRoom] 155 34 16
-execute if entity @a[tag=EnterPracticeRoom] run function chars:char_display_stands_new
-# execute if entity @a[tag=PracticeRoom,scores={char=1..}] unless entity @a[tag=PracticeCharPick] run kill @e[tag=char_displays]
+execute as @a[tag=EnterPracticeRoom] run spawnpoint @s 124 12 -172
+tp @a[tag=EnterPracticeRoom] 98 15 36
+execute as @a[tag=EnterPracticeRoom] run function chars:char_display_stands_new
 
 execute as @a[tag=EnterPracticeRoom] run function core:main/char_scores_reset
 scoreboard players set @a[tag=EnterPracticeRoom] ClassPickTrigger 8
 scoreboard players set @a[tag=EnterPracticeRoom] char 0
-#scoreboard players set @a[tag=EnterPracticeRoom] Queue 3
 clear @a[tag=EnterPracticeRoom]
 tag @a remove EnterPracticeRoom
 
 
-#scoreboard players set @a[tag=PracticeCharPick,scores={char=1..}] Queue 3
-tp @a[tag=PracticeCharPick,scores={char=1..}] 48 13 -10 -90 0
+tp @a[tag=PracticeCharPick,scores={char=1..}] 103 13 44 -90 0
+scoreboard players set @a[tag=PracticeCharPick,scores={char=1..}] practice_heal 1
 title @a[tag=PracticeCharPick] title {text:" ",type:"text"}
 title @a[tag=PracticeCharPick] subtitle {text:" ",type:"text"}
-#execute as @a[tag=PracticeCharPick,scores={char=1..}] run function chars:all
+execute as @a[tag=PracticeCharPick] store result score @s Team run scoreboard players get @s char
+
 clear @a[tag=PracticeCharPick,scores={char=1..}] white_banner
-effect give @a[tag=PracticeCharPick,scores={char=1..}] regeneration 3 10 true
-effect clear @a[tag=PracticeCharPick,scores={char=1..}] weakness
-team join yellow @a[tag=PracticeCharPick,scores={char=1..}]
+team join ffa @a[tag=PracticeCharPick,scores={char=1..}]
 tag @a[scores={char=1..}] remove PracticeCharPick
 
 clear @a[tag=PracticeRoom,scores={char=1..}] white_banner
 
+effect give @a[scores={practice_heal=1..}] regeneration 2 20 true
+scoreboard players add @a[scores={practice_heal=1..}] practice_heal 1
+scoreboard players set @a[scores={practice_heal=8..}] practice_heal 0
+
 #exiting
 
-execute positioned 43 12 -10 run tag @a[distance=..3] add ExitPracticeRoom
+execute positioned 98 12 44 run tag @a[distance=..3] add ExitPracticeRoom
 scoreboard players set @a[tag=ExitPracticeRoom] char 0
 execute as @a[tag=ExitPracticeRoom] run function core:main/char_scores_reset
 clear @a[tag=ExitPracticeRoom]
@@ -56,31 +57,47 @@ tag @a remove ExitPracticeRoom
 
 
 #dying
-scoreboard players set @a[tag=PracticeRoom,scores={death_dash_reset=1..}] char 0
-clear @a[tag=PracticeRoom,scores={death_dash_reset=1..}]
-tag @a[tag=PracticeRoom,scores={death_dash_reset=1..}] remove PracticeRoom
+
+tp @a[tag=PracticeRoom,scores={death_dash_reset=1..6}] 127 12 -154 90 0
+scoreboard players set @a[tag=PracticeRoom,scores={death_dash_reset=1..6}] char 0
+team leave @a[tag=PracticeRoom,scores={death_dash_reset=1..6}]
+clear @a[tag=PracticeRoom,scores={death_dash_reset=1..6}]
+tag @a[tag=PracticeRoom,scores={death_dash_reset=6..7}] remove PracticeRoom
+#execute as @a[tag=PracticeRoom,scores={death_dash_reset=1..}] run function core:lobby/tp_lobby
+
 
 #other
 
-execute positioned 58 15 1 run team join purple @a[distance=..2]
-execute positioned 64 15 1 run team join yellow @a[distance=..2]
+execute positioned 110 13 53 run team join purple @a[distance=..1.5]
+execute positioned 118 13 53 run team join yellow @a[distance=..1.5]
+execute positioned 114 13 53 run team join ffa @a[distance=..1.5]
+execute positioned 114 13 53 as @a[distance=..1.5] store result score @s Team run scoreboard players get @s char
 
 #holograms
 
-execute positioned 57 12 -14 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_1] run summon minecraft:text_display 49 15 -10 {Tags:["practice_holograms","practice_hologram_1"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Return to lobby", text_opacity: 255, transformation: {left_rotation: [0.0f, 0.7071068f, 0.0f, 0.7071068f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999999f, 0.99999994f, 0.9999999f], translation: [0.0f, 0.0f, 0.0f]}}
-execute positioned 57 12 -14 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_2] run summon minecraft:text_display 48 16 -18 {Tags:["practice_holograms","practice_hologram_2"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Change character", text_opacity: 255, transformation: {left_rotation: [0.0f, 0.7071068f, 0.0f, 0.7071068f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999999f, 0.99999994f, 0.9999999f], translation: [0.0f, 0.0f, 0.0f]}}
-execute positioned 57 12 -14 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_3] run summon minecraft:text_display 61 15 1 {Tags:["practice_holograms","practice_hologram_3"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text: "Switch team", text_opacity: 255, transformation: {left_rotation: [0.0f, 0.99984777f, 0.0f, 0.017452212f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.9999998f, 1.0f, 0.9999998f], translation: [0.0f, 0.0f, 0.0f]}}
+execute positioned 115 12 40 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_1] run summon text_display 103 15.5 44 {Rotation:[-90f,0f],Tags:["practice_holograms","practice_hologram_1"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text:["",{text:"",extra:[{text:"=",color:"gold",bold:1b},{text:" Back to Lobby ",color:"yellow",bold:1b},{text:"=",color:"gold",bold:1b}]}], text_opacity: 255, transformation: {scale: [0.9999999f, 0.99999994f, 0.9999999f], translation: [0.0f, 0.0f, 0.0f]}}
+execute positioned 115 12 40 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_2] run summon text_display 103 16 36 {Rotation:[-90f,0f],Tags:["practice_holograms","practice_hologram_2"],alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text:["",{text:"",extra:[{text:"=",color:"dark_green",bold:1b},{text:" Change Character ",color:"green",bold:1b},{text:"=",color:"dark_green",bold:1b}]}], text_opacity: 255,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[0.8f,0.8f,0.8f]}}
+execute positioned 115 12 40 if entity @a[distance=..15] unless entity @e[tag=practice_hologram_3] run summon text_display 114 17 53 {Tags:["practice_holograms","practice_hologram_3"],billboard:"vertical",alignment: "center", background: 1073741824, default_background: 0b, line_width: 200, see_through: 0b, shadow: 0b, text:["",{text:"",extra:[{text:"=",color:"gray",bold:1b},{text:" Switch Teams ",color:"white",bold:1b},{text:"=",color:"gray",bold:1b}]}], text_opacity: 255,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1.5f,1.5f,1.5f]}}
 
 
 execute as @e[tag=practice_dummy] store result score @s dummy_hp run data get entity @s Health
 
-execute positioned 57 12 -14 unless entity @a[distance=..15] run kill @e[tag=practice_holograms]
-execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run tp @e[tag=practice_dummy,scores={SummonAge=5..}] ~ ~-200 ~
-execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run kill @e[tag=practice_dummy,scores={SummonAge=5..}] 
-execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run summon mannequin 72 13 -24 {Tags:["valid_spell_target","practice_dummy"],profile:{"properties":[{"name":"textures","value":"e3RleHR1cmVzOntTS0lOOnt1cmw6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTg4ZTU2MTViYWFlODZjNTYwNzAxNDY2NTdkNmIxZjkyYmE2ODNlM2QxZTZmNjMyNWQyYzQ1NTUwY2MxMmQzYiJ9fX0"}],model:"slim"}}
-execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run scoreboard players add @e[tag=practice_dummy] SummonAge 1
-execute if block 72 14 -20 minecraft:polished_blackstone_button[powered=true] run setblock 72 14 -20 polished_blackstone_button[face=floor]
+execute positioned 115 12 40 unless entity @a[distance=..15] run kill @e[tag=practice_holograms]
 
+execute if entity @a[tag=PracticeRoom] unless entity @e[tag=dummy_in_the_middle_of_the_room_1] run summon mannequin 129 13 37 {Rotation:[90f,0f],Tags:["valid_spell_target","practice_dummy","dummy_in_the_middle_of_the_room_1"],CustomName:"Dummy",CustomNameVisible:1b,hide_description:false,profile:{"properties":[{"name":"textures","value":"e3RleHR1cmVzOntTS0lOOnt1cmw6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTg4ZTU2MTViYWFlODZjNTYwNzAxNDY2NTdkNmIxZjkyYmE2ODNlM2QxZTZmNjMyNWQyYzQ1NTUwY2MxMmQzYiJ9fX0"}],model:"slim"}}
+execute if entity @a[tag=PracticeRoom] unless entity @e[tag=dummy_in_the_middle_of_the_room_2] run summon mannequin 130 13 40 {Rotation:[90f,0f],Tags:["valid_spell_target","practice_dummy","dummy_in_the_middle_of_the_room_2"],CustomName:"Dummy",CustomNameVisible:1b,hide_description:false,profile:{"properties":[{"name":"textures","value":"e3RleHR1cmVzOntTS0lOOnt1cmw6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTg4ZTU2MTViYWFlODZjNTYwNzAxNDY2NTdkNmIxZjkyYmE2ODNlM2QxZTZmNjMyNWQyYzQ1NTUwY2MxMmQzYiJ9fX0"}],model:"slim"}}
+execute if entity @a[tag=PracticeRoom] unless entity @e[tag=dummy_in_the_middle_of_the_room_3] run summon mannequin 129 13 43 {Rotation:[90f,0f],Tags:["valid_spell_target","practice_dummy","dummy_in_the_middle_of_the_room_3"],CustomName:"Dummy",CustomNameVisible:1b,hide_description:false,profile:{"properties":[{"name":"textures","value":"e3RleHR1cmVzOntTS0lOOnt1cmw6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTg4ZTU2MTViYWFlODZjNTYwNzAxNDY2NTdkNmIxZjkyYmE2ODNlM2QxZTZmNjMyNWQyYzQ1NTUwY2MxMmQzYiJ9fX0"}],model:"slim"}}
+
+execute unless entity @a[tag=PracticeRoom] run kill @e[tag=practice_dummy]
+
+execute if block 129 14 52 minecraft:polished_blackstone_button[powered=true] run tp @e[tag=practice_dummy,scores={SummonAge=5..}] ~ ~-200 ~
+execute if block 129 14 52 minecraft:polished_blackstone_button[powered=true] run kill @e[tag=practice_dummy,scores={SummonAge=5..}] 
+execute if block 129 14 52 minecraft:polished_blackstone_button[powered=true] run summon mannequin 129 13 56 {Rotation:[180f,0f],Tags:["valid_spell_target","practice_dummy"],CustomName:"Dummy",CustomNameVisible:1b,hide_description:false,profile:{"properties":[{"name":"textures","value":"e3RleHR1cmVzOntTS0lOOnt1cmw6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTg4ZTU2MTViYWFlODZjNTYwNzAxNDY2NTdkNmIxZjkyYmE2ODNlM2QxZTZmNjMyNWQyYzQ1NTUwY2MxMmQzYiJ9fX0"}],model:"slim"}}
+
+execute if block 129 14 52 minecraft:polished_blackstone_button[powered=true] run scoreboard players add @e[tag=practice_dummy] SummonAge 1
+execute if block 129 14 52 minecraft:polished_blackstone_button[powered=true] run setblock 129 14 52 polished_blackstone_button[face=floor]
+
+execute as @e[tag=practice_dummy] run function core:main/practice_room_dummy_hp
 
 scoreboard players set @e[tag=practice_dummy] Team -6699
 scoreboard players set @e[tag=practice_dummy] HPercentage 100

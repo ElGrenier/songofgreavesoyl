@@ -38,25 +38,25 @@ scoreboard players set @a[scores={asphyxiation_immunity=1..}] asphyxiation 0
 scoreboard players remove @a[scores={asphyxiation_immunity=1..}] asphyxiation_immunity 1
 
 
-execute at @a[scores={asphyxiation=1}] positioned ~ ~2.2 ~ unless entity @e[distance=..1,tag=display_asphyxiation_1] run summon minecraft:armor_stand ~ ~ ~ {CustomNameVisible:1b,Marker:1b,Invisible:1b,Tags:["display_asphyxiation_1","asph_display","entities_smokebride"],CustomName:{text:"X",extra:[{text:" - - - -",color:"gray",bold:1b}],color:"dark_gray",bold:1b}}
-execute at @a[scores={asphyxiation=1}] positioned ~ ~2.2 ~ run tp @e[distance=..1,tag=display_asphyxiation_1] ~ ~ ~
-execute as @e[tag=display_asphyxiation_1] at @s positioned ~ ~-2.2 ~ unless entity @a[distance=..1,scores={asphyxiation=1}] run kill @s
+execute at @a[scores={asphyxiation=1}] unless entity @e[distance=..1,tag=display_asphyxiation_1] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_asphyxiation_1","asph_display","entities_smokebride"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:[{text:"X",color:"dark_gray",bold:1b},{text:" - - - -",color:"gray",bold:1b}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.7f,0.0f]}}
+execute at @a[scores={asphyxiation=1}] run tp @e[distance=..1,tag=display_asphyxiation_1] ~ ~ ~
+execute as @e[tag=display_asphyxiation_1] at @s unless entity @a[distance=..1,scores={asphyxiation=1}] run kill @s
 
-execute at @a[scores={asphyxiation=2}] positioned ~ ~2.2 ~ unless entity @e[distance=..1,tag=display_asphyxiation_2] run summon minecraft:armor_stand ~ ~ ~ {CustomNameVisible:1b,Marker:1b,Invisible:1b,Tags:["display_asphyxiation_2","asph_display","entities_smokebride"],CustomName:{text:"X X",extra:[{text:" - - -",color:"gray",bold:1b}],color:"dark_gray",bold:1b}}
-execute at @a[scores={asphyxiation=2}] positioned ~ ~2.2 ~ run tp @e[distance=..1,tag=display_asphyxiation_2] ~ ~ ~
-execute as @e[tag=display_asphyxiation_2] at @s positioned ~ ~-2.2 ~ unless entity @a[distance=..1,scores={asphyxiation=2}] run kill @s
+execute at @a[scores={asphyxiation=2}] unless entity @e[distance=..1,tag=display_asphyxiation_2] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_asphyxiation_2","asph_display","entities_smokebride"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:[{text:"X X",color:"dark_gray",bold:1b},{text:" - - -",color:"gray",bold:1b}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.7f,0.0f]}}
+execute at @a[scores={asphyxiation=2}] run tp @e[distance=..1,tag=display_asphyxiation_2] ~ ~ ~
+execute as @e[tag=display_asphyxiation_2] at @s unless entity @a[distance=..1,scores={asphyxiation=2}] run kill @s
 
-execute at @a[scores={asphyxiation=3}] positioned ~ ~2.2 ~ unless entity @e[distance=..1,tag=display_asphyxiation_3] run summon minecraft:armor_stand ~ ~ ~ {CustomNameVisible:1b,Marker:1b,Invisible:1b,Tags:["display_asphyxiation_3","asph_display","entities_smokebride"],CustomName:{text:"X X X",extra:[{text:" - -",color:"gray",bold:1b}],color:"dark_gray",bold:1b}}
-execute at @a[scores={asphyxiation=3}] positioned ~ ~2.2 ~ run tp @e[distance=..1,tag=display_asphyxiation_3] ~ ~ ~
-execute as @e[tag=display_asphyxiation_3] at @s positioned ~ ~-2.2 ~ unless entity @a[distance=..1,scores={asphyxiation=3}] run kill @s
+execute at @a[scores={asphyxiation=3}] unless entity @e[distance=..1,tag=display_asphyxiation_3] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_asphyxiation_3","asph_display","entities_smokebride"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:[{text:"X X X",color:"dark_gray",bold:1b},{text:" - -",color:"gray",bold:1b}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.7f,0.0f]}}
+execute at @a[scores={asphyxiation=3}] run tp @e[distance=..1,tag=display_asphyxiation_3] ~ ~ ~
+execute as @e[tag=display_asphyxiation_3] at @s unless entity @a[distance=..1,scores={asphyxiation=3}] run kill @s
 
-execute at @a[scores={asphyxiation=4}] positioned ~ ~2.2 ~ unless entity @e[distance=..1,tag=display_asphyxiation_4] run summon minecraft:armor_stand ~ ~ ~ {CustomNameVisible:1b,Marker:1b,Invisible:1b,Tags:["display_asphyxiation_4","asph_display","entities_smokebride"],CustomName:{text:"X X X X",extra:[{text:" -",color:"gray",bold:1b}],color:"dark_gray",bold:1b}}
-execute at @a[scores={asphyxiation=4}] positioned ~ ~2.2 ~ run tp @e[distance=..1,tag=display_asphyxiation_4] ~ ~ ~
-execute as @e[tag=display_asphyxiation_4] at @s positioned ~ ~-2.2 ~ unless entity @a[distance=..1,scores={asphyxiation=4}] run kill @s
+execute at @a[scores={asphyxiation=4}] unless entity @e[distance=..1,tag=display_asphyxiation_4] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_asphyxiation_4","asph_display","entities_smokebride"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:[{text:"X X X X",color:"dark_gray",bold:1b},{text:" -",color:"gray",bold:1b}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.7f,0.0f]}}
+execute at @a[scores={asphyxiation=4}] run tp @e[distance=..1,tag=display_asphyxiation_4] ~ ~ ~
+execute as @e[tag=display_asphyxiation_4] at @s unless entity @a[distance=..1,scores={asphyxiation=4}] run kill @s
 
-execute at @a[scores={asphyxiation_immunity=1..}] positioned ~ ~2.2 ~ unless entity @e[distance=..1,tag=display_asphyxiation_5] run summon minecraft:armor_stand ~ ~ ~ {CustomNameVisible:1b,Marker:1b,Invisible:1b,Tags:["display_asphyxiation_5","asph_display","entities_smokebride"],CustomName:{text:"BREATHE IN",extra:[{text:"",color:"gray",bold:1b}],color:"dark_gray",bold:1b}}
-execute at @a[scores={asphyxiation_immunity=1..}] positioned ~ ~2.2 ~ run tp @e[distance=..1,tag=display_asphyxiation_5] ~ ~ ~
-execute as @e[tag=display_asphyxiation_5] at @s positioned ~ ~-2.2 ~ unless entity @a[distance=..1,scores={asphyxiation_immunity=1..}] run kill @s
+execute at @a[scores={asphyxiation_immunity=1..}] unless entity @e[distance=..1,tag=display_asphyxiation_5] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_asphyxiation_5","asph_display","entities_smokebride"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:[{text:"BREATHE IN",color:"gray",bold:1b}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.7f,0.0f]}}
+execute at @a[scores={asphyxiation_immunity=1..}] run tp @e[distance=..1,tag=display_asphyxiation_5] ~ ~ ~
+execute as @e[tag=display_asphyxiation_5] at @s unless entity @a[distance=..1,scores={asphyxiation_immunity=1..}] run kill @s
 
 
 
@@ -88,7 +88,7 @@ execute as @e[tag=ember] at @s if block ~ ~-0.2 ~ #minecraft:dash run tp @s ~ ~-
 
 execute as @e[tag=ember] at @s run tp @s ~ ~ ~ ~8 ~
 
-execute at @e[tag=ember] run particle small_flame ~ ~0.2 ~ 0.1 0.1 0.1 0 1 
+execute at @e[tag=ember] run particle small_flame ~ ~0.2 ~ 0.1 0.1 0.1 0 1
 execute as @e[tag=ember] at @s run particle dust{color:[0.33,0.33,0.33],scale:1} ^ ^ ^4 0.1 0.1 0.1 0 10
 execute as @e[tag=ember] at @s run particle dust{color:[0.33,0.33,0.33],scale:1} ^ ^ ^-4 0.1 0.1 0.1 0 10
 execute as @e[tag=ember] at @s run particle dust{color:[0.33,0.33,0.33],scale:1} ^4 ^ ^ 0.1 0.1 0.1 0 10
@@ -120,8 +120,8 @@ execute at @e[tag=ember,scores={s0_timer=32}] positioned ~ ~1 ~ as @e[tag=valid_
 
 execute as @e[tag=smoked_by_fekhi] run damage @s 4 in_fire by @p[scores={char=56}] from @p[scores={char=56}]
 execute as @e[tag=smoked_by_fekhi] run scoreboard players add @s asphyxiation 1
-execute as @e[tag=smoked_by_fekhi] run scoreboard players add @s asphyxiation_decay_initial 0
-execute as @e[tag=smoked_by_fekhi] run scoreboard players add @s asphyxiation_decay 0
+execute as @e[tag=smoked_by_fekhi] run scoreboard players set @s asphyxiation_decay_initial 0
+execute as @e[tag=smoked_by_fekhi] run scoreboard players set @s asphyxiation_decay 0
 tag @e remove smoked_by_fekhi
 
 kill @e[tag=ember,scores={s0_timer=50..}]
@@ -151,8 +151,8 @@ execute at @a[scores={char=56,s2_timer=101,CC_silence=0}] run playsound entity.b
 execute at @a[scores={char=56,s2_timer=1..100,CC_silence=0}] as @e[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=56}] Team run effect give @s slowness 1 1
 execute at @e[scores={char=56,s2_timer=1..100}] as @a[distance=..4] unless score @s Team = @p[scores={char=56}] Team run scoreboard players set @s CC_silence 2
 execute at @e[scores={char=56,s2_timer=1..100}] as @a[distance=..4] unless score @s Team = @p[scores={char=56}] Team run scoreboard players add @s asphyxiation_timer 1
-execute at @e[scores={char=56,s2_timer=1..100}] as @a[distance=..4] unless score @s Team = @p[scores={char=56}] Team run scoreboard players add @s asphyxiation_decay_initial 0
-execute at @e[scores={char=56,s2_timer=1..100}] as @a[distance=..4] unless score @s Team = @p[scores={char=56}] Team run scoreboard players add @s asphyxiation_decay 0
+execute at @e[scores={char=56,s2_timer=1..100}] as @a[distance=..4] unless score @s Team = @p[scores={char=56}] Team run scoreboard players set @s asphyxiation_decay_initial 0
+execute at @e[scores={char=56,s2_timer=1..100}] as @a[distance=..4] unless score @s Team = @p[scores={char=56}] Team run scoreboard players set @s asphyxiation_decay 0
 
 execute at @a[scores={char=56,s2_timer=1..100}] unless entity @e[tag=fume_veil_thing_spinny] run summon marker ~ ~ ~ {Tags:["fume_veil_thing_spinny","fume_veil_things","entities_smokebride"]}
 execute at @a[scores={char=56,s2_timer=1..100}] run tp @e[tag=fume_veil_thing_spinny] ~ ~0.3 ~
@@ -212,7 +212,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=56}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=341..,char=56}] s2_timer 0
 
 execute as @a[scores={char=56}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_hoe",Slot:0b}]}] run clear @a[scores={char=56}] stone_hoe
-item replace entity @a[scores={char=56}] hotbar.0 with stone_hoe[swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Umbrella"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=56}] hotbar.0 with stone_hoe[swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Umbrella"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=56,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=56}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=56,s1_timer=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Smell of the Embers",color:"dark_aqua",bold:1b},item_model="gray_candle",custom_data={s1:1}] 1

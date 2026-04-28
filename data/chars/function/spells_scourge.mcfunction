@@ -39,9 +39,9 @@ execute at @e[tag=firestream,scores={fire_life=3..}] run fill ~ ~2 ~ ~ ~-1 ~ fir
 execute at @e[tag=firestream] if entity @a[scores={char=25}] run execute as @a[distance=..2] unless score @s Team = @p[scores={char=25}] Team run scoreboard players set @s scourge_damage 100
 
 
-execute at @a[scores={char=25,s1_timer=41..42}] run kill @e[tag=firestream] 
-execute at @a[scores={char=25,s1_timer=41..42}] at @e[tag=firenomore] run fill ~15 ~10 ~15 ~-15 ~-10 ~-15 air replace fire
-execute at @a[scores={char=25,s1_timer=41..42}] at @e[tag=firenomore] run fill ~15 ~10 ~15 ~-15 ~-10 ~-15 air replace soul_fire
+execute at @a[scores={char=25,s1_timer=51..52}] run kill @e[tag=firestream] 
+execute at @a[scores={char=25,s1_timer=51..52}] at @e[tag=firenomore] run fill ~15 ~10 ~15 ~-15 ~-10 ~-15 air replace fire
+execute at @a[scores={char=25,s1_timer=51..52}] at @e[tag=firenomore] run fill ~15 ~10 ~15 ~-15 ~-10 ~-15 air replace soul_fire
 execute at @a[scores={char=25,s1_timer=1..51}] run fill ~1 ~3 ~1 ~-1 ~-3 ~-1 minecraft:air replace minecraft:fire
 scoreboard players add @e[tag=firestream] fire_life 1
 scoreboard players add @e[tag=firenomore] fire_life 1
@@ -82,8 +82,9 @@ execute at @a[scores={char=25,s2_timer=20..50,CC_silence=0}] unless block ~ ~-0.
 #item replace entity @a[scores={char=25,s2_timer=62}] armor.head with player_head{display:{Name:'{"text":"Head"}'},Enchantments:[{id:"minecraft:binding_curse",lvl:1s},{id:"minecraft:projectile_protection",lvl:2s}],AttributeModifiers:[{AttributeName:"max_health",Name:"max_health",Amount:6,Operation:0,UUID:[I;0,998802,0,792568],Slot:"head"}],SkullOwner:{Id:[I;-1093052481,-2032251941,-1704865060,-830880570],Properties:{textures:[{Value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzg0NTg3NTg4ODg5NmFiNmI2ZTVmMjlkNjZhYzllZjZiNDFmMjI3ZTEyNjg1ZGU0Y2IxMzQ5ZTMwYzBlMzVjOCJ9fX0="}]}}}
 scoreboard players set @a[scores={char=25,s2_timer=62}] unstoppable 0
 
-execute at @a[scores={char=25,s2_timer=62,CC_silence=0}] run execute as @e[distance=..3,tag=valid_spell_target] unless score @s Team = @p[scores={char=25}] Team run scoreboard players set @s CC_knockup 20
-execute at @a[scores={char=25,s2_timer=62,CC_silence=0}] run execute as @a[distance=..3] unless score @s Team = @p[scores={char=25}] Team run scoreboard players set @s scourge_damage 100
+execute at @a[scores={char=25,s2_timer=62,CC_silence=0}] run execute as @e[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=25}] Team run damage @s 3 dragon_breath by @p[scores={char=25}] from @p[scores={char=25}]
+execute at @a[scores={char=25,s2_timer=62,CC_silence=0}] run execute as @a[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=25}] Team run scoreboard players set @s CC_knockup 20
+execute at @a[scores={char=25,s2_timer=62,CC_silence=0}] run execute as @a[distance=..4] unless score @s Team = @p[scores={char=25}] Team run scoreboard players set @s scourge_damage 100
 
 execute at @a[scores={char=25},tag=scourge_hit_the_ground] run particle lava ~ ~ ~ 2 0.2 2 0.01 100 force
 execute at @a[scores={char=25},tag=scourge_hit_the_ground] run particle block{block_state:{Name:"minecraft:magma_block"}} ~ ~ ~ 1.5 0.3 1.5 0.01 100 force
@@ -133,20 +134,21 @@ advancement revoke @a[advancements={chars:scourge_fear_apply=true}] only chars:s
 execute at @a[scores={universal_death=1..,scourge_damage=1..}] run scoreboard players set @a[scores={char=25}] passive_scou 1
 scoreboard players set @a[scores={universal_death=1..,scourge_damage=1..}] scourge_damage 0
 
-execute at @a[scores={char=25,passive_scou=1..}] run execute as @a[distance=..10] unless score @s Team = @p[scores={char=25}] Team run tag @s add scourge_fear
+execute at @a[scores={char=25,passive_scou=1..}] run execute as @a[distance=..10] unless score @s Team = @p[scores={char=25}] Team run tag @s add fear_source_scourge
 
 execute at @a[scores={char=25,passive_scou=1..}] run execute as @a[distance=..10] unless score @s Team = @p[scores={char=25}] Team run scoreboard players set @s CC_disarm 40
-execute at @a[scores={char=25,passive_scou=1..}] run playsound minecraft:entity.ender_dragon.growl master @a[distance=..20] ~ ~ ~ 0.7 0.8 1.0
-execute at @a[scores={char=25,passive_scou=1..}] run playsound minecraft:entity.ravager.celebrate master @a[distance=..20] ~ ~ ~ 1 0.9 1
-execute at @a[scores={char=25,passive_scou=1..}] run particle minecraft:flame ~ ~ ~ 10 1 10 0.01 300 force
-execute at @a[scores={char=25,passive_scou=1..}] run particle minecraft:smoke ~ ~ ~ 10 1 10 0.01 500 force
+execute at @a[scores={char=25,passive_scou=1..}] run execute as @a[distance=..10] unless score @s Team = @p[scores={char=25}] Team run scoreboard players set @s CC_fear 15
+execute at @a[scores={char=25,passive_scou=1..}] run playsound entity.ender_dragon.growl master @a[distance=..20] ~ ~ ~ 0.7 0.8 1.0
+execute at @a[scores={char=25,passive_scou=1..}] run playsound entity.ravager.celebrate master @a[distance=..20] ~ ~ ~ 1 0.9 1
+execute at @a[scores={char=25,passive_scou=1..}] run particle flame ~ ~ ~ 10 1 10 0.01 300 force
+execute at @a[scores={char=25,passive_scou=1..}] run particle smoke ~ ~ ~ 10 1 10 0.01 500 force
 
 scoreboard players set @a[scores={passive_scou=1..}] passive_scou 0
 
 
-execute as @a[tag=scourge_fear] at @s run tp @s ~ ~ ~ facing entity @p[distance=0.5..,scores={char=25}]
-execute as @a[tag=scourge_fear] at @s run tp @s ~ ~ ~ ~-180 ~
-tag @a remove scourge_fear
+execute as @a[tag=fear_source_scourge,scores={CC_fear=1..}] at @s run tp @s ~ ~ ~ facing entity @p[distance=0.5..,scores={char=25}]
+execute as @a[tag=fear_source_scourge,scores={CC_fear=1..}] at @s run tp @s ~ ~ ~ ~-180 ~
+tag @a[scores={CC_fear=..1}] remove fear_source_scourge
 
 # scourge
 
@@ -160,7 +162,7 @@ scoreboard players set @a[scores={s2_timer=301..,char=25}] s2_timer 0
 
 
 execute as @a[scores={char=25}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_pickaxe",Slot:0b}]}] run clear @a[scores={char=25}] netherite_pickaxe
-item replace entity @a[scores={char=25}] hotbar.0 with minecraft:netherite_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Tail"},custom_data={scourges_dong:1},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=25}] hotbar.0 with minecraft:netherite_pickaxe[minecraft:custom_name={bold:1b,color:"gray",text:"Tail"},custom_data={scourges_dong:1},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=25,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=25}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=25,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:campfire",minecraft:custom_name={text:"To Ashes",color:"dark_aqua",bold:1b}] 1

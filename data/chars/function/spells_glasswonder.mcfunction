@@ -5,6 +5,18 @@ tag @e add wonder_expose_initiated
 
 # passive
 
+
+scoreboard players set @a[scores={char=75,s0_timer=1,CC_silence=1..}] s0_timer 0
+
+title @a[scores={char=75,s0_timer=1..20}] actionbar [{text:"[",bold:1b,color:"dark_red",type:"text"},{text:"",color:"red",bold:0b,type:"text"},{text:"===",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_red",type:"text"}]
+title @a[scores={char=75,s0_timer=21..40}] actionbar [{text:"[",bold:1b,color:"dark_red",type:"text"},{text:"=",color:"red",bold:0b,type:"text"},{text:"==",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_red",type:"text"}]
+title @a[scores={char=75,s0_timer=41..60}] actionbar [{text:"[",bold:1b,color:"dark_red",type:"text"},{text:"==",color:"red",bold:0b,type:"text"},{text:"=",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_red",type:"text"}]
+title @a[scores={char=75,s0_timer=61..80}] actionbar [{text:"[",bold:1b,color:"dark_red",type:"text"},{text:"===",color:"red",bold:0b,type:"text"},{text:"",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_red",type:"text"}]
+
+title @a[scores={char=75,s0_timer=0,CC_silence=0}] actionbar [{text:"[",bold:1b,color:"dark_red",type:"text"},{text:" Art can be made! ",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_red",type:"text"}]
+title @a[scores={char=75,s0_timer=0,CC_silence=1..}] actionbar [{text:"[",bold:1b,color:"dark_gray",type:"text"},{text:" I need new inspiration! ",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_gray",type:"text"}]
+
+
 execute at @a[scores={char=75,s0_timer=1,CC_silence=0},x_rotation=44..90] unless entity @e[tag=sculpture,distance=..1] run summon creeper ~ ~ ~ {Invulnerable:1,NoAI:1,Silent:1,Tags:["entities_wonder","sculpture","valid_spell_target","sculpture_stationary"]}
 execute at @a[scores={char=75,s0_timer=1,CC_silence=0},x_rotation=-90..45] run summon creeper ~ ~ ~ {Invulnerable:1,NoAI:1,Silent:1,Tags:["entities_wonder","sculpture","valid_spell_target","sculpture_moving"]}
 execute at @a[scores={char=75,s0_timer=1,CC_silence=0}] run playsound block.sand.place master @a[distance=..10] ~ ~ ~ 1 1 1
@@ -79,6 +91,17 @@ execute at @e[tag=sculpture_visuals,tag=sculpture_explode] run particle block{bl
 execute at @e[tag=sculpture_visuals,tag=sculpture_explode] run particle block{block_state:{Name:"minecraft:glass"}} ~ ~0.5 ~ 0.8 1 0.8 0.01 50 normal
 execute at @e[tag=sculpture_visuals,tag=sculpture_explode,limit=1] run playsound block.glass.break master @a[distance=..15] ~ ~ ~ 1 0.5 1
 kill @e[tag=sculpture_visuals,tag=sculpture_explode] 
+
+
+execute unless entity @e[tag=sculpture,scores={SummonAge=7}] run scoreboard players remove @e[tag=sculpture,scores={SummonAge=8..}] SummonAge 1
+execute unless entity @e[tag=sculpture,scores={SummonAge=6}] run scoreboard players remove @e[tag=sculpture,scores={SummonAge=7..}] SummonAge 1
+execute unless entity @e[tag=sculpture,scores={SummonAge=5}] run scoreboard players remove @e[tag=sculpture,scores={SummonAge=6..}] SummonAge 1
+execute unless entity @e[tag=sculpture,scores={SummonAge=4}] run scoreboard players remove @e[tag=sculpture,scores={SummonAge=5..}] SummonAge 1
+execute unless entity @e[tag=sculpture,scores={SummonAge=3}] run scoreboard players remove @e[tag=sculpture,scores={SummonAge=4..}] SummonAge 1
+execute unless entity @e[tag=sculpture,scores={SummonAge=2}] run scoreboard players remove @e[tag=sculpture,scores={SummonAge=3..}] SummonAge 1
+execute unless entity @e[tag=sculpture,scores={SummonAge=1}] run scoreboard players remove @e[tag=sculpture,scores={SummonAge=2..}] SummonAge 1
+
+
 
 kill @e[tag=sculpture,scores={SummonAge=9..}]
 
@@ -201,7 +224,7 @@ kill @e[tag=shatter_sculpture]
 # glass wonder
 
 scoreboard players add @a[scores={char=75,s0_timer=1..}] s0_timer 1
-scoreboard players set @a[scores={char=75,s0_timer=40..}] s0_timer 0
+scoreboard players set @a[scores={char=75,s0_timer=80..}] s0_timer 0
 
 scoreboard players set @a[scores={s1_timer=1,char=75}] spellCD1 160
 scoreboard players add @a[scores={s1_timer=1..,char=75}] s1_timer 1
@@ -212,7 +235,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=75}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=260..,char=75}] s2_timer 0
 
 execute as @a[scores={char=75}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:0b}]}] run clear @a[scores={char=75}] warped_fungus_on_a_stick[custom_data={s0:1}]
-item replace entity @a[scores={char=75}] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:copper_hoe",minecraft:custom_name={bold:1b,color:"gray",text:"Burned Hands"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=75}] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:copper_hoe",minecraft:custom_name={bold:1b,color:"gray",text:"Burned Hands"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 
 execute as @a[scores={char=75,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=75}] carrot_on_a_stick[custom_data={s1:1}]

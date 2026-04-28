@@ -1,0 +1,1 @@
+$scoreboard players display numberformat @s HP_display fixed [{"text":"$(temp1)","color":"white"},{"text":"/","color":"gray",bold:1b},{"text":"$(temp3)","color":"white"}]

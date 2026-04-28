@@ -83,8 +83,8 @@ execute at @e[tag=sand_scorn_explosion] run particle falling_dust{block_state:{N
 execute at @e[tag=sand_scorn_explosion] run particle witch ~ ~1 ~ 2 2 2 2 100 force
 execute at @e[tag=sand_scorn_explosion] run kill @e[tag=sand_scorn]
 
-scoreboard players set @e[tag=sand_scorn_explosion] CC_root 10
-damage @n[tag=sand_scorn_explosion] 9 generic by @p[scores={char=52}] from @p[scores={char=52}]
+scoreboard players set @a[tag=sand_scorn_explosion] CC_root 10
+damage @n[tag=sand_scorn_explosion] 7 generic by @p[scores={char=52}] from @p[scores={char=52}]
 
 tag @e remove sand_scorn_explosion
 
@@ -130,38 +130,21 @@ execute as @e[tag=last_sandstorm] at @s run tp @s ^ ^ ^0.4
 
 execute at @a[scores={char=52,s2_timer=120..}] run kill @e[tag=last_sandstorm]
 
-execute at @e[tag=last_sandstorm] as @a[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=52}] Team run scoreboard players set @s sandgrasp 50
-
-#effect give @a[scores={sandgrasp=2..}] slow_falling 1 0 true
-
-execute as @a[scores={sandgrasp=40..50}] run attribute @s gravity base set 0.16
-execute as @a[scores={sandgrasp=-40..1}] run attribute @s gravity base set 0.08
+execute at @e[tag=last_sandstorm] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=52}] Team run damage @s 1 generic by @p[scores={char=52}] from @p[scores={char=52}]
+execute at @e[tag=last_sandstorm] as @a[distance=..5,tag=valid_spell_target] unless score @s sandgrasp matches 1.. unless score @s Team = @p[scores={char=52}] Team run scoreboard players set @s sandgrasp 1
 
 execute at @a[scores={sandgrasp=2..}] run particle falling_dust{block_state:{Name:"minecraft:sand"}} ~ ~ ~ 0.6 0.6 0.6 0.1 3
 execute at @a[scores={sandgrasp=2..}] run particle witch ~ ~ ~ 0.6 0.6 0.6 0.1 1
 
-execute as @a[scores={sandgrasp=2..}] at @s unless block ~ ~-1 ~ #dash run playsound block.sand.fall master @a[distance=..10] ~ ~ ~ 1 0.4 1
-execute as @a[scores={sandgrasp=2..}] at @s unless block ~ ~-1 ~ #dash run scoreboard players set @s sandgrasp 1
-scoreboard players set @a[scores={sandgrasp=1}] sandgrasp -1
-scoreboard players remove @a[scores={sandgrasp=-40..-1}] sandgrasp 1
-scoreboard players remove @a[scores={sandgrasp=2..}] sandgrasp 1
-scoreboard players set @a[scores={sandgrasp=..-40}] sandgrasp 0
-
-
-#execute as @a[scores={sandgrasp=2..}] at @s run scoreboard players set @s sandgrasp 1
-
-scoreboard players set @a[scores={sandgrasp=3..}] CC_knockdown 3
-scoreboard players set @a[scores={sandgrasp=1}] CC_stagger 60
-execute at @a[scores={sandgrasp=-1}] run particle block{block_state:{Name:"minecraft:sand"}} ~ ~ ~ 1.5 0.5 1.5 1 100
-execute at @a[scores={sandgrasp=-1}] run particle witch ~ ~ ~ 1.5 0.5 1.5 1 30
-execute at @a[scores={sandgrasp=-1}] run playsound entity.generic.big_fall master @a[distance=..10] ~ ~ ~ 1 0.6 1
-execute at @a[scores={sandgrasp=-1}] run playsound block.sand.break master @a[distance=..10] ~ ~ ~ 1 0.1 1
+scoreboard players set @a[scores={sandgrasp=2}] CC_stagger 60
+execute at @a[scores={sandgrasp=2}] run particle block{block_state:{Name:"minecraft:sand"}} ~ ~ ~ 1.5 0.5 1.5 1 100
+execute at @a[scores={sandgrasp=2}] run particle witch ~ ~ ~ 1.5 0.5 1.5 1 30
+execute at @a[scores={sandgrasp=2}] run playsound entity.generic.big_fall master @a[distance=..10] ~ ~ ~ 1 0.6 1
+execute at @a[scores={sandgrasp=2}] run playsound block.sand.break master @a[distance=..10] ~ ~ ~ 1 0.1 1
 effect give @a[scores={sandgrasp=1..2}] blindness 3
 effect give @a[scores={sandgrasp=1..2}] slowness 3 4
-effect give @a[scores={sandgrasp=1..2}] glowing 3 0 true
-effect clear @a[scores={sandgrasp=1..2}] slow_falling
-
-
+scoreboard players add @a[scores={sandgrasp=1..}] sandgrasp 1
+scoreboard players set @a[scores={sandgrasp=51..}] sandgrasp 0
 
 
 
@@ -188,13 +171,14 @@ scoreboard players set @a[scores={char=52,s3_timer=1,CC_silence=1..}] s3_timer 0
 clear @a[scores={char=52,s3_timer=1,CC_silence=0}] *[custom_data={s3:1}]
 execute at @a[scores={char=52,s3_timer=1,CC_silence=0}] as @e[tag=valid_spell_target,distance=..10] unless score @s Team = @p[scores={char=52}] Team run tag @s add blind_vengeanced
 
-scoreboard players set @e[tag=blind_vengeanced] CC_knockup 10
+scoreboard players set @a[tag=blind_vengeanced] CC_knockup 10
 execute at @e[tag=blind_vengeanced] run particle falling_dust{block_state:{Name:"minecraft:sand"}} ~ ~0.3 ~ 0.3 1 0.3 1 130 force
 execute as @e[tag=blind_vengeanced] run damage @s 2 generic by @p[scores={char=52}] from @p[scores={char=52}]
 
 tag @e remove blind_vengeanced
 
 
+execute at @a[scores={char=52}] as @e[type=!player,distance=..10,nbt={HurtTime:10s}] unless score @s Team = @p[scores={char=52}] Team run effect give @s glowing 3 0 true
 execute at @a[scores={char=52}] as @a[distance=..10,scores={universal_damagetaken=1..}] unless score @s Team = @p[scores={char=52}] Team run effect give @s glowing 3 0 true
 execute at @a[scores={char=52}] as @a[distance=..10,scores={universal_damagetaken_shield=1..}] unless score @s Team = @p[scores={char=52}] Team run effect give @s glowing 3 0 true
 
@@ -229,7 +213,7 @@ scoreboard players add @a[scores={s3_timer=1..,char=52}] s3_timer 1
 scoreboard players set @a[scores={s3_timer=20..,char=52}] s3_timer 0
 
 execute as @a[scores={char=52}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_axe",Slot:0b}]}] run clear @a[scores={char=52}] golden_axe
-item replace entity @a[scores={char=52}] hotbar.0 with minecraft:golden_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Mantis Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=52}] hotbar.0 with minecraft:golden_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Mantis Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=52,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=52}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=52,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:rabbit_foot",minecraft:custom_name={text:"Scorn of The Desert",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1

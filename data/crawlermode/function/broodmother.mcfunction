@@ -191,8 +191,7 @@ execute as @e[tag=crawlers_broodmother_bomb] at @s run particle smoke ~ ~ ~ 0.2 
 execute as @e[tag=crawlers_broodmother_bomb,scores={lifetime=1..2}] at @s run playsound block.cobweb.break master @a[distance=..20] ~ ~ ~ 3 0.8
 execute as @e[tag=crawlers_broodmother_bomb] at @s unless block ~ ~ ~ #minecraft:dash run particle explosion ~ ~1 ~ 1 1 1 0 8
 execute as @e[tag=crawlers_broodmother_bomb] at @s unless block ~ ~ ~ #minecraft:dash run playsound entity.generic.explode master @a[distance=..20] ~ ~ ~ 2 0.9
-execute as @e[tag=crawlers_broodmother_bomb] at @s unless block ~ ~ ~ #minecraft:dash as @a[distance=..3] run damage @s 4 generic
-execute as @e[tag=crawlers_broodmother_bomb] at @s unless block ~ ~ ~ #minecraft:dash as @a[distance=..3] run scoreboard players set @s CC_stun 20
+execute as @e[tag=crawlers_broodmother_bomb] at @s unless block ~ ~ ~ #minecraft:dash as @a[distance=..3] run damage @s 5 generic
 execute as @e[tag=crawlers_broodmother_bomb] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
 kill @e[tag=crawlers_broodmother_bomb,scores={lifetime=50..}]
 

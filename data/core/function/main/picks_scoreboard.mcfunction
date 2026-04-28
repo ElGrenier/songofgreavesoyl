@@ -59,6 +59,7 @@ execute if score map settings matches 26 run scoreboard players display name map
 execute if score map settings matches 27 run scoreboard players display name map_name Picks "Infected Crypt"
 execute if score map settings matches 28 run scoreboard players display name map_name Picks "Mine Control"
 execute if score map settings matches 29 run scoreboard players display name map_name Picks "Temple of Rainmaker"
+execute if score map settings matches 30 run scoreboard players display name map_name Picks "Port of Shraa'Ini"
 
 
 #chars
@@ -103,8 +104,8 @@ execute if entity @a[scores={char=6},team=ffa] run scoreboard players set Guide 
 execute if entity @e[tag=ban_6] run scoreboard players set Guide Picks -3
 execute unless entity @a[scores={char=6}] unless entity @e[tag=ban_6] run scoreboard players reset Guide Picks
 
-execute if entity @a[scores={char=8}] run scoreboard players display name picks_dragon Picks "Red-Eyes Dragon"
-execute if entity @e[tag=ban_8] run scoreboard players display name picks_dragon Picks "Red-Eyes Dragon"
+execute if entity @a[scores={char=7}] run scoreboard players display name picks_dragon Picks "Red-Eyes Dragon"
+execute if entity @e[tag=ban_7] run scoreboard players display name picks_dragon Picks "Red-Eyes Dragon"
 execute if entity @a[scores={char=7},team=purple] run scoreboard players set picks_dragon Picks 1
 execute if entity @a[scores={char=7},team=yellow] run scoreboard players set picks_dragon Picks -1
 execute if entity @a[scores={char=7},team=ffa] run scoreboard players set picks_dragon Picks -1
@@ -566,7 +567,7 @@ execute if entity @e[tag=ban_74] run scoreboard players set Fortress Picks -3
 execute unless entity @a[scores={char=74}] unless entity @e[tag=ban_74] run scoreboard players reset Fortress Picks
 
 execute if entity @a[scores={char=75}] run scoreboard players display name picks_glasswonder Picks "Glass Wonder"
-execute if entity @e[tag=ban_75] run scoreboard players display name picks_glasswonder Picks "Scarlet Lady"
+execute if entity @e[tag=ban_75] run scoreboard players display name picks_glasswonder Picks "Glass Wonde"
 execute if entity @a[scores={char=75},team=purple] run scoreboard players set picks_glasswonder Picks 1
 execute if entity @a[scores={char=75},team=yellow] run scoreboard players set picks_glasswonder Picks -1
 execute if entity @a[scores={char=75},team=ffa] run scoreboard players set picks_glasswonder Picks -1

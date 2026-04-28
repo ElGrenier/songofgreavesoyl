@@ -1,0 +1,3 @@
+particle dust{color:[1.0,0.67,0.0],scale:1} ~ ~ ~ 0.5 0.5 0.5 0 5
+execute as @e[distance=..2.5,tag=valid_spell_target] if score @s Team = @p[scores={char=69}] Team unless score @s char matches 69 run scoreboard players set @s orange_buff 100
+execute unless entity @a[scores={orange_buff=1..}] positioned ^ ^ ^0.5 if entity @s[distance=..8] if block ~ ~ ~ #dash run function chars:painter_scourgeslayer

@@ -3,13 +3,20 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:wooden_sword"}}]
 
 # feed of the weak
 
+title @a[scores={char=62,passive_fien=0}] actionbar [{text:"[",bold:1b,color:"dark_green",type:"text"},{text:" Feed ",color:"red",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_green",type:"text"}]
 
-execute at @a[scores={char=62,passive_fien=0}] as @a[distance=..5,scores={HPercentage=..50}] unless score @s Team = @p[scores={char=62}] Team run tag @s add yummy_weak
+title @a[scores={char=62,passive_fien=1..20}] actionbar [{text:"[",bold:1b,color:"dark_green",type:"text"},{text:"",color:"dark_red",bold:0b,type:"text"},{text:"=====",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_green",type:"text"}]
+title @a[scores={char=62,passive_fien=21..40}] actionbar [{text:"[",bold:1b,color:"dark_green",type:"text"},{text:"=",color:"dark_red",bold:0b,type:"text"},{text:"====",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_green",type:"text"}]
+title @a[scores={char=62,passive_fien=41..60}] actionbar [{text:"[",bold:1b,color:"dark_green",type:"text"},{text:"==",color:"dark_red",bold:0b,type:"text"},{text:"===",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_green",type:"text"}]
+title @a[scores={char=62,passive_fien=61..80}] actionbar [{text:"[",bold:1b,color:"dark_green",type:"text"},{text:"===",color:"dark_red",bold:0b,type:"text"},{text:"==",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_green",type:"text"}]
+title @a[scores={char=62,passive_fien=81..100}] actionbar [{text:"[",bold:1b,color:"dark_green",type:"text"},{text:"====",color:"dark_red",bold:0b,type:"text"},{text:"=",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_green",type:"text"}]
+title @a[scores={char=62,passive_fien=101..120}] actionbar [{text:"[",bold:1b,color:"dark_green",type:"text"},{text:"=====",color:"dark_red",bold:0b,type:"text"},{text:"",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_green",type:"text"}]
+title @a[scores={char=62,passive_fien=120..130}] actionbar {text:"mmm",color:"dark_red",italic:1b,type:"text"}
 
-scoreboard players set @p[scores={char=62},advancements={chars:fiend_vore=true}] passive_fien 1
-advancement revoke @p[scores={char=62},advancements={chars:fiend_vore=true}] only chars:fiend_vore
+title @a[scores={char=62,passive_fien=990..}] actionbar [{text:"[",bold:1b,color:"dark_green",type:"text"},{text:" WEAK ",color:"dark_red",bold:1b,type:"text"},{text:"]",bold:1b,color:"dark_green",type:"text"}]
 
-tag @a[tag=yummy_weak,scores={HPercentage=51..}] remove yummy_weak
+execute as @a[advancements={chars:fiend_vore=true},scores={HPercentage=..50}] unless score @s Team = @p[scores={char=62}] Team run scoreboard players set @p[scores={char=62,passive_fien=0}] passive_fien 1
+advancement revoke @a[advancements={chars:fiend_vore=true}] only chars:fiend_vore
 
 effect give @a[scores={char=62,passive_fien=2..3}] absorption 3
 execute at @a[scores={char=62,passive_fien=1..3}] run particle block{block_state:{Name:"minecraft:oak_leaves"}} ~ ~0.5 ~ 0.5 1 0.5 0.0001 60 normal
@@ -198,12 +205,15 @@ execute at @a[scores={char=62,s2_timer=2,CC_silence=0}] run particle crit ~ ~1 ~
 execute at @a[scores={char=62,s2_timer=2,CC_silence=0}] run playsound entity.player.hurt_sweet_berry_bush master @a[distance=..10] ~ ~ ~ 1 0.6 1
 execute at @a[scores={char=62,s2_timer=2,CC_silence=0}] run playsound block.vine.place master @a[distance=..10] ~ ~ ~ 1 0.1 1
 
-item replace entity @a[scores={char=62,thorns_timer=3..}] armor.head with player_head[minecraft:custom_name="Wood",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:thorns":13,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:16.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;922351862,-2026683839,-1211501750,10060195],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWY1NzE5MmIxOTRjNjU4YWFhODg4MTY4NDhjYmNlN2M3NDk0NjZhNzkyYjhhN2UxZDNmYWZhNDFjNDRmMzQxMiJ9fX0="}]}] 1
+#item replace entity @a[scores={char=62,thorns_timer=3..}] armor.head with player_head[custom_name={bold:1b,color:"aqua",text:"Rakkhus' Thorns"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:thorns":13,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:16.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;922351862,-2026683839,-1211501750,10060195],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWY1NzE5MmIxOTRjNjU4YWFhODg4MTY4NDhjYmNlN2M3NDk0NjZhNzkyYjhhN2UxZDNmYWZhNDFjNDRmMzQxMiJ9fX0="}]}] 1
 execute at @a[scores={char=62,thorns_timer=3..}] run particle crit ~ ~1 ~ 0.5 0.8 0.5 0.01 2
 execute at @a[scores={char=62,thorns_timer=3..}] run particle block{block_state:{Name:"minecraft:oak_leaves"}} ~ ~1 ~ 0.7 1 0.7 0.01 2
 #execute at @a[scores={char=62,thorns_timer=3..}] run particle block{block_state: 'minecraft:oak_log'} ~ ~1 ~ 0.7 1 0.7 0.01 2
 
-item replace entity @a[scores={char=62,thorns_timer=..2}] armor.head with player_head[minecraft:custom_name="Wood",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:16.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;922351862,-2026683839,-1211501750,10060195],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWY1NzE5MmIxOTRjNjU4YWFhODg4MTY4NDhjYmNlN2M3NDk0NjZhNzkyYjhhN2UxZDNmYWZhNDFjNDRmMzQxMiJ9fX0="}]}] 1
+#item replace entity @a[scores={char=62,thorns_timer=..2}] armor.head with player_head[custom_name={bold:1b,color:"aqua",text:"Rakkhus"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:16.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;922351862,-2026683839,-1211501750,10060195],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWY1NzE5MmIxOTRjNjU4YWFhODg4MTY4NDhjYmNlN2M3NDk0NjZhNzkyYjhhN2UxZDNmYWZhNDFjNDRmMzQxMiJ9fX0="}]}] 1
+
+execute as @a[scores={char=62,thorns_timer=2..,universal_damagetaken=1..}] on attacker run damage @s 3 sweet_berry_bush by @p[scores={char=62}] from @p[scores={char=62}]
+execute as @a[scores={char=62,thorns_timer=2..,universal_damagetaken_shield=1..}] on attacker run damage @s 3 sweet_berry_bush by @p[scores={char=62}] from @p[scores={char=62}]
 
 execute at @a[scores={char=62,thorns_timer=1..2}] run playsound block.vine.break master @a[distance=..10] ~ ~ ~ 1 0.4 1
 execute at @a[scores={char=62,thorns_timer=1..2}] run particle block{block_state:{Name:"minecraft:oak_leaves"}} ~ ~1 ~ 0.7 1 0.7 0.01 40
@@ -211,6 +221,7 @@ execute at @a[scores={char=62,thorns_timer=1..2}] run particle block{block_state
 scoreboard players remove @a[scores={thorns_timer=1..}] thorns_timer 1
 
 scoreboard players add @a[scores={char=62,thorns_timer=3..,universal_hit=1..}] thorns_timer 10
+scoreboard players add @a[scores={char=62,thorns_timer=3..,universal_hit_shield=1..}] thorns_timer 10
 
 execute at @a[scores={char=62,thorns_timer=..2}] run kill @e[tag=s2_thorns,type=item_display]
 
@@ -225,10 +236,10 @@ scoreboard players add @a[scores={s2_timer=1..,char=62}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=401..,char=62}] s2_timer 0
 
 execute as @a[scores={char=62}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:wooden_sword",Slot:0b}]}] run clear @a[scores={char=62}] wooden_sword
-item replace entity @a[scores={char=62}] hotbar.0 with minecraft:wooden_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Thorns"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=62}] hotbar.0 with minecraft:wooden_sword[custom_data={fiend:1},custom_name={bold:1b,color:"gray",text:"Thorns"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=62,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=62}] carrot_on_a_stick[custom_data={s1:1}]
-item replace entity @a[scores={char=62,s1_timer=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Rotten Grasp",color:"gray",bold:1b},item_model=torchflower_seeds,custom_data={s1:1}] 1
+item replace entity @a[scores={char=62,s1_timer=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Rotten Grasp",color:"dark_aqua",bold:1b},item_model=torchflower_seeds,custom_data={s1:1}] 1
 
 execute as @a[scores={char=62,s2_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=62}] warped_fungus_on_a_stick[custom_data={s2:1}]
-item replace entity @a[scores={char=62,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[minecraft:custom_name={text:"Piercing Pain",color:"gray",bold:1b},minecraft:enchantments={"minecraft:thorns":1},item_model=jungle_sapling,custom_data={s2:1}] 1
+item replace entity @a[scores={char=62,s2_timer=0}] hotbar.2 with warped_fungus_on_a_stick[minecraft:custom_name={text:"Piercing Pain",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:thorns":1},item_model=jungle_sapling,custom_data={s2:1}] 1

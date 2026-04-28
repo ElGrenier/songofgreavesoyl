@@ -5,6 +5,9 @@ execute at @e[tag=conductorshot_ar] run particle electric_spark ~ ~ ~ 0.1 0.1 0.
 execute at @e[tag=conductorshot_ar] run particle dust{color:[1.0,1.0,1.0],scale:1} ~ ~ ~ 0.1 0.1 0.1 0.1 2
 execute at @a[scores={char=73,CC_disarm=1..}] run kill @e[tag=conductorshot_ar]
 
+tag @e[tag=conductorshot_ar] add projectile
+scoreboard players operation @e[tag=projectile,tag=conductorshot_ar] Team = @p[scores={char=73}] Team
+
 effect give @a[scores={char=73},nbt={SelectedItem:{id:"minecraft:bow"}}] weakness 1 100 true
 
 # power surge
@@ -61,7 +64,7 @@ execute at @a[scores={char=73,s2_timer=1}] run tag @e remove chain_lightning_imm
 execute at @a[scores={char=73,s2_timer=1}] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,-0.3f,-0.3f],scale:[0.6f,0.6f,0.6f]},block_state:{Name:"minecraft:diamond_block"},Tags:["chain_lightning_first","ball_lightning","entities_conductor","projectile"]}
 scoreboard players operation @e[tag=projectile,tag=chain_lightning_first] Team = @p[scores={char=73}] Team
 tp @e[tag=chain_lightning_first,limit=1] @a[scores={char=73,s2_timer=1},limit=1]
-execute at @a[scores={char=73,s2_timer=1,CC_silence=0}] as @e[tag=chain_lightning_first,limit=1] at @s run tp @s ~ ~1 ~ 
+execute at @a[scores={char=73,s2_timer=1,CC_silence=0}] as @e[tag=chain_lightning_first,limit=1] at @s run tp @s ~ ~1 ~
 
 execute as @e[tag=ball_lightning] at @s run tp @s ^ ^ ^0.25
 execute at @e[tag=ball_lightning] run particle electric_spark ~ ~ ~ 0.5 0.5 0.5 0 10

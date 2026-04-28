@@ -14,9 +14,9 @@ tag @a[tag=outlawed] remove outlawed
 
 tag @a[scores={universal_death=1..}] remove outlaw
 
-execute at @a[tag=outlaw] positioned ~ ~3 ~ unless entity @e[distance=..1,tag=display_outlaw] run summon minecraft:armor_stand ~ ~ ~ {Tags:["display_outlaw","entities_warden"],Marker:1b,Invisible:1b,CustomName:{text:"OUTLAW",color:"gold",bold:1b},CustomNameVisible:1b}
-execute at @a[tag=outlaw] positioned ~ ~3 ~ run tp @e[distance=..1,tag=display_outlaw] ~ ~ ~
-execute as @e[tag=display_outlaw] at @s positioned ~ ~-3 ~ unless entity @a[distance=..1,tag=outlaw] run kill @s
+execute at @a[tag=outlaw] unless entity @e[distance=..1,tag=display_outlaw] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_outlaw","entities_warden"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"OUTLAW",color:"gold",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,3f,0.0f]}}
+execute at @a[tag=outlaw] run tp @e[distance=..1,tag=display_outlaw] ~ ~ ~
+execute as @e[tag=display_outlaw] at @s unless entity @a[distance=..1,tag=outlaw] run kill @s
 
 
 #lockdown
@@ -28,21 +28,32 @@ execute at @a[scores={char=38}] as @a[distance=0.1..8] unless score @s Team = @p
 execute at @a[scores={char=38}] as @a[distance=8.1..] unless score @s Team = @p[scores={char=38}] Team run tag @s remove warden_lockdown_valid_target
 execute at @a[scores={char=38}] as @a if score @s Team = @p[scores={char=38}] Team run tag @s remove warden_lockdown_valid_target
 
-execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] unless entity @e[tag=warden_lockdown_valid_target,distance=..8] run title @a[scores={char=38}] times 0 20 0
-execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] unless entity @e[tag=warden_lockdown_valid_target,distance=..8] run title @a[scores={char=38}] actionbar {text:"No targets within range",color:red,bold:1b}
-execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] unless entity @e[tag=warden_lockdown_valid_target,distance=..8] run scoreboard players set @a[scores={char=38,CC_silence=0}] spellCD1 20
-execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] unless entity @e[tag=warden_lockdown_valid_target,distance=..8] run scoreboard players set @a[scores={char=38,CC_silence=0}] s1_timer 220
+#execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] unless entity @e[tag=warden_lockdown_valid_target,distance=..8] run title @a[scores={char=38}] times 0 20 0
+#execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] unless entity @e[tag=warden_lockdown_valid_target,distance=..8] run title @a[scores={char=38}] actionbar {text:"No targets within range",color:red,bold:1b}
+#execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] unless entity @e[tag=warden_lockdown_valid_target,distance=..8] run scoreboard players set @a[scores={char=38,CC_silence=0}] spellCD1 10
+#execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] unless entity @e[tag=warden_lockdown_valid_target,distance=..8] run scoreboard players set @a[scores={char=38,CC_silence=0}] s1_timer 230
 
-execute at @a[scores={char=38,s1_timer=3,CC_silence=0}] run playsound minecraft:block.chain.place master @a[distance=..10] ~ ~ ~ 1 0.7 1
+execute as @a[scores={char=38,s1_timer=1,CC_silence=0}] at @s positioned ~ ~1.3 ~ run function chars:warden_lockdown_raycast
+execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] run playsound block.chain.place master @a[distance=..10] ~ ~ ~ 0.3 0.7 1
 
-execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] as @a[distance=0.1..8,tag=valid_spell_target] unless score @s Team = @p[scores={char=38}] Team run effect give @s slowness 4 1
-execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] as @a[distance=0.1..8,tag=valid_spell_target] unless score @s Team = @p[scores={char=38}] Team run tag @s add lockdowned
-execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] as @a[distance=0.1..8,tag=valid_spell_target] at @s unless score @s Team = @p[scores={char=38}] Team run summon marker ~ ~ ~ {Tags:["lockdown_particle_circle","lockdown_visuals","entities_warden"]}
-execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] as @a[distance=0.1..8,tag=valid_spell_target] at @s unless score @s Team = @p[scores={char=38}] Team run summon marker ~ ~ ~ {Tags:["lockdown","entities_warden"]}
-execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] as @a[distance=0.1..8,tag=valid_spell_target] at @s unless score @s Team = @p[scores={char=38}] Team run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["lockdown_hookpoint","lockdown_visuals","entities_warden"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,0f,-0.3f],scale:[0.6f,0.5f,0.6f]},block_state:{Name:"minecraft:netherite_block"}}
+execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] unless entity @e[distance=0.5..8,tag=lockdowned] run scoreboard players set @a[scores={char=38}] spellCD1 10
+execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] unless entity @e[distance=0.5..8,tag=lockdowned] run scoreboard players set @a[scores={char=38}] s1_timer 230
 
-execute at @a[scores={char=38,s1_timer=80}] run tag @a remove lockdowned
-execute at @a[scores={char=38,s1_timer=80}] run kill @e[tag=lockdown]
+execute at @a[scores={char=38,s1_timer=2,CC_silence=0}] at @a[tag=lockdowned] run playsound block.chain.place master @a[distance=..10] ~ ~ ~ 0.3 0.7 1
+execute at @a[scores={char=38,s1_timer=2,CC_silence=0}] as @a[tag=lockdowned] run effect give @s slowness 4 1
+execute at @a[scores={char=38,s1_timer=2,CC_silence=0}] at @a[tag=lockdowned] run summon marker ~ ~ ~ {Tags:["lockdown_particle_circle","lockdown_visuals","entities_warden"]}
+execute at @a[scores={char=38,s1_timer=2,CC_silence=0}] at @a[tag=lockdowned] run summon marker ~ ~ ~ {Tags:["lockdown","entities_warden"]}
+execute at @a[scores={char=38,s1_timer=2,CC_silence=0}] at @a[tag=lockdowned] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["lockdown_hookpoint","lockdown_visuals","entities_warden"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,0f,-0.3f],scale:[0.6f,0.5f,0.6f]},block_state:{Name:"minecraft:netherite_block"}}
+
+
+#execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] as @a[distance=0.1..8,tag=valid_spell_target] unless score @s Team = @p[scores={char=38}] Team run effect give @s slowness 4 1
+#execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] as @a[distance=0.1..8,tag=valid_spell_target] unless score @s Team = @p[scores={char=38}] Team run tag @s add lockdowned
+#execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] as @a[distance=0.1..8,tag=valid_spell_target] at @s unless score @s Team = @p[scores={char=38}] Team run summon marker ~ ~ ~ {Tags:["lockdown_particle_circle","lockdown_visuals","entities_warden"]}
+#execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] as @a[distance=0.1..8,tag=valid_spell_target] at @s unless score @s Team = @p[scores={char=38}] Team run summon marker ~ ~ ~ {Tags:["lockdown","entities_warden"]}
+#execute at @a[scores={char=38,s1_timer=1,CC_silence=0}] as @a[distance=0.1..8,tag=valid_spell_target] at @s unless score @s Team = @p[scores={char=38}] Team run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["lockdown_hookpoint","lockdown_visuals","entities_warden"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,0f,-0.3f],scale:[0.6f,0.5f,0.6f]},block_state:{Name:"minecraft:netherite_block"}}
+
+execute at @a[scores={char=38,s1_timer=60}] run tag @a remove lockdowned
+execute at @a[scores={char=38,s1_timer=60}] run kill @e[tag=lockdown]
 execute at @e[tag=lockdown] run particle block{block_state:{Name:"minecraft:iron_chain"}} ~ ~ ~ 0.1 0.1 0.1 0.001 1
 execute at @e[tag=lockdown] run particle entity_effect{color:[0.33,0.33,1.0,1.0]} ~ ~-0.3 ~ 0.3 0.3 0.3 0.001 1
 
@@ -134,13 +145,13 @@ scoreboard players set @e[scores={devoured=1..}] rite_of_chains 0
 
 effect give @a[scores={rite_of_chains=20}] weakness 1 100 true
 effect give @a[scores={rite_of_chains=20}] resistance 1 100 true
-scoreboard players set @a[scores={rite_of_chains=20}] CC_intangible 20
+#scoreboard players set @a[scores={rite_of_chains=20}] CC_intangible 20
 execute at @a[scores={rite_of_chains=20}] run summon marker ~ ~ ~ {Tags:["rite_pull","entities_warden"],NoGravity:1b}
 execute as @e[tag=rite_pull] at @s run tp @p[distance=..1,scores={rite_of_chains=20},limit=1]
 execute at @a[scores={rite_of_chains=20}] as @e[distance=..1,tag=rite_pull,limit=1] at @s run tp @s ~ ~0.5 ~
 execute at @a[scores={rite_of_chains=20}] as @e[tag=rite_pull] at @s run tp @s ~ ~ ~ facing entity @p[scores={char=38}]
 
-execute as @a[scores={rite_of_chains=5..19}] at @s run tp @e[tag=rite_pull,sort=nearest,limit=1]
+execute as @a[scores={rite_of_chains=5..19,death_dash_reset=0}] at @s run tp @e[tag=rite_pull,sort=nearest,limit=1]
 
 
 execute as @e[tag=rite_pull] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
@@ -155,7 +166,7 @@ execute as @e[tag=rite_pull] at @s run tp @s ^ ^ ^0.5
 execute at @e[tag=rite_pull] run playsound block.chain.place master @a[distance=..15] ~ ~ ~ 1 0.5 0.5
 
 execute at @a[scores={rite_of_chains=5}] run kill @e[distance=..1,tag=rite_pull]
-scoreboard players set @a[scores={rite_of_chains=5}] CC_stagger 100
+scoreboard players set @a[scores={rite_of_chains=5}] CC_stagger 60
 scoreboard players remove @a[scores={rite_of_chains=1..}] rite_of_chains 1
 
 execute unless entity @e[tag=rite_chains_animation_fix] run summon marker ~ ~ ~ {Tags:["rite_chains_animation_fix","entities_warden"]}
@@ -253,7 +264,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=38}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=360..,char=38}] s2_timer 0
 
 execute as @a[scores={char=38}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_pickaxe",Slot:0b}]}] run clear @a[scores={char=38}] stone_pickaxe
-item replace entity @a[scores={char=38}] hotbar.0 with stone_pickaxe[custom_data={warden:1},minecraft:custom_name={bold:1b,color:"gray",text:"Hook"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=38}] hotbar.0 with stone_pickaxe[custom_data={warden:1},minecraft:custom_name={bold:1b,color:"gray",text:"Hook"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=38,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=38}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=38,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:iron_bars",minecraft:custom_name={text:"Lockdown",color:"dark_aqua",bold:1b}] 1

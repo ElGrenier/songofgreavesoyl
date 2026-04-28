@@ -48,8 +48,8 @@ execute at @e[tag=void_blade] run particle falling_dust{block_state:{Name:"minec
 
 execute store result entity @e[tag=void_blade,limit=1] Rotation[1] float 1 run clear
 
-execute at @e[tag=void_blade] as @e[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=37}] Team run summon marker ~ ~ ~ {Tags:["void_banish","entities_shapeless"]}
-execute if entity @e[tag=void_banish] run kill @e[tag=void_blade]
+execute at @e[tag=void_blade] as @p[tag=valid_spell_target,distance=..1.5] unless score @s Team = @p[scores={char=37}] Team run tag @s add void_banished 
+execute if entity @e[tag=void_banished] run kill @e[tag=void_blade]
 execute at @a[scores={char=37,s1_timer=30..}] run kill @e[tag=void_blade]
 
 execute as @e[tag=void_blade] at @s unless block ^ ^0.5 ^0.5 #minecraft:dash run kill @e[tag=voidgate_visuals]
@@ -61,13 +61,12 @@ execute as @e[tag=void_blade] at @s if block ~ ~-0.2 ~ #minecraft:dash run tp @s
 execute as @e[tag=void_blade] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
 execute as @e[tag=void_blade] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
 
-
-execute at @e[tag=void_banish] as @p[distance=..3,tag=valid_spell_target] unless score @s Team = @p[scores={char=37}] Team run scoreboard players set @s CC_banish 40
-execute at @e[tag=void_banish] as @p[distance=..3,tag=valid_spell_target] unless score @s Team = @p[scores={char=37}] Team run scoreboard players set @s CC_silence 5
-execute at @e[tag=void_banish] as @p[distance=..3,tag=valid_spell_target] unless score @s Team = @p[scores={char=37}] Team run scoreboard players set @s void 1
-execute at @e[tag=void_banish] run particle smoke ~ ~1 ~ 2 2 2 0.001 400 force
-execute at @e[tag=void_banish] run playsound entity.elder_guardian.curse master @a[distance=..20] ~ ~ ~ 1 0.8 1
-kill @e[tag=void_banish]
+execute at @e[tag=void_banished] run particle smoke ~ ~1 ~ 2 2 2 0.001 400 force
+execute at @e[tag=void_banished] run playsound entity.elder_guardian.curse master @a[distance=..20] ~ ~ ~ 1 0.8 1
+scoreboard players set @a[tag=void_banished] CC_banish 40
+scoreboard players set @a[tag=void_banished] CC_silence 5
+scoreboard players set @a[tag=void_banished] void 1
+tag @e remove void_banished
 
 scoreboard players add @a[scores={void=1..}] void 1
 scoreboard players set @a[scores={void=50..}] void 0
@@ -98,14 +97,14 @@ execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_E_2] ~0.4
 execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_W_1] ~-0.49 ~0.5 ~
 execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_W_2] ~-0.49 ~1.5 ~
 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SE_1] ~0.49 ~0.5 ~0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SE_2] ~0.49 ~1.5 ~0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NW_1] ~-0.49 ~0.5 ~-0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NW_2] ~-0.49 ~1.5 ~-0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NE_1] ~0.49 ~0.5 ~-0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NE_2] ~0.49 ~1.5 ~-0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SW_1] ~-0.49 ~0.5 ~0.49 
-execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SW_2] ~-0.49 ~1.5 ~0.49 
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SE_1] ~0.49 ~0.5 ~0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SE_2] ~0.49 ~1.5 ~0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NW_1] ~-0.49 ~0.5 ~-0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NW_2] ~-0.49 ~1.5 ~-0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NE_1] ~0.49 ~0.5 ~-0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_NE_2] ~0.49 ~1.5 ~-0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SW_1] ~-0.49 ~0.5 ~0.49
+execute at @e[tag=void_gate_visual_core] run tp @e[tag=voidgate_visual_SW_2] ~-0.49 ~1.5 ~0.49
 
 execute at @e[tag=void_gate_visual_core] unless block ~1 ~ ~1 #dash unless entity @e[tag=voidgate_visual_SE_1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["voidgate_visual_SE_1","voidgate_visuals","entities_shapeless"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.5f,-0.1f],scale:[0.2f,1f,0.2f]},block_state:{Name:"minecraft:black_concrete_powder"}}
 execute at @e[tag=void_gate_visual_core] unless block ~1 ~1 ~1 #dash unless entity @e[tag=voidgate_visual_SE_2] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["voidgate_visual_SE_2","voidgate_visuals","entities_shapeless"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.5f,-0.1f],scale:[0.2f,1f,0.2f]},block_state:{Name:"minecraft:black_concrete_powder"}}
@@ -167,7 +166,6 @@ execute at @e[tag=void_blade_return] run particle block{block_state:{Name:"minec
 execute at @e[tag=void_blade_return] run particle smoke ~ ~ ~ 0.2 1 0.2 0.0001 20 normal
 execute at @e[tag=void_blade_return] run particle falling_dust{block_state:{Name:"minecraft:crying_obsidian"}} ~ ~ ~ 0.2 1 0.2 0.0001 20 normal
 
-
 execute store result entity @e[tag=void_blade_return,limit=1] Rotation[1] float 1 run clear
 
 execute as @e[tag=void_blade_return] at @s unless block ^ ^0.5 ^0.5 #minecraft:dash run kill @e[tag=voidgate_visuals]
@@ -189,14 +187,14 @@ execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_
 execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_W_1] ~-0.49 ~0.5 ~
 execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_W_2] ~-0.49 ~1.5 ~
 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SE_1] ~0.49 ~0.5 ~0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SE_2] ~0.49 ~1.5 ~0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NW_1] ~-0.49 ~0.5 ~-0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NW_2] ~-0.49 ~1.5 ~-0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NE_1] ~0.49 ~0.5 ~-0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NE_2] ~0.49 ~1.5 ~-0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SW_1] ~-0.49 ~0.5 ~0.49 
-execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SW_2] ~-0.49 ~1.5 ~0.49 
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SE_1] ~0.49 ~0.5 ~0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SE_2] ~0.49 ~1.5 ~0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NW_1] ~-0.49 ~0.5 ~-0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NW_2] ~-0.49 ~1.5 ~-0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NE_1] ~0.49 ~0.5 ~-0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_NE_2] ~0.49 ~1.5 ~-0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SW_1] ~-0.49 ~0.5 ~0.49
+execute at @e[tag=void_return_visual_core] run tp @e[tag=voidgate_return_visual_SW_2] ~-0.49 ~1.5 ~0.49
 
 execute at @e[tag=void_return_visual_core] unless block ~1 ~ ~1 #dash unless entity @e[tag=voidgate_return_visual_SE_1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["voidgate_return_visual_SE_1","returngate_visuals","entities_shapeless"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.5f,-0.1f],scale:[0.2f,1f,0.2f]},block_state:{Name:"minecraft:white_concrete_powder"}}
 execute at @e[tag=void_return_visual_core] unless block ~1 ~1 ~1 #dash unless entity @e[tag=voidgate_return_visual_SE_2] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["voidgate_return_visual_SE_2","returngate_visuals","entities_shapeless"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.5f,-0.1f],scale:[0.2f,1f,0.2f]},block_state:{Name:"minecraft:white_concrete_powder"}}
@@ -274,7 +272,7 @@ execute at @a[scores={universal_death=1..,char=37}] run tag @a remove remember_m
 execute at @a[scores={universal_hit=1..,char=37,CC_silence=0}] run tag @a remove remember_me
 
 scoreboard players set @a[scores={char=37,s2_timer=1,CC_silence=0}] shapeless_s2_empower 1
-execute at @a[scores={universal_hit=1..,char=37,CC_silence=0,s2_timer=0}] as @a[advancements={chars:shapeless_hit=true},tag=valid_spell_target] unless score @s Team = @p[scores={char=37}] Team run tag @s add remember_me
+execute at @a[scores={char=37,CC_silence=0,s2_timer=0}] as @a[advancements={chars:shapeless_hit=true},tag=valid_spell_target] unless score @s Team = @p[scores={char=37}] Team run tag @s add remember_me
 
 execute unless entity @p[tag=remember_me] run scoreboard players set @a[scores={char=37,s2_timer=2,CC_silence=0}] spellCD2 20
 execute unless entity @p[tag=remember_me] run scoreboard players set @a[scores={char=37,s2_timer=2,CC_silence=0}] s2_timer 240
@@ -302,10 +300,10 @@ scoreboard players add @a[scores={s3_timer=1..,char=37}] s3_timer 1
 scoreboard players set @a[scores={s3_timer=60..,char=37}] s3_timer 0
 
 execute as @a[scores={char=37,shapeless_s2_empower=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_hoe",Slot:0b}]}] run clear @a[scores={char=37}] stone_hoe
-item replace entity @a[scores={char=37,shapeless_s2_empower=0}] hotbar.0 with minecraft:stone_hoe[custom_data={shapeless:1},minecraft:custom_name={bold:1b,color:"gray",text:"Melted Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=37,shapeless_s2_empower=0}] hotbar.0 with minecraft:stone_hoe[custom_data={shapeless:1},minecraft:custom_name={bold:1b,color:"gray",text:"Melted Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=37,shapeless_s2_empower=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_hoe",Slot:0b}]}] run clear @a[scores={char=37}] netherite_hoe
-item replace entity @a[scores={char=37,shapeless_s2_empower=1..}] hotbar.0 with netherite_hoe[custom_data={shapeless:1},minecraft:custom_name={bold:1b,color:"gray",text:"Melted Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=37,shapeless_s2_empower=1..}] hotbar.0 with netherite_hoe[custom_data={shapeless:1},minecraft:custom_name={bold:1b,color:"gray",text:"Melted Grasp"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=37,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=37}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=37,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:crying_obsidian",minecraft:custom_name={text:"Into the Void",color:"dark_aqua",bold:1b}] 1

@@ -6,7 +6,7 @@ execute if score -wave crawlers_wave matches -211..1 run scoreboard players add 
 execute if score -wave crawlers_wave matches -208 at @n[tag=crawlers_centre] positioned ~ ~6 ~1 run summon armor_stand ~ ~ ~ {Invisible:1b,Tags:["crawlers_camera"],NoGravity:1b}
 execute if score -wave crawlers_wave matches -209..-151 run function crawlermode:spectator
 execute if score -wave crawlers_wave matches -208 as @a[scores={char=1..}] at @n[tag=crawlers_centre] run tp @s ~ ~ ~
-execute if score -wave crawlers_wave matches -208..-151 as @a[scores={char=1..},tag=!waiting_respawn] at @n[tag=crawlers_centre] run spectate @n[tag=crawlers_camera]
+
 execute if score -wave crawlers_wave matches -209 run effect give @a[scores={char=1..},tag=!waiting_respawn] slowness 13 8 true
 execute if score -wave crawlers_wave matches -209 as @a[scores={char=1..},tag=!waiting_respawn] run attribute @s jump_strength modifier add crawl1 -10 add_value
 execute if score -wave crawlers_wave matches -209 run execute at @e[tag=crawlers_descent] run clone 115 22 -128 103 21 -116 ~-6 ~3 ~-6
@@ -46,7 +46,7 @@ execute if score -wave crawlers_wave matches -150 run effect clear @a[scores={ch
 execute if score -wave crawlers_wave matches -150 as @a[scores={char=1..},tag=!waiting_respawn] run attribute @s jump_strength modifier remove crawl1
 
 execute if score -wave crawlers_wave matches -145 at @e[tag=crawlers_descent] run execute at @n[tag=crawlers_centre] run summon marker ~ ~ ~ {Tags:["crawlers_campfire"]}
-execute if score -wave crawlers_wave matches -145 at @e[tag=crawlers_descent] run execute at @n[tag=crawlers_centre] run setblock ~ ~ ~ campfire
+execute if score -wave crawlers_wave matches -145 at @e[tag=crawlers_descent] run execute at @n[tag=crawlers_centre] run setblock ~ ~ ~ spruce_slab
 
 execute if score -wave crawlers_wave matches -145 run execute at @e[tag=crawlers_campfire] run clone -56 22 -240 -68 21 -228 ~-6 ~3 ~-6
 execute if score -wave crawlers_wave matches -145 run execute at @e[tag=crawlers_campfire] run playsound block.iron_trapdoor.close master @a[distance=..30] ~ ~ ~ 2 0.8
@@ -124,7 +124,7 @@ execute if score -wave crawlers_wave matches 4055 run execute at @e[tag=crawlers
 execute if score -wave crawlers_wave matches 4053 run bossbar set broodmother2 visible false
 execute if score -wave crawlers_wave matches 4053 run bossbar set broodmother3 visible false
 execute if score -wave crawlers_wave matches 4053 run tellraw @a[scores={char=1..},tag=!waiting_respawn] ["",{text:"[WARNING]",bold:true,color:"dark_red"},{text:" The elevator can now leave.",color:"red"}]
-execute if score -wave crawlers_wave matches 4050..4101 as @e[tag=crawlers_campfire] at @s unless entity @a[distance=1.6..40,tag=!waiting_respawn] run scoreboard players set -wave crawlers_wave 4301
+execute if score -wave crawlers_wave matches 4050..4101 as @e[tag=crawlers_campfire] at @s unless entity @a[distance=2.4..40,tag=!waiting_respawn] run scoreboard players set -wave crawlers_wave 4301
 
 execute if score -wave crawlers_wave matches 4300..4371 run scoreboard players add -wave crawlers_wave 1
 

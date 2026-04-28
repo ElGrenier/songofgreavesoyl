@@ -10,8 +10,8 @@ effect give @a[tag=form_stitched,scores={char=53}] resistance 2 0 true
 
 scoreboard players add @a[scores={char=53}] stitches_counter 1
 
-scoreboard players remove @a[tag=form_stitched,scores={char=53,stitches_counter=8..}] stitches 1
-scoreboard players add @a[tag=form_siren,scores={char=53,stitches_counter=8..}] stitches 1
+scoreboard players remove @a[tag=form_stitched,scores={char=53,stitches_counter=8..,stitches=0..}] stitches 1
+scoreboard players add @a[tag=form_siren,scores={char=53,stitches_counter=8..,stitches=..99}] stitches 1
 
 scoreboard players set @a[scores={char=53,stitches_counter=8..}] stitches_counter 0
 
@@ -27,7 +27,7 @@ execute as @a[tag=form_siren,scores={char=53}] run title @s[scores={char=53}] ac
 
 #transform to siren
 
-tag @a[tag=form_stitched,scores={char=53,stitches=..-1}] add transform_to_siren
+tag @a[tag=form_stitched,scores={char=53,stitches=..0}] add transform_to_siren
 
 execute at @a[tag=transform_to_siren] run playsound entity.allay.death master @a[distance=..15] ~ ~ ~ 0.3 1.2 1
 execute at @a[tag=transform_to_siren] run playsound entity.player.hurt master @a[distance=..15] ~ ~ ~ 1 0.8 1
@@ -41,6 +41,8 @@ scoreboard players set @a[tag=transform_to_siren] spellCD1 20
 scoreboard players set @a[tag=transform_to_siren] spellCD2 20
 clear @a[tag=transform_to_siren] leather_chestplate
 
+tag @a[tag=transform_to_siren] remove wavmode_speed_medium
+tag @a[tag=transform_to_siren] add wavmode_speed_slow
 tag @a[tag=transform_to_siren] add form_siren
 tag @a[tag=transform_to_siren] remove form_stitched
 tag @a[tag=transform_to_siren] remove transform_to_siren
@@ -61,6 +63,7 @@ scoreboard players set @a[tag=transform_to_stitched] spellCD1 20
 scoreboard players set @a[tag=transform_to_stitched] spellCD2 20
 clear @a[tag=transform_to_stitched] leather_chestplate
 
+tag @a[tag=transform_to_stitched] remove wavmode_speed_slow
 tag @a[tag=transform_to_stitched] add form_stitched
 tag @a[tag=transform_to_stitched] remove form_siren
 tag @a[tag=transform_to_stitched] remove transform_to_stitched
@@ -298,7 +301,10 @@ kill @e[tag=abyssblood_visuals,scores={stitches=8..}]
 scoreboard players set @a[tag=form_siren,scores={char=53,s2_timer=1,HP=..4}] spellCD2 20
 scoreboard players set @a[tag=form_siren,scores={char=53,s2_timer=1,HP=..4}] s2_timer 100
 
+scoreboard players set @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0,HP=5..}] universal_damagetaken -1000
 execute as @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0,HP=5..}] at @s positioned ^ ^ ^1 run damage @s 4
+execute as @a[tag=form_siren,scores={char=53,s2_timer=2,CC_silence=0,HP=5..}] at @s positioned ^ ^1 ^1.5 run particle sweep_attack ~ ~ ~ 0 0.1 0 0 1 force
+scoreboard players set @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0,HP=5..}] universal_damagetaken 0
 scoreboard players remove @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0}] stitches 20
 
 execute at @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0}] run playsound entity.witch.hurt master @a[distance=..10] ~ ~ ~ 0.8 1.5 1
@@ -307,7 +313,7 @@ execute at @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0}] run plays
 execute at @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0}] run playsound entity.squid.hurt master @a[distance=..10] ~ ~ ~ 0.4 1.2 1
 execute at @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0}] run playsound item.bucket.empty master @a[distance=..10] ~ ~ ~ 1 2 1
 
-execute at @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0}] run particle falling_dust{block_state:{Name:"minecraft:bubble_coral"}} ~ ~0.5 ~ 2 0.5 2 0.1 100
+execute at @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0}] run particle falling_dust{block_state:{Name:"minecraft:bubble_coral"}} ~ ~0.5 ~ 2 0.5 2 0.1 60
 execute at @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0}] run particle sweep_attack ~ ~1 ~ 0.1 0 0.1 0 100
 execute at @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:bubble_coral_block"},Tags:["bloody_cone_1","blood_splash","projectile","entities_stitchedsiren"]}
 execute at @a[tag=form_siren,scores={char=53,s2_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:bubble_coral_block"},Tags:["bloody_cone_2","blood_splash","projectile","entities_stitchedsiren"]}
@@ -335,7 +341,7 @@ execute at @a[scores={char=53,s2_timer=1,CC_silence=0}] as @e[tag=bloody_cone_9]
 
 execute as @e[tag=blood_splash] at @s run tp @s ^ ^ ^0.6
 
-execute at @e[tag=blood_splash] as @e[distance=..3,tag=valid_spell_target,scores={siren_blood_heal=0}] unless score @s Team = @p[scores={char=53}] Team run scoreboard players set @s siren_blood_heal 1
+execute at @e[tag=blood_splash] as @e[distance=..2.5,tag=valid_spell_target,scores={siren_blood_heal=0}] run scoreboard players set @s siren_blood_heal 1
 
 execute at @a[scores={char=53,s2_timer=15..}] run kill @e[tag=blood_splash]
 
@@ -372,8 +378,8 @@ scoreboard players add @a[scores={s2_timer=1..,char=53}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=121..,char=53}] s2_timer 0
 
 execute as @a[scores={char=53}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run clear @a[scores={char=53}] iron_sword
-item replace entity @a[tag=form_stitched,scores={char=53}] hotbar.0 with iron_sword[swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Scalpel"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
-item replace entity @a[tag=form_siren,scores={char=53}] hotbar.0 with iron_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Scalpel"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:aqua_affinity":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[tag=form_stitched,scores={char=53}] hotbar.0 with iron_sword[swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Scalpel"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[tag=form_siren,scores={char=53}] hotbar.0 with iron_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Scalpel"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:aqua_affinity":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:3.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 
 #stitched

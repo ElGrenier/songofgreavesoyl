@@ -134,7 +134,7 @@ execute at @a[scores={char=48,s2_timer=30..}] run kill @e[tag=debris_projectile]
 execute at @e[tag=g_scatter] positioned ~-1 ~-1 ~-1 as @p[dx=1,dy=1,dz=1,tag=valid_spell_target,limit=1] unless score @s Team = @p[scores={char=48}] Team run tag @s add scattered
 
 execute at @e[tag=scattered] run kill @e[tag=g_scatter]
-execute at @e[tag=scattered] run playsound minecraft:entity.player.attack.knockback master @a[distance=..10] ~ ~ ~ 1 0.8 1
+execute at @e[tag=scattered] run playsound entity.player.attack.knockback master @a[distance=..10] ~ ~ ~ 1 0.8 1
 execute at @e[tag=scattered] run summon marker ~ ~0.5 ~ {Tags:["scatter_marker","entities_artificer"]}
 scoreboard players set @e[tag=scattered] scatter 16
 tag @e remove scattered
@@ -146,13 +146,13 @@ scoreboard players set @e[scores={scatter=1..}] CC_knockup 0
 effect give @e[scores={scatter=2..}] slow_falling 1 100 true
 effect give @e[scores={scatter=2..}] resistance 1 100 true
 #effect clear @e[scores={scatter=1}] slow_falling
-scoreboard players set @e[scores={scatter=1..}] CC_intangible 2
+#scoreboard players set @e[scores={scatter=1..}] CC_intangible 2
 execute at @e[tag=scatter_marker] run particle sonic_boom ~ ~1 ~ 0.5 0.8 0.5 0 1
 execute at @e[tag=scatter_marker] run particle sculk_charge_pop ~ ~1 ~ 0.5 0.8 0.5 0 10
 
 data modify entity @e[tag=scatter_marker,scores={s0_timer=1..5},limit=1] Rotation set from entity @p[scores={char=48}] Rotation
 
-execute as @e[tag=scatter_marker,scores={s0_timer=2},limit=1] at @n[scores={scatter=1..}] run tp @s ~ ~0.5 ~
+execute as @e[tag=scatter_marker,scores={s0_timer=2},limit=1] at @n[scores={scatter=1..,death_dash_reset=0}] run tp @s ~ ~0.5 ~
 
 execute as @e[tag=scatter_marker,scores={s0_timer=2..}] at @s unless block ^ ^ ^1 #minecraft:dash unless entity @e[tag=scatter_face_slammed_to_a_wall] run summon marker ~ ~ ~ {Tags:["scatter_face_slammed_to_a_wall","entities_artificer"]}
 execute as @e[tag=scatter_marker,scores={s0_timer=2..}] at @s unless block ^ ^1 ^0.5 #minecraft:dash unless entity @e[tag=scatter_face_slammed_to_a_wall] run summon marker ~ ~ ~ {Tags:["scatter_face_slammed_to_a_wall","entities_artificer"]}
@@ -204,7 +204,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=48}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=200..,char=48}] s2_timer 0
 
 execute as @a[scores={char=48}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:diamond_shovel",Slot:0b}]}] run clear @a[scores={char=48}] diamond_shovel
-item replace entity @a[scores={char=48}] hotbar.0 with diamond_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Gravity Gloves"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:unbreaking":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=48}] hotbar.0 with diamond_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Gravity Gloves"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:unbreaking":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=48,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=48}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=48,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:enchantments={"minecraft:power":1},minecraft:item_model="minecraft:warped_roots",minecraft:custom_name={text:"Gravity Well",color:"dark_aqua",bold:1b}] 1

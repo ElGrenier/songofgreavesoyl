@@ -1,3 +1,3 @@
 team join purple @s
 tag @s add in_a_team
-function core:lobby/tp_waiting_room
+tp @s 242 14 -126

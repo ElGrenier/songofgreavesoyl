@@ -81,7 +81,6 @@ execute at @a[scores={juggle_animation=36,char=51}] run tp @e[tag=juggle_ball_3]
 execute at @a[scores={juggle_animation=38,char=51}] run tp @e[tag=juggle_ball_3] ~ ~2.3 ~
 execute at @a[scores={juggle_animation=40,char=51}] run tp @e[tag=juggle_ball_3] ~ ~2 ~
 
-
 execute at @a[scores={juggle_animation=34,char=51}] run tp @e[tag=juggle_ball_4] ~ ~2 ~
 execute at @a[scores={juggle_animation=36,char=51}] run tp @e[tag=juggle_ball_4] ~ ~2.3 ~
 execute at @a[scores={juggle_animation=38,char=51}] run tp @e[tag=juggle_ball_4] ~ ~2.6 ~
@@ -91,7 +90,6 @@ execute at @a[scores={juggle_animation=44,char=51}] run tp @e[tag=juggle_ball_4]
 execute at @a[scores={juggle_animation=46,char=51}] run tp @e[tag=juggle_ball_4] ~ ~2.6 ~
 execute at @a[scores={juggle_animation=48,char=51}] run tp @e[tag=juggle_ball_4] ~ ~2.3 ~
 execute at @a[scores={juggle_animation=50,char=51}] run tp @e[tag=juggle_ball_4] ~ ~2 ~
-
 
 execute at @a[scores={juggle_animation=21,char=51}] run kill @e[tag=juggle_ball]
 execute at @a[scores={juggle_animation=31,char=51}] run kill @e[tag=juggle_ball_2]
@@ -108,7 +106,7 @@ execute at @a[scores={char=51,s1_timer=1,CC_silence=0}] run particle dust{color:
 execute at @a[scores={char=51,s1_timer=1,CC_silence=0}] run particle falling_dust{block_state:{Name:"minecraft:red_wool"}} ~ ~ ~ 0.5 1.5 0.5 2 100
 execute at @a[scores={char=51,s1_timer=1,CC_silence=0}] run playsound item.armor.equip_leather master @a[distance=..10] ~ ~ ~ 1 0.1 1
 effect give @a[scores={char=51,s1_timer=1,CC_silence=0}] invisibility 3 0 true
-item replace entity @a[scores={char=51,s1_timer=1..2,CC_silence=0}] armor.head with stone[item_model=air,minecraft:custom_name="aaaa",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:6.0d,operation:"add_value",slot:"head"}]] 1
+item replace entity @a[scores={char=51,s1_timer=1..2,CC_silence=0}] armor.head with stone[item_model=air,minecraft:custom_name={bold:1b,color:"aqua",text:"Super Secret Invisibility Health Retaining Tech(TM)"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:6.0d,operation:"add_value",slot:"head"}]] 1
 item replace entity @a[scores={char=51,s1_timer=1..2,CC_silence=0}] armor.chest with air
 item replace entity @a[scores={char=51,s1_timer=1..2,CC_silence=0}] armor.legs with air
 item replace entity @a[scores={char=51,s1_timer=1..2,CC_silence=0}] armor.feet with air
@@ -294,7 +292,7 @@ scoreboard players set @a[scores={s2_timer=161..,char=51}] s2_timer 0
 
 
 execute as @a[scores={char=51}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:0b}]}] run clear @a[scores={char=51}] warped_fungus_on_a_stick[custom_data={s0:1}]
-item replace entity @a[scores={char=51}] hotbar.0 with warped_fungus_on_a_stick[swing_animation={type:"stab"},custom_data={s0:1},minecraft:item_model="minecraft:iron_sword",minecraft:custom_name={bold:1b,color:"gray",text:"Shiv"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=51}] hotbar.0 with warped_fungus_on_a_stick[swing_animation={type:"stab"},custom_data={s0:1},minecraft:item_model="minecraft:iron_sword",minecraft:custom_name={bold:1b,color:"gray",text:"Shiv"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.4d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=51,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=51}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=51,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:red_wool",minecraft:custom_name={text:"SURPRISE!",color:"dark_aqua",bold:1b}] 1

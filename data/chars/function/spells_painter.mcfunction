@@ -154,8 +154,7 @@ execute at @a[scores={char=69,spell_painter_yellow=240,CC_silence=0}] run summon
 execute at @e[tag=yellow_area_thing] positioned ~-3 ~-3 ~-3 as @e[tag=valid_spell_target,dx=5,dy=5,dz=5] if score @s Team = @p[scores={char=69}] Team run effect give @s resistance 1
 
 execute at @e[tag=yellow_area_thing] as @a[distance=4.1..] if score @s Team = @p[scores={char=69}] Team if data entity @s {attributes:[{id:"minecraft:knockback_resistance",modifiers:[{id:"minecraft:smells_like_satran_spirit"}]}]} run attribute @s knockback_resistance modifier remove smells_like_satran_spirit
-
-execute at @e[tag=yellow_area_thing] as @a[distance=..4] if score @s Team = @p[scores={char=69}] Team unless data entity @s {attributes:[{id:"minecraft:knockback_resistance",modifiers:[{id:"minecraft:smells_like_satran_spirit"}]}]} run attribute @s knockback_resistance modifier add smells_like_satran_spirit 0.025 add_value
+execute at @e[tag=yellow_area_thing] as @a[distance=..4] if score @s Team = @p[scores={char=69}] Team unless data entity @s {attributes:[{id:"minecraft:knockback_resistance",modifiers:[{id:"minecraft:smells_like_satran_spirit"}]}]} run attribute @s knockback_resistance modifier add smells_like_satran_spirit 0.25 add_value
 
 execute as @e[tag=yellow_area_thing] at @s run rotate @s ~7 ~
 execute as @e[tag=yellow_area_thing] at @s run particle dust{color:[1.0,1.0,0.33],scale:1} ^ ^ ^4 0.1 0.2 0.1 0 5
@@ -196,15 +195,18 @@ execute as @e[tag=purple_phantom_spook] at @s run tp @s ^ ^ ^0.5
 execute at @a[scores={char=69,spell_painter_purple=..290}] run kill @e[tag=purple_phantom_spook]
 
 execute at @e[tag=purple_phantom_spook] positioned ~-.75 ~-.75 ~-.75 as @p[tag=valid_spell_target,dx=.5,dy=.5,dz=.5] unless score @s Team = @p[scores={char=69}] Team run tag @s add fear_painter
+execute at @e[tag=purple_phantom_spook] positioned ~-.75 ~-.75 ~-.75 as @p[tag=valid_spell_target,dx=.5,dy=.5,dz=.5] unless score @s Team = @p[scores={char=69}] Team run tag @s add fear_source_painter
 
 execute at @p[tag=fear_painter] run kill @e[tag=purple_phantom_spook]
 scoreboard players set @p[tag=fear_painter] CC_silence 30
+scoreboard players set @p[tag=fear_painter] CC_fear 30
 damage @n[tag=fear_painter] 3 generic by @p[scores={char=69}] from @p[scores={char=69}]
-execute as @a[tag=fear_painter] at @s run tp @s ~ ~ ~ facing entity @p[distance=0.5..,scores={char=69}]
-execute as @a[tag=fear_painter] at @s run tp @s ~ ~ ~ ~-180 ~
-tag @e[tag=valid_spell_target,tag=fear_painter] remove fear_painter
+tag @e remove fear_painter
 scoreboard players add @e[tag=purple_phantom_spook] fire_life 1
 
+execute as @a[tag=fear_source_painter,scores={CC_fear=2..}] at @s run tp @s ~ ~ ~ facing entity @p[distance=0.5..,scores={char=69}]
+execute as @a[tag=fear_source_painter,scores={CC_fear=2..}] at @s run tp @s ~ ~ ~ ~-180 ~
+tag @a[scores={CC_fear=2..}] remove fear_source_painter
 
 data merge entity @e[tag=purple_phantom_spook,scores={fire_life=3},limit=1] {equipment:{head:{id:"minecraft:player_head",count:1,components:{"minecraft:profile":{properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzIxY2I3Zjc2MTg4ZThmYmE0NTJkN2EwOTgyNzIzN2NmMDE5NTk1ZTVkMWQyODlmZmE0YTY0YjZlMWY3OTBkYiJ9fX0="}]}}},chest:{id:"minecraft:leather_chestplate",count:1,components:{"minecraft:dyed_color":5909629}}}}
 
@@ -269,16 +271,11 @@ scoreboard players set @a[scores={char=69,red=1..,yellow=1..,spell_painter_orang
 tag @a[scores={char=69,red=1..,yellow=1..}] add color_reset
 #title @a[scores={char=69,red=1..,yellow=1..}] title [{"text":"sunsest","color":gold}]
 
-#execute at @a[scores={char=69,spell_painter_orange=260,CC_silence=0}] run
 
-execute at @a[scores={char=69,spell_painter_orange=260,CC_silence=0},team=yellow,x_rotation=-90..45] run scoreboard players set @p[team=yellow,distance=0.5..8] orange_buff 100
-execute at @a[scores={char=69,spell_painter_orange=260,CC_silence=0},team=yellow,x_rotation=-90..45] unless entity @p[distance=0.5..8,team=yellow] run scoreboard players set @p[scores={char=69}] spell_painter_orange 0
+execute as @a[scores={char=69,spell_painter_orange=260,CC_silence=0},x_rotation=-90..49] at @s positioned ~ ~1.3 ~ run function chars:painter_scourgeslayer
+execute at @a[scores={char=69,spell_painter_orange=260,CC_silence=0},x_rotation=-90..49] unless entity @a[scores={orange_buff=1..}] run scoreboard players set @p[scores={char=69}] spell_painter_orange 0
 
-
-execute at @a[scores={char=69,spell_painter_orange=260,CC_silence=0},team=purple,x_rotation=-90..45] run scoreboard players set @p[team=purple,distance=0.5..8] orange_buff 100
-execute at @a[scores={char=69,spell_painter_orange=260,CC_silence=0},team=purple,x_rotation=-90..45] unless entity @p[distance=0.5..8,team=purple] run scoreboard players set @p[scores={char=69}] spell_painter_orange 0
-
-execute at @a[scores={char=69,spell_painter_orange=260,CC_silence=0},x_rotation=44..90] run scoreboard players set @p[scores={char=69}] orange_buff 100
+execute at @a[scores={char=69,spell_painter_orange=260,CC_silence=0},x_rotation=50..90] run scoreboard players set @p[scores={char=69}] orange_buff 100
 
 execute at @a[scores={orange_buff=99}] run particle dust{color:[1.0,0.67,0.0],scale:1} ~ ~1.5 ~ 0.5 1.5 0.5 0 50
 execute at @a[scores={orange_buff=99}] run particle dust{color:[1.0,0.67,0.0],scale:1} ~ ~1.5 ~ 0.1 2 0.1 0 100
@@ -294,33 +291,24 @@ execute as @a[scores={orange_buff=1..2}] run attribute @s attack_damage modifier
 
 execute at @e[scores={orange_buff=80}] run playsound block.fire.extinguish master @a[distance=..8] ~ ~ ~ 0.2 1.5 1
 execute at @e[scores={orange_buff=80}] run particle dust{color:[1.0,0.67,0.0],scale:1} ~ ~0.5 ~ 2 0.1 2 0 120
-execute at @e[scores={orange_buff=80}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run attribute @s minecraft:knockback_resistance base set 100
 execute at @e[scores={orange_buff=80}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run damage @s 1 generic by @p[scores={char=69}] from @p[scores={char=69}]
-execute at @e[scores={orange_buff=80}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run attribute @s minecraft:knockback_resistance base set 0
 
 execute at @e[scores={orange_buff=60}] run playsound block.fire.extinguish master @a[distance=..8] ~ ~ ~ 0.2 1.5 1
 execute at @e[scores={orange_buff=60}] run particle dust{color:[1.0,0.67,0.0],scale:1} ~ ~0.5 ~ 2 0.1 2 0 120
-execute at @e[scores={orange_buff=60}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run attribute @s minecraft:knockback_resistance base set 100
 execute at @e[scores={orange_buff=60}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run damage @s 1 generic by @p[scores={char=69}] from @p[scores={char=69}]
-execute at @e[scores={orange_buff=60}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run attribute @s minecraft:knockback_resistance base set 0
 
 execute at @e[scores={orange_buff=40}] run playsound block.fire.extinguish master @a[distance=..8] ~ ~ ~ 0.2 1.5 1
 execute at @e[scores={orange_buff=40}] run particle dust{color:[1.0,0.67,0.0],scale:1} ~ ~0.5 ~ 2 0.1 2 0 120
-execute at @e[scores={orange_buff=40}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run attribute @s minecraft:knockback_resistance base set 100
 execute at @e[scores={orange_buff=40}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run damage @s 1 generic by @p[scores={char=69}] from @p[scores={char=69}]
-execute at @e[scores={orange_buff=40}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run attribute @s minecraft:knockback_resistance base set 0
 
 execute at @e[scores={orange_buff=20}] run playsound block.fire.extinguish master @a[distance=..8] ~ ~ ~ 0.2 1.5 1
 execute at @e[scores={orange_buff=20}] run particle dust{color:[1.0,0.67,0.0],scale:1} ~ ~0.5 ~ 2 0.1 2 0 120
-execute at @e[scores={orange_buff=20}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run attribute @s minecraft:knockback_resistance base set 100
 execute at @e[scores={orange_buff=20}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run damage @s 1 generic by @p[scores={char=69}] from @p[scores={char=69}]
-execute at @e[scores={orange_buff=20}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run attribute @s minecraft:knockback_resistance base set 0
 
 execute at @e[scores={orange_buff=2}] run playsound block.fire.extinguish master @a[distance=..8] ~ ~ ~ 0.2 1.5 1
 execute at @e[scores={orange_buff=2}] run particle dust{color:[1.0,0.67,0.0],scale:1} ~ ~0.5 ~ 2 0.1 2 0 120
-execute at @e[scores={orange_buff=2}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run attribute @s minecraft:knockback_resistance base set 100
 execute at @e[scores={orange_buff=2}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run damage @s 1 generic by @p[scores={char=69}] from @p[scores={char=69}]
-execute at @e[scores={orange_buff=2}] as @e[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=69}] Team run attribute @s minecraft:knockback_resistance base set 0
+
 
 scoreboard players remove @a[scores={orange_buff=1..}] orange_buff 1
 
@@ -352,7 +340,7 @@ scoreboard players add @a[scores={s3_timer=1..,char=69}] s3_timer 1
 scoreboard players set @a[scores={s3_timer=11..,char=69}] s3_timer 0
 
 execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:iron_sword",Slot:0b}]}] run clear @a[scores={char=69}] iron_sword
-item replace entity @a[scores={char=69}] hotbar.0 with iron_sword[swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Dirk"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=69}] hotbar.0 with iron_sword[swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Dirk"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=69}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=69}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=69,red=0}] hotbar.1 with carrot_on_a_stick[minecraft:custom_name={text:"Red",color:"dark_aqua",bold:1b},item_model="red_dye",custom_data={s1:1}] 1

@@ -81,7 +81,7 @@ execute at @a[scores={char=22,s1_timer=17..18}] run kill @e[tag=d_tentacle_visua
 
 #devour it all
 
-execute if entity @a[scores={devoured=1..79}] unless entity @e[tag=spit_if_dead] run summon marker ~ ~ ~ {Tags:["spit_if_dead"]}
+execute if entity @a[scores={devoured=1..79}] unless entity @e[tag=spit_if_dead] run summon marker ~ ~ ~ {Tags:["spit_if_dead","entities_devourer"]}
 execute at @a[scores={char=22,void=1..}] run tp @a[scores={devoured=1..}] @e[tag=spit_if_dead,limit=1]
 execute at @a[scores={char=22,void=1..}] run scoreboard players set @a[scores={devoured=1..}] devoured 0
 execute at @a[scores={char=22,void=1..}] run kill @e[tag=spit_if_dead]
@@ -97,18 +97,46 @@ execute if entity @a[scores={devoured=1..79}] at @a[scores={char=22}] run partic
 
 
 execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["devour_maw","entities_devourer"]}
+
+execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {brightness:{sky:3,block:5},teleport_duration:1,Tags:["teeth_L_1","left_maw_part","devourer_teeth","entities_devourer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.1f,-0.15f],scale:[0.2f,0.2f,0.3f]},block_state:{Name:"minecraft:purple_concrete_powder"}}
+execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {brightness:{sky:3,block:5},teleport_duration:1,Tags:["teeth_L_2","left_maw_part","devourer_teeth","entities_devourer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.1f,-0.15f],scale:[0.2f,0.2f,0.3f]},block_state:{Name:"minecraft:purple_concrete_powder"}}
+execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {brightness:{sky:3,block:5},teleport_duration:1,Tags:["teeth_L_3","left_maw_part","devourer_teeth","entities_devourer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.1f,-0.15f],scale:[0.2f,0.2f,0.3f]},block_state:{Name:"minecraft:purple_concrete_powder"}}
+execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {brightness:{sky:3,block:5},teleport_duration:1,Tags:["teeth_L_4","left_maw_part","devourer_teeth","entities_devourer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.1f,-0.15f],scale:[0.2f,0.2f,0.3f]},block_state:{Name:"minecraft:purple_concrete_powder"}}
+execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {brightness:{sky:3,block:5},teleport_duration:1,Tags:["teeth_R_1","right_maw_part","devourer_teeth","entities_devourer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.1f,-0.15f],scale:[0.2f,0.2f,0.3f]},block_state:{Name:"minecraft:purple_concrete_powder"}}
+execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {brightness:{sky:3,block:5},teleport_duration:1,Tags:["teeth_R_2","right_maw_part","devourer_teeth","entities_devourer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.1f,-0.15f],scale:[0.2f,0.2f,0.3f]},block_state:{Name:"minecraft:purple_concrete_powder"}}
+execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {brightness:{sky:3,block:5},teleport_duration:1,Tags:["teeth_R_3","right_maw_part","devourer_teeth","entities_devourer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.1f,-0.15f],scale:[0.2f,0.2f,0.3f]},block_state:{Name:"minecraft:purple_concrete_powder"}}
+execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run summon block_display ~ ~ ~ {brightness:{sky:3,block:5},teleport_duration:1,Tags:["teeth_R_4","right_maw_part","devourer_teeth","entities_devourer"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.1f,-0.1f,-0.15f],scale:[0.2f,0.2f,0.3f]},block_state:{Name:"minecraft:purple_concrete_powder"}}
+
+
+
 execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] run playsound entity.evoker_fangs.attack master @a[distance=..10] ~ ~ ~ 1.0 1.0 1.0
 tp @e[tag=devour_maw,limit=1] @a[scores={char=22,s2_timer=1},limit=1]
+tp @e[tag=devourer_teeth] @a[scores={char=22,s2_timer=1},limit=1]
 execute at @a[scores={char=22,s2_timer=1,CC_silence=0}] as @e[tag=devour_maw,limit=1] at @s run tp @s ~ ~1.5 ~ 
-execute as @e[tag=devour_maw] at @s run tp @s ^ ^ ^0.3
 
-execute at @e[tag=devour_maw] run particle dust{color:[0.0,0.0,0.0],scale:1.0f} ~ ~ ~ 0.2 0.2 0.2 0.0001 10 normal
+
+
+execute as @a[scores={char=22,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=teeth_L_1] ^-1 ^1.9 ^ ~-20 ~
+execute as @a[scores={char=22,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=teeth_L_2] ^-1.2 ^1.3 ^ ~-20 ~
+execute as @a[scores={char=22,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=teeth_L_3] ^-1.2 ^0.8 ^ ~-20 ~
+execute as @a[scores={char=22,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=teeth_L_4] ^-1 ^0.1 ^ ~-20 ~
+
+execute as @a[scores={char=22,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=teeth_R_1] ^1 ^1.9 ^ ~20 ~
+execute as @a[scores={char=22,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=teeth_R_2] ^1.2 ^1.3 ^ ~20 ~
+execute as @a[scores={char=22,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=teeth_R_3] ^1.2 ^0.8 ^ ~20 ~
+execute as @a[scores={char=22,s2_timer=1,CC_silence=0}] at @s run tp @e[tag=teeth_R_4] ^1 ^0.1 ^ ~20 ~
+
+execute as @e[tag=devour_maw] at @s run tp @s ^ ^ ^0.3
+execute as @e[tag=right_maw_part] at @s run tp @s ^-0.01 ^ ^0.3
+execute as @e[tag=left_maw_part] at @s run tp @s ^0.01 ^ ^0.3
+
+execute at @e[tag=devour_maw] run particle dust{color:[0.0,0.0,0.0],scale:1.0f} ~ ~ ~ 0.5 0.5 0.5 0.0001 15 normal
 execute at @e[tag=devour_maw] positioned ~-1 ~-1 ~-1 as @p[dx=1,dy=1,dz=1,tag=valid_spell_target] unless score @s Team = @p[scores={char=22}] Team run scoreboard players set @s CC_banish 60
 execute at @e[tag=devour_maw] positioned ~-1 ~-1 ~-1 as @p[dx=1,dy=1,dz=1,tag=valid_spell_target] unless score @s Team = @p[scores={char=22}] Team run scoreboard players set @s devoured 1
 
 execute at @a[scores={devoured=1..}] run kill @e[tag=devour_maw]
 execute at @a[scores={char=22,s2_timer=10}] run kill @e[tag=devour_maw]
-
+execute at @a[scores={char=22,s2_timer=10}] run kill @e[tag=devourer_teeth]
 
 scoreboard players set @a[scores={devoured=1..,universal_death=1..}] devoured 0
 tp @a[scores={devoured=1..2}] 145 8 -218
@@ -131,8 +159,8 @@ scoreboard players set @a[scores={s2_timer=1,char=22}] spellCD2 400
 scoreboard players add @a[scores={s2_timer=1..,char=22}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=401..,char=22}] s2_timer 0
 
-execute as @a[scores={char=22}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_axe",Slot:0b}]}] run clear @a[scores={char=22}] netherite_axe[custom_data={s1:1}]
-item replace entity @a[scores={char=22}] hotbar.0 with netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Matter"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.75d,operation:"add_multiplied_base",slot:"mainhand"}],minecraft:enchantments={"minecraft:infinity":1},minimum_attack_charge=0.8] 1
+execute as @a[scores={char=22}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_axe",Slot:0b}]}] run clear @a[scores={char=22}] netherite_axe
+item replace entity @a[scores={char=22}] hotbar.0 with netherite_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Matter"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.75d,operation:"add_multiplied_base",slot:"mainhand"}],minecraft:enchantments={"minecraft:infinity":1},minimum_attack_charge=1] 1
 
 execute as @a[scores={char=22,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=22}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=22,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:nether_star",minecraft:custom_name={text:"Star Catcher",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:infinity":1}] 1

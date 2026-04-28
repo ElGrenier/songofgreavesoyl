@@ -2,6 +2,8 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:fire_charge"}}]
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:blaze_powder"}}]
 kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:golden_shovel"}}]
 
+scoreboard players set @a[scores={char=71}] CC_disarm 0
+
 #distance
 execute as @a[scores={char=71}] run tag @s add alternate_no_enemy
 execute as @a[scores={char=71}] at @s as @e[distance=..4.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run tag @p[scores={char=71}] remove alternate_no_enemy
@@ -33,13 +35,13 @@ execute at @a[scores={char=71}] at @e[tag=alt_shot] run particle dust{color:[0.0
 
 #thymm the yapper
 title @a[scores={char=71,universal_kill=1..}] actionbar ["",{text:"{",bold:true,color:"black"},{text:" Good Job ",color:"gray"},{text:"}",bold:true,color:"black"}]
-execute as @a[scores={char=71,universal_kill=1..}] at @s run playsound minecraft:entity.enderman.hurt master @s ~ ~ ~ 1 0.6
+execute as @a[scores={char=71,universal_kill=1..}] at @s run playsound entity.enderman.hurt master @s ~ ~ ~ 1 0.6
 
 title @a[scores={char=71,universal_death=1..}] actionbar ["",{text:"{",bold:true,color:"black"},{text:" Idiot ",color:"gray"},{text:"}",bold:true,color:"black"}]
-execute as @a[scores={char=71,universal_death=1..}] at @s run playsound minecraft:entity.enderman.scream master @s ~ ~ ~ 1 0.8
+execute as @a[scores={char=71,universal_death=1..}] at @s run playsound entity.enderman.scream master @s ~ ~ ~ 1 0.8
 
-title @a[scores={char=71,CC_madness=35..80}] actionbar ["",{text:"{",bold:true,color:"black"},{text:" It's not really hard to see me when I'm floating above his head ",color:"gray"},{text:"}",bold:true,color:"black"}]
-execute as @a[scores={char=71,CC_madness=80}] at @s run playsound minecraft:entity.enderman.scream master @s ~ ~ ~ 1 0.8
+#title @a[scores={char=71,CC_madness=35..80}] actionbar ["",{text:"{",bold:true,color:"black"},{text:" It's not really hard to see me when I'm floating above his head ",color:"gray"},{text:"}",bold:true,color:"black"}]
+#execute as @a[scores={char=71,CC_madness=80}] at @s run playsound entity.enderman.scream master @s ~ ~ ~ 1 0.8
 
 title @a[scores={char=71,CC_franklofied=35..80}] actionbar ["",{text:"{",bold:true,color:"black"},{text:" Wow is that BREVE GREAVESOYL?! ",color:"gray"},{text:"}",bold:true,color:"black"}]
 
@@ -64,27 +66,27 @@ execute if entity @a[scores={char=71,s3_timer=1},limit=1] as @e[tag=alt_homing_s
 execute as @e[tag=alt_homing_shot] at @s run tp @s ~ ~ ~ ~ ~
 execute as @e[tag=alt_homing_shot] at @s run tp @s ^ ^ ^1
 execute as @e[tag=alt_homing_shot] at @s unless block ^ ^ ^0.1 #minecraft:dash run summon marker ~ ~ ~ {Tags:["alternate_boom","entities_alternate"]}
+execute at @e[tag=alt_homing_shot] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team positioned ~0.5 ~0.5 ~0.5 run damage @s 5 dragon_breath by @p[scores={char=71}]
+execute at @e[tag=alt_homing_shot] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team positioned ~0.5 ~0.5 ~0.5 run summon marker ~ ~ ~ {Tags:["alternate_boom","entities_alternate"]}
 
-execute at @e[tag=alt_homing_shot] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target,nbt=!{active_effects:[{id:"minecraft:glowing"}]}] unless score @s Team = @p[scores={char=71}] Team positioned ~0.5 ~0.5 ~0.5 run summon marker ~ ~ ~ {Tags:["alternate_boom","entities_alternate"]}
 execute at @e[tag=alt_homing_shot] positioned ~-0.5 ~-0.5 ~-0.5 as @e[dx=0,dy=0,dz=0,tag=valid_spell_target,nbt={active_effects:[{id:"minecraft:glowing"}]}] unless score @s Team = @p[scores={char=71}] Team positioned ~0.5 ~0.5 ~0.5 run tag @s add alt_flash
 execute at @a[scores={char=71,s3_timer=50..}] run kill @e[tag=alt_homing_shot]
 
 execute if entity @e[tag=alternate_boom] run kill @e[tag=alt_homing_shot]
 execute at @e[tag=alternate_boom] run playsound block.stone.break master @a[distance=..15] ~ ~ ~ 1 0.8 1
 execute at @e[tag=alternate_boom] run particle crit ~ ~ ~ 0.4 0.4 0.4 0.05 50 force
-execute at @e[tag=alternate_boom] as @e[distance=..2.4,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run damage @s 3 generic by @p[scores={char=71}] from @p[scores={char=71}]
+#execute at @e[tag=alternate_boom] as @e[distance=..2.4,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run damage @s 5 dragon_breath by @p[scores={char=71}] from @p[scores={char=71}]
 
 kill @e[tag=alternate_boom]
 execute unless entity @e[tag=alt_homing_shot] run kill @e[tag=alt_homing_shot_display]
 
 execute if entity @e[tag=alt_flash] run kill @e[tag=alt_homing_shot]
-execute as @e[tag=alt_flash] at @s as @e[distance=..4,tag=valid_spell_target,tag=!alt_flash] unless score @s Team = @p[scores={char=71}] Team run damage @s 2 generic by @p[scores={char=71}] from @p[scores={char=71}]
-execute as @e[tag=alt_flash] at @s as @e[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run effect give @s blindness 2 1 true
 execute as @e[tag=alt_flash] at @s run particle flash{color:[1.000,1.000,1.000,1.00]} ~ ~1 ~ 0 0 0 0 1
 execute as @e[tag=alt_flash] at @s run playsound block.beacon.deactivate master @a[distance=..15] ~ ~ ~ 1 0.8
 execute as @e[tag=alt_flash] at @s run playsound entity.wither.break_block master @a[distance=..15] ~ ~ ~ 1 1.2
 execute as @e[tag=alt_flash] at @s run effect clear @s glowing
-execute as @e[tag=alt_flash] at @s run damage @s 5 generic by @p[scores={char=71}] from @p[scores={char=71}]
+execute as @e[tag=alt_flash] at @s as @e[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run damage @s 3 dragon_breath by @p[scores={char=71}] from @p[scores={char=71}]
+execute as @e[tag=alt_flash] at @s as @e[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run effect give @s blindness 2 1
 
 execute as @e[tag=alt_flash] at @s run tag @s remove alt_flash
 
@@ -93,11 +95,11 @@ execute at @a[scores={char=71,s3_timer=1,CC_silence=0},tag=!alternate_no_enemy] 
 
 execute as @n[tag=alt_demon_display1,scores={s0_timer=1}] at @p[scores={char=71}] rotated as @p[scores={char=71}] rotated ~ 0 run tp @s ^ ^ ^1 facing ^ ^ ^10
 execute as @n[tag=alt_demon_display1,scores={s0_timer=1..}] run scoreboard players add @s s0_timer 1
-execute as @n[tag=alt_demon_display1,scores={s0_timer=1..10}] at @s run tp @s ^ ^ ^0.4
-execute as @n[tag=alt_demon_display1,scores={s0_timer=11..12}] at @s run tp @s ^ ^ ^0.3
-execute as @n[tag=alt_demon_display1,scores={s0_timer=13..20}] at @s run tp @s ^ ^ ^0.2
+execute as @n[tag=alt_demon_display1,scores={s0_timer=1..10}] at @s if block ^ ^ ^0.4 #minecraft:dash run tp @s ^ ^ ^0.4
+execute as @n[tag=alt_demon_display1,scores={s0_timer=11..12}] at @s if block ^ ^ ^0.4 #minecraft:dash run tp @s ^ ^ ^0.3
+execute as @n[tag=alt_demon_display1,scores={s0_timer=13..20}] at @s if block ^ ^ ^0.4 #minecraft:dash run tp @s ^ ^ ^0.2
 execute as @n[tag=alt_demon_display1,scores={s0_timer=2}] run tag @e[tag=alt_demon_display1] add alt_s0_dash
-execute as @n[tag=alt_demon_display1,scores={s0_timer=2..20},tag=alt_s0_dash] at @s as @e[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run damage @s 3 player_attack by @p[scores={char=71}] from @p[scores={char=71}]
+execute as @n[tag=alt_demon_display1,scores={s0_timer=2..20},tag=alt_s0_dash] at @s as @e[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run damage @s 4 player_attack by @p[scores={char=71}] from @p[scores={char=71}]
 execute as @n[tag=alt_demon_display1,scores={s0_timer=2..20},tag=alt_s0_dash] at @s as @e[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run playsound entity.player.attack.strong master @a[distance=..10] ~ ~ ~ 2
 execute as @n[tag=alt_demon_display1,scores={s0_timer=2..20},tag=alt_s0_dash] at @s as @e[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run execute as @n[tag=alt_demon_display1] at @s run particle sweep_attack ~ ~1 ~ 0.6 0.6 0.6 0 20
 execute as @n[tag=alt_demon_display1,scores={s0_timer=2..20},tag=alt_s0_dash] at @s as @e[distance=..2,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run tag @e[tag=alt_demon_display1] remove alt_s0_dash
@@ -117,6 +119,7 @@ execute as @n[tag=alt_demon_display1,scores={s0_timer=51..}] run scoreboard play
 execute as @a[scores={char=71,death_dash_reset=1..}] run tag @s remove alt_pull1
 execute as @a[scores={char=71,death_dash_reset=1..}] run tag @s remove alt_pull2
 
+execute as @a[scores={char=71}] unless entity @e[tag=alt_pull] run tag @s remove alt_pull1
 
 scoreboard players set @a[scores={char=71,s1_timer=1,CC_silence=1..}] spellCD2 20
 scoreboard players add @a[scores={char=71,s1_timer=1,CC_silence=1..}] s1_timer 180
@@ -134,16 +137,20 @@ execute as @a[tag=alt_pull1] at @s run title @s actionbar ""
 execute as @a[tag=alt_pull1] at @s run particle dust{color:[0.000,0.000,0.000],scale:3} ~ ~1 ~ 0.6 0.6 0.6 0 15
 execute as @a[tag=alt_pull1] at @s if entity @e[tag=alt_demon_display1,distance=..2] run particle sweep_attack ~ ~1 ~ 1.5 1.5 1.5 0 10
 execute as @a[tag=alt_pull1] at @s if entity @e[tag=alt_demon_display1,distance=..2] run playsound entity.player.attack.sweep master @a[distance=..15] ~ ~ ~ 1 0.8
-execute as @a[tag=alt_pull1] at @s if entity @e[tag=alt_demon_display1,distance=..2] as @a[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run scoreboard players set @s CC_stun 20
-execute as @a[tag=alt_pull1] at @s if entity @e[tag=alt_demon_display1,distance=..2] as @a[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run tag @s add alt_damage_stun
+execute as @a[tag=alt_pull1] at @s if entity @e[tag=alt_demon_display1,distance=..2] as @a[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run scoreboard players set @s CC_fear 20
+execute as @a[tag=alt_pull1] at @s if entity @e[tag=alt_demon_display1,distance=..2] as @a[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run tag @s add alternat_fear
+execute as @a[tag=alt_pull1] at @s if entity @e[tag=alt_demon_display1,distance=..2] as @a[distance=..5,tag=valid_spell_target] unless score @s Team = @p[scores={char=71}] Team run tag @s add fear_source_alternate
 execute as @a[tag=alt_pull1] at @s if entity @e[tag=alt_demon_display1,distance=..2] run kill @e[tag=alt_pull]
 execute as @a[tag=alt_pull1] at @s if entity @e[tag=alt_demon_display1,distance=..2] run tag @s remove alt_pull1
 
-execute as @e[tag=alt_damage_stun,scores={CC_stun=1..}] at @s run particle sweep_attack ~ ~1 ~ 0.6 0.6 0.6 0 5
-execute as @e[tag=alt_damage_stun,scores={CC_stun=1}] run damage @s 3 generic by @p[scores={char=71}] from @p[scores={char=71}]
-execute as @e[tag=alt_damage_stun,scores={CC_stun=1}] at @s run particle crit ~ ~1 ~ 0.6 0.6 0.6 0.2 25
-execute as @e[tag=alt_damage_stun,scores={CC_stun=1}] at @s run playsound entity.player.attack.crit master @a[distance=..15] ~ ~ ~ 1 0.8
-execute as @e[tag=alt_damage_stun,scores={CC_stun=1}] run tag @s remove alt_damage_stun
+execute as @a[tag=fear_source_alternate,scores={CC_fear=2..}] at @s run tp @s ~ ~ ~ facing entity @p[distance=0.5..,scores={char=71}]
+execute as @a[tag=fear_source_alternate,scores={CC_fear=2..}] at @s run tp @s ~ ~ ~ ~-180 ~
+tag @e[scores={CC_fear=..1}] remove fear_source_alternate
+
+
+execute at @a[tag=alternat_fear] at @s run particle crit ~ ~1.5 ~ 0.6 0.6 0.6 0.2 25
+execute as @a[tag=alternat_fear] run damage @s 3 generic by @p[scores={char=71}] from @p[scores={char=71}]
+tag @a remove alternat_fear
 
 #slam/big shot
 
@@ -208,7 +215,7 @@ scoreboard players set @a[scores={s2_timer=35,char=71}] spellCD2 340
 scoreboard players add @a[scores={s2_timer=1..,char=71}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=361..,char=71}] s2_timer 0
 scoreboard players add @a[scores={s2_timer_recast=1..,char=71}] s2_timer_recast 1
-scoreboard players set @a[scores={s2_timer_recast=20..,char=71}] s2_timer_recast 0
+scoreboard players set @a[scores={s2_timer_recast=35..,char=71}] s2_timer_recast 0
 scoreboard players set @a[scores={s2_timer=361..,char=71}] s2_timer_recast 0
 
 execute as @a[scores={char=71,s3_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:0b,}]}] run clear @a[scores={char=71}] minecraft:carrot_on_a_stick[custom_data={s3:1}]

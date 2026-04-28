@@ -1,12 +1,10 @@
-
+kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:wooden_shovel"}}]
 
 
 #nectar
 
-
 execute at @a[advancements={chars:caretaker_caretaking_your_ass=true}] run scoreboard players add @a[scores={char=72}] nectar 1
 advancement revoke @a[advancements={chars:caretaker_caretaking_your_ass=true}] only chars:caretaker_caretaking_your_ass
-
 
 scoreboard players set @a[scores={char=72,nectar=..-1}] nectar 0
 scoreboard players set @a[scores={char=72,nectar=6..}] nectar 5
@@ -24,7 +22,7 @@ scoreboard players add @a[scores={char=72,passive_caretaker=1..5}] passive_caret
 
 execute at @a[scores={char=72,passive_caretaker=3}] run playsound entity.allay.ambient_with_item master @a[distance=..8] ~ ~ ~ 1 0.8 1
 effect give @a[scores={char=72,passive_caretaker=3}] instant_health
-effect give @a[scores={char=72,passive_caretaker=3}] speed 2 2
+effect give @a[scores={char=72,passive_caretaker=3}] speed 2 1
 
 
 execute at @a[scores={char=72,passive_caretaker=3}] unless entity @e[tag=nectar_burst_1] run summon block_display ~0.5 ~1 ~ {teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.25f,-0.25f,-0.25f],scale:[0.5f,0.5f,0.5f]},block_state:{Name:"minecraft:cherry_leaves"},Tags:["nectar_burst_1","nectar_burst_visuals","entities_caretaker"]}
@@ -52,12 +50,15 @@ execute at @a[scores={char=72}] as @a[distance=1..8] if score @s Team = @p[score
 execute at @a[scores={char=72}] as @a[distance=8.1..] if score @s Team = @p[scores={char=72}] Team run tag @s remove caretaker_valid_heal_target
 execute at @a[scores={char=72}] as @a unless score @s Team = @p[scores={char=72}] Team run tag @s remove caretaker_valid_heal_target
 
-execute at @a[scores={char=72,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..8,tag=caretaker_valid_heal_target] run scoreboard players set @a[scores={char=72}] spellCD1 20
-execute at @a[scores={char=72,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..8,tag=caretaker_valid_heal_target] run scoreboard players set @a[scores={char=72}] s1_timer 140
+#execute at @a[scores={char=72,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..8,tag=caretaker_valid_heal_target] run scoreboard players set @a[scores={char=72}] spellCD1 20
+#execute at @a[scores={char=72,s1_timer=1,CC_silence=0}] unless entity @a[distance=1..8,tag=caretaker_valid_heal_target] run scoreboard players set @a[scores={char=72}] s1_timer 140
 
 
-execute at @a[scores={char=72,s1_timer=1,CC_silence=0}] as @p[distance=1..8,tag=caretaker_valid_heal_target] run tag @s add caretaker_heal
+#execute at @a[scores={char=72,s1_timer=1,CC_silence=0}] as @p[distance=1..8,tag=caretaker_valid_heal_target] run tag @s add caretaker_heal
+execute as @a[scores={char=72,s1_timer=1,CC_silence=0}] at @s positioned ~ ~1.3 ~ run function chars:caretaker_gift_raycast
 
+execute at @a[scores={char=72,s1_timer=1,CC_silence=0}] unless entity @e[distance=0.5..8,tag=caretaker_heal] run scoreboard players set @a[scores={char=72}] spellCD1 10
+execute at @a[scores={char=72,s1_timer=1,CC_silence=0}] unless entity @e[distance=0.5..8,tag=caretaker_heal] run scoreboard players set @a[scores={char=72}] s1_timer 150
 
 scoreboard players set @p[tag=caretaker_heal] regen 0
 execute at @a[scores={char=72,nectar=0}] run scoreboard players set @p[tag=caretaker_heal] caretaker_regen_timer 41
@@ -125,8 +126,8 @@ execute at @a[scores={char=72,s2_timer=2,nectar=4}] run scoreboard players set @
 execute at @a[scores={char=72,s2_timer=2,nectar=5}] run scoreboard players set @n[tag=pollen_1] s0_timer 120
 
 execute at @a[scores={char=72,s2_timer=2}] run summon marker ~ ~ ~ {Tags:["pollen_dash","entities_caretaker"]}
-scoreboard players set @a[scores={char=72,s2_timer=2}] CC_intangible 20
-effect give @a[scores={char=72,s2_timer=2}] resistance 1 100 true
+scoreboard players set @a[scores={char=72,s2_timer=1}] CC_intangible 20
+effect give @a[scores={char=72,s2_timer=1}] resistance 1 100 true
 tp @e[tag=pollen_dash,limit=1] @a[scores={char=72,s2_timer=2},limit=1]
 execute at @a[scores={char=72,s2_timer=2},limit=1] run tp @e[tag=pollen_dash,limit=1] ~ ~0.5 ~
 
@@ -154,6 +155,7 @@ execute at @a[scores={char=72,s2_timer=10..11}] run kill @e[tag=pollen_dash]
 execute as @a[scores={char=72,s2_timer=10}] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
 effect clear @a[scores={char=72,s2_timer=10..11,CC_silence=0}] slow_falling
 scoreboard players set @a[scores={char=72,s2_timer=11}] CC_intangible 0
+effect clear @a[scores={char=72,s2_timer=11}] resistance
 
 scoreboard players set @a[scores={char=72,s2_timer=11}] nectar 0
 
@@ -190,7 +192,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=72}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=240..,char=72}] s2_timer 0
 
 execute as @a[scores={char=72}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:0b,components:{"minecraft:custom_data":{proboscis:1,s0:1}}}]}] run clear @a[scores={char=72}] warped_fungus_on_a_stick[custom_data={proboscis:1,s0:1}]
-item replace entity @a[scores={char=72}] hotbar.0 with warped_fungus_on_a_stick[minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:item_model="minecraft:wooden_shovel",minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],custom_data={proboscis:1},minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=72}] hotbar.0 with wooden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:item_model="minecraft:wooden_shovel",minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:1.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],custom_data={proboscis:1},minimum_attack_charge=1] 1
 
 execute as @a[scores={char=72,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=72}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=72,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:honey_block",minecraft:custom_name={text:"Gift of Life",color:"dark_aqua",bold:1b}] 1

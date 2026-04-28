@@ -21,7 +21,8 @@ scoreboard players set @a[scores={cancel_sur=1..}] cancel_sur 0
 execute if entity @a[scores={surrender=4},team=yellow] unless entity @a[scores={surrender=0},team=yellow] unless entity @a[team=purple] run scoreboard players set @a[scores={surrender=4},team=yellow] surrender 10
 execute if entity @a[scores={surrender=4},team=purple] unless entity @a[scores={surrender=0},team=purple] unless entity @a[team=yellow] run scoreboard players set @a[scores={surrender=4},team=purple] surrender 10
 
-execute if entity @a[scores={surrender=4},team=ffa] unless entity @a[scores={surrender=0},team=ffa] run scoreboard players set @a[scores={surrender=4},team=ffa] surrender 10
+execute if score map_type settings matches 4 if entity @a[scores={surrender=4}] unless entity @a[scores={surrender=0}] run scoreboard players set @a[scores={surrender=4}] surrender 10
+
 
 tellraw @a[scores={surrender=12}] [{text:"=============================\n\n",color:"dark_blue",type:"text"},{text:"No enemy players detected. The game will be cancelled now.",color:"aqua",type:"text"},{text:"\n\n=============================",color:"dark_blue",type:"text"}]
 #execute unless score map_type settings matches 4 run tellraw @a[scores={surrender=12}] [{text:"=============================\n\n",color:"dark_blue",type:"text"},{text:"No enemy players detected. The game will be cancelled now.",color:"aqua",type:"text"},{text:"\n\n=============================",color:"dark_blue",type:"text"}]
@@ -32,7 +33,13 @@ tellraw @a[scores={surrender=12}] [{text:"=============================\n\n",col
 execute if entity @a[scores={surrender=4},team=yellow] unless entity @a[scores={surrender=0},team=yellow] run function core:score/win_purple
 execute if entity @a[scores={surrender=4},team=purple] unless entity @a[scores={surrender=0},team=purple] run function core:score/win_yellow
 
+execute if entity @a[scores={surrender=4},team=yellow] unless entity @a[scores={surrender=0},team=yellow] run scoreboard players set @a surrender -1
+execute if entity @a[scores={surrender=4},team=purple] unless entity @a[scores={surrender=0},team=purple] run scoreboard players set @a surrender -1
+
 execute if entity @a[scores={surrender=4},team=ffa] unless entity @a[scores={surrender=0},team=ffa] run function core:score/win_solo
+execute if entity @a[scores={surrender=4},team=ffa] unless entity @a[scores={surrender=0},team=ffa] run scoreboard players set @a surrender -1
+
+
 
 #remove flag after surr
 clear @a[scores={surrender=13..}] *[custom_data={surrender_flag:2}]

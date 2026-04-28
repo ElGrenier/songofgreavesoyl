@@ -41,6 +41,7 @@ execute if score -elevator crawlers_wave matches 11 run execute positioned 97 13
 execute if score -elevator crawlers_wave matches 21 run clone 94 10 -146 100 4 -152 94 10 -129
 execute if score -elevator crawlers_wave matches 21 run execute positioned 97 13 -126 run playsound block.chain.step master @a[distance=..5] ~ ~ ~ 2 0.1
 
+execute as @e[tag=crawlers_enemy] at @s run attribute @s attack_damage modifier add crawlins 2 add_value
 
 #base crawler
 #execute at @a[scores={char=1..}] as @e[tag=crawlers_crawlerboi,distance=20..,scores={lifetime=1..}] run damage @s 0 generic by @p from @p
@@ -74,16 +75,16 @@ execute as @e[tag=crawlers_crawlerattacker,tag=crawlers_crawlerbomber,tag=!crawl
 execute as @e[tag=crawlers_crawlerattacker] at @s if entity @e[tag=crawlers_campfire,distance=..3.5] run kill @s
 
 #hatcher
-execute as @e[tag=crawlers_crawlerhatcher,scores={CC_stun=..0,CC_knockup=..0,CC_root=..0}] at @s if entity @e[tag=crawlers_campfire,distance=8..] run tp @s ^ ^ ^0.05 facing entity @n[tag=crawlers_campfire]
+execute as @e[tag=crawlers_crawlerhatcher,scores={CC_stun=..0,CC_knockup=..0,CC_root=..0}] at @s unless entity @e[tag=crawlers_campfire,distance=8..] run tp @s ^ ^ ^0.05 facing entity @n[tag=crawlers_campfire]
 execute as @e[tag=crawlers_crawlerhatcher] at @s if block ~ ~ ~ #minecraft:dash run tp @s ~ ~-0.05 ~
 execute as @e[tag=crawlers_crawlerhatcher] at @s run effect give @s weakness infinite 14 true
 execute as @e[tag=crawlers_crawlerhatcher] at @s rotated ~ 0 run particle dust{color:[1.000,0.753,0.169],scale:3} ^ ^1.1 ^-1 0.1 0 0.1 0 1
 
 execute at @e[tag=crawlers_crawlerhatcher,scores={lifetime=1}] run summon block_display ~ ~ ~ {Passengers:[{id:"minecraft:block_display",block_state:{Name:"minecraft:ochre_froglight",Properties:{axis:"x"}},transformation:[0.5795554958f,0f,0.1552914271f,-0.1625f,0.086837864f,0.4974225435f,-0.3240833204f,0f,-0.1287424277f,0.3355157421f,0.4804732814f,0.41875f,0f,0f,0f,1f],Tags:["crawlers_hatcherbag"]},{id:"minecraft:block_display",block_state:{Name:"minecraft:ochre_froglight",Properties:{axis:"x"}},transformation:[0.4624744968f,0.0983019889f,-0.6156614753f,-0.06875f,0.2653086851f,0.3348728524f,0.7021227226f,-0.5375f,0.2751883745f,-0.4880541893f,0.3577493958f,0.4f,0f,0f,0f,1f],Tags:["crawlers_hatcherbag"]},{id:"minecraft:block_display",block_state:{Name:"minecraft:ochre_froglight",Properties:{axis:"x"}},transformation:[0.3090228449f,0f,0.5143003804f,-0.1625f,-0.3305859122f,0.4596266659f,0.1986360558f,0f,-0.3939769485f,-0.3856725658f,0.2367252332f,0.53125f,0f,0f,0f,1f],Tags:["crawlers_hatcherbag"]}],Tags:["crawlers_hatcherbag","crawlers_hatcherbag_main"]}
 
-execute as @e[tag=crawlers_crawlerhatcher,tag=crawlers_large] at @s if entity @e[tag=crawlers_campfire,distance=..20] run scoreboard players add @s lifetime 5
-execute as @e[tag=crawlers_crawlerhatcher,tag=crawlers_large,scores={lifetime=600..}] at @s if entity @e[tag=crawlers_campfire,distance=..20] run summon spider ~ ~ ~ {Health:6,PersistenceRequired:1b,Tags:["crawlers_crawlerattacker","crawlers_enemy","valid_spell_target","crawlers_fastbois"],attributes:[{id:scale,base:0.5f},{id:max_health,base:6f}],NoAI:1b}
-execute as @e[tag=crawlers_crawlerhatcher,tag=crawlers_large,scores={lifetime=600..}] at @s if entity @e[tag=crawlers_campfire,distance=..20] run playsound block.beehive.exit master @a[distance=..20,scores={char=1..}] ~ ~ ~ 1 0.8
+execute as @e[tag=crawlers_crawlerhatcher,tag=crawlers_large] at @s if entity @e[tag=crawlers_campfire,distance=..10] run scoreboard players add @s lifetime 10
+execute as @e[tag=crawlers_crawlerhatcher,tag=crawlers_large,scores={lifetime=600..}] at @s if entity @e[tag=crawlers_campfire,distance=..10] run summon spider ~ ~ ~ {Health:6,PersistenceRequired:1b,Tags:["crawlers_crawlerattacker","crawlers_enemy","valid_spell_target","crawlers_fastbois"],attributes:[{id:scale,base:0.5f},{id:max_health,base:6f}],NoAI:1b}
+execute as @e[tag=crawlers_crawlerhatcher,tag=crawlers_large,scores={lifetime=600..}] at @s if entity @e[tag=crawlers_campfire,distance=..10] run playsound block.beehive.exit master @a[distance=..20,scores={char=1..}] ~ ~ ~ 1 0.8
 scoreboard players set @e[tag=crawlers_crawlerhatcher,scores={lifetime=600..}] lifetime 3
 
 execute as @e[tag=crawlers_crawlerhatcher] at @s if entity @e[tag=crawlers_campfire,distance=..3.5] run particle lava ~ ~1 ~ 1 1 1 0.1 10
@@ -100,16 +101,17 @@ execute as @e[tag=crawlers_hatcherbag] unless entity @e[tag=crawlers_crawlerhatc
 execute at @e[tag=crawlers_scout] run particle block{block_state:"minecraft:green_terracotta"} ~ ~0.4 ~ 0.5 0.5 0.5 0 1
 
 execute at @e[tag=crawlers_scout] run effect give @a[distance=..1.6,tag=valid_spell_target,scores={char=1..}] slowness 3 2 true
+execute at @e[tag=crawlers_scout] run effect give @a[distance=..1.6,tag=valid_spell_target,scores={char=1..}] poison 3 1 true
 execute at @e[tag=crawlers_scout] run execute at @a[distance=..1.6,tag=valid_spell_target,scores={char=1..}] run particle block{block_state:"minecraft:green_terracotta"} ~ ~1 ~ 0.5 0.5 0.5 0 2
 
 #poisonous scout
 execute at @e[tag=crawlers_scout_poison] run particle block{block_state:"minecraft:lime_concrete"} ~ ~0.4 ~ 0.5 0.5 0.5 0 1
-execute at @e[tag=crawlers_scout_poison] run effect give @a[distance=..1.6,tag=valid_spell_target,scores={char=1..}] poison 1 2 true
+execute at @e[tag=crawlers_scout_poison] run effect give @a[distance=..1.6,tag=valid_spell_target,scores={char=1..}] poison 4 4 true
 
 #Charger!
 execute as @e[tag=crawlers_charger,scores={lifetime=1}] run data merge entity @s {attributes:[{id:jump_strength,base:0.0f},{id:step_height,base:1f}]}
 
-execute as @e[tag=crawlers_charger] at @s run damage @p[distance=..2,tag=valid_spell_target] 3 generic by @s from @s
+execute as @e[tag=crawlers_charger] at @s run damage @p[distance=..1.6,tag=valid_spell_target] 2 generic by @s from @s
 
 execute as @e[tag=crawlers_charger] run scoreboard players add @s crawlers_attack1 1
 execute as @e[tag=crawlers_charger,scores={crawlers_attack1=90..}] run scoreboard players set @s crawlers_attack1 1
@@ -137,7 +139,7 @@ execute as @e[tag=crawlers_charger,scores={crawlers_attack1=80,crawlers_spells=4
 execute as @e[tag=crawlers_charger,scores={crawlers_attack1=80,crawlers_spells=4}] at @s run particle large_smoke ~ ~0.5 ~ 1.5 1.5 1.5 0.5 130
 execute as @e[tag=crawlers_charger,scores={crawlers_attack1=80,crawlers_spells=4}] at @s run particle white_smoke ~ ~0.5 ~ 1.5 1.5 1.5 0.5 130
 execute as @e[tag=crawlers_charger,scores={crawlers_attack1=80,crawlers_spells=4}] at @s run playsound entity.wither.break_block master @a[distance=..15] ~ ~ ~ 1 0.8
-execute as @e[tag=crawlers_charger,scores={crawlers_attack1=80,crawlers_spells=4}] at @s run scoreboard players add @a[distance=..5,tag=valid_spell_target] CC_stun 30
+execute as @e[tag=crawlers_charger,scores={crawlers_attack1=80,crawlers_spells=4}] at @s run scoreboard players add @a[distance=..4.5,tag=valid_spell_target] CC_stun 30
 execute as @e[tag=crawlers_charger,scores={crawlers_attack1=61,crawlers_spells=4}] rotated ~ 0 run data merge entity @s {NoAI:1b}
 execute as @e[tag=crawlers_charger,scores={crawlers_attack1=82,crawlers_spells=4}] rotated ~ 0 run data merge entity @s {NoAI:0b}
 
@@ -169,7 +171,7 @@ execute as @e[tag=crawlers_motherbag_main] at @s unless entity @e[distance=..2.5
 execute as @e[tag=crawlers_motherbag_main] at @s unless entity @e[distance=..2.5,tag=crawlers_mother] run summon spider ~ ~0.2 ~ {Health:8,PersistenceRequired:1b,Tags:["crawlers_crawlerboi","crawlers_enemy","valid_spell_target"],attributes:[{id:scale,base:0.6f},{id:max_health,base:8f}]}
 execute as @e[tag=crawlers_motherbag_main] at @s unless entity @e[distance=..2.5,tag=crawlers_mother] run summon spider ~ ~0.3 ~ {Health:8,PersistenceRequired:1b,Tags:["crawlers_crawlerboi","crawlers_enemy","valid_spell_target"],attributes:[{id:scale,base:0.6f},{id:max_health,base:8f}]}
 execute as @e[tag=crawlers_motherbag_main] at @s unless entity @e[distance=..2.5,tag=crawlers_mother] run summon spider ~ ~0.4 ~ {Health:8,PersistenceRequired:1b,Tags:["crawlers_crawlerboi","crawlers_enemy","valid_spell_target"],attributes:[{id:scale,base:0.6f},{id:max_health,base:8f}]}
-execute as @e[tag=crawlers_motherbag_main] at @s unless entity @e[distance=..2.5,tag=crawlers_mother] run summon spider ~ ~0.5 ~ {Health:8,PersistenceRequired:1b,Tags:["crawlers_crawlerboi","crawlers_enemy","valid_spell_target"],attributes:[{id:scale,base:0.6f},{id:max_health,base:8f}]}
+#execute as @e[tag=crawlers_motherbag_main] at @s unless entity @e[distance=..2.5,tag=crawlers_mother] run summon spider ~ ~0.5 ~ {Health:8,PersistenceRequired:1b,Tags:["crawlers_crawlerboi","crawlers_enemy","valid_spell_target"],attributes:[{id:scale,base:0.6f},{id:max_health,base:8f}]}
 execute as @e[tag=crawlers_motherbag_main] at @s unless entity @e[distance=..2.5,tag=crawlers_mother] run kill @n[tag=crawlers_motherbag,tag=!crawlers_motherbag_main]
 execute as @e[tag=crawlers_motherbag_main] at @s unless entity @e[distance=..2.5,tag=crawlers_mother] run kill @s
 
@@ -199,7 +201,7 @@ execute as @e[tag=crawlers_sniper_shot] at @s run particle white_smoke ~ ~ ~ 0 0
 execute as @e[tag=crawlers_sniper_shot,scores={lifetime=1..2}] at @s run playsound block.cobweb.break master @a[distance=..20,scores={char=1..}] ~ ~ ~ 3 0.8
 execute as @e[tag=crawlers_sniper_shot] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
 kill @e[tag=crawlers_sniper_shot,scores={lifetime=50..}]
-execute as @e[tag=crawlers_sniper_shot] at @s positioned ~-.5 ~-.5 ~-.5 as @p[dz=0,dx=0,dy=0,tag=valid_spell_target] run scoreboard players set @s CC_silence 100
+execute as @e[tag=crawlers_sniper_shot] at @s positioned ~-.5 ~-.5 ~-.5 as @p[dz=0,dx=0,dy=0,tag=valid_spell_target] run scoreboard players set @s CC_silence 80
 execute as @e[tag=crawlers_sniper_shot] at @s positioned ~-.5 ~-.5 ~-.5 if entity @p[dz=0,dx=0,dy=0] run kill @s
 
 #unburrow
@@ -248,7 +250,7 @@ execute at @e[tag=crawlers_burrow_charger] run particle block{block_state:"nethe
 execute at @e[tag=crawlers_burrow_charger] run particle block{block_state:"ochre_froglight"} ~ ~ ~ 0.1 0.1 0.1 0 10
 execute at @e[tag=crawlers_burrow_charger] run playsound block.gravel.break master @a[distance=..15] ~ ~ ~ 2 0.9
 
-execute as @e[tag=crawlers_burrow_charger,scores={lifetime=60..}] at @s run summon cave_spider ~ ~-1.5 ~ {Health:42,PersistenceRequired:1b,Tags:["crawlers_crawlerboi","crawlers_enemy","valid_spell_target","crawlers_charger"],attributes:[{id:scale,base:2.3f},{id:max_health,base:42f}]}
+execute as @e[tag=crawlers_burrow_charger,scores={lifetime=60..}] at @s run summon cave_spider ~ ~-1.5 ~ {Health:35,PersistenceRequired:1b,Tags:["crawlers_crawlerboi","crawlers_enemy","valid_spell_target","crawlers_charger"],attributes:[{id:scale,base:2.3f},{id:max_health,base:35f}]}
 execute as @e[tag=crawlers_burrow_charger,scores={lifetime=60..}] run kill @s
 
 #CRAWLER JOCKEY

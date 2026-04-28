@@ -3,6 +3,7 @@
   "values": [
     "minecraft:freeze",
     "minecraft:lava",
-    "minecraft:dragon_breath"
+    "minecraft:dragon_breath",
+    "minecraft:player_attack"
   ]
 }

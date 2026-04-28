@@ -87,17 +87,18 @@ execute at @e[tag=sanctuary] run particle dust{color:[0.33,0.33,1.0],scale:1} ~ 
 
 execute at @a[scores={char=21,s2_timer=20..40,CC_silence=0}] at @e[tag=tomb] run fill ~3 ~ ~3 ~-3 ~ ~-3 blue_ice replace #minecraft:dash
 execute at @a[scores={char=21,s2_timer=20..40,CC_silence=0}] at @e[tag=tomb] run fill ~2 ~ ~2 ~-2 ~ ~-2 air replace blue_ice
-execute at @a[scores={char=21,s2_timer=80}] at @e[tag=tomb] run fill ~4 ~4 ~4 ~-4 ~ ~-4 air replace blue_ice
+execute at @a[scores={char=21,s2_timer=80}] at @e[tag=tomb] run fill ~3 ~ ~3 ~-3 ~ ~-3 air replace blue_ice
 execute at @a[scores={char=21,s2_timer=80}] at @e[tag=tomb] run function battlegrounds:lightrestore
 
 execute at @a[scores={char=21,s2_timer=1..5,CC_silence=0}] at @e[tag=sanctuary] run fill ~-1 ~-1 ~-1 ~1 ~ ~1 blue_ice replace #minecraft:dash
 execute at @a[scores={char=21,s2_timer=1..5,CC_silence=0}] at @e[tag=sanctuary] run fill ~ ~ ~ ~ ~ ~ air replace blue_ice
 execute at @a[scores={char=21,s2_timer=2,CC_silence=0}] at @e[tag=sanctuary] run tp @p[scores={char=21}] ~ ~ ~
 
-execute at @e[tag=sanctuary] unless entity @e[scores={char=21},distance=..2] run fill ~4 ~4 ~4 ~-4 ~-2 ~-4 air replace blue_ice
+execute at @e[tag=sanctuary] unless entity @e[scores={char=21},distance=..2] run fill ~-1 ~-1 ~-1 ~1 ~ ~1 air replace blue_ice
 execute as @e[tag=sanctuary] at @s unless entity @e[scores={char=21},distance=..2] run kill @s
 
-execute at @a[scores={char=21,s2_timer=60}] at @e[tag=sanctuary] run fill ~4 ~4 ~4 ~-4 ~-2 ~-4 air replace blue_ice
+execute at @a[scores={char=21,s2_timer=60}] at @e[tag=sanctuary] run playsound entity.player.hurt_freeze master @a[distance=..10] ~ ~ ~ 0.6 0.1 1
+execute at @a[scores={char=21,s2_timer=60}] at @e[tag=sanctuary] run fill ~-1 ~-1 ~-1 ~1 ~ ~1 air replace blue_ice
 execute at @a[scores={char=21,s2_timer=61}] at @e[tag=sanctuary] run function battlegrounds:lightrestore
 execute at @a[scores={char=21,s2_timer=81}] run kill @e[tag=tomb]
 execute at @a[scores={char=21,s2_timer=61}] run kill @e[tag=sanctuary]
@@ -116,33 +117,41 @@ execute at @a[scores={char=21,s2_timer=1..20}] if entity @e[tag=tombmarked] at @
 execute at @a[scores={char=21,s2_timer=1..20}] if entity @e[tag=tombmarked] at @e[tag=tomb] run particle dust{color:[0.33,1.0,1.0],scale:1} ~3 ~ ~ 0.3 0.5 2 0.1 50
 execute at @a[scores={char=21,s2_timer=1..20}] if entity @e[tag=tombmarked] at @e[tag=tomb] run particle dust{color:[0.33,1.0,1.0],scale:1} ~-3 ~ ~ 0.3 0.5 2 0.1 50
 
-
-execute at @a[scores={char=21},team=yellow] at @e[tag=tomb] run scoreboard players set @a[distance=..4,team=purple] CC_grounded 20
-execute at @a[scores={char=21},team=purple] at @e[tag=tomb] run scoreboard players set @a[distance=..4,team=yellow] CC_grounded 20
+execute at @e[tag=tomb] as @a[distance=..4,tag=valid_spell_target] unless score @s Team = @p[scores={char=21}] Team run scoreboard players set @s CC_grounded 20
 
 #children of the grave
 
 scoreboard players set @a[scores={char=21,s3_timer=1,CC_silence=1..}] spellCD3 20
 scoreboard players set @a[scores={char=21,s3_timer=1,CC_silence=1..}] s3_timer 280
 
-execute at @a[scores={char=21,s3_timer=1,CC_silence=0}] run playsound minecraft:entity.wither.spawn master @a[distance=..15] ~ ~ ~ 0.5 0.6 1
-execute at @a[scores={char=21,s3_timer=1,CC_silence=0}] run playsound minecraft:block.bell.use master @a[distance=..15] ~ ~ ~ 0.2 0.8 1
+execute at @a[scores={char=21,s3_timer=1,CC_silence=0}] run playsound entity.wither.spawn master @a[distance=..15] ~ ~ ~ 0.4 0.6 1
+execute at @a[scores={char=21,s3_timer=1,CC_silence=0}] run playsound block.bell.use master @a[distance=..15] ~ ~ ~ 0.1 0.8 1
 execute at @a[scores={char=21,s3_timer=1,CC_silence=0}] run scoreboard players set @e[distance=10..,tag=necrominion] undead_animaton 1
+execute at @a[scores={char=21,s3_timer=2,CC_silence=0}] run effect give @e[distance=..10,tag=necrominion] instant_damage
+execute at @a[scores={char=21,s3_timer=2,CC_silence=0}] at @e[distance=..10,tag=necrominion] run particle entity_effect{color:[0.21,0.68,0.97,1.0]} ~ ~1 ~ 0.3 0.6 0.3 0.6 67
 
 #death conquered
-
 
 scoreboard players set @a[advancements={chars:necrolord_curse_apply=true}] curse 120
 advancement revoke @a[advancements={chars:necrolord_curse_apply=true}] only chars:necrolord_curse_apply
 
-execute at @a[scores={universal_death=1,curse=1..}] at @a[scores={char=21}] run summon zombie ~ ~-2 ~ {Invulnerable:1b,PersistenceRequired:1b,NoAI:1b,Health:30f,Tags:["necrominion","valid_spell_target","entities_necrolord"],equipment:{feet:{id:"minecraft:leather_boots",components:{"minecraft:attribute_modifiers":[{type:"minecraft:armor",operation:"add_value",amount:0.0d,id:"minecraft:6b02ea26-b332-43ec-98c1-dbf0f983abe1"}],"minecraft:dyed_color":12111359,"minecraft:trim":{material:"minecraft:iron",pattern:"minecraft:rib"}},count:1},legs:{id:"minecraft:leather_leggings",components:{"minecraft:attribute_modifiers":[{type:"minecraft:armor",operation:"add_value",amount:0.0d,id:"minecraft:c289c816-bdef-41ef-8c03-548f4bae6ca0"}],"minecraft:dyed_color":9549542,"minecraft:trim":{material:"minecraft:lapis",pattern:"minecraft:rib"}},count:1},chest:{id:"minecraft:leather_chestplate",count:1,components:{"minecraft:attribute_modifiers":[{id:"minecraft:5dce5dfc-f1a8-46a1-bb18-dd4dc6048764",type:"armor",amount:0.0d,operation:"add_value"}],"minecraft:dyed_color":4879334,"minecraft:trim":{material:"minecraft:lapis",pattern:"minecraft:silence"}}},head:{id:"minecraft:player_head",components:{"minecraft:profile":{id:[I;1902331095,-137279324,-1184236136,-732253997],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWY0MDIyZmI3NGU4MjVhZGE2MGVmNWUxNzQxNTg0ZWRlMGU1MjMxNzVkMTY3NjZjOTE4ZGVhMjU4YzAwZmY0MSJ9fX0="}]}},count:1}},attributes:[{id:"minecraft:attack_damage",base:10},{id:"minecraft:knockback_resistance",base:0.5},{id:"minecraft:max_health",base:20},{id:"minecraft:movement_speed",base:0.25}]}
+execute at @a[scores={universal_death=1,curse=1..}] run tag @a[scores={char=21}] add add_undead
+
+execute at @a[scores={char=21},tag=add_undead] run summon stray ~ ~-2 ~ {CustomName:[{"text":"Undead"}],CustomNameVisible:1,Invulnerable:1b,PersistenceRequired:1b,NoAI:1b,Health:30f,Tags:["summon","necrominion","valid_spell_target","entities_necrolord"],equipment:{feet:{id:"minecraft:leather_boots",components:{"minecraft:attribute_modifiers":[{type:"minecraft:armor",operation:"add_value",amount:0.0d,id:"minecraft:6b02ea26-b332-43ec-98c1-dbf0f983abe1"}],"minecraft:dyed_color":12111359,"minecraft:trim":{material:"minecraft:iron",pattern:"minecraft:rib"}},count:1},legs:{id:"minecraft:leather_leggings",components:{"minecraft:attribute_modifiers":[{type:"minecraft:armor",operation:"add_value",amount:0.0d,id:"minecraft:c289c816-bdef-41ef-8c03-548f4bae6ca0"}],"minecraft:dyed_color":9549542,"minecraft:trim":{material:"minecraft:lapis",pattern:"minecraft:rib"}},count:1},chest:{id:"minecraft:leather_chestplate",count:1,components:{"minecraft:attribute_modifiers":[{id:"minecraft:5dce5dfc-f1a8-46a1-bb18-dd4dc6048764",type:"armor",amount:0.0d,operation:"add_value"}],"minecraft:dyed_color":4879334,"minecraft:trim":{material:"minecraft:lapis",pattern:"minecraft:silence"}}},head:{id:"minecraft:player_head",components:{"minecraft:profile":{properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmE5OWQ5ZWU2NTEzYWE4OGEzYzQ1NmFiYTJiZDFlMTdkMTM0NDQ4ZmQxMTc3NWJkMWQ1NWVmNjlhYTc3ZDIzMCJ9fX0="}]}},count:1}},attributes:[{id:"minecraft:attack_damage",base:10},{id:"minecraft:knockback_resistance",base:0.5},{id:"minecraft:max_health",base:20},{id:"minecraft:movement_speed",base:0.25}]}
+execute at @a[scores={char=21},tag=add_undead] run scoreboard players add @e[tag=necrominion] SummonAge 1
+execute at @a[scores={char=21},tag=add_undead] run scoreboard players set @e[tag=necrominion,scores={SummonAge=1}] undead_animaton 1
+tag @a remove add_undead
+
 scoreboard players operation @e[tag=necrominion] Team = @p[scores={char=21}] Team
 # zombie teams
 execute at @a[scores={char=21},team=purple] run team join purple @e[tag=necrominion]
 execute at @a[scores={char=21},team=yellow] run team join yellow @e[tag=necrominion]
-###
-execute at @a[scores={universal_death=1,curse=1..}] run scoreboard players add @e[tag=necrominion] SummonAge 1
-execute at @a[scores={universal_death=1,curse=1..}] run scoreboard players set @e[tag=necrominion,scores={SummonAge=1}] undead_animaton 1
+execute at @a[scores={char=21},team=ffa_necrolord] run team join ffa_necrolord @e[tag=necrominion]
+execute if score map_type settings matches 4 run team join ffa_necrolord @a[scores={char=21}]
+team join ffa_necrolord @a[scores={char=21},team=ffa]
+
+execute as @e[tag=necrominion] store result score @s HP_display run data get entity @s Health
+
 scoreboard players set @a[scores={universal_death=1..}] curse 0
 
 scoreboard players add @e[tag=necrominion,scores={undead_animaton=..20}] undead_animaton 1
@@ -156,6 +165,12 @@ execute at @e[tag=necrominion,scores={undead_animaton=10}] run playsound block.s
 execute at @e[tag=necrominion,scores={undead_animaton=15}] run playsound block.grass.break master @a[distance=..15] ~ ~ ~ 1 0.8 1
 execute at @e[tag=necrominion,scores={undead_animaton=20}] run playsound block.snow.break master @a[distance=..15] ~ ~ ~ 1 0.8 1
 execute as @e[tag=necrominion,scores={undead_animaton=20}] run data merge entity @s {NoAI:0b,Invulnerable:0b}
+
+execute unless entity @e[tag=necrominion,scores={SummonAge=4}] run scoreboard players remove @e[tag=necrominion,scores={SummonAge=5..}] SummonAge 1
+execute unless entity @e[tag=necrominion,scores={SummonAge=3}] run scoreboard players remove @e[tag=necrominion,scores={SummonAge=4..}] SummonAge 1
+execute unless entity @e[tag=necrominion,scores={SummonAge=2}] run scoreboard players remove @e[tag=necrominion,scores={SummonAge=3..}] SummonAge 1
+execute unless entity @e[tag=necrominion,scores={SummonAge=1}] run scoreboard players remove @e[tag=necrominion,scores={SummonAge=2..}] SummonAge 1
+
 
 scoreboard players set @e[tag=necrominion,scores={SummonAge=6..,undead_animaton=..99}] undead_animaton 100
 scoreboard players add @e[tag=necrominion,scores={undead_animaton=100..}] undead_animaton 1
@@ -175,18 +190,20 @@ effect give @e[tag=necrominion] water_breathing 5 0
 execute at @e[tag=necrominion] run particle dolphin ~ ~0.5 ~ 0.5 0.8 0.5 1 5 normal
 execute at @e[tag=necrominion] as @a[distance=..1.5,tag=valid_spell_target] unless score @s Team = @p[scores={char=21}] Team run scoreboard players set @s curse 120
 
-
+#kills from minions counting as necrolord's kills
 execute at @a[scores={zombiekills=1..}] as @a[scores={char=21}] run function chars:add_kill
 scoreboard players remove @a[scores={zombiekills=1..}] zombiekills 1
+execute at @a[scores={straykills=1..}] as @a[scores={char=21}] run function chars:add_kill
+scoreboard players remove @a[scores={straykills=1..}] straykills 1
 
 
 
 scoreboard players remove @a[scores={curse=1..}] curse 1
 execute at @a[scores={curse=1..}] run particle dolphin ~ ~ ~ 0.5 0.2 0.5 1 30 normal
 
-execute at @a[scores={curse=1..}] positioned ~ ~2.5 ~ unless entity @e[distance=..1,tag=display_curse] run summon armor_stand ~ ~ ~ {Tags:["display_curse","entities_necrolord"],Marker:1b,Invisible:1b,CustomName:{text:"CURSE OF UNDYING",color:"blue",bold:1b},CustomNameVisible:1b}
-execute at @a[scores={curse=1..}] positioned ~ ~2.5 ~ run tp @e[distance=..1,tag=display_curse] ~ ~ ~
-execute as @e[tag=display_curse] at @s positioned ~ ~-2.5 ~ unless entity @a[distance=..1,scores={curse=1..}] run kill @s
+execute at @a[scores={curse=1..}] unless entity @e[distance=..1,tag=display_curse] run summon text_display ~ ~ ~ {teleport_duration:1,billboard:"vertical",Tags:["display_curse","entities_necrolord"],alignment:"center",background:1073741824,default_background:0b,line_width:200,see_through:0b,shadow: 0b,text:["",{text:"",extra:[{text:"CURSE OF UNDYING",color:"blue",bold:1b}]}],text_opacity:255,transformation:{left_rotation:[0.0f,0.0f,0.0f,1.0f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.9f,0.9f,0.9f],translation:[0.0f,2.5f,0.0f]}}
+execute at @a[scores={curse=1..}] run tp @e[distance=..1,tag=display_curse] ~ ~ ~
+execute as @e[tag=display_curse] at @s unless entity @a[distance=..1,scores={curse=1..}] run kill @s
 
 
 
@@ -205,7 +222,7 @@ scoreboard players add @a[scores={s3_timer=1..,char=21}] s3_timer 1
 scoreboard players set @a[scores={s3_timer=301..,char=21}] s3_timer 0
 
 execute as @a[scores={char=21}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bone",Slot:0b}]}] run clear @a[scores={char=21}] bone
-item replace entity @a[scores={char=21}] hotbar.0 with bone[swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Bone"},custom_data={necrolord:1},minecraft:enchantments={"minecraft:frost_walker":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=21}] hotbar.0 with bone[swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Bone"},custom_data={necrolord:1},minecraft:enchantments={"minecraft:frost_walker":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=21,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=21}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=21,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:ghast_tear",minecraft:custom_name={text:"Chilled Path",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:frost_walker":1}] 1

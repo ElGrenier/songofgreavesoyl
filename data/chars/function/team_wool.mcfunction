@@ -7,6 +7,15 @@ execute as @a[team=yellow] at @s unless entity @s[nbt={Inventory:[{id:"minecraft
 execute as @a[team=ffa] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:gray_wool",Slot:5b}]}] run clear @s gray_wool
 execute as @a[team=ffa] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:gray_wool",Slot:5b}]}] run item replace entity @s hotbar.5 with gray_wool[minecraft:custom_name={text:"Free For All",color:"aqua",bold:1b}] 1
 
+
+execute as @a[team=ffa_necrolord] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:gray_wool",Slot:5b}]}] run clear @s gray_wool
+execute as @a[team=ffa_necrolord] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:gray_wool",Slot:5b}]}] run item replace entity @s hotbar.5 with gray_wool[minecraft:custom_name={text:"Free For All",color:"aqua",bold:1b}] 1
+execute as @a[team=ffa_broodmother] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:gray_wool",Slot:5b}]}] run clear @s gray_wool
+execute as @a[team=ffa_broodmother] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:gray_wool",Slot:5b}]}] run item replace entity @s hotbar.5 with gray_wool[minecraft:custom_name={text:"Free For All",color:"aqua",bold:1b}] 1
+execute as @a[team=ffa_redmold] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:gray_wool",Slot:5b}]}] run clear @s gray_wool
+execute as @a[team=ffa_redmold] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:gray_wool",Slot:5b}]}] run item replace entity @s hotbar.5 with gray_wool[minecraft:custom_name={text:"Free For All",color:"aqua",bold:1b}] 1
+
+
 clear @a[team=purple] yellow_wool
 clear @a[team=yellow] purple_wool
 #clear @a[team=ffa] gray_wool

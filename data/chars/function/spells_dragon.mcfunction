@@ -9,6 +9,9 @@ execute at @e[tag=dragonshot_ar] run particle minecraft:flame ~ ~ ~ 0.1 0.1 0.1 
 execute at @a[scores={char=7,s1_timer=1..140}] at @e[tag=dragonshot_ar] run particle block{block_state:{Name:"minecraft:magma_block"}} ~ ~ ~ 0.1 0.1 0.1 0.1 2
 execute at @a[scores={char=7,s1_timer=1..140}] at @e[tag=dragonshot_ar] run particle flame ~ ~ ~ 0.1 0.1 0.1 0.01 4
 
+tag @e[tag=dragonshot_ar] add projectile
+scoreboard players operation @e[tag=projectile,tag=dragonshot_ar] Team = @p[scores={char=8}] Team
+
 execute at @a[scores={char=7,CC_disarm=1..}] run kill @e[tag=dragonshot_ar]
 
 kill @e[type=minecraft:arrow,tag=dragonshot_ar,nbt={inGround:1b}]
@@ -89,15 +92,20 @@ tp @e[tag=dragondash,limit=1] @a[scores={char=7,s2_timer=41},limit=1]
 execute at @a[scores={char=7,s2_timer=41},limit=1] run tp @e[tag=dragondash,limit=1] ~ ~0.5 ~
 
 execute as @e[tag=dragondash] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
-execute as @e[tag=dragondash] at @s unless block ^ ^1 ^0.5 #minecraft:dash run kill @s
-execute as @e[tag=dragondash] at @s unless block ^ ^ ^0.5 #minecraft:dash run kill @s
 execute as @e[tag=dragondash] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
 execute as @e[tag=dragondash] at @s unless block ^ ^1 ^0.5 #minecraft:dash run kill @s
 execute as @e[tag=dragondash] at @s unless block ^ ^1.5 ^1.5 #minecraft:dash run kill @s
 execute as @e[tag=dragondash] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
 execute as @e[tag=dragondash] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
+execute as @e[tag=dragondash] at @s run tp @s ^ ^ ^0.6
+execute as @e[tag=dragondash] at @s unless block ~ ~ ~ #minecraft:dash run kill @s
+execute as @e[tag=dragondash] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
+execute as @e[tag=dragondash] at @s unless block ^ ^1 ^0.5 #minecraft:dash run kill @s
+execute as @e[tag=dragondash] at @s unless block ^ ^1.5 ^1.5 #minecraft:dash run kill @s
+execute as @e[tag=dragondash] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
+execute as @e[tag=dragondash] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
+execute as @e[tag=dragondash] at @s run tp @s ^ ^ ^0.6
 
-execute as @e[tag=dragondash] at @s run tp @s ^ ^ ^1.2
 execute as @a[scores={char=7,s2_timer=2..60,death_dash_reset=0}] at @e[tag=dragondash,limit=1] run tp ~ ~ ~
 
 execute at @a[scores={char=7,s2_timer=25}] run kill @e[tag=dragondash]

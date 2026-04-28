@@ -31,8 +31,6 @@ execute as @e[tag=crawlers_twin2,tag=twin_calm] at @s unless entity @e[tag=crawl
 execute as @e[tag=crawlers_twin2,tag=twin_calm] at @s unless entity @e[tag=crawlers_twin1] run playsound entity.spider.death master @a[distance=..40] ~ ~ ~ 3 0.8
 execute as @e[tag=crawlers_twin2,tag=twin_calm] at @s unless entity @e[tag=crawlers_twin1] run tag @s remove twin_calm
 
-execute as @e[tag=crawlers_twin1] at @s positioned -143 5 -299 as @n[tag=crawlers_twin1,distance=20..50] at @s run tp @s ^ ^ ^1 facing -143 5 -299
-execute as @e[tag=crawlers_twin2] at @s positioned -143 5 -299 as @n[tag=crawlers_twin2,distance=20..50] at @s run tp @s ^ ^ ^1 facing -143 5 -299
 
 #twin1 ==============================================================================================================================================================
 
@@ -81,8 +79,8 @@ execute as @e[tag=twin1_proj1,scores={lifetime=2}] at @s run playsound block.sto
 
 execute as @e[tag=twin1_proj1,scores={lifetime=20}] at @s run tp @s ~ ~ ~ facing entity @p
 execute as @e[tag=twin1_proj1,scores={lifetime=20..}] at @s run tp @s ^ ^ ^0.75
-execute as @e[tag=twin1_proj1,scores={lifetime=10..19}] at @s run tp @s ~ ~0.075 ~
-execute as @e[tag=twin1_proj1,scores={lifetime=..9}] at @s run tp @s ~ ~0.15 ~
+execute as @e[tag=twin1_proj1,scores={lifetime=10..19}] at @s run tp @s ~ ~0.475 ~
+execute as @e[tag=twin1_proj1,scores={lifetime=..9}] at @s run tp @s ~ ~0.35 ~
 
 execute as @e[tag=twin1_proj1] at @s run particle block{block_state:{Name:"stone"}} ~ ~ ~ 0.4 0.4 0.4 0 1
 execute as @e[tag=twin1_proj1] at @s unless block ~ ~ ~ #minecraft:dash run particle explosion
@@ -92,7 +90,7 @@ execute as @e[tag=twin1_proj1] at @s unless block ~ ~ ~ #minecraft:dash run summ
 execute as @e[tag=twin1_proj1] at @s unless block ~ ~ ~ #minecraft:dash run kill @e[tag=twin1_proj1,distance=..0.5]
 kill @e[tag=twin1_proj1,scores={lifetime=50..}]
 
-execute as @e[tag=twin1_proj1] at @s positioned ~-.75 ~-.75 ~-.75 as @p[dz=0.5,dx=0.5,dy=0.5,tag=valid_spell_target] run damage @s 4 generic
+execute as @e[tag=twin1_proj1,scores={lifetime=20..}] at @s positioned ~-.75 ~-.75 ~-.75 as @p[dz=0.5,dx=0.5,dy=0.5,tag=valid_spell_target] run damage @s 4 generic
 
 #spider smash
 execute as @e[tag=crawlers_twin1,scores={crawlers_attack2=1..}] run scoreboard players add @s crawlers_attack2 1
@@ -220,7 +218,7 @@ execute as @e[tag=crawlers_twin2,scores={crawlers_attack1=25}] at @s run tag @a 
 scoreboard players add @e[tag=twin2_proj1] lifetime 1
 
 execute as @e[tag=twin2_proj1,scores={lifetime=2}] at @s run playsound block.gilded_blackstone.break master @a[distance=..20] ~ ~ ~ 3 0.8
-execute as @e[tag=twin2_proj1,scores={lifetime=1..13}] at @s run tp @s ~ ~0.26 ~
+execute as @e[tag=twin2_proj1,scores={lifetime=1..13}] at @s run tp @s ~ ~0.66 ~
 
 execute as @e[tag=twin2_proj1] at @s run particle block{block_state:{Name:"blackstone"}} ~ ~ ~ 0.4 0.4 0.4 0 1
 execute as @e[tag=twin2_proj1] at @s run particle smoke ~ ~ ~ 0.5 0.5 0.5 0 1
@@ -236,7 +234,6 @@ execute as @e[tag=crawlers_twin2,scores={crawlers_attack2=40..}] run scoreboard 
 execute as @e[tag=crawlers_twin2,scores={crawlers_attack2=1..30}] at @s if entity @e[tag=crawlers_twin1] rotated ~ 0 if block ^-3 ^ ^ #minecraft:dash if block ^-2 ^ ^ #minecraft:dash if block ^-1 ^ ^ #minecraft:dash run tp @s ^1 ^ ^0.2 facing entity @p
 execute as @e[tag=crawlers_twin2,scores={crawlers_attack2=1..30}] at @s if entity @p[distance=..5] unless entity @e[tag=crawlers_twin1] rotated ~ 0 if block ^ ^ ^-2 #minecraft:dash if block ^ ^ ^-1 #minecraft:dash run tp @s ^ ^ ^-0.3 facing entity @p
 
-execute as @e[tag=crawlers_twin2,scores={crawlers_attack2=3}] at @s rotated ~ 0 run effect give @s invisibility 3 1 true
 execute as @e[tag=crawlers_twin2,scores={crawlers_attack2=30}] at @s rotated ~ 0 run summon block_display ^ ^ ^3 {Passengers:[{id:"minecraft:block_display",block_state:{Name:"minecraft:white_wool",Properties:{}},transformation:[2f,0f,0f,-1.00625f,0f,2f,0f,-0.95f,0f,0f,2f,-0.99375f,0f,0f,0f,1f],Tags:["twin2_proj2","projectile"]},{id:"minecraft:block_display",block_state:{Name:"minecraft:white_stained_glass",Properties:{}},transformation:[1.4142135624f,0f,-1.4142135624f,-0.04375f,1f,1.4142135624f,1f,-1.7f,1f,-1.4142135624f,1f,-0.3375f,0f,0f,0f,1f],Tags:["twin2_proj2","projectile"]}],Tags:["twin2_proj2","projectile"]}
 
 execute as @e[tag=crawlers_twin2,scores={crawlers_attack2=10}] unless entity @e[tag=crawlers_twin1] at @s rotated ~ 0 run summon block_display ^ ^ ^3 {Passengers:[{id:"minecraft:block_display",block_state:{Name:"minecraft:white_wool",Properties:{}},transformation:[2f,0f,0f,-1.00625f,0f,2f,0f,-0.95f,0f,0f,2f,-0.99375f,0f,0f,0f,1f],Tags:["twin2_proj2","projectile"]},{id:"minecraft:block_display",block_state:{Name:"minecraft:white_stained_glass",Properties:{}},transformation:[1.4142135624f,0f,-1.4142135624f,-0.04375f,1f,1.4142135624f,1f,-1.7f,1f,-1.4142135624f,1f,-0.3375f,0f,0f,0f,1f],Tags:["twin2_proj2","projectile"]}],Tags:["twin2_proj2","projectile"]}
@@ -250,24 +247,23 @@ scoreboard players add @e[tag=twin2_proj2] lifetime 1
 execute as @e[tag=twin2_proj2,scores={lifetime=2}] at @s run playsound block.cobweb.break master @a[distance=..20] ~ ~ ~ 3 0.8
 
 execute as @e[tag=twin2_proj2,scores={lifetime=20}] at @s run tp @s ~ ~ ~ facing entity @p feet
-execute as @e[tag=twin2_proj2,scores={lifetime=20..}] at @s run tp @s ^ ^ ^1
-execute as @e[tag=twin2_proj2,scores={lifetime=10..19}] at @s run tp @s ~ ~0.025 ~
+execute as @e[tag=twin2_proj2,scores={lifetime=20..}] at @s run tp @s ^ ^ ^0.8
+execute as @e[tag=twin2_proj2,scores={lifetime=10..19}] at @s run tp @s ~ ~0.425 ~
 execute as @e[tag=twin2_proj2,scores={lifetime=..9}] at @s run tp @s ~ ~0.2 ~
 
 execute as @e[tag=twin2_proj2] at @s run particle block{block_state:{Name:"cobweb"}} ~ ~ ~ 0.4 0.4 0.4 0 1
 execute as @e[tag=twin2_proj2] at @s unless block ~ ~ ~ #minecraft:dash run particle block{block_state:{Name:"white_concrete"}} ~ ~ ~ 2 1 2 0 60
-execute as @e[tag=twin2_proj2] at @s unless block ~ ~ ~ #minecraft:dash run scoreboard players set @a[distance=..3] CC_disarm 70
+execute as @e[tag=twin2_proj2] at @s unless block ~ ~ ~ #minecraft:dash run scoreboard players set @a[distance=..2] CC_disarm 40
 execute as @e[tag=twin2_proj2] at @s unless block ~ ~ ~ #minecraft:dash run playsound block.cobweb.break master @a[distance=..20] ~ ~ ~ 3 1
 execute as @e[tag=twin2_proj2] at @s unless block ~ ~ ~ #minecraft:dash run kill @e[tag=twin2_proj2,distance=..0.5]
 kill @e[tag=twin2_proj2,scores={lifetime=60..}]
 
-execute as @e[tag=twin2_proj2] at @s positioned ~-.75 ~-.75 ~-.75 as @p[dz=0.5,dx=0.5,dy=0.5,tag=valid_spell_target] run damage @s 2 generic
+execute as @e[tag=twin2_proj2,scores={lifetime=20..}] at @s positioned ~-.75 ~-.75 ~-.75 as @p[dz=0.5,dx=0.5,dy=0.5,tag=valid_spell_target] run damage @s 2 generic
 
 #spread
 execute as @e[tag=crawlers_twin2,scores={crawlers_attack3=1..}] run scoreboard players add @s crawlers_attack3 1
 execute as @e[tag=crawlers_twin2,scores={crawlers_attack3=31..}] run scoreboard players set @s crawlers_attack3 0
 
-execute as @e[tag=crawlers_twin2,scores={crawlers_attack3=3}] at @s rotated ~ 0 run effect give @s invisibility 3 1 true
 execute as @e[tag=crawlers_twin2,scores={crawlers_attack3=1..9}] at @s rotated ~ 0 unless entity @p[distance=..5] run tp @s ^ ^ ^0.3 facing entity @p
 
 execute as @e[tag=crawlers_twin2,scores={crawlers_attack3=10}] at @s rotated ~ 0 run summon block_display ^ ^ ^3 {Passengers:[{id:"minecraft:block_display",block_state:{Name:"minecraft:white_concrete_powder",Properties:{}},transformation:[0.3535533906f,0f,0.3535533906f,-0.38125f,0f,3f,0f,-2.8125f,-0.3535533906f,0f,0.3535533906f,0.01875f,0f,0f,0f,1f],Tags:["twin2_proj3"]}],Tags:["twin2_proj3"]}
@@ -321,8 +317,12 @@ execute as @e[tag=twin2_proj3] at @s run particle block{block_state:{Name:"cobwe
 
 kill @e[tag=twin2_proj3,scores={lifetime=50..}]
 
-execute as @e[tag=twin2_proj3] at @s positioned ~-.5 ~-.5 ~-.5 as @p[dz=0,dx=0,dy=0,tag=valid_spell_target] run damage @s 5 generic
+execute as @e[tag=twin2_proj3,scores={lifetime=20..}] at @s positioned ~-.5 ~-.5 ~-.5 as @p[dz=0,dx=0,dy=0,tag=valid_spell_target] run damage @s 5 generic
 
 
 
 
+execute as @e[tag=crawlers_twin1] at @s positioned -143 5 -299 as @n[tag=crawlers_twin1,distance=100..150] at @s run tp @s ^ ^ ^ facing -143 5 -299
+execute as @e[tag=crawlers_twin2] at @s positioned -143 5 -299 as @n[tag=crawlers_twin2,distance=100..150] at @s run tp @s ^ ^ ^ facing -143 5 -299
+execute as @e[tag=crawlers_twin1] at @s positioned -143 5 -299 as @n[tag=crawlers_twin1,distance=100..150] at @s run tp @s ^ ^ ^1 facing -143 5 -299
+execute as @e[tag=crawlers_twin2] at @s positioned -143 5 -299 as @n[tag=crawlers_twin2,distance=100..150] at @s run tp @s ^ ^ ^1 facing -143 5 -299

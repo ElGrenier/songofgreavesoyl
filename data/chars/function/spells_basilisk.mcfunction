@@ -8,11 +8,13 @@ execute at @a[scores={char=39,s2_timer=0}] as @a[distance=..5,tag=valid_spell_ta
 advancement revoke @a[advancements={chars:basilisk_passive=true}] only chars:basilisk_passive
 
 
-execute at @a[scores={char=39,HP=..26,passive_basi=0}] as @a[distance=..10,scores={CC_stun=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
-execute at @a[scores={char=39,HP=..26,passive_basi=0}] as @a[distance=..10,scores={CC_root=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
-execute at @a[scores={char=39,HP=..26,passive_basi=0}] as @a[distance=..10,scores={CC_knockup=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
-execute at @a[scores={char=39,HP=..26,passive_basi=0}] as @a[distance=..10,scores={CC_petrify=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
-execute at @a[scores={char=39,HP=..26,passive_basi=0}] as @a[distance=..10,scores={CC_taunt=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
+execute at @a[scores={char=39,HP=..38,passive_basi=0}] as @a[distance=..10,scores={CC_stun=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
+execute at @a[scores={char=39,HP=..38,passive_basi=0}] as @a[distance=..10,scores={CC_root=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
+execute at @a[scores={char=39,HP=..38,passive_basi=0}] as @a[distance=..10,scores={CC_knockup=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
+execute at @a[scores={char=39,HP=..38,passive_basi=0}] as @a[distance=..10,scores={CC_petrify=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
+execute at @a[scores={char=39,HP=..38,passive_basi=0}] as @a[distance=..10,scores={CC_taunt=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
+execute at @a[scores={char=39,HP=..38,passive_basi=0}] as @a[distance=..10,scores={CC_charm=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
+execute at @a[scores={char=39,HP=..38,passive_basi=0}] as @a[distance=..10,scores={CC_fear=1..}] unless score @s Team = @p[scores={char=39}] Team run scoreboard players set @p[scores={char=39}] passive_basi 160
 
 
 title @a[scores={char=39,passive_basi=0}] actionbar [{text:"[",bold:1b,color:"dark_green",type:"text"},{text:" Feast is ready ",color:"green",bold:0b,type:"text"},{text:"]",bold:1b,color:"dark_green",type:"text"}]
@@ -40,34 +42,35 @@ effect give @a[scores={passive_basi=158}] instant_health 1 1
 scoreboard players set @a[scores={char=39,s1_timer=1,CC_silence=1..}] spellCD1 20
 scoreboard players set @a[scores={char=39,s1_timer=1,CC_silence=1..}] s1_timer 200
 
-execute at @a[scores={char=39,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Invisible:1b,Tags:["burrowstrike_thing","entities_basilik"]}
+execute at @a[scores={char=39,s1_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Invisible:1b,Tags:["burrowstrike_thing","entities_basilisk"]}
 tp @e[tag=burrowstrike_thing,limit=1] @p[scores={char=39,s1_timer=1}]
 tag @a[scores={char=39,s1_timer=1}] add invisible
 effect give @p[scores={char=39,s1_timer=1..10}] invisibility 2 1 true
 effect give @p[scores={char=39,s1_timer=1..10}] resistance 1 100 true
 effect give @p[scores={char=39,s1_timer=1..10}] weakness 1 100 true
-scoreboard players set @a[scores={char=39,s1_timer=1..10}] CC_intangible 20
+scoreboard players set @a[scores={char=39,s1_timer=1}] CC_intangible 15
 execute store result entity @e[tag=burrowstrike_thing,limit=1] Rotation[1] float 1 run clear
-execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.head with stone[item_model=air,minecraft:custom_name="aaaa",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:26.0d,operation:"add_value",slot:"head"}]] 1
+execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.head with stone[item_model=air,minecraft:custom_name={bold:1b,color:"aqua",text:"Super Secret Invisibility Health Retaining Tech(TM)"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:26.0d,operation:"add_value",slot:"head"}]] 1
 execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.chest with air
 execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.legs with air
 execute if entity @e[tag=burrowstrike_thing] run item replace entity @a[scores={char=39}] armor.feet with air
 tp @p[scores={char=39}] @e[tag=burrowstrike_thing,limit=1]
 
 
-execute at @e[tag=burrowstrike_thing] as @a[tag=valid_spell_target,distance=..2] unless score @s Team = @p[scores={char=39}] Team as @a[tag=valid_spell_target,distance=..4] unless score @s Team = @p[scores={char=39}] Team run tag @s add burrowstrike_knocked_up
+execute at @e[tag=burrowstrike_thing] as @a[tag=valid_spell_target,distance=..2] unless score @s Team = @p[scores={char=39}] Team if score @s CC_knockup matches ..0 as @a[tag=valid_spell_target,distance=..4] unless score @s Team = @p[scores={char=39}] Team run tag @s add burrowstrike_knocked_up
 
-execute at @a[tag=burrowstrike_knocked_up] at @a[scores={char=39}] run particle block{block_state:{Name:"minecraft:cobblestone"}} ~ ~0.2 ~ 2 0.2 2 0.1 200 normal
-execute at @a[tag=burrowstrike_knocked_up] at @a[scores={char=39}] run particle falling_dust{block_state:{Name:"minecraft:gravel"}} ~ ~0.2 ~ 2 0.2 2 0.1 200 normal
-execute at @a[tag=burrowstrike_knocked_up] run kill @e[tag=burrowstrike_thing]
-execute at @a[tag=burrowstrike_knocked_up] run playsound entity.zombie.attack_wooden_door master @a[distance=..10] ~ ~ ~ 1 0.8 1
+execute at @a[tag=burrowstrike_knocked_up] at @a[scores={char=39}] run particle block{block_state:{Name:"minecraft:cobblestone"}} ~ ~0.2 ~ 2 0.2 2 0.1 50 normal
+execute at @a[tag=burrowstrike_knocked_up] at @a[scores={char=39}] run particle falling_dust{block_state:{Name:"minecraft:gravel"}} ~ ~0.2 ~ 2 0.2 2 0.1 50 normal
+#execute at @a[tag=burrowstrike_knocked_up] run kill @e[tag=burrowstrike_thing]
+execute at @a[tag=burrowstrike_knocked_up] run playsound entity.zombie.attack_wooden_door master @a[distance=..10] ~ ~ ~ 0.2 0.8 1
+execute at @a[tag=burrowstrike_knocked_up] run playsound entity.player.attack.knockback master @a[distance=..10] ~ ~ ~ 1 0.8 1
 scoreboard players set @a[tag=burrowstrike_knocked_up] CC_knockup 20
 effect give @a[tag=burrowstrike_knocked_up] slowness 3 2
-effect give @a[tag=burrowstrike_knocked_up] weakness 1 100
 tag @a remove burrowstrike_knocked_up
 
+
+execute as @e[tag=burrowstrike_thing] at @s unless block ^ ^1 ^1 #minecraft:dash run summon marker ~ ~ ~ {Tags:["burrowstrike_hits_the_wall","entities_basilisk"]}
 execute as @e[tag=burrowstrike_thing] at @s unless block ^ ^1 ^1 #minecraft:dash run kill @s
-#execute as @e[tag=burrowstrike_thing] at @s unless block ^ ^ ^1 #minecraft:dash run kill @s
 execute as @e[tag=burrowstrike_thing] at @s unless block ~ ~ ~ #minecraft:dash run tp @s ~ ~1 ~
 execute as @e[tag=burrowstrike_thing] at @s run tp @s ^ ^ ^0.6
 execute as @e[tag=burrowstrike_thing] at @s if block ~ ~-1 ~ #minecraft:dash run tp @s ~ ~-0.5 ~
@@ -80,9 +83,75 @@ execute at @e[tag=burrowstrike_thing] run particle falling_dust{block_state:{Nam
 execute at @e[tag=burrowstrike_thing] run particle falling_dust{block_state:{Name:"minecraft:cobblestone"}} ~ ~ ~ 1 0.1 2 0.1 30 normal
 
 effect clear @a[scores={char=39,s1_timer=15..22}] invisibility
+execute as @a[scores={char=39,s1_timer=14}] at @s run summon block_display ^ ^ ^1 {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-1f,0f,-1f],scale:[2,0.2f,2]},block_state:{Name:"minecraft:gravel"},Tags:["broken_ground","entities_basilisk"]}
 execute at @a[scores={char=39,s1_timer=15..}] run kill @e[tag=burrowstrike_thing]
 execute at @a[scores={char=39,s1_timer=15}] run playsound block.gravel.break master @a[distance=..10] ~ ~ ~ 1 0.5 1
 tag @a[scores={char=39,s1_timer=15..22}] remove invisible
+
+
+execute at @e[tag=burrowstrike_hits_the_wall] run particle block{block_state:{Name:"minecraft:gravel"}} ~ ~0.5 ~ 1.5 0.5 1.5 0.1 60 normal
+execute at @e[tag=burrowstrike_hits_the_wall] run particle block{block_state:{Name:"minecraft:cobblestone"}} ~ ~0.5 ~ 1.5 0.5 1.5 0.1 60 normal
+execute at @e[tag=burrowstrike_hits_the_wall] run particle cloud ~ ~0.5 ~ 1 0.5 1 0.01 5
+execute at @e[tag=burrowstrike_hits_the_wall] run particle explosion ~ ~0.5 ~ 1 0.5 1 0.1 5
+execute at @e[tag=burrowstrike_hits_the_wall] run playsound entity.dragon_fireball.explode master @a[distance=..12] ~ ~ ~ 0.4 1.8 1
+execute at @e[tag=burrowstrike_hits_the_wall] run playsound entity.zombie.attack_wooden_door master @a[distance=..12] ~ ~ ~ 0.5 0.4 1
+kill @e[tag=burrowstrike_hits_the_wall] 
+
+
+
+scoreboard players add @e[tag=burrowstrike_thing] basilisk_venom 1
+scoreboard players add @e[tag=broken_ground] basilisk_venom 1
+scoreboard players add @e[tag=rock_spikes] basilisk_venom 1
+
+
+execute at @e[scores={basilisk_venom=1},tag=burrowstrike_thing] run summon marker ~ ~ ~ {Tags:["spawn_brokenground_1","brokenground_spawner","entities_basilisk"]}
+execute at @e[scores={basilisk_venom=3},tag=burrowstrike_thing] run summon marker ~ ~ ~ {Tags:["spawn_brokenground_2","brokenground_spawner","entities_basilisk"]}
+execute at @e[scores={basilisk_venom=5},tag=burrowstrike_thing] run summon marker ~ ~ ~ {Tags:["spawn_brokenground_3","brokenground_spawner","entities_basilisk"]}
+
+execute at @e[scores={basilisk_venom=1},tag=burrowstrike_thing] positioned ^ ^ ^0.5 run summon marker ~ ~ ~ {Tags:["spawn_rock_spike","entities_basilisk"]}
+execute at @e[scores={basilisk_venom=3},tag=burrowstrike_thing] positioned ^ ^ ^0.5 run summon marker ~ ~ ~ {Tags:["spawn_rock_spike","entities_basilisk"]}
+execute at @e[scores={basilisk_venom=5},tag=burrowstrike_thing] positioned ^ ^ ^0.5 run summon marker ~ ~ ~ {Tags:["spawn_rock_spike","entities_basilisk"]}
+
+execute at @e[tag=spawn_brokenground_1] run summon block_display ~ ~ ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.75f,-0.1f,-0.75f],scale:[1.5f,0.2f,1.5]},block_state:{Name:"minecraft:gravel"},Tags:["broken_ground","entities_basilisk"]}
+execute at @e[tag=spawn_brokenground_2] run summon block_display ~ ~ ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.7f,-0.15f,-0.7f],scale:[1.4,0.3f,1.4]},block_state:{Name:"minecraft:gravel"},Tags:["broken_ground","entities_basilisk"]}
+execute at @e[tag=spawn_brokenground_3] run summon block_display ~ ~ ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.675f,-0.22f,-0.675f],scale:[1.35,0.25f,1.35]},block_state:{Name:"minecraft:gravel"},Tags:["broken_ground","entities_basilisk"]}
+
+execute at @e[tag=spawn_rock_spike] run summon block_display ~ ~-0.75 ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,0f,-0.55f],scale:[0.6f,0.75f,1.1f]},block_state:{Name:"minecraft:cobblestone"},Tags:["br_spike_1","rock_spikes","entities_basilisk"]}
+execute at @e[tag=spawn_rock_spike] run summon block_display ~ ~-0.75 ~ {brightness:{sky:8,block:8},teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.3f,0f,-0.4f],scale:[0.6f,0.9f,0.8f]},block_state:{Name:"minecraft:cobblestone"},Tags:["br_spike_2","rock_spikes","entities_basilisk"]}
+
+execute as @e[tag=rock_spikes,scores={basilisk_venom=..10}] at @s run tp @s ~ ~0.1 ~
+
+#execute as @e[tag=rock_spikes,scores={basilisk_venom=25..}] at @s run tp @s ~ ~-0.03 ~
+execute at @e[tag=rock_spikes,scores={basilisk_venom=31..}] run particle block{block_state:{Name:"minecraft:stone"}} ~ ~ ~ 0.2 0.4 0.2 1 30
+kill @e[tag=rock_spikes,scores={basilisk_venom=31..}]
+
+data modify entity @e[tag=br_spike_1,tag=!broke_readjusted,limit=1] Rotation set from entity @n[tag=burrowstrike_thing] Rotation
+data modify entity @e[tag=br_spike_2,tag=!broke_readjusted,limit=1] Rotation set from entity @n[tag=burrowstrike_thing] Rotation
+tp @e[tag=broken_ground,tag=!broke_readjusted] @e[tag=burrowstrike_thing,limit=1]
+
+tag @e[tag=rock_spikes] add broke_readjusted
+tag @e[tag=broken_ground] add broke_readjusted
+kill @e[tag=brokenground_spawner]
+kill @e[tag=spawn_rock_spike]
+
+scoreboard players set @e[tag=burrowstrike_thing,scores={basilisk_venom=5..}] basilisk_venom 0
+
+execute at @e[tag=broken_ground,scores={basilisk_venom=41..}] run playsound block.gravel.break master @a[distance=..10] ~ ~ ~ 0.3 0.5 1
+kill @e[tag=broken_ground,scores={basilisk_venom=41..}]
+
+execute as @e[tag=rock_spikes] at @s if block ~ ~-1 ~ #minecraft:dash run tp @s ~ ~-0.5 ~
+execute as @e[tag=rock_spikes] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
+execute as @e[tag=rock_spikes] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
+execute as @e[tag=rock_spikes] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
+execute as @e[tag=rock_spikes] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
+
+execute as @e[tag=broken_ground] at @s if block ~ ~-1 ~ #minecraft:dash run tp @s ~ ~-0.5 ~
+execute as @e[tag=broken_ground] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
+execute as @e[tag=broken_ground] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
+execute as @e[tag=broken_ground] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
+execute as @e[tag=broken_ground] at @s if block ~ ~-0.1 ~ #minecraft:dash run tp @s ~ ~-0.1 ~
+
+
 
 
 # petrifying venom
@@ -95,9 +164,9 @@ scoreboard players set @a[scores={char=39,s2_timer=1,CC_silence=1..}] s2_timer 3
 execute unless entity @a[scores={basilisk_venom=1..}] run scoreboard players set @a[scores={char=39,s2_timer=1,CC_silence=0}] spellCD2 20
 execute unless entity @a[scores={basilisk_venom=1..}] run scoreboard players set @a[scores={char=39,s2_timer=1,CC_silence=0}] s2_timer 340
 
-effect give @a[scores={basilisk_venom=120}] minecraft:poison 2
-effect give @a[scores={basilisk_venom=80}] minecraft:poison 2
-effect give @a[scores={basilisk_venom=40}] minecraft:poison 2
+effect give @a[scores={basilisk_venom=120}] poison 2
+effect give @a[scores={basilisk_venom=80}] poison 2
+effect give @a[scores={basilisk_venom=40}] poison 2
 
 scoreboard players remove @a[scores={basilisk_venom=1..}] basilisk_venom 1
 scoreboard players set @a[scores={universal_death=1..}] basilisk_venom 0
@@ -131,20 +200,16 @@ scoreboard players set @a[scores={basilisk_petrify=61..}] basilisk_petrify 0
 
 
 
-execute at @a[scores={basilisk_petrify=1..}] unless entity @e[distance=..1.5,tag=petrify_visual_1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["petrify_visual_1","petrify_visuals","entities_basilik"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.65f,-0.5f,-0.65f],scale:[1.3f,1f,1.3f]},block_state:{Name:"minecraft:cobblestone"}}
-execute at @a[scores={basilisk_petrify=1..}] unless entity @e[distance=..1.5,tag=petrify_visual_2] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["petrify_visual_2","petrify_visuals","entities_basilik"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.6f,-0.5f,-0.6f],scale:[1.2f,1f,1.2f]},block_state:{Name:"minecraft:andesite"}}
-execute at @a[scores={basilisk_petrify=1..}] unless entity @e[distance=..1.5,tag=petrify_visual_3] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["petrify_visual_3","petrify_visuals","entities_basilik"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.5f,-0.5f,-0.5f],scale:[1f,1f,1f]},block_state:{Name:"minecraft:stone"}}
+execute at @a[scores={basilisk_petrify=1..}] unless entity @e[distance=..1,tag=petrify_visual_1] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["petrify_visual_1","petrify_visuals","entities_basilisk"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.65f,-0.5f,-0.65f],scale:[1.3f,1f,1.3f]},block_state:{Name:"minecraft:cobblestone"}}
+execute at @a[scores={basilisk_petrify=1..}] unless entity @e[distance=..1,tag=petrify_visual_2] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["petrify_visual_2","petrify_visuals","entities_basilisk"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.6f,-0.5f,-0.6f],scale:[1.2f,1f,1.2f]},block_state:{Name:"minecraft:andesite"}}
+execute at @a[scores={basilisk_petrify=1..}] unless entity @e[distance=..1,tag=petrify_visual_3] run summon block_display ~ ~ ~ {teleport_duration:1,Tags:["petrify_visual_3","petrify_visuals","entities_basilisk"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[-0.5f,0.3f,-0.5f],scale:[1f,1f,1f]},block_state:{Name:"minecraft:stone"}}
 
 
-execute as @e[tag=petrify_visuals] at @s unless entity @a[distance=..1.7,scores={basilisk_petrify=1..}] run kill @s
+execute as @e[tag=petrify_visuals] at @s unless entity @a[distance=..1,scores={basilisk_petrify=1..}] run kill @s
 
-execute at @a[scores={basilisk_petrify=1..}] run tp @e[distance=..1.5,tag=petrify_visual_1] ~ ~0.5 ~
-execute at @a[scores={basilisk_petrify=1..}] run tp @e[distance=..1.5,tag=petrify_visual_2] ~ ~1 ~
-execute at @a[scores={basilisk_petrify=1..}] run tp @e[distance=..1.5,tag=petrify_visual_3] ~ ~1.6 ~
-
-
-
-
+execute at @a[scores={basilisk_petrify=1..}] run tp @e[distance=..1,tag=petrify_visual_1] ~ ~0.5 ~
+execute at @a[scores={basilisk_petrify=1..}] run tp @e[distance=..1,tag=petrify_visual_2] ~ ~1 ~
+execute at @a[scores={basilisk_petrify=1..}] run tp @e[distance=..1,tag=petrify_visual_3] ~ ~1 ~
 
 
 # basilisk
@@ -158,7 +223,7 @@ scoreboard players add @a[scores={s2_timer=1..,char=39}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=361..,char=39}] s2_timer 0
 
 execute as @a[scores={char=39}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone_shovel",Slot:0b}]}] run clear @a[scores={char=39}] minecraft:stone_shovel
-item replace entity @a[scores={char=39}] hotbar.0 with minecraft:stone_shovel[custom_data={basilisk:1},minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=39}] hotbar.0 with minecraft:stone_shovel[custom_data={basilisk:1},minecraft:custom_name={bold:1b,color:"gray",text:"Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=39,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=39}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=39,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:iron_horse_armor",minecraft:custom_name={text:"Burrowstrike",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:protection":1}] 1

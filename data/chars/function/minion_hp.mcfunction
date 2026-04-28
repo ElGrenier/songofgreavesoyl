@@ -1,0 +1,1 @@
+$execute as @s run data merge entity @s {CustomName:"$(minion_hp) HP",CustomNameVisible:1}

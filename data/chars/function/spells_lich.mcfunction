@@ -8,13 +8,17 @@ tag @e add lich_damage_initiated
 
 # magic beyond death
 
-execute at @a[scores={char=66,s1_timer=2,CC_silence=0,HP=4..}] run damage @p[scores={char=66}] 3 dragon_breath
-execute at @a[scores={char=66,s1_timer=2,CC_silence=0,HP=3}] run damage @p[scores={char=66}] 2 dragon_breath
-execute at @a[scores={char=66,s1_timer=2,CC_silence=0,HP=2}] run damage @p[scores={char=66}] 1 dragon_breath
+scoreboard players set @a[scores={char=66,s1_timer=1,CC_silence=0,HP=2..}] universal_damagetaken -1000
+execute at @a[scores={char=66,s1_timer=1,CC_silence=0,HP=4..}] run damage @p[scores={char=66}] 3 dragon_breath
+execute at @a[scores={char=66,s1_timer=1,CC_silence=0,HP=3}] run damage @p[scores={char=66}] 2 dragon_breath
+execute at @a[scores={char=66,s1_timer=1,CC_silence=0,HP=2}] run damage @p[scores={char=66}] 1 dragon_breath
+scoreboard players set @a[scores={char=66,s1_timer=1,CC_silence=0,HP=2..}] universal_damagetaken 0
 
+scoreboard players set @a[scores={char=66,s2_timer=1,CC_silence=0,HP=2..}] universal_damagetaken -1000
 execute at @a[scores={char=66,s2_timer=1,CC_silence=0,HP=4..}] run damage @p[scores={char=66}] 3 dragon_breath
 execute at @a[scores={char=66,s2_timer=1,CC_silence=0,HP=3}] run damage @p[scores={char=66}] 2 dragon_breath
 execute at @a[scores={char=66,s2_timer=1,CC_silence=0,HP=2}] run damage @p[scores={char=66}] 1 dragon_breath
+scoreboard players set @a[scores={char=66,s2_timer=1,CC_silence=0,HP=2..}] universal_damagetaken 0
 
 scoreboard players remove @a[scores={lich_takedown=1..}] lich_takedown 1
 
@@ -62,6 +66,8 @@ scoreboard players add @e[tag=lich_impaled] lich_rebar_count 1
 scoreboard players set @e[tag=lich_impaled] lich_rebar_decay 0
 tag @e remove lich_impaled
 
+scoreboard players set @a[scores={lich_rebar_count=4..}] lich_rebar_count 3
+
 scoreboard players set @a[scores={death_dash_reset=1..}] lich_rebar_count 0
 scoreboard players set @a[scores={death_dash_reset=1..}] lich_rebar_decay 0
 
@@ -70,7 +76,6 @@ scoreboard players add @e[scores={lich_rebar_count=1..}] lich_rebar_decay 1
 scoreboard players remove @e[scores={lich_rebar_decay=140..}] lich_rebar_count 1
 scoreboard players set @e[scores={lich_rebar_decay=140..}] lich_rebar_decay 0
 
-scoreboard players set @e[scores={lich_rebar_count=4..}] lich_rebar_decay 3
 
 execute at @e[scores={lich_rebar_count=1..}] unless entity @e[tag=rebar_visual_1,distance=..1.5] run summon item_display ~ ~ ~ {Tags:["rebar_visuals","rebar_visual_1","entities_lich"],item:{count:1,id:"minecraft:andesite"},transformation:{left_rotation:[-0.09600176f,0.52651286f,0.05998855f,0.84259677f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.15f,0.15f,1.8f],translation:[0.0f,0.0f,0.0f]}}
 execute at @e[scores={lich_rebar_count=2..}] unless entity @e[tag=rebar_visual_2,distance=..1.5] run summon item_display ~ ~ ~ {Tags:["rebar_visuals","rebar_visual_2","entities_lich"],item:{count:1,id:"minecraft:andesite"},transformation:{left_rotation:[0.28614527f,0.7432524f,-0.18080965f,0.57706547f],right_rotation:[0.0f,0.0f,0.0f,1.0f],scale:[0.15f,0.15f,1.8f],translation:[0.0f,0.1f,0.0f]}}
@@ -213,17 +218,17 @@ tag @a[tag=lich_heal,scores={char=66}] remove lich_heal
 
 # iron lich
 
-scoreboard players set @a[scores={char=66,s1_timer=1}] spellCD1 60
+scoreboard players set @a[scores={char=66,s1_timer=1}] spellCD1 80
 scoreboard players add @a[scores={char=66,s1_timer=1..}] s1_timer 1
-scoreboard players set @a[scores={char=66,s1_timer=61..}] s1_timer 0
+scoreboard players set @a[scores={char=66,s1_timer=80..}] s1_timer 0
 
-scoreboard players set @a[scores={char=66,s2_timer=1}] spellCD2 60
+scoreboard players set @a[scores={char=66,s2_timer=1}] spellCD2 80
 scoreboard players add @a[scores={char=66,s2_timer=1..}] s2_timer 1
-scoreboard players set @a[scores={char=66,s2_timer=61..}] s2_timer 0
+scoreboard players set @a[scores={char=66,s2_timer=80..}] s2_timer 0
 
 
 execute as @a[scores={char=66}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bone",Slot:0b}]}] run clear @a[scores={char=66}] bone
-item replace entity @a[scores={char=66}] hotbar.0 with bone[custom_data={lichbone:1},swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Bone"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:protection":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=66}] hotbar.0 with bone[custom_data={lichbone:1},swing_animation={type:"stab"},minecraft:custom_name={bold:1b,color:"gray",text:"Bone"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:protection":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=66,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=66}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=66,s1_timer=0,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:andesite_wall",minecraft:custom_name={text:"Impale",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:impaling":1}] 1

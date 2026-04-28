@@ -134,13 +134,13 @@ execute at @a[scores={desert_funeral=1..}] run tp @e[tag=sand_tomb_visual_2] ~ ~
 execute at @a[scores={desert_funeral=1..}] run tp @e[tag=sand_tomb_visual_3] ~ ~1 ~
 execute at @a[scores={desert_funeral=1..}] run tp @e[tag=sand_tomb_visual_4] ~ ~1.2 ~
 
+execute unless entity @a[scores={desert_funeral=1..}] run kill @e[tag=sand_tomb_visuals]
 
-execute at @a[scores={desert_funeral=30}] run kill @e[tag=sand_tomb_visuals]
 execute at @a[scores={desert_funeral=30}] run particle block{block_state:{Name:"minecraft:sandstone"}} ~ ~ ~ 0.8 1 0.8 1 150 force
 execute at @a[scores={desert_funeral=30}] run playsound block.sand.break master @a[distance=..20] ~ ~ ~ 1.0 0.5 1.0
 
 scoreboard players add @a[scores={desert_funeral=1..}] desert_funeral 1
-scoreboard players set @a[scores={desert_funeral=40..}] desert_funeral 0
+scoreboard players set @a[scores={desert_funeral=30..}] desert_funeral 0
 
 title @a[scores={char=24,s2_timer=1..75,CC_silence=0}] times 0 20 0
 title @a[scores={char=24,s2_timer=1..75,CC_silence=0}] title {text:" ",type:"text"}
@@ -164,9 +164,9 @@ scoreboard players set @a[scores={char=24,s3_timer=1,CC_silence=1..}] s3_timer 0
 clear @a[scores={char=24,s3_timer=1,CC_silence=0}] *[custom_data={s3:1}]
 execute at @a[scores={char=24,s3_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["mantle_spin_1","mantle_visuals","entities_sandwitch"]}
 execute at @a[scores={char=24,s3_timer=1,CC_silence=0}] run summon marker ~ ~ ~ {Tags:["mantle_spin_2","mantle_visuals","entities_sandwitch"]}
-execute at @a[scores={char=24,s3_timer=1,CC_silence=0}] run playsound item.armor.equip_gold master @a[distance=..20] ~ ~ ~ 1 0.5 1
-execute at @a[scores={char=24,s3_timer=1,CC_silence=0}] run playsound block.enchantment_table.use master @a[distance=..20] ~ ~ ~ 1 1.5 1
-execute at @a[scores={char=24,s3_timer=1,CC_silence=0}] run playsound block.sand.fall master @a[distance=..20] ~ ~ ~ 1.0 0.6 1.0
+execute at @a[scores={char=24,s3_timer=1,CC_silence=0}] run playsound item.armor.equip_gold master @a[distance=..12] ~ ~ ~ 1 0.5 1
+execute at @a[scores={char=24,s3_timer=1,CC_silence=0}] run playsound block.enchantment_table.use master @a[distance=..12] ~ ~ ~ 1 1.5 1
+execute at @a[scores={char=24,s3_timer=1,CC_silence=0}] run playsound block.sand.fall master @a[distance=..12] ~ ~ ~ 1.0 0.6 1.0
 execute at @a[scores={char=24,s3_timer=1..2,CC_silence=0}] run particle falling_dust{block_state:{Name:"minecraft:sandstone"}} ~ ~0.5 ~ 0.8 0.8 0.8 1 100 force
 execute at @a[scores={char=24,s3_timer=1,CC_silence=0}] run particle wax_on ~ ~ ~ 0.5 1 0.5 2 50
 effect give @a[scores={char=24,s3_timer=1,CC_silence=0}] absorption 5 2
@@ -229,7 +229,7 @@ scoreboard players add @a[scores={s3_timer=1..,char=24}] s3_timer 1
 scoreboard players set @a[scores={s3_timer=20..,char=24}] s3_timer 0
 
 execute as @a[scores={char=24}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_axe",Slot:0b}]}] run clear @a[scores={char=24}] golden_axe
-item replace entity @a[scores={char=24}] hotbar.0 with minecraft:golden_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Mantis Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=24}] hotbar.0 with minecraft:golden_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Mantis Claws"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=24,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=24}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=24,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:beetroot_seeds",minecraft:custom_name={text:"Claws of the Desert",color:"dark_aqua",bold:1b},minecraft:enchantments={"minecraft:power":1}] 1

@@ -4,7 +4,6 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:stone"}}]
 
 # I'M FUCKING INVINCIBLE
 
-scoreboard players set @a[scores={char=74,CC_silence=1..}] fortress_shields 0
 
 
 execute as @a[scores={char=74}] run title @s[scores={char=74,fortress_shields=0}] actionbar [{"text":""},{text:"[",bold:1b,color:"dark_red",type:"text"},{text:" Shield Power: ",color:"gray",type:"text"},{score:{name:"@s",objective:"heat_shield_power"},color:"yellow",type:"score"},{text:"/",color:"gold",type:"text",bold:1b},{text:"8 ",color:"yellow",type:"text"},{text:"|",color:"dark_red",type:"text",bold:1b},{text:" --- ",color:"gray",type:"text"},{text:"]",bold:1b,color:"dark_red",type:"text"}]
@@ -16,6 +15,7 @@ execute as @a[scores={char=74}] run title @s[scores={char=74,fortress_shields=30
 execute as @a[scores={char=74}] run title @s[scores={char=74,heat_shields_cooldown=1..19}] actionbar [{"text":""},{text:"[",bold:1b,color:"dark_red",type:"text"},{text:" Shield Power: ",color:"gray",type:"text"},{score:{name:"@s",objective:"heat_shield_power"},color:"yellow",type:"score"},{text:"/",color:"gold",type:"text",bold:1b},{text:"8 ",color:"yellow",type:"text"},{text:"|",color:"dark_red",type:"text",bold:1b},{text:" =",color:"dark_gray",type:"text"},{text:"-- ",color:"gray",type:"text"},{text:"]",bold:1b,color:"dark_red",type:"text"}]
 execute as @a[scores={char=74}] run title @s[scores={char=74,heat_shields_cooldown=20..39}] actionbar [{"text":""},{text:"[",bold:1b,color:"dark_red",type:"text"},{text:" Shield Power: ",color:"gray",type:"text"},{score:{name:"@s",objective:"heat_shield_power"},color:"yellow",type:"score"},{text:"/",color:"gold",type:"text",bold:1b},{text:"8 ",color:"yellow",type:"text"},{text:"|",color:"dark_red",type:"text",bold:1b},{text:" ==",color:"dark_gray",type:"text"},{text:"- ",color:"gray",type:"text"},{text:"]",bold:1b,color:"dark_red",type:"text"}]
 execute as @a[scores={char=74}] run title @s[scores={char=74,heat_shields_cooldown=40..}] actionbar [{"text":""},{text:"[",bold:1b,color:"dark_red",type:"text"},{text:" Shield Power: ",color:"gray",type:"text"},{score:{name:"@s",objective:"heat_shield_power"},color:"yellow",type:"score"},{text:"/",color:"gold",type:"text",bold:1b},{text:"8 ",color:"yellow",type:"text"},{text:"|",color:"dark_red",type:"text",bold:1b},{text:" === ",color:"dark_gray",type:"text"},{text:"]",bold:1b,color:"dark_red",type:"text"}]
+execute as @a[scores={char=74}] run title @s[scores={char=74,CC_silence=1..}] actionbar [{"text":""},{text:"[",bold:1b,color:"dark_red",type:"text"},{"text":" SHIELDS DISABLED ",color:"red",type:"text"},{text:"]",bold:1b,color:"dark_red",type:"text"}]
 
 scoreboard players set @a[scores={char=74,heat_shield_power=..-1}] heat_shield_power 0
 
@@ -34,6 +34,9 @@ scoreboard players set @a[scores={char=74,universal_sneak=0,fortress_shields=1..
 scoreboard players set @a[scores={char=74,universal_sneak=0}] fortress_shields 0
 scoreboard players set @a[scores={char=74,universal_sneak=0}] shield_decline 0
 scoreboard players set @a[scores={char=74,heat_shield_power=..0}] fortress_shields 0
+
+scoreboard players set @a[scores={char=74,CC_silence=1..}] fortress_shields 0
+
 
 execute at @a[scores={char=74,heat_shields_cooldown=59}] run playsound entity.iron_golem.attack master @a[distance=..10] ~ ~ ~ 1 .5 1
 scoreboard players remove @a[scores={char=74,heat_shields_cooldown=1..}] heat_shields_cooldown 1
@@ -124,13 +127,19 @@ execute as @e[tag=fortress_shields_core] at @s run tp @e[tag=fortress_shield_10_
 execute as @e[tag=fortress_shield_visuals] run rotate @s facing entity @p[scores={char=74}]
 execute as @e[tag=fortress_shield_visuals] store result entity @s Rotation[1] float 1 run clear
 
-execute at @e[tag=shield_magma_part,tag=!fortress_shields_core] as @e[distance=..2,tag=projectile] unless score @s Team = @p[scores={char=74}] Team run kill @s
+
+execute at @e[tag=shield_magma_part,tag=!fortress_shields_core] as @e[distance=..2,tag=projectile] unless score @s Team = @p[scores={char=74}] Team run tag @s add sundown
+
+execute at @e[tag=sundown] run particle small_flame ~ ~ ~ 0.1 0.1 0.1 0.1 10
+execute at @e[tag=sundown] run playsound block.lava.extinguish master @a[distance=..10] ~ ~ ~ 0.5 1.8 1
+kill @e[tag=sundown]
+
 
 scoreboard players add @e[tag=fortress_shields_core] heat_shield_power 1
 
 execute as @e[tag=shield_magma_part] at @s run particle flame ^ ^0.1 ^-0.2 0.2 0.4 0.2 0.01 1
 
-# crash and burn
+# searing slam
 
 execute at @a[scores={char=74,s1_timer=1,CC_silence=0}] run playsound entity.zombie.attack_iron_door master @a[distance=..12] ~ ~ ~ 0.5 0.6 1
 execute at @a[scores={char=74,s1_timer=1,CC_silence=0}] run playsound entity.dragon_fireball.explode master @a[distance=..12] ~ ~ ~ 0.8 1.5 1
@@ -180,11 +189,11 @@ execute at @e[tag=explosive_crash] as @e[distance=..1.5,tag=valid_spell_target] 
 execute at @a[scores={char=74,s1_timer=15..}] run kill @e[tag=crash_and_burn_projectiles]
 
 scoreboard players set @e[tag=fortress_crashed] CC_stagger 60
-execute as @e[tag=fortress_crashed] run damage @s 0.000001 player_attack by @p[scores={char=74}] from @p[scores={char=74}]
+execute as @e[tag=fortress_crashed] run damage @s 0.000001 mace_smash by @p[scores={char=74}] from @p[scores={char=74}]
 tag @e remove fortress_crashed
 
 scoreboard players set @e[tag=fortress_crashed_and_burned] CC_stagger 60
-execute as @e[tag=fortress_crashed_and_burned] run damage @s 4 player_attack by @p[scores={char=74}] from @p[scores={char=74}]
+execute as @e[tag=fortress_crashed_and_burned] run damage @s 3 mace_smash by @p[scores={char=74}] from @p[scores={char=74}]
 tag @e remove fortress_crashed_and_burned
 
 # bull rush
@@ -242,25 +251,25 @@ execute as @e[tag=bull_rush_thing] at @s run tp @s ^ ^ ^0.7
 execute as @e[tag=bull_rush_thing] at @s if block ~ ~-1 ~ #minecraft:dash run tp @s ~ ~-0.5 ~
 execute as @e[tag=bull_rush_thing] at @s if block ~ ~-0.5 ~ #minecraft:dash run tp @s ~ ~-0.5 ~
 
-execute at @e[tag=explosive_rush] as @e[tag=valid_spell_target,distance=..2] unless score @s Team = @p[scores={char=74}] Team run summon marker ~ ~ ~ {Tags:["rush_explosion","entities_fortress"]}
+execute at @e[tag=explosive_rush] as @a[tag=valid_spell_target,distance=..2] unless score @s Team = @p[scores={char=74}] Team run summon marker ~ ~ ~ {Tags:["rush_explosion","entities_fortress"]}
 
 execute at @e[tag=rush_explosion] run kill @e[tag=bull_rush_thing]
-execute at @e[tag=rush_explosion] as @e[tag=valid_spell_target,distance=..4] unless score @s Team = @p[scores={char=74}] Team run scoreboard players set @s CC_stun 20
-execute at @e[tag=rush_explosion] as @e[tag=valid_spell_target,distance=..4] unless score @s Team = @p[scores={char=74}] Team run damage @s 4 fireball by @p[scores={char=74}] from @p[scores={char=74}]
+execute at @e[tag=rush_explosion] as @a[tag=valid_spell_target,distance=..4] unless score @s Team = @p[scores={char=74}] Team run scoreboard players set @s CC_stun 30
+execute at @e[tag=rush_explosion] as @e[tag=valid_spell_target,distance=..4] unless score @s Team = @p[scores={char=74}] Team run damage @s 4 player_attack by @p[scores={char=74}] from @p[scores={char=74}]
 execute at @e[tag=rush_explosion] run particle lava ~ ~0.5 ~ 1.5 0.5 1.5 0.1 25
 execute at @e[tag=rush_explosion] run particle explosion ~ ~0.5 ~ 2 0.5 2 0.1 20
 execute at @e[tag=rush_explosion] run playsound entity.dragon_fireball.explode master @a[distance=..12] ~ ~ ~ 0.6 1.8 1
 kill @e[tag=rush_explosion] 
 
 
-execute at @e[tag=rush_hits_the_wall] as @e[tag=valid_spell_target,distance=..3] unless score @s Team = @p[scores={char=74}] Team run scoreboard players set @s CC_stun 20
+execute at @e[tag=rush_hits_the_wall] as @a[tag=valid_spell_target,distance=..3] unless score @s Team = @p[scores={char=74}] Team run scoreboard players set @s CC_stun 30
 execute at @e[tag=rush_hits_the_wall] run particle cloud ~ ~0.5 ~ 1 0.5 1 0.01 15
 execute at @e[tag=rush_hits_the_wall] run particle explosion ~ ~0.5 ~ 1 0.5 1 0.1 15
 execute at @e[tag=rush_hits_the_wall] run playsound entity.dragon_fireball.explode master @a[distance=..12] ~ ~ ~ 0.6 1.8 1
 kill @e[tag=rush_hits_the_wall] 
 
-execute at @e[tag=non_explosive_rush] as @e[tag=valid_spell_target,distance=..2] unless score @s Team = @p[scores={char=74}] Team run scoreboard players set @s CC_stun 2
-execute at @e[tag=non_explosive_rush] as @e[tag=valid_spell_target,distance=..2] unless score @s Team = @p[scores={char=74}] Team run tp @s @n[tag=non_explosive_rush]
+execute at @e[tag=non_explosive_rush] as @a[tag=valid_spell_target,distance=..2] unless score @s Team = @p[scores={char=74}] Team run scoreboard players set @s CC_stun 2
+execute at @e[tag=non_explosive_rush] as @a[tag=valid_spell_target,distance=..2] unless score @s Team = @p[scores={char=74}] Team run tp @s @n[tag=non_explosive_rush]
 
 
 execute at @a[scores={char=74,s2_timer=25..}] run kill @e[tag=bull_rush_thing]
@@ -277,13 +286,13 @@ scoreboard players add @a[scores={s2_timer=1..,char=74}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=320..,char=74}] s2_timer 0
 
 execute as @a[scores={char=74,fortress_shields=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:copper_axe",Slot:0b}]}] run clear @a[scores={char=74}] copper_axe
-item replace entity @a[scores={char=74,fortress_shields=0}] hotbar.0 with copper_axe[minecraft:custom_name=[{color:"gray",text:"\""},{bold:1b,color:"gray",text:"Wildfire"},{color:"gray",text:"\""}],minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.75d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=74,fortress_shields=0}] hotbar.0 with copper_axe[minecraft:custom_name=[{color:"gray",text:"\""},{bold:1b,color:"gray",text:"Wildfire"},{color:"gray",text:"\""}],minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.75d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=74,fortress_shields=1..}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:stone",Slot:0b}]}] run clear @a[scores={char=74}] stone
-item replace entity @a[scores={char=74,fortress_shields=1..}] hotbar.0 with stone[minecraft:custom_name={bold:1b,color:"gray",text:"Disarmed"},minecraft:item_model="minecraft:barrier",minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:-10.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=74,fortress_shields=1..}] hotbar.0 with stone[minecraft:custom_name={bold:1b,color:"gray",text:"Disarmed"},minecraft:item_model="minecraft:barrier",minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:-10.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=74,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=74}] carrot_on_a_stick[custom_data={s1:1}]
-item replace entity @a[scores={char=74,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:jungle_door",minecraft:custom_name={text:"Crash and Burn",color:"dark_aqua",bold:1b},attribute_modifiers=[{id:"entity_interaction_range",type:"entity_interaction_range",amount:-100,operation:"add_value",slot:"mainhand"}]] 1
+item replace entity @a[scores={char=74,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:mangrove_door",minecraft:custom_name={text:"Searing Slam",color:"dark_aqua",bold:1b},attribute_modifiers=[{id:"entity_interaction_range",type:"entity_interaction_range",amount:-100,operation:"add_value",slot:"mainhand"}]] 1
 
 execute as @a[scores={char=74,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=74}] warped_fungus_on_a_stick[custom_data={s2:1}]
 item replace entity @a[scores={char=74,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:ravager_spawn_egg",minecraft:custom_name={text:"Bull Rush",color:"dark_aqua",bold:1b},attribute_modifiers=[{id:"entity_interaction_range",type:"entity_interaction_range",amount:-100,operation:"add_value",slot:"mainhand"}]] 1

@@ -2,7 +2,7 @@
 
 # Tworzenie spawnow
 summon marker 698 30 22 {Rotation:[-60f,0f],Tags:["immune","spawn_ffa"]}
-summon marker 732 29 21 {Rotation:[40f,0f],Tags:["immune","spawn_ffa"]}
+summon marker 732 30 21 {Rotation:[40f,0f],Tags:["immune","spawn_ffa"]}
 summon marker 761 24 42 {Rotation:[45f,0f],Tags:["immune","spawn_ffa"]}
 summon marker 686 24 48 {Rotation:[-136f,0f],Tags:["immune","spawn_ffa"]}
 

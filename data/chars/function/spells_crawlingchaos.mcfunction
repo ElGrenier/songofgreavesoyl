@@ -6,6 +6,9 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:bow"}}]
 execute at @a[scores={char=50,arrowcd_1=..10}] run tag @e[type=minecraft:arrow,distance=..2] add chaosshot_ar
 execute at @e[tag=chaosshot_ar] run particle smoke ~ ~ ~ 0.1 0.1 0.1 0 2
 
+tag @e[tag=chaosshot_ar] add projectile
+scoreboard players operation @e[tag=projectile,tag=chaosshot_ar] Team = @p[scores={char=50}] Team
+
 execute at @a[scores={char=50,CC_disarm=1..}] run kill @e[tag=chaosshot_ar]
 
 #1000 forms
@@ -64,7 +67,7 @@ tag @a[scores={char=50,form_cooldown=150..160,chaos_forms=1}] add pharaoh
 tag @a[scores={char=50,form_cooldown=150..160,chaos_forms=2}] add tongue
 tag @a[scores={char=50,form_cooldown=150..160,chaos_forms=3}] add dweller
 tag @a[scores={char=50,form_cooldown=150..160,chaos_forms=4}] add faceless
-item replace entity @a[tag=faceless,scores={char=50,form_cooldown=159}] hotbar.8 with minecraft:arrow 1
+item replace entity @a[tag=faceless,scores={char=50,form_cooldown=159}] hotbar.8 with arrow 1
 
 scoreboard players set @a[scores={char=50,form_cooldown=140..150}] chaos_forms 0
 scoreboard players enable @a[scores={char=50,form_cooldown=1..5}] chaos_forms
@@ -124,21 +127,20 @@ execute at @a[scores={char=50},tag=pharaoh] as @a unless score @s Team = @p[scor
 scoreboard players set @a[scores={char=50,s2_timer=1,CC_silence=1..},tag=pharaoh] spellCD2 20
 scoreboard players set @a[scores={char=50,s2_timer=1,CC_silence=1..},tag=pharaoh] s2_timer 220
 
-execute at @a[scores={char=50,s2_timer=1,CC_silence=0},tag=pharaoh] unless entity @a[distance=1..12,tag=chaos_valid_powerslave_target] run scoreboard players set @a[scores={char=50}] spellCD2 20
-execute at @a[scores={char=50,s2_timer=1,CC_silence=0},tag=pharaoh] unless entity @a[distance=1..12,tag=chaos_valid_powerslave_target] run scoreboard players set @a[scores={char=50}] s2_timer 220
+execute as @a[scores={char=50,s2_timer=1,CC_silence=0},tag=pharaoh] at @s positioned ~ ~1.3 ~ run function chars:chaos_powerslave_raycast
+execute at @a[scores={char=50,s2_timer=1,CC_silence=0},tag=pharaoh] run playsound block.chain.place master @a[distance=..15] ~ ~ ~ 1 1.2 1
 
-execute at @a[scores={char=50,s2_timer=1,CC_silence=0},tag=pharaoh] as @p[distance=1..12,tag=valid_spell_target] if score @s Team = @p[scores={char=50}] Team run scoreboard players set @s powerslave 100
 
 execute at @a[scores={powerslave=99}] run playsound entity.illusioner.prepare_mirror master @a[distance=..15] ~ ~ ~ 1 1.6 1
 execute at @a[scores={powerslave=99}] run playsound item.armor.equip_gold master @a[distance=..15] ~ ~ ~ 1 0.4 1
 execute at @a[scores={powerslave=97}] run playsound item.armor.equip_gold master @a[distance=..15] ~ ~ ~ 1 0.4 1
 execute at @a[scores={powerslave=95}] run playsound item.armor.equip_gold master @a[distance=..15] ~ ~ ~ 1 0.4 1
 
-execute at @a[scores={powerslave=95..100}] run particle sculk_charge_pop ~ ~1 ~ 0.6 0.8 0.6 0.001 10
+execute at @a[scores={powerslave=95..100}] run particle sculk_charge_pop ~ ~1 ~ 0.6 0.8 0.6 0.001 3
 execute at @a[scores={powerslave=1..}] run particle block{block_state:{Name:"minecraft:gold_block"}} ~ ~ ~ 0.9 0.2 0.9 0.1 5
 execute at @a[scores={powerslave=1..}] run particle dust{color:[1.0,1.0,0.33],scale:1} ~ ~ ~ 0.9 0.2 0.9 0.1 15
 execute at @a[scores={powerslave=1..}] run particle dust{color:[1.0,0.67,0.0],scale:1} ~ ~ ~ 0.9 0.2 0.9 0.1 15
-execute at @a[scores={powerslave=1..}] run particle dust{color:[1.0,1.0,0.33],scale:1} ~ ~1 ~ 0.3 0.6 0.3 0.1 5
+execute at @a[scores={powerslave=1..}] run particle dust{color:[1.0,1.0,0.33],scale:1} ~ ~1 ~ 0.3 0.6 0.3 0.1 2
 
 effect give @a[scores={powerslave=20..}] strength 1 0
 effect give @a[scores={powerslave=99..100}] absorption 5 2
@@ -203,7 +205,7 @@ effect give @a[scores={char=50,s2_timer=1..2,CC_silence=0},tag=dweller] resistan
 tag @a[scores={char=50,s2_timer=2..25,CC_silence=0},tag=dweller] add invisible
 scoreboard players set @a[scores={char=50,s2_timer=2,CC_silence=0},tag=dweller] CC_intangible 100
 
-item replace entity @a[scores={char=50,s2_timer=2..25},tag=dweller] armor.head with stone[item_model=air,minecraft:custom_name="aaaa",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:10.0d,operation:"add_value",slot:"head"}]] 1
+item replace entity @a[scores={char=50,s2_timer=2..25},tag=dweller] armor.head with stone[item_model=air,minecraft:custom_name={bold:1b,color:"aqua",text:"Super Secret Invisibility Health Retaining Tech(TM)"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:10.0d,operation:"add_value",slot:"head"}]] 1
 clear @a[scores={char=50,s2_timer=2..25},tag=dweller] leather_chestplate
 clear @a[scores={char=50,s2_timer=2..25},tag=dweller] leather_leggings
 clear @a[scores={char=50,s2_timer=2..25},tag=dweller] leather_boots
@@ -296,8 +298,8 @@ title @a[scores={CC_madness=1..,char=18}] subtitle {text:"Want to die for the th
 title @a[scores={CC_madness=1..,char=19}] subtitle {text:"The voices were real",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=666}] subtitle {text:"She will die, and you will follow",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=20}] subtitle {text:"You can't hide forever",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=21}] subtitle {text:"I'm not afraid of you",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=22}] subtitle {text:"All you did was futile",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=21}] subtitle {text:"All you did was futile",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=22}] subtitle {text:"Mindless animal of cosmic proportions",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=23}] subtitle {text:"They will find out one day",color:"red",type:"text"}
 execute unless entity @e[tag=1984] run title @a[scores={CC_madness=1..,char=24}] subtitle {text:"None of them will ever love you",color:"red",type:"text"}
 execute if entity @e[tag=1984] run title @a[scores={CC_madness=1..,char=24}] subtitle {text:"None of them will ever take you seriously",color:"red",type:"text"}
@@ -342,8 +344,8 @@ title @a[scores={CC_madness=1..,char=62}] subtitle {text:"You were never on top 
 title @a[scores={CC_madness=1..,char=63}] subtitle {text:"Spectrum of talking to flowers",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=64}] subtitle {text:"Forever a prisoner of your own desires",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=65}] subtitle {text:"Unravel you cookbook",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=66}] subtitle {text:"So THIS is a LICH in this world?",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=67}] subtitle {text:"Ravaged, despite all of this iron",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=66}] subtitle {text:"The straightest nail in the shed",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=67}] subtitle {text:"Ravaged despite all of your iron",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=68}] subtitle {text:"How it feels to fight with borrowed bones?",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=69}] subtitle {text:"You still look better in a dress",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=70}] subtitle {text:"I know where you buried her",color:"red",type:"text"}
@@ -351,7 +353,7 @@ title @a[scores={CC_madness=1..,char=71}] subtitle {text:"Which one of you is th
 title @a[scores={CC_madness=1..,char=72}] subtitle {text:"She saved you, and you FAILED her",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=73}] subtitle {text:"Nothing but their lapdog",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=74}] subtitle {text:"Making up for something with all this metal?",color:"red",type:"text"}
-title @a[scores={CC_madness=1..,char=75}] subtitle {text:"MADNESS",color:"red",type:"text"}
+title @a[scores={CC_madness=1..,char=75}] subtitle {text:"You're even more fragile than what you make",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=76}] subtitle {text:"MADNESS",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=77}] subtitle {text:"MADNESS",color:"red",type:"text"}
 title @a[scores={CC_madness=1..,char=78}] subtitle {text:"MADNESS",color:"red",type:"text"}
@@ -387,19 +389,19 @@ scoreboard players set @a[scores={s3_timer=21..,char=50}] s3_timer 0
 
 #weapons
 execute as @a[tag=pharaoh,scores={char=50}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_hoe",Slot:0b}]}] run clear @a[scores={char=50}] golden_hoe
-item replace entity @a[tag=pharaoh,scores={char=50}] hotbar.0 with minecraft:golden_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Scepter"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[tag=pharaoh,scores={char=50}] hotbar.0 with minecraft:golden_hoe[minecraft:custom_name={bold:1b,color:"gray",text:"Scepter"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[tag=tongue,scores={char=50}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:wooden_axe",Slot:0b}]}] run clear @a[scores={char=50}] wooden_axe
-item replace entity @a[tag=tongue,scores={char=50}] hotbar.0 with wooden_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Appendage"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.85d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[tag=tongue,scores={char=50}] hotbar.0 with wooden_axe[minecraft:custom_name={bold:1b,color:"gray",text:"Appendage"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.85d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[tag=dweller,scores={char=50}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:netherite_sword",Slot:0b}]}] run clear @a[scores={char=50}] netherite_sword
-item replace entity @a[tag=dweller,scores={char=50}] hotbar.0 with netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Darkness Tendril"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.55d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[tag=dweller,scores={char=50}] hotbar.0 with netherite_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Darkness Tendril"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_speed",amount:-0.55d,operation:"add_multiplied_base",slot:"mainhand"},{id:"armor",type:"minecraft:attack_damage",amount:3.5d,operation:"add_value",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[tag=faceless,scores={char=50}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:bow",Slot:0b}]}] run clear @a[scores={char=50}] bow
 item replace entity @a[tag=faceless,scores={char=50}] hotbar.0 with bow[minecraft:custom_name={text:"Reach",color:"gray",bold:1b},minecraft:unbreakable={}] 1
 
 #bout of madness
-execute as @a[scores={char=50,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=51}] carrot_on_a_stick[custom_data={s1:1}]
+execute as @a[scores={char=50,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=50}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=50,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:warden_spawn_egg",minecraft:custom_name={text:"Bout of Madness",color:"dark_aqua",bold:1b}] 1
 
 #abilities

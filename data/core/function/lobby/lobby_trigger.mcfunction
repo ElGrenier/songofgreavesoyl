@@ -40,6 +40,7 @@ execute if entity @a[scores={LobbyTrigger=30}] run function core:lobby/map/map_c
 execute if entity @a[scores={LobbyTrigger=31}] run function core:lobby/map/map_choose_27
 execute if entity @a[scores={LobbyTrigger=32}] run function core:lobby/map/map_choose_28
 execute if entity @a[scores={LobbyTrigger=33}] run function core:lobby/map/map_choose_29
+execute if entity @a[scores={LobbyTrigger=34}] run function core:lobby/map/map_choose_30
 # execute if entity @a[scores={LobbyTrigger=101}] run function core:lobby/parameters/
 # execute if entity @a[scores={LobbyTrigger=104}] run function core:lobby/parameters/
 # execute if entity @a[scores={LobbyTrigger=105}] run function core:lobby/parameters/
@@ -74,8 +75,8 @@ execute as @a[scores={LobbyTrigger=132}] run scoreboard players set difficulty l
 execute as @a[scores={LobbyTrigger=133}] run scoreboard players set difficulty lobby 3
 execute as @a[scores={LobbyTrigger=134}] run scoreboard players set difficulty lobby 4
 #manual/random team selection
-execute as @a[scores={LobbyTrigger=136}] run scoreboard players set team_select settings 1
-execute as @a[scores={LobbyTrigger=137}] run scoreboard players set team_select settings 0
+execute as @a[scores={LobbyTrigger=136}] run scoreboard players set team_select lobby 1
+execute as @a[scores={LobbyTrigger=137}] run scoreboard players set team_select lobby 0
 
 
 

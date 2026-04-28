@@ -3,22 +3,19 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:wooden_sword"}}]
 
 # beyond pain
 
-item replace entity @p[scores={char=67,HPercentage=61..}] armor.head with player_head[minecraft:custom_name="Head",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:26.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-1882506042,-1938469333,-1264120337,1864856646],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjEwNzBkY2Q1NmU4MWUzNGM5ZDQ5NDY1ZjEzMDY0YTFjYzUyNDhmMGM5NTI3ODZhNzRmNGRlYjAxMzQ2Y2E0NiJ9fX0="}]}] 1
-item replace entity @a[scores={char=67,HPercentage=61..}] armor.chest with leather_chestplate[custom_data={rev_armor_tier:0},minecraft:trim={pattern:"eye",material:"netherite"},minecraft:custom_name="Armor",minecraft:dyed_color=1448479,minecraft:unbreakable={}] 1
+item replace entity @p[scores={char=67,HPercentage=61..}] armor.head with player_head[custom_name={bold:1b,color:"aqua",text:"Thaial's Helmet"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:26.0d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-1882506042,-1938469333,-1264120337,1864856646],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjEwNzBkY2Q1NmU4MWUzNGM5ZDQ5NDY1ZjEzMDY0YTFjYzUyNDhmMGM5NTI3ODZhNzRmNGRlYjAxMzQ2Y2E0NiJ9fX0="}]}] 1
+item replace entity @a[scores={char=67,HPercentage=61..}] armor.chest with leather_chestplate[custom_data={rev_armor_tier:0},minecraft:trim={pattern:"eye",material:"netherite"},custom_name={bold:1b,color:"aqua",text:"Knight's Armor"},minecraft:dyed_color=1448479,minecraft:unbreakable={},attribute_modifiers=[{id:"armor",type:"minecraft:armor",amount:0d,operation:"add_value",slot:"chest"}]] 1
 
 effect give @a[scores={char=67,HPercentage=..60}] resistance 2 0
 execute at @a[scores={char=67,HPercentage=..60}] run particle infested ~ ~1.5 ~ 0.3 0.5 0.3 0.001 1
-item replace entity @p[scores={char=67,HPercentage=21..60}] armor.head with player_head[minecraft:custom_name="Head",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:26.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:0.025d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-1882506042,-1938469333,-1264120337,1864856646],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjEwNzBkY2Q1NmU4MWUzNGM5ZDQ5NDY1ZjEzMDY0YTFjYzUyNDhmMGM5NTI3ODZhNzRmNGRlYjAxMzQ2Y2E0NiJ9fX0="}]}] 1
-item replace entity @a[scores={char=67,HPercentage=21..60}] armor.chest with leather_chestplate[custom_data={rev_armor_tier:0},minecraft:trim={pattern:"eye",material:"iron"},minecraft:custom_name="Armor",minecraft:dyed_color=1448479,minecraft:unbreakable={}] 1
+item replace entity @p[scores={char=67,HPercentage=21..60}] armor.head with player_head[custom_name={bold:1b,color:"aqua",text:"Thaial's Helmet"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:26.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:0.025d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-1882506042,-1938469333,-1264120337,1864856646],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjEwNzBkY2Q1NmU4MWUzNGM5ZDQ5NDY1ZjEzMDY0YTFjYzUyNDhmMGM5NTI3ODZhNzRmNGRlYjAxMzQ2Y2E0NiJ9fX0="}]}] 1
+item replace entity @a[scores={char=67,HPercentage=21..60}] armor.chest with leather_chestplate[custom_data={rev_armor_tier:0},minecraft:trim={pattern:"eye",material:"lapis"},custom_name={bold:1b,color:"aqua",text:"Knight's Failure"},minecraft:dyed_color=1448479,minecraft:unbreakable={},attribute_modifiers=[{id:"armor",type:"minecraft:armor",amount:0d,operation:"add_value",slot:"chest"}]] 1
 
 effect give @a[scores={char=67,HPercentage=..20}] resistance 2 1
 execute at @a[scores={char=67,HPercentage=..20}] run particle infested ~ ~1.5 ~ 0.3 0.5 0.3 0.001 1
-item replace entity @p[scores={char=67,HPercentage=..20}] armor.head with player_head[minecraft:custom_name="Head",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:26.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:0.05d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-1882506042,-1938469333,-1264120337,1864856646],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjEwNzBkY2Q1NmU4MWUzNGM5ZDQ5NDY1ZjEzMDY0YTFjYzUyNDhmMGM5NTI3ODZhNzRmNGRlYjAxMzQ2Y2E0NiJ9fX0="}]}] 1
-item replace entity @a[scores={char=67,HPercentage=..20}] armor.chest with leather_chestplate[custom_data={rev_armor_tier:0},minecraft:trim={pattern:"eye",material:"lapis"},minecraft:custom_name="Armor",minecraft:dyed_color=1448479,minecraft:unbreakable={}] 1
+item replace entity @p[scores={char=67,HPercentage=..20}] armor.head with player_head[custom_name={bold:1b,color:"aqua",text:"Thaial's Helmet"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:26.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:0.05d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-1882506042,-1938469333,-1264120337,1864856646],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjEwNzBkY2Q1NmU4MWUzNGM5ZDQ5NDY1ZjEzMDY0YTFjYzUyNDhmMGM5NTI3ODZhNzRmNGRlYjAxMzQ2Y2E0NiJ9fX0="}]}] 1
+item replace entity @a[scores={char=67,HPercentage=..20}] armor.chest with leather_chestplate[custom_data={rev_armor_tier:0},minecraft:trim={pattern:"eye",material:"lapis"},custom_name={bold:1b,color:"aqua",text:"Knight's Coffin"},minecraft:dyed_color=1448479,minecraft:unbreakable={},attribute_modifiers=[{id:"armor",type:"minecraft:armor",amount:0d,operation:"add_value",slot:"chest"}]] 1
 
-#effect give @a[scores={char=67,HPercentage=..25}] resistance 2 2
-#execute at @a[scores={char=67,HPercentage=..25}] run particle infested ~ ~1.5 ~ 0.3 0.5 0.3 0.01 1
-#item replace entity @p[scores={char=67,HPercentage=..25}] armor.head with player_head[minecraft:custom_name="Head",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:26.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:knockback_resistance",amount:0.075d,operation:"add_value",slot:"head"}],minecraft:profile={id:[I;-1882506042,-1938469333,-1264120337,1864856646],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjEwNzBkY2Q1NmU4MWUzNGM5ZDQ5NDY1ZjEzMDY0YTFjYzUyNDhmMGM5NTI3ODZhNzRmNGRlYjAxMzQ2Y2E0NiJ9fX0="}]}] 1
 
 
 
@@ -72,8 +69,8 @@ execute at @e[tag=rev_shieldbashed] run kill @e[tag=shield_bash_thing]
 execute at @e[tag=rev_shieldbashed] run particle block{block_state:{Name:"minecraft:warped_planks"}} ~ ~0.5 ~ 0.4 0.8 0.4 0.3 50 normal
 execute at @e[tag=rev_shieldbashed] run particle block{block_state:{Name:"minecraft:netherite_block"}} ~ ~0.5 ~ 0.4 0.8 0.4 0.3 50 normal
 execute at @e[tag=rev_shieldbashed] run playsound entity.zombie.break_wooden_door master @a[distance=..10] ~ ~ ~ 0.5 1.6 1
-scoreboard players set @e[tag=rev_shieldbashed,limit=1] CC_stun 20
-damage @e[tag=rev_shieldbashed,limit=1] 2 generic by @p[scores={char=67}] from @p[scores={char=67}]
+scoreboard players set @a[tag=rev_shieldbashed,limit=1] CC_stun 20
+damage @e[tag=rev_shieldbashed,limit=1] 2 player_attack by @p[scores={char=67}] from @p[scores={char=67}]
 tag @e remove rev_shieldbashed
 
 execute at @e[tag=rev_shieldbashed_harder] run kill @e[tag=shield_bash_thing]
@@ -82,7 +79,7 @@ execute at @e[tag=rev_shieldbashed_harder] run particle block{block_state:{Name:
 execute at @e[tag=rev_shieldbashed_harder] run playsound entity.player.attack.crit master @a[distance=..10] ~ ~ ~ 0.5 0.9 1
 execute at @e[tag=rev_shieldbashed_harder] run playsound entity.zombie.break_wooden_door master @a[distance=..10] ~ ~ ~ 0.5 0.9 1
 scoreboard players set @e[tag=rev_shieldbashed_harder,limit=1] CC_stun 30
-damage @e[tag=rev_shieldbashed_harder,limit=1] 4 generic by @p[scores={char=67}] from @p[scores={char=67}]
+damage @e[tag=rev_shieldbashed_harder,limit=1] 4 player_attack by @p[scores={char=67}] from @p[scores={char=67}]
 tag @e remove rev_shieldbashed_harder
 
 execute at @a[scores={char=67}] run tp @e[tag=shield_bash_visual_core] ~ ~1 ~
@@ -122,12 +119,12 @@ execute at @a[scores={char=67,s2_timer=1,CC_silence=0}] run playsound entity.war
 execute at @a[scores={char=67,s2_timer=1,CC_silence=0}] run particle sculk_charge_pop ~ ~1.5 ~ 0.5 0.5 0.5 0.001 10
 
 tag @e[scores={char=67}] remove revenant_ally_in_range
-execute at @a[scores={char=67,s2_timer=1..120}] as @p[distance=0.5..5] if score @s Team = @p[scores={char=67}] Team run tag @a[scores={char=67}] add revenant_ally_in_range
+execute at @a[scores={char=67,s2_timer=1..80}] as @p[distance=0.5..5] if score @s Team = @p[scores={char=67}] Team run tag @a[scores={char=67}] add revenant_ally_in_range
 
-execute at @a[scores={char=67,s2_timer=1..120},tag=!revenant_ally_in_range] run item replace entity @a[scores={char=67,s2_timer=1..100}] hotbar.0 with minecraft:wooden_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Broadsword"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:knockback":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
-execute at @a[scores={char=67,s2_timer=1..120},tag=revenant_ally_in_range] run item replace entity @a[scores={char=67,s2_timer=1..100}] hotbar.0 with minecraft:wooden_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Broadsword"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:knockback":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.65d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+execute at @a[scores={char=67,s2_timer=1..80},tag=!revenant_ally_in_range] run item replace entity @a[scores={char=67,s2_timer=1..100}] hotbar.0 with minecraft:wooden_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Broadsword"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:knockback":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+execute at @a[scores={char=67,s2_timer=1..80},tag=revenant_ally_in_range] run item replace entity @a[scores={char=67,s2_timer=1..100}] hotbar.0 with minecraft:wooden_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Broadsword"},minecraft:unbreakable={},minecraft:enchantments={"minecraft:knockback":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.55d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
-item replace entity @a[scores={char=67,s2_timer=121..}] hotbar.0 with wooden_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Broadsword"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=67,s2_timer=121..}] hotbar.0 with wooden_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Broadsword"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute at @a[scores={char=67,s2_timer=1..120,CC_silence=0}] run particle sculk_charge_pop ~ ~1.5 ~ 0.8 0.6 0.8 0.001 1
 
@@ -142,7 +139,7 @@ scoreboard players add @a[scores={char=67,s2_timer=1..}] s2_timer 1
 scoreboard players set @a[scores={char=67,s2_timer=321..}] s2_timer 0
 
 execute as @a[scores={char=67}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:wooden_sword",Slot:0b}]}] run clear @a[scores={char=67}] wooden_sword
-item replace entity @a[scores={char=67,s2_timer=0}] hotbar.0 with wooden_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Broadsword"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.8d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=67,s2_timer=0}] hotbar.0 with wooden_sword[minecraft:custom_name={bold:1b,color:"gray",text:"Broadsword"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.0d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.7d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=67,s1_timer=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=67}] carrot_on_a_stick[custom_data={s1:1}]
 item replace entity @a[scores={char=67,s1_timer=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:music_disc_creator",minecraft:custom_name={text:"Shield Bash",color:"dark_aqua",bold:1b}] 1

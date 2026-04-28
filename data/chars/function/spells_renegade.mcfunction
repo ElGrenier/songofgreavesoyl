@@ -11,6 +11,9 @@ execute at @a[scores={char=26}] if entity @e[tag=renegade_enemy_within_melee,dis
 execute at @a[scores={char=26}] unless entity @e[tag=renegade_enemy_within_melee,distance=..4.6] run tag @e[scores={char=26}] remove kayral_melee
 execute at @a[scores={char=26}] unless entity @e[tag=renegade_enemy_within_melee,distance=..4.6] run tag @e[scores={char=26}] add kayral_ranged
 
+scoreboard players set @e[scores={char=26},tag=kayral_melee] kayral_gun 0
+scoreboard players add @e[scores={char=26,kayral_gun=..43},tag=kayral_ranged] kayral_gun 1
+
 execute at @a[scores={char=26,s0_timer=1}] run playsound entity.shulker.shoot master @a[distance=..15] ~ ~ ~ 1 1.2 1
 execute at @a[scores={char=26,s0_timer=1}] run playsound entity.zombie_villager.cure master @a[distance=..15] ~ ~ ~ 0.2 2 1
 execute at @a[scores={char=26,s0_timer=1}] run summon marker ~ ~1 ~ {Tags:["renegade_ebw_shot","entities_renegade"]}
@@ -53,7 +56,7 @@ execute if entity @e[tag=kayraled] at @a[scores={char=26}] run playsound entity.
 damage @e[tag=kayraled,limit=1] 4 generic by @p[scores={char=26}] from @p[scores={char=26}]
 tag @e remove kayraled
 
-execute at @a[scores={char=26,s0_timer=6..}] run kill @e[tag=renegade_ebw_shot]
+execute at @a[scores={char=26,s0_timer=7..}] run kill @e[tag=renegade_ebw_shot]
 
 #kick in the balls
 
@@ -218,7 +221,7 @@ scoreboard players add @a[scores={char=26,demontrigger=1..,universal_kill=1..}] 
 execute at @a[scores={char=26,demontrigger=1..,universal_kill=1..}] run playsound entity.enderman.scream master @a[distance=..15] ~ ~ ~ 1 0.6 1
 
 
-item replace entity @a[scores={char=26,demontrigger=2..200}] armor.head with player_head[minecraft:custom_name="Head",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:4.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:movement_speed",amount:0.3d,operation:"add_multiplied_base",slot:"head"}],minecraft:profile={properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjNiOTdlYzY5NDk1NDMxOTRjNzFjMTRjNTU2MGM0MDk5NDU2YjdiMGVkNGJmMThmODhjMTBkZjlhZDcyNzQ2MCJ9fX0="}]}] 1
+item replace entity @a[scores={char=26,demontrigger=2..200}] armor.head with player_head[minecraft:custom_name={bold:1b,color:"aqua",text:"Monster"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:4.0d,operation:"add_value",slot:"head"},{id:"armor",type:"minecraft:movement_speed",amount:0.15d,operation:"add_multiplied_base",slot:"head"}],minecraft:profile={properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjNiOTdlYzY5NDk1NDMxOTRjNzFjMTRjNTU2MGM0MDk5NDU2YjdiMGVkNGJmMThmODhjMTBkZjlhZDcyNzQ2MCJ9fX0="}]}] 1
 execute as @a[scores={char=26,s3_timer=2}] at @s run summon armor_stand ^ ^0.5 ^-0.5 {attributes:[{id:"minecraft:scale",base:1.5}],Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["eyes","entities_renegade"],equipment:{chest:{id:"minecraft:leather_chestplate",components:{"minecraft:dyed_color":7208960,"minecraft:trim":{material:"minecraft:redstone",pattern:"minecraft:silence"}},count:1},head:{id:"minecraft:player_head",components:{"minecraft:profile":{id:[I;-1956923902,-1153610189,-1450835436,374665507],properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2ViOTMyMzU2NzY0YTQ3NTBhYmYzMmUxOTcyNTAyN2VkMzhiMzFkOTE3ZDE1YTdlMzIxOGFiYWNjOTYwNTgifX19"}]}},count:1}}}
 
 
@@ -226,7 +229,7 @@ execute as @a[scores={char=26,s3_timer=2}] at @s run summon armor_stand ^ ^0.5 ^
 execute at @a[scores={char=26,demontrigger=3}] run playsound entity.wither.hurt master @a ~ ~ ~ 1 0.2 1
 execute at @a[scores={char=26,demontrigger=1..2}] run kill @e[tag=eyes]
 
-item replace entity @a[scores={char=26,demontrigger=1..2}] armor.head with player_head[minecraft:custom_name="Head",minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:4.0d,operation:"add_value",slot:"head"}],minecraft:profile={properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2RjZDUwMWY4YzAxNWE4NjY0N2M2ZDJiMWQxMzVkNjhiZGRkNjBjZmNhNTU4MWEzMWJmMDY1NmYxOTM2ZGNmYSJ9fX0="}]}] 1
+item replace entity @a[scores={char=26,demontrigger=1..2}] armor.head with player_head[minecraft:custom_name={bold:1b,color:"aqua",text:"Kayral"},minecraft:enchantments={"minecraft:projectile_protection":2,"minecraft:binding_curse":1},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:max_health",amount:4.0d,operation:"add_value",slot:"head"}],minecraft:profile={properties:[{name:"textures",value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2RjZDUwMWY4YzAxNWE4NjY0N2M2ZDJiMWQxMzVkNjhiZGRkNjBjZmNhNTU4MWEzMWJmMDY1NmYxOTM2ZGNmYSJ9fX0="}]}] 1
 
 
 #eyes wings
@@ -264,7 +267,7 @@ scoreboard players set @e[tag=eyes_wings,scores={eyes_wingsanimation=40..}] eyes
 # renegade
 
 scoreboard players add @a[scores={s0_timer=1..,char=26}] s0_timer 1
-scoreboard players set @a[scores={s0_timer=21..,demontrigger=1..,char=26}] s0_timer 31
+scoreboard players set @a[scores={s0_timer=25..,demontrigger=1..,char=26}] s0_timer 31
 scoreboard players set @a[scores={s0_timer=30..,char=26}] s0_timer 0
 
 scoreboard players set @a[scores={s1_timer=1,char=26}] spellCD1 260
@@ -279,12 +282,12 @@ scoreboard players add @a[scores={s3_timer=1..,char=26}] s3_timer 1
 scoreboard players set @a[scores={s3_timer=30..,char=26}] s3_timer 0
 
 execute as @a[scores={char=26},tag=kayral_melee] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:cherry_button",Slot:0b}]}] run clear @a[scores={char=26}] cherry_button
-item replace entity @a[scores={char=26,demontrigger=0},tag=kayral_melee] hotbar.0 with cherry_button[custom_data={warden:1},minecraft:custom_name={bold:1b,color:"gray",text:"Fists"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
-item replace entity @a[scores={char=26,demontrigger=1..},tag=kayral_melee] hotbar.0 with cherry_button[minecraft:item_model="minecraft:mangrove_button",custom_data={warden:1},minecraft:custom_name={bold:1b,color:"gray",text:"Fists"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.35d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=26,demontrigger=0,kayral_gun=..40},tag=kayral_melee] hotbar.0 with cherry_button[custom_data={warden:1},minecraft:custom_name={bold:1b,color:"gray",text:"Fists"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.5d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
+item replace entity @a[scores={char=26,demontrigger=1..,kayral_gun=..40},tag=kayral_melee] hotbar.0 with cherry_button[minecraft:item_model="minecraft:mangrove_button",custom_data={warden:1},minecraft:custom_name={bold:1b,color:"gray",text:"Fists"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2.5d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.35d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=26},tag=kayral_ranged] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:0b}]}] run clear @a[scores={char=26}] warped_fungus_on_a_stick[custom_data={s0:1}]
-item replace entity @a[scores={char=26,s0_timer=0},tag=kayral_ranged] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:crossbow",minecraft:custom_name={bold:1b,color:"gray",text:"E.B.W."},minecraft:unbreakable={},minecraft:charged_projectiles=[{id:"minecraft:tipped_arrow",count:1,components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:levitation",amplifier:1,duration:1,show_particles:1b,show_icon:0b}]}}}]] 1
-item replace entity @a[scores={char=26,s0_timer=1..},tag=kayral_ranged] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:crossbow",minecraft:custom_name={bold:1b,color:"gray",text:"E.B.W."},minecraft:unbreakable={}] 1
+item replace entity @a[scores={char=26,s0_timer=0,kayral_gun=41..},tag=kayral_ranged] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:crossbow",minecraft:custom_name={bold:1b,color:"gray",text:"E.B.W."},minecraft:unbreakable={},minecraft:charged_projectiles=[{id:"minecraft:tipped_arrow",count:1,components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:levitation",amplifier:1,duration:1,show_particles:1b,show_icon:0b}]}}}]] 1
+item replace entity @a[scores={char=26,s0_timer=1..,kayral_gun=41..},tag=kayral_ranged] hotbar.0 with warped_fungus_on_a_stick[custom_data={s0:1},minecraft:item_model="minecraft:crossbow",minecraft:custom_name={bold:1b,color:"gray",text:"E.B.W."},minecraft:unbreakable={}] 1
 
 
 execute as @a[scores={char=26,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=26}] carrot_on_a_stick[custom_data={s1:1}]

@@ -77,11 +77,12 @@ execute if score game_state settings matches 6 run scoreboard players set .purpl
 execute if score game_state settings matches 6 run scoreboard players set .yellow score 0
 execute if score game_state settings matches 6 if score map_type settings matches 4 run scoreboard players reset .purple score
 execute if score game_state settings matches 6 if score map_type settings matches 4 run scoreboard players reset .yellow score
+execute if score game_state settings matches 6 run scoreboard players set yellow temp_score 0
+execute if score game_state settings matches 6 run scoreboard players set purple temp_score 0
 execute if score game_state settings matches 6 run function battlegrounds:setup
 execute if score game_state settings matches 6 run function core:main/game/start_game_spawn
 
 
-execute if score game_state settings matches 7 run function chars:all
 execute if score game_state settings matches 7 run scoreboard players set game_state settings 8
 
 execute if score game_state settings matches 8 run function core:score/manage_score

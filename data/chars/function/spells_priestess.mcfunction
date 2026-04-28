@@ -4,7 +4,6 @@ kill @e[type=minecraft:item,nbt={Item:{id:"minecraft:golden_shovel"}}]
 #passive
 
 
-
 title @a[scores={char=35,passive_pris=1..60}] actionbar [{text:"[",bold:1b,color:"blue",type:"text"},{text:"==========",color:"aqua",bold:0b,type:"text"},{text:"",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"blue",type:"text"}]
 title @a[scores={char=35,passive_pris=61..120}] actionbar [{text:"[",bold:1b,color:"blue",type:"text"},{text:"=========",color:"aqua",bold:0b,type:"text"},{text:"=",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"blue",type:"text"}]
 title @a[scores={char=35,passive_pris=121..180}] actionbar [{text:"[",bold:1b,color:"blue",type:"text"},{text:"========",color:"aqua",bold:0b,type:"text"},{text:"==",color:"gray",bold:0b,type:"text"},{text:"]",bold:1b,color:"blue",type:"text"}]
@@ -20,7 +19,7 @@ title @a[scores={char=35,passive_pris=701..}] actionbar {text:"Thank you!",color
 
 title @a[scores={char=35,passive_pris=0}] actionbar [{text:"[",bold:1b,color:"blue",type:"text"},{text:"The Gift is ready",color:"aqua",bold:0b,type:"text"},{text:"]",bold:1b,color:"blue",type:"text"}]
 
-scoreboard players set @a[scores={passive_pris=0,char=35,universal_damagetaken=1..,HP=..15}] passive_pris 740
+scoreboard players set @a[scores={passive_pris=0,char=35,universal_damagetaken=1..,HPercentage=..50}] passive_pris 740
 
 
 effect give @a[scores={passive_pris=739,char=35}] absorption 7 2
@@ -115,8 +114,8 @@ execute as @e[tag=silencedash] at @s unless block ^ ^ ^1 #minecraft:dash run kil
 
 execute as @e[tag=silencedash] at @s run tp @s ^ ^ ^1
 
-execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5] unless score @s Team = @p[scores={char=35,CC_silence=0}] Team run particle cloud ~ ~1.5 ~ 0.5 0 0.5 0.01 10
-execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5] unless score @s Team = @p[scores={char=35,CC_silence=0}] Team run playsound entity.player.attack.nodamage master @a[distance=..10] ~ ~ ~ 1 0.5 1
+execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5,scores={CC_silence=0}] unless score @s Team = @p[scores={char=35}] Team run particle cloud ~ ~1.5 ~ 0.5 0 0.5 0.01 10
+execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5,scores={CC_silence=0}] unless score @s Team = @p[scores={char=35}] Team run playsound entity.player.attack.nodamage master @a[distance=..10] ~ ~ ~ 1 0.5 1
 execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] if entity @e[tag=silencedash] as @a[tag=valid_spell_target,distance=..2.5] unless score @s Team = @p[scores={char=35}] Team run scoreboard players set @s CC_silence 40
 execute at @a[scores={char=35,s2_timer=1..10,CC_silence=0}] as @a[distance=..2.5] unless score @s Team = @p[scores={char=35}] Team at @s run particle enchant ~ ~0.5 ~ 0.3 1 0.3 0.01 20
 
@@ -141,10 +140,10 @@ scoreboard players add @a[scores={s2_timer=1..,char=35}] s2_timer 1
 scoreboard players set @a[scores={s2_timer=301..,char=35}] s2_timer 0
 
 execute as @a[scores={char=35}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:golden_shovel",Slot:0b}]}] run clear @a[scores={char=35}] golden_shovel
-item replace entity @a[scores={char=35}] hotbar.0 with minecraft:golden_shovel[minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=0.8] 1
+item replace entity @a[scores={char=35}] hotbar.0 with minecraft:golden_shovel[item_model="minecraft:golden_spear",minecraft:custom_name={bold:1b,color:"gray",text:"Staff"},minecraft:unbreakable={},minecraft:attribute_modifiers=[{id:"armor",type:"minecraft:attack_damage",amount:2d,operation:"add_value",slot:"mainhand"},{id:"armor",type:"minecraft:attack_speed",amount:-0.6d,operation:"add_multiplied_base",slot:"mainhand"}],minimum_attack_charge=1] 1
 
 execute as @a[scores={char=35,s1_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:carrot_on_a_stick",Slot:1b}]}] run clear @a[scores={char=35}] carrot_on_a_stick[custom_data={s1:1}]
-item replace entity @a[scores={char=35,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},minecraft:item_model="minecraft:allay_spawn_egg",minecraft:custom_name={text:"Drizzle Dance",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=35,s1_timer=0,CC_silence=0}] hotbar.1 with carrot_on_a_stick[custom_data={s1:1},item_model="minecraft:allay_spawn_egg",custom_name={text:"Drizzle Dance",color:"dark_aqua",bold:1b}] 1
 
 execute as @a[scores={char=35,s2_timer=0,CC_silence=0}] at @s unless entity @s[nbt={Inventory:[{id:"minecraft:warped_fungus_on_a_stick",Slot:2b}]}] run clear @a[scores={char=35}] warped_fungus_on_a_stick[custom_data={s2:1}]
-item replace entity @a[scores={char=35,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},minecraft:item_model="minecraft:vex_spawn_egg",minecraft:custom_name={text:"Hush",color:"dark_aqua",bold:1b}] 1
+item replace entity @a[scores={char=35,s2_timer=0,CC_silence=0}] hotbar.2 with warped_fungus_on_a_stick[custom_data={s2:1},item_model="minecraft:vex_spawn_egg",custom_name={text:"Hush",color:"dark_aqua",bold:1b}] 1
